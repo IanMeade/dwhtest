@@ -11,8 +11,8 @@
   DTS:LocaleID="6153"
   DTS:ObjectName="PckPreStageFiles"
   DTS:PackageType="5"
-  DTS:VersionBuild="40"
-  DTS:VersionGUID="{58C8D87B-0E8C-4FA0-90F7-06DA42EFB31F}">
+  DTS:VersionBuild="41"
+  DTS:VersionGUID="{8BB8A154-457E-4800-9BC1-7E467FB3E961}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -323,7 +323,7 @@
                   DTS:LocaleID="-1"
                   DTS:ObjectName="SQL Add File to File List"
                   DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-                  DTS:ThreadHint="0">
+                  DTS:ThreadHint="1">
                   <DTS:Variables />
                   <DTS:ObjectData>
                     <SQLTask:SqlTaskData
@@ -451,7 +451,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="SQL Get File Control Details"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -495,7 +495,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="SQL Clear Staging SAFT max Letter"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="2">
+          DTS:ThreadHint="0">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -512,12 +512,12 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="SQL DWH Get File Letter"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="2">
+          DTS:ThreadHint="0">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{0CBC2C04-C137-495F-AF7C-FA5DE465FED0}"
-              SQLTask:SqlStatementSource="SELECT&#xA;&#x9;ISNULL(MAX(SaftFileLetter),'Z') AS SaftFileLetter&#xA;FROM&#xA;&#x9;[DWH].[DimFile]&#xA;WHERE&#xA;&#x9;FileTypeTag IN ( 'TradeFile', 'PriceFile' )&#xA;AND&#xA;&#x9;CAST([FileProcessedTime] AS DATE) = CAST(GETDATE() AS DATE)&#xA;"
+              SQLTask:SqlStatementSource="SELECT&#xA;&#x9;ISNULL(MAX(SaftFileLetter),' ') AS SaftFileLetter&#xA;FROM&#xA;&#x9;[DWH].[DimFile]&#xA;WHERE&#xA;&#x9;FileTypeTag IN ( 'TradeFile', 'PriceFile' )&#xA;AND&#xA;&#x9;CAST([FileProcessedTime] AS DATE) = CAST(GETDATE() AS DATE)&#xA;"
               SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ResultBinding
                 SQLTask:ResultName="SaftFileLetter"
@@ -534,7 +534,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="SQL Staging Save Saft File Letter"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="2">
+          DTS:ThreadHint="0">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -704,7 +704,7 @@
               DTS:LocaleID="-1"
               DTS:ObjectName="FSYS Move bad files"
               DTS:TaskContact="File System Task;Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-              DTS:ThreadHint="0">
+              DTS:ThreadHint="1">
               <DTS:Variables />
               <DTS:ObjectData>
                 <FileSystemData
@@ -758,7 +758,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="SQL Bad file names"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -904,7 +904,7 @@
               DTS:LocaleID="-1"
               DTS:ObjectName="EXP File access message"
               DTS:TaskContact="Expression Task;Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-              DTS:ThreadHint="1">
+              DTS:ThreadHint="0">
               <DTS:Variables />
               <DTS:ObjectData>
                 <ExpressionTask
@@ -920,7 +920,7 @@
               DTS:LocaleID="-1"
               DTS:ObjectName="FSYS Move good files"
               DTS:TaskContact="File System Task;Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-              DTS:ThreadHint="1">
+              DTS:ThreadHint="0">
               <DTS:Variables />
               <DTS:EventHandlers>
                 <DTS:EventHandler
@@ -998,7 +998,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="SQL Good file name"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="1">
+          DTS:ThreadHint="0">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -1055,7 +1055,7 @@
       DTS:LocaleID="-1"
       DTS:ObjectName="SQL Clear Staging Filelist"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="1">
+      DTS:ThreadHint="2">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -1072,7 +1072,7 @@
       DTS:LocaleID="-1"
       DTS:ObjectName="SQL Clear Staging FileValidationAlert"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="0">
+      DTS:ThreadHint="1">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -1165,7 +1165,7 @@
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="64" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="64" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="268,42"
           Id="Package\SEQ File name validation\SQL File Validation - SAFT Date"
@@ -1187,7 +1187,7 @@
           TopLeft="201.5,66.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="0,60"
               Start="0,0"
               End="0,52.5">
@@ -1209,7 +1209,7 @@
           TopLeft="201.5,168.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="0,60"
               Start="0,0"
               End="0,52.5">
@@ -1231,7 +1231,7 @@
           TopLeft="201.5,270.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="0,60"
               Start="0,0"
               End="0,52.5">
@@ -1282,7 +1282,7 @@
           TopLeft="148,48.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="0,41"
               Start="0,0"
               End="0,33.5">
@@ -1307,6 +1307,69 @@
           Id="Package\SEQ Get a list of files"
           TopLeft="163,133.5" />
         <NodeLayout
+          Size="245,42"
+          Id="Package\SEQ Get Saft Max Letter\SQL Clear Staging SAFT max Letter"
+          TopLeft="10,5.5" />
+        <NodeLayout
+          Size="245,42"
+          Id="Package\SEQ Get Saft Max Letter\SQL DWH Get File Letter"
+          TopLeft="10,89.5" />
+        <NodeLayout
+          Size="245,42"
+          Id="Package\SEQ Get Saft Max Letter\SQL Staging Save Saft File Letter"
+          TopLeft="10,162.5" />
+        <EdgeLayout
+          Id="Package\SEQ Get Saft Max Letter.PrecedenceConstraints[Constraint]"
+          TopLeft="132.5,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,42"
+              Start="0,0"
+              End="0,34.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,34.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ Get Saft Max Letter.PrecedenceConstraints[Constraint 1]"
+          TopLeft="132.5,131.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,31"
+              Start="0,0"
+              End="0,23.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,23.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="291,238"
+          Size="291,281"
+          Id="Package\SEQ Get Saft Max Letter"
+          TopLeft="588,135.5" />
+        <NodeLayout
           Size="167,42"
           Id="Package\SEQ Move Bad Files to Reject\FELC Move bad files to reject\EPT Raise file alert"
           TopLeft="58.5,100.5" />
@@ -1330,7 +1393,7 @@
           TopLeft="200.75,47.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="0,55"
               Start="0,0"
               End="0,47.5">
@@ -1350,7 +1413,7 @@
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="428,408"
+          PanelSize="428,409"
           Size="428,452"
           Id="Package\SEQ Move Bad Files to Reject"
           TopLeft="620,1188.5" />
@@ -1371,7 +1434,7 @@
           TopLeft="127,142">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="0,30"
               Start="0,0"
               End="0,22.5">
@@ -1393,7 +1456,7 @@
           TopLeft="127,49.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="0,50.5"
               Start="0,0"
               End="0,43">
@@ -1428,7 +1491,7 @@
           TopLeft="182,60.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="0,38"
               Start="0,0"
               End="0,30.5">
@@ -1453,69 +1516,6 @@
           Id="Package\SEQ Move Good Files to Process"
           TopLeft="197,1187.5" />
         <NodeLayout
-          Size="245,42"
-          Id="Package\SEQ Get Saft Max Letter\SQL Clear Staging SAFT max Letter"
-          TopLeft="10,5.5" />
-        <NodeLayout
-          Size="245,42"
-          Id="Package\SEQ Get Saft Max Letter\SQL DWH Get File Letter"
-          TopLeft="10,89.5" />
-        <NodeLayout
-          Size="245,42"
-          Id="Package\SEQ Get Saft Max Letter\SQL Staging Save Saft File Letter"
-          TopLeft="10,162.5" />
-        <EdgeLayout
-          Id="Package\SEQ Get Saft Max Letter.PrecedenceConstraints[Constraint]"
-          TopLeft="132.5,47.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{x:Null}"
-              EndConnector="0,42"
-              Start="0,0"
-              End="0,34.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,34.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\SEQ Get Saft Max Letter.PrecedenceConstraints[Constraint 1]"
-          TopLeft="132.5,131.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{x:Null}"
-              EndConnector="0,31"
-              Start="0,0"
-              End="0,23.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,23.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <ContainerLayout
-          HeaderHeight="43"
-          IsExpanded="True"
-          PanelSize="291,238"
-          Size="291,281"
-          Id="Package\SEQ Get Saft Max Letter"
-          TopLeft="588,135.5" />
-        <NodeLayout
           Size="196,42"
           Id="Package\SQL Clear Staging Filelist"
           TopLeft="85.5,5.5" />
@@ -1528,7 +1528,7 @@
           TopLeft="183.5,47.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="81.1666666666666,86"
               Start="0,0"
               End="81.1666666666666,78.5">
@@ -1562,7 +1562,7 @@
           TopLeft="615.666666666667,1093.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="-234.166666666667,94"
               Start="0,0"
               End="-234.166666666667,86.5">
@@ -1596,7 +1596,7 @@
           TopLeft="752.333333333333,1093.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="81.6666666666667,95"
               Start="0,0"
               End="81.6666666666667,87.5">
@@ -1630,7 +1630,7 @@
           TopLeft="313.5,523.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="302.166666666667,100"
               Start="0,0"
               End="302.166666666667,92.5">
@@ -1664,7 +1664,7 @@
           TopLeft="455.5,47.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="-93.1666666666667,86"
               Start="0,0"
               End="-93.1666666666667,78.5">
@@ -1698,7 +1698,7 @@
           TopLeft="733.5,416.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="18.8333333333333,207"
               Start="0,0"
               End="18.8333333333333,199.5">
@@ -1730,7 +1730,7 @@
         <AnnotationLayout
           Text="Assume all files can be processed"
           ParentId="Package"
-          FontInfo="{x:Null}"
+          FontInfo="{assembly:Null}"
           Size="168,56"
           Id="a012afd3-0dd4-48dc-ad32-89431f622123"
           TopLeft="6.50000000000011,1281.5" />
@@ -1741,11 +1741,11 @@
     design-time-name="Package.EventHandlers[OnError]">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <AnnotationLayout
           Text="Suppress known errors&#xA;"
           ParentId="Package.EventHandlers[OnError]"
-          FontInfo="{x:Null}"
+          FontInfo="{assembly:Null}"
           Size="150,NaN"
           Id="aca7a0d7-aaff-49bd-9c9b-0ea433f26cf2"
           TopLeft="222,80" />
