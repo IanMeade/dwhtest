@@ -1,0 +1,1756 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="1/16/2017 9:54:23 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="T7-DDT-01"
+  DTS:CreatorName="STOCK_EXCHANGE\ianm"
+  DTS:DTSID="{FE462A2D-F7FC-4048-B59F-5DB9B7D53734}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="13.0.4001.0"
+  DTS:LocaleID="6153"
+  DTS:ObjectName="PckPreStageFiles"
+  DTS:PackageType="5"
+  DTS:VersionBuild="40"
+  DTS:VersionGUID="{58C8D87B-0E8C-4FA0-90F7-06DA42EFB31F}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{E7F8C1F4-99C3-477D-977A-8E529C4448C3}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="ArchiveFolder">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{7D77FEDE-BB6D-4191-B88C-39310780760D}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="FileNameMask">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{0EE16E66-7F56-4C98-BCB3-563FB7B1F74E}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="FileTag">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{AB5B754B-4B20-4B65-B4F1-1199489A6283}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="GetFileControlList">
+      <DTS:VariableValue
+        DTS:DataSubType="ManagedSerializable"
+        DTS:DataType="13">
+        <SOAP-ENV:Envelope xmlns:clr="http://schemas.microsoft.com/soap/encoding/clr/1.0" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+          <SOAP-ENV:Body>
+            <xsd:anyType
+              id="ref-1"></xsd:anyType>
+          </SOAP-ENV:Body>
+        </SOAP-ENV:Envelope>
+      </DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{F8309BFD-53CD-4C76-8629-FDBD6F7D9BAA}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="ProcessFolder">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{324C563A-3BD7-4B96-96FC-3ABA9F6D416C}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="SaftFileLetter">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{1A7BF031-676C-4795-B448-EE134BA74355}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="SourceFolder">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{8E134C94-1DCF-456B-8257-CCC18FA7163A}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="SourceSystemID">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{1AACE6CE-4DB0-41BB-9198-0F1EA8136625}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="SourceSystemTag">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\SEQ File name validation"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{C9A7B2EE-EA5F-49A8-884C-1033F5A8CE23}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SEQ File name validation">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\SEQ File name validation\SQL File Validation - SAFT Date"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{D61B9F50-53AA-4753-B9E6-3D0446C50CE4}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SQL File Validation - SAFT Date"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{7AE745A6-BA4C-482E-9695-63779ECE70D4}"
+              SQLTask:SqlStatementSource="EXEC ValidateSaftFileDate" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\SEQ File name validation\SQL File Validation - SAFT File pair"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{1b5f6604-2421-4484-a1d9-62d05fed5d79}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SQL File Validation - SAFT File pair"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{7AE745A6-BA4C-482E-9695-63779ECE70D4}"
+              SQLTask:SqlStatementSource="EXEC ValidateSaftMatchingPair" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\SEQ File name validation\SQL File Validation - SAFT Receipt order"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{3b8c266b-bf89-4dcb-ba52-e4f5b907aea2}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SQL File Validation - SAFT Receipt order"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{7AE745A6-BA4C-482E-9695-63779ECE70D4}"
+              SQLTask:SqlStatementSource="EXEC ValidateSaftFileOrder" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\SEQ File name validation\SQL Mark FilesThat Could be Processed"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{BCF3599B-48C0-4C04-A72E-DAB2BD64AC41}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SQL Mark FilesThat Could be Processed"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{7AE745A6-BA4C-482E-9695-63779ECE70D4}"
+              SQLTask:SqlStatementSource="UPDATE &#xA;&#x9;&#x9;dbo.FileList&#xA;&#x9;SET&#xA;&#x9;&#x9;ProcessFileYN = 'Y'&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\SEQ File name validation.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{832A7165-1A3B-48D6-B4A9-2FD5303A7EEF}"
+          DTS:From="Package\SEQ File name validation\SQL Mark FilesThat Could be Processed"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\SEQ File name validation\SQL File Validation - SAFT Receipt order" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\SEQ File name validation.PrecedenceConstraints[Constraint 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{2CFAD203-D331-483C-80F6-5433F1FE81C2}"
+          DTS:From="Package\SEQ File name validation\SQL File Validation - SAFT Receipt order"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 1"
+          DTS:To="Package\SEQ File name validation\SQL File Validation - SAFT Date" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\SEQ File name validation.PrecedenceConstraints[Constraint 2]"
+          DTS:CreationName=""
+          DTS:DTSID="{61D39A03-D5BB-4427-8F95-E6666142AD1C}"
+          DTS:From="Package\SEQ File name validation\SQL File Validation - SAFT Date"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 2"
+          DTS:To="Package\SEQ File name validation\SQL File Validation - SAFT File pair" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SEQ Get a list of files"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{14269B40-645D-4253-82E9-9A3187A7707B}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SEQ Get a list of files">
+      <DTS:Variables>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{399D8FB0-13C4-4D64-AEE0-25F5F7740AB8}"
+          DTS:IncludeInDebugDump="2345"
+          DTS:Namespace="User"
+          DTS:ObjectName="FilePrefix">
+          <DTS:VariableValue
+            DTS:DataType="8"
+            xml:space="preserve"></DTS:VariableValue>
+        </DTS:Variable>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{A2D61569-69DB-499B-90E7-D62C923C8DCD}"
+          DTS:IncludeInDebugDump="2345"
+          DTS:Namespace="User"
+          DTS:ObjectName="RejectFolder">
+          <DTS:VariableValue
+            DTS:DataType="8"
+            xml:space="preserve"></DTS:VariableValue>
+        </DTS:Variable>
+      </DTS:Variables>
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\SEQ Get a list of files\FELC File Control Types"
+          DTS:CreationName="STOCK:FOREACHLOOP"
+          DTS:Description="Foreach Loop Container"
+          DTS:DTSID="{46017517-56D3-4648-87AC-47CE0B91010A}"
+          DTS:ExecutableType="STOCK:FOREACHLOOP"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="FELC File Control Types">
+          <DTS:ForEachEnumerator
+            DTS:CreationName="Microsoft.ForEachADOEnumerator"
+            DTS:DTSID="{EA0A3D9A-FC77-493C-B88F-E3A0939512BE}"
+            DTS:ObjectName="{EA0A3D9A-FC77-493C-B88F-E3A0939512BE}">
+            <DTS:ObjectData>
+              <FEEADO
+                EnumType="EnumerateRowsInFirstTable"
+                VarName="User::GetFileControlList" />
+            </DTS:ObjectData>
+          </DTS:ForEachEnumerator>
+          <DTS:Variables>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{76ED4C3A-EEE7-495B-98F8-CB434B77F9F5}"
+              DTS:IncludeInDebugDump="2345"
+              DTS:Namespace="User"
+              DTS:ObjectName="FileName">
+              <DTS:VariableValue
+                DTS:DataType="8"
+                xml:space="preserve"></DTS:VariableValue>
+            </DTS:Variable>
+          </DTS:Variables>
+          <DTS:Executables>
+            <DTS:Executable
+              DTS:refId="Package\SEQ Get a list of files\FELC File Control Types\FELC Search Source Folders"
+              DTS:CreationName="STOCK:FOREACHLOOP"
+              DTS:Description="Foreach Loop Container"
+              DTS:DTSID="{8705A52D-D209-4052-9B3C-CE23BAD29314}"
+              DTS:ExecutableType="STOCK:FOREACHLOOP"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="FELC Search Source Folders">
+              <DTS:ForEachEnumerator
+                DTS:CreationName="Microsoft.ForEachFileEnumerator"
+                DTS:DTSID="{30D17F6D-C111-479C-A08B-F24138F53D1C}"
+                DTS:ObjectName="{30D17F6D-C111-479C-A08B-F24138F53D1C}">
+                <DTS:PropertyExpression
+                  DTS:Name="Directory">@[User::SourceFolder]</DTS:PropertyExpression>
+                <DTS:PropertyExpression
+                  DTS:Name="FileSpec">@[User::FileNameMask]</DTS:PropertyExpression>
+                <DTS:ObjectData>
+                  <ForEachFileEnumeratorProperties>
+                    <FEFEProperty
+                      Folder="" />
+                    <FEFEProperty
+                      FileSpec="" />
+                    <FEFEProperty
+                      FileNameRetrievalType="1" />
+                    <FEFEProperty
+                      Recurse="0" />
+                  </ForEachFileEnumeratorProperties>
+                </DTS:ObjectData>
+              </DTS:ForEachEnumerator>
+              <DTS:Variables />
+              <DTS:Executables>
+                <DTS:Executable
+                  DTS:refId="Package\SEQ Get a list of files\FELC File Control Types\FELC Search Source Folders\SQL Add File to File List"
+                  DTS:CreationName="Microsoft.ExecuteSQLTask"
+                  DTS:Description="Execute SQL Task"
+                  DTS:DTSID="{FF9AA6C9-F4A2-47D6-BADB-E80442F78159}"
+                  DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+                  DTS:LocaleID="-1"
+                  DTS:ObjectName="SQL Add File to File List"
+                  DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+                  DTS:ThreadHint="0">
+                  <DTS:Variables />
+                  <DTS:ObjectData>
+                    <SQLTask:SqlTaskData
+                      SQLTask:Connection="{7AE745A6-BA4C-482E-9695-63779ECE70D4}"
+                      SQLTask:SqlStatementSource="INSERT INTO &#xA;&#x9;&#x9;dbo.FileList&#xA;&#x9;(&#xA;&#x9;&#x9;FileName,&#xA;&#x9;&#x9;FileTag,&#xA;&#x9;&#x9;FilePrefix,&#xA;&#x9;&#x9;ProcessFileYN,&#xA;&#x9;&#x9;SourceFolder,&#xA;&#x9;&#x9;ProcessFolder,&#xA;&#x9;&#x9;ArchiveFolder,&#xA;&#x9;&#x9;RejectFolder&#xA;&#x9;)&#xA;     VALUES&#xA;&#x9; (&#xA;&#x9;&#x9;?,&#xA;&#x9;&#x9;?,&#xA;&#x9;&#x9;?,&#xA;&#x9;&#x9;'N',&#xA;&#x9;&#x9;?,&#xA;&#x9;&#x9;?,&#xA;&#x9;&#x9;?,&#xA;&#x9;&#x9;?&#xA;&#x9;)&#xA;&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+                      <SQLTask:ParameterBinding
+                        SQLTask:ParameterName="0"
+                        SQLTask:DtsVariableName="User::FileName"
+                        SQLTask:ParameterDirection="Input"
+                        SQLTask:DataType="129"
+                        SQLTask:ParameterSize="-1" />
+                      <SQLTask:ParameterBinding
+                        SQLTask:ParameterName="1"
+                        SQLTask:DtsVariableName="User::FileTag"
+                        SQLTask:ParameterDirection="Input"
+                        SQLTask:DataType="129"
+                        SQLTask:ParameterSize="-1" />
+                      <SQLTask:ParameterBinding
+                        SQLTask:ParameterName="2"
+                        SQLTask:DtsVariableName="User::FilePrefix"
+                        SQLTask:ParameterDirection="Input"
+                        SQLTask:DataType="129"
+                        SQLTask:ParameterSize="-1" />
+                      <SQLTask:ParameterBinding
+                        SQLTask:ParameterName="3"
+                        SQLTask:DtsVariableName="User::SourceFolder"
+                        SQLTask:ParameterDirection="Input"
+                        SQLTask:DataType="129"
+                        SQLTask:ParameterSize="-1" />
+                      <SQLTask:ParameterBinding
+                        SQLTask:ParameterName="4"
+                        SQLTask:DtsVariableName="User::ProcessFolder"
+                        SQLTask:ParameterDirection="Input"
+                        SQLTask:DataType="129"
+                        SQLTask:ParameterSize="-1" />
+                      <SQLTask:ParameterBinding
+                        SQLTask:ParameterName="5"
+                        SQLTask:DtsVariableName="User::ArchiveFolder"
+                        SQLTask:ParameterDirection="Input"
+                        SQLTask:DataType="129"
+                        SQLTask:ParameterSize="-1" />
+                      <SQLTask:ParameterBinding
+                        SQLTask:ParameterName="6"
+                        SQLTask:DtsVariableName="User::RejectFolder"
+                        SQLTask:ParameterDirection="Input"
+                        SQLTask:DataType="129"
+                        SQLTask:ParameterSize="-1" />
+                    </SQLTask:SqlTaskData>
+                  </DTS:ObjectData>
+                </DTS:Executable>
+              </DTS:Executables>
+              <DTS:ForEachVariableMappings>
+                <DTS:ForEachVariableMapping
+                  DTS:CreationName=""
+                  DTS:DTSID="{3A73A2E0-1541-42BC-9FCC-3185E166C8EA}"
+                  DTS:ObjectName="{3A73A2E0-1541-42BC-9FCC-3185E166C8EA}"
+                  DTS:ValueIndex="0"
+                  DTS:VariableName="User::FileName" />
+              </DTS:ForEachVariableMappings>
+            </DTS:Executable>
+          </DTS:Executables>
+          <DTS:ForEachVariableMappings>
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{57CD2DB4-B026-48E8-BB3B-62229A4E9B64}"
+              DTS:ObjectName="{57CD2DB4-B026-48E8-BB3B-62229A4E9B64}"
+              DTS:ValueIndex="0"
+              DTS:VariableName="User::SourceSystemID" />
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{C2A81CB0-51D5-4F4F-B6F4-A8D5F1FF8FA6}"
+              DTS:ObjectName="{C2A81CB0-51D5-4F4F-B6F4-A8D5F1FF8FA6}"
+              DTS:ValueIndex="1"
+              DTS:VariableName="User::SourceSystemTag" />
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{9BD4F503-13E5-44E1-81D9-31D0C8716899}"
+              DTS:ObjectName="{9BD4F503-13E5-44E1-81D9-31D0C8716899}"
+              DTS:ValueIndex="2"
+              DTS:VariableName="User::FileTag" />
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{DC5F6909-B6A0-41BD-8068-68357AB642A3}"
+              DTS:ObjectName="{DC5F6909-B6A0-41BD-8068-68357AB642A3}"
+              DTS:ValueIndex="3"
+              DTS:VariableName="User::FileNameMask" />
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{4229DBB0-6752-4B8B-B7C5-6995DB4CE874}"
+              DTS:ObjectName="{4229DBB0-6752-4B8B-B7C5-6995DB4CE874}"
+              DTS:ValueIndex="4"
+              DTS:VariableName="User::FilePrefix" />
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{EBADA606-FB15-42FB-A7D4-8BFA24FD846A}"
+              DTS:ObjectName="{EBADA606-FB15-42FB-A7D4-8BFA24FD846A}"
+              DTS:ValueIndex="5"
+              DTS:VariableName="User::SourceFolder" />
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{F8175677-12E2-4881-BDD9-1A8BDA753EEE}"
+              DTS:ObjectName="{F8175677-12E2-4881-BDD9-1A8BDA753EEE}"
+              DTS:ValueIndex="6"
+              DTS:VariableName="User::ProcessFolder" />
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{7364CA15-6392-4C5B-BD24-AB7CEE5D8296}"
+              DTS:ObjectName="{7364CA15-6392-4C5B-BD24-AB7CEE5D8296}"
+              DTS:ValueIndex="7"
+              DTS:VariableName="User::ArchiveFolder" />
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{D8CA4182-4CBD-4760-B64D-BBF3A61088DE}"
+              DTS:ObjectName="{D8CA4182-4CBD-4760-B64D-BBF3A61088DE}"
+              DTS:ValueIndex="8"
+              DTS:VariableName="User::RejectFolder" />
+          </DTS:ForEachVariableMappings>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\SEQ Get a list of files\SQL Get File Control Details"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{B75CEEB9-2DF1-464D-822B-A4A302363773}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SQL Get File Control Details"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{88A180A2-BD32-40DF-AB41-4FDAC0D5C73C}"
+              SQLTask:SqlStatementSource="EXEC GetFileControlList"
+              SQLTask:ResultType="ResultSetType_Rowset" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ResultBinding
+                SQLTask:ResultName="0"
+                SQLTask:DtsVariableName="User::GetFileControlList" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\SEQ Get a list of files.PrecedenceConstraints[Constraint 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{2D3FBD75-B9FE-4293-A17A-EB46AEE9687C}"
+          DTS:From="Package\SEQ Get a list of files\SQL Get File Control Details"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 1"
+          DTS:To="Package\SEQ Get a list of files\FELC File Control Types" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SEQ Get Saft Max Letter"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{E2FF077A-4561-4A66-AD0C-BD1F629E61A0}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SEQ Get Saft Max Letter">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\SEQ Get Saft Max Letter\SQL Clear Staging SAFT max Letter"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{5CAEC1AE-88F8-477F-A176-72EFF24A8334}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SQL Clear Staging SAFT max Letter"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="2">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{7AE745A6-BA4C-482E-9695-63779ECE70D4}"
+              SQLTask:SqlStatementSource="TRUNCATE TABLE dbo.SAFT_MaxFileLetter" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\SEQ Get Saft Max Letter\SQL DWH Get File Letter"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{93F86A51-5CD1-4912-82C4-77D384FF43D8}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SQL DWH Get File Letter"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="2">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{0CBC2C04-C137-495F-AF7C-FA5DE465FED0}"
+              SQLTask:SqlStatementSource="SELECT&#xA;&#x9;ISNULL(MAX(SaftFileLetter),'Z') AS SaftFileLetter&#xA;FROM&#xA;&#x9;[DWH].[DimFile]&#xA;WHERE&#xA;&#x9;FileTypeTag IN ( 'TradeFile', 'PriceFile' )&#xA;AND&#xA;&#x9;CAST([FileProcessedTime] AS DATE) = CAST(GETDATE() AS DATE)&#xA;"
+              SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ResultBinding
+                SQLTask:ResultName="SaftFileLetter"
+                SQLTask:DtsVariableName="User::SaftFileLetter" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\SEQ Get Saft Max Letter\SQL Staging Save Saft File Letter"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{614CAE81-9C7D-4820-8616-6985841C00CF}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SQL Staging Save Saft File Letter"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="2">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{7AE745A6-BA4C-482E-9695-63779ECE70D4}"
+              SQLTask:SqlStatementSource="INSERT INTO&#xA;&#x9;&#x9;dbo.SAFT_MaxFileLetter&#xA;&#x9;(&#xA;&#x9;&#x9;[SaftFileLetter]&#xA;&#x9;)&#xA;&#x9;VALUES &#xA;&#x9;(&#xA;&#x9;&#x9;?&#xA;&#x9;)" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::SaftFileLetter"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\SEQ Get Saft Max Letter.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{B7DABE0E-0A4E-4F07-9A13-5E2E39E2860D}"
+          DTS:From="Package\SEQ Get Saft Max Letter\SQL Clear Staging SAFT max Letter"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\SEQ Get Saft Max Letter\SQL DWH Get File Letter" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\SEQ Get Saft Max Letter.PrecedenceConstraints[Constraint 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{3463BFC0-1711-4D73-B9F4-825D5B19A34C}"
+          DTS:From="Package\SEQ Get Saft Max Letter\SQL DWH Get File Letter"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 1"
+          DTS:To="Package\SEQ Get Saft Max Letter\SQL Staging Save Saft File Letter" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SEQ Move Bad Files to Reject"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{9a8a7dda-1e4f-4d9c-8f7c-3b3a93eb8410}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SEQ Move Bad Files to Reject">
+      <DTS:Variables>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{75BF646D-4038-4B35-8810-372A1C02468E}"
+          DTS:IncludeInDebugDump="2345"
+          DTS:Namespace="User"
+          DTS:ObjectName="Action">
+          <DTS:VariableValue
+            DTS:DataType="8"
+            xml:space="preserve"></DTS:VariableValue>
+        </DTS:Variable>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{D50EFEF5-241A-4311-B09D-97C43F515984}"
+          DTS:IncludeInDebugDump="2345"
+          DTS:Namespace="User"
+          DTS:ObjectName="AlertTag">
+          <DTS:VariableValue
+            DTS:DataType="8"
+            xml:space="preserve"></DTS:VariableValue>
+        </DTS:Variable>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{30901532-ef19-4f01-9543-c855d3d109ff}"
+          DTS:IncludeInDebugDump="2345"
+          DTS:Namespace="User"
+          DTS:ObjectName="DestinationFIle">
+          <DTS:VariableValue
+            DTS:DataType="8">DUMMY.TXT</DTS:VariableValue>
+        </DTS:Variable>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{83beb573-9d4d-4ed1-aa9e-b745687a44f8}"
+          DTS:IncludeInDebugDump="6789"
+          DTS:Namespace="User"
+          DTS:ObjectName="MoveFileList">
+          <DTS:VariableValue
+            DTS:DataSubType="ManagedSerializable"
+            DTS:DataType="13">
+            <SOAP-ENV:Envelope xmlns:clr="http://schemas.microsoft.com/soap/encoding/clr/1.0" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+              <SOAP-ENV:Body>
+                <xsd:anyType
+                  id="ref-1"></xsd:anyType>
+              </SOAP-ENV:Body>
+            </SOAP-ENV:Envelope>
+          </DTS:VariableValue>
+        </DTS:Variable>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{E154872F-A9C6-4CE7-B23A-6DF807E33B0F}"
+          DTS:IncludeInDebugDump="2345"
+          DTS:Namespace="User"
+          DTS:ObjectName="Reason">
+          <DTS:VariableValue
+            DTS:DataType="8"
+            xml:space="preserve"></DTS:VariableValue>
+        </DTS:Variable>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{d0cdc26d-8da2-421f-8a39-3eb1aceec669}"
+          DTS:IncludeInDebugDump="2345"
+          DTS:Namespace="User"
+          DTS:ObjectName="SourceFile">
+          <DTS:VariableValue
+            DTS:DataType="8">DUMMY.TXT</DTS:VariableValue>
+        </DTS:Variable>
+      </DTS:Variables>
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\SEQ Move Bad Files to Reject\FELC Move bad files to reject"
+          DTS:CreationName="STOCK:FOREACHLOOP"
+          DTS:Description="Foreach Loop Container"
+          DTS:DTSID="{16a75117-425d-4689-a7ad-009783c3c887}"
+          DTS:ExecutableType="STOCK:FOREACHLOOP"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="FELC Move bad files to reject">
+          <DTS:ForEachEnumerator
+            DTS:CreationName="Microsoft.ForEachADOEnumerator"
+            DTS:DTSID="{68a09fba-94b2-4653-b512-7c02b8653f6d}"
+            DTS:ObjectName="{65730BA5-30AE-43B8-8301-F969FBE255F8}">
+            <DTS:ObjectData>
+              <FEEADO
+                EnumType="EnumerateRowsInFirstTable"
+                VarName="User::MoveFileList" />
+            </DTS:ObjectData>
+          </DTS:ForEachEnumerator>
+          <DTS:Variables />
+          <DTS:Executables>
+            <DTS:Executable
+              DTS:refId="Package\SEQ Move Bad Files to Reject\FELC Move bad files to reject\EPT Raise file alert"
+              DTS:CreationName="Microsoft.ExecutePackageTask"
+              DTS:Description="Execute Package Task"
+              DTS:DTSID="{64E727B9-E7D3-426E-8DEA-6FEDAEE2E7BE}"
+              DTS:ExecutableType="Microsoft.ExecutePackageTask"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="EPT Raise file alert"
+              DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+              <DTS:Variables />
+              <DTS:ObjectData>
+                <ExecutePackageTask>
+                  <UseProjectReference>True</UseProjectReference>
+                  <PackageName>PckAlert.dtsx</PackageName>
+                  <ParameterAssignment>
+                    <ParameterName>MessageTag</ParameterName>
+                    <BindedVariableOrParameterName>User::AlertTag</BindedVariableOrParameterName>
+                  </ParameterAssignment>
+                  <ParameterAssignment>
+                    <ParameterName>AlertMessage1</ParameterName>
+                    <BindedVariableOrParameterName>User::Reason</BindedVariableOrParameterName>
+                  </ParameterAssignment>
+                  <ParameterAssignment>
+                    <ParameterName>AlertMessage2</ParameterName>
+                    <BindedVariableOrParameterName>User::Action</BindedVariableOrParameterName>
+                  </ParameterAssignment>
+                </ExecutePackageTask>
+              </DTS:ObjectData>
+            </DTS:Executable>
+            <DTS:Executable
+              DTS:refId="Package\SEQ Move Bad Files to Reject\FELC Move bad files to reject\FSYS Move bad files"
+              DTS:CreationName="Microsoft.FileSystemTask"
+              DTS:Description="File System Task"
+              DTS:DTSID="{8412dc59-ab14-4612-bc1d-f5b494ca8bad}"
+              DTS:ExecutableType="Microsoft.FileSystemTask"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="FSYS Move bad files"
+              DTS:TaskContact="File System Task;Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+              DTS:ThreadHint="0">
+              <DTS:Variables />
+              <DTS:ObjectData>
+                <FileSystemData
+                  TaskOverwriteDestFile="True"
+                  TaskSourcePath="User::SourceFile"
+                  TaskIsSourceVariable="True"
+                  TaskDestinationPath="User::DestinationFIle"
+                  TaskIsDestinationVariable="True" />
+              </DTS:ObjectData>
+            </DTS:Executable>
+          </DTS:Executables>
+          <DTS:ForEachVariableMappings>
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{F055F223-F92E-437E-8587-D8AE08D25D1E}"
+              DTS:ObjectName="{F055F223-F92E-437E-8587-D8AE08D25D1E}"
+              DTS:ValueIndex="0"
+              DTS:VariableName="User::SourceFile" />
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{48F2CB02-E078-4154-931D-DF998FD5F563}"
+              DTS:ObjectName="{48F2CB02-E078-4154-931D-DF998FD5F563}"
+              DTS:ValueIndex="1"
+              DTS:VariableName="User::DestinationFIle" />
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{488B1178-9CF8-4E5D-AFB8-C43CF033F7E3}"
+              DTS:ObjectName="{488B1178-9CF8-4E5D-AFB8-C43CF033F7E3}"
+              DTS:ValueIndex="4"
+              DTS:VariableName="User::AlertTag" />
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{0878E99B-9E27-4D15-A550-C7F176A7A216}"
+              DTS:ObjectName="{0878E99B-9E27-4D15-A550-C7F176A7A216}"
+              DTS:ValueIndex="5"
+              DTS:VariableName="User::Reason" />
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{A58BFAF5-C7EB-45E4-AF8F-EE10EC976DE1}"
+              DTS:ObjectName="{A58BFAF5-C7EB-45E4-AF8F-EE10EC976DE1}"
+              DTS:ValueIndex="6"
+              DTS:VariableName="User::Action" />
+          </DTS:ForEachVariableMappings>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\SEQ Move Bad Files to Reject\SQL Bad file names"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{07ef7feb-7901-4bf0-acc7-f44d2a7918a6}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SQL Bad file names"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{7AE745A6-BA4C-482E-9695-63779ECE70D4}"
+              SQLTask:SqlStatementSource="SELECT&#xA;&#x9;FL.SourceFolder + FL.FileName AS SRC,&#xA;&#x9;FL.RejectFolder + FL.FileName AS DST,&#xA;&#x9;FL.FileName,&#xA;&#x9;FVA.FileTag, &#xA;&#x9;FVA.AlertTag, &#xA;&#x9;FVA.Reason, &#xA;&#x9;FVA.Action&#xA;FROM&#xA;&#x9;&#x9;dbo.FileList FL&#xA;&#x9;INNER JOIN&#xA;&#x9;&#x9;dbo.FileValidationAlert FVA&#xA;&#x9;ON &#xA;&#x9;&#x9;FL.FileName = FVA.FileName&#xA;&#x9;AND &#xA;&#x9;&#x9;FL.FileTag = FVA.FileTag"
+              SQLTask:ResultType="ResultSetType_Rowset" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ResultBinding
+                SQLTask:ResultName="0"
+                SQLTask:DtsVariableName="User::MoveFileList" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\SEQ Move Bad Files to Reject.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{ca40f8e4-7ef5-4dc4-bd79-d28c64f65364}"
+          DTS:From="Package\SEQ Move Bad Files to Reject\SQL Bad file names"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\SEQ Move Bad Files to Reject\FELC Move bad files to reject" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SEQ Move Good Files to Process"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{B78C4007-B2C4-4DF5-89E3-39631300A3F4}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SEQ Move Good Files to Process">
+      <DTS:Variables>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{B69646DA-07D6-4E7B-8FD8-FE191A048DB1}"
+          DTS:IncludeInDebugDump="2345"
+          DTS:Namespace="User"
+          DTS:ObjectName="DestinationFIle">
+          <DTS:VariableValue
+            DTS:DataType="8">DUMMY.TXT</DTS:VariableValue>
+        </DTS:Variable>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{B9D5A5FF-2538-4A5F-8C8D-651AE287BED7}"
+          DTS:IncludeInDebugDump="6789"
+          DTS:Namespace="User"
+          DTS:ObjectName="MoveFileList">
+          <DTS:VariableValue
+            DTS:DataSubType="ManagedSerializable"
+            DTS:DataType="13">
+            <SOAP-ENV:Envelope xmlns:clr="http://schemas.microsoft.com/soap/encoding/clr/1.0" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+              <SOAP-ENV:Body>
+                <xsd:anyType
+                  id="ref-1"></xsd:anyType>
+              </SOAP-ENV:Body>
+            </SOAP-ENV:Envelope>
+          </DTS:VariableValue>
+        </DTS:Variable>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{89CE22DB-4851-4D0C-B828-1F6FD4DD5191}"
+          DTS:IncludeInDebugDump="2345"
+          DTS:Namespace="User"
+          DTS:ObjectName="SourceFile">
+          <DTS:VariableValue
+            DTS:DataType="8">DUMMY.TXT</DTS:VariableValue>
+        </DTS:Variable>
+      </DTS:Variables>
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\SEQ Move Good Files to Process\FELC Move good files to process"
+          DTS:CreationName="STOCK:FOREACHLOOP"
+          DTS:Description="Foreach Loop Container"
+          DTS:DTSID="{ECBAEB30-EEC8-46D0-B065-111EADE8231B}"
+          DTS:ExecutableType="STOCK:FOREACHLOOP"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="FELC Move good files to process">
+          <DTS:ForEachEnumerator
+            DTS:CreationName="Microsoft.ForEachADOEnumerator"
+            DTS:DTSID="{65730BA5-30AE-43B8-8301-F969FBE255F8}"
+            DTS:ObjectName="{65730BA5-30AE-43B8-8301-F969FBE255F8}">
+            <DTS:ObjectData>
+              <FEEADO
+                EnumType="EnumerateRowsInFirstTable"
+                VarName="User::MoveFileList" />
+            </DTS:ObjectData>
+          </DTS:ForEachEnumerator>
+          <DTS:Variables>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{3ECF3F00-6DD4-4394-BEE5-FF6F9DA82DF7}"
+              DTS:IncludeInDebugDump="2345"
+              DTS:Namespace="User"
+              DTS:ObjectName="MessageTagFileAccess">
+              <DTS:VariableValue
+                DTS:DataType="8">CANNOT MOVE FILE TO PROCESS</DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{2FE77DD8-CD4C-4C3D-97C6-F35281815052}"
+              DTS:IncludeInDebugDump="2345"
+              DTS:Namespace="User"
+              DTS:ObjectName="MessageTextFileAccess">
+              <DTS:VariableValue
+                DTS:DataType="8"
+                xml:space="preserve"></DTS:VariableValue>
+            </DTS:Variable>
+          </DTS:Variables>
+          <DTS:Executables>
+            <DTS:Executable
+              DTS:refId="Package\SEQ Move Good Files to Process\FELC Move good files to process\EPT Raise file alert"
+              DTS:CreationName="Microsoft.ExecutePackageTask"
+              DTS:Description="Execute Package Task"
+              DTS:DTSID="{6dcdd9e6-a6b1-4077-a90c-db58492bf4cc}"
+              DTS:ExecutableType="Microsoft.ExecutePackageTask"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="EPT Raise file alert"
+              DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+              <DTS:Variables />
+              <DTS:ObjectData>
+                <ExecutePackageTask>
+                  <UseProjectReference>True</UseProjectReference>
+                  <PackageName>PckAlert.dtsx</PackageName>
+                  <ParameterAssignment>
+                    <ParameterName>MessageTag</ParameterName>
+                    <BindedVariableOrParameterName>User::MessageTagFileAccess</BindedVariableOrParameterName>
+                  </ParameterAssignment>
+                  <ParameterAssignment>
+                    <ParameterName>AlertMessage1</ParameterName>
+                    <BindedVariableOrParameterName>User::MessageTextFileAccess</BindedVariableOrParameterName>
+                  </ParameterAssignment>
+                </ExecutePackageTask>
+              </DTS:ObjectData>
+            </DTS:Executable>
+            <DTS:Executable
+              DTS:refId="Package\SEQ Move Good Files to Process\FELC Move good files to process\EXP File access message"
+              DTS:CreationName="Microsoft.ExpressionTask"
+              DTS:Description="Expression Task"
+              DTS:DTSID="{CB5BB75A-55F9-44AA-8061-DB002F3D8405}"
+              DTS:ExecutableType="Microsoft.ExpressionTask"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="EXP File access message"
+              DTS:TaskContact="Expression Task;Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+              DTS:ThreadHint="1">
+              <DTS:Variables />
+              <DTS:ObjectData>
+                <ExpressionTask
+                  Expression="@[User::MessageTextFileAccess]:= &quot;File: &quot; + @[User::SourceFile]   + &quot; cannot be moved to: &quot; +   @[User::DestinationFIle]" />
+              </DTS:ObjectData>
+            </DTS:Executable>
+            <DTS:Executable
+              DTS:refId="Package\SEQ Move Good Files to Process\FELC Move good files to process\FSYS Move good files"
+              DTS:CreationName="Microsoft.FileSystemTask"
+              DTS:Description="File System Task"
+              DTS:DTSID="{94063BEC-D592-40AB-842E-975BFFC4AF05}"
+              DTS:ExecutableType="Microsoft.FileSystemTask"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="FSYS Move good files"
+              DTS:TaskContact="File System Task;Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+              DTS:ThreadHint="1">
+              <DTS:Variables />
+              <DTS:EventHandlers>
+                <DTS:EventHandler
+                  DTS:refId="Package\SEQ Move Good Files to Process\FELC Move good files to process\FSYS Move good files.EventHandlers[OnError]"
+                  DTS:CreationName="OnError"
+                  DTS:DTSID="{A3E008B1-9316-41A9-AB10-D5809F66E996}"
+                  DTS:EventID="0"
+                  DTS:EventName="OnError"
+                  DTS:LocaleID="-1">
+                  <DTS:Variables>
+                    <DTS:Variable
+                      DTS:CreationName=""
+                      DTS:Description="The propagate property of the event"
+                      DTS:DTSID="{355F6F9A-0B3C-4C2F-9A5E-B66D87121BD4}"
+                      DTS:IncludeInDebugDump="6789"
+                      DTS:Namespace="System"
+                      DTS:ObjectName="Propagate">
+                      <DTS:VariableValue
+                        DTS:DataType="11">0</DTS:VariableValue>
+                    </DTS:Variable>
+                  </DTS:Variables>
+                  <DTS:Executables />
+                </DTS:EventHandler>
+              </DTS:EventHandlers>
+              <DTS:ObjectData>
+                <FileSystemData
+                  TaskOverwriteDestFile="True"
+                  TaskSourcePath="User::SourceFile"
+                  TaskIsSourceVariable="True"
+                  TaskDestinationPath="User::DestinationFIle"
+                  TaskIsDestinationVariable="True" />
+              </DTS:ObjectData>
+            </DTS:Executable>
+          </DTS:Executables>
+          <DTS:PrecedenceConstraints>
+            <DTS:PrecedenceConstraint
+              DTS:refId="Package\SEQ Move Good Files to Process\FELC Move good files to process.PrecedenceConstraints[Constraint]"
+              DTS:CreationName=""
+              DTS:DTSID="{C68B995E-39A2-4A95-9180-0C9F758F8A40}"
+              DTS:From="Package\SEQ Move Good Files to Process\FELC Move good files to process\EXP File access message"
+              DTS:LogicalAnd="True"
+              DTS:ObjectName="Constraint"
+              DTS:To="Package\SEQ Move Good Files to Process\FELC Move good files to process\EPT Raise file alert" />
+            <DTS:PrecedenceConstraint
+              DTS:refId="Package\SEQ Move Good Files to Process\FELC Move good files to process.PrecedenceConstraints[Constraint 1]"
+              DTS:CreationName=""
+              DTS:DTSID="{6E9114C7-E618-4ABD-AC4F-8B54056ACD44}"
+              DTS:From="Package\SEQ Move Good Files to Process\FELC Move good files to process\FSYS Move good files"
+              DTS:LogicalAnd="True"
+              DTS:ObjectName="Constraint 1"
+              DTS:To="Package\SEQ Move Good Files to Process\FELC Move good files to process\EXP File access message"
+              DTS:Value="1" />
+          </DTS:PrecedenceConstraints>
+          <DTS:ForEachVariableMappings>
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{4424317B-BABC-4624-AC2A-28669D687B1A}"
+              DTS:ObjectName="{4424317B-BABC-4624-AC2A-28669D687B1A}"
+              DTS:ValueIndex="0"
+              DTS:VariableName="User::SourceFile" />
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{D533A898-DBC7-4E0D-A821-D9C2BB4E3311}"
+              DTS:ObjectName="{D533A898-DBC7-4E0D-A821-D9C2BB4E3311}"
+              DTS:ValueIndex="1"
+              DTS:VariableName="User::DestinationFIle" />
+          </DTS:ForEachVariableMappings>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\SEQ Move Good Files to Process\SQL Good file name"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{4E857234-AF52-423C-A27A-341655912BCA}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SQL Good file name"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{7AE745A6-BA4C-482E-9695-63779ECE70D4}"
+              SQLTask:SqlStatementSource="SELECT&#xA;&#x9;[SourceFolder] + [FileName] AS Src,&#xA;&#x9;[ProcessFolder] + [FileName] AS Prc,&#xA;&#x9;[ArchiveFolder] + [FileName] AS Arc&#xA;FROM&#xA;&#x9;dbo.FileList&#xA;WHERE&#xA;&#x9;ProcessFileYN = 'Y'&#xA;"
+              SQLTask:ResultType="ResultSetType_Rowset" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ResultBinding
+                SQLTask:ResultName="0"
+                SQLTask:DtsVariableName="User::MoveFileList" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\SEQ Move Good Files to Process.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{A13F1805-7BE0-49F8-A20A-5FA5C0758FB6}"
+          DTS:From="Package\SEQ Move Good Files to Process\SQL Good file name"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\SEQ Move Good Files to Process\FELC Move good files to process" />
+      </DTS:PrecedenceConstraints>
+      <DTS:EventHandlers>
+        <DTS:EventHandler
+          DTS:refId="Package\SEQ Move Good Files to Process.EventHandlers[OnError]"
+          DTS:CreationName="OnError"
+          DTS:DTSID="{AB43080D-B153-4F20-8BE1-486E138D94E5}"
+          DTS:EventID="0"
+          DTS:EventName="OnError"
+          DTS:LocaleID="-1">
+          <DTS:Variables>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:Description="The propagate property of the event"
+              DTS:DTSID="{5096C059-2BE4-4F46-99F7-CDCA108982E3}"
+              DTS:IncludeInDebugDump="6789"
+              DTS:Namespace="System"
+              DTS:ObjectName="Propagate">
+              <DTS:VariableValue
+                DTS:DataType="11">0</DTS:VariableValue>
+            </DTS:Variable>
+          </DTS:Variables>
+          <DTS:Executables />
+        </DTS:EventHandler>
+      </DTS:EventHandlers>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL Clear Staging Filelist"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{9B0DB419-C5AD-4611-A8A8-E81937417EE6}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL Clear Staging Filelist"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{7AE745A6-BA4C-482E-9695-63779ECE70D4}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE dbo.FileList&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL Clear Staging FileValidationAlert"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{eae6e070-0d35-4cc4-8918-4ea03364aa00}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL Clear Staging FileValidationAlert"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{7AE745A6-BA4C-482E-9695-63779ECE70D4}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE dbo.FileValidationAlert" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{8286F3B5-19C2-4362-A87A-82FE4F329DF6}"
+      DTS:From="Package\SQL Clear Staging Filelist"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\SEQ Get a list of files" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{ECE9D0E2-8BB0-48F9-978D-1B485080D4F2}"
+      DTS:From="Package\SEQ File name validation"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\SEQ Move Good Files to Process" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{A8D16103-5B84-431B-B0AA-98A0CDA7E4CC}"
+      DTS:From="Package\SEQ File name validation"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\SEQ Move Bad Files to Reject" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 3]"
+      DTS:CreationName=""
+      DTS:DTSID="{B8527E81-216F-4CB4-8951-370C3F2F6531}"
+      DTS:From="Package\SEQ Get a list of files"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 3"
+      DTS:To="Package\SEQ File name validation" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 4]"
+      DTS:CreationName=""
+      DTS:DTSID="{31376F5A-A4E2-467C-8802-F3DB20CD17EA}"
+      DTS:From="Package\SQL Clear Staging FileValidationAlert"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 4"
+      DTS:To="Package\SEQ Get a list of files" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 5]"
+      DTS:CreationName=""
+      DTS:DTSID="{3604903C-32BB-40CC-BDCF-A12B6C988EBE}"
+      DTS:From="Package\SEQ Get Saft Max Letter"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 5"
+      DTS:To="Package\SEQ File name validation" />
+  </DTS:PrecedenceConstraints>
+  <DTS:EventHandlers>
+    <DTS:EventHandler
+      DTS:refId="Package.EventHandlers[OnError]"
+      DTS:CreationName="OnError"
+      DTS:DTSID="{AE9A7E1F-0C23-4F0D-93CA-C03F23E43E5A}"
+      DTS:EventID="262283"
+      DTS:EventName="OnError"
+      DTS:LocaleID="-1">
+      <DTS:Variables>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:Description="The propagate property of the event"
+          DTS:DTSID="{501A9E23-4CEB-4EF6-A184-70A860C6777E}"
+          DTS:IncludeInDebugDump="6789"
+          DTS:Namespace="System"
+          DTS:ObjectName="Propagate">
+          <DTS:VariableValue
+            DTS:DataType="11">0</DTS:VariableValue>
+        </DTS:Variable>
+      </DTS:Variables>
+      <DTS:Executables />
+    </DTS:EventHandler>
+  </DTS:EventHandlers>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="64" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="268,42"
+          Id="Package\SEQ File name validation\SQL File Validation - SAFT Date"
+          TopLeft="67.5,228.5" />
+        <NodeLayout
+          Size="268,42"
+          Id="Package\SEQ File name validation\SQL File Validation - SAFT File pair"
+          TopLeft="67.5,330.5" />
+        <NodeLayout
+          Size="268,42"
+          Id="Package\SEQ File name validation\SQL File Validation - SAFT Receipt order"
+          TopLeft="67.5,126.5" />
+        <NodeLayout
+          Size="268,42"
+          Id="Package\SEQ File name validation\SQL Mark FilesThat Could be Processed"
+          TopLeft="67.5,24.5" />
+        <EdgeLayout
+          Id="Package\SEQ File name validation.PrecedenceConstraints[Constraint]"
+          TopLeft="201.5,66.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ File name validation.PrecedenceConstraints[Constraint 1]"
+          TopLeft="201.5,168.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ File name validation.PrecedenceConstraints[Constraint 2]"
+          TopLeft="201.5,270.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="418,428"
+          Size="418,470"
+          Id="Package\SEQ File name validation"
+          TopLeft="475,623.5" />
+        <NodeLayout
+          Size="190,42"
+          Id="Package\SEQ Get a list of files\FELC File Control Types\FELC Search Source Folders\SQL Add File to File List"
+          TopLeft="5.5,5.5" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="201,103"
+          Size="201,146"
+          Id="Package\SEQ Get a list of files\FELC File Control Types\FELC Search Source Folders"
+          TopLeft="5.50000000000003,5.5" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="212,181"
+          Size="212,224"
+          Id="Package\SEQ Get a list of files\FELC File Control Types"
+          TopLeft="42.5,89.5" />
+        <NodeLayout
+          Size="209,42"
+          Id="Package\SEQ Get a list of files\SQL Get File Control Details"
+          TopLeft="43,6.5" />
+        <EdgeLayout
+          Id="Package\SEQ Get a list of files.PrecedenceConstraints[Constraint 1]"
+          TopLeft="148,48.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="0,41"
+              Start="0,0"
+              End="0,33.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,33.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="301,347"
+          Size="301,390"
+          Id="Package\SEQ Get a list of files"
+          TopLeft="163,133.5" />
+        <NodeLayout
+          Size="167,42"
+          Id="Package\SEQ Move Bad Files to Reject\FELC Move bad files to reject\EPT Raise file alert"
+          TopLeft="58.5,100.5" />
+        <NodeLayout
+          Size="158,42"
+          Id="Package\SEQ Move Bad Files to Reject\FELC Move bad files to reject\FSYS Move bad files"
+          TopLeft="58.5,20.5" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="283,208"
+          Size="283,251"
+          Id="Package\SEQ Move Bad Files to Reject\FELC Move bad files to reject"
+          TopLeft="56.5,102.5" />
+        <NodeLayout
+          Size="163,42"
+          Id="Package\SEQ Move Bad Files to Reject\SQL Bad file names"
+          TopLeft="122,5.5" />
+        <EdgeLayout
+          Id="Package\SEQ Move Bad Files to Reject.PrecedenceConstraints[Constraint]"
+          TopLeft="200.75,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="0,55"
+              Start="0,0"
+              End="0,47.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,47.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="428,408"
+          Size="428,452"
+          Id="Package\SEQ Move Bad Files to Reject"
+          TopLeft="620,1188.5" />
+        <NodeLayout
+          Size="195,42"
+          Id="Package\SEQ Move Good Files to Process\FELC Move good files to process\EPT Raise file alert"
+          TopLeft="29.5,172" />
+        <NodeLayout
+          Size="195,42"
+          Id="Package\SEQ Move Good Files to Process\FELC Move good files to process\EXP File access message"
+          TopLeft="29.5,100" />
+        <NodeLayout
+          Size="195,42"
+          Id="Package\SEQ Move Good Files to Process\FELC Move good files to process\FSYS Move good files"
+          TopLeft="29.5,7.5" />
+        <EdgeLayout
+          Id="Package\SEQ Move Good Files to Process\FELC Move good files to process.PrecedenceConstraints[Constraint]"
+          TopLeft="127,142">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="0,30"
+              Start="0,0"
+              End="0,22.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,22.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ Move Good Files to Process\FELC Move good files to process.PrecedenceConstraints[Constraint 1]"
+          TopLeft="127,49.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="0,50.5"
+              Start="0,0"
+              End="0,43">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,43" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-15.24134765625,16.62548828125,30.4826953125,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="247,239"
+          Size="247,282"
+          Id="Package\SEQ Move Good Files to Process\FELC Move good files to process"
+          TopLeft="62,98.5" />
+        <NodeLayout
+          Size="172,42"
+          Id="Package\SEQ Move Good Files to Process\SQL Good file name"
+          TopLeft="92.5,18.5" />
+        <EdgeLayout
+          Id="Package\SEQ Move Good Files to Process.PrecedenceConstraints[Constraint]"
+          TopLeft="182,60.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="0,38"
+              Start="0,0"
+              End="0,30.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,30.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="369,411"
+          Size="369,454"
+          Id="Package\SEQ Move Good Files to Process"
+          TopLeft="197,1187.5" />
+        <NodeLayout
+          Size="245,42"
+          Id="Package\SEQ Get Saft Max Letter\SQL Clear Staging SAFT max Letter"
+          TopLeft="10,5.5" />
+        <NodeLayout
+          Size="245,42"
+          Id="Package\SEQ Get Saft Max Letter\SQL DWH Get File Letter"
+          TopLeft="10,89.5" />
+        <NodeLayout
+          Size="245,42"
+          Id="Package\SEQ Get Saft Max Letter\SQL Staging Save Saft File Letter"
+          TopLeft="10,162.5" />
+        <EdgeLayout
+          Id="Package\SEQ Get Saft Max Letter.PrecedenceConstraints[Constraint]"
+          TopLeft="132.5,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="0,42"
+              Start="0,0"
+              End="0,34.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,34.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ Get Saft Max Letter.PrecedenceConstraints[Constraint 1]"
+          TopLeft="132.5,131.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="0,31"
+              Start="0,0"
+              End="0,23.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,23.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="291,238"
+          Size="291,281"
+          Id="Package\SEQ Get Saft Max Letter"
+          TopLeft="588,135.5" />
+        <NodeLayout
+          Size="196,42"
+          Id="Package\SQL Clear Staging Filelist"
+          TopLeft="85.5,5.5" />
+        <NodeLayout
+          Size="196,42"
+          Id="Package\SQL Clear Staging FileValidationAlert"
+          TopLeft="357.5,5.5" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="183.5,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="81.1666666666666,86"
+              Start="0,0"
+              End="81.1666666666666,78.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,47.3271645736947" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,47.3271645736947"
+                    Point2="0,51.3271645736947"
+                    Point3="4,51.3271645736947" />
+                  <mssgle:LineSegment
+                    End="77.1666666666666,51.3271645736947" />
+                  <mssgle:CubicBezierSegment
+                    Point1="77.1666666666666,51.3271645736947"
+                    Point2="81.1666666666666,51.3271645736947"
+                    Point3="81.1666666666666,55.3271645736947" />
+                  <mssgle:LineSegment
+                    End="81.1666666666666,78.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="615.666666666667,1093.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="-234.166666666667,94"
+              Start="0,0"
+              End="-234.166666666667,86.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,33.815061963775" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,33.815061963775"
+                    Point2="0,37.815061963775"
+                    Point3="-4,37.815061963775" />
+                  <mssgle:LineSegment
+                    End="-230.166666666667,37.815061963775" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-230.166666666667,37.815061963775"
+                    Point2="-234.166666666667,37.815061963775"
+                    Point3="-234.166666666667,41.815061963775" />
+                  <mssgle:LineSegment
+                    End="-234.166666666667,86.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="752.333333333333,1093.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="81.6666666666667,95"
+              Start="0,0"
+              End="81.6666666666667,87.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,34.2173498570067" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,34.2173498570067"
+                    Point2="0,38.2173498570067"
+                    Point3="4,38.2173498570067" />
+                  <mssgle:LineSegment
+                    End="77.6666666666667,38.2173498570067" />
+                  <mssgle:CubicBezierSegment
+                    Point1="77.6666666666667,38.2173498570067"
+                    Point2="81.6666666666667,38.2173498570067"
+                    Point3="81.6666666666667,42.2173498570067" />
+                  <mssgle:LineSegment
+                    End="81.6666666666667,87.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 3]"
+          TopLeft="313.5,523.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="302.166666666667,100"
+              Start="0,0"
+              End="302.166666666667,92.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,55.7712106768351" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,55.7712106768351"
+                    Point2="0,59.7712106768351"
+                    Point3="4,59.7712106768351" />
+                  <mssgle:LineSegment
+                    End="298.166666666667,59.7712106768351" />
+                  <mssgle:CubicBezierSegment
+                    Point1="298.166666666667,59.7712106768351"
+                    Point2="302.166666666667,59.7712106768351"
+                    Point3="302.166666666667,63.7712106768351" />
+                  <mssgle:LineSegment
+                    End="302.166666666667,92.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 4]"
+          TopLeft="455.5,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="-93.1666666666667,86"
+              Start="0,0"
+              End="-93.1666666666667,78.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,47.3271645736946" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,47.3271645736946"
+                    Point2="0,51.3271645736946"
+                    Point3="-4,51.3271645736946" />
+                  <mssgle:LineSegment
+                    End="-89.1666666666667,51.3271645736946" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-89.1666666666667,51.3271645736946"
+                    Point2="-93.1666666666667,51.3271645736946"
+                    Point3="-93.1666666666667,55.3271645736946" />
+                  <mssgle:LineSegment
+                    End="-93.1666666666667,78.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 5]"
+          TopLeft="733.5,416.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="18.8333333333333,207"
+              Start="0,0"
+              End="18.8333333333333,199.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,119.726406101049" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,119.726406101049"
+                    Point2="0,123.726406101049"
+                    Point3="4,123.726406101049" />
+                  <mssgle:LineSegment
+                    End="14.8333333333333,123.726406101049" />
+                  <mssgle:CubicBezierSegment
+                    Point1="14.8333333333333,123.726406101049"
+                    Point2="18.8333333333333,123.726406101049"
+                    Point3="18.8333333333333,127.726406101049" />
+                  <mssgle:LineSegment
+                    End="18.8333333333333,199.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <AnnotationLayout
+          Text="Assume all files can be processed"
+          ParentId="Package"
+          FontInfo="{x:Null}"
+          Size="168,56"
+          Id="a012afd3-0dd4-48dc-ad32-89431f622123"
+          TopLeft="6.50000000000011,1281.5" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <DtsEventHandler
+    design-time-name="Package.EventHandlers[OnError]">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+        <AnnotationLayout
+          Text="Suppress known errors&#xA;"
+          ParentId="Package.EventHandlers[OnError]"
+          FontInfo="{x:Null}"
+          Size="150,NaN"
+          Id="aca7a0d7-aaff-49bd-9c9b-0ea433f26cf2"
+          TopLeft="222,80" />
+      </GraphLayout>
+    </LayoutInfo>
+  </DtsEventHandler>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
