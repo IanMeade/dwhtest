@@ -1,0 +1,2 @@
+CREATE USER [ReportRunner_test] WITHOUT LOGIN
+GO

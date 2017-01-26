@@ -1,0 +1,19 @@
+CREATE SCHEMA [Report]
+AUTHORIZATION [dbo]
+GO
+GRANT SELECT ON SCHEMA:: [Report] TO [EtlRunner]
+GO
+GRANT INSERT ON SCHEMA:: [Report] TO [EtlRunner]
+GO
+GRANT DELETE ON SCHEMA:: [Report] TO [EtlRunner]
+GO
+GRANT UPDATE ON SCHEMA:: [Report] TO [EtlRunner]
+GO
+GRANT EXECUTE ON SCHEMA:: [Report] TO [EtlRunner]
+GO
+GRANT SELECT ON SCHEMA:: [Report] TO [ReportRunner]
+GO
+GRANT EXECUTE ON SCHEMA:: [Report] TO [ReportRunner]
+GO
+GRANT CONTROL ON SCHEMA:: [Report] TO [ReportWriter]
+GO
