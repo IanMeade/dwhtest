@@ -1,0 +1,7 @@
+INSERT INTO [dbo].[TradeOrderType] ([TradeOrderTypeCode], [TradeOrderRestrictionCode], [TradeType], [TradeTypeCategory], [DefaultValueYN]) VALUES ('-', '-', 'ND', 'ND', 'Y')
+INSERT INTO [dbo].[TradeOrderType] ([TradeOrderTypeCode], [TradeOrderRestrictionCode], [TradeType], [TradeTypeCategory], [DefaultValueYN]) VALUES ('I', '-', 'Iceberg', 'OB', 'N')
+INSERT INTO [dbo].[TradeOrderType] ([TradeOrderTypeCode], [TradeOrderRestrictionCode], [TradeType], [TradeTypeCategory], [DefaultValueYN]) VALUES ('L', '-', 'Limit', 'OB', 'N')
+INSERT INTO [dbo].[TradeOrderType] ([TradeOrderTypeCode], [TradeOrderRestrictionCode], [TradeType], [TradeTypeCategory], [DefaultValueYN]) VALUES ('L', 'F', 'Fill or Kill', 'OB', 'N')
+INSERT INTO [dbo].[TradeOrderType] ([TradeOrderTypeCode], [TradeOrderRestrictionCode], [TradeType], [TradeTypeCategory], [DefaultValueYN]) VALUES ('L', 'I', 'Execute and Eliminate', 'OB', 'N')
+INSERT INTO [dbo].[TradeOrderType] ([TradeOrderTypeCode], [TradeOrderRestrictionCode], [TradeType], [TradeTypeCategory], [DefaultValueYN]) VALUES ('M', '-', 'Market', 'OB', 'N')
+INSERT INTO [dbo].[TradeOrderType] ([TradeOrderTypeCode], [TradeOrderRestrictionCode], [TradeType], [TradeTypeCategory], [DefaultValueYN]) VALUES ('Q', '-', 'LIMIT', 'OB', 'N')

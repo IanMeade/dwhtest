@@ -1,0 +1,5 @@
+INSERT INTO [dbo].[Market] ([MarketCode], [MarketName]) VALUES ('ASM', 'Atlantic Securities Market')
+INSERT INTO [dbo].[Market] ([MarketCode], [MarketName]) VALUES ('ESM', 'Enterprise Securities Market')
+INSERT INTO [dbo].[Market] ([MarketCode], [MarketName]) VALUES ('GEM', 'Global Exchange Market')
+INSERT INTO [dbo].[Market] ([MarketCode], [MarketName]) VALUES ('MSM', 'Main Securities Market')
+INSERT INTO [dbo].[Market] ([MarketCode], [MarketName]) VALUES ('OTH', 'Other')
