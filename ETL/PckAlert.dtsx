@@ -12,8 +12,8 @@
   DTS:LocaleID="6153"
   DTS:ObjectName="PckAlert"
   DTS:PackageType="5"
-  DTS:VersionBuild="36"
-  DTS:VersionGUID="{C7AB83EB-0A3C-40B9-B1C8-07C772E9B22F}">
+  DTS:VersionBuild="37"
+  DTS:VersionGUID="{17E277D2-6247-4830-ABB7-FABC5EC07260}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -702,6 +702,13 @@
           Size="496,554"
           Id="Package\SEQ Process alert"
           TopLeft="5.50000000000009,5.5" />
+        <AnnotationLayout
+          Text="changed"
+          ParentId="Package"
+          FontInfo="{assembly:Null}"
+          Size="75,60"
+          Id="1ace0afb-4424-4417-94f6-66cdbcb45314"
+          TopLeft="635,45" />
       </GraphLayout>
     </LayoutInfo>
   </Package>
