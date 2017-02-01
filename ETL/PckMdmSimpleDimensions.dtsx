@@ -11,8 +11,8 @@
   DTS:LocaleID="6153"
   DTS:ObjectName="PckMdmSimpleDimensions"
   DTS:PackageType="5"
-  DTS:VersionBuild="38"
-  DTS:VersionGUID="{F31F841A-AE0D-4CB0-8196-F8B88D1687FE}">
+  DTS:VersionBuild="39"
+  DTS:VersionGUID="{4F5396C8-2A57-44FD-9DC2-36DB93E36E58}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -4940,7 +4940,7 @@ where [refTable].[BrokerCode] = ?</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="SQL Clear Staging Controls"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -9360,7 +9360,7 @@ where [refTable].[StatusName] = ?</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="SQL Clear Fee Bands"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="1">
+          DTS:ThreadHint="0">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -11149,9 +11149,7 @@ where [refTable].[StatusName] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -11182,7 +11180,7 @@ where [refTable].[StatusName] = ?</property>
           Text="Only a status name =&gt; can't use SCD wizard"
           ParentId="Package\SEQ Simple Dimensions\DFT Status"
           FontInfo="{assembly:Null}"
-          Size="273,NaN"
+          Size="273,40"
           Id="1aae7ff4-55e4-4ab8-898c-e978c770a0ce"
           TopLeft="233.5,11.5" />
       </GraphLayout>
@@ -11531,9 +11529,7 @@ where [refTable].[StatusName] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>

@@ -11,8 +11,8 @@
   DTS:LocaleID="6153"
   DTS:ObjectName="PckMaster"
   DTS:PackageType="5"
-  DTS:VersionBuild="35"
-  DTS:VersionGUID="{AA5169DC-60D4-4C6A-87D7-E3B9FDAB98C6}">
+  DTS:VersionBuild="37"
+  DTS:VersionGUID="{5CD60B60-EC2B-43D3-921D-FA6A78A964E6}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -324,6 +324,7 @@
           DTS:refId="Package\SEQ Process Dimension Tables\EPT PckEquityTradeJunkDimension"
           DTS:CreationName="Microsoft.ExecutePackageTask"
           DTS:Description="Execute Package Task"
+          DTS:Disabled="True"
           DTS:DTSID="{16C7FB19-A87B-48CF-85D4-DB871759A217}"
           DTS:ExecutableType="Microsoft.ExecutePackageTask"
           DTS:LocaleID="-1"
@@ -346,7 +347,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="SQL Run MDM Refresh"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="1">
+          DTS:ThreadHint="0">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -395,19 +396,19 @@
       <DTS:Variables />
       <DTS:Executables>
         <DTS:Executable
-          DTS:refId="Package\SEQ Staging\EPT Saft Staging"
+          DTS:refId="Package\SEQ Staging\EPT Tx Saft Staging"
           DTS:CreationName="Microsoft.ExecutePackageTask"
           DTS:Description="Execute Package Task"
           DTS:DTSID="{178C3EB3-04AD-4D4E-98B2-17B8BE1255CC}"
           DTS:ExecutableType="Microsoft.ExecutePackageTask"
           DTS:LocaleID="-1"
-          DTS:ObjectName="EPT Saft Staging"
+          DTS:ObjectName="EPT Tx Saft Staging"
           DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
           <DTS:Variables />
           <DTS:ObjectData>
             <ExecutePackageTask>
               <UseProjectReference>True</UseProjectReference>
-              <PackageName>PckSaftStage.dtsx</PackageName>
+              <PackageName>PckTxSaftStage.dtsx</PackageName>
             </ExecutePackageTask>
           </DTS:ObjectData>
         </DTS:Executable>
@@ -972,8 +973,8 @@
           Id="Package\SEQ Process Fact Tables"
           TopLeft="206.5,1149.5" />
         <NodeLayout
-          Size="158,42"
-          Id="Package\SEQ Staging\EPT Saft Staging"
+          Size="172,42"
+          Id="Package\SEQ Staging\EPT Tx Saft Staging"
           TopLeft="29,8" />
         <ContainerLayout
           HeaderHeight="43"

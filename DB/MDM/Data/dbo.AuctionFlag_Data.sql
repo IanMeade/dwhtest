@@ -1,4 +1,4 @@
-INSERT INTO [dbo].[AuctionFlag] ([AuctionFlagCode], [AuctionFlagName], [DefaultValueYN]) VALUES ('-', 'UNKNOWN', 'Y')
+INSERT INTO [dbo].[AuctionFlag] ([AuctionFlagCode], [AuctionFlagName], [DefaultValueYN]) VALUES (' ', 'UNKNOWN', 'Y')
 INSERT INTO [dbo].[AuctionFlag] ([AuctionFlagCode], [AuctionFlagName], [DefaultValueYN]) VALUES ('A', '??', 'N')
 INSERT INTO [dbo].[AuctionFlag] ([AuctionFlagCode], [AuctionFlagName], [DefaultValueYN]) VALUES ('C', 'Continuous', 'N')
 INSERT INTO [dbo].[AuctionFlag] ([AuctionFlagCode], [AuctionFlagName], [DefaultValueYN]) VALUES ('F', 'Final', 'N')

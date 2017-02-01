@@ -34,20 +34,23 @@ BEGIN
 
 
 	MERGE
-		DWH.DimFile AS F
-	USING
-		@File AS I
-	ON F.FileName = I.Filename
-	WHEN MATCHED THEN
-		UPDATE
-			SET
-				FileProcessedTime = GETDATE(),
-				FilePrcocessedStatus = I.FilePrcocessedStatus
-	WHEN NOT MATCHED THEN
-		INSERT 
-				( FileName, FileType, FileTypeTag, SaftFileLetter, FileProcessedTime, FilePrcocessedStatus )
-			VALUES 
-				( I.FileName, I.FileTypeTag, I.FileTypeTag, I.SaftFileLetter, GETDATE(), I.FilePrcocessedStatus );
+			DWH.DimFile AS F
+		USING
+			@File AS I
+		ON F.FileName = I.Filename
+		WHEN MATCHED THEN
+			UPDATE
+				SET
+					FileProcessedTime = GETDATE(),
+					FilePrcocessedStatus = I.FilePrcocessedStatus
+		WHEN NOT MATCHED THEN
+			INSERT 
+					( FileName, FileType, FileTypeTag, SaftFileLetter, FileProcessedTime, FilePrcocessedStatus )
+
+				VALUES 
+					( I.FileName, I.FileTypeTag, I.FileTypeTag, I.SaftFileLetter, GETDATE(), I.FilePrcocessedStatus )
+		OUTPUT 		
+			$ACTION, INSERTED.FileID;
 
 END
 GO

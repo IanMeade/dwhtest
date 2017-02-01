@@ -1,4 +1,4 @@
-INSERT INTO [dbo].[TradeFlag] ([TradeFlagCode], [TradeFlagName], [DefaultValue]) VALUES ('--', 'NA                            ', 'Y')
+INSERT INTO [dbo].[TradeFlag] ([TradeFlagCode], [TradeFlagName], [DefaultValue]) VALUES ('  ', 'NA                            ', 'Y')
 INSERT INTO [dbo].[TradeFlag] ([TradeFlagCode], [TradeFlagName], [DefaultValue]) VALUES ('AH', 'After Hours Trade             ', 'N')
 INSERT INTO [dbo].[TradeFlag] ([TradeFlagCode], [TradeFlagName], [DefaultValue]) VALUES ('AX', 'Agency Cross                  ', 'N')
 INSERT INTO [dbo].[TradeFlag] ([TradeFlagCode], [TradeFlagName], [DefaultValue]) VALUES ('BB', 'Broker to Broker Trade        ', 'N')

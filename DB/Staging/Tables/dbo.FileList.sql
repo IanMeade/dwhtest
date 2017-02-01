@@ -8,6 +8,6 @@ CREATE TABLE [dbo].[FileList]
 [ProcessFolder] [varchar] (1000) COLLATE Latin1_General_CI_AS NOT NULL,
 [ArchiveFolder] [varchar] (1000) COLLATE Latin1_General_CI_AS NOT NULL,
 [RejectFolder] [varchar] (1000) COLLATE Latin1_General_CI_AS NOT NULL,
-[DimFileID] [int] NULL
+[DwhFileID] [int] NULL
 ) ON [PRIMARY]
 GO
