@@ -11,8 +11,8 @@
   DTS:LocaleID="6153"
   DTS:ObjectName="PckMaster"
   DTS:PackageType="5"
-  DTS:VersionBuild="37"
-  DTS:VersionGUID="{5CD60B60-EC2B-43D3-921D-FA6A78A964E6}">
+  DTS:VersionBuild="38"
+  DTS:VersionGUID="{64FBA7A4-87AA-41A5-BD69-13DD4EC42B89}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -347,7 +347,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="SQL Run MDM Refresh"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -396,6 +396,23 @@
       <DTS:Variables />
       <DTS:Executables>
         <DTS:Executable
+          DTS:refId="Package\SEQ Staging\EPT Price Staging"
+          DTS:CreationName="Microsoft.ExecutePackageTask"
+          DTS:Description="Execute Package Task"
+          DTS:DTSID="{41c2887d-a025-449b-8a35-99dc01aec090}"
+          DTS:ExecutableType="Microsoft.ExecutePackageTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="EPT Price Staging"
+          DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <ExecutePackageTask>
+              <UseProjectReference>True</UseProjectReference>
+              <PackageName>PckSaftPriceStage.dtsx</PackageName>
+            </ExecutePackageTask>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
           DTS:refId="Package\SEQ Staging\EPT Tx Saft Staging"
           DTS:CreationName="Microsoft.ExecutePackageTask"
           DTS:Description="Execute Package Task"
@@ -408,7 +425,7 @@
           <DTS:ObjectData>
             <ExecutePackageTask>
               <UseProjectReference>True</UseProjectReference>
-              <PackageName>PckTxSaftStage.dtsx</PackageName>
+              <PackageName>PckSaftTxSaftStage.dtsx</PackageName>
             </ExecutePackageTask>
           </DTS:ObjectData>
         </DTS:Executable>
@@ -961,10 +978,10 @@
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="489,283"
-          Size="489,326"
+          PanelSize="489,260"
+          Size="489,303"
           Id="Package\SEQ Process Dimension Tables"
-          TopLeft="76.5,763.5" />
+          TopLeft="72.5,818.5" />
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
@@ -976,13 +993,17 @@
           Size="172,42"
           Id="Package\SEQ Staging\EPT Tx Saft Staging"
           TopLeft="29,8" />
+        <NodeLayout
+          Size="162,42"
+          Id="Package\SEQ Staging\EPT Price Staging"
+          TopLeft="31,88" />
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="217,105"
-          Size="217,148"
+          PanelSize="230,198"
+          Size="230,241"
           Id="Package\SEQ Staging"
-          TopLeft="210.5,516.5" />
+          TopLeft="75.5,495.5" />
         <NodeLayout
           Size="176,42"
           Id="Package\SEQ Start Batch\SQL Get ETL Version"
@@ -1022,18 +1043,30 @@
           TopLeft="533.5,0.5" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="318,469.5">
+          TopLeft="317,469.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,47"
+              EndConnector="-126.5,26"
               Start="0,0"
-              End="0,39.5">
+              End="-126.5,18.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,39.5" />
+                    End="0,9" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,9"
+                    Point2="0,13"
+                    Point3="-4,13" />
+                  <mssgle:LineSegment
+                    End="-122.5,13" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-122.5,13"
+                    Point2="-126.5,13"
+                    Point3="-126.5,17" />
+                  <mssgle:LineSegment
+                    End="-126.5,18.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1078,18 +1111,18 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 2]"
-          TopLeft="318,1089.5">
+          TopLeft="316,1121.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,60"
+              EndConnector="0,28"
               Start="0,0"
-              End="0,52.5">
+              End="0,20.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,52.5" />
+                    End="0,20.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1134,18 +1167,30 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 4]"
-          TopLeft="320,664.5">
+          TopLeft="190.5,736.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,99"
+              EndConnector="126.5,82"
               Start="0,0"
-              End="0,91.5">
+              End="126.5,74.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,91.5" />
+                    End="0,37" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,37"
+                    Point2="0,41"
+                    Point3="4,41" />
+                  <mssgle:LineSegment
+                    End="122.5,41" />
+                  <mssgle:CubicBezierSegment
+                    Point1="122.5,41"
+                    Point2="126.5,41"
+                    Point3="126.5,45" />
+                  <mssgle:LineSegment
+                    End="126.5,74.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>

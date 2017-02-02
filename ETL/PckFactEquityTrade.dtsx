@@ -11,8 +11,8 @@
   DTS:LocaleID="6153"
   DTS:ObjectName="PckFactEquityTrade"
   DTS:PackageType="5"
-  DTS:VersionBuild="19"
-  DTS:VersionGUID="{A04DE91A-99E0-47E1-9D34-6C64DF0D7221}">
+  DTS:VersionBuild="21"
+  DTS:VersionGUID="{6C4A20EA-5F09-497A-AB23-9EDEF4290C2E}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -2090,16 +2090,7 @@ where [refTable].[BrokerCode] = ? and [refTable].[TraderCode] = ?</property>
 	TradeDateID,
 	TradingSysTransNo
 FROM
-	DWH.FactEquityTrade
-UNION 
-SELECT
-	TradeDateID,
-	TradingSysTransNo
-FROM
-	DWH.FactEtfTrade
-ORDER BY
-	TradeDateID,
-	TradingSysTransNo</property>
+	ETL.PossibleDuplicates</property>
                 <property
                   dataType="System.String"
                   description="Specifies a SQL statement that uses parameters to generate the lookup table."
@@ -2109,16 +2100,7 @@ ORDER BY
 	TradeDateID,
 	TradingSysTransNo
 FROM
-	DWH.FactEquityTrade
-UNION 
-SELECT
-	TradeDateID,
-	TradingSysTransNo
-FROM
-	DWH.FactEtfTrade
-ORDER BY
-	TradeDateID,
-	TradingSysTransNo) [refTable]
+	ETL.PossibleDuplicates) [refTable]
 where [refTable].[TradeDateID] = ? and [refTable].[TradingSysTransNo] = ?</property>
                 <property
                   dataType="System.Int32"
@@ -2300,7 +2282,7 @@ where [refTable].[TradeDateID] = ? and [refTable].[TradingSysTransNo] = ?</prope
                 <property
                   dataType="System.String"
                   description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[dbo].[TxSaft]</property>
+                  name="OpenRowset">[dbo].[TxSaft_Open]</property>
                 <property
                   dataType="System.String"
                   description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -2343,7 +2325,26 @@ where [refTable].[TradeDateID] = ? and [refTable].[TradingSysTransNo] = ?</prope
 	/* MINOR CHANGES */
 	IIF(A_DEFERRED_IND = 'Y' , 'Y', 'N' ) AS DelayedTradeYN
 FROM
-	dbo.TxSaft</property>
+	dbo.TxSaft O
+WHERE
+	EXISTS (
+				SELECT
+					TX.TxSfaftID,
+					MAX(TX.FileID)
+				FROM
+						dbo.[File] F
+					INNER JOIN
+						dbo.TxSaft TX
+					ON F.DwhFileID = TX.FileID
+				WHERE
+					F.DwhStatus NOT IN ( 'COMPLETE', 'REJECT' )
+				AND
+					O.FileID= TX.FileID
+				AND
+					O.TxSfaftID = TX.TxSfaftID
+				GROUP BY
+					TX.TxSfaftID
+		)</property>
                 <property
                   dataType="System.String"
                   description="The variable that contains the SQL command to be executed."
@@ -2360,7 +2361,7 @@ FROM
                   dataType="System.Int32"
                   description="Specifies the mode used to access the database."
                   name="AccessMode"
-                  typeConverter="AccessMode">2</property>
+                  typeConverter="AccessMode">0</property>
                 <property
                   dataType="System.String"
                   description="The mappings between the parameters in the SQL command and variables."
@@ -3551,13 +3552,13 @@ where [refTable].[BrokerCode] = ? and [refTable].[TraderCode] = ?</property>
                       description="The SQL command to be executed."
                       name="SqlCommand"
                       UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT
-	[A_MEMBER_ID],
-	[A_TRADER_ID]
+	A_MEMBER_ID,
+	A_TRADER_ID
 FROM
-	[dbo].[TxSaft]
+	dbo.TxSaft_Open
 GROUP BY
-	[A_MEMBER_ID],
-	[A_TRADER_ID]</property>
+	A_MEMBER_ID,
+	A_TRADER_ID</property>
                     <property
                       dataType="System.String"
                       description="The variable that contains the SQL command to be executed."
@@ -6927,25 +6928,25 @@ where [refTable].[TradeSideCode] = ?</property>
                       description="The SQL command to be executed."
                       name="SqlCommand"
                       UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT
-	[A_BUY_SELL_FLAG],
-	[A_ORDER_TYPE],
-	[A_ORDER_RESTRICTION],
-	[A_ACCOUNT_TYPE],
-	[A_AUCTION_TRADE_FLAG],
-	[A_OTC_TRADE_FLAG_1],
-	[A_OTC_TRADE_FLAG_2],
-	[A_OTC_TRADE_FLAG_3]
+	A_BUY_SELL_FLAG,
+	A_ORDER_TYPE,
+	A_ORDER_RESTRICTION,
+	A_ACCOUNT_TYPE,
+	A_AUCTION_TRADE_FLAG,
+	A_OTC_TRADE_FLAG_1,
+	A_OTC_TRADE_FLAG_2,
+	A_OTC_TRADE_FLAG_3
 FROM
-	[dbo].[TxSaft]
+	dbo.TxSaft_Open
 GROUP BY
-	[A_BUY_SELL_FLAG],
-	[A_ORDER_TYPE],
-	[A_ORDER_RESTRICTION],
-	[A_ACCOUNT_TYPE],
-	[A_AUCTION_TRADE_FLAG],
-	[A_OTC_TRADE_FLAG_1],
-	[A_OTC_TRADE_FLAG_2],
-	[A_OTC_TRADE_FLAG_3]</property>
+	A_BUY_SELL_FLAG,
+	A_ORDER_TYPE,
+	A_ORDER_RESTRICTION,
+	A_ACCOUNT_TYPE,
+	A_AUCTION_TRADE_FLAG,
+	A_OTC_TRADE_FLAG_1,
+	A_OTC_TRADE_FLAG_2,
+	A_OTC_TRADE_FLAG_3</property>
                     <property
                       dataType="System.String"
                       description="The variable that contains the SQL command to be executed."
@@ -7214,39 +7215,39 @@ GROUP BY
                   startId="Package\SEQ Trade load preparation\DFT Equity Trade Junk Dim\DER TradeFlag extras.Outputs[Derived Column Output]" />
                 <path
                   refId="Package\SEQ Trade load preparation\DFT Equity Trade Junk Dim.Paths[Lookup Match Output5]"
-                  endId="Package\SEQ Trade load preparation\DFT Equity Trade Junk Dim\LKP PrincipalAgent.Inputs[Lookup Input]"
-                  name="Lookup Match Output"
-                  startId="Package\SEQ Trade load preparation\DFT Equity Trade Junk Dim\LKP TradeOrderType.Outputs[Lookup Match Output]" />
-                <path
-                  refId="Package\SEQ Trade load preparation\DFT Equity Trade Junk Dim.Paths[Lookup Match Output4]"
-                  endId="Package\SEQ Trade load preparation\DFT Equity Trade Junk Dim\LKP TradeFlag 1.Inputs[Lookup Input]"
-                  name="Lookup Match Output"
-                  startId="Package\SEQ Trade load preparation\DFT Equity Trade Junk Dim\LKP AuctionFlag.Outputs[Lookup Match Output]" />
-                <path
-                  refId="Package\SEQ Trade load preparation\DFT Equity Trade Junk Dim.Paths[Lookup Match Output3]"
-                  endId="Package\SEQ Trade load preparation\DFT Equity Trade Junk Dim\LKP AuctionFlag.Inputs[Lookup Input]"
-                  name="Lookup Match Output"
-                  startId="Package\SEQ Trade load preparation\DFT Equity Trade Junk Dim\LKP PrincipalAgent.Outputs[Lookup Match Output]" />
-                <path
-                  refId="Package\SEQ Trade load preparation\DFT Equity Trade Junk Dim.Paths[Lookup Match Output6]"
-                  endId="Package\SEQ Trade load preparation\DFT Equity Trade Junk Dim\LKP TradeOrderType.Inputs[Lookup Input]"
-                  name="Lookup Match Output"
-                  startId="Package\SEQ Trade load preparation\DFT Equity Trade Junk Dim\LKP TradeSide.Outputs[Lookup Match Output]" />
-                <path
-                  refId="Package\SEQ Trade load preparation\DFT Equity Trade Junk Dim.Paths[Lookup Match Output1]"
-                  endId="Package\SEQ Trade load preparation\DFT Equity Trade Junk Dim\LKP TradeFlag 3.Inputs[Lookup Input]"
-                  name="Lookup Match Output"
-                  startId="Package\SEQ Trade load preparation\DFT Equity Trade Junk Dim\LKP TradeFlag 2.Outputs[Lookup Match Output]" />
-                <path
-                  refId="Package\SEQ Trade load preparation\DFT Equity Trade Junk Dim.Paths[Lookup Match Output]"
                   endId="Package\SEQ Trade load preparation\DFT Equity Trade Junk Dim\DER TradeFlag extras.Inputs[Derived Column Input]"
                   name="Lookup Match Output"
                   startId="Package\SEQ Trade load preparation\DFT Equity Trade Junk Dim\LKP TradeFlag 3.Outputs[Lookup Match Output]" />
                 <path
-                  refId="Package\SEQ Trade load preparation\DFT Equity Trade Junk Dim.Paths[Lookup Match Output2]"
+                  refId="Package\SEQ Trade load preparation\DFT Equity Trade Junk Dim.Paths[Lookup Match Output4]"
+                  endId="Package\SEQ Trade load preparation\DFT Equity Trade Junk Dim\LKP TradeFlag 3.Inputs[Lookup Input]"
+                  name="Lookup Match Output"
+                  startId="Package\SEQ Trade load preparation\DFT Equity Trade Junk Dim\LKP TradeFlag 2.Outputs[Lookup Match Output]" />
+                <path
+                  refId="Package\SEQ Trade load preparation\DFT Equity Trade Junk Dim.Paths[Lookup Match Output3]"
+                  endId="Package\SEQ Trade load preparation\DFT Equity Trade Junk Dim\LKP TradeOrderType.Inputs[Lookup Input]"
+                  name="Lookup Match Output"
+                  startId="Package\SEQ Trade load preparation\DFT Equity Trade Junk Dim\LKP TradeSide.Outputs[Lookup Match Output]" />
+                <path
+                  refId="Package\SEQ Trade load preparation\DFT Equity Trade Junk Dim.Paths[Lookup Match Output6]"
                   endId="Package\SEQ Trade load preparation\DFT Equity Trade Junk Dim\LKP TradeFlag 2.Inputs[Lookup Input]"
                   name="Lookup Match Output"
                   startId="Package\SEQ Trade load preparation\DFT Equity Trade Junk Dim\LKP TradeFlag 1.Outputs[Lookup Match Output]" />
+                <path
+                  refId="Package\SEQ Trade load preparation\DFT Equity Trade Junk Dim.Paths[Lookup Match Output1]"
+                  endId="Package\SEQ Trade load preparation\DFT Equity Trade Junk Dim\LKP TradeFlag 1.Inputs[Lookup Input]"
+                  name="Lookup Match Output"
+                  startId="Package\SEQ Trade load preparation\DFT Equity Trade Junk Dim\LKP AuctionFlag.Outputs[Lookup Match Output]" />
+                <path
+                  refId="Package\SEQ Trade load preparation\DFT Equity Trade Junk Dim.Paths[Lookup Match Output]"
+                  endId="Package\SEQ Trade load preparation\DFT Equity Trade Junk Dim\LKP PrincipalAgent.Inputs[Lookup Input]"
+                  name="Lookup Match Output"
+                  startId="Package\SEQ Trade load preparation\DFT Equity Trade Junk Dim\LKP TradeOrderType.Outputs[Lookup Match Output]" />
+                <path
+                  refId="Package\SEQ Trade load preparation\DFT Equity Trade Junk Dim.Paths[Lookup Match Output2]"
+                  endId="Package\SEQ Trade load preparation\DFT Equity Trade Junk Dim\LKP AuctionFlag.Inputs[Lookup Input]"
+                  name="Lookup Match Output"
+                  startId="Package\SEQ Trade load preparation\DFT Equity Trade Junk Dim\LKP PrincipalAgent.Outputs[Lookup Match Output]" />
                 <path
                   refId="Package\SEQ Trade load preparation\DFT Equity Trade Junk Dim.Paths[Lookup No Match Output]"
                   endId="Package\SEQ Trade load preparation\DFT Equity Trade Junk Dim\Row Count 3.Inputs[Row Count Input 1]"
@@ -9848,9 +9849,9 @@ FROM
           Id="Package\DFT Main trade data flow"
           TopLeft="1094,178" />
         <NodeLayout
-          Size="186,42"
-          Id="Package\SQL Get DHW BatchID"
-          TopLeft="370,13" />
+          Size="203,42"
+          Id="Package\SEQ Trade load preparation\DFT Early Arriving Traders"
+          TopLeft="342,34" />
         <NodeLayout
           Size="215,42"
           Id="Package\SEQ Trade load preparation\DFT Equity Trade Junk Dim"
@@ -9985,10 +9986,6 @@ FROM
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="203,42"
-          Id="Package\SEQ Trade load preparation\DFT Early Arriving Traders"
-          TopLeft="342,34" />
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
@@ -9996,6 +9993,10 @@ FROM
           Size="596,678"
           Id="Package\SEQ Trade load preparation"
           TopLeft="360,72" />
+        <NodeLayout
+          Size="186,42"
+          Id="Package\SQL Get DHW BatchID"
+          TopLeft="370,13" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
           TopLeft="556,34">
@@ -10073,7 +10074,7 @@ FROM
         <NodeLayout
           Size="220,42"
           Id="Package\DFT Main trade data flow\LKP Previously Loaded Trades"
-          TopLeft="151,118" />
+          TopLeft="154,172" />
         <NodeLayout
           Size="216,42"
           Id="Package\DFT Main trade data flow\LKP DimCurrency"
@@ -10093,11 +10094,11 @@ FROM
         <NodeLayout
           Size="216,42"
           Id="Package\DFT Main trade data flow\SRC T7ODS TxSaft"
-          TopLeft="52,20" />
+          TopLeft="55,74" />
         <NodeLayout
           Size="130,42"
           Id="Package\DFT Main trade data flow\Row Count"
-          TopLeft="512,151" />
+          TopLeft="515,205" />
         <NodeLayout
           Size="216,42"
           Id="Package\DFT Main trade data flow\LKP DimEquityTradeJunk"
@@ -10120,7 +10121,7 @@ FROM
           TopLeft="151,879" />
         <EdgeLayout
           Id="Package\DFT Main trade data flow.Paths[OLE DB Source Output]"
-          TopLeft="160,62">
+          TopLeft="163,116">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -10154,31 +10155,31 @@ FROM
         </EdgeLayout>
         <EdgeLayout
           Id="Package\DFT Main trade data flow.Paths[Lookup No Match Output]"
-          TopLeft="260,160">
+          TopLeft="261.5,214">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,111"
+              EndConnector="0,57"
               Start="0,0"
-              End="0,103.5">
+              End="0,49.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,103.5" />
+                    End="0,49.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-55.80638671875,45.9453125,111.6127734375,11.609375"
+              BoundingBox="-55.80638671875,18.9453125,111.6127734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\DFT Main trade data flow.Paths[Lookup Match Output6]"
-          TopLeft="371,139">
+          TopLeft="374,193">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -10388,7 +10389,7 @@ FROM
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="52.7663736979167,28.8602941176471,17.8005859375,9.2705078125"
+              BoundingBox="52.7663736979165,28.8602941176471,17.8005859375,9.2705078125"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -10482,7 +10483,7 @@ FROM
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:string">false</Value>
+          type="q2:boolean">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -10492,7 +10493,7 @@ FROM
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:string">0</Value>
+          type="q4:int">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -10567,7 +10568,7 @@ FROM
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q2:string">Table</Value>
+          type="q2:string">View</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
@@ -10577,7 +10578,7 @@ FROM
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -10709,9 +10710,7 @@ FROM
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -10817,9 +10816,7 @@ FROM
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -10879,6 +10876,10 @@ FROM
           Id="Package\SEQ Trade load preparation\DFT Equity Trade Junk Dim\LKP TradeOrderType"
           TopLeft="207.5,209.5" />
         <NodeLayout
+          Size="139,42"
+          Id="Package\SEQ Trade load preparation\DFT Equity Trade Junk Dim\Row Count 3"
+          TopLeft="517.5,413.5" />
+        <NodeLayout
           Size="232,42"
           Id="Package\SEQ Trade load preparation\DFT Equity Trade Junk Dim\LKP TradeSide"
           TopLeft="207.5,107.5" />
@@ -10899,13 +10900,17 @@ FROM
           Id="Package\SEQ Trade load preparation\DFT Equity Trade Junk Dim\Insert Destination"
           TopLeft="110.5,1030.5" />
         <NodeLayout
+          Size="166,42"
+          Id="Package\SEQ Trade load preparation\DFT Equity Trade Junk Dim\OLE DB Command"
+          TopLeft="334,1030.5" />
+        <NodeLayout
           Size="130,42"
           Id="Package\SEQ Trade load preparation\DFT Equity Trade Junk Dim\Row Count"
           TopLeft="517.5,107.5" />
         <NodeLayout
-          Size="166,42"
-          Id="Package\SEQ Trade load preparation\DFT Equity Trade Junk Dim\OLE DB Command"
-          TopLeft="334,1030.5" />
+          Size="139,42"
+          Id="Package\SEQ Trade load preparation\DFT Equity Trade Junk Dim\Row Count 6"
+          TopLeft="517.5,702.5" />
         <NodeLayout
           Size="232,42"
           Id="Package\SEQ Trade load preparation\DFT Equity Trade Junk Dim\SRC T7 ODS Junk Possible Rows"
@@ -10923,10 +10928,6 @@ FROM
           Id="Package\SEQ Trade load preparation\DFT Equity Trade Junk Dim\LKP AuctionFlag"
           TopLeft="207.5,413.5" />
         <NodeLayout
-          Size="139,42"
-          Id="Package\SEQ Trade load preparation\DFT Equity Trade Junk Dim\Row Count 6"
-          TopLeft="517.5,702.5" />
-        <NodeLayout
           Size="232,42"
           Id="Package\SEQ Trade load preparation\DFT Equity Trade Junk Dim\LKP TradeFlag 3"
           TopLeft="207.5,702.5" />
@@ -10935,21 +10936,17 @@ FROM
           Id="Package\SEQ Trade load preparation\DFT Equity Trade Junk Dim\Row Count 5"
           TopLeft="517.5,604.5" />
         <NodeLayout
-          Size="139,42"
-          Id="Package\SEQ Trade load preparation\DFT Equity Trade Junk Dim\Row Count 3"
-          TopLeft="517.5,413.5" />
-        <NodeLayout
           Size="232,42"
           Id="Package\SEQ Trade load preparation\DFT Equity Trade Junk Dim\LKP PrincipalAgent"
           TopLeft="207.5,309.5" />
         <NodeLayout
-          Size="139,42"
-          Id="Package\SEQ Trade load preparation\DFT Equity Trade Junk Dim\Row Count 4"
-          TopLeft="517.5,515.5" />
-        <NodeLayout
           Size="232,42"
           Id="Package\SEQ Trade load preparation\DFT Equity Trade Junk Dim\DER TradeFlag extras"
           TopLeft="207.5,821.5" />
+        <NodeLayout
+          Size="139,42"
+          Id="Package\SEQ Trade load preparation\DFT Equity Trade Junk Dim\Row Count 4"
+          TopLeft="517.5,515.5" />
         <EdgeLayout
           Id="Package\SEQ Trade load preparation\DFT Equity Trade Junk Dim.Paths[Lookup No Match Output5]"
           TopLeft="439.5,128.5">
@@ -11096,102 +11093,6 @@ FROM
         </EdgeLayout>
         <EdgeLayout
           Id="Package\SEQ Trade load preparation\DFT Equity Trade Junk Dim.Paths[Lookup Match Output6]"
-          TopLeft="323.5,149.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,20.4453125,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\SEQ Trade load preparation\DFT Equity Trade Junk Dim.Paths[Lookup Match Output5]"
-          TopLeft="323.5,251.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,58"
-              Start="0,0"
-              End="0,50.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,50.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,19.4453125,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\SEQ Trade load preparation\DFT Equity Trade Junk Dim.Paths[Lookup Match Output4]"
-          TopLeft="323.5,455.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,20.4453125,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\SEQ Trade load preparation\DFT Equity Trade Junk Dim.Paths[Lookup Match Output3]"
-          TopLeft="323.5,351.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,62"
-              Start="0,0"
-              End="0,54.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,54.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,21.4453125,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\SEQ Trade load preparation\DFT Equity Trade Junk Dim.Paths[Lookup Match Output2]"
           TopLeft="323.5,557.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -11215,7 +11116,31 @@ FROM
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\SEQ Trade load preparation\DFT Equity Trade Junk Dim.Paths[Lookup Match Output1]"
+          Id="Package\SEQ Trade load preparation\DFT Equity Trade Junk Dim.Paths[Lookup Match Output5]"
+          TopLeft="323.5,744.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,77"
+              Start="0,0"
+              End="0,69.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,69.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,28.9453125,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ Trade load preparation\DFT Equity Trade Junk Dim.Paths[Lookup Match Output4]"
           TopLeft="323.5,646.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -11239,26 +11164,98 @@ FROM
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\SEQ Trade load preparation\DFT Equity Trade Junk Dim.Paths[Lookup Match Output]"
-          TopLeft="323.5,744.5">
+          Id="Package\SEQ Trade load preparation\DFT Equity Trade Junk Dim.Paths[Lookup Match Output3]"
+          TopLeft="323.5,149.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,77"
+              EndConnector="0,60"
               Start="0,0"
-              End="0,69.5">
+              End="0,52.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,69.5" />
+                    End="0,52.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,28.9453125,96.3827734375,11.609375"
+              BoundingBox="-48.19138671875,20.4453125,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ Trade load preparation\DFT Equity Trade Junk Dim.Paths[Lookup Match Output2]"
+          TopLeft="323.5,351.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,62"
+              Start="0,0"
+              End="0,54.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,54.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,21.4453125,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ Trade load preparation\DFT Equity Trade Junk Dim.Paths[Lookup Match Output1]"
+          TopLeft="323.5,455.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,20.4453125,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ Trade load preparation\DFT Equity Trade Junk Dim.Paths[Lookup Match Output]"
+          TopLeft="323.5,251.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,58"
+              Start="0,0"
+              End="0,50.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,50.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,19.4453125,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -11405,6 +11402,14 @@ FROM
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\SEQ Trade load preparation\DFT Equity Trade Junk Dim\SRC T7 ODS Junk Possible Rows">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
   <TaskHost
     design-time-name="Package\SEQ Trade load preparation\DFT Update AuctionFlag">
     <LayoutInfo>
@@ -11643,13 +11648,13 @@ FROM
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="312,42"
-          Id="Package\SEQ Trade load preparation\DFT Update TradeOrderType\CMD DWH DimEquityTradeJunk  TradeOrderType"
-          TopLeft="5.50000000000003,107.5" />
-        <NodeLayout
           Size="205,42"
           Id="Package\SEQ Trade load preparation\DFT Update TradeOrderType\SRC MDM TradeOrderType"
           TopLeft="59,5.5" />
+        <NodeLayout
+          Size="312,42"
+          Id="Package\SEQ Trade load preparation\DFT Update TradeOrderType\CMD DWH DimEquityTradeJunk  TradeOrderType"
+          TopLeft="5.50000000000003,107.5" />
         <EdgeLayout
           Id="Package\SEQ Trade load preparation\DFT Update TradeOrderType.Paths[OLE DB Source Output]"
           TopLeft="161.5,47.5">
