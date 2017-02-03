@@ -15,6 +15,7 @@ BEGIN
 	/* TRUNCATE TABLES */
 	TRUNCATE TABLE DWH.FactEquitySnapshot
 	TRUNCATE TABLE DWH.FactEquityTrade
+	TRUNCATE TABLE DWH.FactEtfTrade
 	TRUNCATE TABLE DWH.FactExchangeRate
 	TRUNCATE TABLE DWH.FactInstrumentStatusHistory
 

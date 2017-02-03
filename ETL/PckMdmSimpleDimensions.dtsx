@@ -11,8 +11,8 @@
   DTS:LocaleID="6153"
   DTS:ObjectName="PckMdmSimpleDimensions"
   DTS:PackageType="5"
-  DTS:VersionBuild="39"
-  DTS:VersionGUID="{4F5396C8-2A57-44FD-9DC2-36DB93E36E58}">
+  DTS:VersionBuild="43"
+  DTS:VersionGUID="{9A5BE665-B923-4A0C-A3CB-07707E120641}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -4560,7 +4560,7 @@ where [refTable].[BrokerCode] = ?</property>
                     <property
                       dataType="System.Boolean"
                       description="Indicates whether historical attribute updates are directed to the transformation output for changing attribute updates."
-                      name="UpdateChangingAttributeHistory">true</property>
+                      name="UpdateChangingAttributeHistory">false</property>
                     <property
                       dataType="System.Boolean"
                       description="Indicates whether the transformation fails when columns with fixed attributes contain changes."
@@ -4927,6 +4927,1172 @@ where [refTable].[BrokerCode] = ?</property>
                   endId="Package\SEQ Complex dimensions\DFT Tme\SCD DimTime.Inputs[Slowly Changing Dimension Input]"
                   name="OLE DB Source Output"
                   startId="Package\SEQ Complex dimensions\DFT Tme\STG GetTimes.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\SEQ Complex dimensions\DFT Trader"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{7CD7E0ED-352F-4A8C-9C0B-A0AD41A5FA65}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="DFT Trader"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\SEQ Complex dimensions\DFT Trader\CMD Update DimTrader"
+                  componentClassID="Microsoft.OLEDBCommand"
+                  contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+                  description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
+                  name="CMD Update DimTrader"
+                  usesDispositions="true"
+                  version="2">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      expressionType="Notify"
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE
+	DWH.DimTrader
+SET
+	TraderType = ?,
+	Infered = 'N'
+WHERE
+	TraderID = ?
+</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\SEQ Complex dimensions\DFT Trader\CMD Update DimTrader.Connections[OleDbConnection]"
+                      connectionManagerID="{0CBC2C04-C137-495F-AF7C-FA5DE465FED0}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[DWH]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\SEQ Complex dimensions\DFT Trader\CMD Update DimTrader.Inputs[OLE DB Command Input]"
+                      errorOrTruncationOperation="Command Execution"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Command Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\SEQ Complex dimensions\DFT Trader\CMD Update DimTrader.Inputs[OLE DB Command Input].Columns[TraderType]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="20"
+                          cachedName="TraderType"
+                          externalMetadataColumnId="Package\SEQ Complex dimensions\DFT Trader\CMD Update DimTrader.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                          lineageId="Package\SEQ Complex dimensions\DFT Trader\SRC MDM Trader.Outputs[OLE DB Source Output].Columns[TraderType]" />
+                        <inputColumn
+                          refId="Package\SEQ Complex dimensions\DFT Trader\CMD Update DimTrader.Inputs[OLE DB Command Input].Columns[TraderID]"
+                          cachedDataType="i2"
+                          cachedName="TraderID"
+                          externalMetadataColumnId="Package\SEQ Complex dimensions\DFT Trader\CMD Update DimTrader.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                          lineageId="Package\SEQ Complex dimensions\DFT Trader\LKP DWH DimTrader.Outputs[Lookup Match Output].Columns[TraderID]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\SEQ Complex dimensions\DFT Trader\CMD Update DimTrader.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                          codePage="1252"
+                          dataType="str"
+                          length="20"
+                          name="Param_0">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                              name="DBParamInfoFlags">65</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\SEQ Complex dimensions\DFT Trader\CMD Update DimTrader.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                          dataType="i2"
+                          name="Param_1">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                              name="DBParamInfoFlags">81</property>
+                          </properties>
+                        </externalMetadataColumn>
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\SEQ Complex dimensions\DFT Trader\CMD Update DimTrader.Outputs[OLE DB Command Output]"
+                      exclusionGroup="1"
+                      name="OLE DB Command Output"
+                      synchronousInputId="Package\SEQ Complex dimensions\DFT Trader\CMD Update DimTrader.Inputs[OLE DB Command Input]">
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\SEQ Complex dimensions\DFT Trader\CMD Update DimTrader.Outputs[OLE DB Command Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Command Error Output"
+                      synchronousInputId="Package\SEQ Complex dimensions\DFT Trader\CMD Update DimTrader.Inputs[OLE DB Command Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\SEQ Complex dimensions\DFT Trader\CMD Update DimTrader.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\SEQ Complex dimensions\DFT Trader\CMD Update DimTrader.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\SEQ Complex dimensions\DFT Trader\CMD Update DimTrader.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\SEQ Complex dimensions\DFT Trader\CMD Update DimTrader.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\SEQ Complex dimensions\DFT Trader\CMD Update Infered DimTrader"
+                  componentClassID="Microsoft.OLEDBCommand"
+                  contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+                  description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
+                  name="CMD Update Infered DimTrader"
+                  usesDispositions="true"
+                  version="2">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      expressionType="Notify"
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE
+	DWH.DimTrader
+SET
+	TraderType = ?,
+	Infered = 'N'
+WHERE
+	TraderID = ?
+</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\SEQ Complex dimensions\DFT Trader\CMD Update Infered DimTrader.Connections[OleDbConnection]"
+                      connectionManagerID="{0CBC2C04-C137-495F-AF7C-FA5DE465FED0}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[DWH]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\SEQ Complex dimensions\DFT Trader\CMD Update Infered DimTrader.Inputs[OLE DB Command Input]"
+                      errorOrTruncationOperation="Command Execution"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Command Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\SEQ Complex dimensions\DFT Trader\CMD Update Infered DimTrader.Inputs[OLE DB Command Input].Columns[TraderType]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="20"
+                          cachedName="TraderType"
+                          externalMetadataColumnId="Package\SEQ Complex dimensions\DFT Trader\CMD Update Infered DimTrader.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                          lineageId="Package\SEQ Complex dimensions\DFT Trader\SRC MDM Trader.Outputs[OLE DB Source Output].Columns[TraderType]" />
+                        <inputColumn
+                          refId="Package\SEQ Complex dimensions\DFT Trader\CMD Update Infered DimTrader.Inputs[OLE DB Command Input].Columns[TraderID]"
+                          cachedDataType="i2"
+                          cachedName="TraderID"
+                          externalMetadataColumnId="Package\SEQ Complex dimensions\DFT Trader\CMD Update Infered DimTrader.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                          lineageId="Package\SEQ Complex dimensions\DFT Trader\LKP DWH DimTrader.Outputs[Lookup Match Output].Columns[TraderID]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\SEQ Complex dimensions\DFT Trader\CMD Update Infered DimTrader.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                          codePage="1252"
+                          dataType="str"
+                          length="20"
+                          name="Param_0">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                              name="DBParamInfoFlags">65</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\SEQ Complex dimensions\DFT Trader\CMD Update Infered DimTrader.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                          dataType="i2"
+                          name="Param_1">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                              name="DBParamInfoFlags">81</property>
+                          </properties>
+                        </externalMetadataColumn>
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\SEQ Complex dimensions\DFT Trader\CMD Update Infered DimTrader.Outputs[OLE DB Command Output]"
+                      exclusionGroup="1"
+                      name="OLE DB Command Output"
+                      synchronousInputId="Package\SEQ Complex dimensions\DFT Trader\CMD Update Infered DimTrader.Inputs[OLE DB Command Input]">
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\SEQ Complex dimensions\DFT Trader\CMD Update Infered DimTrader.Outputs[OLE DB Command Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Command Error Output"
+                      synchronousInputId="Package\SEQ Complex dimensions\DFT Trader\CMD Update Infered DimTrader.Inputs[OLE DB Command Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\SEQ Complex dimensions\DFT Trader\CMD Update Infered DimTrader.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\SEQ Complex dimensions\DFT Trader\CMD Update Infered DimTrader.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\SEQ Complex dimensions\DFT Trader\CMD Update Infered DimTrader.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\SEQ Complex dimensions\DFT Trader\CMD Update Infered DimTrader.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\SEQ Complex dimensions\DFT Trader\CSPL DimTrader new"
+                  componentClassID="Microsoft.ConditionalSplit"
+                  contactInfo="Conditional Split;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Routes data rows to different outputs depending on the content of the data. Use conditions (SSIS expressions) to specify which rows are routed. For example, separate records that need to be cleaned from those that are ready to be loaded or route only a subset of records."
+                  name="CSPL DimTrader new"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\SEQ Complex dimensions\DFT Trader\CSPL DimTrader new.Inputs[Conditional Split Input]"
+                      description="Input to the Conditional Split Transformation"
+                      name="Conditional Split Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\SEQ Complex dimensions\DFT Trader\CSPL DimTrader new.Inputs[Conditional Split Input].Columns[TraderID]"
+                          cachedDataType="i2"
+                          cachedName="TraderID"
+                          lineageId="Package\SEQ Complex dimensions\DFT Trader\LKP DWH DimTrader.Outputs[Lookup Match Output].Columns[TraderID]" />
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\SEQ Complex dimensions\DFT Trader\CSPL DimTrader new.Outputs[New Trader]"
+                      description="Output 1 of the Conditional Split Transformation"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      exclusionGroup="1"
+                      name="New Trader"
+                      synchronousInputId="Package\SEQ Complex dimensions\DFT Trader\CSPL DimTrader new.Inputs[Conditional Split Input]"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                          name="Expression">[ISNULL](#{Package\SEQ Complex dimensions\DFT Trader\LKP DWH DimTrader.Outputs[Lookup Match Output].Columns[TraderID]})</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Specifies the friendly version of the expression. This expression version uses column names."
+                          expressionType="Notify"
+                          name="FriendlyExpression">ISNULL(TraderID)</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                          name="EvaluationOrder">0</property>
+                      </properties>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\SEQ Complex dimensions\DFT Trader\CSPL DimTrader new.Outputs[Existing]"
+                      description="Default Output of the Conditional Split Transformation"
+                      exclusionGroup="1"
+                      name="Existing"
+                      synchronousInputId="Package\SEQ Complex dimensions\DFT Trader\CSPL DimTrader new.Inputs[Conditional Split Input]">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsDefaultOut">true</property>
+                      </properties>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\SEQ Complex dimensions\DFT Trader\CSPL DimTrader new.Outputs[Conditional Split Error Output]"
+                      description="Error Output of the Conditional Split Transformation"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Conditional Split Error Output"
+                      synchronousInputId="Package\SEQ Complex dimensions\DFT Trader\CSPL DimTrader new.Inputs[Conditional Split Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\SEQ Complex dimensions\DFT Trader\CSPL DimTrader new.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\SEQ Complex dimensions\DFT Trader\CSPL DimTrader new.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\SEQ Complex dimensions\DFT Trader\CSPL DimTrader new.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\SEQ Complex dimensions\DFT Trader\CSPL DimTrader new.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\SEQ Complex dimensions\DFT Trader\CSPL DimTrader update"
+                  componentClassID="Microsoft.ConditionalSplit"
+                  contactInfo="Conditional Split;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Routes data rows to different outputs depending on the content of the data. Use conditions (SSIS expressions) to specify which rows are routed. For example, separate records that need to be cleaned from those that are ready to be loaded or route only a subset of records."
+                  name="CSPL DimTrader update"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\SEQ Complex dimensions\DFT Trader\CSPL DimTrader update.Inputs[Conditional Split Input]"
+                      description="Input to the Conditional Split Transformation"
+                      name="Conditional Split Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\SEQ Complex dimensions\DFT Trader\CSPL DimTrader update.Inputs[Conditional Split Input].Columns[Infered]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="1"
+                          cachedName="Infered"
+                          lineageId="Package\SEQ Complex dimensions\DFT Trader\LKP DWH DimTrader.Outputs[Lookup Match Output].Columns[Infered]" />
+                        <inputColumn
+                          refId="Package\SEQ Complex dimensions\DFT Trader\CSPL DimTrader update.Inputs[Conditional Split Input].Columns[TraderType]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="20"
+                          cachedName="TraderType"
+                          lineageId="Package\SEQ Complex dimensions\DFT Trader\SRC MDM Trader.Outputs[OLE DB Source Output].Columns[TraderType]" />
+                        <inputColumn
+                          refId="Package\SEQ Complex dimensions\DFT Trader\CSPL DimTrader update.Inputs[Conditional Split Input].Columns[DwhTraderType]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="20"
+                          cachedName="DwhTraderType"
+                          lineageId="Package\SEQ Complex dimensions\DFT Trader\LKP DWH DimTrader.Outputs[Lookup Match Output].Columns[DwhTraderType]" />
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\SEQ Complex dimensions\DFT Trader\CSPL DimTrader update.Outputs[Existing inferred]"
+                      description="Output 2 of the Conditional Split Transformation"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      exclusionGroup="1"
+                      name="Existing inferred"
+                      synchronousInputId="Package\SEQ Complex dimensions\DFT Trader\CSPL DimTrader update.Inputs[Conditional Split Input]"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                          name="Expression">#{Package\SEQ Complex dimensions\DFT Trader\LKP DWH DimTrader.Outputs[Lookup Match Output].Columns[Infered]} == "Y"</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Specifies the friendly version of the expression. This expression version uses column names."
+                          expressionType="Notify"
+                          name="FriendlyExpression">Infered == "Y"</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                          name="EvaluationOrder">0</property>
+                      </properties>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\SEQ Complex dimensions\DFT Trader\CSPL DimTrader update.Outputs[Trader type changed]"
+                      description="Output 3 of the Conditional Split Transformation"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      exclusionGroup="1"
+                      name="Trader type changed"
+                      synchronousInputId="Package\SEQ Complex dimensions\DFT Trader\CSPL DimTrader update.Inputs[Conditional Split Input]"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                          name="Expression">#{Package\SEQ Complex dimensions\DFT Trader\SRC MDM Trader.Outputs[OLE DB Source Output].Columns[TraderType]} != #{Package\SEQ Complex dimensions\DFT Trader\LKP DWH DimTrader.Outputs[Lookup Match Output].Columns[DwhTraderType]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Specifies the friendly version of the expression. This expression version uses column names."
+                          expressionType="Notify"
+                          name="FriendlyExpression">TraderType != DwhTraderType</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                          name="EvaluationOrder">1</property>
+                      </properties>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\SEQ Complex dimensions\DFT Trader\CSPL DimTrader update.Outputs[Existing with no change]"
+                      description="Default Output of the Conditional Split Transformation"
+                      exclusionGroup="1"
+                      name="Existing with no change"
+                      synchronousInputId="Package\SEQ Complex dimensions\DFT Trader\CSPL DimTrader update.Inputs[Conditional Split Input]">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsDefaultOut">true</property>
+                      </properties>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\SEQ Complex dimensions\DFT Trader\CSPL DimTrader update.Outputs[Conditional Split Error Output]"
+                      description="Error Output of the Conditional Split Transformation"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Conditional Split Error Output"
+                      synchronousInputId="Package\SEQ Complex dimensions\DFT Trader\CSPL DimTrader update.Inputs[Conditional Split Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\SEQ Complex dimensions\DFT Trader\CSPL DimTrader update.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\SEQ Complex dimensions\DFT Trader\CSPL DimTrader update.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\SEQ Complex dimensions\DFT Trader\CSPL DimTrader update.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\SEQ Complex dimensions\DFT Trader\CSPL DimTrader update.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\SEQ Complex dimensions\DFT Trader\DER DimTrader Not Inferred"
+                  componentClassID="Microsoft.DerivedColumn"
+                  contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+                  name="DER DimTrader Not Inferred"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\SEQ Complex dimensions\DFT Trader\DER DimTrader Not Inferred.Inputs[Derived Column Input]"
+                      description="Input to the Derived Column Transformation"
+                      name="Derived Column Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\SEQ Complex dimensions\DFT Trader\DER DimTrader Not Inferred.Inputs[Derived Column Input].Columns[Infered]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="1"
+                          cachedName="Infered"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\SEQ Complex dimensions\DFT Trader\LKP DWH DimTrader.Outputs[Lookup Match Output].Columns[Infered]"
+                          truncationRowDisposition="FailComponent"
+                          usageType="readWrite">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">"N"</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">"N"</property>
+                          </properties>
+                        </inputColumn>
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\SEQ Complex dimensions\DFT Trader\DER DimTrader Not Inferred.Outputs[Derived Column Output]"
+                      description="Default Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      name="Derived Column Output"
+                      synchronousInputId="Package\SEQ Complex dimensions\DFT Trader\DER DimTrader Not Inferred.Inputs[Derived Column Input]">
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\SEQ Complex dimensions\DFT Trader\DER DimTrader Not Inferred.Outputs[Derived Column Error Output]"
+                      description="Error Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Derived Column Error Output"
+                      synchronousInputId="Package\SEQ Complex dimensions\DFT Trader\DER DimTrader Not Inferred.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\SEQ Complex dimensions\DFT Trader\DER DimTrader Not Inferred.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\SEQ Complex dimensions\DFT Trader\DER DimTrader Not Inferred.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\SEQ Complex dimensions\DFT Trader\DER DimTrader Not Inferred.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\SEQ Complex dimensions\DFT Trader\DER DimTrader Not Inferred.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\SEQ Complex dimensions\DFT Trader\DST DWH DimTrader"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="DST DWH DimTrader"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[DWH].[DimTrader]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\SEQ Complex dimensions\DFT Trader\DST DWH DimTrader.Connections[OleDbConnection]"
+                      connectionManagerID="{0CBC2C04-C137-495F-AF7C-FA5DE465FED0}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[DWH]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\SEQ Complex dimensions\DFT Trader\DST DWH DimTrader.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\SEQ Complex dimensions\DFT Trader\DST DWH DimTrader.Inputs[OLE DB Destination Input].Columns[TraderCode]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="10"
+                          cachedName="TraderCode"
+                          externalMetadataColumnId="Package\SEQ Complex dimensions\DFT Trader\DST DWH DimTrader.Inputs[OLE DB Destination Input].ExternalColumns[TraderCode]"
+                          lineageId="Package\SEQ Complex dimensions\DFT Trader\SRC MDM Trader.Outputs[OLE DB Source Output].Columns[TraderCode]" />
+                        <inputColumn
+                          refId="Package\SEQ Complex dimensions\DFT Trader\DST DWH DimTrader.Inputs[OLE DB Destination Input].Columns[BrokerCode]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="5"
+                          cachedName="BrokerCode"
+                          externalMetadataColumnId="Package\SEQ Complex dimensions\DFT Trader\DST DWH DimTrader.Inputs[OLE DB Destination Input].ExternalColumns[BrokerCode]"
+                          lineageId="Package\SEQ Complex dimensions\DFT Trader\SRC MDM Trader.Outputs[OLE DB Source Output].Columns[BrokerCode]" />
+                        <inputColumn
+                          refId="Package\SEQ Complex dimensions\DFT Trader\DST DWH DimTrader.Inputs[OLE DB Destination Input].Columns[TraderType]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="20"
+                          cachedName="TraderType"
+                          externalMetadataColumnId="Package\SEQ Complex dimensions\DFT Trader\DST DWH DimTrader.Inputs[OLE DB Destination Input].ExternalColumns[TraderType]"
+                          lineageId="Package\SEQ Complex dimensions\DFT Trader\SRC MDM Trader.Outputs[OLE DB Source Output].Columns[TraderType]" />
+                        <inputColumn
+                          refId="Package\SEQ Complex dimensions\DFT Trader\DST DWH DimTrader.Inputs[OLE DB Destination Input].Columns[Infered]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="1"
+                          cachedName="Infered"
+                          externalMetadataColumnId="Package\SEQ Complex dimensions\DFT Trader\DST DWH DimTrader.Inputs[OLE DB Destination Input].ExternalColumns[Infered]"
+                          lineageId="Package\SEQ Complex dimensions\DFT Trader\LKP DWH DimTrader.Outputs[Lookup Match Output].Columns[Infered]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\SEQ Complex dimensions\DFT Trader\DST DWH DimTrader.Inputs[OLE DB Destination Input].ExternalColumns[TraderID]"
+                          dataType="i2"
+                          name="TraderID" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ Complex dimensions\DFT Trader\DST DWH DimTrader.Inputs[OLE DB Destination Input].ExternalColumns[TraderCode]"
+                          codePage="1252"
+                          dataType="str"
+                          length="10"
+                          name="TraderCode" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ Complex dimensions\DFT Trader\DST DWH DimTrader.Inputs[OLE DB Destination Input].ExternalColumns[BrokerCode]"
+                          codePage="1252"
+                          dataType="str"
+                          length="5"
+                          name="BrokerCode" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ Complex dimensions\DFT Trader\DST DWH DimTrader.Inputs[OLE DB Destination Input].ExternalColumns[TraderType]"
+                          codePage="1252"
+                          dataType="str"
+                          length="20"
+                          name="TraderType" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ Complex dimensions\DFT Trader\DST DWH DimTrader.Inputs[OLE DB Destination Input].ExternalColumns[Infered]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          name="Infered" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\SEQ Complex dimensions\DFT Trader\DST DWH DimTrader.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\SEQ Complex dimensions\DFT Trader\DST DWH DimTrader.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\SEQ Complex dimensions\DFT Trader\DST DWH DimTrader.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\SEQ Complex dimensions\DFT Trader\DST DWH DimTrader.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\SEQ Complex dimensions\DFT Trader\DST DWH DimTrader.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\SEQ Complex dimensions\DFT Trader\DST DWH DimTrader.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\SEQ Complex dimensions\DFT Trader\LKP DWH DimTrader"
+                  componentClassID="Microsoft.Lookup"
+                  contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+                  description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+                  name="LKP DWH DimTrader"
+                  usesDispositions="true"
+                  version="6">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the SQL statement that generates the lookup table."
+                      expressionType="Notify"
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [DWH].[DimTrader]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                      expressionType="Notify"
+                      name="SqlCommandParam"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [DWH].[DimTrader]) [refTable]
+where [refTable].[TraderCode] = ? and [refTable].[BrokerCode] = ?</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the type of connection used to access the reference dataset."
+                      name="ConnectionType"
+                      typeConverter="LookupConnectionType">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the cache type of the lookup table."
+                      name="CacheType"
+                      typeConverter="CacheType">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                      name="NoMatchBehavior"
+                      typeConverter="LookupNoMatchBehavior">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                      name="NoMatchCachePercentage">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                      name="MaxMemoryUsage">25</property>
+                    <property
+                      dataType="System.Int64"
+                      description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                      name="MaxMemoryUsage64">25</property>
+                    <property
+                      dataType="System.String"
+                      description="Indicates whether to reference metadata in an XML format."
+                      name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="TraderID" dataType="DT_I2" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="TraderCode" dataType="DT_STR" length="10" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="BrokerCode" dataType="DT_STR" length="5" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="TraderType" dataType="DT_STR" length="20" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="Infered" dataType="DT_STR" length="1" precision="0" scale="0" codePage="1252"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                      name="ParameterMap">#{Package\SEQ Complex dimensions\DFT Trader\SRC MDM Trader.Outputs[OLE DB Source Output].Columns[TraderCode]};#{Package\SEQ Complex dimensions\DFT Trader\SRC MDM Trader.Outputs[OLE DB Source Output].Columns[BrokerCode]};</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                      name="TreatDuplicateKeysAsError">false</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\SEQ Complex dimensions\DFT Trader\LKP DWH DimTrader.Connections[OleDbConnection]"
+                      connectionManagerID="{0CBC2C04-C137-495F-AF7C-FA5DE465FED0}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[DWH]"
+                      description="Connection manager used to access lookup data."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\SEQ Complex dimensions\DFT Trader\LKP DWH DimTrader.Inputs[Lookup Input]"
+                      name="Lookup Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\SEQ Complex dimensions\DFT Trader\LKP DWH DimTrader.Inputs[Lookup Input].Columns[TraderCode]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="10"
+                          cachedName="TraderCode"
+                          lineageId="Package\SEQ Complex dimensions\DFT Trader\SRC MDM Trader.Outputs[OLE DB Source Output].Columns[TraderCode]">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Specifies the column in the reference table that a column joins."
+                              name="JoinToReferenceColumn">TraderCode</property>
+                            <property
+                              dataType="System.Null"
+                              description="Specifies the column in the reference table from which a column is copied."
+                              name="CopyFromReferenceColumn" />
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\SEQ Complex dimensions\DFT Trader\LKP DWH DimTrader.Inputs[Lookup Input].Columns[BrokerCode]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="5"
+                          cachedName="BrokerCode"
+                          lineageId="Package\SEQ Complex dimensions\DFT Trader\SRC MDM Trader.Outputs[OLE DB Source Output].Columns[BrokerCode]">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Specifies the column in the reference table that a column joins."
+                              name="JoinToReferenceColumn">BrokerCode</property>
+                            <property
+                              dataType="System.Null"
+                              description="Specifies the column in the reference table from which a column is copied."
+                              name="CopyFromReferenceColumn" />
+                          </properties>
+                        </inputColumn>
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\SEQ Complex dimensions\DFT Trader\LKP DWH DimTrader.Outputs[Lookup Match Output]"
+                      errorOrTruncationOperation="Lookup"
+                      errorRowDisposition="IgnoreFailure"
+                      exclusionGroup="1"
+                      name="Lookup Match Output"
+                      synchronousInputId="Package\SEQ Complex dimensions\DFT Trader\LKP DWH DimTrader.Inputs[Lookup Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\SEQ Complex dimensions\DFT Trader\LKP DWH DimTrader.Outputs[Lookup Match Output].Columns[TraderID]"
+                          dataType="i2"
+                          errorOrTruncationOperation="Copy Column"
+                          lineageId="Package\SEQ Complex dimensions\DFT Trader\LKP DWH DimTrader.Outputs[Lookup Match Output].Columns[TraderID]"
+                          name="TraderID"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Specifies the column in the reference table from which a column is copied."
+                              name="CopyFromReferenceColumn">TraderID</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\SEQ Complex dimensions\DFT Trader\LKP DWH DimTrader.Outputs[Lookup Match Output].Columns[Infered]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Copy Column"
+                          length="1"
+                          lineageId="Package\SEQ Complex dimensions\DFT Trader\LKP DWH DimTrader.Outputs[Lookup Match Output].Columns[Infered]"
+                          name="Infered"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Specifies the column in the reference table from which a column is copied."
+                              name="CopyFromReferenceColumn">Infered</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\SEQ Complex dimensions\DFT Trader\LKP DWH DimTrader.Outputs[Lookup Match Output].Columns[DwhTraderType]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Copy Column"
+                          length="20"
+                          lineageId="Package\SEQ Complex dimensions\DFT Trader\LKP DWH DimTrader.Outputs[Lookup Match Output].Columns[DwhTraderType]"
+                          name="DwhTraderType"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Specifies the column in the reference table from which a column is copied."
+                              name="CopyFromReferenceColumn">TraderType</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\SEQ Complex dimensions\DFT Trader\LKP DWH DimTrader.Outputs[Lookup No Match Output]"
+                      description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                      exclusionGroup="1"
+                      name="Lookup No Match Output"
+                      synchronousInputId="Package\SEQ Complex dimensions\DFT Trader\LKP DWH DimTrader.Inputs[Lookup Input]">
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\SEQ Complex dimensions\DFT Trader\LKP DWH DimTrader.Outputs[Lookup Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Lookup Error Output"
+                      synchronousInputId="Package\SEQ Complex dimensions\DFT Trader\LKP DWH DimTrader.Inputs[Lookup Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\SEQ Complex dimensions\DFT Trader\LKP DWH DimTrader.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\SEQ Complex dimensions\DFT Trader\LKP DWH DimTrader.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\SEQ Complex dimensions\DFT Trader\LKP DWH DimTrader.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\SEQ Complex dimensions\DFT Trader\LKP DWH DimTrader.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\SEQ Complex dimensions\DFT Trader\Row Count"
+                  componentClassID="Microsoft.RowCount"
+                  contactInfo="Row Count;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Counts rows as they pass through a data flow. For example, use the number of rows processed to determine whether or not to perform cleanup operations, or update text in an e-mail message to communicate processing status."
+                  name="Row Count">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable to hold the row count."
+                      name="VariableName">User::RC</property>
+                  </properties>
+                  <inputs>
+                    <input
+                      refId="Package\SEQ Complex dimensions\DFT Trader\Row Count.Inputs[Row Count Input 1]"
+                      hasSideEffects="true"
+                      name="Row Count Input 1">
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\SEQ Complex dimensions\DFT Trader\Row Count.Outputs[Row Count Output 1]"
+                      name="Row Count Output 1"
+                      synchronousInputId="Package\SEQ Complex dimensions\DFT Trader\Row Count.Inputs[Row Count Input 1]">
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\SEQ Complex dimensions\DFT Trader\SRC MDM Trader"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="SRC MDM Trader"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[Trader]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\SEQ Complex dimensions\DFT Trader\SRC MDM Trader.Connections[OleDbConnection]"
+                      connectionManagerID="{A47497A7-5FAF-4DEE-9BDA-C6F78C6F84C5}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[MDM]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\SEQ Complex dimensions\DFT Trader\SRC MDM Trader.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\SEQ Complex dimensions\DFT Trader\SRC MDM Trader.Outputs[OLE DB Source Output].Columns[TraderCode]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SEQ Complex dimensions\DFT Trader\SRC MDM Trader.Outputs[OLE DB Source Output].ExternalColumns[TraderCode]"
+                          length="10"
+                          lineageId="Package\SEQ Complex dimensions\DFT Trader\SRC MDM Trader.Outputs[OLE DB Source Output].Columns[TraderCode]"
+                          name="TraderCode"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SEQ Complex dimensions\DFT Trader\SRC MDM Trader.Outputs[OLE DB Source Output].Columns[BrokerCode]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SEQ Complex dimensions\DFT Trader\SRC MDM Trader.Outputs[OLE DB Source Output].ExternalColumns[BrokerCode]"
+                          length="5"
+                          lineageId="Package\SEQ Complex dimensions\DFT Trader\SRC MDM Trader.Outputs[OLE DB Source Output].Columns[BrokerCode]"
+                          name="BrokerCode"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SEQ Complex dimensions\DFT Trader\SRC MDM Trader.Outputs[OLE DB Source Output].Columns[TraderType]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SEQ Complex dimensions\DFT Trader\SRC MDM Trader.Outputs[OLE DB Source Output].ExternalColumns[TraderType]"
+                          length="20"
+                          lineageId="Package\SEQ Complex dimensions\DFT Trader\SRC MDM Trader.Outputs[OLE DB Source Output].Columns[TraderType]"
+                          name="TraderType"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\SEQ Complex dimensions\DFT Trader\SRC MDM Trader.Outputs[OLE DB Source Output].ExternalColumns[TraderCode]"
+                          codePage="1252"
+                          dataType="str"
+                          length="10"
+                          name="TraderCode" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ Complex dimensions\DFT Trader\SRC MDM Trader.Outputs[OLE DB Source Output].ExternalColumns[BrokerCode]"
+                          codePage="1252"
+                          dataType="str"
+                          length="5"
+                          name="BrokerCode" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ Complex dimensions\DFT Trader\SRC MDM Trader.Outputs[OLE DB Source Output].ExternalColumns[TraderType]"
+                          codePage="1252"
+                          dataType="str"
+                          length="20"
+                          name="TraderType" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\SEQ Complex dimensions\DFT Trader\SRC MDM Trader.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\SEQ Complex dimensions\DFT Trader\SRC MDM Trader.Outputs[OLE DB Source Error Output].Columns[TraderCode]"
+                          codePage="1252"
+                          dataType="str"
+                          length="10"
+                          lineageId="Package\SEQ Complex dimensions\DFT Trader\SRC MDM Trader.Outputs[OLE DB Source Error Output].Columns[TraderCode]"
+                          name="TraderCode" />
+                        <outputColumn
+                          refId="Package\SEQ Complex dimensions\DFT Trader\SRC MDM Trader.Outputs[OLE DB Source Error Output].Columns[BrokerCode]"
+                          codePage="1252"
+                          dataType="str"
+                          length="5"
+                          lineageId="Package\SEQ Complex dimensions\DFT Trader\SRC MDM Trader.Outputs[OLE DB Source Error Output].Columns[BrokerCode]"
+                          name="BrokerCode" />
+                        <outputColumn
+                          refId="Package\SEQ Complex dimensions\DFT Trader\SRC MDM Trader.Outputs[OLE DB Source Error Output].Columns[TraderType]"
+                          codePage="1252"
+                          dataType="str"
+                          length="20"
+                          lineageId="Package\SEQ Complex dimensions\DFT Trader\SRC MDM Trader.Outputs[OLE DB Source Error Output].Columns[TraderType]"
+                          name="TraderType" />
+                        <outputColumn
+                          refId="Package\SEQ Complex dimensions\DFT Trader\SRC MDM Trader.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\SEQ Complex dimensions\DFT Trader\SRC MDM Trader.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\SEQ Complex dimensions\DFT Trader\SRC MDM Trader.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\SEQ Complex dimensions\DFT Trader\SRC MDM Trader.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\SEQ Complex dimensions\DFT Trader.Paths[Derived Column Output]"
+                  endId="Package\SEQ Complex dimensions\DFT Trader\DST DWH DimTrader.Inputs[OLE DB Destination Input]"
+                  name="Derived Column Output"
+                  startId="Package\SEQ Complex dimensions\DFT Trader\DER DimTrader Not Inferred.Outputs[Derived Column Output]" />
+                <path
+                  refId="Package\SEQ Complex dimensions\DFT Trader.Paths[Existing]"
+                  endId="Package\SEQ Complex dimensions\DFT Trader\CSPL DimTrader update.Inputs[Conditional Split Input]"
+                  name="Existing"
+                  startId="Package\SEQ Complex dimensions\DFT Trader\CSPL DimTrader new.Outputs[Existing]" />
+                <path
+                  refId="Package\SEQ Complex dimensions\DFT Trader.Paths[Existing inferred]"
+                  endId="Package\SEQ Complex dimensions\DFT Trader\CMD Update Infered DimTrader.Inputs[OLE DB Command Input]"
+                  name="Existing inferred"
+                  startId="Package\SEQ Complex dimensions\DFT Trader\CSPL DimTrader update.Outputs[Existing inferred]" />
+                <path
+                  refId="Package\SEQ Complex dimensions\DFT Trader.Paths[Existing with no change]"
+                  endId="Package\SEQ Complex dimensions\DFT Trader\Row Count.Inputs[Row Count Input 1]"
+                  name="Existing with no change"
+                  startId="Package\SEQ Complex dimensions\DFT Trader\CSPL DimTrader update.Outputs[Existing with no change]" />
+                <path
+                  refId="Package\SEQ Complex dimensions\DFT Trader.Paths[Lookup Match Output]"
+                  endId="Package\SEQ Complex dimensions\DFT Trader\CSPL DimTrader new.Inputs[Conditional Split Input]"
+                  name="Lookup Match Output"
+                  startId="Package\SEQ Complex dimensions\DFT Trader\LKP DWH DimTrader.Outputs[Lookup Match Output]" />
+                <path
+                  refId="Package\SEQ Complex dimensions\DFT Trader.Paths[New Trader]"
+                  endId="Package\SEQ Complex dimensions\DFT Trader\DER DimTrader Not Inferred.Inputs[Derived Column Input]"
+                  name="New Trader"
+                  startId="Package\SEQ Complex dimensions\DFT Trader\CSPL DimTrader new.Outputs[New Trader]" />
+                <path
+                  refId="Package\SEQ Complex dimensions\DFT Trader.Paths[OLE DB Source Output]"
+                  endId="Package\SEQ Complex dimensions\DFT Trader\LKP DWH DimTrader.Inputs[Lookup Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\SEQ Complex dimensions\DFT Trader\SRC MDM Trader.Outputs[OLE DB Source Output]" />
+                <path
+                  refId="Package\SEQ Complex dimensions\DFT Trader.Paths[Trader type changed]"
+                  endId="Package\SEQ Complex dimensions\DFT Trader\CMD Update DimTrader.Inputs[OLE DB Command Input]"
+                  name="Trader type changed"
+                  startId="Package\SEQ Complex dimensions\DFT Trader\CSPL DimTrader update.Outputs[Trader type changed]" />
               </paths>
             </pipeline>
           </DTS:ObjectData>
@@ -8284,671 +9450,6 @@ where [refTable].[StatusName] = ?</property>
             </pipeline>
           </DTS:ObjectData>
         </DTS:Executable>
-        <DTS:Executable
-          DTS:refId="Package\SEQ Simple Dimensions\DFT Trader"
-          DTS:CreationName="Microsoft.Pipeline"
-          DTS:Description="Data Flow Task"
-          DTS:DTSID="{7CD7E0ED-352F-4A8C-9C0B-A0AD41A5FA65}"
-          DTS:ExecutableType="Microsoft.Pipeline"
-          DTS:LocaleID="-1"
-          DTS:ObjectName="DFT Trader"
-          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
-          <DTS:Variables />
-          <DTS:ObjectData>
-            <pipeline
-              version="1">
-              <components>
-                <component
-                  refId="Package\SEQ Simple Dimensions\DFT Trader\Insert Destination"
-                  componentClassID="Microsoft.OLEDBDestination"
-                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
-                  description="OLE DB Destination"
-                  name="Insert Destination"
-                  usesDispositions="true"
-                  version="4">
-                  <properties>
-                    <property
-                      dataType="System.Int32"
-                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
-                      name="CommandTimeout">0</property>
-                    <property
-                      dataType="System.String"
-                      description="Specifies the name of the database object used to open a rowset."
-                      name="OpenRowset">[DWH].[DimTrader]</property>
-                    <property
-                      dataType="System.String"
-                      description="Specifies the variable that contains the name of the database object used to open a rowset."
-                      name="OpenRowsetVariable"></property>
-                    <property
-                      dataType="System.String"
-                      description="The SQL command to be executed."
-                      name="SqlCommand"
-                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
-                    <property
-                      dataType="System.Int32"
-                      description="Specifies the column code page to use when code page information is unavailable from the data source."
-                      name="DefaultCodePage">1252</property>
-                    <property
-                      dataType="System.Boolean"
-                      description="Forces the use of the DefaultCodePage property value when describing character data."
-                      name="AlwaysUseDefaultCodePage">false</property>
-                    <property
-                      dataType="System.Int32"
-                      description="Specifies the mode used to access the database."
-                      name="AccessMode"
-                      typeConverter="AccessMode">0</property>
-                    <property
-                      dataType="System.Boolean"
-                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
-                      name="FastLoadKeepIdentity">false</property>
-                    <property
-                      dataType="System.Boolean"
-                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
-                      name="FastLoadKeepNulls">false</property>
-                    <property
-                      dataType="System.String"
-                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
-                      name="FastLoadOptions"></property>
-                    <property
-                      dataType="System.Int32"
-                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
-                      name="FastLoadMaxInsertCommitSize">2147483647</property>
-                  </properties>
-                  <connections>
-                    <connection
-                      refId="Package\SEQ Simple Dimensions\DFT Trader\Insert Destination.Connections[OleDbConnection]"
-                      connectionManagerID="{0CBC2C04-C137-495F-AF7C-FA5DE465FED0}:external"
-                      connectionManagerRefId="Project.ConnectionManagers[DWH]"
-                      description="The OLE DB runtime connection used to access the database."
-                      name="OleDbConnection" />
-                  </connections>
-                  <inputs>
-                    <input
-                      refId="Package\SEQ Simple Dimensions\DFT Trader\Insert Destination.Inputs[OLE DB Destination Input]"
-                      errorOrTruncationOperation="Insert"
-                      errorRowDisposition="FailComponent"
-                      hasSideEffects="true"
-                      name="OLE DB Destination Input">
-                      <inputColumns>
-                        <inputColumn
-                          refId="Package\SEQ Simple Dimensions\DFT Trader\Insert Destination.Inputs[OLE DB Destination Input].Columns[TraderCode]"
-                          cachedCodepage="1252"
-                          cachedDataType="str"
-                          cachedLength="10"
-                          cachedName="TraderCode"
-                          externalMetadataColumnId="Package\SEQ Simple Dimensions\DFT Trader\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[TraderCode]"
-                          lineageId="Package\SEQ Simple Dimensions\DFT Trader\SRC MDM Trader.Outputs[OLE DB Source Output].Columns[TraderCode]" />
-                        <inputColumn
-                          refId="Package\SEQ Simple Dimensions\DFT Trader\Insert Destination.Inputs[OLE DB Destination Input].Columns[BrokerCode]"
-                          cachedCodepage="1252"
-                          cachedDataType="str"
-                          cachedLength="5"
-                          cachedName="BrokerCode"
-                          externalMetadataColumnId="Package\SEQ Simple Dimensions\DFT Trader\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[BrokerCode]"
-                          lineageId="Package\SEQ Simple Dimensions\DFT Trader\SRC MDM Trader.Outputs[OLE DB Source Output].Columns[BrokerCode]" />
-                        <inputColumn
-                          refId="Package\SEQ Simple Dimensions\DFT Trader\Insert Destination.Inputs[OLE DB Destination Input].Columns[TraderType]"
-                          cachedCodepage="1252"
-                          cachedDataType="str"
-                          cachedLength="20"
-                          cachedName="TraderType"
-                          externalMetadataColumnId="Package\SEQ Simple Dimensions\DFT Trader\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[TraderType]"
-                          lineageId="Package\SEQ Simple Dimensions\DFT Trader\SRC MDM Trader.Outputs[OLE DB Source Output].Columns[TraderType]" />
-                      </inputColumns>
-                      <externalMetadataColumns
-                        isUsed="True">
-                        <externalMetadataColumn
-                          refId="Package\SEQ Simple Dimensions\DFT Trader\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[TraderID]"
-                          dataType="i2"
-                          name="TraderID" />
-                        <externalMetadataColumn
-                          refId="Package\SEQ Simple Dimensions\DFT Trader\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[TraderCode]"
-                          codePage="1252"
-                          dataType="str"
-                          length="10"
-                          name="TraderCode" />
-                        <externalMetadataColumn
-                          refId="Package\SEQ Simple Dimensions\DFT Trader\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[BrokerCode]"
-                          codePage="1252"
-                          dataType="str"
-                          length="5"
-                          name="BrokerCode" />
-                        <externalMetadataColumn
-                          refId="Package\SEQ Simple Dimensions\DFT Trader\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[TraderType]"
-                          codePage="1252"
-                          dataType="str"
-                          length="20"
-                          name="TraderType" />
-                      </externalMetadataColumns>
-                    </input>
-                  </inputs>
-                  <outputs>
-                    <output
-                      refId="Package\SEQ Simple Dimensions\DFT Trader\Insert Destination.Outputs[OLE DB Destination Error Output]"
-                      exclusionGroup="1"
-                      isErrorOut="true"
-                      name="OLE DB Destination Error Output"
-                      synchronousInputId="Package\SEQ Simple Dimensions\DFT Trader\Insert Destination.Inputs[OLE DB Destination Input]">
-                      <outputColumns>
-                        <outputColumn
-                          refId="Package\SEQ Simple Dimensions\DFT Trader\Insert Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
-                          dataType="i4"
-                          lineageId="Package\SEQ Simple Dimensions\DFT Trader\Insert Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
-                          name="ErrorCode"
-                          specialFlags="1" />
-                        <outputColumn
-                          refId="Package\SEQ Simple Dimensions\DFT Trader\Insert Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
-                          dataType="i4"
-                          lineageId="Package\SEQ Simple Dimensions\DFT Trader\Insert Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
-                          name="ErrorColumn"
-                          specialFlags="2" />
-                      </outputColumns>
-                      <externalMetadataColumns />
-                    </output>
-                  </outputs>
-                </component>
-                <component
-                  refId="Package\SEQ Simple Dimensions\DFT Trader\OLE DB Command"
-                  componentClassID="Microsoft.OLEDBCommand"
-                  contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
-                  description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
-                  name="OLE DB Command"
-                  usesDispositions="true"
-                  version="2">
-                  <properties>
-                    <property
-                      dataType="System.Int32"
-                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
-                      name="CommandTimeout">0</property>
-                    <property
-                      dataType="System.String"
-                      description="The SQL command to be executed."
-                      expressionType="Notify"
-                      name="SqlCommand"
-                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE [DWH].[DimTrader] SET [TraderType] = ? WHERE [BrokerCode] = ? AND [TraderCode] = ?</property>
-                    <property
-                      dataType="System.Int32"
-                      description="Specifies the column code page to use when code page information is unavailable from the data source."
-                      name="DefaultCodePage">1252</property>
-                  </properties>
-                  <connections>
-                    <connection
-                      refId="Package\SEQ Simple Dimensions\DFT Trader\OLE DB Command.Connections[OleDbConnection]"
-                      connectionManagerID="{0CBC2C04-C137-495F-AF7C-FA5DE465FED0}:external"
-                      connectionManagerRefId="Project.ConnectionManagers[DWH]"
-                      description="The OLE DB runtime connection used to access the database."
-                      name="OleDbConnection" />
-                  </connections>
-                  <inputs>
-                    <input
-                      refId="Package\SEQ Simple Dimensions\DFT Trader\OLE DB Command.Inputs[OLE DB Command Input]"
-                      errorOrTruncationOperation="Command Execution"
-                      errorRowDisposition="FailComponent"
-                      hasSideEffects="true"
-                      name="OLE DB Command Input">
-                      <inputColumns>
-                        <inputColumn
-                          refId="Package\SEQ Simple Dimensions\DFT Trader\OLE DB Command.Inputs[OLE DB Command Input].Columns[BrokerCode]"
-                          cachedCodepage="1252"
-                          cachedDataType="str"
-                          cachedLength="5"
-                          cachedName="BrokerCode"
-                          externalMetadataColumnId="Package\SEQ Simple Dimensions\DFT Trader\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
-                          lineageId="Package\SEQ Simple Dimensions\DFT Trader\SRC MDM Trader.Outputs[OLE DB Source Output].Columns[BrokerCode]" />
-                        <inputColumn
-                          refId="Package\SEQ Simple Dimensions\DFT Trader\OLE DB Command.Inputs[OLE DB Command Input].Columns[TraderCode]"
-                          cachedCodepage="1252"
-                          cachedDataType="str"
-                          cachedLength="10"
-                          cachedName="TraderCode"
-                          externalMetadataColumnId="Package\SEQ Simple Dimensions\DFT Trader\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
-                          lineageId="Package\SEQ Simple Dimensions\DFT Trader\SRC MDM Trader.Outputs[OLE DB Source Output].Columns[TraderCode]" />
-                        <inputColumn
-                          refId="Package\SEQ Simple Dimensions\DFT Trader\OLE DB Command.Inputs[OLE DB Command Input].Columns[TraderType]"
-                          cachedCodepage="1252"
-                          cachedDataType="str"
-                          cachedLength="20"
-                          cachedName="TraderType"
-                          externalMetadataColumnId="Package\SEQ Simple Dimensions\DFT Trader\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
-                          lineageId="Package\SEQ Simple Dimensions\DFT Trader\SRC MDM Trader.Outputs[OLE DB Source Output].Columns[TraderType]" />
-                      </inputColumns>
-                      <externalMetadataColumns
-                        isUsed="True">
-                        <externalMetadataColumn
-                          refId="Package\SEQ Simple Dimensions\DFT Trader\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
-                          codePage="1252"
-                          dataType="str"
-                          length="20"
-                          name="Param_0">
-                          <properties>
-                            <property
-                              dataType="System.Int32"
-                              description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
-                              name="DBParamInfoFlags">65</property>
-                          </properties>
-                        </externalMetadataColumn>
-                        <externalMetadataColumn
-                          refId="Package\SEQ Simple Dimensions\DFT Trader\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
-                          codePage="1252"
-                          dataType="str"
-                          length="5"
-                          name="Param_1">
-                          <properties>
-                            <property
-                              dataType="System.Int32"
-                              description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
-                              name="DBParamInfoFlags">65</property>
-                          </properties>
-                        </externalMetadataColumn>
-                        <externalMetadataColumn
-                          refId="Package\SEQ Simple Dimensions\DFT Trader\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
-                          codePage="1252"
-                          dataType="str"
-                          length="10"
-                          name="Param_2">
-                          <properties>
-                            <property
-                              dataType="System.Int32"
-                              description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
-                              name="DBParamInfoFlags">65</property>
-                          </properties>
-                        </externalMetadataColumn>
-                      </externalMetadataColumns>
-                    </input>
-                  </inputs>
-                  <outputs>
-                    <output
-                      refId="Package\SEQ Simple Dimensions\DFT Trader\OLE DB Command.Outputs[OLE DB Command Output]"
-                      exclusionGroup="1"
-                      name="OLE DB Command Output"
-                      synchronousInputId="Package\SEQ Simple Dimensions\DFT Trader\OLE DB Command.Inputs[OLE DB Command Input]">
-                      <externalMetadataColumns />
-                    </output>
-                    <output
-                      refId="Package\SEQ Simple Dimensions\DFT Trader\OLE DB Command.Outputs[OLE DB Command Error Output]"
-                      exclusionGroup="1"
-                      isErrorOut="true"
-                      name="OLE DB Command Error Output"
-                      synchronousInputId="Package\SEQ Simple Dimensions\DFT Trader\OLE DB Command.Inputs[OLE DB Command Input]">
-                      <outputColumns>
-                        <outputColumn
-                          refId="Package\SEQ Simple Dimensions\DFT Trader\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
-                          dataType="i4"
-                          lineageId="Package\SEQ Simple Dimensions\DFT Trader\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
-                          name="ErrorCode"
-                          specialFlags="1" />
-                        <outputColumn
-                          refId="Package\SEQ Simple Dimensions\DFT Trader\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
-                          dataType="i4"
-                          lineageId="Package\SEQ Simple Dimensions\DFT Trader\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
-                          name="ErrorColumn"
-                          specialFlags="2" />
-                      </outputColumns>
-                      <externalMetadataColumns />
-                    </output>
-                  </outputs>
-                </component>
-                <component
-                  refId="Package\SEQ Simple Dimensions\DFT Trader\SCD DWH DimTrader"
-                  componentClassID="Microsoft.SCD"
-                  contactInfo="Slowly Changing Dimension;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;3"
-                  description="Updates a SQL Server Analysis Services data warehouse dimension. Update dimension records that are already present and  insert dimension records that aren't. For example, update the DimProduct table of the AdventureWorksDW OLAP database with data from the Products table in the AdventureWorks OLTP database."
-                  name="SCD DWH DimTrader"
-                  version="3">
-                  <properties>
-                    <property
-                      dataType="System.String"
-                      description="Specifies the SELECT statement used to create a schema rowset."
-                      name="SqlCommand"
-                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT [BrokerCode], [TraderCode], [TraderType] FROM [DWH].[DimTrader]</property>
-                    <property
-                      dataType="System.String"
-                      description="Specifies the WHERE clause in the SELECT statement that selects the current row among rows with identical business keys."
-                      name="CurrentRowWhere"></property>
-                    <property
-                      dataType="System.Boolean"
-                      description="Indicates whether historical attribute updates are directed to the transformation output for changing attribute updates."
-                      name="UpdateChangingAttributeHistory">true</property>
-                    <property
-                      dataType="System.Boolean"
-                      description="Indicates whether the transformation fails when columns with fixed attributes contain changes."
-                      name="FailOnFixedAttributeChange">false</property>
-                    <property
-                      dataType="System.String"
-                      description="Specifies the column name for the inferred member."
-                      name="InferredMemberIndicator"></property>
-                    <property
-                      dataType="System.Boolean"
-                      description="Indicates whether inferred member updates are detected."
-                      name="EnableInferredMember">false</property>
-                    <property
-                      dataType="System.Boolean"
-                      description="Indicates whether the transformation fails when a lookup of an existing record fails."
-                      name="FailOnLookupFailure">false</property>
-                    <property
-                      dataType="System.Int32"
-                      description="Specifies that all rows in the input are new or the transformation detects the change type."
-                      name="IncomingRowChangeType"
-                      typeConverter="IncomingRowChangeType">1</property>
-                    <property
-                      dataType="System.Int32"
-                      description="Specifies the column code page to use when code page information is unavailable from the data source."
-                      name="DefaultCodePage">1252</property>
-                  </properties>
-                  <connections>
-                    <connection
-                      refId="Package\SEQ Simple Dimensions\DFT Trader\SCD DWH DimTrader.Connections[LookupConnection]"
-                      connectionManagerID="{0CBC2C04-C137-495F-AF7C-FA5DE465FED0}:external"
-                      connectionManagerRefId="Project.ConnectionManagers[DWH]"
-                      description="Defines the connection to use for lookups in the dimension table"
-                      name="LookupConnection" />
-                  </connections>
-                  <inputs>
-                    <input
-                      refId="Package\SEQ Simple Dimensions\DFT Trader\SCD DWH DimTrader.Inputs[Slowly Changing Dimension Input]"
-                      name="Slowly Changing Dimension Input">
-                      <inputColumns>
-                        <inputColumn
-                          refId="Package\SEQ Simple Dimensions\DFT Trader\SCD DWH DimTrader.Inputs[Slowly Changing Dimension Input].Columns[BrokerCode]"
-                          cachedCodepage="1252"
-                          cachedDataType="str"
-                          cachedLength="5"
-                          cachedName="BrokerCode"
-                          externalMetadataColumnId="Package\SEQ Simple Dimensions\DFT Trader\SCD DWH DimTrader.Inputs[Slowly Changing Dimension Input].ExternalColumns[BrokerCode]"
-                          lineageId="Package\SEQ Simple Dimensions\DFT Trader\SRC MDM Trader.Outputs[OLE DB Source Output].Columns[BrokerCode]">
-                          <properties>
-                            <property
-                              dataType="System.Int32"
-                              name="ColumnType"
-                              typeConverter="ColumnType">1</property>
-                          </properties>
-                        </inputColumn>
-                        <inputColumn
-                          refId="Package\SEQ Simple Dimensions\DFT Trader\SCD DWH DimTrader.Inputs[Slowly Changing Dimension Input].Columns[TraderCode]"
-                          cachedCodepage="1252"
-                          cachedDataType="str"
-                          cachedLength="10"
-                          cachedName="TraderCode"
-                          externalMetadataColumnId="Package\SEQ Simple Dimensions\DFT Trader\SCD DWH DimTrader.Inputs[Slowly Changing Dimension Input].ExternalColumns[TraderCode]"
-                          lineageId="Package\SEQ Simple Dimensions\DFT Trader\SRC MDM Trader.Outputs[OLE DB Source Output].Columns[TraderCode]">
-                          <properties>
-                            <property
-                              dataType="System.Int32"
-                              name="ColumnType"
-                              typeConverter="ColumnType">1</property>
-                          </properties>
-                        </inputColumn>
-                        <inputColumn
-                          refId="Package\SEQ Simple Dimensions\DFT Trader\SCD DWH DimTrader.Inputs[Slowly Changing Dimension Input].Columns[TraderType]"
-                          cachedCodepage="1252"
-                          cachedDataType="str"
-                          cachedLength="20"
-                          cachedName="TraderType"
-                          externalMetadataColumnId="Package\SEQ Simple Dimensions\DFT Trader\SCD DWH DimTrader.Inputs[Slowly Changing Dimension Input].ExternalColumns[TraderType]"
-                          lineageId="Package\SEQ Simple Dimensions\DFT Trader\SRC MDM Trader.Outputs[OLE DB Source Output].Columns[TraderType]">
-                          <properties>
-                            <property
-                              dataType="System.Int32"
-                              name="ColumnType"
-                              typeConverter="ColumnType">2</property>
-                          </properties>
-                        </inputColumn>
-                      </inputColumns>
-                      <externalMetadataColumns
-                        isUsed="True">
-                        <externalMetadataColumn
-                          refId="Package\SEQ Simple Dimensions\DFT Trader\SCD DWH DimTrader.Inputs[Slowly Changing Dimension Input].ExternalColumns[BrokerCode]"
-                          codePage="1252"
-                          dataType="str"
-                          length="5"
-                          name="BrokerCode" />
-                        <externalMetadataColumn
-                          refId="Package\SEQ Simple Dimensions\DFT Trader\SCD DWH DimTrader.Inputs[Slowly Changing Dimension Input].ExternalColumns[TraderCode]"
-                          codePage="1252"
-                          dataType="str"
-                          length="10"
-                          name="TraderCode" />
-                        <externalMetadataColumn
-                          refId="Package\SEQ Simple Dimensions\DFT Trader\SCD DWH DimTrader.Inputs[Slowly Changing Dimension Input].ExternalColumns[TraderType]"
-                          codePage="1252"
-                          dataType="str"
-                          length="20"
-                          name="TraderType" />
-                      </externalMetadataColumns>
-                    </input>
-                  </inputs>
-                  <outputs>
-                    <output
-                      refId="Package\SEQ Simple Dimensions\DFT Trader\SCD DWH DimTrader.Outputs[Unchanged Output]"
-                      description="Unchanged rows"
-                      exclusionGroup="1"
-                      name="Unchanged Output"
-                      synchronousInputId="Package\SEQ Simple Dimensions\DFT Trader\SCD DWH DimTrader.Inputs[Slowly Changing Dimension Input]">
-                      <externalMetadataColumns />
-                    </output>
-                    <output
-                      refId="Package\SEQ Simple Dimensions\DFT Trader\SCD DWH DimTrader.Outputs[New Output]"
-                      description="New rows"
-                      exclusionGroup="1"
-                      name="New Output"
-                      synchronousInputId="Package\SEQ Simple Dimensions\DFT Trader\SCD DWH DimTrader.Inputs[Slowly Changing Dimension Input]">
-                      <externalMetadataColumns />
-                    </output>
-                    <output
-                      refId="Package\SEQ Simple Dimensions\DFT Trader\SCD DWH DimTrader.Outputs[Fixed Attribute Output]"
-                      description="Rows with changes in columns tagged FixedAttribute"
-                      exclusionGroup="1"
-                      name="Fixed Attribute Output"
-                      synchronousInputId="Package\SEQ Simple Dimensions\DFT Trader\SCD DWH DimTrader.Inputs[Slowly Changing Dimension Input]">
-                      <externalMetadataColumns />
-                    </output>
-                    <output
-                      refId="Package\SEQ Simple Dimensions\DFT Trader\SCD DWH DimTrader.Outputs[Changing Attribute Updates Output]"
-                      description="These rows contain new information for ChangingAttribute (Type 1) column changes"
-                      exclusionGroup="1"
-                      name="Changing Attribute Updates Output"
-                      synchronousInputId="Package\SEQ Simple Dimensions\DFT Trader\SCD DWH DimTrader.Inputs[Slowly Changing Dimension Input]">
-                      <externalMetadataColumns />
-                    </output>
-                    <output
-                      refId="Package\SEQ Simple Dimensions\DFT Trader\SCD DWH DimTrader.Outputs[Historical Attribute Inserts Output]"
-                      description="HistoricalAttribute (Type 2) changes result in these new rows"
-                      exclusionGroup="2"
-                      name="Historical Attribute Inserts Output"
-                      synchronousInputId="Package\SEQ Simple Dimensions\DFT Trader\SCD DWH DimTrader.Inputs[Slowly Changing Dimension Input]">
-                      <externalMetadataColumns />
-                    </output>
-                    <output
-                      refId="Package\SEQ Simple Dimensions\DFT Trader\SCD DWH DimTrader.Outputs[Inferred Member Updates Output]"
-                      description="Information to update unpopulated initial dimension row"
-                      exclusionGroup="1"
-                      name="Inferred Member Updates Output"
-                      synchronousInputId="Package\SEQ Simple Dimensions\DFT Trader\SCD DWH DimTrader.Inputs[Slowly Changing Dimension Input]">
-                      <externalMetadataColumns />
-                    </output>
-                  </outputs>
-                </component>
-                <component
-                  refId="Package\SEQ Simple Dimensions\DFT Trader\SRC MDM Trader"
-                  componentClassID="Microsoft.OLEDBSource"
-                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
-                  description="OLE DB Source"
-                  name="SRC MDM Trader"
-                  usesDispositions="true"
-                  version="7">
-                  <properties>
-                    <property
-                      dataType="System.Int32"
-                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
-                      name="CommandTimeout">0</property>
-                    <property
-                      dataType="System.String"
-                      description="Specifies the name of the database object used to open a rowset."
-                      name="OpenRowset">[dbo].[Trader]</property>
-                    <property
-                      dataType="System.String"
-                      description="Specifies the variable that contains the name of the database object used to open a rowset."
-                      name="OpenRowsetVariable"></property>
-                    <property
-                      dataType="System.String"
-                      description="The SQL command to be executed."
-                      name="SqlCommand"
-                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
-                    <property
-                      dataType="System.String"
-                      description="The variable that contains the SQL command to be executed."
-                      name="SqlCommandVariable"></property>
-                    <property
-                      dataType="System.Int32"
-                      description="Specifies the column code page to use when code page information is unavailable from the data source."
-                      name="DefaultCodePage">1252</property>
-                    <property
-                      dataType="System.Boolean"
-                      description="Forces the use of the DefaultCodePage property value when describing character data."
-                      name="AlwaysUseDefaultCodePage">false</property>
-                    <property
-                      dataType="System.Int32"
-                      description="Specifies the mode used to access the database."
-                      name="AccessMode"
-                      typeConverter="AccessMode">0</property>
-                    <property
-                      dataType="System.String"
-                      description="The mappings between the parameters in the SQL command and variables."
-                      name="ParameterMapping"></property>
-                  </properties>
-                  <connections>
-                    <connection
-                      refId="Package\SEQ Simple Dimensions\DFT Trader\SRC MDM Trader.Connections[OleDbConnection]"
-                      connectionManagerID="{A47497A7-5FAF-4DEE-9BDA-C6F78C6F84C5}:external"
-                      connectionManagerRefId="Project.ConnectionManagers[MDM]"
-                      description="The OLE DB runtime connection used to access the database."
-                      name="OleDbConnection" />
-                  </connections>
-                  <outputs>
-                    <output
-                      refId="Package\SEQ Simple Dimensions\DFT Trader\SRC MDM Trader.Outputs[OLE DB Source Output]"
-                      name="OLE DB Source Output">
-                      <outputColumns>
-                        <outputColumn
-                          refId="Package\SEQ Simple Dimensions\DFT Trader\SRC MDM Trader.Outputs[OLE DB Source Output].Columns[TraderCode]"
-                          codePage="1252"
-                          dataType="str"
-                          errorOrTruncationOperation="Conversion"
-                          errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\SEQ Simple Dimensions\DFT Trader\SRC MDM Trader.Outputs[OLE DB Source Output].ExternalColumns[TraderCode]"
-                          length="10"
-                          lineageId="Package\SEQ Simple Dimensions\DFT Trader\SRC MDM Trader.Outputs[OLE DB Source Output].Columns[TraderCode]"
-                          name="TraderCode"
-                          truncationRowDisposition="FailComponent" />
-                        <outputColumn
-                          refId="Package\SEQ Simple Dimensions\DFT Trader\SRC MDM Trader.Outputs[OLE DB Source Output].Columns[BrokerCode]"
-                          codePage="1252"
-                          dataType="str"
-                          errorOrTruncationOperation="Conversion"
-                          errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\SEQ Simple Dimensions\DFT Trader\SRC MDM Trader.Outputs[OLE DB Source Output].ExternalColumns[BrokerCode]"
-                          length="5"
-                          lineageId="Package\SEQ Simple Dimensions\DFT Trader\SRC MDM Trader.Outputs[OLE DB Source Output].Columns[BrokerCode]"
-                          name="BrokerCode"
-                          truncationRowDisposition="FailComponent" />
-                        <outputColumn
-                          refId="Package\SEQ Simple Dimensions\DFT Trader\SRC MDM Trader.Outputs[OLE DB Source Output].Columns[TraderType]"
-                          codePage="1252"
-                          dataType="str"
-                          errorOrTruncationOperation="Conversion"
-                          errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\SEQ Simple Dimensions\DFT Trader\SRC MDM Trader.Outputs[OLE DB Source Output].ExternalColumns[TraderType]"
-                          length="20"
-                          lineageId="Package\SEQ Simple Dimensions\DFT Trader\SRC MDM Trader.Outputs[OLE DB Source Output].Columns[TraderType]"
-                          name="TraderType"
-                          truncationRowDisposition="FailComponent" />
-                      </outputColumns>
-                      <externalMetadataColumns
-                        isUsed="True">
-                        <externalMetadataColumn
-                          refId="Package\SEQ Simple Dimensions\DFT Trader\SRC MDM Trader.Outputs[OLE DB Source Output].ExternalColumns[TraderCode]"
-                          codePage="1252"
-                          dataType="str"
-                          length="10"
-                          name="TraderCode" />
-                        <externalMetadataColumn
-                          refId="Package\SEQ Simple Dimensions\DFT Trader\SRC MDM Trader.Outputs[OLE DB Source Output].ExternalColumns[BrokerCode]"
-                          codePage="1252"
-                          dataType="str"
-                          length="5"
-                          name="BrokerCode" />
-                        <externalMetadataColumn
-                          refId="Package\SEQ Simple Dimensions\DFT Trader\SRC MDM Trader.Outputs[OLE DB Source Output].ExternalColumns[TraderType]"
-                          codePage="1252"
-                          dataType="str"
-                          length="20"
-                          name="TraderType" />
-                      </externalMetadataColumns>
-                    </output>
-                    <output
-                      refId="Package\SEQ Simple Dimensions\DFT Trader\SRC MDM Trader.Outputs[OLE DB Source Error Output]"
-                      isErrorOut="true"
-                      name="OLE DB Source Error Output">
-                      <outputColumns>
-                        <outputColumn
-                          refId="Package\SEQ Simple Dimensions\DFT Trader\SRC MDM Trader.Outputs[OLE DB Source Error Output].Columns[TraderCode]"
-                          codePage="1252"
-                          dataType="str"
-                          length="10"
-                          lineageId="Package\SEQ Simple Dimensions\DFT Trader\SRC MDM Trader.Outputs[OLE DB Source Error Output].Columns[TraderCode]"
-                          name="TraderCode" />
-                        <outputColumn
-                          refId="Package\SEQ Simple Dimensions\DFT Trader\SRC MDM Trader.Outputs[OLE DB Source Error Output].Columns[BrokerCode]"
-                          codePage="1252"
-                          dataType="str"
-                          length="5"
-                          lineageId="Package\SEQ Simple Dimensions\DFT Trader\SRC MDM Trader.Outputs[OLE DB Source Error Output].Columns[BrokerCode]"
-                          name="BrokerCode" />
-                        <outputColumn
-                          refId="Package\SEQ Simple Dimensions\DFT Trader\SRC MDM Trader.Outputs[OLE DB Source Error Output].Columns[TraderType]"
-                          codePage="1252"
-                          dataType="str"
-                          length="20"
-                          lineageId="Package\SEQ Simple Dimensions\DFT Trader\SRC MDM Trader.Outputs[OLE DB Source Error Output].Columns[TraderType]"
-                          name="TraderType" />
-                        <outputColumn
-                          refId="Package\SEQ Simple Dimensions\DFT Trader\SRC MDM Trader.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
-                          dataType="i4"
-                          lineageId="Package\SEQ Simple Dimensions\DFT Trader\SRC MDM Trader.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
-                          name="ErrorCode"
-                          specialFlags="1" />
-                        <outputColumn
-                          refId="Package\SEQ Simple Dimensions\DFT Trader\SRC MDM Trader.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
-                          dataType="i4"
-                          lineageId="Package\SEQ Simple Dimensions\DFT Trader\SRC MDM Trader.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
-                          name="ErrorColumn"
-                          specialFlags="2" />
-                      </outputColumns>
-                      <externalMetadataColumns />
-                    </output>
-                  </outputs>
-                </component>
-              </components>
-              <paths>
-                <path
-                  refId="Package\SEQ Simple Dimensions\DFT Trader.Paths[Changing Attribute Updates Output]"
-                  endId="Package\SEQ Simple Dimensions\DFT Trader\OLE DB Command.Inputs[OLE DB Command Input]"
-                  name="Changing Attribute Updates Output"
-                  startId="Package\SEQ Simple Dimensions\DFT Trader\SCD DWH DimTrader.Outputs[Changing Attribute Updates Output]" />
-                <path
-                  refId="Package\SEQ Simple Dimensions\DFT Trader.Paths[New Output]"
-                  endId="Package\SEQ Simple Dimensions\DFT Trader\Insert Destination.Inputs[OLE DB Destination Input]"
-                  name="New Output"
-                  startId="Package\SEQ Simple Dimensions\DFT Trader\SCD DWH DimTrader.Outputs[New Output]" />
-                <path
-                  refId="Package\SEQ Simple Dimensions\DFT Trader.Paths[OLE DB Source Output]"
-                  endId="Package\SEQ Simple Dimensions\DFT Trader\SCD DWH DimTrader.Inputs[Slowly Changing Dimension Input]"
-                  name="OLE DB Source Output"
-                  startId="Package\SEQ Simple Dimensions\DFT Trader\SRC MDM Trader.Outputs[OLE DB Source Output]" />
-              </paths>
-            </pipeline>
-          </DTS:ObjectData>
-        </DTS:Executable>
       </DTS:Executables>
     </DTS:Executable>
     <DTS:Executable
@@ -9442,39 +9943,39 @@ where [refTable].[StatusName] = ?</property>
       <GraphLayout
         Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="206,42"
+          Size="215,42"
           Id="Package\SEQ Complex dimensions\DFT Date"
           TopLeft="53.1666666666666,222.833333333333" />
         <NodeLayout
-          Size="206,42"
+          Size="215,42"
           Id="Package\SEQ Complex dimensions\DFT Dim Broker"
-          TopLeft="355.944444444445,18.8333333333333" />
+          TopLeft="297.944444444445,19.8333333333333" />
         <NodeLayout
-          Size="206,42"
+          Size="215,42"
           Id="Package\SEQ Complex dimensions\DFT Refresh Date Controls"
           TopLeft="53.1666666666666,120.833333333333" />
         <NodeLayout
-          Size="206,42"
+          Size="215,42"
           Id="Package\SEQ Complex dimensions\DFT Tme"
-          TopLeft="355.944444444445,120.833333333333" />
+          TopLeft="297.944444444445,119.833333333333" />
         <NodeLayout
-          Size="206,42"
+          Size="215,42"
           Id="Package\SEQ Complex dimensions\SQL Clear Staging Controls"
           TopLeft="53.1666666666666,18.8333333333333" />
         <EdgeLayout
           Id="Package\SEQ Complex dimensions.PrecedenceConstraints[Constraint]"
-          TopLeft="156.166666666667,60.8333333333333">
+          TopLeft="160.666666666667,60.8333333333333">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,59.9999999999998"
+              EndConnector="0,59.9999999999997"
               Start="0,0"
-              End="0,52.4999999999998">
+              End="0,52.4999999999997">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,52.4999999999998" />
+                    End="0,52.4999999999997" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -9485,7 +9986,7 @@ where [refTable].[StatusName] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\SEQ Complex dimensions.PrecedenceConstraints[Constraint 1]"
-          TopLeft="156.166666666667,162.833333333333">
+          TopLeft="160.666666666667,162.833333333333">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -9505,44 +10006,44 @@ where [refTable].[StatusName] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <NodeLayout
+          Size="215,42"
+          Id="Package\SEQ Complex dimensions\DFT Trader"
+          TopLeft="297.944444444445,223.944444444444" />
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="581,320"
-          Size="581,363"
+          PanelSize="550,299"
+          Size="550,342"
           Id="Package\SEQ Complex dimensions"
           TopLeft="139.944444444445,107.5" />
         <NodeLayout
           Size="215,42"
           Id="Package\SEQ Simple Dimensions\DFT Currency"
-          TopLeft="5.5,5.5" />
+          TopLeft="28.5,34.5" />
         <NodeLayout
           Size="215,42"
           Id="Package\SEQ Simple Dimensions\DFT Index"
-          TopLeft="348.777777777778,5.5" />
+          TopLeft="311.777777777778,34.5" />
         <NodeLayout
           Size="215,42"
           Id="Package\SEQ Simple Dimensions\DFT Market"
-          TopLeft="5.5,78.8333333333333" />
+          TopLeft="28.5,124.833333333333" />
         <NodeLayout
           Size="215,42"
           Id="Package\SEQ Simple Dimensions\DFT Status"
-          TopLeft="348.777777777778,78.8333333333333" />
+          TopLeft="311.777777777778,124.833333333333" />
         <NodeLayout
           Size="215,42"
           Id="Package\SEQ Simple Dimensions\DFT Trade Modification Type"
-          TopLeft="5.5,147.944444444444" />
-        <NodeLayout
-          Size="215,42"
-          Id="Package\SEQ Simple Dimensions\DFT Trader"
-          TopLeft="348.777777777778,147.944444444444" />
+          TopLeft="28.5,202.944444444444" />
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="610,283"
-          Size="610,326"
+          PanelSize="556,296"
+          Size="556,339"
           Id="Package\SEQ Simple Dimensions"
-          TopLeft="739.222222222223,110.611111111111" />
+          TopLeft="739.222222222223,107.5" />
         <NodeLayout
           Size="183,42"
           Id="Package\SEQ Simple Report Helpers\DFT Equity Feee Band"
@@ -9576,10 +10077,10 @@ where [refTable].[StatusName] = ?</property>
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="229,240"
+          PanelSize="229,239"
           Size="229,282"
           Id="Package\SEQ Simple Report Helpers"
-          TopLeft="1409.33333333333,116.166666666666" />
+          TopLeft="1351.33333333333,108.5" />
         <NodeLayout
           Size="163,42"
           Id="Package\SQL Get BatchID"
@@ -9590,26 +10091,26 @@ where [refTable].[StatusName] = ?</property>
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="148.222222222223,55.3333333333333"
+              EndConnector="121.222222222223,52.2222222222223"
               Start="0,0"
-              End="148.222222222223,47.8333333333333">
+              End="121.222222222223,44.7222222222223">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,23.6666666666666" />
+                    End="0,22.1111111111112" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,23.6666666666666"
-                    Point2="0,27.6666666666666"
-                    Point3="4,27.6666666666666" />
+                    Point1="0,22.1111111111112"
+                    Point2="0,26.1111111111112"
+                    Point3="4,26.1111111111112" />
                   <mssgle:LineSegment
-                    End="144.222222222223,27.6666666666666" />
+                    End="117.222222222223,26.1111111111112" />
                   <mssgle:CubicBezierSegment
-                    Point1="144.222222222223,27.6666666666666"
-                    Point2="148.222222222223,27.6666666666666"
-                    Point3="148.222222222223,31.6666666666666" />
+                    Point1="117.222222222223,26.1111111111112"
+                    Point2="121.222222222223,26.1111111111112"
+                    Point3="121.222222222223,30.1111111111112" />
                   <mssgle:LineSegment
-                    End="148.222222222223,47.8333333333333" />
+                    End="121.222222222223,44.7222222222223" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -9624,9 +10125,9 @@ where [refTable].[StatusName] = ?</property>
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-426.805555555555,52.2222222222223"
+              EndConnector="-442.305555555555,52.2222222222223"
               Start="0,0"
-              End="-426.805555555555,44.7222222222223">
+              End="-442.305555555555,44.7222222222223">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
@@ -9637,13 +10138,13 @@ where [refTable].[StatusName] = ?</property>
                     Point2="0,17.9678068410463"
                     Point3="-4,17.9678068410463" />
                   <mssgle:LineSegment
-                    End="-422.805555555555,17.9678068410463" />
+                    End="-438.305555555555,17.9678068410463" />
                   <mssgle:CubicBezierSegment
-                    Point1="-422.805555555555,17.9678068410463"
-                    Point2="-426.805555555555,17.9678068410463"
-                    Point3="-426.805555555555,21.9678068410463" />
+                    Point1="-438.305555555555,17.9678068410463"
+                    Point2="-442.305555555555,17.9678068410463"
+                    Point3="-442.305555555555,21.9678068410463" />
                   <mssgle:LineSegment
-                    End="-426.805555555555,44.7222222222223" />
+                    End="-442.305555555555,44.7222222222223" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -9658,26 +10159,26 @@ where [refTable].[StatusName] = ?</property>
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="589.08333333333,60.8888888888883"
+              EndConnector="531.08333333333,53.2222222222223"
               Start="0,0"
-              End="589.08333333333,53.3888888888883">
+              End="531.08333333333,45.7222222222223">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,16.9496981891346" />
+                    End="0,14.3118712273642" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,16.9496981891346"
-                    Point2="0,20.9496981891346"
-                    Point3="4,20.9496981891346" />
+                    Point1="0,14.3118712273642"
+                    Point2="0,18.3118712273642"
+                    Point3="4,18.3118712273642" />
                   <mssgle:LineSegment
-                    End="585.08333333333,20.9496981891346" />
+                    End="527.08333333333,18.3118712273642" />
                   <mssgle:CubicBezierSegment
-                    Point1="585.08333333333,20.9496981891346"
-                    Point2="589.08333333333,20.9496981891346"
-                    Point3="589.08333333333,24.9496981891346" />
+                    Point1="527.08333333333,18.3118712273642"
+                    Point2="531.08333333333,18.3118712273642"
+                    Point3="531.08333333333,22.3118712273642" />
                   <mssgle:LineSegment
-                    End="589.08333333333,53.3888888888883" />
+                    End="531.08333333333,45.7222222222223" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -9729,7 +10230,9 @@ where [refTable].[StatusName] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -10372,14 +10875,6 @@ where [refTable].[StatusName] = ?</property>
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="166,42"
-          Id="Package\SEQ Complex dimensions\DFT Tme\OLE DB Command"
-          TopLeft="229,209.5" />
-        <NodeLayout
-          Size="163,42"
-          Id="Package\SEQ Complex dimensions\DFT Tme\Insert Destination"
-          TopLeft="5.50000000000006,209.5" />
-        <NodeLayout
           Size="146,42"
           Id="Package\SEQ Complex dimensions\DFT Tme\STG GetTimes"
           TopLeft="239,5.5" />
@@ -10406,11 +10901,13 @@ where [refTable].[StatusName] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <NodeLayout
+          Size="163,42"
+          Id="Package\SEQ Complex dimensions\DFT Tme\Insert Destination"
+          TopLeft="5.50000000000006,209.5" />
         <EdgeLayout
           Id="Package\SEQ Complex dimensions\DFT Tme.Paths[New Output]"
           TopLeft="289.333333333333,149.5">
@@ -10447,6 +10944,10 @@ where [refTable].[StatusName] = ?</property>
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <NodeLayout
+          Size="166,42"
+          Id="Package\SEQ Complex dimensions\DFT Tme\OLE DB Command"
+          TopLeft="229,209.5" />
         <EdgeLayout
           Id="Package\SEQ Complex dimensions\DFT Tme.Paths[Changing Attribute Updates Output]"
           TopLeft="334.666666666667,149.5">
@@ -10506,25 +11007,25 @@ where [refTable].[StatusName] = ?</property>
   &lt;TableName&gt;[DWH].[DimTime]&lt;/TableName&gt;
   &lt;InputToColumnsCollection&gt;
     &lt;InputColumnToDBColumn&gt;
-      &lt;IdentificationString&gt;OLE DB Source.Outputs[OLE DB Source Output].Columns[time]&lt;/IdentificationString&gt;
+      &lt;IdentificationString&gt;STG GetTimes.Outputs[OLE DB Source Output].Columns[time]&lt;/IdentificationString&gt;
       &lt;ColumnName&gt;Time&lt;/ColumnName&gt;
       &lt;KeyType&gt;None&lt;/KeyType&gt;
       &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
     &lt;/InputColumnToDBColumn&gt;
     &lt;InputColumnToDBColumn&gt;
-      &lt;IdentificationString&gt;OLE DB Source.Outputs[OLE DB Source Output].Columns[LocalTimeHrText]&lt;/IdentificationString&gt;
+      &lt;IdentificationString&gt;STG GetTimes.Outputs[OLE DB Source Output].Columns[LocalTimeHrText]&lt;/IdentificationString&gt;
       &lt;ColumnName&gt;TimeHourText&lt;/ColumnName&gt;
       &lt;KeyType&gt;None&lt;/KeyType&gt;
       &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
     &lt;/InputColumnToDBColumn&gt;
     &lt;InputColumnToDBColumn&gt;
-      &lt;IdentificationString&gt;OLE DB Source.Outputs[OLE DB Source Output].Columns[TimeID]&lt;/IdentificationString&gt;
+      &lt;IdentificationString&gt;STG GetTimes.Outputs[OLE DB Source Output].Columns[TimeID]&lt;/IdentificationString&gt;
       &lt;ColumnName&gt;TimeID&lt;/ColumnName&gt;
       &lt;KeyType&gt;BusinessKey&lt;/KeyType&gt;
       &lt;ChangeType&gt;None&lt;/ChangeType&gt;
     &lt;/InputColumnToDBColumn&gt;
     &lt;InputColumnToDBColumn&gt;
-      &lt;IdentificationString&gt;OLE DB Source.Outputs[OLE DB Source Output].Columns[LocalTimeMinText]&lt;/IdentificationString&gt;
+      &lt;IdentificationString&gt;STG GetTimes.Outputs[OLE DB Source Output].Columns[LocalTimeMinText]&lt;/IdentificationString&gt;
       &lt;ColumnName&gt;TimeMinuteText&lt;/ColumnName&gt;
       &lt;KeyType&gt;None&lt;/KeyType&gt;
       &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
@@ -10535,7 +11036,7 @@ where [refTable].[StatusName] = ?</property>
     &lt;anyType xsi:type="xsd:string"&gt;OLE DB Command&lt;/anyType&gt;
   &lt;/GeneratedComponentsIdentificationStrings&gt;
   &lt;FailFixedAttribute&gt;false&lt;/FailFixedAttribute&gt;
-  &lt;FailChangeAttribute&gt;true&lt;/FailChangeAttribute&gt;
+  &lt;FailChangeAttribute&gt;false&lt;/FailChangeAttribute&gt;
   &lt;UseStartEndDate&gt;false&lt;/UseStartEndDate&gt;
   &lt;CurrentIndicatorColumn /&gt;
   &lt;InferredIndicatorColumn /&gt;
@@ -11149,7 +11650,9 @@ where [refTable].[StatusName] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -11180,7 +11683,7 @@ where [refTable].[StatusName] = ?</property>
           Text="Only a status name =&gt; can't use SCD wizard"
           ParentId="Package\SEQ Simple Dimensions\DFT Status"
           FontInfo="{assembly:Null}"
-          Size="273,40"
+          Size="273,NaN"
           Id="1aae7ff4-55e4-4ab8-898c-e978c770a0ce"
           TopLeft="233.5,11.5" />
       </GraphLayout>
@@ -11418,112 +11921,32 @@ where [refTable].[StatusName] = ?</property>
     </Properties>
   </PipelineComponentMetadata>
   <TaskHost
-    design-time-name="Package\SEQ Simple Dimensions\DFT Trader">
+    design-time-name="Package\SEQ Complex dimensions\DFT Trader">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="166,42"
-          Id="Package\SEQ Simple Dimensions\DFT Trader\OLE DB Command"
-          TopLeft="229,209.5" />
+          Size="228,42"
+          Id="Package\SEQ Complex dimensions\DFT Trader\SRC MDM Trader"
+          TopLeft="261,5.5" />
         <NodeLayout
-          Size="159,42"
-          Id="Package\SEQ Simple Dimensions\DFT Trader\SRC MDM Trader"
-          TopLeft="232.5,5.5" />
-        <NodeLayout
-          Size="179,42"
-          Id="Package\SEQ Simple Dimensions\DFT Trader\SCD DWH DimTrader"
-          TopLeft="222.5,107.5" />
-        <NodeLayout
-          Size="163,42"
-          Id="Package\SEQ Simple Dimensions\DFT Trader\Insert Destination"
-          TopLeft="5.50000000000006,209.5" />
+          Size="228,42"
+          Id="Package\SEQ Complex dimensions\DFT Trader\LKP DWH DimTrader"
+          TopLeft="261,89" />
         <EdgeLayout
-          Id="Package\SEQ Simple Dimensions\DFT Trader.Paths[New Output]"
-          TopLeft="283.5,149.5">
+          Id="Package\SEQ Complex dimensions\DFT Trader.Paths[OLE DB Source Output]"
+          TopLeft="375,47.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-196.5,60"
+              EndConnector="0,41.5"
               Start="0,0"
-              End="-196.5,52.5">
+              End="0,34">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,20.3189368770764" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,20.3189368770764"
-                    Point2="0,24.3189368770764"
-                    Point3="-4,24.3189368770764" />
-                  <mssgle:LineSegment
-                    End="-192.5,24.3189368770764" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-192.5,24.3189368770764"
-                    Point2="-196.5,24.3189368770764"
-                    Point3="-196.5,28.3189368770764" />
-                  <mssgle:LineSegment
-                    End="-196.5,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-125.34138671875,29.3189368770764,54.1827734375,11.43359375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\SEQ Simple Dimensions\DFT Trader.Paths[Changing Attribute Updates Output]"
-          TopLeft="340.5,149.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-28.5,60"
-              Start="0,0"
-              End="-28.5,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,20.3189368770764" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,20.3189368770764"
-                    Point2="0,24.3189368770764"
-                    Point3="-4,24.3189368770764" />
-                  <mssgle:LineSegment
-                    End="-24.5,24.3189368770764" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-24.5,24.3189368770764"
-                    Point2="-28.5,24.3189368770764"
-                    Point3="-28.5,28.3189368770764" />
-                  <mssgle:LineSegment
-                    End="-28.5,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-92.78390625,29.3189368770764,157.0678125,11.6630859375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\SEQ Simple Dimensions\DFT Trader.Paths[OLE DB Source Output]"
-          TopLeft="312,47.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
+                    End="0,34" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -11532,11 +11955,253 @@ where [refTable].[StatusName] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <NodeLayout
+          Size="228,42"
+          Id="Package\SEQ Complex dimensions\DFT Trader\CSPL DimTrader new"
+          TopLeft="261,180" />
+        <EdgeLayout
+          Id="Package\SEQ Complex dimensions\DFT Trader.Paths[Lookup Match Output]"
+          TopLeft="375,131">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,49"
+              Start="0,0"
+              End="0,41.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,41.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,14.9453125,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="228,42"
+          Id="Package\SEQ Complex dimensions\DFT Trader\DST DWH DimTrader"
+          TopLeft="9,500" />
+        <NodeLayout
+          Size="228,42"
+          Id="Package\SEQ Complex dimensions\DFT Trader\DER DimTrader Not Inferred"
+          TopLeft="9,371" />
+        <EdgeLayout
+          Id="Package\SEQ Complex dimensions\DFT Trader.Paths[New Trader]"
+          TopLeft="338.333333333333,222">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-215.333333333333,149"
+              Start="0,0"
+              End="-215.333333333333,141.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,56.2229965156794" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,56.2229965156794"
+                    Point2="0,60.2229965156794"
+                    Point3="-4,60.2229965156794" />
+                  <mssgle:LineSegment
+                    End="-211.333333333333,60.2229965156794" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-211.333333333333,60.2229965156794"
+                    Point2="-215.333333333333,60.2229965156794"
+                    Point3="-215.333333333333,64.2229965156794" />
+                  <mssgle:LineSegment
+                    End="-215.333333333333,141.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-134.055358072917,65.2229965156794,52.7773828125,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ Complex dimensions\DFT Trader.Paths[Derived Column Output]"
+          TopLeft="123,413">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,87"
+              Start="0,0"
+              End="0,79.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,79.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="228,42"
+          Id="Package\SEQ Complex dimensions\DFT Trader\CMD Update Infered DimTrader"
+          TopLeft="290,500" />
+        <NodeLayout
+          Size="228,42"
+          Id="Package\SEQ Complex dimensions\DFT Trader\CMD Update DimTrader"
+          TopLeft="570,500" />
+        <NodeLayout
+          Size="130,42"
+          Id="Package\SEQ Complex dimensions\DFT Trader\Row Count"
+          TopLeft="795,375" />
+        <NodeLayout
+          Size="191,42"
+          Id="Package\SEQ Complex dimensions\DFT Trader\CSPL DimTrader update"
+          TopLeft="448,376" />
+        <EdgeLayout
+          Id="Package\SEQ Complex dimensions\DFT Trader.Paths[Existing]"
+          TopLeft="411.666666666667,222">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="131.833333333333,154"
+              Start="0,0"
+              End="131.833333333333,146.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,58.2439024390244" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,58.2439024390244"
+                    Point2="0,62.2439024390244"
+                    Point3="4,62.2439024390244" />
+                  <mssgle:LineSegment
+                    End="127.833333333333,62.2439024390244" />
+                  <mssgle:CubicBezierSegment
+                    Point1="127.833333333333,62.2439024390244"
+                    Point2="131.833333333333,62.2439024390244"
+                    Point3="131.833333333333,66.2439024390244" />
+                  <mssgle:LineSegment
+                    End="131.833333333333,146.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="48.5936783854167,67.2439024390244,34.6459765625,11.384765625"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ Complex dimensions\DFT Trader.Paths[Existing inferred]"
+          TopLeft="513,418">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-109,82"
+              Start="0,0"
+              End="-109,74.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,29.208722741433" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,29.208722741433"
+                    Point2="0,33.208722741433"
+                    Point3="-4,33.208722741433" />
+                  <mssgle:LineSegment
+                    End="-105,33.208722741433" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-105,33.208722741433"
+                    Point2="-109,33.208722741433"
+                    Point3="-109,37.208722741433" />
+                  <mssgle:LineSegment
+                    End="-109,74.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-90.53798828125,38.208722741433,72.0759765625,11.7119140625"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ Complex dimensions\DFT Trader.Paths[Trader type changed]"
+          TopLeft="574,418">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="110,82"
+              Start="0,0"
+              End="110,74.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,29.208722741433" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,29.208722741433"
+                    Point2="0,33.208722741433"
+                    Point3="4,33.208722741433" />
+                  <mssgle:LineSegment
+                    End="106,33.208722741433" />
+                  <mssgle:CubicBezierSegment
+                    Point1="106,33.208722741433"
+                    Point2="110,33.208722741433"
+                    Point3="110,37.208722741433" />
+                  <mssgle:LineSegment
+                    End="110,74.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="8.43591796875,38.208722741433,93.1281640625,11.6630859375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ Complex dimensions\DFT Trader.Paths[Existing with no change]"
+          TopLeft="639,396.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="156,0"
+              Start="0,0"
+              End="148.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="148.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="21.30365234375,5,105.8926953125,11.6630859375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\SEQ Simple Dimensions\DFT Trader\SRC MDM Trader">
+    design-time-name="Package\SEQ Complex dimensions\DFT Trader\SRC MDM Trader">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -11545,55 +12210,6 @@ where [refTable].[StatusName] = ?</property>
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\SEQ Simple Dimensions\DFT Trader\SCD DWH DimTrader">
-    <Properties>
-      <Property>
-        <Name>SCDMetadata</Name>
-        <Value
-          type="q2:string">&lt;?xml version="1.0" encoding="utf-16"?&gt;
-&lt;SCDWizardMetadata xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
-  &lt;ConnectionID&gt;{0CBC2C04-C137-495F-AF7C-FA5DE465FED0}&lt;/ConnectionID&gt;
-  &lt;TableName&gt;[DWH].[DimTrader]&lt;/TableName&gt;
-  &lt;InputToColumnsCollection&gt;
-    &lt;InputColumnToDBColumn&gt;
-      &lt;IdentificationString&gt;OLE DB Source.Outputs[OLE DB Source Output].Columns[BrokerCode]&lt;/IdentificationString&gt;
-      &lt;ColumnName&gt;BrokerCode&lt;/ColumnName&gt;
-      &lt;KeyType&gt;BusinessKey&lt;/KeyType&gt;
-      &lt;ChangeType&gt;None&lt;/ChangeType&gt;
-    &lt;/InputColumnToDBColumn&gt;
-    &lt;InputColumnToDBColumn&gt;
-      &lt;IdentificationString&gt;OLE DB Source.Outputs[OLE DB Source Output].Columns[TraderCode]&lt;/IdentificationString&gt;
-      &lt;ColumnName&gt;TraderCode&lt;/ColumnName&gt;
-      &lt;KeyType&gt;BusinessKey&lt;/KeyType&gt;
-      &lt;ChangeType&gt;None&lt;/ChangeType&gt;
-    &lt;/InputColumnToDBColumn&gt;
-    &lt;InputColumnToDBColumn&gt;
-      &lt;IdentificationString&gt;OLE DB Source.Outputs[OLE DB Source Output].Columns[TraderType]&lt;/IdentificationString&gt;
-      &lt;ColumnName&gt;TraderType&lt;/ColumnName&gt;
-      &lt;KeyType&gt;None&lt;/KeyType&gt;
-      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
-    &lt;/InputColumnToDBColumn&gt;
-  &lt;/InputToColumnsCollection&gt;
-  &lt;GeneratedComponentsIdentificationStrings&gt;
-    &lt;anyType xsi:type="xsd:string"&gt;Insert Destination&lt;/anyType&gt;
-    &lt;anyType xsi:type="xsd:string"&gt;OLE DB Command&lt;/anyType&gt;
-  &lt;/GeneratedComponentsIdentificationStrings&gt;
-  &lt;FailFixedAttribute&gt;false&lt;/FailFixedAttribute&gt;
-  &lt;FailChangeAttribute&gt;true&lt;/FailChangeAttribute&gt;
-  &lt;UseStartEndDate&gt;false&lt;/UseStartEndDate&gt;
-  &lt;CurrentIndicatorColumn /&gt;
-  &lt;InferredIndicatorColumn /&gt;
-  &lt;ValueCurrent /&gt;
-  &lt;ValueExpired /&gt;
-  &lt;StartDateColumn /&gt;
-  &lt;EndDateColumn /&gt;
-  &lt;DateVariable /&gt;
-  &lt;EnableInferredSupport&gt;false&lt;/EnableInferredSupport&gt;
-&lt;/SCDWizardMetadata&gt;</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
@@ -11652,6 +12268,42 @@ where [refTable].[StatusName] = ?</property>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\SEQ Simple Report Helpers\DFT Equity Feee Band\SRC MDM Equity Fee Band">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\SEQ Complex dimensions\DFT Trader\LKP DWH DimTrader">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[DWH].[DimTrader]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\SEQ Complex dimensions\DFT Trader\DST DWH DimTrader">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>

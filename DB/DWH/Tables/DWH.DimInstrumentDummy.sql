@@ -1,6 +1,6 @@
 CREATE TABLE [DWH].[DimInstrumentDummy]
 (
-[InstrumentID] [int] NOT NULL IDENTITY(1, 1),
+[InstrumentID] [int] NOT NULL IDENTITY(99, 1),
 [ISIN] [varchar] (12) COLLATE Latin1_General_CI_AS NOT NULL,
 [InstrumentType] [varchar] (12) COLLATE Latin1_General_CI_AS NULL
 ) ON [PRIMARY]

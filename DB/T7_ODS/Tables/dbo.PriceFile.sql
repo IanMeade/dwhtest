@@ -1,0 +1,19 @@
+CREATE TABLE [dbo].[PriceFile]
+(
+[FileID] [int] NOT NULL,
+[ISIN] [varchar] (12) COLLATE Latin1_General_CI_AS NOT NULL,
+[CURRENCY] [varchar] (3) COLLATE Latin1_General_CI_AS NULL,
+[PRICE_TIMESTAMP] [datetime2] NOT NULL,
+[PRICE_TIMESTAMP_NO] [int] NULL,
+[MOD_TIMESTAMP] [datetime2] NULL,
+[PRICE_DATE] [date] NULL,
+[MARKET_PRICE_TYPE] [varchar] (1) COLLATE Latin1_General_CI_AS NULL,
+[BEST_BID_PRICE] [numeric] (19, 6) NULL,
+[BEST_ASK_PRICE] [numeric] (19, 6) NULL,
+[CLOSING_AUCT_BID_PRICE] [numeric] (19, 6) NULL,
+[CLOSING_AUCT_ASK_PRICE] [numeric] (19, 6) NULL,
+[INSERT_DATE] [date] NULL
+) ON [PRIMARY]
+GO
+ALTER TABLE [dbo].[PriceFile] ADD CONSTRAINT [PK_PriceFile] PRIMARY KEY CLUSTERED  ([FileID], [ISIN], [PRICE_TIMESTAMP]) ON [PRIMARY]
+GO

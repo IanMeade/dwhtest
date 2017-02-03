@@ -34,7 +34,7 @@ BEGIN
 	WHERE
 			ProcessFileYN = 'Y'	
 		AND
-			FileTag IN ( 'TradeFile', 'PriceFile' )
+			FileTag IN ( 'TxSaft', 'PriceFile' )
 		AND
 			LEFT(REPLACE(FileName,FilePrefix,''),8) <> CONVERT(CHAR(8),GETDATE(),112)
 	

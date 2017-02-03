@@ -48,7 +48,7 @@ BEGIN
 						FROM
 							dbo.FileList
 						WHERE
-							FileTag =  'TradeFile'
+							FileTag =  'TxSaft'
 					) AS T
 					FULL OUTER JOIN
 					(

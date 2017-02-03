@@ -11,8 +11,8 @@
   DTS:LocaleID="6153"
   DTS:ObjectName="PckPreStageFiles"
   DTS:PackageType="5"
-  DTS:VersionBuild="41"
-  DTS:VersionGUID="{8BB8A154-457E-4800-9BC1-7E467FB3E961}">
+  DTS:VersionBuild="47"
+  DTS:VersionGUID="{612D6DCC-1D1E-4719-BCA3-809072633E25}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -129,6 +129,7 @@
           DTS:refId="Package\SEQ File name validation\SQL File Validation - SAFT Date"
           DTS:CreationName="Microsoft.ExecuteSQLTask"
           DTS:Description="Execute SQL Task"
+          DTS:Disabled="True"
           DTS:DTSID="{D61B9F50-53AA-4753-B9E6-3D0446C50CE4}"
           DTS:ExecutableType="Microsoft.ExecuteSQLTask"
           DTS:LocaleID="-1"
@@ -378,8 +379,8 @@
               <DTS:ForEachVariableMappings>
                 <DTS:ForEachVariableMapping
                   DTS:CreationName=""
-                  DTS:DTSID="{3A73A2E0-1541-42BC-9FCC-3185E166C8EA}"
-                  DTS:ObjectName="{3A73A2E0-1541-42BC-9FCC-3185E166C8EA}"
+                  DTS:DTSID="{C6959D63-F8B1-4CE2-91FB-8CE059228B60}"
+                  DTS:ObjectName="{C6959D63-F8B1-4CE2-91FB-8CE059228B60}"
                   DTS:ValueIndex="0"
                   DTS:VariableName="User::FileName" />
               </DTS:ForEachVariableMappings>
@@ -517,7 +518,7 @@
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{0CBC2C04-C137-495F-AF7C-FA5DE465FED0}"
-              SQLTask:SqlStatementSource="SELECT&#xA;&#x9;ISNULL(MAX(SaftFileLetter),' ') AS SaftFileLetter&#xA;FROM&#xA;&#x9;[DWH].[DimFile]&#xA;WHERE&#xA;&#x9;FileTypeTag IN ( 'TradeFile', 'PriceFile' )&#xA;AND&#xA;&#x9;CAST([FileProcessedTime] AS DATE) = CAST(GETDATE() AS DATE)&#xA;"
+              SQLTask:SqlStatementSource="SELECT&#xA;&#x9;ISNULL(MAX(SaftFileLetter),' ') AS SaftFileLetter&#xA;FROM&#xA;&#x9;[DWH].[DimFile]&#xA;WHERE&#xA;&#x9;FileTypeTag IN ( 'TxSaft', 'PriceFile' )&#xA;AND&#xA;&#x9;CAST([FileProcessedTime] AS DATE) = CAST(GETDATE() AS DATE)&#xA;"
               SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ResultBinding
                 SQLTask:ResultName="SaftFileLetter"
@@ -704,10 +705,11 @@
               DTS:LocaleID="-1"
               DTS:ObjectName="FSYS Move bad files"
               DTS:TaskContact="File System Task;Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-              DTS:ThreadHint="1">
+              DTS:ThreadHint="0">
               <DTS:Variables />
               <DTS:ObjectData>
                 <FileSystemData
+                  TaskOperationType="MoveFile"
                   TaskOverwriteDestFile="True"
                   TaskSourcePath="User::SourceFile"
                   TaskIsSourceVariable="True"
@@ -758,12 +760,12 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="SQL Bad file names"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="1">
+          DTS:ThreadHint="0">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{7AE745A6-BA4C-482E-9695-63779ECE70D4}"
-              SQLTask:SqlStatementSource="SELECT&#xA;&#x9;FL.SourceFolder + FL.FileName AS SRC,&#xA;&#x9;FL.RejectFolder + FL.FileName AS DST,&#xA;&#x9;FL.FileName,&#xA;&#x9;FVA.FileTag, &#xA;&#x9;FVA.AlertTag, &#xA;&#x9;FVA.Reason, &#xA;&#x9;FVA.Action&#xA;FROM&#xA;&#x9;&#x9;dbo.FileList FL&#xA;&#x9;INNER JOIN&#xA;&#x9;&#x9;dbo.FileValidationAlert FVA&#xA;&#x9;ON &#xA;&#x9;&#x9;FL.FileName = FVA.FileName&#xA;&#x9;AND &#xA;&#x9;&#x9;FL.FileTag = FVA.FileTag"
+              SQLTask:SqlStatementSource="SELECT&#xA;&#x9;FL.SourceFolder + FL.FileName AS SRC,&#xA;&#x9;FL.RejectFolder AS DST,&#xA;&#x9;FL.FileName,&#xA;&#x9;FVA.FileTag, &#xA;&#x9;FVA.AlertTag, &#xA;&#x9;FVA.Reason, &#xA;&#x9;FVA.Action&#xA;FROM&#xA;&#x9;&#x9;dbo.FileList FL&#xA;&#x9;INNER JOIN&#xA;&#x9;&#x9;dbo.FileValidationAlert FVA&#xA;&#x9;ON &#xA;&#x9;&#x9;FL.FileName = FVA.FileName&#xA;&#x9;AND &#xA;&#x9;&#x9;FL.FileTag = FVA.FileTag&#xA;&#xA;"
               SQLTask:ResultType="ResultSetType_Rowset" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ResultBinding
                 SQLTask:ResultName="0"
@@ -904,7 +906,7 @@
               DTS:LocaleID="-1"
               DTS:ObjectName="EXP File access message"
               DTS:TaskContact="Expression Task;Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-              DTS:ThreadHint="0">
+              DTS:ThreadHint="1">
               <DTS:Variables />
               <DTS:ObjectData>
                 <ExpressionTask
@@ -920,7 +922,7 @@
               DTS:LocaleID="-1"
               DTS:ObjectName="FSYS Move good files"
               DTS:TaskContact="File System Task;Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-              DTS:ThreadHint="0">
+              DTS:ThreadHint="1">
               <DTS:Variables />
               <DTS:EventHandlers>
                 <DTS:EventHandler
@@ -947,6 +949,7 @@
               </DTS:EventHandlers>
               <DTS:ObjectData>
                 <FileSystemData
+                  TaskOperationType="MoveFile"
                   TaskOverwriteDestFile="True"
                   TaskSourcePath="User::SourceFile"
                   TaskIsSourceVariable="True"
@@ -998,12 +1001,12 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="SQL Good file name"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{7AE745A6-BA4C-482E-9695-63779ECE70D4}"
-              SQLTask:SqlStatementSource="SELECT&#xA;&#x9;[SourceFolder] + [FileName] AS Src,&#xA;&#x9;[ProcessFolder] + [FileName] AS Prc,&#xA;&#x9;[ArchiveFolder] + [FileName] AS Arc&#xA;FROM&#xA;&#x9;dbo.FileList&#xA;WHERE&#xA;&#x9;ProcessFileYN = 'Y'&#xA;"
+              SQLTask:SqlStatementSource="SELECT&#xA;&#x9;[SourceFolder] + [FileName] AS Src,&#xA;&#x9;[ProcessFolder] AS Prc&#xA;FROM&#xA;&#x9;dbo.FileList&#xA;WHERE&#xA;&#x9;ProcessFileYN = 'Y'&#xA;"
               SQLTask:ResultType="ResultSetType_Rowset" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ResultBinding
                 SQLTask:ResultName="0"

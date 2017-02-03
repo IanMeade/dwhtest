@@ -50,7 +50,7 @@ BEGIN
 	FROM
 		dbo.FileList
 	WHERE
-		FileTag IN ( 'TradeFile', 'PriceFile' )
+		FileTag IN ( 'TxSaft', 'PriceFile' )
 	AND
 		SUBSTRING(REPLACE(FileName,FilePrefix,''),9,1) <= @MostRecentFileToday
 	AND

@@ -1,9 +1,9 @@
 CREATE TABLE [dbo].[TxSaft]
 (
-[FileID] [int] NOT NULL,
 [TxSfaftID] [int] NOT NULL IDENTITY(1, 1),
+[FileID] [int] NOT NULL,
 [A_MOD_TIMESTAMP] [datetime2] NOT NULL,
-[A_MOD_TIMESTAMP_GMT] AS ((CONVERT([datetimeoffset],[A_MOD_TIMESTAMP]) AT TIME ZONE 'GMT Standard Time')),
+[A_MOD_TIMESTAMP_GMT] [datetimeoffset] NULL,
 [A_TRADE_LINK_NO] [int] NOT NULL,
 [A_SUB_TRANSACTION_NO] [int] NOT NULL,
 [A_BUY_SELL_FLAG] [varchar] (1) COLLATE Latin1_General_CI_AS NOT NULL,
@@ -11,7 +11,7 @@ CREATE TABLE [dbo].[TxSaft]
 [A_TRADE_TYPE] [varchar] (1) COLLATE Latin1_General_CI_AS NOT NULL,
 [A_TRADE_DATE] [datetime2] NOT NULL,
 [A_TRADE_TIMESTAMP] [datetime2] NOT NULL,
-[A_TRADE_TIMESTAMP_GMT] AS ((CONVERT([datetimeoffset],[A_TRADE_TIMESTAMP]) AT TIME ZONE 'GMT Standard Time')),
+[A_TRADE_TIMESTAMP_GMT] [datetimeoffset] NULL,
 [A_OTC_TRADE_TIME] [time] NOT NULL,
 [A_PRICE_CURRENCY] [varchar] (3) COLLATE Latin1_General_CI_AS NOT NULL,
 [A_MATCH_PRICE_X] [decimal] (19, 6) NOT NULL,
@@ -32,7 +32,7 @@ CREATE TABLE [dbo].[TxSaft]
 [A_OTC_TRADE_FLAG_3] [varchar] (3) COLLATE Latin1_General_CI_AS NOT NULL,
 [A_DEFERRED_IND] [varchar] (1) COLLATE Latin1_General_CI_AS NOT NULL,
 [A_IND_PUBLICATION_TIME] [datetime2] NULL,
-[A_IND_PUBLICATION_TIME_GMT] AS ((CONVERT([datetimeoffset],[A_IND_PUBLICATION_TIME]) AT TIME ZONE 'GMT Standard Time')),
+[A_IND_PUBLICATION_TIME_GMT] [datetimeoffset] NULL,
 [A_TRADER_ID] [varchar] (10) COLLATE Latin1_General_CI_AS NOT NULL,
 [A_BEST_BID_PRICE] [decimal] (19, 6) NOT NULL,
 [A_BEST_ASK_PRICE] [decimal] (19, 6) NOT NULL,
@@ -41,5 +41,7 @@ CREATE TABLE [dbo].[TxSaft]
 [A_TRADE_TIME_OCP] [datetime] NOT NULL
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[TxSaft] ADD CONSTRAINT [PK_TxSaft] PRIMARY KEY CLUSTERED  ([FileID], [TxSfaftID], [A_TRADE_LINK_NO]) ON [PRIMARY]
+ALTER TABLE [dbo].[TxSaft] ADD CONSTRAINT [PK_TxSaft_1] PRIMARY KEY CLUSTERED  ([FileID], [TxSfaftID]) ON [PRIMARY]
+GO
+CREATE NONCLUSTERED INDEX [IX_TxSaft] ON [dbo].[TxSaft] ([A_TRADE_DATE], [A_TRADE_LINK_NO], [A_BUY_SELL_FLAG], [TxSfaftID]) ON [PRIMARY]
 GO
