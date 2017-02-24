@@ -11,16 +11,19 @@
   DTS:LocaleID="6153"
   DTS:ObjectName="PckSaftPriceStage"
   DTS:PackageType="5"
-  DTS:VersionBuild="34"
-  DTS:VersionGUID="{D432C713-FD1A-4873-BBF2-730831D54746}">
+  DTS:VersionBuild="38"
+  DTS:VersionGUID="{F6DD9DBE-F481-46C2-99A9-98678C50A46A}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
     <DTS:ConnectionManager
       DTS:refId="Package.ConnectionManagers[Price file]"
       DTS:CreationName="FLATFILE"
+      DTS:DelayValidation="True"
       DTS:DTSID="{9D628555-51D9-449B-BEC3-3930A23662A0}"
       DTS:ObjectName="Price file">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[User::ProcessFolder] +   @[User::FileName]</DTS:PropertyExpression>
       <DTS:ObjectData>
         <DTS:ConnectionManager
           DTS:Format="Delimited"
@@ -28,8 +31,7 @@
           DTS:HeaderRowDelimiter="_x000D__x000A_"
           DTS:RowDelimiter=""
           DTS:TextQualifier="_x003C_none_x003E_"
-          DTS:CodePage="1252"
-          DTS:ConnectionString="C:\DWH\Files\Process\txprice20170103a_MockUp_NewFormat.dat">
+          DTS:CodePage="1252">
           <DTS:FlatFileColumns>
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -1664,7 +1666,7 @@
               DTS:LocaleID="-1"
               DTS:ObjectName="FSYS Move bad files"
               DTS:TaskContact="File System Task;Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-              DTS:ThreadHint="2">
+              DTS:ThreadHint="0">
               <DTS:Variables />
               <DTS:ObjectData>
                 <FileSystemData
@@ -1719,7 +1721,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="SQL Bad file names"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="2">
+          DTS:ThreadHint="0">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -3311,7 +3313,7 @@ FROM
               DTS:LocaleID="-1"
               DTS:ObjectName="FSYS Move good files"
               DTS:TaskContact="File System Task;Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-              DTS:ThreadHint="0">
+              DTS:ThreadHint="1">
               <DTS:Variables />
               <DTS:EventHandlers>
                 <DTS:EventHandler
@@ -3355,7 +3357,7 @@ FROM
               DTS:LocaleID="-1"
               DTS:ObjectName="SQL T7 ODS PriceFIle"
               DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-              DTS:ThreadHint="1">
+              DTS:ThreadHint="2">
               <DTS:Variables />
               <DTS:ObjectData>
                 <SQLTask:SqlTaskData
@@ -3407,7 +3409,7 @@ FROM
           DTS:LocaleID="-1"
           DTS:ObjectName="SQL Good file name"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -4061,9 +4063,7 @@ FROM
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -4085,9 +4085,7 @@ FROM
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -4109,9 +4107,7 @@ FROM
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -4149,39 +4145,25 @@ FROM
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="187,42"
-          Id="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\SRC STG FileList"
-          TopLeft="232,5.49999999999989" />
-        <NodeLayout
-          Size="187,42"
-          Id="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\DER Etl Version"
-          TopLeft="232,107.5" />
+          Size="172,42"
+          Id="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\Insert Destination 1"
+          TopLeft="5.5,311.5" />
         <NodeLayout
           Size="187,42"
           Id="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\SCD T7 ODS File Table"
           TopLeft="232,209.5" />
-        <EdgeLayout
-          Id="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table.Paths[Derived Column Output]"
-          TopLeft="325.5,149.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+        <NodeLayout
+          Size="187,42"
+          Id="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\SRC STG FileList"
+          TopLeft="232,5.49999999999989" />
+        <NodeLayout
+          Size="175,42"
+          Id="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\OLE DB Command 1"
+          TopLeft="238,311.5" />
+        <NodeLayout
+          Size="187,42"
+          Id="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\DER Etl Version"
+          TopLeft="232,107.5" />
         <EdgeLayout
           Id="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table.Paths[OLE DB Source Output]"
           TopLeft="325.5,47.4999999999999">
@@ -4201,13 +4183,11 @@ FROM
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="172,42"
-          Id="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\Insert Destination 1"
-          TopLeft="5.5,311.5" />
         <EdgeLayout
           Id="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table.Paths[New Output]"
           TopLeft="295.666666666667,251.5">
@@ -4244,10 +4224,30 @@ FROM
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="175,42"
-          Id="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\OLE DB Command 1"
-          TopLeft="238,311.5" />
+        <EdgeLayout
+          Id="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table.Paths[Derived Column Output]"
+          TopLeft="325.5,149.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table.Paths[Changing Attribute Updates Output]"
           TopLeft="355.333333333333,251.5">
@@ -4287,6 +4287,14 @@ FROM
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\SRC STG FileList">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\SCD T7 ODS File Table">
     <Properties>
@@ -4339,14 +4347,6 @@ FROM
   &lt;DateVariable /&gt;
   &lt;EnableInferredSupport&gt;false&lt;/EnableInferredSupport&gt;
 &lt;/SCDWizardMetadata&gt;</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\SRC STG FileList">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>

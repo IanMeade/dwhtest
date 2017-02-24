@@ -3,6 +3,8 @@ GO
 SET ANSI_NULLS ON
 GO
 
+
+
 CREATE VIEW [dbo].[TxSaft_Open] AS
 	/* 
 		TRADES IN THE ODS THAT ETL SHOPULD TRY TO PUT INTO DHW - MIGHT DUPLCIATES THAT WILL BE REMOVED BY ETL PIPELINE
@@ -39,30 +41,19 @@ CREATE VIEW [dbo].[TxSaft_Open] AS
 		A_BEST_ASK_PRICE AS OfferPrice,
 		A_TRADE_SIZE_X AS TradeVolume,
 		A_ORDER_MARKET_VALUE AS TradeTurnover,
-		FileID AS DwhFileID,
+		O.DwhFileID,
 		/* MINOR CHANGES */
 		IIF(A_DEFERRED_IND = 'Y' , 'Y', 'N' ) AS DelayedTradeYN
 	FROM
 			dbo.TxSaft O
+		INNER JOIN
+			dbo.[File] F
+		ON O.DwhFileID = F.DwhFileID
+
 
 	WHERE
-		/* APPLY FILTERS */
-
-		/* OPEN FILES ONLY */
-		EXISTS (
-					SELECT
-						*
-					FROM
-							dbo.[File] F
-						INNER JOIN
-							dbo.TxSaft TX
-						ON F.DwhFileID = TX.FileID
-					WHERE
-						F.DwhStatus NOT IN ( 'COMPLETE', 'REJECT' )
-					AND
-						O.FileID= TX.FileID
-			)
-		AND
+		F.DwhStatus NOT IN ( 'COMPLETE', 'REJECT' )
+	AND
 		/* BEST COPY OF TRADE */
 		/* NOTE / REMINDER - VIEWS ON TOP OF VIEWS ARE SOMEWHAT DANGEROUS */
 		EXISTS (
@@ -74,4 +65,6 @@ CREATE VIEW [dbo].[TxSaft_Open] AS
 						O.TxSfaftID = BT.TxSfaftID
 			)
 			
+
+
 GO

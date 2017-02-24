@@ -11,14 +11,15 @@
   DTS:LocaleID="6153"
   DTS:ObjectName="PckSaftTxSaftStage"
   DTS:PackageType="5"
-  DTS:VersionBuild="70"
-  DTS:VersionGUID="{C36040CF-4820-4131-91C9-EBF882E77214}">
+  DTS:VersionBuild="75"
+  DTS:VersionGUID="{EE2DD435-C3E7-4A6B-99F0-0E29713B76C2}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
     <DTS:ConnectionManager
       DTS:refId="Package.ConnectionManagers[TxSaft File]"
       DTS:CreationName="FLATFILE"
+      DTS:DelayValidation="True"
       DTS:Description="SAFT Trade File"
       DTS:DTSID="{71a075fb-e124-4215-a3d3-e64146646f04}"
       DTS:ObjectName="TxSaft File">
@@ -3142,6 +3143,28 @@
                           cachedName="DwhStatus"
                           externalMetadataColumnId="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[DwhStatus]"
                           lineageId="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\SRC STG FileList.Outputs[OLE DB Source Output].Columns[DwhStatus]" />
+                        <inputColumn
+                          refId="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\Insert Destination.Inputs[OLE DB Destination Input].Columns[SaftDate]"
+                          cachedDataType="dbDate"
+                          cachedName="SaftDate"
+                          externalMetadataColumnId="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[FileDate]"
+                          lineageId="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\SRC STG FileList.Outputs[OLE DB Source Output].Columns[SaftDate]" />
+                        <inputColumn
+                          refId="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\Insert Destination.Inputs[OLE DB Destination Input].Columns[SaftLetter]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="2"
+                          cachedName="SaftLetter"
+                          externalMetadataColumnId="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[FileLetter]"
+                          lineageId="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\SRC STG FileList.Outputs[OLE DB Source Output].Columns[SaftLetter]" />
+                        <inputColumn
+                          refId="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\Insert Destination.Inputs[OLE DB Destination Input].Columns[FileTag]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="20"
+                          cachedName="FileTag"
+                          externalMetadataColumnId="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[FileTag]"
+                          lineageId="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\SRC STG FileList.Outputs[OLE DB Source Output].Columns[FileTag]" />
                       </inputColumns>
                       <externalMetadataColumns
                         isUsed="True">
@@ -3172,6 +3195,22 @@
                           dataType="str"
                           length="50"
                           name="DwhStatus" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[FileDate]"
+                          dataType="dbDate"
+                          name="FileDate" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[FileLetter]"
+                          codePage="1252"
+                          dataType="str"
+                          length="2"
+                          name="FileLetter" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[FileTag]"
+                          codePage="1252"
+                          dataType="str"
+                          length="20"
+                          name="FileTag" />
                       </externalMetadataColumns>
                     </input>
                   </inputs>
@@ -3218,7 +3257,7 @@
                       description="The SQL command to be executed."
                       expressionType="Notify"
                       name="SqlCommand"
-                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE [dbo].[File] SET [DwhStatus] = ?,[EtlVersion] = ?,[FileName] = ? WHERE [DwhFileID] = ?</property>
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE [dbo].[File] SET [DwhStatus] = ?,[EtlVersion] = ?,[FileDate] = ?,[FileLetter] = ?,[FileName] = ?,[FileTag] = ? WHERE [DwhFileID] = ?</property>
                     <property
                       dataType="System.Int32"
                       description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -3244,7 +3283,7 @@
                           refId="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\OLE DB Command.Inputs[OLE DB Command Input].Columns[DwhFileID]"
                           cachedDataType="i4"
                           cachedName="DwhFileID"
-                          externalMetadataColumnId="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
+                          externalMetadataColumnId="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_6]"
                           lineageId="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\SRC STG FileList.Outputs[OLE DB Source Output].Columns[DwhFileID]" />
                         <inputColumn
                           refId="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\OLE DB Command.Inputs[OLE DB Command Input].Columns[DwhStatus]"
@@ -3263,13 +3302,35 @@
                           externalMetadataColumnId="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
                           lineageId="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\DER Etl Version.Outputs[Derived Column Output].Columns[EtlVersion]" />
                         <inputColumn
+                          refId="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\OLE DB Command.Inputs[OLE DB Command Input].Columns[SaftDate]"
+                          cachedDataType="dbDate"
+                          cachedName="SaftDate"
+                          externalMetadataColumnId="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                          lineageId="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\SRC STG FileList.Outputs[OLE DB Source Output].Columns[SaftDate]" />
+                        <inputColumn
+                          refId="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\OLE DB Command.Inputs[OLE DB Command Input].Columns[SaftLetter]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="2"
+                          cachedName="SaftLetter"
+                          externalMetadataColumnId="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
+                          lineageId="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\SRC STG FileList.Outputs[OLE DB Source Output].Columns[SaftLetter]" />
+                        <inputColumn
                           refId="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\OLE DB Command.Inputs[OLE DB Command Input].Columns[FileName]"
                           cachedCodepage="1252"
                           cachedDataType="str"
                           cachedLength="50"
                           cachedName="FileName"
-                          externalMetadataColumnId="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                          externalMetadataColumnId="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_4]"
                           lineageId="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\SRC STG FileList.Outputs[OLE DB Source Output].Columns[FileName]" />
+                        <inputColumn
+                          refId="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\OLE DB Command.Inputs[OLE DB Command Input].Columns[FileTag]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="20"
+                          cachedName="FileTag"
+                          externalMetadataColumnId="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_5]"
+                          lineageId="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\SRC STG FileList.Outputs[OLE DB Source Output].Columns[FileTag]" />
                       </inputColumns>
                       <externalMetadataColumns
                         isUsed="True">
@@ -3301,9 +3362,7 @@
                         </externalMetadataColumn>
                         <externalMetadataColumn
                           refId="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
-                          codePage="1252"
-                          dataType="str"
-                          length="50"
+                          dataType="dbDate"
                           name="Param_2">
                           <properties>
                             <property
@@ -3314,8 +3373,47 @@
                         </externalMetadataColumn>
                         <externalMetadataColumn
                           refId="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
-                          dataType="i4"
+                          codePage="1252"
+                          dataType="str"
+                          length="2"
                           name="Param_3">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                              name="DBParamInfoFlags">65</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_4]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Param_4">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                              name="DBParamInfoFlags">65</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_5]"
+                          codePage="1252"
+                          dataType="str"
+                          length="20"
+                          name="Param_5">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                              name="DBParamInfoFlags">65</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_6]"
+                          dataType="i4"
+                          name="Param_6">
                           <properties>
                             <property
                               dataType="System.Int32"
@@ -3370,7 +3468,7 @@
                       dataType="System.String"
                       description="Specifies the SELECT statement used to create a schema rowset."
                       name="SqlCommand"
-                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT [DwhFileID], [DwhStatus], [EtlVersion], [FileName] FROM [dbo].[File]</property>
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT [DwhFileID], [DwhStatus], [EtlVersion], [FileDate], [FileLetter], [FileName], [FileTag] FROM [dbo].[File]</property>
                     <property
                       dataType="System.String"
                       description="Specifies the WHERE clause in the SELECT statement that selects the current row among rows with identical business keys."
@@ -3462,6 +3560,34 @@
                           </properties>
                         </inputColumn>
                         <inputColumn
+                          refId="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\SCD T7 ODS File Table.Inputs[Slowly Changing Dimension Input].Columns[SaftDate]"
+                          cachedDataType="dbDate"
+                          cachedName="SaftDate"
+                          externalMetadataColumnId="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\SCD T7 ODS File Table.Inputs[Slowly Changing Dimension Input].ExternalColumns[FileDate]"
+                          lineageId="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\SRC STG FileList.Outputs[OLE DB Source Output].Columns[SaftDate]">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              name="ColumnType"
+                              typeConverter="ColumnType">2</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\SCD T7 ODS File Table.Inputs[Slowly Changing Dimension Input].Columns[SaftLetter]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="2"
+                          cachedName="SaftLetter"
+                          externalMetadataColumnId="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\SCD T7 ODS File Table.Inputs[Slowly Changing Dimension Input].ExternalColumns[FileLetter]"
+                          lineageId="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\SRC STG FileList.Outputs[OLE DB Source Output].Columns[SaftLetter]">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              name="ColumnType"
+                              typeConverter="ColumnType">2</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
                           refId="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\SCD T7 ODS File Table.Inputs[Slowly Changing Dimension Input].Columns[FileName]"
                           cachedCodepage="1252"
                           cachedDataType="str"
@@ -3469,6 +3595,21 @@
                           cachedName="FileName"
                           externalMetadataColumnId="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\SCD T7 ODS File Table.Inputs[Slowly Changing Dimension Input].ExternalColumns[FileName]"
                           lineageId="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\SRC STG FileList.Outputs[OLE DB Source Output].Columns[FileName]">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              name="ColumnType"
+                              typeConverter="ColumnType">2</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\SCD T7 ODS File Table.Inputs[Slowly Changing Dimension Input].Columns[FileTag]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="20"
+                          cachedName="FileTag"
+                          externalMetadataColumnId="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\SCD T7 ODS File Table.Inputs[Slowly Changing Dimension Input].ExternalColumns[FileTag]"
+                          lineageId="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\SRC STG FileList.Outputs[OLE DB Source Output].Columns[FileTag]">
                           <properties>
                             <property
                               dataType="System.Int32"
@@ -3496,11 +3637,27 @@
                           length="50"
                           name="EtlVersion" />
                         <externalMetadataColumn
+                          refId="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\SCD T7 ODS File Table.Inputs[Slowly Changing Dimension Input].ExternalColumns[FileDate]"
+                          dataType="dbDate"
+                          name="FileDate" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\SCD T7 ODS File Table.Inputs[Slowly Changing Dimension Input].ExternalColumns[FileLetter]"
+                          codePage="1252"
+                          dataType="str"
+                          length="2"
+                          name="FileLetter" />
+                        <externalMetadataColumn
                           refId="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\SCD T7 ODS File Table.Inputs[Slowly Changing Dimension Input].ExternalColumns[FileName]"
                           codePage="1252"
                           dataType="str"
                           length="50"
                           name="FileName" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\SCD T7 ODS File Table.Inputs[Slowly Changing Dimension Input].ExternalColumns[FileTag]"
+                          codePage="1252"
+                          dataType="str"
+                          length="20"
+                          name="FileTag" />
                       </externalMetadataColumns>
                     </input>
                   </inputs>
@@ -3583,7 +3740,10 @@
                       UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT
 	DwhFileID,
 	FileName,
-	'ODS' AS DwhStatus
+	'ODS' AS DwhStatus,
+	FileTag,
+	CONVERT(DATE,LEFT(REPLACE(FileName,FilePrefix,''),8)) AS SaftDate,
+	SaftLetter
 FROM
 	dbo.FileList
 WHERE
@@ -3656,6 +3816,37 @@ AND
                           lineageId="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\SRC STG FileList.Outputs[OLE DB Source Output].Columns[DwhStatus]"
                           name="DwhStatus"
                           truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\SRC STG FileList.Outputs[OLE DB Source Output].Columns[FileTag]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\SRC STG FileList.Outputs[OLE DB Source Output].ExternalColumns[FileTag]"
+                          length="20"
+                          lineageId="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\SRC STG FileList.Outputs[OLE DB Source Output].Columns[FileTag]"
+                          name="FileTag"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\SRC STG FileList.Outputs[OLE DB Source Output].Columns[SaftDate]"
+                          dataType="dbDate"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\SRC STG FileList.Outputs[OLE DB Source Output].ExternalColumns[SaftDate]"
+                          lineageId="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\SRC STG FileList.Outputs[OLE DB Source Output].Columns[SaftDate]"
+                          name="SaftDate"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\SRC STG FileList.Outputs[OLE DB Source Output].Columns[SaftLetter]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\SRC STG FileList.Outputs[OLE DB Source Output].ExternalColumns[SaftLetter]"
+                          length="2"
+                          lineageId="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\SRC STG FileList.Outputs[OLE DB Source Output].Columns[SaftLetter]"
+                          name="SaftLetter"
+                          truncationRowDisposition="FailComponent" />
                       </outputColumns>
                       <externalMetadataColumns
                         isUsed="True">
@@ -3675,6 +3866,22 @@ AND
                           dataType="str"
                           length="3"
                           name="DwhStatus" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\SRC STG FileList.Outputs[OLE DB Source Output].ExternalColumns[FileTag]"
+                          codePage="1252"
+                          dataType="str"
+                          length="20"
+                          name="FileTag" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\SRC STG FileList.Outputs[OLE DB Source Output].ExternalColumns[SaftDate]"
+                          dataType="dbDate"
+                          name="SaftDate" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\SRC STG FileList.Outputs[OLE DB Source Output].ExternalColumns[SaftLetter]"
+                          codePage="1252"
+                          dataType="str"
+                          length="2"
+                          name="SaftLetter" />
                       </externalMetadataColumns>
                     </output>
                     <output
@@ -3701,6 +3908,25 @@ AND
                           length="3"
                           lineageId="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\SRC STG FileList.Outputs[OLE DB Source Error Output].Columns[DwhStatus]"
                           name="DwhStatus" />
+                        <outputColumn
+                          refId="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\SRC STG FileList.Outputs[OLE DB Source Error Output].Columns[FileTag]"
+                          codePage="1252"
+                          dataType="str"
+                          length="20"
+                          lineageId="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\SRC STG FileList.Outputs[OLE DB Source Error Output].Columns[FileTag]"
+                          name="FileTag" />
+                        <outputColumn
+                          refId="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\SRC STG FileList.Outputs[OLE DB Source Error Output].Columns[SaftDate]"
+                          dataType="dbDate"
+                          lineageId="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\SRC STG FileList.Outputs[OLE DB Source Error Output].Columns[SaftDate]"
+                          name="SaftDate" />
+                        <outputColumn
+                          refId="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\SRC STG FileList.Outputs[OLE DB Source Error Output].Columns[SaftLetter]"
+                          codePage="1252"
+                          dataType="str"
+                          length="2"
+                          lineageId="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\SRC STG FileList.Outputs[OLE DB Source Error Output].Columns[SaftLetter]"
+                          name="SaftLetter" />
                         <outputColumn
                           refId="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\SRC STG FileList.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                           dataType="i4"
@@ -4091,12 +4317,6 @@ AND
                           externalMetadataColumnId="Package\SEQ Move Good Files to Archive\DFT T7 ODS TxSaft\DST T7ODS TxSaft.Inputs[OLE DB Destination Input].ExternalColumns[A_TRADE_TIME_OCP]"
                           lineageId="Package\SEQ Move Good Files to Archive\DFT T7 ODS TxSaft\SRC STG TxSaft.Outputs[OLE DB Source Output].Columns[A_TRADE_TIME_OCP]" />
                         <inputColumn
-                          refId="Package\SEQ Move Good Files to Archive\DFT T7 ODS TxSaft\DST T7ODS TxSaft.Inputs[OLE DB Destination Input].Columns[DwhFileID]"
-                          cachedDataType="i4"
-                          cachedName="DwhFileID"
-                          externalMetadataColumnId="Package\SEQ Move Good Files to Archive\DFT T7 ODS TxSaft\DST T7ODS TxSaft.Inputs[OLE DB Destination Input].ExternalColumns[FileID]"
-                          lineageId="Package\SEQ Move Good Files to Archive\DFT T7 ODS TxSaft\SRC STG TxSaft.Outputs[OLE DB Source Output].Columns[DwhFileID]" />
-                        <inputColumn
                           refId="Package\SEQ Move Good Files to Archive\DFT T7 ODS TxSaft\DST T7ODS TxSaft.Inputs[OLE DB Destination Input].Columns[A_MOD_TIMESTAMP_GMT]"
                           cachedDataType="dbTimeStampOffset"
                           cachedName="A_MOD_TIMESTAMP_GMT"
@@ -4117,6 +4337,19 @@ AND
                           cachedScale="7"
                           externalMetadataColumnId="Package\SEQ Move Good Files to Archive\DFT T7 ODS TxSaft\DST T7ODS TxSaft.Inputs[OLE DB Destination Input].ExternalColumns[A_IND_PUBLICATION_TIME_GMT]"
                           lineageId="Package\SEQ Move Good Files to Archive\DFT T7 ODS TxSaft\SRC STG TxSaft.Outputs[OLE DB Source Output].Columns[A_IND_PUBLICATION_TIME_GMT]" />
+                        <inputColumn
+                          refId="Package\SEQ Move Good Files to Archive\DFT T7 ODS TxSaft\DST T7ODS TxSaft.Inputs[OLE DB Destination Input].Columns[DwhFileID]"
+                          cachedDataType="i4"
+                          cachedName="DwhFileID"
+                          externalMetadataColumnId="Package\SEQ Move Good Files to Archive\DFT T7 ODS TxSaft\DST T7ODS TxSaft.Inputs[OLE DB Destination Input].ExternalColumns[DwhFileID]"
+                          lineageId="Package\SEQ Move Good Files to Archive\DFT T7 ODS TxSaft\SRC STG TxSaft.Outputs[OLE DB Source Output].Columns[DwhFileID]" />
+                        <inputColumn
+                          refId="Package\SEQ Move Good Files to Archive\DFT T7 ODS TxSaft\DST T7ODS TxSaft.Inputs[OLE DB Destination Input].Columns[A_TRADE_TIME_OCP_GMT]"
+                          cachedDataType="dbTimeStampOffset"
+                          cachedName="A_TRADE_TIME_OCP_GMT"
+                          cachedScale="7"
+                          externalMetadataColumnId="Package\SEQ Move Good Files to Archive\DFT T7 ODS TxSaft\DST T7ODS TxSaft.Inputs[OLE DB Destination Input].ExternalColumns[A_TRADE_TIME_OCP_GMT]"
+                          lineageId="Package\SEQ Move Good Files to Archive\DFT T7 ODS TxSaft\SRC STG TxSaft.Outputs[OLE DB Source Output].Columns[A_TRADE_TIME_OCP_GMT]" />
                       </inputColumns>
                       <externalMetadataColumns
                         isUsed="True">
@@ -4311,10 +4544,6 @@ AND
                           dataType="dbTimeStamp"
                           name="A_TRADE_TIME_OCP" />
                         <externalMetadataColumn
-                          refId="Package\SEQ Move Good Files to Archive\DFT T7 ODS TxSaft\DST T7ODS TxSaft.Inputs[OLE DB Destination Input].ExternalColumns[FileID]"
-                          dataType="i4"
-                          name="FileID" />
-                        <externalMetadataColumn
                           refId="Package\SEQ Move Good Files to Archive\DFT T7 ODS TxSaft\DST T7ODS TxSaft.Inputs[OLE DB Destination Input].ExternalColumns[TxSfaftID]"
                           dataType="i4"
                           name="TxSfaftID" />
@@ -4332,6 +4561,15 @@ AND
                           refId="Package\SEQ Move Good Files to Archive\DFT T7 ODS TxSaft\DST T7ODS TxSaft.Inputs[OLE DB Destination Input].ExternalColumns[A_IND_PUBLICATION_TIME_GMT]"
                           dataType="dbTimeStampOffset"
                           name="A_IND_PUBLICATION_TIME_GMT"
+                          scale="7" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ Move Good Files to Archive\DFT T7 ODS TxSaft\DST T7ODS TxSaft.Inputs[OLE DB Destination Input].ExternalColumns[DwhFileID]"
+                          dataType="i4"
+                          name="DwhFileID" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ Move Good Files to Archive\DFT T7 ODS TxSaft\DST T7ODS TxSaft.Inputs[OLE DB Destination Input].ExternalColumns[A_TRADE_TIME_OCP_GMT]"
+                          dataType="dbTimeStampOffset"
+                          name="A_TRADE_TIME_OCP_GMT"
                           scale="7" />
                       </externalMetadataColumns>
                     </input>
@@ -4434,7 +4672,13 @@ AND
 	TX.A_BEST_ASK_PRICE, 
 	TX.A_OFFICIAL_OPENING_PRICE, 
 	TX.A_OFFICIAL_CLOSING_PRICE, 
-	TX.A_TRADE_TIME_OCP
+	TX.A_TRADE_TIME_OCP,
+	CASE	
+		WHEN TX.A_TRADE_TIME_OCP &lt;&gt; '' THEN
+			CONVERT([datetimeoffset],CAST(TX.A_TRADE_TIME_OCP AS datetime2) AT TIME ZONE 'GMT Standard Time')
+		ELSE
+			NULL
+	END AS A_TRADE_TIME_OCP_GMT
 FROM
 		dbo.Saft_TxSaft TX
 	INNER JOIN
@@ -4876,6 +5120,16 @@ FROM
                           name="A_IND_PUBLICATION_TIME_GMT"
                           scale="7"
                           truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SEQ Move Good Files to Archive\DFT T7 ODS TxSaft\SRC STG TxSaft.Outputs[OLE DB Source Output].Columns[A_TRADE_TIME_OCP_GMT]"
+                          dataType="dbTimeStampOffset"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SEQ Move Good Files to Archive\DFT T7 ODS TxSaft\SRC STG TxSaft.Outputs[OLE DB Source Output].ExternalColumns[A_TRADE_TIME_OCP_GMT]"
+                          lineageId="Package\SEQ Move Good Files to Archive\DFT T7 ODS TxSaft\SRC STG TxSaft.Outputs[OLE DB Source Output].Columns[A_TRADE_TIME_OCP_GMT]"
+                          name="A_TRADE_TIME_OCP_GMT"
+                          scale="7"
+                          truncationRowDisposition="FailComponent" />
                       </outputColumns>
                       <externalMetadataColumns
                         isUsed="True">
@@ -5087,6 +5341,11 @@ FROM
                           refId="Package\SEQ Move Good Files to Archive\DFT T7 ODS TxSaft\SRC STG TxSaft.Outputs[OLE DB Source Output].ExternalColumns[A_IND_PUBLICATION_TIME_GMT]"
                           dataType="dbTimeStampOffset"
                           name="A_IND_PUBLICATION_TIME_GMT"
+                          scale="7" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ Move Good Files to Archive\DFT T7 ODS TxSaft\SRC STG TxSaft.Outputs[OLE DB Source Output].ExternalColumns[A_TRADE_TIME_OCP_GMT]"
+                          dataType="dbTimeStampOffset"
+                          name="A_TRADE_TIME_OCP_GMT"
                           scale="7" />
                       </externalMetadataColumns>
                     </output>
@@ -5343,6 +5602,12 @@ FROM
                           lineageId="Package\SEQ Move Good Files to Archive\DFT T7 ODS TxSaft\SRC STG TxSaft.Outputs[OLE DB Source Error Output].Columns[A_TRADE_TIME_OCP]"
                           name="A_TRADE_TIME_OCP" />
                         <outputColumn
+                          refId="Package\SEQ Move Good Files to Archive\DFT T7 ODS TxSaft\SRC STG TxSaft.Outputs[OLE DB Source Error Output].Columns[A_TRADE_TIME_OCP_GMT]"
+                          dataType="dbTimeStampOffset"
+                          lineageId="Package\SEQ Move Good Files to Archive\DFT T7 ODS TxSaft\SRC STG TxSaft.Outputs[OLE DB Source Error Output].Columns[A_TRADE_TIME_OCP_GMT]"
+                          name="A_TRADE_TIME_OCP_GMT"
+                          scale="7" />
+                        <outputColumn
                           refId="Package\SEQ Move Good Files to Archive\DFT T7 ODS TxSaft\SRC STG TxSaft.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                           dataType="i4"
                           lineageId="Package\SEQ Move Good Files to Archive\DFT T7 ODS TxSaft\SRC STG TxSaft.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
@@ -5590,7 +5855,7 @@ FROM
           DTS:LocaleID="-1"
           DTS:ObjectName="SQL Get ETL Version"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -5612,7 +5877,7 @@ FROM
           DTS:LocaleID="-1"
           DTS:ObjectName="SQL Get Saft Files to Stage"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="1">
+          DTS:ThreadHint="2">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -5634,7 +5899,7 @@ FROM
           DTS:LocaleID="-1"
           DTS:ObjectName="SQL Staging Clear SAFT TradeFile"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="2">
+          DTS:ThreadHint="0">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -5957,7 +6222,7 @@ FROM
         <NodeLayout
           Size="198,42"
           Id="Package\SQL Validate Row Counts"
-          TopLeft="364,867.5" />
+          TopLeft="396,863.5" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
           TopLeft="487.5,360">
@@ -5982,30 +6247,18 @@ FROM
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 2]"
-          TopLeft="488.5,793.5">
+          TopLeft="491.75,793.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-25.5,74"
+              EndConnector="0,70"
               Start="0,0"
-              End="-25.5,66.5">
+              End="0,62.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,33" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,33"
-                    Point2="0,37"
-                    Point3="-4,37" />
-                  <mssgle:LineSegment
-                    End="-21.5,37" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-21.5,37"
-                    Point2="-25.5,37"
-                    Point3="-25.5,41" />
-                  <mssgle:LineSegment
-                    End="-25.5,66.5" />
+                    End="0,62.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -6016,30 +6269,30 @@ FROM
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 3]"
-          TopLeft="431.333333333333,909.5">
+          TopLeft="463.333333333333,905.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-128.666666666663,50.666666666667"
+              EndConnector="-160.666666666663,54.666666666667"
               Start="0,0"
-              End="-128.666666666663,43.166666666667">
+              End="-160.666666666663,47.166666666667">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,16.5103540414163" />
+                    End="0,18.1295925183702" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,16.5103540414163"
-                    Point2="0,20.5103540414163"
-                    Point3="-4,20.5103540414163" />
+                    Point1="0,18.1295925183702"
+                    Point2="0,22.1295925183702"
+                    Point3="-4,22.1295925183702" />
                   <mssgle:LineSegment
-                    End="-124.666666666663,20.5103540414163" />
+                    End="-156.666666666663,22.1295925183702" />
                   <mssgle:CubicBezierSegment
-                    Point1="-124.666666666663,20.5103540414163"
-                    Point2="-128.666666666663,20.5103540414163"
-                    Point3="-128.666666666663,24.5103540414163" />
+                    Point1="-156.666666666663,22.1295925183702"
+                    Point2="-160.666666666663,22.1295925183702"
+                    Point3="-160.666666666663,26.1295925183702" />
                   <mssgle:LineSegment
-                    End="-128.666666666663,43.166666666667" />
+                    End="-160.666666666663,47.166666666667" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -6050,30 +6303,30 @@ FROM
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 4]"
-          TopLeft="494.666666666667,909.5">
+          TopLeft="526.666666666667,905.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="198.666666666663,53.666666666667"
+              EndConnector="166.666666666663,57.666666666667"
               Start="0,0"
-              End="198.666666666663,46.166666666667">
+              End="166.666666666663,50.166666666667">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,17.7247828991317" />
+                    End="0,19.3440213760856" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,17.7247828991317"
-                    Point2="0,21.7247828991317"
-                    Point3="4,21.7247828991317" />
+                    Point1="0,19.3440213760856"
+                    Point2="0,23.3440213760856"
+                    Point3="4,23.3440213760856" />
                   <mssgle:LineSegment
-                    End="194.666666666663,21.7247828991317" />
+                    End="162.666666666663,23.3440213760856" />
                   <mssgle:CubicBezierSegment
-                    Point1="194.666666666663,21.7247828991317"
-                    Point2="198.666666666663,21.7247828991317"
-                    Point3="198.666666666663,25.7247828991317" />
+                    Point1="162.666666666663,23.3440213760856"
+                    Point2="166.666666666663,23.3440213760856"
+                    Point3="166.666666666663,27.3440213760856" />
                   <mssgle:LineSegment
-                    End="198.666666666663,46.166666666667" />
+                    End="166.666666666663,50.166666666667" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -6161,9 +6414,7 @@ FROM
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -6185,9 +6436,7 @@ FROM
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -6209,9 +6458,7 @@ FROM
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -6233,9 +6480,7 @@ FROM
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -6301,101 +6546,21 @@ FROM
           Id="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\SRC STG FileList"
           TopLeft="218.5,5.5" />
         <NodeLayout
-          Size="187,42"
-          Id="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\DER Etl Version"
-          TopLeft="218.5,107.5" />
-        <NodeLayout
-          Size="187,42"
-          Id="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\SCD T7 ODS File Table"
-          TopLeft="218.5,209.5" />
-        <EdgeLayout
-          Id="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table.Paths[Derived Column Output]"
-          TopLeft="312,149.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table.Paths[OLE DB Source Output]"
-          TopLeft="312,47.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
           Size="163,42"
           Id="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\Insert Destination"
           TopLeft="5.50000000000006,311.5" />
-        <EdgeLayout
-          Id="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table.Paths[New Output]"
-          TopLeft="282.166666666667,251.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-195.166666666667,60"
-              Start="0,0"
-              End="-195.166666666667,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,20.305408271474" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,20.305408271474"
-                    Point2="0,24.305408271474"
-                    Point3="-4,24.305408271474" />
-                  <mssgle:LineSegment
-                    End="-191.166666666667,24.305408271474" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-191.166666666667,24.305408271474"
-                    Point2="-195.166666666667,24.305408271474"
-                    Point3="-195.166666666667,28.305408271474" />
-                  <mssgle:LineSegment
-                    End="-195.166666666667,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-124.674720052083,29.305408271474,54.1827734375,11.43359375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
         <NodeLayout
           Size="166,42"
           Id="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\OLE DB Command"
           TopLeft="229,311.5" />
+        <NodeLayout
+          Size="187,42"
+          Id="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\SCD T7 ODS File Table"
+          TopLeft="218.5,209.5" />
+        <NodeLayout
+          Size="187,42"
+          Id="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\DER Etl Version"
+          TopLeft="218.5,107.5" />
         <EdgeLayout
           Id="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table.Paths[Changing Attribute Updates Output]"
           TopLeft="341.833333333333,251.5">
@@ -6432,9 +6597,101 @@ FROM
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table.Paths[OLE DB Source Output]"
+          TopLeft="312,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table.Paths[New Output]"
+          TopLeft="282.166666666667,251.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-195.166666666667,60"
+              Start="0,0"
+              End="-195.166666666667,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.305408271474" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.305408271474"
+                    Point2="0,24.305408271474"
+                    Point3="-4,24.305408271474" />
+                  <mssgle:LineSegment
+                    End="-191.166666666667,24.305408271474" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-191.166666666667,24.305408271474"
+                    Point2="-195.166666666667,24.305408271474"
+                    Point3="-195.166666666667,28.305408271474" />
+                  <mssgle:LineSegment
+                    End="-195.166666666667,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-124.674720052083,29.305408271474,54.1827734375,11.43359375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table.Paths[Derived Column Output]"
+          TopLeft="312,149.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\SRC STG FileList">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\SCD T7 ODS File Table">
     <Properties>
@@ -6465,8 +6722,26 @@ FROM
       &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
     &lt;/InputColumnToDBColumn&gt;
     &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;SRC STG FileList.Outputs[OLE DB Source Output].Columns[SaftDate]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;FileDate&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;SRC STG FileList.Outputs[OLE DB Source Output].Columns[SaftLetter]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;FileLetter&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
       &lt;IdentificationString&gt;SRC STG FileList.Outputs[OLE DB Source Output].Columns[FileName]&lt;/IdentificationString&gt;
       &lt;ColumnName&gt;FileName&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;SRC STG FileList.Outputs[OLE DB Source Output].Columns[FileTag]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;FileTag&lt;/ColumnName&gt;
       &lt;KeyType&gt;None&lt;/KeyType&gt;
       &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
     &lt;/InputColumnToDBColumn&gt;
@@ -6490,19 +6765,11 @@ FROM
       </Property>
     </Properties>
   </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\SRC STG FileList">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
   <TaskHost
     design-time-name="Package\SEQ Move Good Files to Archive\DFT T7 ODS TxSaft">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="154,42"
           Id="Package\SEQ Move Good Files to Archive\DFT T7 ODS TxSaft\SRC STG TxSaft"
@@ -6530,9 +6797,7 @@ FROM
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>

@@ -3,6 +3,7 @@ CREATE TABLE [DWH].[FactInstrumentStatusHistory]
 [InstrumentStatusHistoryID] [int] NOT NULL IDENTITY(1, 1),
 [InstrumentID] [int] NOT NULL,
 [InstrumemtStatusID] [smallint] NOT NULL,
+[OldInstrumentStatusID] [smallint] NOT NULL,
 [InstrumemtStatusDateID] [int] NOT NULL,
 [InstrumemtStatusTimeID] [smallint] NOT NULL,
 [InstrumemtStatusTime] [time] NOT NULL,

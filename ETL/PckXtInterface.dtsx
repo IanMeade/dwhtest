@@ -1,0 +1,1954 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="2/17/2017 4:41:06 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="T7-DDT-01"
+  DTS:CreatorName="STOCK_EXCHANGE\ianm"
+  DTS:DTSID="{F8C1771F-A795-4A89-A89E-619D5E75977F}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="13.0.4001.0"
+  DTS:LocaleID="6153"
+  DTS:ObjectName="PckXtInterface"
+  DTS:PackageType="5"
+  DTS:VersionBuild="11"
+  DTS:VersionGUID="{58649AE6-2708-49A4-B385-219D6E192FFE}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{A3A2C57E-CE9D-4158-83C0-E4AC4DC870D5}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="BatchID">
+      <DTS:VariableValue
+        DTS:DataType="3">-1</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\SEQ FactInstrumentStatus"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{7F1FD38D-5101-4151-B62C-A53750001FDA}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SEQ FactInstrumentStatus">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{28D29117-19C5-4817-9E07-A511105C31D1}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="DFT Load FactInstrumentStatusHistory"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\DER Batch ID"
+                  componentClassID="Microsoft.DerivedColumn"
+                  contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+                  name="DER Batch ID"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\DER Batch ID.Inputs[Derived Column Input]"
+                      description="Input to the Derived Column Transformation"
+                      name="Derived Column Input">
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\DER Batch ID.Outputs[Derived Column Output]"
+                      description="Default Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      name="Derived Column Output"
+                      synchronousInputId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\DER Batch ID.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\DER Batch ID.Outputs[Derived Column Output].Columns[BatchID]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\DER Batch ID.Outputs[Derived Column Output].Columns[BatchID]"
+                          name="BatchID"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">@[User::BatchID]</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">@[User::BatchID]</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\DER Batch ID.Outputs[Derived Column Error Output]"
+                      description="Error Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Derived Column Error Output"
+                      synchronousInputId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\DER Batch ID.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\DER Batch ID.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\DER Batch ID.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\DER Batch ID.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\DER Batch ID.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\DST DWH FactInstrumentStatusHistory"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="DST DWH FactInstrumentStatusHistory"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[DWH].[FactInstrumentStatusHistory]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\DST DWH FactInstrumentStatusHistory.Connections[OleDbConnection]"
+                      connectionManagerID="{0CBC2C04-C137-495F-AF7C-FA5DE465FED0}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[DWH]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\DST DWH FactInstrumentStatusHistory.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\DST DWH FactInstrumentStatusHistory.Inputs[OLE DB Destination Input].Columns[InstrumemtStatusDateID]"
+                          cachedDataType="i4"
+                          cachedName="InstrumemtStatusDateID"
+                          externalMetadataColumnId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\DST DWH FactInstrumentStatusHistory.Inputs[OLE DB Destination Input].ExternalColumns[InstrumemtStatusDateID]"
+                          lineageId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\SRC STAGING Instrument Status Changes.Outputs[OLE DB Source Output].Columns[InstrumemtStatusDateID]" />
+                        <inputColumn
+                          refId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\DST DWH FactInstrumentStatusHistory.Inputs[OLE DB Destination Input].Columns[InstrumemtStatusTime]"
+                          cachedDataType="dbTime2"
+                          cachedName="InstrumemtStatusTime"
+                          cachedScale="7"
+                          externalMetadataColumnId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\DST DWH FactInstrumentStatusHistory.Inputs[OLE DB Destination Input].ExternalColumns[InstrumemtStatusTime]"
+                          lineageId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\SRC STAGING Instrument Status Changes.Outputs[OLE DB Source Output].Columns[InstrumemtStatusTime]" />
+                        <inputColumn
+                          refId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\DST DWH FactInstrumentStatusHistory.Inputs[OLE DB Destination Input].Columns[InstrumemtStatusTimeID]"
+                          cachedDataType="i2"
+                          cachedName="InstrumemtStatusTimeID"
+                          externalMetadataColumnId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\DST DWH FactInstrumentStatusHistory.Inputs[OLE DB Destination Input].ExternalColumns[InstrumemtStatusTimeID]"
+                          lineageId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\SRC STAGING Instrument Status Changes.Outputs[OLE DB Source Output].Columns[InstrumemtStatusTimeID]" />
+                        <inputColumn
+                          refId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\DST DWH FactInstrumentStatusHistory.Inputs[OLE DB Destination Input].Columns[InstrumentID]"
+                          cachedDataType="i4"
+                          cachedName="InstrumentID"
+                          externalMetadataColumnId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\DST DWH FactInstrumentStatusHistory.Inputs[OLE DB Destination Input].ExternalColumns[InstrumentID]"
+                          lineageId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\LKP InstrumentID.Outputs[Lookup Match Output].Columns[InstrumentID]" />
+                        <inputColumn
+                          refId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\DST DWH FactInstrumentStatusHistory.Inputs[OLE DB Destination Input].Columns[NewStatusID]"
+                          cachedDataType="i2"
+                          cachedName="NewStatusID"
+                          externalMetadataColumnId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\DST DWH FactInstrumentStatusHistory.Inputs[OLE DB Destination Input].ExternalColumns[InstrumemtStatusID]"
+                          lineageId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\LKP DWH DimStatus New.Outputs[Lookup Match Output].Columns[NewStatusID]" />
+                        <inputColumn
+                          refId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\DST DWH FactInstrumentStatusHistory.Inputs[OLE DB Destination Input].Columns[OldStatusID]"
+                          cachedDataType="i2"
+                          cachedName="OldStatusID"
+                          externalMetadataColumnId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\DST DWH FactInstrumentStatusHistory.Inputs[OLE DB Destination Input].ExternalColumns[OldInstrumentStatusID]"
+                          lineageId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\LKP DWH DimStatus Old.Outputs[Lookup Match Output].Columns[OldStatusID]" />
+                        <inputColumn
+                          refId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\DST DWH FactInstrumentStatusHistory.Inputs[OLE DB Destination Input].Columns[InstrumentStatusCreatedDateID]"
+                          cachedDataType="i4"
+                          cachedName="InstrumentStatusCreatedDateID"
+                          externalMetadataColumnId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\DST DWH FactInstrumentStatusHistory.Inputs[OLE DB Destination Input].ExternalColumns[StatusCreatedDateID]"
+                          lineageId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\SRC STAGING Instrument Status Changes.Outputs[OLE DB Source Output].Columns[InstrumentStatusCreatedDateID]" />
+                        <inputColumn
+                          refId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\DST DWH FactInstrumentStatusHistory.Inputs[OLE DB Destination Input].Columns[InstrumentStatusCreatedTimeID]"
+                          cachedDataType="i2"
+                          cachedName="InstrumentStatusCreatedTimeID"
+                          externalMetadataColumnId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\DST DWH FactInstrumentStatusHistory.Inputs[OLE DB Destination Input].ExternalColumns[StatusCreatedTimeID]"
+                          lineageId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\SRC STAGING Instrument Status Changes.Outputs[OLE DB Source Output].Columns[InstrumentStatusCreatedTimeID]" />
+                        <inputColumn
+                          refId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\DST DWH FactInstrumentStatusHistory.Inputs[OLE DB Destination Input].Columns[InstrumentStatusCreatedTime]"
+                          cachedDataType="dbTime2"
+                          cachedName="InstrumentStatusCreatedTime"
+                          cachedScale="7"
+                          externalMetadataColumnId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\DST DWH FactInstrumentStatusHistory.Inputs[OLE DB Destination Input].ExternalColumns[StatusCreatedTime]"
+                          lineageId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\SRC STAGING Instrument Status Changes.Outputs[OLE DB Source Output].Columns[InstrumentStatusCreatedTime]" />
+                        <inputColumn
+                          refId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\DST DWH FactInstrumentStatusHistory.Inputs[OLE DB Destination Input].Columns[BatchID]"
+                          cachedDataType="i4"
+                          cachedName="BatchID"
+                          externalMetadataColumnId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\DST DWH FactInstrumentStatusHistory.Inputs[OLE DB Destination Input].ExternalColumns[BatchID]"
+                          lineageId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\DER Batch ID.Outputs[Derived Column Output].Columns[BatchID]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\DST DWH FactInstrumentStatusHistory.Inputs[OLE DB Destination Input].ExternalColumns[InstrumentStatusHistoryID]"
+                          dataType="i4"
+                          name="InstrumentStatusHistoryID" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\DST DWH FactInstrumentStatusHistory.Inputs[OLE DB Destination Input].ExternalColumns[InstrumentID]"
+                          dataType="i4"
+                          name="InstrumentID" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\DST DWH FactInstrumentStatusHistory.Inputs[OLE DB Destination Input].ExternalColumns[InstrumemtStatusID]"
+                          dataType="i2"
+                          name="InstrumemtStatusID" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\DST DWH FactInstrumentStatusHistory.Inputs[OLE DB Destination Input].ExternalColumns[OldInstrumentStatusID]"
+                          dataType="i2"
+                          name="OldInstrumentStatusID" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\DST DWH FactInstrumentStatusHistory.Inputs[OLE DB Destination Input].ExternalColumns[InstrumemtStatusDateID]"
+                          dataType="i4"
+                          name="InstrumemtStatusDateID" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\DST DWH FactInstrumentStatusHistory.Inputs[OLE DB Destination Input].ExternalColumns[InstrumemtStatusTimeID]"
+                          dataType="i2"
+                          name="InstrumemtStatusTimeID" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\DST DWH FactInstrumentStatusHistory.Inputs[OLE DB Destination Input].ExternalColumns[InstrumemtStatusTime]"
+                          dataType="dbTime2"
+                          name="InstrumemtStatusTime"
+                          scale="7" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\DST DWH FactInstrumentStatusHistory.Inputs[OLE DB Destination Input].ExternalColumns[StatusCreatedDateID]"
+                          dataType="i4"
+                          name="StatusCreatedDateID" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\DST DWH FactInstrumentStatusHistory.Inputs[OLE DB Destination Input].ExternalColumns[StatusCreatedTimeID]"
+                          dataType="i2"
+                          name="StatusCreatedTimeID" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\DST DWH FactInstrumentStatusHistory.Inputs[OLE DB Destination Input].ExternalColumns[StatusCreatedTime]"
+                          dataType="dbTime2"
+                          name="StatusCreatedTime"
+                          scale="7" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\DST DWH FactInstrumentStatusHistory.Inputs[OLE DB Destination Input].ExternalColumns[BatchID]"
+                          dataType="i4"
+                          name="BatchID" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\DST DWH FactInstrumentStatusHistory.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\DST DWH FactInstrumentStatusHistory.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\DST DWH FactInstrumentStatusHistory.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\DST DWH FactInstrumentStatusHistory.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\DST DWH FactInstrumentStatusHistory.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\DST DWH FactInstrumentStatusHistory.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\LKP DWH DimStatus New"
+                  componentClassID="Microsoft.Lookup"
+                  contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+                  description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+                  name="LKP DWH DimStatus New"
+                  usesDispositions="true"
+                  version="6">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the SQL statement that generates the lookup table."
+                      expressionType="Notify"
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [DWH].[DimStatus]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                      expressionType="Notify"
+                      name="SqlCommandParam"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [DWH].[DimStatus]) [refTable]
+where [refTable].[StatusName] = ?</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the type of connection used to access the reference dataset."
+                      name="ConnectionType"
+                      typeConverter="LookupConnectionType">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the cache type of the lookup table."
+                      name="CacheType"
+                      typeConverter="CacheType">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                      name="NoMatchBehavior"
+                      typeConverter="LookupNoMatchBehavior">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                      name="NoMatchCachePercentage">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                      name="MaxMemoryUsage">25</property>
+                    <property
+                      dataType="System.Int64"
+                      description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                      name="MaxMemoryUsage64">25</property>
+                    <property
+                      dataType="System.String"
+                      description="Indicates whether to reference metadata in an XML format."
+                      name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="StatusID" dataType="DT_I2" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="StatusName" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                      name="ParameterMap">#{Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\SRC STAGING Instrument Status Changes.Outputs[OLE DB Source Output].Columns[StatusName]};</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                      name="TreatDuplicateKeysAsError">false</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\LKP DWH DimStatus New.Connections[OleDbConnection]"
+                      connectionManagerID="{0CBC2C04-C137-495F-AF7C-FA5DE465FED0}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[DWH]"
+                      description="Connection manager used to access lookup data."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\LKP DWH DimStatus New.Inputs[Lookup Input]"
+                      name="Lookup Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\LKP DWH DimStatus New.Inputs[Lookup Input].Columns[StatusName]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="60"
+                          cachedName="StatusName"
+                          lineageId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\SRC STAGING Instrument Status Changes.Outputs[OLE DB Source Output].Columns[StatusName]">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Specifies the column in the reference table that a column joins."
+                              name="JoinToReferenceColumn">StatusName</property>
+                            <property
+                              dataType="System.Null"
+                              description="Specifies the column in the reference table from which a column is copied."
+                              name="CopyFromReferenceColumn" />
+                          </properties>
+                        </inputColumn>
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\LKP DWH DimStatus New.Outputs[Lookup Match Output]"
+                      errorOrTruncationOperation="Lookup"
+                      errorRowDisposition="FailComponent"
+                      exclusionGroup="1"
+                      name="Lookup Match Output"
+                      synchronousInputId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\LKP DWH DimStatus New.Inputs[Lookup Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\LKP DWH DimStatus New.Outputs[Lookup Match Output].Columns[NewStatusID]"
+                          dataType="i2"
+                          errorOrTruncationOperation="Copy Column"
+                          lineageId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\LKP DWH DimStatus New.Outputs[Lookup Match Output].Columns[NewStatusID]"
+                          name="NewStatusID"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Specifies the column in the reference table from which a column is copied."
+                              name="CopyFromReferenceColumn">StatusID</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\LKP DWH DimStatus New.Outputs[Lookup No Match Output]"
+                      description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                      exclusionGroup="1"
+                      name="Lookup No Match Output"
+                      synchronousInputId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\LKP DWH DimStatus New.Inputs[Lookup Input]">
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\LKP DWH DimStatus New.Outputs[Lookup Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Lookup Error Output"
+                      synchronousInputId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\LKP DWH DimStatus New.Inputs[Lookup Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\LKP DWH DimStatus New.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\LKP DWH DimStatus New.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\LKP DWH DimStatus New.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\LKP DWH DimStatus New.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\LKP DWH DimStatus Old"
+                  componentClassID="Microsoft.Lookup"
+                  contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+                  description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+                  name="LKP DWH DimStatus Old"
+                  usesDispositions="true"
+                  version="6">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the SQL statement that generates the lookup table."
+                      expressionType="Notify"
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [DWH].[DimStatus]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                      expressionType="Notify"
+                      name="SqlCommandParam"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [DWH].[DimStatus]) [refTable]
+where [refTable].[StatusName] = ?</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the type of connection used to access the reference dataset."
+                      name="ConnectionType"
+                      typeConverter="LookupConnectionType">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the cache type of the lookup table."
+                      name="CacheType"
+                      typeConverter="CacheType">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                      name="NoMatchBehavior"
+                      typeConverter="LookupNoMatchBehavior">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                      name="NoMatchCachePercentage">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                      name="MaxMemoryUsage">25</property>
+                    <property
+                      dataType="System.Int64"
+                      description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                      name="MaxMemoryUsage64">25</property>
+                    <property
+                      dataType="System.String"
+                      description="Indicates whether to reference metadata in an XML format."
+                      name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="StatusID" dataType="DT_I2" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="StatusName" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                      name="ParameterMap">#{Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\SRC STAGING Instrument Status Changes.Outputs[OLE DB Source Output].Columns[OldStatusName]};</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                      name="TreatDuplicateKeysAsError">false</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\LKP DWH DimStatus Old.Connections[OleDbConnection]"
+                      connectionManagerID="{0CBC2C04-C137-495F-AF7C-FA5DE465FED0}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[DWH]"
+                      description="Connection manager used to access lookup data."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\LKP DWH DimStatus Old.Inputs[Lookup Input]"
+                      name="Lookup Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\LKP DWH DimStatus Old.Inputs[Lookup Input].Columns[OldStatusName]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="60"
+                          cachedName="OldStatusName"
+                          lineageId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\SRC STAGING Instrument Status Changes.Outputs[OLE DB Source Output].Columns[OldStatusName]">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Specifies the column in the reference table that a column joins."
+                              name="JoinToReferenceColumn">StatusName</property>
+                            <property
+                              dataType="System.Null"
+                              description="Specifies the column in the reference table from which a column is copied."
+                              name="CopyFromReferenceColumn" />
+                          </properties>
+                        </inputColumn>
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\LKP DWH DimStatus Old.Outputs[Lookup Match Output]"
+                      errorOrTruncationOperation="Lookup"
+                      errorRowDisposition="FailComponent"
+                      exclusionGroup="1"
+                      name="Lookup Match Output"
+                      synchronousInputId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\LKP DWH DimStatus Old.Inputs[Lookup Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\LKP DWH DimStatus Old.Outputs[Lookup Match Output].Columns[OldStatusID]"
+                          dataType="i2"
+                          errorOrTruncationOperation="Copy Column"
+                          lineageId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\LKP DWH DimStatus Old.Outputs[Lookup Match Output].Columns[OldStatusID]"
+                          name="OldStatusID"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Specifies the column in the reference table from which a column is copied."
+                              name="CopyFromReferenceColumn">StatusID</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\LKP DWH DimStatus Old.Outputs[Lookup No Match Output]"
+                      description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                      exclusionGroup="1"
+                      name="Lookup No Match Output"
+                      synchronousInputId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\LKP DWH DimStatus Old.Inputs[Lookup Input]">
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\LKP DWH DimStatus Old.Outputs[Lookup Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Lookup Error Output"
+                      synchronousInputId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\LKP DWH DimStatus Old.Inputs[Lookup Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\LKP DWH DimStatus Old.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\LKP DWH DimStatus Old.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\LKP DWH DimStatus Old.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\LKP DWH DimStatus Old.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\LKP InstrumentID"
+                  componentClassID="Microsoft.Lookup"
+                  contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+                  description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+                  name="LKP InstrumentID"
+                  usesDispositions="true"
+                  version="6">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the SQL statement that generates the lookup table."
+                      expressionType="Notify"
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT
+	InstrumentID,
+	InstrumentGlobalID
+FROM
+	DWH.DimInstrument
+WHERE
+	CurrentRowYN = 'Y'</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                      expressionType="Notify"
+                      name="SqlCommandParam"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (SELECT
+	InstrumentID,
+	InstrumentGlobalID
+FROM
+	DWH.DimInstrument
+WHERE
+	CurrentRowYN = 'Y') [refTable]
+where [refTable].[InstrumentGlobalID] = ?</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the type of connection used to access the reference dataset."
+                      name="ConnectionType"
+                      typeConverter="LookupConnectionType">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the cache type of the lookup table."
+                      name="CacheType"
+                      typeConverter="CacheType">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                      name="NoMatchBehavior"
+                      typeConverter="LookupNoMatchBehavior">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                      name="NoMatchCachePercentage">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                      name="MaxMemoryUsage">25</property>
+                    <property
+                      dataType="System.Int64"
+                      description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                      name="MaxMemoryUsage64">25</property>
+                    <property
+                      dataType="System.String"
+                      description="Indicates whether to reference metadata in an XML format."
+                      name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="InstrumentID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="InstrumentGlobalID" dataType="DT_STR" length="20" precision="0" scale="0" codePage="1252"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                      name="ParameterMap">#{Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\SRC STAGING Instrument Status Changes.Outputs[OLE DB Source Output].Columns[GID]};</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                      name="TreatDuplicateKeysAsError">false</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\LKP InstrumentID.Connections[OleDbConnection]"
+                      connectionManagerID="{0CBC2C04-C137-495F-AF7C-FA5DE465FED0}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[DWH]"
+                      description="Connection manager used to access lookup data."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\LKP InstrumentID.Inputs[Lookup Input]"
+                      name="Lookup Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\LKP InstrumentID.Inputs[Lookup Input].Columns[GID]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="60"
+                          cachedName="GID"
+                          lineageId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\SRC STAGING Instrument Status Changes.Outputs[OLE DB Source Output].Columns[GID]">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Specifies the column in the reference table that a column joins."
+                              name="JoinToReferenceColumn">InstrumentGlobalID</property>
+                            <property
+                              dataType="System.Null"
+                              description="Specifies the column in the reference table from which a column is copied."
+                              name="CopyFromReferenceColumn" />
+                          </properties>
+                        </inputColumn>
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\LKP InstrumentID.Outputs[Lookup Match Output]"
+                      errorOrTruncationOperation="Lookup"
+                      errorRowDisposition="FailComponent"
+                      exclusionGroup="1"
+                      name="Lookup Match Output"
+                      synchronousInputId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\LKP InstrumentID.Inputs[Lookup Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\LKP InstrumentID.Outputs[Lookup Match Output].Columns[InstrumentID]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Copy Column"
+                          lineageId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\LKP InstrumentID.Outputs[Lookup Match Output].Columns[InstrumentID]"
+                          name="InstrumentID"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Specifies the column in the reference table from which a column is copied."
+                              name="CopyFromReferenceColumn">InstrumentID</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\LKP InstrumentID.Outputs[Lookup No Match Output]"
+                      description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                      exclusionGroup="1"
+                      name="Lookup No Match Output"
+                      synchronousInputId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\LKP InstrumentID.Inputs[Lookup Input]">
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\LKP InstrumentID.Outputs[Lookup Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Lookup Error Output"
+                      synchronousInputId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\LKP InstrumentID.Inputs[Lookup Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\LKP InstrumentID.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\LKP InstrumentID.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\LKP InstrumentID.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\LKP InstrumentID.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\SRC STAGING Instrument Status Changes"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="SRC STAGING Instrument Status Changes"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset"></property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT
+	O.GID,
+	O.ListingStatus AS StatusName,
+	COALESCE(PrevState.ListingStatus, S.StatusName, 'NA' ) AS OldStatusName,
+	CAST(CONVERT(CHAR,O.InstrumentStatusDate,112) AS INT) AS InstrumemtStatusDateID,
+	CAST(REPLACE(LEFT(CONVERT(CHAR,O.InstrumentStatusDate,114),5),':','') AS SMALLINT) AS InstrumemtStatusTimeID, 
+	CONVERT(TIME,O.InstrumentStatusDate) AS InstrumemtStatusTime,
+	CAST(CONVERT(CHAR,O.InstrumentStatusCreatedDatetime,112) AS INT) AS InstrumentStatusCreatedDateID,
+	CAST(REPLACE(LEFT(CONVERT(CHAR,O.InstrumentStatusCreatedDatetime,114),5),':','') AS SMALLINT) AS InstrumentStatusCreatedTimeID,
+	CONVERT(TIME,O.InstrumentStatusCreatedDatetime) AS InstrumentStatusCreatedTime
+FROM
+		dbo.XtOdsShare O
+	OUTER APPLY (
+		SELECT
+			TOP 1
+			I.ExtractSequenceId,
+			I.Gid,
+			I.ListingStatus,
+			I.InstrumentStatusDate,
+			I.InstrumentStatusCreatedDatetime
+		FROM
+			dbo.XtOdsShare I
+		WHERE
+			O.GID = I.GID
+		AND
+			O.ExtractSequenceId &gt; I.ExtractSequenceId 
+		ORDER BY
+			I.ExtractSequenceId DESC
+	) AS PrevState
+	INNER JOIN
+		dbo.DwhDimInstrument DI
+	ON O.GID = DI.InstrumentGlobalID
+	INNER JOIN
+		DwhDimStatus S
+	ON DI.InstrumentStatusID = S.StatusID
+WHERE
+	O.ListingStatus &lt;&gt; COALESCE(PrevState.ListingStatus, S.StatusName, 'NA' )</property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">2</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\SRC STAGING Instrument Status Changes.Connections[OleDbConnection]"
+                      connectionManagerID="{7AE745A6-BA4C-482E-9695-63779ECE70D4}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[Staging]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\SRC STAGING Instrument Status Changes.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\SRC STAGING Instrument Status Changes.Outputs[OLE DB Source Output].Columns[GID]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\SRC STAGING Instrument Status Changes.Outputs[OLE DB Source Output].ExternalColumns[GID]"
+                          length="60"
+                          lineageId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\SRC STAGING Instrument Status Changes.Outputs[OLE DB Source Output].Columns[GID]"
+                          name="GID"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\SRC STAGING Instrument Status Changes.Outputs[OLE DB Source Output].Columns[StatusName]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\SRC STAGING Instrument Status Changes.Outputs[OLE DB Source Output].ExternalColumns[StatusName]"
+                          length="60"
+                          lineageId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\SRC STAGING Instrument Status Changes.Outputs[OLE DB Source Output].Columns[StatusName]"
+                          name="StatusName"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\SRC STAGING Instrument Status Changes.Outputs[OLE DB Source Output].Columns[OldStatusName]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\SRC STAGING Instrument Status Changes.Outputs[OLE DB Source Output].ExternalColumns[OldStatusName]"
+                          length="60"
+                          lineageId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\SRC STAGING Instrument Status Changes.Outputs[OLE DB Source Output].Columns[OldStatusName]"
+                          name="OldStatusName"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\SRC STAGING Instrument Status Changes.Outputs[OLE DB Source Output].Columns[InstrumemtStatusDateID]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\SRC STAGING Instrument Status Changes.Outputs[OLE DB Source Output].ExternalColumns[InstrumemtStatusDateID]"
+                          lineageId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\SRC STAGING Instrument Status Changes.Outputs[OLE DB Source Output].Columns[InstrumemtStatusDateID]"
+                          name="InstrumemtStatusDateID"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\SRC STAGING Instrument Status Changes.Outputs[OLE DB Source Output].Columns[InstrumemtStatusTime]"
+                          dataType="dbTime2"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\SRC STAGING Instrument Status Changes.Outputs[OLE DB Source Output].ExternalColumns[InstrumemtStatusTime]"
+                          lineageId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\SRC STAGING Instrument Status Changes.Outputs[OLE DB Source Output].Columns[InstrumemtStatusTime]"
+                          name="InstrumemtStatusTime"
+                          scale="7"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\SRC STAGING Instrument Status Changes.Outputs[OLE DB Source Output].Columns[InstrumentStatusCreatedDateID]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\SRC STAGING Instrument Status Changes.Outputs[OLE DB Source Output].ExternalColumns[InstrumentStatusCreatedDateID]"
+                          lineageId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\SRC STAGING Instrument Status Changes.Outputs[OLE DB Source Output].Columns[InstrumentStatusCreatedDateID]"
+                          name="InstrumentStatusCreatedDateID"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\SRC STAGING Instrument Status Changes.Outputs[OLE DB Source Output].Columns[InstrumentStatusCreatedTime]"
+                          dataType="dbTime2"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\SRC STAGING Instrument Status Changes.Outputs[OLE DB Source Output].ExternalColumns[InstrumentStatusCreatedTime]"
+                          lineageId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\SRC STAGING Instrument Status Changes.Outputs[OLE DB Source Output].Columns[InstrumentStatusCreatedTime]"
+                          name="InstrumentStatusCreatedTime"
+                          scale="7"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\SRC STAGING Instrument Status Changes.Outputs[OLE DB Source Output].Columns[InstrumemtStatusTimeID]"
+                          dataType="i2"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\SRC STAGING Instrument Status Changes.Outputs[OLE DB Source Output].ExternalColumns[InstrumemtStatusTimeID]"
+                          lineageId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\SRC STAGING Instrument Status Changes.Outputs[OLE DB Source Output].Columns[InstrumemtStatusTimeID]"
+                          name="InstrumemtStatusTimeID"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\SRC STAGING Instrument Status Changes.Outputs[OLE DB Source Output].Columns[InstrumentStatusCreatedTimeID]"
+                          dataType="i2"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\SRC STAGING Instrument Status Changes.Outputs[OLE DB Source Output].ExternalColumns[InstrumentStatusCreatedTimeID]"
+                          lineageId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\SRC STAGING Instrument Status Changes.Outputs[OLE DB Source Output].Columns[InstrumentStatusCreatedTimeID]"
+                          name="InstrumentStatusCreatedTimeID"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\SRC STAGING Instrument Status Changes.Outputs[OLE DB Source Output].ExternalColumns[GID]"
+                          codePage="1252"
+                          dataType="str"
+                          length="60"
+                          name="GID" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\SRC STAGING Instrument Status Changes.Outputs[OLE DB Source Output].ExternalColumns[StatusName]"
+                          codePage="1252"
+                          dataType="str"
+                          length="60"
+                          name="StatusName" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\SRC STAGING Instrument Status Changes.Outputs[OLE DB Source Output].ExternalColumns[OldStatusName]"
+                          codePage="1252"
+                          dataType="str"
+                          length="60"
+                          name="OldStatusName" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\SRC STAGING Instrument Status Changes.Outputs[OLE DB Source Output].ExternalColumns[InstrumemtStatusDateID]"
+                          dataType="i4"
+                          name="InstrumemtStatusDateID" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\SRC STAGING Instrument Status Changes.Outputs[OLE DB Source Output].ExternalColumns[InstrumemtStatusTime]"
+                          dataType="dbTime2"
+                          name="InstrumemtStatusTime"
+                          scale="7" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\SRC STAGING Instrument Status Changes.Outputs[OLE DB Source Output].ExternalColumns[InstrumentStatusCreatedDateID]"
+                          dataType="i4"
+                          name="InstrumentStatusCreatedDateID" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\SRC STAGING Instrument Status Changes.Outputs[OLE DB Source Output].ExternalColumns[InstrumentStatusCreatedTime]"
+                          dataType="dbTime2"
+                          name="InstrumentStatusCreatedTime"
+                          scale="7" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\SRC STAGING Instrument Status Changes.Outputs[OLE DB Source Output].ExternalColumns[InstrumemtStatusTimeID]"
+                          dataType="i2"
+                          name="InstrumemtStatusTimeID" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\SRC STAGING Instrument Status Changes.Outputs[OLE DB Source Output].ExternalColumns[InstrumentStatusCreatedTimeID]"
+                          dataType="i2"
+                          name="InstrumentStatusCreatedTimeID" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\SRC STAGING Instrument Status Changes.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\SRC STAGING Instrument Status Changes.Outputs[OLE DB Source Error Output].Columns[GID]"
+                          codePage="1252"
+                          dataType="str"
+                          length="60"
+                          lineageId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\SRC STAGING Instrument Status Changes.Outputs[OLE DB Source Error Output].Columns[GID]"
+                          name="GID" />
+                        <outputColumn
+                          refId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\SRC STAGING Instrument Status Changes.Outputs[OLE DB Source Error Output].Columns[StatusName]"
+                          codePage="1252"
+                          dataType="str"
+                          length="60"
+                          lineageId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\SRC STAGING Instrument Status Changes.Outputs[OLE DB Source Error Output].Columns[StatusName]"
+                          name="StatusName" />
+                        <outputColumn
+                          refId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\SRC STAGING Instrument Status Changes.Outputs[OLE DB Source Error Output].Columns[OldStatusName]"
+                          codePage="1252"
+                          dataType="str"
+                          length="60"
+                          lineageId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\SRC STAGING Instrument Status Changes.Outputs[OLE DB Source Error Output].Columns[OldStatusName]"
+                          name="OldStatusName" />
+                        <outputColumn
+                          refId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\SRC STAGING Instrument Status Changes.Outputs[OLE DB Source Error Output].Columns[InstrumemtStatusDateID]"
+                          dataType="i4"
+                          lineageId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\SRC STAGING Instrument Status Changes.Outputs[OLE DB Source Error Output].Columns[InstrumemtStatusDateID]"
+                          name="InstrumemtStatusDateID" />
+                        <outputColumn
+                          refId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\SRC STAGING Instrument Status Changes.Outputs[OLE DB Source Error Output].Columns[InstrumemtStatusTimeID]"
+                          dataType="i2"
+                          lineageId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\SRC STAGING Instrument Status Changes.Outputs[OLE DB Source Error Output].Columns[InstrumemtStatusTimeID]"
+                          name="InstrumemtStatusTimeID" />
+                        <outputColumn
+                          refId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\SRC STAGING Instrument Status Changes.Outputs[OLE DB Source Error Output].Columns[InstrumemtStatusTime]"
+                          dataType="dbTime2"
+                          lineageId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\SRC STAGING Instrument Status Changes.Outputs[OLE DB Source Error Output].Columns[InstrumemtStatusTime]"
+                          name="InstrumemtStatusTime"
+                          scale="7" />
+                        <outputColumn
+                          refId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\SRC STAGING Instrument Status Changes.Outputs[OLE DB Source Error Output].Columns[InstrumentStatusCreatedDateID]"
+                          dataType="i4"
+                          lineageId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\SRC STAGING Instrument Status Changes.Outputs[OLE DB Source Error Output].Columns[InstrumentStatusCreatedDateID]"
+                          name="InstrumentStatusCreatedDateID" />
+                        <outputColumn
+                          refId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\SRC STAGING Instrument Status Changes.Outputs[OLE DB Source Error Output].Columns[InstrumentStatusCreatedTimeID]"
+                          dataType="i2"
+                          lineageId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\SRC STAGING Instrument Status Changes.Outputs[OLE DB Source Error Output].Columns[InstrumentStatusCreatedTimeID]"
+                          name="InstrumentStatusCreatedTimeID" />
+                        <outputColumn
+                          refId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\SRC STAGING Instrument Status Changes.Outputs[OLE DB Source Error Output].Columns[InstrumentStatusCreatedTime]"
+                          dataType="dbTime2"
+                          lineageId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\SRC STAGING Instrument Status Changes.Outputs[OLE DB Source Error Output].Columns[InstrumentStatusCreatedTime]"
+                          name="InstrumentStatusCreatedTime"
+                          scale="7" />
+                        <outputColumn
+                          refId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\SRC STAGING Instrument Status Changes.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\SRC STAGING Instrument Status Changes.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\SRC STAGING Instrument Status Changes.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\SRC STAGING Instrument Status Changes.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory.Paths[Derived Column Output]"
+                  endId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\DST DWH FactInstrumentStatusHistory.Inputs[OLE DB Destination Input]"
+                  name="Derived Column Output"
+                  startId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\DER Batch ID.Outputs[Derived Column Output]" />
+                <path
+                  refId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory.Paths[Lookup Match Output]"
+                  endId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\LKP DWH DimStatus Old.Inputs[Lookup Input]"
+                  name="Lookup Match Output"
+                  startId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\LKP DWH DimStatus New.Outputs[Lookup Match Output]" />
+                <path
+                  refId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory.Paths[Lookup Match Output1]"
+                  endId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\LKP DWH DimStatus New.Inputs[Lookup Input]"
+                  name="Lookup Match Output"
+                  startId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\LKP InstrumentID.Outputs[Lookup Match Output]" />
+                <path
+                  refId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory.Paths[Lookup Match Output2]"
+                  endId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\DER Batch ID.Inputs[Derived Column Input]"
+                  name="Lookup Match Output"
+                  startId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\LKP DWH DimStatus Old.Outputs[Lookup Match Output]" />
+                <path
+                  refId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory.Paths[OLE DB Source Output]"
+                  endId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\LKP InstrumentID.Inputs[Lookup Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\SRC STAGING Instrument Status Changes.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\SEQ FactInstrumentStatus\DFT Refresh DimStatus"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{E1F53AF4-8996-4991-B70C-BB6DD311633C}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="DFT Refresh DimStatus"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\SEQ FactInstrumentStatus\DFT Refresh DimStatus\OLE DB Destination"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="OLE DB Destination"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[DwhDimStatus]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\SEQ FactInstrumentStatus\DFT Refresh DimStatus\OLE DB Destination.Connections[OleDbConnection]"
+                      connectionManagerID="{7AE745A6-BA4C-482E-9695-63779ECE70D4}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[Staging]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\SEQ FactInstrumentStatus\DFT Refresh DimStatus\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\SEQ FactInstrumentStatus\DFT Refresh DimStatus\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[StatusID]"
+                          cachedDataType="i2"
+                          cachedName="StatusID"
+                          externalMetadataColumnId="Package\SEQ FactInstrumentStatus\DFT Refresh DimStatus\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[StatusID]"
+                          lineageId="Package\SEQ FactInstrumentStatus\DFT Refresh DimStatus\OLE DB Source.Outputs[OLE DB Source Output].Columns[StatusID]" />
+                        <inputColumn
+                          refId="Package\SEQ FactInstrumentStatus\DFT Refresh DimStatus\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[StatusName]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="StatusName"
+                          externalMetadataColumnId="Package\SEQ FactInstrumentStatus\DFT Refresh DimStatus\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[StatusName]"
+                          lineageId="Package\SEQ FactInstrumentStatus\DFT Refresh DimStatus\OLE DB Source.Outputs[OLE DB Source Output].Columns[StatusName]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\SEQ FactInstrumentStatus\DFT Refresh DimStatus\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[StatusID]"
+                          dataType="i2"
+                          name="StatusID" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ FactInstrumentStatus\DFT Refresh DimStatus\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[StatusName]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="StatusName" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\SEQ FactInstrumentStatus\DFT Refresh DimStatus\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\SEQ FactInstrumentStatus\DFT Refresh DimStatus\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\SEQ FactInstrumentStatus\DFT Refresh DimStatus\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\SEQ FactInstrumentStatus\DFT Refresh DimStatus\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\SEQ FactInstrumentStatus\DFT Refresh DimStatus\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\SEQ FactInstrumentStatus\DFT Refresh DimStatus\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\SEQ FactInstrumentStatus\DFT Refresh DimStatus\OLE DB Source"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="OLE DB Source"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[DWH].[DimStatus]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\SEQ FactInstrumentStatus\DFT Refresh DimStatus\OLE DB Source.Connections[OleDbConnection]"
+                      connectionManagerID="{0CBC2C04-C137-495F-AF7C-FA5DE465FED0}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[DWH]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\SEQ FactInstrumentStatus\DFT Refresh DimStatus\OLE DB Source.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\SEQ FactInstrumentStatus\DFT Refresh DimStatus\OLE DB Source.Outputs[OLE DB Source Output].Columns[StatusID]"
+                          dataType="i2"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SEQ FactInstrumentStatus\DFT Refresh DimStatus\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[StatusID]"
+                          lineageId="Package\SEQ FactInstrumentStatus\DFT Refresh DimStatus\OLE DB Source.Outputs[OLE DB Source Output].Columns[StatusID]"
+                          name="StatusID"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SEQ FactInstrumentStatus\DFT Refresh DimStatus\OLE DB Source.Outputs[OLE DB Source Output].Columns[StatusName]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SEQ FactInstrumentStatus\DFT Refresh DimStatus\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[StatusName]"
+                          length="50"
+                          lineageId="Package\SEQ FactInstrumentStatus\DFT Refresh DimStatus\OLE DB Source.Outputs[OLE DB Source Output].Columns[StatusName]"
+                          name="StatusName"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\SEQ FactInstrumentStatus\DFT Refresh DimStatus\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[StatusID]"
+                          dataType="i2"
+                          name="StatusID" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ FactInstrumentStatus\DFT Refresh DimStatus\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[StatusName]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="StatusName" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\SEQ FactInstrumentStatus\DFT Refresh DimStatus\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\SEQ FactInstrumentStatus\DFT Refresh DimStatus\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[StatusID]"
+                          dataType="i2"
+                          lineageId="Package\SEQ FactInstrumentStatus\DFT Refresh DimStatus\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[StatusID]"
+                          name="StatusID" />
+                        <outputColumn
+                          refId="Package\SEQ FactInstrumentStatus\DFT Refresh DimStatus\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[StatusName]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          lineageId="Package\SEQ FactInstrumentStatus\DFT Refresh DimStatus\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[StatusName]"
+                          name="StatusName" />
+                        <outputColumn
+                          refId="Package\SEQ FactInstrumentStatus\DFT Refresh DimStatus\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\SEQ FactInstrumentStatus\DFT Refresh DimStatus\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\SEQ FactInstrumentStatus\DFT Refresh DimStatus\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\SEQ FactInstrumentStatus\DFT Refresh DimStatus\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\SEQ FactInstrumentStatus\DFT Refresh DimStatus.Paths[OLE DB Source Output]"
+                  endId="Package\SEQ FactInstrumentStatus\DFT Refresh DimStatus\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\SEQ FactInstrumentStatus\DFT Refresh DimStatus\OLE DB Source.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\SEQ FactInstrumentStatus\SQL STAGING Clear DwhDimStatus"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{A0385EBA-58CE-4D1A-9BC1-673EFBD5731E}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SQL STAGING Clear DwhDimStatus"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{7AE745A6-BA4C-482E-9695-63779ECE70D4}"
+              SQLTask:SqlStatementSource="TRUNCATE TABLE DwhDimStatus" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\SEQ FactInstrumentStatus.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{1C62FC38-41FE-485E-B293-FB3BA58B420F}"
+          DTS:From="Package\SEQ FactInstrumentStatus\SQL STAGING Clear DwhDimStatus"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\SEQ FactInstrumentStatus\DFT Refresh DimStatus" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\SEQ FactInstrumentStatus.PrecedenceConstraints[Constraint 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{7FB45E6F-D8AE-4ED6-BDC6-39109493BABA}"
+          DTS:From="Package\SEQ FactInstrumentStatus\DFT Refresh DimStatus"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 1"
+          DTS:To="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL Get DHW BatchID"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{33369f5b-99df-4511-9a56-9c1feeb30193}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL Get DHW BatchID"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{0CBC2C04-C137-495F-AF7C-FA5DE465FED0}"
+          SQLTask:SqlStatementSource="SELECT DWH.GetBatchid() AS BatchID&#xA;"
+          SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="BatchID"
+            SQLTask:DtsVariableName="User::BatchID" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{13E9235D-7A3D-4F47-A6C4-90C12AABF536}"
+      DTS:From="Package\SQL Get DHW BatchID"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\SEQ FactInstrumentStatus" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="261,42"
+          Id="Package\SQL Get DHW BatchID"
+          TopLeft="30,10" />
+        <NodeLayout
+          Size="261,42"
+          Id="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory"
+          TopLeft="72,198" />
+        <EdgeLayout
+          Id="Package\SEQ FactInstrumentStatus.PrecedenceConstraints[Constraint 1]"
+          TopLeft="202.5,148">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,50"
+              Start="0,0"
+              End="0,42.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,42.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="261,42"
+          Id="Package\SEQ FactInstrumentStatus\DFT Refresh DimStatus"
+          TopLeft="72,106" />
+        <EdgeLayout
+          Id="Package\SEQ FactInstrumentStatus.PrecedenceConstraints[Constraint]"
+          TopLeft="202.5,57">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,49"
+              Start="0,0"
+              End="0,41.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,41.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="261,42"
+          Id="Package\SEQ FactInstrumentStatus\SQL STAGING Clear DwhDimStatus"
+          TopLeft="72,15" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="471,453"
+          Size="471,496"
+          Id="Package\SEQ FactInstrumentStatus"
+          TopLeft="43,173" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="160.5,52">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="118,121"
+              Start="0,0"
+              End="118,113.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,56.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,56.5"
+                    Point2="0,60.5"
+                    Point3="4,60.5" />
+                  <mssgle:LineSegment
+                    End="114,60.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="114,60.5"
+                    Point2="118,60.5"
+                    Point3="118,64.5" />
+                  <mssgle:LineSegment
+                    End="118,113.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="277,42"
+          Id="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\DER Batch ID"
+          TopLeft="298,456" />
+        <NodeLayout
+          Size="277,42"
+          Id="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\LKP DWH DimStatus New"
+          TopLeft="298,248" />
+        <NodeLayout
+          Size="277,42"
+          Id="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\LKP InstrumentID"
+          TopLeft="298,156" />
+        <NodeLayout
+          Size="277,42"
+          Id="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\SRC STAGING Instrument Status Changes"
+          TopLeft="298,60" />
+        <NodeLayout
+          Size="277,42"
+          Id="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\LKP DWH DimStatus Old"
+          TopLeft="298,366" />
+        <NodeLayout
+          Size="277,42"
+          Id="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\DST DWH FactInstrumentStatusHistory"
+          TopLeft="298,537" />
+        <EdgeLayout
+          Id="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory.Paths[Lookup Match Output2]"
+          TopLeft="436.5,408">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,48"
+              Start="0,0"
+              End="0,40.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,40.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,14.4453125,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory.Paths[Lookup Match Output1]"
+          TopLeft="436.5,198">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,50"
+              Start="0,0"
+              End="0,42.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,42.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,15.4453125,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory.Paths[Lookup Match Output]"
+          TopLeft="436.5,290">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,76"
+              Start="0,0"
+              End="0,68.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,68.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,28.4453125,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory.Paths[Derived Column Output]"
+          TopLeft="436.5,498">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,39"
+              Start="0,0"
+              End="0,31.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory.Paths[OLE DB Source Output]"
+          TopLeft="436.5,102">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,54"
+              Start="0,0"
+              End="0,46.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,46.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\LKP DWH DimStatus New">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[DWH].[DimStatus]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\LKP InstrumentID">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\SRC STAGING Instrument Status Changes">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\LKP DWH DimStatus Old">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[DWH].[DimStatus]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\DST DWH FactInstrumentStatusHistory">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\SEQ FactInstrumentStatus\DFT Refresh DimStatus">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="150,42"
+          Id="Package\SEQ FactInstrumentStatus\DFT Refresh DimStatus\OLE DB Source"
+          TopLeft="96,44" />
+        <NodeLayout
+          Size="171,42"
+          Id="Package\SEQ FactInstrumentStatus\DFT Refresh DimStatus\OLE DB Destination"
+          TopLeft="108,130" />
+        <EdgeLayout
+          Id="Package\SEQ FactInstrumentStatus\DFT Refresh DimStatus.Paths[OLE DB Source Output]"
+          TopLeft="171,86">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="22.5,44"
+              Start="0,0"
+              End="22.5,36.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,18" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,18"
+                    Point2="0,22"
+                    Point3="4,22" />
+                  <mssgle:LineSegment
+                    End="18.5,22" />
+                  <mssgle:CubicBezierSegment
+                    Point1="18.5,22"
+                    Point2="22.5,22"
+                    Point3="22.5,26" />
+                  <mssgle:LineSegment
+                    End="22.5,36.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\SEQ FactInstrumentStatus\DFT Refresh DimStatus\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\SEQ FactInstrumentStatus\DFT Refresh DimStatus\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

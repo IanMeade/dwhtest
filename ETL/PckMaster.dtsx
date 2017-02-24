@@ -11,8 +11,8 @@
   DTS:LocaleID="6153"
   DTS:ObjectName="PckMaster"
   DTS:PackageType="5"
-  DTS:VersionBuild="41"
-  DTS:VersionGUID="{EC40C220-DC9E-468F-A269-6B9FCEF1B869}">
+  DTS:VersionBuild="48"
+  DTS:VersionGUID="{2D5C7CEC-A82F-4B7C-8836-36915DB6A453}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -415,7 +415,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="SQL Run MDM Refresh"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -453,13 +453,30 @@
       <DTS:Variables />
       <DTS:Executables>
         <DTS:Executable
-          DTS:refId="Package\SEQ Process Fact Tables\EPT PckFactEquityTrade"
+          DTS:refId="Package\SEQ Process Fact Tables\EPT PckFactEquityTradeSnapshot"
+          DTS:CreationName="Microsoft.ExecutePackageTask"
+          DTS:Description="Execute Package Task"
+          DTS:DTSID="{95fd9519-1c9c-40d4-9812-fc4e554dd4e7}"
+          DTS:ExecutableType="Microsoft.ExecutePackageTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="EPT PckFactEquityTradeSnapshot"
+          DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <ExecutePackageTask>
+              <UseProjectReference>True</UseProjectReference>
+              <PackageName>PckFactEquityTradeSnapshot.dtsx</PackageName>
+            </ExecutePackageTask>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\SEQ Process Fact Tables\EPT PckFactT7Trade"
           DTS:CreationName="Microsoft.ExecutePackageTask"
           DTS:Description="Execute Package Task"
           DTS:DTSID="{C41DEE81-770B-443C-8617-A248B03E19A0}"
           DTS:ExecutableType="Microsoft.ExecutePackageTask"
           DTS:LocaleID="-1"
-          DTS:ObjectName="EPT PckFactEquityTrade"
+          DTS:ObjectName="EPT PckFactT7Trade"
           DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
           <DTS:Variables />
           <DTS:ObjectData>
@@ -469,7 +486,67 @@
             </ExecutePackageTask>
           </DTS:ObjectData>
         </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\SEQ Process Fact Tables\Execute Package Task"
+          DTS:CreationName="Microsoft.ExecutePackageTask"
+          DTS:Description="Execute Package Task"
+          DTS:DTSID="{776C4456-E50B-493F-9632-F201FCC839D5}"
+          DTS:ExecutableType="Microsoft.ExecutePackageTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Execute Package Task"
+          DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <ExecutePackageTask>
+              <UseProjectReference>True</UseProjectReference>
+              <PackageName>PckXtInterface.dtsx</PackageName>
+            </ExecutePackageTask>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\SEQ Process Fact Tables\Execute Package Task 1"
+          DTS:CreationName="Microsoft.ExecutePackageTask"
+          DTS:Description="Execute Package Task"
+          DTS:DTSID="{94C845DE-86C2-4510-BE1C-588BBB1FEBBB}"
+          DTS:ExecutableType="Microsoft.ExecutePackageTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Execute Package Task 1"
+          DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <ExecutePackageTask>
+              <UseProjectReference>True</UseProjectReference>
+              <PackageName>PckXtStaging.dtsx</PackageName>
+            </ExecutePackageTask>
+          </DTS:ObjectData>
+        </DTS:Executable>
       </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\SEQ Process Fact Tables.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{1ED56C95-AEFD-45FB-AD3E-6AA666FC7380}"
+          DTS:From="Package\SEQ Process Fact Tables\EPT PckFactT7Trade"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\SEQ Process Fact Tables\EPT PckFactEquityTradeSnapshot" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\SEQ Process Fact Tables.PrecedenceConstraints[Constraint 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{56D885CD-05B1-4F34-9C38-7F8DB4E7BDB3}"
+          DTS:From="Package\SEQ Process Fact Tables\Execute Package Task 1"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 1"
+          DTS:To="Package\SEQ Process Fact Tables\EPT PckFactT7Trade" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\SEQ Process Fact Tables.PrecedenceConstraints[Constraint 2]"
+          DTS:CreationName=""
+          DTS:DTSID="{4A575DB2-5CBE-4DE4-B84B-F3A7E6797053}"
+          DTS:From="Package\SEQ Process Fact Tables\Execute Package Task 1"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 2"
+          DTS:To="Package\SEQ Process Fact Tables\Execute Package Task" />
+      </DTS:PrecedenceConstraints>
     </DTS:Executable>
     <DTS:Executable
       DTS:refId="Package\SEQ Start Batch"
@@ -897,7 +974,7 @@
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="64" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="163,42"
           Id="Package\SEQ  Source data prep\SEQ Prestage\EPT PreStageFiles"
@@ -1059,16 +1136,130 @@
           Id="Package\SEQ Process Dimension Tables"
           TopLeft="72.5,835.5" />
         <NodeLayout
-          Size="214,42"
-          Id="Package\SEQ Process Fact Tables\EPT PckFactEquityTrade"
-          TopLeft="64,18" />
+          Size="236,42"
+          Id="Package\SEQ Process Fact Tables\EPT PckFactEquityTradeSnapshot"
+          TopLeft="49,257" />
+        <NodeLayout
+          Size="175,42"
+          Id="Package\SEQ Process Fact Tables\EPT PckFactT7Trade"
+          TopLeft="43,147" />
+        <NodeLayout
+          Size="183,42"
+          Id="Package\SEQ Process Fact Tables\Execute Package Task"
+          TopLeft="268,146" />
+        <NodeLayout
+          Size="192,42"
+          Id="Package\SEQ Process Fact Tables\Execute Package Task 1"
+          TopLeft="48,35" />
+        <EdgeLayout
+          Id="Package\SEQ Process Fact Tables.PrecedenceConstraints[Constraint]"
+          TopLeft="130.5,189">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="36.5,68"
+              Start="0,0"
+              End="36.5,60.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,30" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,30"
+                    Point2="0,34"
+                    Point3="4,34" />
+                  <mssgle:LineSegment
+                    End="32.5,34" />
+                  <mssgle:CubicBezierSegment
+                    Point1="32.5,34"
+                    Point2="36.5,34"
+                    Point3="36.5,38" />
+                  <mssgle:LineSegment
+                    End="36.5,60.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ Process Fact Tables.PrecedenceConstraints[Constraint 1]"
+          TopLeft="113.333333333333,77">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="17.1666666666667,70"
+              Start="0,0"
+              End="17.1666666666667,62.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,24.3471074380165" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,24.3471074380165"
+                    Point2="0,28.3471074380165"
+                    Point3="4,28.3471074380165" />
+                  <mssgle:LineSegment
+                    End="13.1666666666667,28.3471074380165" />
+                  <mssgle:CubicBezierSegment
+                    Point1="13.1666666666667,28.3471074380165"
+                    Point2="17.1666666666667,28.3471074380165"
+                    Point3="17.1666666666667,32.3471074380165" />
+                  <mssgle:LineSegment
+                    End="17.1666666666667,62.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ Process Fact Tables.PrecedenceConstraints[Constraint 2]"
+          TopLeft="174.666666666667,77">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="184.833333333333,69"
+              Start="0,0"
+              End="184.833333333333,61.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,23.9421487603306" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,23.9421487603306"
+                    Point2="0,27.9421487603306"
+                    Point3="4,27.9421487603306" />
+                  <mssgle:LineSegment
+                    End="180.833333333333,27.9421487603306" />
+                  <mssgle:CubicBezierSegment
+                    Point1="180.833333333333,27.9421487603306"
+                    Point2="184.833333333333,27.9421487603306"
+                    Point3="184.833333333333,31.9421487603306" />
+                  <mssgle:LineSegment
+                    End="184.833333333333,61.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="410,131"
-          Size="410,174"
+          PanelSize="481,358"
+          Size="481,401"
           Id="Package\SEQ Process Fact Tables"
-          TopLeft="146.5,1166.5" />
+          TopLeft="68.5,1167.5" />
         <NodeLayout
           Size="176,42"
           Id="Package\SEQ Start Batch\SQL Get ETL Version"
@@ -1174,26 +1365,26 @@
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="34.5,28"
+              EndConnector="-8,29"
               Start="0,0"
-              End="34.5,20.5">
+              End="-8,21.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,10" />
+                    End="0,10.5" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,10"
-                    Point2="0,14"
-                    Point3="4,14" />
+                    Point1="0,10.5"
+                    Point2="0,14.5"
+                    Point3="-4,14.5" />
                   <mssgle:LineSegment
-                    End="30.5,14" />
+                    End="-4,14.5" />
                   <mssgle:CubicBezierSegment
-                    Point1="30.5,14"
-                    Point2="34.5,14"
-                    Point3="34.5,18" />
+                    Point1="-4,14.5"
+                    Point2="-8,14.5"
+                    Point3="-8,18.5" />
                   <mssgle:LineSegment
-                    End="34.5,20.5" />
+                    End="-8,21.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1204,30 +1395,30 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 3]"
-          TopLeft="556.5,1253.5">
+          TopLeft="549.5,1368">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="130.5,150"
+              EndConnector="137.5,35.5"
               Start="0,0"
-              End="123,150">
+              End="130,35.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="61.25,0" />
+                    End="64.75,0" />
                   <mssgle:CubicBezierSegment
-                    Point1="61.25,0"
-                    Point2="65.25,0"
-                    Point3="65.25,4" />
+                    Point1="64.75,0"
+                    Point2="68.75,0"
+                    Point3="68.75,4" />
                   <mssgle:LineSegment
-                    End="65.25,146" />
+                    End="68.75,31.5" />
                   <mssgle:CubicBezierSegment
-                    Point1="65.25,146"
-                    Point2="65.25,150"
-                    Point3="69.25,150" />
+                    Point1="68.75,31.5"
+                    Point2="68.75,35.5"
+                    Point3="72.75,35.5" />
                   <mssgle:LineSegment
-                    End="123,150" />
+                    End="130,35.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>

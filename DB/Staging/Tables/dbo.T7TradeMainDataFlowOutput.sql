@@ -1,4 +1,4 @@
-CREATE TABLE [dbo].[T7TradeMianDataFlowOutput]
+CREATE TABLE [dbo].[T7TradeMainDataFlowOutput]
 (
 [A_BUY_SELL_FLAG] [varchar] (1) COLLATE Latin1_General_CI_AS NULL,
 [A_ISIN] [varchar] (12) COLLATE Latin1_General_CI_AS NULL,

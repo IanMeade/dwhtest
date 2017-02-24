@@ -11,8 +11,8 @@
   DTS:LocaleID="6153"
   DTS:ObjectName="PckPreStageFiles"
   DTS:PackageType="5"
-  DTS:VersionBuild="47"
-  DTS:VersionGUID="{612D6DCC-1D1E-4719-BCA3-809072633E25}">
+  DTS:VersionBuild="48"
+  DTS:VersionGUID="{20465972-2F70-473B-8B04-9E0126341821}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -147,6 +147,7 @@
           DTS:refId="Package\SEQ File name validation\SQL File Validation - SAFT File pair"
           DTS:CreationName="Microsoft.ExecuteSQLTask"
           DTS:Description="Execute SQL Task"
+          DTS:Disabled="True"
           DTS:DTSID="{1b5f6604-2421-4484-a1d9-62d05fed5d79}"
           DTS:ExecutableType="Microsoft.ExecuteSQLTask"
           DTS:LocaleID="-1"

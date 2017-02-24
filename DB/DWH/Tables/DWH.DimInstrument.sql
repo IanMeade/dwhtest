@@ -8,15 +8,14 @@ CREATE TABLE [DWH].[DimInstrument]
 [ISIN] [varchar] (12) COLLATE Latin1_General_CI_AS NOT NULL,
 [SEDOL] [varchar] (7) COLLATE Latin1_General_CI_AS NOT NULL,
 [InstrumentStatusID] [smallint] NOT NULL,
-[InstrumentStatusDateID] [int] NOT NULL,
-[InstrumentListedDateID] [int] NOT NULL,
+[InstrumentStatusDate] [date] NOT NULL,
+[InstrumentListedDate] [date] NOT NULL,
 [IssuerName] [varchar] (200) COLLATE Latin1_General_CI_AS NOT NULL,
 [IssuerGlobalID] [varchar] (20) COLLATE Latin1_General_CI_AS NOT NULL,
-[IssuerStatusID] [smallint] NOT NULL,
 [MarketID] [smallint] NOT NULL,
 [IssuerDomicile] [varchar] (200) COLLATE Latin1_General_CI_AS NOT NULL,
-[FinancialYearEndDateID] [int] NOT NULL,
-[IncorporationDateID] [int] NOT NULL,
+[FinancialYearEndDate] [date] NOT NULL,
+[IncorporationDate] [date] NOT NULL,
 [LegalStructure] [varchar] (50) COLLATE Latin1_General_CI_AS NOT NULL,
 [AccountingStandard] [varchar] (200) COLLATE Latin1_General_CI_AS NOT NULL,
 [TransparencyDirectiveHomeMemberCountry] [varchar] (200) COLLATE Latin1_General_CI_AS NOT NULL,
@@ -25,9 +24,10 @@ CREATE TABLE [DWH].[DimInstrument]
 [FeeCodeName] [varchar] (200) COLLATE Latin1_General_CI_AS NOT NULL,
 [WKN] [varchar] (6) COLLATE Latin1_General_CI_AS NOT NULL,
 [MNEM] [varchar] (4) COLLATE Latin1_General_CI_AS NOT NULL,
-[IssuedDateID] [int] NOT NULL,
+[IssuedDate] [date] NULL,
 [IssuerSedolMasterFileName] [varchar] (35) COLLATE Latin1_General_CI_AS NOT NULL,
-[CompanyApprovalDateID] [int] NOT NULL,
+[CompnayGlobalID] [varchar] (40) COLLATE Latin1_General_CI_AS NULL,
+[CompanyApprovalDate] [date] NOT NULL,
 [CompanyApprovalType] [varchar] (50) COLLATE Latin1_General_CI_AS NOT NULL,
 [InstrumentDomesticYN] [char] (1) COLLATE Latin1_General_CI_AS NOT NULL,
 [InstrumentSedolMasterFileName] [varchar] (40) COLLATE Latin1_General_CI_AS NOT NULL,
@@ -38,6 +38,4 @@ CREATE TABLE [DWH].[DimInstrument]
 ) ON [PRIMARY]
 GO
 ALTER TABLE [DWH].[DimInstrument] ADD CONSTRAINT [PK_DimInstrument] PRIMARY KEY CLUSTERED  ([InstrumentID]) ON [PRIMARY]
-GO
-ALTER TABLE [DWH].[DimInstrument] ADD CONSTRAINT [FK_DimInstrument_DimInstrumentEquity] FOREIGN KEY ([InstrumentID]) REFERENCES [DWH].[DimInstrumentEquity] ([InstrumentID])
 GO

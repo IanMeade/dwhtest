@@ -1,10 +1,18 @@
 CREATE ROLE [EtlRunner]
-AUTHORIZATION [dbo]GRANT CREATE DEFAULT TO [EtlRunner]
+AUTHORIZATION [dbo]
+EXEC sp_addrolemember N'EtlRunner', N'ETL_test'
+GRANT CREATE DEFAULT TO [EtlRunner]
 GRANT CREATE FUNCTION TO [EtlRunner]
 GRANT CREATE PROCEDURE TO [EtlRunner]
 GRANT CREATE RULE TO [EtlRunner]
 GRANT CREATE TABLE TO [EtlRunner]
 GRANT CREATE VIEW TO [EtlRunner]
+
+
+
+
+
+
 
 GO
 EXEC sp_addrolemember N'EtlRunner', N'STOCK_EXCHANGE\G_DWEtlRunner'

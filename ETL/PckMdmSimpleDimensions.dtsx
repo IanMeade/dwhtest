@@ -11,8 +11,8 @@
   DTS:LocaleID="6153"
   DTS:ObjectName="PckMdmSimpleDimensions"
   DTS:PackageType="5"
-  DTS:VersionBuild="43"
-  DTS:VersionGUID="{9A5BE665-B923-4A0C-A3CB-07707E120641}">
+  DTS:VersionBuild="44"
+  DTS:VersionGUID="{BB64586B-84A2-467B-992E-183C5E5EACC2}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -6106,7 +6106,7 @@ where [refTable].[TraderCode] = ? and [refTable].[BrokerCode] = ?</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="SQL Clear Staging Controls"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="1">
+          DTS:ThreadHint="0">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -6339,7 +6339,7 @@ where [refTable].[TraderCode] = ? and [refTable].[BrokerCode] = ?</property>
                       description="The SQL command to be executed."
                       expressionType="Notify"
                       name="SqlCommand"
-                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE [DWH].[DimCurrency] SET [CurrencyISOCode] = ?,[CurrencyName] = ?,[CurrencySymbol] = ? WHERE [CurrencyCountry] = ?</property>
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE [DWH].[DimCurrency] SET [CurrencyCountry] = ?,[CurrencyName] = ?,[CurrencySymbol] = ? WHERE [CurrencyISOCode] = ?</property>
                     <property
                       dataType="System.Int32"
                       description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -6367,7 +6367,7 @@ where [refTable].[TraderCode] = ? and [refTable].[BrokerCode] = ?</property>
                           cachedDataType="str"
                           cachedLength="50"
                           cachedName="CurrencyCountry"
-                          externalMetadataColumnId="Package\SEQ Simple Dimensions\DFT Currency\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
+                          externalMetadataColumnId="Package\SEQ Simple Dimensions\DFT Currency\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
                           lineageId="Package\SEQ Simple Dimensions\DFT Currency\SRC MDM Currency.Outputs[OLE DB Source Output].Columns[CurrencyCountry]" />
                         <inputColumn
                           refId="Package\SEQ Simple Dimensions\DFT Currency\OLE DB Command.Inputs[OLE DB Command Input].Columns[CurrencyISOCode]"
@@ -6375,7 +6375,7 @@ where [refTable].[TraderCode] = ? and [refTable].[BrokerCode] = ?</property>
                           cachedDataType="str"
                           cachedLength="3"
                           cachedName="CurrencyISOCode"
-                          externalMetadataColumnId="Package\SEQ Simple Dimensions\DFT Currency\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                          externalMetadataColumnId="Package\SEQ Simple Dimensions\DFT Currency\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
                           lineageId="Package\SEQ Simple Dimensions\DFT Currency\SRC MDM Currency.Outputs[OLE DB Source Output].Columns[CurrencyISOCode]" />
                         <inputColumn
                           refId="Package\SEQ Simple Dimensions\DFT Currency\OLE DB Command.Inputs[OLE DB Command Input].Columns[CurrencyName]"
@@ -6400,7 +6400,7 @@ where [refTable].[TraderCode] = ? and [refTable].[BrokerCode] = ?</property>
                           refId="Package\SEQ Simple Dimensions\DFT Currency\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
                           codePage="1252"
                           dataType="str"
-                          length="3"
+                          length="50"
                           name="Param_0">
                           <properties>
                             <property
@@ -6439,7 +6439,7 @@ where [refTable].[TraderCode] = ? and [refTable].[BrokerCode] = ?</property>
                           refId="Package\SEQ Simple Dimensions\DFT Currency\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
                           codePage="1252"
                           dataType="str"
-                          length="50"
+                          length="3"
                           name="Param_3">
                           <properties>
                             <property
@@ -6555,7 +6555,7 @@ where [refTable].[TraderCode] = ? and [refTable].[BrokerCode] = ?</property>
                             <property
                               dataType="System.Int32"
                               name="ColumnType"
-                              typeConverter="ColumnType">1</property>
+                              typeConverter="ColumnType">2</property>
                           </properties>
                         </inputColumn>
                         <inputColumn
@@ -6570,7 +6570,7 @@ where [refTable].[TraderCode] = ? and [refTable].[BrokerCode] = ?</property>
                             <property
                               dataType="System.Int32"
                               name="ColumnType"
-                              typeConverter="ColumnType">2</property>
+                              typeConverter="ColumnType">1</property>
                           </properties>
                         </inputColumn>
                         <inputColumn
@@ -9861,7 +9861,7 @@ where [refTable].[StatusName] = ?</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="SQL Clear Fee Bands"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -9941,7 +9941,7 @@ where [refTable].[StatusName] = ?</property>
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="215,42"
           Id="Package\SEQ Complex dimensions\DFT Date"
@@ -9960,6 +9960,10 @@ where [refTable].[StatusName] = ?</property>
           TopLeft="297.944444444445,119.833333333333" />
         <NodeLayout
           Size="215,42"
+          Id="Package\SEQ Complex dimensions\DFT Trader"
+          TopLeft="297.944444444445,223.944444444444" />
+        <NodeLayout
+          Size="215,42"
           Id="Package\SEQ Complex dimensions\SQL Clear Staging Controls"
           TopLeft="53.1666666666666,18.8333333333333" />
         <EdgeLayout
@@ -9967,7 +9971,7 @@ where [refTable].[StatusName] = ?</property>
           TopLeft="160.666666666667,60.8333333333333">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,59.9999999999997"
               Start="0,0"
               End="0,52.4999999999997">
@@ -9989,7 +9993,7 @@ where [refTable].[StatusName] = ?</property>
           TopLeft="160.666666666667,162.833333333333">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,60"
               Start="0,0"
               End="0,52.5">
@@ -10006,10 +10010,6 @@ where [refTable].[StatusName] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="215,42"
-          Id="Package\SEQ Complex dimensions\DFT Trader"
-          TopLeft="297.944444444445,223.944444444444" />
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
@@ -10057,7 +10057,7 @@ where [refTable].[StatusName] = ?</property>
           TopLeft="112,65">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,25.5"
               Start="0,0"
               End="0,18">
@@ -10090,7 +10090,7 @@ where [refTable].[StatusName] = ?</property>
           TopLeft="896,55.2777777777777">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="121.222222222223,52.2222222222223"
               Start="0,0"
               End="121.222222222223,44.7222222222223">
@@ -10124,7 +10124,7 @@ where [refTable].[StatusName] = ?</property>
           TopLeft="857.25,55.2777777777777">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="-442.305555555555,52.2222222222223"
               Start="0,0"
               End="-442.305555555555,44.7222222222223">
@@ -10158,7 +10158,7 @@ where [refTable].[StatusName] = ?</property>
           TopLeft="934.75,55.2777777777777">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="531.08333333333,53.2222222222223"
               Start="0,0"
               End="531.08333333333,45.7222222222223">
@@ -10194,7 +10194,7 @@ where [refTable].[StatusName] = ?</property>
     design-time-name="Package\SEQ Complex dimensions\DFT Date">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="166,42"
           Id="Package\SEQ Complex dimensions\DFT Date\OLE DB Command"
@@ -10216,7 +10216,7 @@ where [refTable].[StatusName] = ?</property>
           TopLeft="312,47.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,60"
               Start="0,0"
               End="0,52.5">
@@ -10240,7 +10240,7 @@ where [refTable].[StatusName] = ?</property>
           TopLeft="289.5,149.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="-202.5,60"
               Start="0,0"
               End="-202.5,52.5">
@@ -10276,7 +10276,7 @@ where [refTable].[StatusName] = ?</property>
           TopLeft="334.5,149.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="-22.5,60"
               Start="0,0"
               End="-22.5,52.5">
@@ -10455,7 +10455,7 @@ where [refTable].[StatusName] = ?</property>
     design-time-name="Package\SEQ Complex dimensions\DFT Dim Broker">
     <LayoutInfo>
       <GraphLayout
-        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="196,42"
           Id="Package\SEQ Complex dimensions\DFT Dim Broker\DER Broker Columns"
@@ -10493,7 +10493,7 @@ where [refTable].[StatusName] = ?</property>
           TopLeft="415,47.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,60"
               Start="0,0"
               End="0,52.5">
@@ -10517,7 +10517,7 @@ where [refTable].[StatusName] = ?</property>
           TopLeft="548.5,443.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,57"
               Start="0,0"
               End="0,49.5">
@@ -10541,7 +10541,7 @@ where [refTable].[StatusName] = ?</property>
           TopLeft="383.666666666667,251.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="-101.666666666667,65"
               Start="0,0"
               End="-101.666666666667,57.5">
@@ -10577,7 +10577,7 @@ where [refTable].[StatusName] = ?</property>
           TopLeft="446.333333333333,251.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="103.166666666667,65"
               Start="0,0"
               End="103.166666666667,57.5">
@@ -10613,7 +10613,7 @@ where [refTable].[StatusName] = ?</property>
           TopLeft="647.5,337.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="117.5,0"
               Start="0,0"
               End="110,0">
@@ -10637,7 +10637,7 @@ where [refTable].[StatusName] = ?</property>
           TopLeft="547.75,358.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,43"
               Start="0,0"
               End="0,35.5">
@@ -10661,7 +10661,7 @@ where [refTable].[StatusName] = ?</property>
           TopLeft="415,149.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,60"
               Start="0,0"
               End="0,52.5">
@@ -10749,7 +10749,7 @@ where [refTable].[StatusName] = ?</property>
     design-time-name="Package\SEQ Complex dimensions\DFT Refresh Date Controls">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="184,42"
           Id="Package\SEQ Complex dimensions\DFT Refresh Date Controls\DST STG SpecialDates"
@@ -10771,7 +10771,7 @@ where [refTable].[StatusName] = ?</property>
           TopLeft="344.5,47.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,60"
               Start="0,0"
               End="0,52.5">
@@ -10795,7 +10795,7 @@ where [refTable].[StatusName] = ?</property>
           TopLeft="97.5,47.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,60"
               Start="0,0"
               End="0,52.5">
@@ -10873,7 +10873,15 @@ where [refTable].[StatusName] = ?</property>
     design-time-name="Package\SEQ Complex dimensions\DFT Tme">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="166,42"
+          Id="Package\SEQ Complex dimensions\DFT Tme\OLE DB Command"
+          TopLeft="229,209.5" />
+        <NodeLayout
+          Size="163,42"
+          Id="Package\SEQ Complex dimensions\DFT Tme\Insert Destination"
+          TopLeft="5.50000000000006,209.5" />
         <NodeLayout
           Size="146,42"
           Id="Package\SEQ Complex dimensions\DFT Tme\STG GetTimes"
@@ -10887,7 +10895,7 @@ where [refTable].[StatusName] = ?</property>
           TopLeft="312,47.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,60"
               Start="0,0"
               End="0,52.5">
@@ -10901,19 +10909,17 @@ where [refTable].[StatusName] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="163,42"
-          Id="Package\SEQ Complex dimensions\DFT Tme\Insert Destination"
-          TopLeft="5.50000000000006,209.5" />
         <EdgeLayout
           Id="Package\SEQ Complex dimensions\DFT Tme.Paths[New Output]"
           TopLeft="289.333333333333,149.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="-202.333333333333,60"
               Start="0,0"
               End="-202.333333333333,52.5">
@@ -10944,16 +10950,12 @@ where [refTable].[StatusName] = ?</property>
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="166,42"
-          Id="Package\SEQ Complex dimensions\DFT Tme\OLE DB Command"
-          TopLeft="229,209.5" />
         <EdgeLayout
           Id="Package\SEQ Complex dimensions\DFT Tme.Paths[Changing Attribute Updates Output]"
           TopLeft="334.666666666667,149.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="-22.6666666666667,60"
               Start="0,0"
               End="-22.6666666666667,52.5">
@@ -11051,32 +11053,357 @@ where [refTable].[StatusName] = ?</property>
     </Properties>
   </PipelineComponentMetadata>
   <TaskHost
+    design-time-name="Package\SEQ Complex dimensions\DFT Trader">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="228,42"
+          Id="Package\SEQ Complex dimensions\DFT Trader\SRC MDM Trader"
+          TopLeft="261,5.5" />
+        <NodeLayout
+          Size="228,42"
+          Id="Package\SEQ Complex dimensions\DFT Trader\LKP DWH DimTrader"
+          TopLeft="261,89" />
+        <NodeLayout
+          Size="228,42"
+          Id="Package\SEQ Complex dimensions\DFT Trader\DER DimTrader Not Inferred"
+          TopLeft="9,371" />
+        <NodeLayout
+          Size="191,42"
+          Id="Package\SEQ Complex dimensions\DFT Trader\CSPL DimTrader update"
+          TopLeft="448,376" />
+        <NodeLayout
+          Size="130,42"
+          Id="Package\SEQ Complex dimensions\DFT Trader\Row Count"
+          TopLeft="795,375" />
+        <NodeLayout
+          Size="228,42"
+          Id="Package\SEQ Complex dimensions\DFT Trader\DST DWH DimTrader"
+          TopLeft="9,500" />
+        <NodeLayout
+          Size="228,42"
+          Id="Package\SEQ Complex dimensions\DFT Trader\CMD Update DimTrader"
+          TopLeft="570,500" />
+        <NodeLayout
+          Size="228,42"
+          Id="Package\SEQ Complex dimensions\DFT Trader\CMD Update Infered DimTrader"
+          TopLeft="290,500" />
+        <NodeLayout
+          Size="228,42"
+          Id="Package\SEQ Complex dimensions\DFT Trader\CSPL DimTrader new"
+          TopLeft="261,180" />
+        <EdgeLayout
+          Id="Package\SEQ Complex dimensions\DFT Trader.Paths[Trader type changed]"
+          TopLeft="574,418">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="110,82"
+              Start="0,0"
+              End="110,74.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,29.208722741433" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,29.208722741433"
+                    Point2="0,33.208722741433"
+                    Point3="4,33.208722741433" />
+                  <mssgle:LineSegment
+                    End="106,33.208722741433" />
+                  <mssgle:CubicBezierSegment
+                    Point1="106,33.208722741433"
+                    Point2="110,33.208722741433"
+                    Point3="110,37.208722741433" />
+                  <mssgle:LineSegment
+                    End="110,74.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="8.43591796875,38.208722741433,93.1281640625,11.6630859375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ Complex dimensions\DFT Trader.Paths[OLE DB Source Output]"
+          TopLeft="375,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="0,41.5"
+              Start="0,0"
+              End="0,34">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,34" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ Complex dimensions\DFT Trader.Paths[New Trader]"
+          TopLeft="338.333333333333,222">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="-215.333333333333,149"
+              Start="0,0"
+              End="-215.333333333333,141.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,56.2229965156794" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,56.2229965156794"
+                    Point2="0,60.2229965156794"
+                    Point3="-4,60.2229965156794" />
+                  <mssgle:LineSegment
+                    End="-211.333333333333,60.2229965156794" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-211.333333333333,60.2229965156794"
+                    Point2="-215.333333333333,60.2229965156794"
+                    Point3="-215.333333333333,64.2229965156794" />
+                  <mssgle:LineSegment
+                    End="-215.333333333333,141.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-134.055358072917,65.2229965156794,52.7773828125,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ Complex dimensions\DFT Trader.Paths[Lookup Match Output]"
+          TopLeft="375,131">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="0,49"
+              Start="0,0"
+              End="0,41.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,41.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,14.9453125,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ Complex dimensions\DFT Trader.Paths[Existing with no change]"
+          TopLeft="639,396.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="156,0"
+              Start="0,0"
+              End="148.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="148.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="21.30365234375,5,105.8926953125,11.6630859375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ Complex dimensions\DFT Trader.Paths[Existing inferred]"
+          TopLeft="513,418">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="-109,82"
+              Start="0,0"
+              End="-109,74.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,29.208722741433" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,29.208722741433"
+                    Point2="0,33.208722741433"
+                    Point3="-4,33.208722741433" />
+                  <mssgle:LineSegment
+                    End="-105,33.208722741433" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-105,33.208722741433"
+                    Point2="-109,33.208722741433"
+                    Point3="-109,37.208722741433" />
+                  <mssgle:LineSegment
+                    End="-109,74.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-90.53798828125,38.208722741433,72.0759765625,11.7119140625"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ Complex dimensions\DFT Trader.Paths[Existing]"
+          TopLeft="411.666666666667,222">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="131.833333333333,154"
+              Start="0,0"
+              End="131.833333333333,146.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,58.2439024390244" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,58.2439024390244"
+                    Point2="0,62.2439024390244"
+                    Point3="4,62.2439024390244" />
+                  <mssgle:LineSegment
+                    End="127.833333333333,62.2439024390244" />
+                  <mssgle:CubicBezierSegment
+                    Point1="127.833333333333,62.2439024390244"
+                    Point2="131.833333333333,62.2439024390244"
+                    Point3="131.833333333333,66.2439024390244" />
+                  <mssgle:LineSegment
+                    End="131.833333333333,146.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="48.5936783854167,67.2439024390244,34.6459765625,11.384765625"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ Complex dimensions\DFT Trader.Paths[Derived Column Output]"
+          TopLeft="123,413">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="0,87"
+              Start="0,0"
+              End="0,79.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,79.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\SEQ Complex dimensions\DFT Trader\SRC MDM Trader">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\SEQ Complex dimensions\DFT Trader\LKP DWH DimTrader">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[DWH].[DimTrader]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\SEQ Complex dimensions\DFT Trader\DST DWH DimTrader">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
     design-time-name="Package\SEQ Simple Dimensions\DFT Currency">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="170,42"
           Id="Package\SEQ Simple Dimensions\DFT Currency\SRC MDM Currency"
           TopLeft="227,5.5" />
         <NodeLayout
-          Size="163,42"
-          Id="Package\SEQ Simple Dimensions\DFT Currency\Insert Destination"
-          TopLeft="5.50000000000006,209.5" />
-        <NodeLayout
           Size="166,42"
           Id="Package\SEQ Simple Dimensions\DFT Currency\SCD Dim Currency"
           TopLeft="229,107.5" />
-        <NodeLayout
-          Size="166,42"
-          Id="Package\SEQ Simple Dimensions\DFT Currency\OLE DB Command"
-          TopLeft="229,209.5" />
         <EdgeLayout
           Id="Package\SEQ Simple Dimensions\DFT Currency.Paths[OLE DB Source Output]"
           TopLeft="312,47.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,60"
               Start="0,0"
               End="0,52.5">
@@ -11090,17 +11417,19 @@ where [refTable].[StatusName] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <NodeLayout
+          Size="163,42"
+          Id="Package\SEQ Simple Dimensions\DFT Currency\Insert Destination"
+          TopLeft="5.50000000000006,209.5" />
         <EdgeLayout
           Id="Package\SEQ Simple Dimensions\DFT Currency.Paths[New Output]"
           TopLeft="285.666666666667,149.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="-198.666666666667,60"
               Start="0,0"
               End="-198.666666666667,52.5">
@@ -11131,12 +11460,16 @@ where [refTable].[StatusName] = ?</property>
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <NodeLayout
+          Size="166,42"
+          Id="Package\SEQ Simple Dimensions\DFT Currency\OLE DB Command"
+          TopLeft="229,209.5" />
         <EdgeLayout
           Id="Package\SEQ Simple Dimensions\DFT Currency.Paths[Changing Attribute Updates Output]"
           TopLeft="338.333333333333,149.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="-26.3333333333333,60"
               Start="0,0"
               End="-26.3333333333333,52.5">
@@ -11195,25 +11528,25 @@ where [refTable].[StatusName] = ?</property>
   &lt;TableName&gt;[DWH].[DimCurrency]&lt;/TableName&gt;
   &lt;InputToColumnsCollection&gt;
     &lt;InputColumnToDBColumn&gt;
-      &lt;IdentificationString&gt;OLE DB Source.Outputs[OLE DB Source Output].Columns[CurrencyCountry]&lt;/IdentificationString&gt;
+      &lt;IdentificationString&gt;SRC MDM Currency.Outputs[OLE DB Source Output].Columns[CurrencyCountry]&lt;/IdentificationString&gt;
       &lt;ColumnName&gt;CurrencyCountry&lt;/ColumnName&gt;
-      &lt;KeyType&gt;BusinessKey&lt;/KeyType&gt;
-      &lt;ChangeType&gt;None&lt;/ChangeType&gt;
-    &lt;/InputColumnToDBColumn&gt;
-    &lt;InputColumnToDBColumn&gt;
-      &lt;IdentificationString&gt;OLE DB Source.Outputs[OLE DB Source Output].Columns[CurrencyISOCode]&lt;/IdentificationString&gt;
-      &lt;ColumnName&gt;CurrencyISOCode&lt;/ColumnName&gt;
       &lt;KeyType&gt;None&lt;/KeyType&gt;
       &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
     &lt;/InputColumnToDBColumn&gt;
     &lt;InputColumnToDBColumn&gt;
-      &lt;IdentificationString&gt;OLE DB Source.Outputs[OLE DB Source Output].Columns[CurrencyName]&lt;/IdentificationString&gt;
+      &lt;IdentificationString&gt;SRC MDM Currency.Outputs[OLE DB Source Output].Columns[CurrencyISOCode]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;CurrencyISOCode&lt;/ColumnName&gt;
+      &lt;KeyType&gt;BusinessKey&lt;/KeyType&gt;
+      &lt;ChangeType&gt;None&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;SRC MDM Currency.Outputs[OLE DB Source Output].Columns[CurrencyName]&lt;/IdentificationString&gt;
       &lt;ColumnName&gt;CurrencyName&lt;/ColumnName&gt;
       &lt;KeyType&gt;None&lt;/KeyType&gt;
       &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
     &lt;/InputColumnToDBColumn&gt;
     &lt;InputColumnToDBColumn&gt;
-      &lt;IdentificationString&gt;OLE DB Source.Outputs[OLE DB Source Output].Columns[CurrencySymbol]&lt;/IdentificationString&gt;
+      &lt;IdentificationString&gt;SRC MDM Currency.Outputs[OLE DB Source Output].Columns[CurrencySymbol]&lt;/IdentificationString&gt;
       &lt;ColumnName&gt;CurrencySymbol&lt;/ColumnName&gt;
       &lt;KeyType&gt;None&lt;/KeyType&gt;
       &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
@@ -11242,7 +11575,7 @@ where [refTable].[StatusName] = ?</property>
     design-time-name="Package\SEQ Simple Dimensions\DFT Index">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="155,42"
           Id="Package\SEQ Simple Dimensions\DFT Index\SRC MDM Index"
@@ -11264,7 +11597,7 @@ where [refTable].[StatusName] = ?</property>
           TopLeft="312,47.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,60"
               Start="0,0"
               End="0,52.5">
@@ -11288,7 +11621,7 @@ where [refTable].[StatusName] = ?</property>
           TopLeft="288.166666666667,149.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="-201.166666666667,60"
               Start="0,0"
               End="-201.166666666667,52.5">
@@ -11324,7 +11657,7 @@ where [refTable].[StatusName] = ?</property>
           TopLeft="335.833333333333,149.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="-23.8333333333333,60"
               Start="0,0"
               End="-23.8333333333333,52.5">
@@ -11442,7 +11775,7 @@ where [refTable].[StatusName] = ?</property>
     design-time-name="Package\SEQ Simple Dimensions\DFT Market">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="156,42"
           Id="Package\SEQ Simple Dimensions\DFT Market\SCD Dim Market"
@@ -11464,7 +11797,7 @@ where [refTable].[StatusName] = ?</property>
           TopLeft="312,47.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,60"
               Start="0,0"
               End="0,52.5">
@@ -11488,7 +11821,7 @@ where [refTable].[StatusName] = ?</property>
           TopLeft="287.333333333333,149.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="-200.333333333333,60"
               Start="0,0"
               End="-200.333333333333,52.5">
@@ -11524,7 +11857,7 @@ where [refTable].[StatusName] = ?</property>
           TopLeft="336.666666666667,149.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="-24.6666666666667,60"
               Start="0,0"
               End="-24.6666666666667,52.5">
@@ -11618,7 +11951,7 @@ where [refTable].[StatusName] = ?</property>
     design-time-name="Package\SEQ Simple Dimensions\DFT Status">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="158,42"
           Id="Package\SEQ Simple Dimensions\DFT Status\SRC MDM Status"
@@ -11636,7 +11969,7 @@ where [refTable].[StatusName] = ?</property>
           TopLeft="94,47.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,60"
               Start="0,0"
               End="0,52.5">
@@ -11660,7 +11993,7 @@ where [refTable].[StatusName] = ?</property>
           TopLeft="94.0000000000001,149.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,60"
               Start="0,0"
               End="0,52.5">
@@ -11682,7 +12015,7 @@ where [refTable].[StatusName] = ?</property>
         <AnnotationLayout
           Text="Only a status name =&gt; can't use SCD wizard"
           ParentId="Package\SEQ Simple Dimensions\DFT Status"
-          FontInfo="{assembly:Null}"
+          FontInfo="{x:Null}"
           Size="273,NaN"
           Id="1aae7ff4-55e4-4ab8-898c-e978c770a0ce"
           TopLeft="233.5,11.5" />
@@ -11742,7 +12075,7 @@ where [refTable].[StatusName] = ?</property>
     design-time-name="Package\SEQ Simple Dimensions\DFT Trade Modification Type">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="166,42"
           Id="Package\SEQ Simple Dimensions\DFT Trade Modification Type\OLE DB Command"
@@ -11764,7 +12097,7 @@ where [refTable].[StatusName] = ?</property>
           TopLeft="277.5,149.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="-190.5,60"
               Start="0,0"
               End="-190.5,52.5">
@@ -11800,7 +12133,7 @@ where [refTable].[StatusName] = ?</property>
           TopLeft="346.5,149.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="-34.5,60"
               Start="0,0"
               End="-34.5,52.5">
@@ -11836,7 +12169,7 @@ where [refTable].[StatusName] = ?</property>
           TopLeft="312,47.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,60"
               Start="0,0"
               End="0,52.5">
@@ -11921,303 +12254,10 @@ where [refTable].[StatusName] = ?</property>
     </Properties>
   </PipelineComponentMetadata>
   <TaskHost
-    design-time-name="Package\SEQ Complex dimensions\DFT Trader">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
-        <NodeLayout
-          Size="228,42"
-          Id="Package\SEQ Complex dimensions\DFT Trader\SRC MDM Trader"
-          TopLeft="261,5.5" />
-        <NodeLayout
-          Size="228,42"
-          Id="Package\SEQ Complex dimensions\DFT Trader\LKP DWH DimTrader"
-          TopLeft="261,89" />
-        <EdgeLayout
-          Id="Package\SEQ Complex dimensions\DFT Trader.Paths[OLE DB Source Output]"
-          TopLeft="375,47.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,41.5"
-              Start="0,0"
-              End="0,34">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,34" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="228,42"
-          Id="Package\SEQ Complex dimensions\DFT Trader\CSPL DimTrader new"
-          TopLeft="261,180" />
-        <EdgeLayout
-          Id="Package\SEQ Complex dimensions\DFT Trader.Paths[Lookup Match Output]"
-          TopLeft="375,131">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,49"
-              Start="0,0"
-              End="0,41.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,41.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,14.9453125,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="228,42"
-          Id="Package\SEQ Complex dimensions\DFT Trader\DST DWH DimTrader"
-          TopLeft="9,500" />
-        <NodeLayout
-          Size="228,42"
-          Id="Package\SEQ Complex dimensions\DFT Trader\DER DimTrader Not Inferred"
-          TopLeft="9,371" />
-        <EdgeLayout
-          Id="Package\SEQ Complex dimensions\DFT Trader.Paths[New Trader]"
-          TopLeft="338.333333333333,222">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-215.333333333333,149"
-              Start="0,0"
-              End="-215.333333333333,141.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,56.2229965156794" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,56.2229965156794"
-                    Point2="0,60.2229965156794"
-                    Point3="-4,60.2229965156794" />
-                  <mssgle:LineSegment
-                    End="-211.333333333333,60.2229965156794" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-211.333333333333,60.2229965156794"
-                    Point2="-215.333333333333,60.2229965156794"
-                    Point3="-215.333333333333,64.2229965156794" />
-                  <mssgle:LineSegment
-                    End="-215.333333333333,141.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-134.055358072917,65.2229965156794,52.7773828125,9.7490234375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\SEQ Complex dimensions\DFT Trader.Paths[Derived Column Output]"
-          TopLeft="123,413">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,87"
-              Start="0,0"
-              End="0,79.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,79.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="228,42"
-          Id="Package\SEQ Complex dimensions\DFT Trader\CMD Update Infered DimTrader"
-          TopLeft="290,500" />
-        <NodeLayout
-          Size="228,42"
-          Id="Package\SEQ Complex dimensions\DFT Trader\CMD Update DimTrader"
-          TopLeft="570,500" />
-        <NodeLayout
-          Size="130,42"
-          Id="Package\SEQ Complex dimensions\DFT Trader\Row Count"
-          TopLeft="795,375" />
-        <NodeLayout
-          Size="191,42"
-          Id="Package\SEQ Complex dimensions\DFT Trader\CSPL DimTrader update"
-          TopLeft="448,376" />
-        <EdgeLayout
-          Id="Package\SEQ Complex dimensions\DFT Trader.Paths[Existing]"
-          TopLeft="411.666666666667,222">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="131.833333333333,154"
-              Start="0,0"
-              End="131.833333333333,146.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,58.2439024390244" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,58.2439024390244"
-                    Point2="0,62.2439024390244"
-                    Point3="4,62.2439024390244" />
-                  <mssgle:LineSegment
-                    End="127.833333333333,62.2439024390244" />
-                  <mssgle:CubicBezierSegment
-                    Point1="127.833333333333,62.2439024390244"
-                    Point2="131.833333333333,62.2439024390244"
-                    Point3="131.833333333333,66.2439024390244" />
-                  <mssgle:LineSegment
-                    End="131.833333333333,146.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="48.5936783854167,67.2439024390244,34.6459765625,11.384765625"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\SEQ Complex dimensions\DFT Trader.Paths[Existing inferred]"
-          TopLeft="513,418">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-109,82"
-              Start="0,0"
-              End="-109,74.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,29.208722741433" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,29.208722741433"
-                    Point2="0,33.208722741433"
-                    Point3="-4,33.208722741433" />
-                  <mssgle:LineSegment
-                    End="-105,33.208722741433" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-105,33.208722741433"
-                    Point2="-109,33.208722741433"
-                    Point3="-109,37.208722741433" />
-                  <mssgle:LineSegment
-                    End="-109,74.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-90.53798828125,38.208722741433,72.0759765625,11.7119140625"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\SEQ Complex dimensions\DFT Trader.Paths[Trader type changed]"
-          TopLeft="574,418">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="110,82"
-              Start="0,0"
-              End="110,74.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,29.208722741433" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,29.208722741433"
-                    Point2="0,33.208722741433"
-                    Point3="4,33.208722741433" />
-                  <mssgle:LineSegment
-                    End="106,33.208722741433" />
-                  <mssgle:CubicBezierSegment
-                    Point1="106,33.208722741433"
-                    Point2="110,33.208722741433"
-                    Point3="110,37.208722741433" />
-                  <mssgle:LineSegment
-                    End="110,74.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="8.43591796875,38.208722741433,93.1281640625,11.6630859375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\SEQ Complex dimensions\DFT Trader.Paths[Existing with no change]"
-          TopLeft="639,396.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="156,0"
-              Start="0,0"
-              End="148.5,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="148.5,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="21.30365234375,5,105.8926953125,11.6630859375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\SEQ Complex dimensions\DFT Trader\SRC MDM Trader">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <TaskHost
     design-time-name="Package\SEQ Simple Report Helpers\DFT Equity Feee Band">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="205,42"
           Id="Package\SEQ Simple Report Helpers\DFT Equity Feee Band\SRC MDM Equity Fee Band"
@@ -12231,7 +12271,7 @@ where [refTable].[StatusName] = ?</property>
           TopLeft="313.5,47.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,46.5"
               Start="0,0"
               End="0,39">
@@ -12268,42 +12308,6 @@ where [refTable].[StatusName] = ?</property>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\SEQ Simple Report Helpers\DFT Equity Feee Band\SRC MDM Equity Fee Band">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\SEQ Complex dimensions\DFT Trader\LKP DWH DimTrader">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:boolean">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[DWH].[DimTrader]</Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:int">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\SEQ Complex dimensions\DFT Trader\DST DWH DimTrader">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>

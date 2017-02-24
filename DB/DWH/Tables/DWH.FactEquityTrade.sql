@@ -9,6 +9,7 @@ CREATE TABLE [DWH].[FactEquityTrade]
 [UTCTradeTimeStamp] [time] NOT NULL,
 [PublishDateID] [int] NOT NULL,
 [PublishTimeID] [smallint] NOT NULL,
+[PublishedDateTime] [datetime2] NULL,
 [DelayedTradeYN] [char] (1) COLLATE Latin1_General_CI_AS NOT NULL,
 [EquityTradeJunkID] [smallint] NOT NULL,
 [BrokerID] [smallint] NOT NULL,
