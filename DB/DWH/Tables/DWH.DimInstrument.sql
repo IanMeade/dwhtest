@@ -9,7 +9,7 @@ CREATE TABLE [DWH].[DimInstrument]
 [SEDOL] [varchar] (7) COLLATE Latin1_General_CI_AS NOT NULL,
 [InstrumentStatusID] [smallint] NOT NULL,
 [InstrumentStatusDate] [date] NOT NULL,
-[InstrumentListedDate] [date] NOT NULL,
+[InstrumentListedDate] [date] NULL,
 [IssuerName] [varchar] (200) COLLATE Latin1_General_CI_AS NOT NULL,
 [IssuerGlobalID] [varchar] (20) COLLATE Latin1_General_CI_AS NOT NULL,
 [MarketID] [smallint] NOT NULL,
@@ -25,7 +25,7 @@ CREATE TABLE [DWH].[DimInstrument]
 [WKN] [varchar] (6) COLLATE Latin1_General_CI_AS NOT NULL,
 [MNEM] [varchar] (4) COLLATE Latin1_General_CI_AS NOT NULL,
 [IssuedDate] [date] NULL,
-[IssuerSedolMasterFileName] [varchar] (35) COLLATE Latin1_General_CI_AS NOT NULL,
+[IssuerSedolMasterFileName] [varchar] (40) COLLATE Latin1_General_CI_AS NOT NULL,
 [CompnayGlobalID] [varchar] (40) COLLATE Latin1_General_CI_AS NULL,
 [CompanyApprovalDate] [date] NOT NULL,
 [CompanyApprovalType] [varchar] (50) COLLATE Latin1_General_CI_AS NOT NULL,
@@ -38,4 +38,8 @@ CREATE TABLE [DWH].[DimInstrument]
 ) ON [PRIMARY]
 GO
 ALTER TABLE [DWH].[DimInstrument] ADD CONSTRAINT [PK_DimInstrument] PRIMARY KEY CLUSTERED  ([InstrumentID]) ON [PRIMARY]
+GO
+ALTER TABLE [DWH].[DimInstrument] ADD CONSTRAINT [FK_DimInstrument_DimMarket] FOREIGN KEY ([MarketID]) REFERENCES [DWH].[DimMarket] ([MarketID])
+GO
+ALTER TABLE [DWH].[DimInstrument] ADD CONSTRAINT [FK_DimInstrument_DimStatus] FOREIGN KEY ([InstrumentStatusID]) REFERENCES [DWH].[DimStatus] ([StatusID])
 GO

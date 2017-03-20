@@ -11,10 +11,25 @@
   DTS:LocaleID="6153"
   DTS:ObjectName="PckMaster"
   DTS:PackageType="5"
-  DTS:VersionBuild="48"
-  DTS:VersionGUID="{2D5C7CEC-A82F-4B7C-8836-36915DB6A453}">
+  DTS:VersionBuild="74"
+  DTS:VersionGUID="{697742A9-D822-49F0-A4F7-BD925C0B7598}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[SMTP Connection Manager]"
+      DTS:CreationName="SMTP"
+      DTS:Description="SMPT email server"
+      DTS:DTSID="{D659D23A-9220-4899-ADF7-77766EA6E00E}"
+      DTS:ObjectName="SMTP Connection Manager">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[User::SmptServerConnectionString]</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <SmtpConnectionManager
+          ConnectionString="SmtpServer=SMPT ;UseWindowsAuthentication=False;EnableSsl=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
   <DTS:Variables>
     <DTS:Variable
       DTS:CreationName=""
@@ -24,6 +39,15 @@
       DTS:ObjectName="BatchID">
       <DTS:VariableValue
         DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{E95CC453-47BD-4516-889D-877A9FDEDFCD}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="ErrorFreeYN">
+      <DTS:VariableValue
+        DTS:DataType="8">Y</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -156,17 +180,146 @@
       <DTS:Variables />
       <DTS:Executables>
         <DTS:Executable
-          DTS:refId="Package\SEQ  Source data prep\SEQ Prestage"
+          DTS:refId="Package\SEQ  Source data prep\SEQ Process Dimension Tables"
+          DTS:CreationName="STOCK:SEQUENCE"
+          DTS:Description="Sequence Container"
+          DTS:DTSID="{159B43DA-1482-4C9B-AF96-94DC0922F1FC}"
+          DTS:ExecutableType="STOCK:SEQUENCE"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SEQ Process Dimension Tables">
+          <DTS:Variables>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{DE27D8F4-0AE8-4FEE-A253-B7D1D74EBCE4}"
+              DTS:IncludeInDebugDump="6789"
+              DTS:Namespace="User"
+              DTS:ObjectName="YesWeCan">
+              <DTS:VariableValue
+                DTS:DataType="11">0</DTS:VariableValue>
+            </DTS:Variable>
+          </DTS:Variables>
+          <DTS:Executables>
+            <DTS:Executable
+              DTS:refId="Package\SEQ  Source data prep\SEQ Process Dimension Tables\EPT MDM Dimensions"
+              DTS:CreationName="Microsoft.ExecutePackageTask"
+              DTS:Description="Execute Package Task"
+              DTS:DTSID="{76208CD2-D7DC-4C34-9C6A-708BF2E481D2}"
+              DTS:ExecutableType="Microsoft.ExecutePackageTask"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="EPT MDM Dimensions"
+              DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+              <DTS:Variables />
+              <DTS:ObjectData>
+                <ExecutePackageTask>
+                  <UseProjectReference>True</UseProjectReference>
+                  <PackageName>PckMdmSimpleDimensions.dtsx</PackageName>
+                </ExecutePackageTask>
+              </DTS:ObjectData>
+            </DTS:Executable>
+            <DTS:Executable
+              DTS:refId="Package\SEQ  Source data prep\SEQ Process Dimension Tables\SQL Run MDM Refresh"
+              DTS:CreationName="Microsoft.ExecuteSQLTask"
+              DTS:Description="Execute SQL Task"
+              DTS:DTSID="{2b26874a-a32e-4d9b-9e22-722e7da73dca}"
+              DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="SQL Run MDM Refresh"
+              DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+              DTS:ThreadHint="0">
+              <DTS:Variables />
+              <DTS:ObjectData>
+                <SQLTask:SqlTaskData
+                  SQLTask:Connection="{88A180A2-BD32-40DF-AB41-4FDAC0D5C73C}"
+                  SQLTask:SqlStatementSource="SELECT dbo.CheckTaskControl('UPDATE_MDM_DIMS') AS YesWeCan"
+                  SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+                  <SQLTask:ResultBinding
+                    SQLTask:ResultName="YesWeCan"
+                    SQLTask:DtsVariableName="User::YesWeCan" />
+                </SQLTask:SqlTaskData>
+              </DTS:ObjectData>
+            </DTS:Executable>
+          </DTS:Executables>
+          <DTS:PrecedenceConstraints>
+            <DTS:PrecedenceConstraint
+              DTS:refId="Package\SEQ  Source data prep\SEQ Process Dimension Tables.PrecedenceConstraints[Constraint]"
+              DTS:CreationName=""
+              DTS:DTSID="{90D3C433-AA1C-45CB-9161-D7FE80871561}"
+              DTS:EvalOp="3"
+              DTS:Expression="@[User::YesWeCan]"
+              DTS:From="Package\SEQ  Source data prep\SEQ Process Dimension Tables\SQL Run MDM Refresh"
+              DTS:LogicalAnd="True"
+              DTS:ObjectName="Constraint"
+              DTS:To="Package\SEQ  Source data prep\SEQ Process Dimension Tables\EPT MDM Dimensions" />
+          </DTS:PrecedenceConstraints>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\SEQ  Source data prep\SQL Batch Error Free 1"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{9939c78b-b0e8-43d5-8766-324d5f15af48}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SQL Batch Error Free 1"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{0CBC2C04-C137-495F-AF7C-FA5DE465FED0}"
+              SQLTask:SqlStatementSource="SELECT&#xA; DWH.GetBatchIsErrorFree() AS ErrorFreeYN&#xA;&#xA;"
+              SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ResultBinding
+                SQLTask:ResultName="ErrorFreeYN"
+                SQLTask:DtsVariableName="User::ErrorFreeYN" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\SEQ  Source data prep.PrecedenceConstraints[Constraint 3]"
+          DTS:CreationName=""
+          DTS:DTSID="{8CD321D4-3D0F-4647-8039-4E28E43B73D1}"
+          DTS:EvalOp="3"
+          DTS:Expression="@[User::ErrorFreeYN] == &quot;Y&quot;"
+          DTS:From="Package\SEQ  Source data prep\SQL Batch Error Free 1"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 3"
+          DTS:To="Package\SEQ  Source data prep\SEQ Process Dimension Tables" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SEQ File Staging"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{8777F212-70DD-4862-B38F-6247D2CED72B}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SEQ File Staging">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\SEQ File Staging\SEQ Prestage"
           DTS:CreationName="STOCK:SEQUENCE"
           DTS:Description="Sequence Container"
           DTS:DTSID="{D5D49C26-2374-48D0-99E2-419802F6968D}"
           DTS:ExecutableType="STOCK:SEQUENCE"
           DTS:LocaleID="-1"
           DTS:ObjectName="SEQ Prestage">
-          <DTS:Variables />
+          <DTS:Variables>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{2A5EF6FF-F384-4FED-A0AC-1C77620F5A34}"
+              DTS:IncludeInDebugDump="6789"
+              DTS:Namespace="User"
+              DTS:ObjectName="YesWeCan">
+              <DTS:VariableValue
+                DTS:DataType="11">0</DTS:VariableValue>
+            </DTS:Variable>
+          </DTS:Variables>
           <DTS:Executables>
             <DTS:Executable
-              DTS:refId="Package\SEQ  Source data prep\SEQ Prestage\EPT PreStageFiles"
+              DTS:refId="Package\SEQ File Staging\SEQ Prestage\EPT PreStageFiles"
               DTS:CreationName="Microsoft.ExecutePackageTask"
               DTS:Description="Execute Package Task"
               DTS:DTSID="{14B74585-7053-4E74-8961-A1361C5DB2A8}"
@@ -182,20 +335,73 @@
                 </ExecutePackageTask>
               </DTS:ObjectData>
             </DTS:Executable>
+            <DTS:Executable
+              DTS:refId="Package\SEQ File Staging\SEQ Prestage\SQL Run File Prestage"
+              DTS:CreationName="Microsoft.ExecuteSQLTask"
+              DTS:Description="Execute SQL Task"
+              DTS:DTSID="{d95e0787-63fc-4acd-8912-db898de07c11}"
+              DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="SQL Run File Prestage"
+              DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+              DTS:ThreadHint="1">
+              <DTS:Variables />
+              <DTS:ObjectData>
+                <SQLTask:SqlTaskData
+                  SQLTask:Connection="{88A180A2-BD32-40DF-AB41-4FDAC0D5C73C}"
+                  SQLTask:SqlStatementSource="SELECT dbo.CheckTaskControl('PRESTAGE_FILES') AS YesWeCan&#xA;"
+                  SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+                  <SQLTask:ResultBinding
+                    SQLTask:ResultName="YesWeCan"
+                    SQLTask:DtsVariableName="User::YesWeCan" />
+                </SQLTask:SqlTaskData>
+              </DTS:ObjectData>
+            </DTS:Executable>
           </DTS:Executables>
+          <DTS:PrecedenceConstraints>
+            <DTS:PrecedenceConstraint
+              DTS:refId="Package\SEQ File Staging\SEQ Prestage.PrecedenceConstraints[Constraint]"
+              DTS:CreationName=""
+              DTS:DTSID="{B550E1FC-1B5E-478B-8F07-2E86ACE468C6}"
+              DTS:EvalOp="3"
+              DTS:Expression="@[User::YesWeCan]"
+              DTS:From="Package\SEQ File Staging\SEQ Prestage\SQL Run File Prestage"
+              DTS:LogicalAnd="True"
+              DTS:ObjectName="Constraint"
+              DTS:To="Package\SEQ File Staging\SEQ Prestage\EPT PreStageFiles" />
+          </DTS:PrecedenceConstraints>
         </DTS:Executable>
         <DTS:Executable
-          DTS:refId="Package\SEQ  Source data prep\SEQ Staging"
+          DTS:refId="Package\SEQ File Staging\SEQ Staging"
           DTS:CreationName="STOCK:SEQUENCE"
           DTS:Description="Sequence Container"
           DTS:DTSID="{936CB3F3-5742-4945-9453-70AE76A61AC6}"
           DTS:ExecutableType="STOCK:SEQUENCE"
           DTS:LocaleID="-1"
           DTS:ObjectName="SEQ Staging">
-          <DTS:Variables />
+          <DTS:Variables>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{6930EC4A-E1B8-44B1-8DA8-B9CB5BE66497}"
+              DTS:IncludeInDebugDump="6789"
+              DTS:Namespace="User"
+              DTS:ObjectName="YesWeCanPrice">
+              <DTS:VariableValue
+                DTS:DataType="11">0</DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{A71F017E-0922-4542-9440-A3572D6AF09C}"
+              DTS:IncludeInDebugDump="6789"
+              DTS:Namespace="User"
+              DTS:ObjectName="YesWecanTrade">
+              <DTS:VariableValue
+                DTS:DataType="11">0</DTS:VariableValue>
+            </DTS:Variable>
+          </DTS:Variables>
           <DTS:Executables>
             <DTS:Executable
-              DTS:refId="Package\SEQ  Source data prep\SEQ Staging\EPT Price Staging"
+              DTS:refId="Package\SEQ File Staging\SEQ Staging\EPT Price Staging"
               DTS:CreationName="Microsoft.ExecutePackageTask"
               DTS:Description="Execute Package Task"
               DTS:DTSID="{41c2887d-a025-449b-8a35-99dc01aec090}"
@@ -212,7 +418,7 @@
               </DTS:ObjectData>
             </DTS:Executable>
             <DTS:Executable
-              DTS:refId="Package\SEQ  Source data prep\SEQ Staging\EPT Tx Saft Staging"
+              DTS:refId="Package\SEQ File Staging\SEQ Staging\EPT Tx Saft Staging"
               DTS:CreationName="Microsoft.ExecutePackageTask"
               DTS:Description="Execute Package Task"
               DTS:DTSID="{178C3EB3-04AD-4D4E-98B2-17B8BE1255CC}"
@@ -228,18 +434,148 @@
                 </ExecutePackageTask>
               </DTS:ObjectData>
             </DTS:Executable>
+            <DTS:Executable
+              DTS:refId="Package\SEQ File Staging\SEQ Staging\SQL Run T7 Price"
+              DTS:CreationName="Microsoft.ExecuteSQLTask"
+              DTS:Description="Execute SQL Task"
+              DTS:DTSID="{89509e99-e73d-461b-82b9-58356874a156}"
+              DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="SQL Run T7 Price"
+              DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+              DTS:ThreadHint="1">
+              <DTS:Variables />
+              <DTS:ObjectData>
+                <SQLTask:SqlTaskData
+                  SQLTask:Connection="{88A180A2-BD32-40DF-AB41-4FDAC0D5C73C}"
+                  SQLTask:SqlStatementSource="SELECT dbo.CheckTaskControl('T7_PRICE') AS YesWeCan&#xA;"
+                  SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+                  <SQLTask:ResultBinding
+                    SQLTask:ResultName="YesWeCan"
+                    SQLTask:DtsVariableName="User::YesWeCanPrice" />
+                </SQLTask:SqlTaskData>
+              </DTS:ObjectData>
+            </DTS:Executable>
+            <DTS:Executable
+              DTS:refId="Package\SEQ File Staging\SEQ Staging\SQL Run T7 Trade"
+              DTS:CreationName="Microsoft.ExecuteSQLTask"
+              DTS:Description="Execute SQL Task"
+              DTS:DTSID="{aeb9f71b-e6e6-40e2-8abb-71314a8bbe80}"
+              DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="SQL Run T7 Trade"
+              DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+              DTS:ThreadHint="2">
+              <DTS:Variables />
+              <DTS:ObjectData>
+                <SQLTask:SqlTaskData
+                  SQLTask:Connection="{88A180A2-BD32-40DF-AB41-4FDAC0D5C73C}"
+                  SQLTask:SqlStatementSource="SELECT dbo.CheckTaskControl('T7_SAFT') AS YesWeCan&#xA;"
+                  SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+                  <SQLTask:ResultBinding
+                    SQLTask:ResultName="YesWeCan"
+                    SQLTask:DtsVariableName="User::YesWecanTrade" />
+                </SQLTask:SqlTaskData>
+              </DTS:ObjectData>
+            </DTS:Executable>
           </DTS:Executables>
+          <DTS:PrecedenceConstraints>
+            <DTS:PrecedenceConstraint
+              DTS:refId="Package\SEQ File Staging\SEQ Staging.PrecedenceConstraints[Constraint]"
+              DTS:CreationName=""
+              DTS:DTSID="{607FAF15-207D-4F54-86A1-631629DDC3F0}"
+              DTS:EvalOp="3"
+              DTS:Expression="@[User::YesWecanTrade]"
+              DTS:From="Package\SEQ File Staging\SEQ Staging\SQL Run T7 Trade"
+              DTS:LogicalAnd="True"
+              DTS:ObjectName="Constraint"
+              DTS:To="Package\SEQ File Staging\SEQ Staging\EPT Tx Saft Staging" />
+            <DTS:PrecedenceConstraint
+              DTS:refId="Package\SEQ File Staging\SEQ Staging.PrecedenceConstraints[Constraint 1]"
+              DTS:CreationName=""
+              DTS:DTSID="{0725B2B3-7A80-4071-861D-E6BBB3539789}"
+              DTS:EvalOp="3"
+              DTS:Expression="@[User::YesWeCanPrice]"
+              DTS:From="Package\SEQ File Staging\SEQ Staging\SQL Run T7 Price"
+              DTS:LogicalAnd="True"
+              DTS:ObjectName="Constraint 1"
+              DTS:To="Package\SEQ File Staging\SEQ Staging\EPT Price Staging" />
+          </DTS:PrecedenceConstraints>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\SEQ File Staging\SQL Batch Error Free"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{054c7c28-7053-4cb9-aeaa-80b3d4cdd440}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SQL Batch Error Free"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{0CBC2C04-C137-495F-AF7C-FA5DE465FED0}"
+              SQLTask:SqlStatementSource="SELECT&#xA; DWH.GetBatchIsErrorFree() AS ErrorFreeYN&#xA;&#xA;"
+              SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ResultBinding
+                SQLTask:ResultName="ErrorFreeYN"
+                SQLTask:DtsVariableName="User::ErrorFreeYN" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\SEQ File Staging\SQL Batch Error Free 1"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{c23f3419-4a0b-4146-addd-5c6cef95f073}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SQL Batch Error Free 1"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{0CBC2C04-C137-495F-AF7C-FA5DE465FED0}"
+              SQLTask:SqlStatementSource="SELECT&#xA; DWH.GetBatchIsErrorFree() AS ErrorFreeYN&#xA;&#xA;"
+              SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ResultBinding
+                SQLTask:ResultName="ErrorFreeYN"
+                SQLTask:DtsVariableName="User::ErrorFreeYN" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
         </DTS:Executable>
       </DTS:Executables>
       <DTS:PrecedenceConstraints>
         <DTS:PrecedenceConstraint
-          DTS:refId="Package\SEQ  Source data prep.PrecedenceConstraints[Constraint]"
+          DTS:refId="Package\SEQ File Staging.PrecedenceConstraints[Constraint]"
           DTS:CreationName=""
-          DTS:DTSID="{D717D89F-0275-41D8-ACA8-6F9E4BAA69D3}"
-          DTS:From="Package\SEQ  Source data prep\SEQ Prestage"
+          DTS:DTSID="{DEDBBCD6-1E2F-419A-BC81-DF523FA56822}"
+          DTS:From="Package\SEQ File Staging\SEQ Prestage"
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint"
-          DTS:To="Package\SEQ  Source data prep\SEQ Staging" />
+          DTS:To="Package\SEQ File Staging\SQL Batch Error Free" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\SEQ File Staging.PrecedenceConstraints[Constraint 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{A5F9C789-93C2-4E38-9332-65EA2476B6E6}"
+          DTS:EvalOp="3"
+          DTS:Expression="@[User::ErrorFreeYN] == &quot;Y&quot;"
+          DTS:From="Package\SEQ File Staging\SQL Batch Error Free"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 1"
+          DTS:To="Package\SEQ File Staging\SEQ Staging" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\SEQ File Staging.PrecedenceConstraints[Constraint 4]"
+          DTS:CreationName=""
+          DTS:DTSID="{DCF51955-329F-4995-8E33-2186D77ABA09}"
+          DTS:EvalOp="3"
+          DTS:Expression="@[User::ErrorFreeYN] == &quot;Y&quot;"
+          DTS:From="Package\SEQ File Staging\SQL Batch Error Free 1"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 4"
+          DTS:To="Package\SEQ File Staging\SEQ Prestage" />
       </DTS:PrecedenceConstraints>
     </DTS:Executable>
     <DTS:Executable
@@ -316,6 +652,28 @@
           </DTS:ObjectData>
         </DTS:Executable>
         <DTS:Executable
+          DTS:refId="Package\SEQ Overnight Jobs\SQL Batch Error Free 3"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{c47867b6-e037-4fc3-8054-a54ead679d00}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SQL Batch Error Free 3"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{0CBC2C04-C137-495F-AF7C-FA5DE465FED0}"
+              SQLTask:SqlStatementSource="SELECT&#xA; DWH.GetBatchIsErrorFree() AS ErrorFreeYN&#xA;&#xA;"
+              SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ResultBinding
+                SQLTask:ResultName="ErrorFreeYN"
+                SQLTask:DtsVariableName="User::ErrorFreeYN" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
           DTS:refId="Package\SEQ Overnight Jobs\SQL Run Overngiht Jobs"
           DTS:CreationName="Microsoft.ExecuteSQLTask"
           DTS:Description="Execute SQL Task"
@@ -349,97 +707,16 @@
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint"
           DTS:To="Package\SEQ Overnight Jobs\EPT Overnight Jobs" />
-      </DTS:PrecedenceConstraints>
-    </DTS:Executable>
-    <DTS:Executable
-      DTS:refId="Package\SEQ Process Dimension Tables"
-      DTS:CreationName="STOCK:SEQUENCE"
-      DTS:Description="Sequence Container"
-      DTS:DTSID="{159B43DA-1482-4C9B-AF96-94DC0922F1FC}"
-      DTS:ExecutableType="STOCK:SEQUENCE"
-      DTS:LocaleID="-1"
-      DTS:ObjectName="SEQ Process Dimension Tables">
-      <DTS:Variables>
-        <DTS:Variable
-          DTS:CreationName=""
-          DTS:DTSID="{DE27D8F4-0AE8-4FEE-A253-B7D1D74EBCE4}"
-          DTS:IncludeInDebugDump="6789"
-          DTS:Namespace="User"
-          DTS:ObjectName="YesWeCan">
-          <DTS:VariableValue
-            DTS:DataType="11">0</DTS:VariableValue>
-        </DTS:Variable>
-      </DTS:Variables>
-      <DTS:Executables>
-        <DTS:Executable
-          DTS:refId="Package\SEQ Process Dimension Tables\EPT MDM Dimensions"
-          DTS:CreationName="Microsoft.ExecutePackageTask"
-          DTS:Description="Execute Package Task"
-          DTS:DTSID="{76208CD2-D7DC-4C34-9C6A-708BF2E481D2}"
-          DTS:ExecutableType="Microsoft.ExecutePackageTask"
-          DTS:LocaleID="-1"
-          DTS:ObjectName="EPT MDM Dimensions"
-          DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
-          <DTS:Variables />
-          <DTS:ObjectData>
-            <ExecutePackageTask>
-              <UseProjectReference>True</UseProjectReference>
-              <PackageName>PckMdmSimpleDimensions.dtsx</PackageName>
-            </ExecutePackageTask>
-          </DTS:ObjectData>
-        </DTS:Executable>
-        <DTS:Executable
-          DTS:refId="Package\SEQ Process Dimension Tables\EPT PckEquityTradeJunkDimension"
-          DTS:CreationName="Microsoft.ExecutePackageTask"
-          DTS:Description="Execute Package Task"
-          DTS:Disabled="True"
-          DTS:DTSID="{16C7FB19-A87B-48CF-85D4-DB871759A217}"
-          DTS:ExecutableType="Microsoft.ExecutePackageTask"
-          DTS:LocaleID="-1"
-          DTS:ObjectName="EPT PckEquityTradeJunkDimension"
-          DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
-          <DTS:Variables />
-          <DTS:ObjectData>
-            <ExecutePackageTask>
-              <UseProjectReference>True</UseProjectReference>
-              <PackageName>PckEquityTradeJunkDimension.dtsx</PackageName>
-            </ExecutePackageTask>
-          </DTS:ObjectData>
-        </DTS:Executable>
-        <DTS:Executable
-          DTS:refId="Package\SEQ Process Dimension Tables\SQL Run MDM Refresh"
-          DTS:CreationName="Microsoft.ExecuteSQLTask"
-          DTS:Description="Execute SQL Task"
-          DTS:DTSID="{2b26874a-a32e-4d9b-9e22-722e7da73dca}"
-          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
-          DTS:LocaleID="-1"
-          DTS:ObjectName="SQL Run MDM Refresh"
-          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="1">
-          <DTS:Variables />
-          <DTS:ObjectData>
-            <SQLTask:SqlTaskData
-              SQLTask:Connection="{88A180A2-BD32-40DF-AB41-4FDAC0D5C73C}"
-              SQLTask:SqlStatementSource="SELECT dbo.CheckTaskControl('UPDATE_MDM_DIMS') AS YesWeCan"
-              SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
-              <SQLTask:ResultBinding
-                SQLTask:ResultName="YesWeCan"
-                SQLTask:DtsVariableName="User::YesWeCan" />
-            </SQLTask:SqlTaskData>
-          </DTS:ObjectData>
-        </DTS:Executable>
-      </DTS:Executables>
-      <DTS:PrecedenceConstraints>
         <DTS:PrecedenceConstraint
-          DTS:refId="Package\SEQ Process Dimension Tables.PrecedenceConstraints[Constraint]"
+          DTS:refId="Package\SEQ Overnight Jobs.PrecedenceConstraints[Constraint 1]"
           DTS:CreationName=""
-          DTS:DTSID="{90D3C433-AA1C-45CB-9161-D7FE80871561}"
+          DTS:DTSID="{7A676705-094A-40E8-97E8-99F278059AEC}"
           DTS:EvalOp="3"
-          DTS:Expression="@[User::YesWeCan]"
-          DTS:From="Package\SEQ Process Dimension Tables\SQL Run MDM Refresh"
+          DTS:Expression="@[User::ErrorFreeYN] == &quot;Y&quot;"
+          DTS:From="Package\SEQ Overnight Jobs\SQL Batch Error Free 3"
           DTS:LogicalAnd="True"
-          DTS:ObjectName="Constraint"
-          DTS:To="Package\SEQ Process Dimension Tables\EPT MDM Dimensions" />
+          DTS:ObjectName="Constraint 1"
+          DTS:To="Package\SEQ Overnight Jobs\SQL Run Overngiht Jobs" />
       </DTS:PrecedenceConstraints>
     </DTS:Executable>
     <DTS:Executable
@@ -453,99 +730,225 @@
       <DTS:Variables />
       <DTS:Executables>
         <DTS:Executable
-          DTS:refId="Package\SEQ Process Fact Tables\EPT PckFactEquityTradeSnapshot"
-          DTS:CreationName="Microsoft.ExecutePackageTask"
-          DTS:Description="Execute Package Task"
-          DTS:DTSID="{95fd9519-1c9c-40d4-9812-fc4e554dd4e7}"
-          DTS:ExecutableType="Microsoft.ExecutePackageTask"
+          DTS:refId="Package\SEQ Process Fact Tables\SEQ T7 Aggregation"
+          DTS:CreationName="STOCK:SEQUENCE"
+          DTS:Description="Sequence Container"
+          DTS:DTSID="{0150D180-035E-4010-9975-E9F3DEC575F3}"
+          DTS:ExecutableType="STOCK:SEQUENCE"
           DTS:LocaleID="-1"
-          DTS:ObjectName="EPT PckFactEquityTradeSnapshot"
-          DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
-          <DTS:Variables />
-          <DTS:ObjectData>
-            <ExecutePackageTask>
-              <UseProjectReference>True</UseProjectReference>
-              <PackageName>PckFactEquityTradeSnapshot.dtsx</PackageName>
-            </ExecutePackageTask>
-          </DTS:ObjectData>
+          DTS:ObjectName="SEQ T7 Aggregation">
+          <DTS:Variables>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{2AF21B4C-7686-45C6-A419-12BA574ABB29}"
+              DTS:IncludeInDebugDump="6789"
+              DTS:Namespace="User"
+              DTS:ObjectName="YesWeCan">
+              <DTS:VariableValue
+                DTS:DataType="11">0</DTS:VariableValue>
+            </DTS:Variable>
+          </DTS:Variables>
+          <DTS:Executables>
+            <DTS:Executable
+              DTS:refId="Package\SEQ Process Fact Tables\SEQ T7 Aggregation\EPT PckT7TradeSnapshot"
+              DTS:CreationName="Microsoft.ExecutePackageTask"
+              DTS:Description="Execute Package Task"
+              DTS:DTSID="{95fd9519-1c9c-40d4-9812-fc4e554dd4e7}"
+              DTS:ExecutableType="Microsoft.ExecutePackageTask"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="EPT PckT7TradeSnapshot"
+              DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+              <DTS:Variables />
+              <DTS:ObjectData>
+                <ExecutePackageTask>
+                  <UseProjectReference>True</UseProjectReference>
+                  <PackageName>PckT7TradeSnapshot.dtsx</PackageName>
+                </ExecutePackageTask>
+              </DTS:ObjectData>
+            </DTS:Executable>
+            <DTS:Executable
+              DTS:refId="Package\SEQ Process Fact Tables\SEQ T7 Aggregation\SQL Batch Error Free"
+              DTS:CreationName="Microsoft.ExecuteSQLTask"
+              DTS:Description="Execute SQL Task"
+              DTS:DTSID="{47ed2fa9-cd40-4aa4-8e30-c1083ff16224}"
+              DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="SQL Batch Error Free"
+              DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+              DTS:ThreadHint="0">
+              <DTS:Variables />
+              <DTS:ObjectData>
+                <SQLTask:SqlTaskData
+                  SQLTask:Connection="{0CBC2C04-C137-495F-AF7C-FA5DE465FED0}"
+                  SQLTask:SqlStatementSource="SELECT&#xA; DWH.GetBatchIsErrorFree() AS ErrorFreeYN&#xA;&#xA;"
+                  SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+                  <SQLTask:ResultBinding
+                    SQLTask:ResultName="ErrorFreeYN"
+                    SQLTask:DtsVariableName="User::ErrorFreeYN" />
+                </SQLTask:SqlTaskData>
+              </DTS:ObjectData>
+            </DTS:Executable>
+            <DTS:Executable
+              DTS:refId="Package\SEQ Process Fact Tables\SEQ T7 Aggregation\SQL Run T7 Aggreggations"
+              DTS:CreationName="Microsoft.ExecuteSQLTask"
+              DTS:Description="Execute SQL Task"
+              DTS:DTSID="{e3e93500-16d6-4d92-a2c0-c6b30558fb5a}"
+              DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="SQL Run T7 Aggreggations"
+              DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+              DTS:ThreadHint="0">
+              <DTS:Variables />
+              <DTS:ObjectData>
+                <SQLTask:SqlTaskData
+                  SQLTask:Connection="{88A180A2-BD32-40DF-AB41-4FDAC0D5C73C}"
+                  SQLTask:SqlStatementSource="SELECT dbo.CheckTaskControl('T7_AGGREGATIONS') AS YesWeCan&#xA;"
+                  SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+                  <SQLTask:ResultBinding
+                    SQLTask:ResultName="YesWeCan"
+                    SQLTask:DtsVariableName="User::YesWeCan" />
+                </SQLTask:SqlTaskData>
+              </DTS:ObjectData>
+            </DTS:Executable>
+          </DTS:Executables>
+          <DTS:PrecedenceConstraints>
+            <DTS:PrecedenceConstraint
+              DTS:refId="Package\SEQ Process Fact Tables\SEQ T7 Aggregation.PrecedenceConstraints[Constraint]"
+              DTS:CreationName=""
+              DTS:DTSID="{24A98B8D-DE10-4623-A5FA-0D77B0C7167A}"
+              DTS:EvalOp="3"
+              DTS:Expression="@[User::YesWeCan]"
+              DTS:From="Package\SEQ Process Fact Tables\SEQ T7 Aggregation\SQL Run T7 Aggreggations"
+              DTS:LogicalAnd="True"
+              DTS:ObjectName="Constraint"
+              DTS:To="Package\SEQ Process Fact Tables\SEQ T7 Aggregation\EPT PckT7TradeSnapshot" />
+            <DTS:PrecedenceConstraint
+              DTS:refId="Package\SEQ Process Fact Tables\SEQ T7 Aggregation.PrecedenceConstraints[Constraint 1]"
+              DTS:CreationName=""
+              DTS:DTSID="{B44BB161-EEF8-477A-97FC-966AA5A07429}"
+              DTS:EvalOp="3"
+              DTS:Expression="@[User::ErrorFreeYN] == &quot;Y&quot;"
+              DTS:From="Package\SEQ Process Fact Tables\SEQ T7 Aggregation\SQL Batch Error Free"
+              DTS:LogicalAnd="True"
+              DTS:ObjectName="Constraint 1"
+              DTS:To="Package\SEQ Process Fact Tables\SEQ T7 Aggregation\SQL Run T7 Aggreggations" />
+          </DTS:PrecedenceConstraints>
         </DTS:Executable>
         <DTS:Executable
-          DTS:refId="Package\SEQ Process Fact Tables\EPT PckFactT7Trade"
-          DTS:CreationName="Microsoft.ExecutePackageTask"
-          DTS:Description="Execute Package Task"
-          DTS:DTSID="{C41DEE81-770B-443C-8617-A248B03E19A0}"
-          DTS:ExecutableType="Microsoft.ExecutePackageTask"
+          DTS:refId="Package\SEQ Process Fact Tables\SEQ T7 Trade"
+          DTS:CreationName="STOCK:SEQUENCE"
+          DTS:Description="Sequence Container"
+          DTS:DTSID="{51D5FEC3-B774-45EE-95B9-2958516AF0FD}"
+          DTS:ExecutableType="STOCK:SEQUENCE"
           DTS:LocaleID="-1"
-          DTS:ObjectName="EPT PckFactT7Trade"
-          DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
-          <DTS:Variables />
-          <DTS:ObjectData>
-            <ExecutePackageTask>
-              <UseProjectReference>True</UseProjectReference>
-              <PackageName>PckFactT7Trade.dtsx</PackageName>
-            </ExecutePackageTask>
-          </DTS:ObjectData>
-        </DTS:Executable>
-        <DTS:Executable
-          DTS:refId="Package\SEQ Process Fact Tables\Execute Package Task"
-          DTS:CreationName="Microsoft.ExecutePackageTask"
-          DTS:Description="Execute Package Task"
-          DTS:DTSID="{776C4456-E50B-493F-9632-F201FCC839D5}"
-          DTS:ExecutableType="Microsoft.ExecutePackageTask"
-          DTS:LocaleID="-1"
-          DTS:ObjectName="Execute Package Task"
-          DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
-          <DTS:Variables />
-          <DTS:ObjectData>
-            <ExecutePackageTask>
-              <UseProjectReference>True</UseProjectReference>
-              <PackageName>PckXtInterface.dtsx</PackageName>
-            </ExecutePackageTask>
-          </DTS:ObjectData>
-        </DTS:Executable>
-        <DTS:Executable
-          DTS:refId="Package\SEQ Process Fact Tables\Execute Package Task 1"
-          DTS:CreationName="Microsoft.ExecutePackageTask"
-          DTS:Description="Execute Package Task"
-          DTS:DTSID="{94C845DE-86C2-4510-BE1C-588BBB1FEBBB}"
-          DTS:ExecutableType="Microsoft.ExecutePackageTask"
-          DTS:LocaleID="-1"
-          DTS:ObjectName="Execute Package Task 1"
-          DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
-          <DTS:Variables />
-          <DTS:ObjectData>
-            <ExecutePackageTask>
-              <UseProjectReference>True</UseProjectReference>
-              <PackageName>PckXtStaging.dtsx</PackageName>
-            </ExecutePackageTask>
-          </DTS:ObjectData>
+          DTS:ObjectName="SEQ T7 Trade">
+          <DTS:Variables>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{583EB95C-2C8B-4A9F-9541-5C076AEEC03F}"
+              DTS:IncludeInDebugDump="6789"
+              DTS:Namespace="User"
+              DTS:ObjectName="YesWecanTrade">
+              <DTS:VariableValue
+                DTS:DataType="11">0</DTS:VariableValue>
+            </DTS:Variable>
+          </DTS:Variables>
+          <DTS:Executables>
+            <DTS:Executable
+              DTS:refId="Package\SEQ Process Fact Tables\SEQ T7 Trade\EPT PckFactT7Trade"
+              DTS:CreationName="Microsoft.ExecutePackageTask"
+              DTS:Description="Execute Package Task"
+              DTS:DTSID="{C41DEE81-770B-443C-8617-A248B03E19A0}"
+              DTS:ExecutableType="Microsoft.ExecutePackageTask"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="EPT PckFactT7Trade"
+              DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+              <DTS:Variables />
+              <DTS:ObjectData>
+                <ExecutePackageTask>
+                  <UseProjectReference>True</UseProjectReference>
+                  <PackageName>PckFactT7Trade.dtsx</PackageName>
+                </ExecutePackageTask>
+              </DTS:ObjectData>
+            </DTS:Executable>
+            <DTS:Executable
+              DTS:refId="Package\SEQ Process Fact Tables\SEQ T7 Trade\SQL Batch Error Free 2"
+              DTS:CreationName="Microsoft.ExecuteSQLTask"
+              DTS:Description="Execute SQL Task"
+              DTS:DTSID="{ba03ee7b-8855-4c08-9b3d-8e76a16d17f7}"
+              DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="SQL Batch Error Free 2"
+              DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+              DTS:ThreadHint="0">
+              <DTS:Variables />
+              <DTS:ObjectData>
+                <SQLTask:SqlTaskData
+                  SQLTask:Connection="{0CBC2C04-C137-495F-AF7C-FA5DE465FED0}"
+                  SQLTask:SqlStatementSource="SELECT&#xA; DWH.GetBatchIsErrorFree() AS ErrorFreeYN&#xA;&#xA;"
+                  SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+                  <SQLTask:ResultBinding
+                    SQLTask:ResultName="ErrorFreeYN"
+                    SQLTask:DtsVariableName="User::ErrorFreeYN" />
+                </SQLTask:SqlTaskData>
+              </DTS:ObjectData>
+            </DTS:Executable>
+            <DTS:Executable
+              DTS:refId="Package\SEQ Process Fact Tables\SEQ T7 Trade\SQL Run T7 Trade"
+              DTS:CreationName="Microsoft.ExecuteSQLTask"
+              DTS:Description="Execute SQL Task"
+              DTS:DTSID="{61be141f-caf2-48f9-967a-6634feaae451}"
+              DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="SQL Run T7 Trade"
+              DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+              DTS:ThreadHint="0">
+              <DTS:Variables />
+              <DTS:ObjectData>
+                <SQLTask:SqlTaskData
+                  SQLTask:Connection="{88A180A2-BD32-40DF-AB41-4FDAC0D5C73C}"
+                  SQLTask:SqlStatementSource="SELECT dbo.CheckTaskControl('T7_SAFT') AS YesWeCan&#xA;"
+                  SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+                  <SQLTask:ResultBinding
+                    SQLTask:ResultName="YesWeCan"
+                    SQLTask:DtsVariableName="User::YesWecanTrade" />
+                </SQLTask:SqlTaskData>
+              </DTS:ObjectData>
+            </DTS:Executable>
+          </DTS:Executables>
+          <DTS:PrecedenceConstraints>
+            <DTS:PrecedenceConstraint
+              DTS:refId="Package\SEQ Process Fact Tables\SEQ T7 Trade.PrecedenceConstraints[Constraint]"
+              DTS:CreationName=""
+              DTS:DTSID="{7B8D6799-E5BA-4E8B-8F0B-C719FC0DBD6E}"
+              DTS:EvalOp="3"
+              DTS:Expression="@[User::YesWecanTrade]"
+              DTS:From="Package\SEQ Process Fact Tables\SEQ T7 Trade\SQL Run T7 Trade"
+              DTS:LogicalAnd="True"
+              DTS:ObjectName="Constraint"
+              DTS:To="Package\SEQ Process Fact Tables\SEQ T7 Trade\EPT PckFactT7Trade" />
+            <DTS:PrecedenceConstraint
+              DTS:refId="Package\SEQ Process Fact Tables\SEQ T7 Trade.PrecedenceConstraints[Constraint 1]"
+              DTS:CreationName=""
+              DTS:DTSID="{E23306C8-6F7B-4F98-8991-973A7C3DFC79}"
+              DTS:EvalOp="3"
+              DTS:Expression="@[User::ErrorFreeYN] == &quot;Y&quot;"
+              DTS:From="Package\SEQ Process Fact Tables\SEQ T7 Trade\SQL Batch Error Free 2"
+              DTS:LogicalAnd="True"
+              DTS:ObjectName="Constraint 1"
+              DTS:To="Package\SEQ Process Fact Tables\SEQ T7 Trade\SQL Run T7 Trade" />
+          </DTS:PrecedenceConstraints>
         </DTS:Executable>
       </DTS:Executables>
       <DTS:PrecedenceConstraints>
         <DTS:PrecedenceConstraint
           DTS:refId="Package\SEQ Process Fact Tables.PrecedenceConstraints[Constraint]"
           DTS:CreationName=""
-          DTS:DTSID="{1ED56C95-AEFD-45FB-AD3E-6AA666FC7380}"
-          DTS:From="Package\SEQ Process Fact Tables\EPT PckFactT7Trade"
+          DTS:DTSID="{0427DB32-4683-4596-98C3-AB9C1ABB7E70}"
+          DTS:From="Package\SEQ Process Fact Tables\SEQ T7 Trade"
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint"
-          DTS:To="Package\SEQ Process Fact Tables\EPT PckFactEquityTradeSnapshot" />
-        <DTS:PrecedenceConstraint
-          DTS:refId="Package\SEQ Process Fact Tables.PrecedenceConstraints[Constraint 1]"
-          DTS:CreationName=""
-          DTS:DTSID="{56D885CD-05B1-4F34-9C38-7F8DB4E7BDB3}"
-          DTS:From="Package\SEQ Process Fact Tables\Execute Package Task 1"
-          DTS:LogicalAnd="True"
-          DTS:ObjectName="Constraint 1"
-          DTS:To="Package\SEQ Process Fact Tables\EPT PckFactT7Trade" />
-        <DTS:PrecedenceConstraint
-          DTS:refId="Package\SEQ Process Fact Tables.PrecedenceConstraints[Constraint 2]"
-          DTS:CreationName=""
-          DTS:DTSID="{4A575DB2-5CBE-4DE4-B84B-F3A7E6797053}"
-          DTS:From="Package\SEQ Process Fact Tables\Execute Package Task 1"
-          DTS:LogicalAnd="True"
-          DTS:ObjectName="Constraint 2"
-          DTS:To="Package\SEQ Process Fact Tables\Execute Package Task" />
+          DTS:To="Package\SEQ Process Fact Tables\SEQ T7 Aggregation" />
       </DTS:PrecedenceConstraints>
     </DTS:Executable>
     <DTS:Executable
@@ -620,6 +1023,111 @@
           DTS:To="Package\SEQ Start Batch\SQL Start Batch" />
       </DTS:PrecedenceConstraints>
     </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SEQ XT Interface"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{3BD21F03-6319-40F9-9960-938C60F2544B}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SEQ XT Interface">
+      <DTS:Variables>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{A290D272-DE15-4F2E-995D-157860CB0066}"
+          DTS:IncludeInDebugDump="6789"
+          DTS:Namespace="User"
+          DTS:ObjectName="YesWeCan">
+          <DTS:VariableValue
+            DTS:DataType="11">0</DTS:VariableValue>
+        </DTS:Variable>
+      </DTS:Variables>
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\SEQ XT Interface\EPT XT Interface"
+          DTS:CreationName="Microsoft.ExecutePackageTask"
+          DTS:Description="Execute Package Task"
+          DTS:DTSID="{94C845DE-86C2-4510-BE1C-588BBB1FEBBB}"
+          DTS:ExecutableType="Microsoft.ExecutePackageTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="EPT XT Interface"
+          DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <ExecutePackageTask>
+              <UseProjectReference>True</UseProjectReference>
+              <PackageName>PckXtInterface.dtsx</PackageName>
+            </ExecutePackageTask>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\SEQ XT Interface\SQL Batch Error Free 1"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{9d631b49-a253-45a1-bb78-76fea0c37b26}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SQL Batch Error Free 1"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{0CBC2C04-C137-495F-AF7C-FA5DE465FED0}"
+              SQLTask:SqlStatementSource="SELECT&#xA; DWH.GetBatchIsErrorFree() AS ErrorFreeYN&#xA;&#xA;"
+              SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ResultBinding
+                SQLTask:ResultName="ErrorFreeYN"
+                SQLTask:DtsVariableName="User::ErrorFreeYN" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\SEQ XT Interface\SQL Run XT Interface"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{ad323489-1a4c-4e3a-8346-4bc784f383b8}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SQL Run XT Interface"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{88A180A2-BD32-40DF-AB41-4FDAC0D5C73C}"
+              SQLTask:SqlStatementSource="SELECT dbo.CheckTaskControl('XT_INTERFACE') AS YesWeCan&#xA;"
+              SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ResultBinding
+                SQLTask:ResultName="YesWeCan"
+                SQLTask:DtsVariableName="User::YesWeCan" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\SEQ XT Interface.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{571C27C0-E2FB-43E0-9AD9-EE551D4AA052}"
+          DTS:EvalOp="3"
+          DTS:Expression="@[User::YesWeCan]"
+          DTS:From="Package\SEQ XT Interface\SQL Run XT Interface"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\SEQ XT Interface\EPT XT Interface" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\SEQ XT Interface.PrecedenceConstraints[Constraint 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{B939DE70-5E0F-4D8B-8953-BBAE4BF60462}"
+          DTS:EvalOp="3"
+          DTS:Expression="@[User::ErrorFreeYN] == &quot;Y&quot;"
+          DTS:From="Package\SEQ XT Interface\SQL Batch Error Free 1"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 1"
+          DTS:To="Package\SEQ XT Interface\SQL Run XT Interface" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
   </DTS:Executables>
   <DTS:PrecedenceConstraints>
     <DTS:PrecedenceConstraint
@@ -633,43 +1141,51 @@
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
       DTS:CreationName=""
-      DTS:DTSID="{B6B52AC2-4833-4586-A5BB-C5CB54CBE334}"
-      DTS:From="Package\SEQ  Source data prep"
+      DTS:DTSID="{2563E2BF-BF00-4B4E-9FDF-937C7A5BBB83}"
+      DTS:From="Package\SEQ File Staging"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 1"
-      DTS:To="Package\SEQ Process Dimension Tables" />
+      DTS:To="Package\SEQ XT Interface" />
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
       DTS:CreationName=""
-      DTS:DTSID="{DA443596-B499-4445-B4C0-FE8AAB98C8DB}"
-      DTS:From="Package\SEQ Process Dimension Tables"
+      DTS:DTSID="{7C7050DE-C22F-4960-AE00-8B0DCA22C08B}"
+      DTS:From="Package\SEQ XT Interface"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 2"
       DTS:To="Package\SEQ Process Fact Tables" />
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 3]"
       DTS:CreationName=""
-      DTS:DTSID="{5383B576-0735-4A2E-BF31-EABC5416D568}"
+      DTS:DTSID="{778FC0EA-3D4B-465C-BB82-AD12FE60FB0A}"
       DTS:From="Package\SEQ Process Fact Tables"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 3"
-      DTS:To="Package\SEQ Finish Batch" />
+      DTS:To="Package\SEQ Overnight Jobs" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 4]"
+      DTS:CreationName=""
+      DTS:DTSID="{9AFCBE0F-569A-4A52-BB16-817B96C22CF4}"
+      DTS:From="Package\SEQ  Source data prep"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 4"
+      DTS:To="Package\SEQ XT Interface" />
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 5]"
       DTS:CreationName=""
-      DTS:DTSID="{B8BD6C2A-B078-4F0F-B759-85259700EB57}"
-      DTS:From="Package\SEQ Start Batch"
-      DTS:LogicalAnd="True"
-      DTS:ObjectName="Constraint 5"
-      DTS:To="Package\SEQ Overnight Jobs" />
-    <DTS:PrecedenceConstraint
-      DTS:refId="Package.PrecedenceConstraints[Constraint 6]"
-      DTS:CreationName=""
-      DTS:DTSID="{50149ED5-B7FD-4DFA-B50F-B9CB2A9111C0}"
+      DTS:DTSID="{29633BBD-C531-4F37-B060-459523CF6BB8}"
       DTS:From="Package\SEQ Overnight Jobs"
       DTS:LogicalAnd="True"
-      DTS:ObjectName="Constraint 6"
+      DTS:ObjectName="Constraint 5"
       DTS:To="Package\SEQ Finish Batch" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 9]"
+      DTS:CreationName=""
+      DTS:DTSID="{00096F74-A449-4728-9558-155D0FFB3D21}"
+      DTS:From="Package\SEQ Start Batch"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 9"
+      DTS:To="Package\SEQ File Staging" />
   </DTS:PrecedenceConstraints>
   <DTS:EventHandlers>
     <DTS:EventHandler
@@ -821,7 +1337,7 @@
                 DTS:Name="ToLine">@[User::MessageTo]</DTS:PropertyExpression>
               <DTS:ObjectData>
                 <SendMailTask:SendMailTaskData
-                  SendMailTask:SMTPServer="{F62CF2DF-900C-4921-841F-95860695B900}"
+                  SendMailTask:SMTPServer="{D659D23A-9220-4899-ADF7-77766EA6E00E}"
                   SendMailTask:Priority="0"
                   SendMailTask:MessageSourceType="Variable"
                   SendMailTask:MessageSource="User::MessageSubject" xmlns:SendMailTask="www.microsoft.com/sqlserver/dts/tasks/sendmailtask" />
@@ -945,11 +1461,11 @@
             <DTS:PrecedenceConstraint
               DTS:refId="Package.EventHandlers[OnError]\SEQ Error handler.PrecedenceConstraints[Constraint 3]"
               DTS:CreationName=""
-              DTS:DTSID="{a800b77f-a18c-4f6f-8fa8-a70cb4073c60}"
+              DTS:DTSID="{730B5EEC-3EFF-4B95-A1A6-39E87145B4F2}"
               DTS:From="Package.EventHandlers[OnError]\SEQ Error handler\Expression Task"
               DTS:LogicalAnd="True"
               DTS:ObjectName="Constraint 3"
-              DTS:To="Package.EventHandlers[OnError]\SEQ Error handler\Send Mail Task" />
+              DTS:To="Package.EventHandlers[OnError]\SEQ Error handler\SQL Get email server settings" />
             <DTS:PrecedenceConstraint
               DTS:refId="Package.EventHandlers[OnError]\SEQ Error handler.PrecedenceConstraints[Constraint 4]"
               DTS:CreationName=""
@@ -976,45 +1492,211 @@
       <GraphLayout
         Capacity="64" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="163,42"
-          Id="Package\SEQ  Source data prep\SEQ Prestage\EPT PreStageFiles"
-          TopLeft="5.5,5.5" />
-        <ContainerLayout
-          HeaderHeight="43"
-          IsExpanded="True"
-          PanelSize="352,78"
-          Size="352,121"
-          Id="Package\SEQ  Source data prep\SEQ Prestage"
-          TopLeft="40,21.5" />
+          Size="193,42"
+          Id="Package\SEQ  Source data prep\SEQ Process Dimension Tables\EPT MDM Dimensions"
+          TopLeft="37,108" />
         <NodeLayout
-          Size="162,42"
-          Id="Package\SEQ  Source data prep\SEQ Staging\EPT Price Staging"
-          TopLeft="31,88" />
-        <NodeLayout
-          Size="172,42"
-          Id="Package\SEQ  Source data prep\SEQ Staging\EPT Tx Saft Staging"
-          TopLeft="29,8" />
-        <ContainerLayout
-          HeaderHeight="43"
-          IsExpanded="True"
-          PanelSize="350,164"
-          Size="350,207"
-          Id="Package\SEQ  Source data prep\SEQ Staging"
-          TopLeft="39.5,177.5" />
+          Size="193,42"
+          Id="Package\SEQ  Source data prep\SEQ Process Dimension Tables\SQL Run MDM Refresh"
+          TopLeft="37,23" />
         <EdgeLayout
-          Id="Package\SEQ  Source data prep.PrecedenceConstraints[Constraint]"
-          TopLeft="215.25,142.5">
+          Id="Package\SEQ  Source data prep\SEQ Process Dimension Tables.PrecedenceConstraints[Constraint]"
+          TopLeft="133.5,65">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,35"
+              EndConnector="0,43"
               Start="0,0"
-              End="0,27.5">
+              End="0,35.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,27.5" />
+                    End="0,35.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-8,9.75,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="275,201"
+          Size="275,244"
+          Id="Package\SEQ  Source data prep\SEQ Process Dimension Tables"
+          TopLeft="48.5,99.5" />
+        <NodeLayout
+          Size="187,42"
+          Id="Package\SEQ  Source data prep\SQL Batch Error Free 1"
+          TopLeft="95,24" />
+        <EdgeLayout
+          Id="Package\SEQ  Source data prep.PrecedenceConstraints[Constraint 3]"
+          TopLeft="187.25,66">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,33.5"
+              Start="0,0"
+              End="0,26">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-8,5,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="431,427"
+          Size="431,470"
+          Id="Package\SEQ  Source data prep"
+          TopLeft="39.777777777778,405.444444444444" />
+        <NodeLayout
+          Size="183,42"
+          Id="Package\SEQ File Staging\SEQ Prestage\EPT PreStageFiles"
+          TopLeft="26.5,94.5" />
+        <NodeLayout
+          Size="183,42"
+          Id="Package\SEQ File Staging\SEQ Prestage\SQL Run File Prestage"
+          TopLeft="26.5,20" />
+        <EdgeLayout
+          Id="Package\SEQ File Staging\SEQ Prestage.PrecedenceConstraints[Constraint]"
+          TopLeft="118,62">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,32.5"
+              Start="0,0"
+              End="0,25">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,25" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-8,4.5,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="275,172"
+          Size="275,215"
+          Id="Package\SEQ File Staging\SEQ Prestage"
+          TopLeft="164,112.5" />
+        <NodeLayout
+          Size="183,42"
+          Id="Package\SEQ File Staging\SEQ Staging\EPT Price Staging"
+          TopLeft="250,105" />
+        <NodeLayout
+          Size="183,42"
+          Id="Package\SEQ File Staging\SEQ Staging\EPT Tx Saft Staging"
+          TopLeft="33,105" />
+        <NodeLayout
+          Size="183,42"
+          Id="Package\SEQ File Staging\SEQ Staging\SQL Run T7 Price"
+          TopLeft="250,17" />
+        <NodeLayout
+          Size="183,42"
+          Id="Package\SEQ File Staging\SEQ Staging\SQL Run T7 Trade"
+          TopLeft="33,17" />
+        <EdgeLayout
+          Id="Package\SEQ File Staging\SEQ Staging.PrecedenceConstraints[Constraint]"
+          TopLeft="124.5,59">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,46"
+              Start="0,0"
+              End="0,38.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,38.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-8,11.25,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ File Staging\SEQ Staging.PrecedenceConstraints[Constraint 1]"
+          TopLeft="341.5,59">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,46"
+              Start="0,0"
+              End="0,38.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,38.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-8,11.25,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="521,186"
+          Size="521,229"
+          Id="Package\SEQ File Staging\SEQ Staging"
+          TopLeft="40.5,444.5" />
+        <NodeLayout
+          Size="178,42"
+          Id="Package\SEQ File Staging\SQL Batch Error Free"
+          TopLeft="210,356" />
+        <NodeLayout
+          Size="187,42"
+          Id="Package\SEQ File Staging\SQL Batch Error Free 1"
+          TopLeft="212,21" />
+        <EdgeLayout
+          Id="Package\SEQ File Staging.PrecedenceConstraints[Constraint]"
+          TopLeft="300.25,327.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,28.5"
+              Start="0,0"
+              End="0,21">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,21" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1023,35 +1705,87 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ File Staging.PrecedenceConstraints[Constraint 1]"
+          TopLeft="300,398">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,46.5"
+              Start="0,0"
+              End="0,39">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,39" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-8,11.5,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ File Staging.PrecedenceConstraints[Constraint 4]"
+          TopLeft="303.5,63">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,49.5"
+              Start="0,0"
+              End="0,42">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,42" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-8,13,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="475,434"
-          Size="475,477"
-          Id="Package\SEQ  Source data prep"
-          TopLeft="63,269" />
+          PanelSize="598,707"
+          Size="598,750"
+          Id="Package\SEQ File Staging"
+          TopLeft="526,407.444444444444" />
         <NodeLayout
           Size="149,42"
           Id="Package\SEQ Finish Batch\SQL End Batch"
-          TopLeft="5.5,5.5" />
+          TopLeft="23.5,24.5" />
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="160,103"
-          Size="160,146"
+          PanelSize="226,121"
+          Size="226,164"
           Id="Package\SEQ Finish Batch"
-          TopLeft="687,1330.5" />
+          TopLeft="451.333333333333,2897.5" />
         <NodeLayout
-          Size="171,42"
+          Size="193,42"
           Id="Package\SEQ Overnight Jobs\EPT Overnight Jobs"
-          TopLeft="16.5,107.5" />
+          TopLeft="53,229.5" />
+        <NodeLayout
+          Size="193,42"
+          Id="Package\SEQ Overnight Jobs\SQL Batch Error Free 3"
+          TopLeft="53,39" />
         <NodeLayout
           Size="193,42"
           Id="Package\SEQ Overnight Jobs\SQL Run Overngiht Jobs"
-          TopLeft="5.50000000000001,5.5" />
+          TopLeft="53,127.5" />
         <EdgeLayout
           Id="Package\SEQ Overnight Jobs.PrecedenceConstraints[Constraint]"
-          TopLeft="102,47.5">
+          TopLeft="149.5,169.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -1073,178 +1807,185 @@
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <ContainerLayout
-          HeaderHeight="43"
-          IsExpanded="True"
-          PanelSize="204,205"
-          Size="204,248"
-          Id="Package\SEQ Overnight Jobs"
-          TopLeft="930,32.5" />
-        <NodeLayout
-          Size="181,42"
-          Id="Package\SEQ Process Dimension Tables\EPT MDM Dimensions"
-          TopLeft="37,108" />
-        <NodeLayout
-          Size="244,42"
-          Id="Package\SEQ Process Dimension Tables\EPT PckEquityTradeJunkDimension"
-          TopLeft="38,186" />
-        <NodeLayout
-          Size="193,42"
-          Id="Package\SEQ Process Dimension Tables\SQL Run MDM Refresh"
-          TopLeft="44,23" />
         <EdgeLayout
-          Id="Package\SEQ Process Dimension Tables.PrecedenceConstraints[Constraint]"
-          TopLeft="140.5,65">
+          Id="Package\SEQ Overnight Jobs.PrecedenceConstraints[Constraint 1]"
+          TopLeft="149.5,81">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-13,43"
+              EndConnector="0,46.5"
               Start="0,0"
-              End="-13,35.5">
+              End="0,39">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,17.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,17.5"
-                    Point2="0,21.5"
-                    Point3="-4,21.5" />
-                  <mssgle:LineSegment
-                    End="-9,21.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-9,21.5"
-                    Point2="-13,21.5"
-                    Point3="-13,25.5" />
-                  <mssgle:LineSegment
-                    End="-13,35.5" />
+                    End="0,39" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-14.5,26.5,16,16"
+              BoundingBox="-8,11.5,16,16"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="489,260"
-          Size="489,303"
-          Id="Package\SEQ Process Dimension Tables"
-          TopLeft="72.5,835.5" />
+          PanelSize="412,317"
+          Size="412,360"
+          Id="Package\SEQ Overnight Jobs"
+          TopLeft="360.777777777778,2488.5" />
         <NodeLayout
           Size="236,42"
-          Id="Package\SEQ Process Fact Tables\EPT PckFactEquityTradeSnapshot"
-          TopLeft="49,257" />
+          Id="Package\SEQ Process Fact Tables\SEQ T7 Aggregation\EPT PckT7TradeSnapshot"
+          TopLeft="29.2222222222222,205" />
+        <NodeLayout
+          Size="236,42"
+          Id="Package\SEQ Process Fact Tables\SEQ T7 Aggregation\SQL Batch Error Free"
+          TopLeft="29.2222222222222,24" />
+        <NodeLayout
+          Size="236,42"
+          Id="Package\SEQ Process Fact Tables\SEQ T7 Aggregation\SQL Run T7 Aggreggations"
+          TopLeft="29.2222222222222,108.444444444445" />
+        <EdgeLayout
+          Id="Package\SEQ Process Fact Tables\SEQ T7 Aggregation.PrecedenceConstraints[Constraint]"
+          TopLeft="147.222222222222,150.444444444445">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,54.555555555555"
+              Start="0,0"
+              End="0,47.055555555555">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,47.055555555555" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-8,15.5277777777775,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ Process Fact Tables\SEQ T7 Aggregation.PrecedenceConstraints[Constraint 1]"
+          TopLeft="147.222222222222,66">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,42.444444444445"
+              Start="0,0"
+              End="0,34.944444444445">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,34.944444444445" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-8,9.4722222222225,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="313,302"
+          Size="313,345"
+          Id="Package\SEQ Process Fact Tables\SEQ T7 Aggregation"
+          TopLeft="55.7777777777777,370.333333333333" />
         <NodeLayout
           Size="175,42"
-          Id="Package\SEQ Process Fact Tables\EPT PckFactT7Trade"
-          TopLeft="43,147" />
+          Id="Package\SEQ Process Fact Tables\SEQ T7 Trade\EPT PckFactT7Trade"
+          TopLeft="43.6666666666667,193.444444444445" />
+        <NodeLayout
+          Size="187,42"
+          Id="Package\SEQ Process Fact Tables\SEQ T7 Trade\SQL Batch Error Free 2"
+          TopLeft="40,16" />
         <NodeLayout
           Size="183,42"
-          Id="Package\SEQ Process Fact Tables\Execute Package Task"
-          TopLeft="268,146" />
-        <NodeLayout
-          Size="192,42"
-          Id="Package\SEQ Process Fact Tables\Execute Package Task 1"
-          TopLeft="48,35" />
+          Id="Package\SEQ Process Fact Tables\SEQ T7 Trade\SQL Run T7 Trade"
+          TopLeft="43.888888888889,103.333333333333" />
+        <EdgeLayout
+          Id="Package\SEQ Process Fact Tables\SEQ T7 Trade.PrecedenceConstraints[Constraint]"
+          TopLeft="133.277777777778,145.333333333333">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,48.111111111112"
+              Start="0,0"
+              End="0,40.611111111112">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,40.611111111112" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-8,12.305555555556,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ Process Fact Tables\SEQ T7 Trade.PrecedenceConstraints[Constraint 1]"
+          TopLeft="134.444444444445,58">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,45.3333333333333"
+              Start="0,0"
+              End="0,37.8333333333333">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,37.8333333333333" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-8,10.9166666666666,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="256,252"
+          Size="256,295"
+          Id="Package\SEQ Process Fact Tables\SEQ T7 Trade"
+          TopLeft="90,26" />
         <EdgeLayout
           Id="Package\SEQ Process Fact Tables.PrecedenceConstraints[Constraint]"
-          TopLeft="130.5,189">
+          TopLeft="215.138888888889,321">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="36.5,68"
+              EndConnector="0,49.333333333333"
               Start="0,0"
-              End="36.5,60.5">
+              End="0,41.833333333333">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,30" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,30"
-                    Point2="0,34"
-                    Point3="4,34" />
-                  <mssgle:LineSegment
-                    End="32.5,34" />
-                  <mssgle:CubicBezierSegment
-                    Point1="32.5,34"
-                    Point2="36.5,34"
-                    Point3="36.5,38" />
-                  <mssgle:LineSegment
-                    End="36.5,60.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\SEQ Process Fact Tables.PrecedenceConstraints[Constraint 1]"
-          TopLeft="113.333333333333,77">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="17.1666666666667,70"
-              Start="0,0"
-              End="17.1666666666667,62.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,24.3471074380165" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,24.3471074380165"
-                    Point2="0,28.3471074380165"
-                    Point3="4,28.3471074380165" />
-                  <mssgle:LineSegment
-                    End="13.1666666666667,28.3471074380165" />
-                  <mssgle:CubicBezierSegment
-                    Point1="13.1666666666667,28.3471074380165"
-                    Point2="17.1666666666667,28.3471074380165"
-                    Point3="17.1666666666667,32.3471074380165" />
-                  <mssgle:LineSegment
-                    End="17.1666666666667,62.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\SEQ Process Fact Tables.PrecedenceConstraints[Constraint 2]"
-          TopLeft="174.666666666667,77">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="184.833333333333,69"
-              Start="0,0"
-              End="184.833333333333,61.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,23.9421487603306" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,23.9421487603306"
-                    Point2="0,27.9421487603306"
-                    Point3="4,27.9421487603306" />
-                  <mssgle:LineSegment
-                    End="180.833333333333,27.9421487603306" />
-                  <mssgle:CubicBezierSegment
-                    Point1="180.833333333333,27.9421487603306"
-                    Point2="184.833333333333,27.9421487603306"
-                    Point3="184.833333333333,31.9421487603306" />
-                  <mssgle:LineSegment
-                    End="184.833333333333,61.5" />
+                    End="0,41.833333333333" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1256,10 +1997,10 @@
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="481,358"
-          Size="481,401"
+          PanelSize="424,770"
+          Size="424,813"
           Id="Package\SEQ Process Fact Tables"
-          TopLeft="68.5,1167.5" />
+          TopLeft="354.777777777778,1624.61111111111" />
         <NodeLayout
           Size="176,42"
           Id="Package\SEQ Start Batch\SQL Get ETL Version"
@@ -1296,27 +2037,100 @@
           PanelSize="187,205"
           Size="187,248"
           Id="Package\SEQ Start Batch"
-          TopLeft="64.5,3.5" />
+          TopLeft="405.722222222222,84.3888888888889" />
+        <NodeLayout
+          Size="286,42"
+          Id="Package\SEQ XT Interface\EPT XT Interface"
+          TopLeft="61.2222222222222,205.111111111111" />
+        <NodeLayout
+          Size="286,42"
+          Id="Package\SEQ XT Interface\SQL Batch Error Free 1"
+          TopLeft="61.2222222222222,25" />
+        <NodeLayout
+          Size="286,42"
+          Id="Package\SEQ XT Interface\SQL Run XT Interface"
+          TopLeft="61.2222222222222,119.444444444444" />
         <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="251.5,127.5">
+          Id="Package\SEQ XT Interface.PrecedenceConstraints[Constraint]"
+          TopLeft="204.222222222222,161.444444444444">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="49,141.5"
+              EndConnector="0,43.6666666666667"
               Start="0,0"
-              End="49,134">
+              End="0,36.1666666666667">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="45,0" />
-                  <mssgle:CubicBezierSegment
-                    Point1="45,0"
-                    Point2="49,0"
-                    Point3="49,4" />
+                    End="0,36.1666666666667" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-8,10.0833333333334,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ XT Interface.PrecedenceConstraints[Constraint 1]"
+          TopLeft="204.222222222222,67">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,52.4444444444443"
+              Start="0,0"
+              End="0,44.9444444444443">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
                   <mssgle:LineSegment
-                    End="49,134" />
+                    End="0,44.9444444444443" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-8,14.4722222222222,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="394,284"
+          Size="394,327"
+          Id="Package\SEQ XT Interface"
+          TopLeft="372.777777777778,1243.11111111111" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="469.388888888889,332.388888888889">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-214.111111111111,73.0555555555551"
+              Start="0,0"
+              End="-214.111111111111,65.5555555555551">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,25.5940850712853" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,25.5940850712853"
+                    Point2="0,29.5940850712853"
+                    Point3="-4,29.5940850712853" />
+                  <mssgle:LineSegment
+                    End="-210.111111111111,29.5940850712853" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-210.111111111111,29.5940850712853"
+                    Point2="-214.111111111111,29.5940850712853"
+                    Point3="-214.111111111111,33.5940850712853" />
+                  <mssgle:LineSegment
+                    End="-214.111111111111,65.5555555555551" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1327,30 +2141,30 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="300.5,746">
+          TopLeft="825,1157.44444444444">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="16.5,89.5"
+              EndConnector="-190.888888888889,85.6666666666661"
               Start="0,0"
-              End="16.5,82">
+              End="-190.888888888889,78.1666666666661">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,40.75" />
+                    End="0,47.1921132457024" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,40.75"
-                    Point2="0,44.75"
-                    Point3="4,44.75" />
+                    Point1="0,47.1921132457024"
+                    Point2="0,51.1921132457024"
+                    Point3="-4,51.1921132457024" />
                   <mssgle:LineSegment
-                    End="12.5,44.75" />
+                    End="-186.888888888889,51.1921132457024" />
                   <mssgle:CubicBezierSegment
-                    Point1="12.5,44.75"
-                    Point2="16.5,44.75"
-                    Point3="16.5,48.75" />
+                    Point1="-186.888888888889,51.1921132457024"
+                    Point2="-190.888888888889,51.1921132457024"
+                    Point3="-190.888888888889,55.1921132457024" />
                   <mssgle:LineSegment
-                    End="16.5,82" />
+                    End="-190.888888888889,78.1666666666661" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1361,30 +2175,18 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 2]"
-          TopLeft="317,1138.5">
+          TopLeft="568.277777777778,1570.11111111111">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-8,29"
+              EndConnector="0,54.5"
               Start="0,0"
-              End="-8,21.5">
+              End="0,47">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,10.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,10.5"
-                    Point2="0,14.5"
-                    Point3="-4,14.5" />
-                  <mssgle:LineSegment
-                    End="-4,14.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-4,14.5"
-                    Point2="-8,14.5"
-                    Point3="-8,18.5" />
-                  <mssgle:LineSegment
-                    End="-8,21.5" />
+                    End="0,47" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1395,30 +2197,52 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 3]"
-          TopLeft="549.5,1368">
+          TopLeft="566.777777777778,2437.61111111111">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="137.5,35.5"
+              EndConnector="0,50.8888888888901"
               Start="0,0"
-              End="130,35.5">
+              End="0,43.3888888888901">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="64.75,0" />
-                  <mssgle:CubicBezierSegment
-                    Point1="64.75,0"
-                    Point2="68.75,0"
-                    Point3="68.75,4" />
+                    End="0,43.3888888888901" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 4]"
+          TopLeft="255.277777777778,875.444444444444">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="250.166666666667,367.666666666666"
+              Start="0,0"
+              End="250.166666666667,360.166666666666">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
                   <mssgle:LineSegment
-                    End="68.75,31.5" />
+                    End="0,215.707785642062" />
                   <mssgle:CubicBezierSegment
-                    Point1="68.75,31.5"
-                    Point2="68.75,35.5"
-                    Point3="72.75,35.5" />
+                    Point1="0,215.707785642062"
+                    Point2="0,219.707785642062"
+                    Point3="4,219.707785642062" />
                   <mssgle:LineSegment
-                    End="130,35.5" />
+                    End="246.166666666667,219.707785642062" />
+                  <mssgle:CubicBezierSegment
+                    Point1="246.166666666667,219.707785642062"
+                    Point2="250.166666666667,219.707785642062"
+                    Point3="250.166666666667,223.707785642062" />
+                  <mssgle:LineSegment
+                    End="250.166666666667,360.166666666666" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1429,30 +2253,18 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 5]"
-          TopLeft="251.5,87.5">
+          TopLeft="565.555555555556,2848.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="678.5,69"
+              EndConnector="0,49"
               Start="0,0"
-              End="671,69">
+              End="0,41.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="270.009615384615,0" />
-                  <mssgle:CubicBezierSegment
-                    Point1="270.009615384615,0"
-                    Point2="274.009615384615,0"
-                    Point3="274.009615384615,4" />
-                  <mssgle:LineSegment
-                    End="274.009615384615,65" />
-                  <mssgle:CubicBezierSegment
-                    Point1="274.009615384615,65"
-                    Point2="274.009615384615,69"
-                    Point3="278.009615384615,69" />
-                  <mssgle:LineSegment
-                    End="671,69" />
+                    End="0,41.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1462,31 +2274,31 @@
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 6]"
-          TopLeft="1032,280.5">
+          Id="Package.PrecedenceConstraints[Constraint 9]"
+          TopLeft="529.055555555555,332.388888888889">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-265,1050"
+              EndConnector="295.944444444445,75.0555555555551"
               Start="0,0"
-              End="-265,1042.5">
+              End="295.944444444445,67.5555555555551">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,521" />
+                    End="0,26.4042653470011" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,521"
-                    Point2="0,525"
-                    Point3="-4,525" />
+                    Point1="0,26.4042653470011"
+                    Point2="0,30.4042653470011"
+                    Point3="4,30.4042653470011" />
                   <mssgle:LineSegment
-                    End="-261,525" />
+                    End="291.944444444445,30.4042653470011" />
                   <mssgle:CubicBezierSegment
-                    Point1="-261,525"
-                    Point2="-265,525"
-                    Point3="-265,529" />
+                    Point1="291.944444444445,30.4042653470011"
+                    Point2="295.944444444445,30.4042653470011"
+                    Point3="295.944444444445,34.4042653470011" />
                   <mssgle:LineSegment
-                    End="-265,1042.5" />
+                    End="295.944444444445,67.5555555555551" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1504,43 +2316,43 @@
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph" xmlns:mssge="clr-namespace:Microsoft.SqlServer.Graph.Extended;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <NodeLayout
-          Size="155,42"
+          Size="218,42"
           Id="Package.EventHandlers[OnError]\SEQ Error handler\Expression Task"
-          TopLeft="284,311.5" />
+          TopLeft="245.5,283.3" />
         <NodeLayout
-          Size="140,42"
+          Size="218,42"
           Id="Package.EventHandlers[OnError]\SEQ Error handler\Log an event"
-          TopLeft="291.5,107.5" />
+          TopLeft="245.5,104.1" />
         <NodeLayout
-          Size="150,42"
+          Size="218,42"
           Id="Package.EventHandlers[OnError]\SEQ Error handler\Send Mail Task"
-          TopLeft="39.5000000000001,422.5" />
+          TopLeft="245.5,462.5" />
         <NodeLayout
-          Size="190,42"
+          Size="218,42"
           Id="Package.EventHandlers[OnError]\SEQ Error handler\SQL Get email message"
-          TopLeft="266.5,209.5" />
+          TopLeft="245.5,193.7" />
         <NodeLayout
           Size="218,42"
           Id="Package.EventHandlers[OnError]\SEQ Error handler\SQL Get email server settings"
-          TopLeft="5.50000000000003,311.5" />
+          TopLeft="245.5,372.9" />
         <NodeLayout
-          Size="142,42"
+          Size="218,42"
           Id="Package.EventHandlers[OnError]\SEQ Error handler\Update Batch"
-          TopLeft="290.5,5.5" />
+          TopLeft="245.5,14.5" />
         <EdgeLayout
           Id="Package.EventHandlers[OnError]\SEQ Error handler.PrecedenceConstraints[Constraint]"
-          TopLeft="361.5,149.5">
+          TopLeft="354.5,146.1">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,60"
+              EndConnector="0,47.6"
               Start="0,0"
-              End="0,52.5">
+              End="0,40.1">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,52.5" />
+                    End="0,40.1" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1553,90 +2365,66 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.EventHandlers[OnError]\SEQ Error handler.PrecedenceConstraints[Constraint 1]"
-          TopLeft="361.5,251.5">
+          TopLeft="354.5,235.7">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,60"
+              EndConnector="0,47.6"
               Start="0,0"
-              End="0,52.5">
+              End="0,40.1">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,52.5" />
+                    End="0,40.1" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-8,18.25,16,16"
+              BoundingBox="-8,12.05,16,16"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.EventHandlers[OnError]\SEQ Error handler.PrecedenceConstraints[Constraint 2]"
-          TopLeft="114.5,353.5">
+          TopLeft="354.5,414.9">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-23.6666666666666,69"
+              EndConnector="0,47.6"
               Start="0,0"
-              End="-23.6666666666666,61.5">
+              End="0,40.1">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,36.9630606860158" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,36.9630606860158"
-                    Point2="0,40.9630606860158"
-                    Point3="-4,40.9630606860158" />
-                  <mssgle:LineSegment
-                    End="-19.6666666666666,40.9630606860158" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-19.6666666666666,40.9630606860158"
-                    Point2="-23.6666666666666,40.9630606860158"
-                    Point3="-23.6666666666666,44.9630606860158" />
-                  <mssgle:LineSegment
-                    End="-23.6666666666666,61.5" />
+                    End="0,40.1" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-19.8333333333333,45.9630606860158,16,16"
+              BoundingBox="-8,12.05,16,16"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.EventHandlers[OnError]\SEQ Error handler.PrecedenceConstraints[Constraint 3]"
-          TopLeft="361.5,353.5">
+          TopLeft="354.5,325.3">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-223.333333333333,69"
+              EndConnector="0,47.6"
               Start="0,0"
-              End="-223.333333333333,61.5">
+              End="0,40.1">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,36.9630606860158" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,36.9630606860158"
-                    Point2="0,40.9630606860158"
-                    Point3="-4,40.9630606860158" />
-                  <mssgle:LineSegment
-                    End="-219.333333333333,40.9630606860158" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-219.333333333333,40.9630606860158"
-                    Point2="-223.333333333333,40.9630606860158"
-                    Point3="-223.333333333333,44.9630606860158" />
-                  <mssgle:LineSegment
-                    End="-223.333333333333,61.5" />
+                    End="0,40.1" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1649,18 +2437,18 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.EventHandlers[OnError]\SEQ Error handler.PrecedenceConstraints[Constraint 4]"
-          TopLeft="361.5,47.5">
+          TopLeft="354.5,56.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,60"
+              EndConnector="0,47.6"
               Start="0,0"
-              End="0,52.5">
+              End="0,40.1">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,52.5" />
+                    End="0,40.1" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1692,8 +2480,8 @@
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="462,529"
-          Size="462,572"
+          PanelSize="526,564"
+          Size="526,607"
           Id="Package.EventHandlers[OnError]\SEQ Error handler"
           TopLeft="360,23" />
       </GraphLayout>

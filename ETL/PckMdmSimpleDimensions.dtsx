@@ -11,8 +11,8 @@
   DTS:LocaleID="6153"
   DTS:ObjectName="PckMdmSimpleDimensions"
   DTS:PackageType="5"
-  DTS:VersionBuild="44"
-  DTS:VersionGUID="{BB64586B-84A2-467B-992E-183C5E5EACC2}">
+  DTS:VersionBuild="45"
+  DTS:VersionGUID="{B183A9A7-6174-4243-B437-A15442B4E4B3}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -46,6 +46,751 @@
       DTS:ObjectName="SEQ Complex dimensions">
       <DTS:Variables />
       <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\SEQ Complex dimensions\DFT Currency"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{7C04BDC8-34BD-4A59-ADFA-D9D01C83CFD4}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="DFT Currency"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\SEQ Complex dimensions\DFT Currency\Insert Destination"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="Insert Destination"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[DWH].[DimCurrency]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\SEQ Complex dimensions\DFT Currency\Insert Destination.Connections[OleDbConnection]"
+                      connectionManagerID="{0CBC2C04-C137-495F-AF7C-FA5DE465FED0}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[DWH]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\SEQ Complex dimensions\DFT Currency\Insert Destination.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\SEQ Complex dimensions\DFT Currency\Insert Destination.Inputs[OLE DB Destination Input].Columns[CurrencySymbol]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="1"
+                          cachedName="CurrencySymbol"
+                          externalMetadataColumnId="Package\SEQ Complex dimensions\DFT Currency\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[CurrencySymbol]"
+                          lineageId="Package\SEQ Complex dimensions\DFT Currency\SRC MDM Currency.Outputs[OLE DB Source Output].Columns[CurrencySymbol]" />
+                        <inputColumn
+                          refId="Package\SEQ Complex dimensions\DFT Currency\Insert Destination.Inputs[OLE DB Destination Input].Columns[CurrencyISOCode]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="3"
+                          cachedName="CurrencyISOCode"
+                          externalMetadataColumnId="Package\SEQ Complex dimensions\DFT Currency\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[CurrencyISOCode]"
+                          lineageId="Package\SEQ Complex dimensions\DFT Currency\SRC MDM Currency.Outputs[OLE DB Source Output].Columns[CurrencyISOCode]" />
+                        <inputColumn
+                          refId="Package\SEQ Complex dimensions\DFT Currency\Insert Destination.Inputs[OLE DB Destination Input].Columns[CurrencyName]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="CurrencyName"
+                          externalMetadataColumnId="Package\SEQ Complex dimensions\DFT Currency\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[CurrencyName]"
+                          lineageId="Package\SEQ Complex dimensions\DFT Currency\SRC MDM Currency.Outputs[OLE DB Source Output].Columns[CurrencyName]" />
+                        <inputColumn
+                          refId="Package\SEQ Complex dimensions\DFT Currency\Insert Destination.Inputs[OLE DB Destination Input].Columns[CurrencyCountry]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="CurrencyCountry"
+                          externalMetadataColumnId="Package\SEQ Complex dimensions\DFT Currency\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[CurrencyCountry]"
+                          lineageId="Package\SEQ Complex dimensions\DFT Currency\SRC MDM Currency.Outputs[OLE DB Source Output].Columns[CurrencyCountry]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\SEQ Complex dimensions\DFT Currency\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[CurrencyID]"
+                          dataType="i2"
+                          name="CurrencyID" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ Complex dimensions\DFT Currency\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[CurrencySymbol]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          name="CurrencySymbol" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ Complex dimensions\DFT Currency\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[CurrencyISOCode]"
+                          codePage="1252"
+                          dataType="str"
+                          length="3"
+                          name="CurrencyISOCode" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ Complex dimensions\DFT Currency\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[CurrencyName]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="CurrencyName" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ Complex dimensions\DFT Currency\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[CurrencyCountry]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="CurrencyCountry" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\SEQ Complex dimensions\DFT Currency\Insert Destination.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\SEQ Complex dimensions\DFT Currency\Insert Destination.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\SEQ Complex dimensions\DFT Currency\Insert Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\SEQ Complex dimensions\DFT Currency\Insert Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\SEQ Complex dimensions\DFT Currency\Insert Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\SEQ Complex dimensions\DFT Currency\Insert Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\SEQ Complex dimensions\DFT Currency\OLE DB Command"
+                  componentClassID="Microsoft.OLEDBCommand"
+                  contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+                  description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
+                  name="OLE DB Command"
+                  usesDispositions="true"
+                  version="2">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      expressionType="Notify"
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE [DWH].[DimCurrency] SET [CurrencyCountry] = ?,[CurrencyName] = ?,[CurrencySymbol] = ? WHERE [CurrencyISOCode] = ?</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\SEQ Complex dimensions\DFT Currency\OLE DB Command.Connections[OleDbConnection]"
+                      connectionManagerID="{0CBC2C04-C137-495F-AF7C-FA5DE465FED0}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[DWH]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\SEQ Complex dimensions\DFT Currency\OLE DB Command.Inputs[OLE DB Command Input]"
+                      errorOrTruncationOperation="Command Execution"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Command Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\SEQ Complex dimensions\DFT Currency\OLE DB Command.Inputs[OLE DB Command Input].Columns[CurrencyCountry]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="CurrencyCountry"
+                          externalMetadataColumnId="Package\SEQ Complex dimensions\DFT Currency\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                          lineageId="Package\SEQ Complex dimensions\DFT Currency\SRC MDM Currency.Outputs[OLE DB Source Output].Columns[CurrencyCountry]" />
+                        <inputColumn
+                          refId="Package\SEQ Complex dimensions\DFT Currency\OLE DB Command.Inputs[OLE DB Command Input].Columns[CurrencyISOCode]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="3"
+                          cachedName="CurrencyISOCode"
+                          externalMetadataColumnId="Package\SEQ Complex dimensions\DFT Currency\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
+                          lineageId="Package\SEQ Complex dimensions\DFT Currency\SRC MDM Currency.Outputs[OLE DB Source Output].Columns[CurrencyISOCode]" />
+                        <inputColumn
+                          refId="Package\SEQ Complex dimensions\DFT Currency\OLE DB Command.Inputs[OLE DB Command Input].Columns[CurrencyName]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="CurrencyName"
+                          externalMetadataColumnId="Package\SEQ Complex dimensions\DFT Currency\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                          lineageId="Package\SEQ Complex dimensions\DFT Currency\SRC MDM Currency.Outputs[OLE DB Source Output].Columns[CurrencyName]" />
+                        <inputColumn
+                          refId="Package\SEQ Complex dimensions\DFT Currency\OLE DB Command.Inputs[OLE DB Command Input].Columns[CurrencySymbol]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="1"
+                          cachedName="CurrencySymbol"
+                          externalMetadataColumnId="Package\SEQ Complex dimensions\DFT Currency\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                          lineageId="Package\SEQ Complex dimensions\DFT Currency\SRC MDM Currency.Outputs[OLE DB Source Output].Columns[CurrencySymbol]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\SEQ Complex dimensions\DFT Currency\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Param_0">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                              name="DBParamInfoFlags">65</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\SEQ Complex dimensions\DFT Currency\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Param_1">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                              name="DBParamInfoFlags">65</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\SEQ Complex dimensions\DFT Currency\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          name="Param_2">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                              name="DBParamInfoFlags">65</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\SEQ Complex dimensions\DFT Currency\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
+                          codePage="1252"
+                          dataType="str"
+                          length="3"
+                          name="Param_3">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                              name="DBParamInfoFlags">65</property>
+                          </properties>
+                        </externalMetadataColumn>
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\SEQ Complex dimensions\DFT Currency\OLE DB Command.Outputs[OLE DB Command Output]"
+                      exclusionGroup="1"
+                      name="OLE DB Command Output"
+                      synchronousInputId="Package\SEQ Complex dimensions\DFT Currency\OLE DB Command.Inputs[OLE DB Command Input]">
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\SEQ Complex dimensions\DFT Currency\OLE DB Command.Outputs[OLE DB Command Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Command Error Output"
+                      synchronousInputId="Package\SEQ Complex dimensions\DFT Currency\OLE DB Command.Inputs[OLE DB Command Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\SEQ Complex dimensions\DFT Currency\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\SEQ Complex dimensions\DFT Currency\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\SEQ Complex dimensions\DFT Currency\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\SEQ Complex dimensions\DFT Currency\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\SEQ Complex dimensions\DFT Currency\SCD Dim Currency"
+                  componentClassID="Microsoft.SCD"
+                  contactInfo="Slowly Changing Dimension;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;3"
+                  description="Updates a SQL Server Analysis Services data warehouse dimension. Update dimension records that are already present and  insert dimension records that aren't. For example, update the DimProduct table of the AdventureWorksDW OLAP database with data from the Products table in the AdventureWorks OLTP database."
+                  name="SCD Dim Currency"
+                  version="3">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the SELECT statement used to create a schema rowset."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT [CurrencyCountry], [CurrencyISOCode], [CurrencyName], [CurrencySymbol] FROM [DWH].[DimCurrency]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the WHERE clause in the SELECT statement that selects the current row among rows with identical business keys."
+                      name="CurrentRowWhere"></property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether historical attribute updates are directed to the transformation output for changing attribute updates."
+                      name="UpdateChangingAttributeHistory">true</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the transformation fails when columns with fixed attributes contain changes."
+                      name="FailOnFixedAttributeChange">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the column name for the inferred member."
+                      name="InferredMemberIndicator"></property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether inferred member updates are detected."
+                      name="EnableInferredMember">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the transformation fails when a lookup of an existing record fails."
+                      name="FailOnLookupFailure">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies that all rows in the input are new or the transformation detects the change type."
+                      name="IncomingRowChangeType"
+                      typeConverter="IncomingRowChangeType">1</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\SEQ Complex dimensions\DFT Currency\SCD Dim Currency.Connections[LookupConnection]"
+                      connectionManagerID="{0CBC2C04-C137-495F-AF7C-FA5DE465FED0}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[DWH]"
+                      description="Defines the connection to use for lookups in the dimension table"
+                      name="LookupConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\SEQ Complex dimensions\DFT Currency\SCD Dim Currency.Inputs[Slowly Changing Dimension Input]"
+                      name="Slowly Changing Dimension Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\SEQ Complex dimensions\DFT Currency\SCD Dim Currency.Inputs[Slowly Changing Dimension Input].Columns[CurrencyCountry]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="CurrencyCountry"
+                          externalMetadataColumnId="Package\SEQ Complex dimensions\DFT Currency\SCD Dim Currency.Inputs[Slowly Changing Dimension Input].ExternalColumns[CurrencyCountry]"
+                          lineageId="Package\SEQ Complex dimensions\DFT Currency\SRC MDM Currency.Outputs[OLE DB Source Output].Columns[CurrencyCountry]">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              name="ColumnType"
+                              typeConverter="ColumnType">2</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\SEQ Complex dimensions\DFT Currency\SCD Dim Currency.Inputs[Slowly Changing Dimension Input].Columns[CurrencyISOCode]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="3"
+                          cachedName="CurrencyISOCode"
+                          externalMetadataColumnId="Package\SEQ Complex dimensions\DFT Currency\SCD Dim Currency.Inputs[Slowly Changing Dimension Input].ExternalColumns[CurrencyISOCode]"
+                          lineageId="Package\SEQ Complex dimensions\DFT Currency\SRC MDM Currency.Outputs[OLE DB Source Output].Columns[CurrencyISOCode]">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              name="ColumnType"
+                              typeConverter="ColumnType">1</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\SEQ Complex dimensions\DFT Currency\SCD Dim Currency.Inputs[Slowly Changing Dimension Input].Columns[CurrencyName]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="CurrencyName"
+                          externalMetadataColumnId="Package\SEQ Complex dimensions\DFT Currency\SCD Dim Currency.Inputs[Slowly Changing Dimension Input].ExternalColumns[CurrencyName]"
+                          lineageId="Package\SEQ Complex dimensions\DFT Currency\SRC MDM Currency.Outputs[OLE DB Source Output].Columns[CurrencyName]">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              name="ColumnType"
+                              typeConverter="ColumnType">2</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\SEQ Complex dimensions\DFT Currency\SCD Dim Currency.Inputs[Slowly Changing Dimension Input].Columns[CurrencySymbol]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="1"
+                          cachedName="CurrencySymbol"
+                          externalMetadataColumnId="Package\SEQ Complex dimensions\DFT Currency\SCD Dim Currency.Inputs[Slowly Changing Dimension Input].ExternalColumns[CurrencySymbol]"
+                          lineageId="Package\SEQ Complex dimensions\DFT Currency\SRC MDM Currency.Outputs[OLE DB Source Output].Columns[CurrencySymbol]">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              name="ColumnType"
+                              typeConverter="ColumnType">2</property>
+                          </properties>
+                        </inputColumn>
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\SEQ Complex dimensions\DFT Currency\SCD Dim Currency.Inputs[Slowly Changing Dimension Input].ExternalColumns[CurrencyCountry]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="CurrencyCountry" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ Complex dimensions\DFT Currency\SCD Dim Currency.Inputs[Slowly Changing Dimension Input].ExternalColumns[CurrencyISOCode]"
+                          codePage="1252"
+                          dataType="str"
+                          length="3"
+                          name="CurrencyISOCode" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ Complex dimensions\DFT Currency\SCD Dim Currency.Inputs[Slowly Changing Dimension Input].ExternalColumns[CurrencyName]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="CurrencyName" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ Complex dimensions\DFT Currency\SCD Dim Currency.Inputs[Slowly Changing Dimension Input].ExternalColumns[CurrencySymbol]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          name="CurrencySymbol" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\SEQ Complex dimensions\DFT Currency\SCD Dim Currency.Outputs[Unchanged Output]"
+                      description="Unchanged rows"
+                      exclusionGroup="1"
+                      name="Unchanged Output"
+                      synchronousInputId="Package\SEQ Complex dimensions\DFT Currency\SCD Dim Currency.Inputs[Slowly Changing Dimension Input]">
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\SEQ Complex dimensions\DFT Currency\SCD Dim Currency.Outputs[New Output]"
+                      description="New rows"
+                      exclusionGroup="1"
+                      name="New Output"
+                      synchronousInputId="Package\SEQ Complex dimensions\DFT Currency\SCD Dim Currency.Inputs[Slowly Changing Dimension Input]">
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\SEQ Complex dimensions\DFT Currency\SCD Dim Currency.Outputs[Fixed Attribute Output]"
+                      description="Rows with changes in columns tagged FixedAttribute"
+                      exclusionGroup="1"
+                      name="Fixed Attribute Output"
+                      synchronousInputId="Package\SEQ Complex dimensions\DFT Currency\SCD Dim Currency.Inputs[Slowly Changing Dimension Input]">
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\SEQ Complex dimensions\DFT Currency\SCD Dim Currency.Outputs[Changing Attribute Updates Output]"
+                      description="These rows contain new information for ChangingAttribute (Type 1) column changes"
+                      exclusionGroup="1"
+                      name="Changing Attribute Updates Output"
+                      synchronousInputId="Package\SEQ Complex dimensions\DFT Currency\SCD Dim Currency.Inputs[Slowly Changing Dimension Input]">
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\SEQ Complex dimensions\DFT Currency\SCD Dim Currency.Outputs[Historical Attribute Inserts Output]"
+                      description="HistoricalAttribute (Type 2) changes result in these new rows"
+                      exclusionGroup="2"
+                      name="Historical Attribute Inserts Output"
+                      synchronousInputId="Package\SEQ Complex dimensions\DFT Currency\SCD Dim Currency.Inputs[Slowly Changing Dimension Input]">
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\SEQ Complex dimensions\DFT Currency\SCD Dim Currency.Outputs[Inferred Member Updates Output]"
+                      description="Information to update unpopulated initial dimension row"
+                      exclusionGroup="1"
+                      name="Inferred Member Updates Output"
+                      synchronousInputId="Package\SEQ Complex dimensions\DFT Currency\SCD Dim Currency.Inputs[Slowly Changing Dimension Input]">
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\SEQ Complex dimensions\DFT Currency\SRC MDM Currency"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="SRC MDM Currency"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[Currency]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\SEQ Complex dimensions\DFT Currency\SRC MDM Currency.Connections[OleDbConnection]"
+                      connectionManagerID="{A47497A7-5FAF-4DEE-9BDA-C6F78C6F84C5}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[MDM]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\SEQ Complex dimensions\DFT Currency\SRC MDM Currency.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\SEQ Complex dimensions\DFT Currency\SRC MDM Currency.Outputs[OLE DB Source Output].Columns[CurrencySymbol]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SEQ Complex dimensions\DFT Currency\SRC MDM Currency.Outputs[OLE DB Source Output].ExternalColumns[CurrencySymbol]"
+                          length="1"
+                          lineageId="Package\SEQ Complex dimensions\DFT Currency\SRC MDM Currency.Outputs[OLE DB Source Output].Columns[CurrencySymbol]"
+                          name="CurrencySymbol"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SEQ Complex dimensions\DFT Currency\SRC MDM Currency.Outputs[OLE DB Source Output].Columns[CurrencyISOCode]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SEQ Complex dimensions\DFT Currency\SRC MDM Currency.Outputs[OLE DB Source Output].ExternalColumns[CurrencyISOCode]"
+                          length="3"
+                          lineageId="Package\SEQ Complex dimensions\DFT Currency\SRC MDM Currency.Outputs[OLE DB Source Output].Columns[CurrencyISOCode]"
+                          name="CurrencyISOCode"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SEQ Complex dimensions\DFT Currency\SRC MDM Currency.Outputs[OLE DB Source Output].Columns[CurrencyName]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SEQ Complex dimensions\DFT Currency\SRC MDM Currency.Outputs[OLE DB Source Output].ExternalColumns[CurrencyName]"
+                          length="50"
+                          lineageId="Package\SEQ Complex dimensions\DFT Currency\SRC MDM Currency.Outputs[OLE DB Source Output].Columns[CurrencyName]"
+                          name="CurrencyName"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SEQ Complex dimensions\DFT Currency\SRC MDM Currency.Outputs[OLE DB Source Output].Columns[CurrencyCountry]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SEQ Complex dimensions\DFT Currency\SRC MDM Currency.Outputs[OLE DB Source Output].ExternalColumns[CurrencyCountry]"
+                          length="50"
+                          lineageId="Package\SEQ Complex dimensions\DFT Currency\SRC MDM Currency.Outputs[OLE DB Source Output].Columns[CurrencyCountry]"
+                          name="CurrencyCountry"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\SEQ Complex dimensions\DFT Currency\SRC MDM Currency.Outputs[OLE DB Source Output].ExternalColumns[CurrencySymbol]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          name="CurrencySymbol" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ Complex dimensions\DFT Currency\SRC MDM Currency.Outputs[OLE DB Source Output].ExternalColumns[CurrencyISOCode]"
+                          codePage="1252"
+                          dataType="str"
+                          length="3"
+                          name="CurrencyISOCode" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ Complex dimensions\DFT Currency\SRC MDM Currency.Outputs[OLE DB Source Output].ExternalColumns[CurrencyName]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="CurrencyName" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ Complex dimensions\DFT Currency\SRC MDM Currency.Outputs[OLE DB Source Output].ExternalColumns[CurrencyCountry]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="CurrencyCountry" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\SEQ Complex dimensions\DFT Currency\SRC MDM Currency.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\SEQ Complex dimensions\DFT Currency\SRC MDM Currency.Outputs[OLE DB Source Error Output].Columns[CurrencySymbol]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          lineageId="Package\SEQ Complex dimensions\DFT Currency\SRC MDM Currency.Outputs[OLE DB Source Error Output].Columns[CurrencySymbol]"
+                          name="CurrencySymbol" />
+                        <outputColumn
+                          refId="Package\SEQ Complex dimensions\DFT Currency\SRC MDM Currency.Outputs[OLE DB Source Error Output].Columns[CurrencyISOCode]"
+                          codePage="1252"
+                          dataType="str"
+                          length="3"
+                          lineageId="Package\SEQ Complex dimensions\DFT Currency\SRC MDM Currency.Outputs[OLE DB Source Error Output].Columns[CurrencyISOCode]"
+                          name="CurrencyISOCode" />
+                        <outputColumn
+                          refId="Package\SEQ Complex dimensions\DFT Currency\SRC MDM Currency.Outputs[OLE DB Source Error Output].Columns[CurrencyName]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          lineageId="Package\SEQ Complex dimensions\DFT Currency\SRC MDM Currency.Outputs[OLE DB Source Error Output].Columns[CurrencyName]"
+                          name="CurrencyName" />
+                        <outputColumn
+                          refId="Package\SEQ Complex dimensions\DFT Currency\SRC MDM Currency.Outputs[OLE DB Source Error Output].Columns[CurrencyCountry]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          lineageId="Package\SEQ Complex dimensions\DFT Currency\SRC MDM Currency.Outputs[OLE DB Source Error Output].Columns[CurrencyCountry]"
+                          name="CurrencyCountry" />
+                        <outputColumn
+                          refId="Package\SEQ Complex dimensions\DFT Currency\SRC MDM Currency.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\SEQ Complex dimensions\DFT Currency\SRC MDM Currency.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\SEQ Complex dimensions\DFT Currency\SRC MDM Currency.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\SEQ Complex dimensions\DFT Currency\SRC MDM Currency.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\SEQ Complex dimensions\DFT Currency.Paths[Changing Attribute Updates Output]"
+                  endId="Package\SEQ Complex dimensions\DFT Currency\OLE DB Command.Inputs[OLE DB Command Input]"
+                  name="Changing Attribute Updates Output"
+                  startId="Package\SEQ Complex dimensions\DFT Currency\SCD Dim Currency.Outputs[Changing Attribute Updates Output]" />
+                <path
+                  refId="Package\SEQ Complex dimensions\DFT Currency.Paths[New Output]"
+                  endId="Package\SEQ Complex dimensions\DFT Currency\Insert Destination.Inputs[OLE DB Destination Input]"
+                  name="New Output"
+                  startId="Package\SEQ Complex dimensions\DFT Currency\SCD Dim Currency.Outputs[New Output]" />
+                <path
+                  refId="Package\SEQ Complex dimensions\DFT Currency.Paths[OLE DB Source Output]"
+                  endId="Package\SEQ Complex dimensions\DFT Currency\SCD Dim Currency.Inputs[Slowly Changing Dimension Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\SEQ Complex dimensions\DFT Currency\SRC MDM Currency.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
         <DTS:Executable
           DTS:refId="Package\SEQ Complex dimensions\DFT Date"
           DTS:CreationName="Microsoft.Pipeline"
@@ -6114,6 +6859,23 @@ where [refTable].[TraderCode] = ? and [refTable].[BrokerCode] = ?</property>
               SQLTask:SqlStatementSource="TRUNCATE TABLE [dbo].[MdmDateControl];&#xA;TRUNCATE TABLE [dbo].[MdmSpecialDays];&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
           </DTS:ObjectData>
         </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\SEQ Complex dimensions\SQL Dummy Exchange Rates"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{41D15877-EDAF-481B-9C71-86F034FAC428}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SQL Dummy Exchange Rates"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{0CBC2C04-C137-495F-AF7C-FA5DE465FED0}"
+              SQLTask:SqlStatementSource="/* Dummy exchnage rate - required for volume calculations */&#xA;&#xA;INSERT INTO&#xA;&#x9;&#x9;DWH.FactExchangeRate&#xA;&#x9;(&#xA;&#x9;&#x9;DateID, &#xA;&#x9;&#x9;CurrencyID, &#xA;&#x9;&#x9;ExchangeRate, &#xA;&#x9;&#x9;BatchID&#xA;&#x9;)&#xA;&#x9;SELECT&#xA;&#x9;&#x9;-1 AS DateId,&#xA;&#x9;&#x9;CurrencyID,&#xA;&#x9;&#x9;1 AS ExchangeRate, &#xA;&#x9;&#x9;-1 AS BatchID &#xA;&#x9;FROM&#xA;&#x9;&#x9;DWH.DimCurrency C&#xA;&#x9;WHERE&#xA;&#x9;&#x9;NOT EXISTS (&#xA;&#x9;&#x9;&#x9;&#x9;SELECT&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;*&#xA;&#x9;&#x9;&#x9;&#x9;FROM&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;DWH.FactExchangeRate EX&#xA;&#x9;&#x9;&#x9;&#x9;WHERE&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;C.CurrencyID = EX.CurrencyID&#xA;&#x9;&#x9;&#x9;)&#xA;&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
       </DTS:Executables>
       <DTS:PrecedenceConstraints>
         <DTS:PrecedenceConstraint
@@ -6132,6 +6894,14 @@ where [refTable].[TraderCode] = ? and [refTable].[BrokerCode] = ?</property>
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint 1"
           DTS:To="Package\SEQ Complex dimensions\DFT Date" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\SEQ Complex dimensions.PrecedenceConstraints[Constraint 2]"
+          DTS:CreationName=""
+          DTS:DTSID="{4681AF2B-6F38-4807-91FB-32DB16F001AE}"
+          DTS:From="Package\SEQ Complex dimensions\DFT Currency"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 2"
+          DTS:To="Package\SEQ Complex dimensions\SQL Dummy Exchange Rates" />
       </DTS:PrecedenceConstraints>
     </DTS:Executable>
     <DTS:Executable
@@ -6144,751 +6914,6 @@ where [refTable].[TraderCode] = ? and [refTable].[BrokerCode] = ?</property>
       DTS:ObjectName="SEQ Simple Dimensions">
       <DTS:Variables />
       <DTS:Executables>
-        <DTS:Executable
-          DTS:refId="Package\SEQ Simple Dimensions\DFT Currency"
-          DTS:CreationName="Microsoft.Pipeline"
-          DTS:Description="Data Flow Task"
-          DTS:DTSID="{7C04BDC8-34BD-4A59-ADFA-D9D01C83CFD4}"
-          DTS:ExecutableType="Microsoft.Pipeline"
-          DTS:LocaleID="-1"
-          DTS:ObjectName="DFT Currency"
-          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
-          <DTS:Variables />
-          <DTS:ObjectData>
-            <pipeline
-              version="1">
-              <components>
-                <component
-                  refId="Package\SEQ Simple Dimensions\DFT Currency\Insert Destination"
-                  componentClassID="Microsoft.OLEDBDestination"
-                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
-                  description="OLE DB Destination"
-                  name="Insert Destination"
-                  usesDispositions="true"
-                  version="4">
-                  <properties>
-                    <property
-                      dataType="System.Int32"
-                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
-                      name="CommandTimeout">0</property>
-                    <property
-                      dataType="System.String"
-                      description="Specifies the name of the database object used to open a rowset."
-                      name="OpenRowset">[DWH].[DimCurrency]</property>
-                    <property
-                      dataType="System.String"
-                      description="Specifies the variable that contains the name of the database object used to open a rowset."
-                      name="OpenRowsetVariable"></property>
-                    <property
-                      dataType="System.String"
-                      description="The SQL command to be executed."
-                      name="SqlCommand"
-                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
-                    <property
-                      dataType="System.Int32"
-                      description="Specifies the column code page to use when code page information is unavailable from the data source."
-                      name="DefaultCodePage">1252</property>
-                    <property
-                      dataType="System.Boolean"
-                      description="Forces the use of the DefaultCodePage property value when describing character data."
-                      name="AlwaysUseDefaultCodePage">false</property>
-                    <property
-                      dataType="System.Int32"
-                      description="Specifies the mode used to access the database."
-                      name="AccessMode"
-                      typeConverter="AccessMode">0</property>
-                    <property
-                      dataType="System.Boolean"
-                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
-                      name="FastLoadKeepIdentity">false</property>
-                    <property
-                      dataType="System.Boolean"
-                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
-                      name="FastLoadKeepNulls">false</property>
-                    <property
-                      dataType="System.String"
-                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
-                      name="FastLoadOptions"></property>
-                    <property
-                      dataType="System.Int32"
-                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
-                      name="FastLoadMaxInsertCommitSize">2147483647</property>
-                  </properties>
-                  <connections>
-                    <connection
-                      refId="Package\SEQ Simple Dimensions\DFT Currency\Insert Destination.Connections[OleDbConnection]"
-                      connectionManagerID="{0CBC2C04-C137-495F-AF7C-FA5DE465FED0}:external"
-                      connectionManagerRefId="Project.ConnectionManagers[DWH]"
-                      description="The OLE DB runtime connection used to access the database."
-                      name="OleDbConnection" />
-                  </connections>
-                  <inputs>
-                    <input
-                      refId="Package\SEQ Simple Dimensions\DFT Currency\Insert Destination.Inputs[OLE DB Destination Input]"
-                      errorOrTruncationOperation="Insert"
-                      errorRowDisposition="FailComponent"
-                      hasSideEffects="true"
-                      name="OLE DB Destination Input">
-                      <inputColumns>
-                        <inputColumn
-                          refId="Package\SEQ Simple Dimensions\DFT Currency\Insert Destination.Inputs[OLE DB Destination Input].Columns[CurrencySymbol]"
-                          cachedCodepage="1252"
-                          cachedDataType="str"
-                          cachedLength="1"
-                          cachedName="CurrencySymbol"
-                          externalMetadataColumnId="Package\SEQ Simple Dimensions\DFT Currency\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[CurrencySymbol]"
-                          lineageId="Package\SEQ Simple Dimensions\DFT Currency\SRC MDM Currency.Outputs[OLE DB Source Output].Columns[CurrencySymbol]" />
-                        <inputColumn
-                          refId="Package\SEQ Simple Dimensions\DFT Currency\Insert Destination.Inputs[OLE DB Destination Input].Columns[CurrencyISOCode]"
-                          cachedCodepage="1252"
-                          cachedDataType="str"
-                          cachedLength="3"
-                          cachedName="CurrencyISOCode"
-                          externalMetadataColumnId="Package\SEQ Simple Dimensions\DFT Currency\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[CurrencyISOCode]"
-                          lineageId="Package\SEQ Simple Dimensions\DFT Currency\SRC MDM Currency.Outputs[OLE DB Source Output].Columns[CurrencyISOCode]" />
-                        <inputColumn
-                          refId="Package\SEQ Simple Dimensions\DFT Currency\Insert Destination.Inputs[OLE DB Destination Input].Columns[CurrencyName]"
-                          cachedCodepage="1252"
-                          cachedDataType="str"
-                          cachedLength="50"
-                          cachedName="CurrencyName"
-                          externalMetadataColumnId="Package\SEQ Simple Dimensions\DFT Currency\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[CurrencyName]"
-                          lineageId="Package\SEQ Simple Dimensions\DFT Currency\SRC MDM Currency.Outputs[OLE DB Source Output].Columns[CurrencyName]" />
-                        <inputColumn
-                          refId="Package\SEQ Simple Dimensions\DFT Currency\Insert Destination.Inputs[OLE DB Destination Input].Columns[CurrencyCountry]"
-                          cachedCodepage="1252"
-                          cachedDataType="str"
-                          cachedLength="50"
-                          cachedName="CurrencyCountry"
-                          externalMetadataColumnId="Package\SEQ Simple Dimensions\DFT Currency\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[CurrencyCountry]"
-                          lineageId="Package\SEQ Simple Dimensions\DFT Currency\SRC MDM Currency.Outputs[OLE DB Source Output].Columns[CurrencyCountry]" />
-                      </inputColumns>
-                      <externalMetadataColumns
-                        isUsed="True">
-                        <externalMetadataColumn
-                          refId="Package\SEQ Simple Dimensions\DFT Currency\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[CurrencyID]"
-                          dataType="i2"
-                          name="CurrencyID" />
-                        <externalMetadataColumn
-                          refId="Package\SEQ Simple Dimensions\DFT Currency\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[CurrencySymbol]"
-                          codePage="1252"
-                          dataType="str"
-                          length="1"
-                          name="CurrencySymbol" />
-                        <externalMetadataColumn
-                          refId="Package\SEQ Simple Dimensions\DFT Currency\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[CurrencyISOCode]"
-                          codePage="1252"
-                          dataType="str"
-                          length="3"
-                          name="CurrencyISOCode" />
-                        <externalMetadataColumn
-                          refId="Package\SEQ Simple Dimensions\DFT Currency\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[CurrencyName]"
-                          codePage="1252"
-                          dataType="str"
-                          length="50"
-                          name="CurrencyName" />
-                        <externalMetadataColumn
-                          refId="Package\SEQ Simple Dimensions\DFT Currency\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[CurrencyCountry]"
-                          codePage="1252"
-                          dataType="str"
-                          length="50"
-                          name="CurrencyCountry" />
-                      </externalMetadataColumns>
-                    </input>
-                  </inputs>
-                  <outputs>
-                    <output
-                      refId="Package\SEQ Simple Dimensions\DFT Currency\Insert Destination.Outputs[OLE DB Destination Error Output]"
-                      exclusionGroup="1"
-                      isErrorOut="true"
-                      name="OLE DB Destination Error Output"
-                      synchronousInputId="Package\SEQ Simple Dimensions\DFT Currency\Insert Destination.Inputs[OLE DB Destination Input]">
-                      <outputColumns>
-                        <outputColumn
-                          refId="Package\SEQ Simple Dimensions\DFT Currency\Insert Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
-                          dataType="i4"
-                          lineageId="Package\SEQ Simple Dimensions\DFT Currency\Insert Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
-                          name="ErrorCode"
-                          specialFlags="1" />
-                        <outputColumn
-                          refId="Package\SEQ Simple Dimensions\DFT Currency\Insert Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
-                          dataType="i4"
-                          lineageId="Package\SEQ Simple Dimensions\DFT Currency\Insert Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
-                          name="ErrorColumn"
-                          specialFlags="2" />
-                      </outputColumns>
-                      <externalMetadataColumns />
-                    </output>
-                  </outputs>
-                </component>
-                <component
-                  refId="Package\SEQ Simple Dimensions\DFT Currency\OLE DB Command"
-                  componentClassID="Microsoft.OLEDBCommand"
-                  contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
-                  description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
-                  name="OLE DB Command"
-                  usesDispositions="true"
-                  version="2">
-                  <properties>
-                    <property
-                      dataType="System.Int32"
-                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
-                      name="CommandTimeout">0</property>
-                    <property
-                      dataType="System.String"
-                      description="The SQL command to be executed."
-                      expressionType="Notify"
-                      name="SqlCommand"
-                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE [DWH].[DimCurrency] SET [CurrencyCountry] = ?,[CurrencyName] = ?,[CurrencySymbol] = ? WHERE [CurrencyISOCode] = ?</property>
-                    <property
-                      dataType="System.Int32"
-                      description="Specifies the column code page to use when code page information is unavailable from the data source."
-                      name="DefaultCodePage">1252</property>
-                  </properties>
-                  <connections>
-                    <connection
-                      refId="Package\SEQ Simple Dimensions\DFT Currency\OLE DB Command.Connections[OleDbConnection]"
-                      connectionManagerID="{0CBC2C04-C137-495F-AF7C-FA5DE465FED0}:external"
-                      connectionManagerRefId="Project.ConnectionManagers[DWH]"
-                      description="The OLE DB runtime connection used to access the database."
-                      name="OleDbConnection" />
-                  </connections>
-                  <inputs>
-                    <input
-                      refId="Package\SEQ Simple Dimensions\DFT Currency\OLE DB Command.Inputs[OLE DB Command Input]"
-                      errorOrTruncationOperation="Command Execution"
-                      errorRowDisposition="FailComponent"
-                      hasSideEffects="true"
-                      name="OLE DB Command Input">
-                      <inputColumns>
-                        <inputColumn
-                          refId="Package\SEQ Simple Dimensions\DFT Currency\OLE DB Command.Inputs[OLE DB Command Input].Columns[CurrencyCountry]"
-                          cachedCodepage="1252"
-                          cachedDataType="str"
-                          cachedLength="50"
-                          cachedName="CurrencyCountry"
-                          externalMetadataColumnId="Package\SEQ Simple Dimensions\DFT Currency\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
-                          lineageId="Package\SEQ Simple Dimensions\DFT Currency\SRC MDM Currency.Outputs[OLE DB Source Output].Columns[CurrencyCountry]" />
-                        <inputColumn
-                          refId="Package\SEQ Simple Dimensions\DFT Currency\OLE DB Command.Inputs[OLE DB Command Input].Columns[CurrencyISOCode]"
-                          cachedCodepage="1252"
-                          cachedDataType="str"
-                          cachedLength="3"
-                          cachedName="CurrencyISOCode"
-                          externalMetadataColumnId="Package\SEQ Simple Dimensions\DFT Currency\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
-                          lineageId="Package\SEQ Simple Dimensions\DFT Currency\SRC MDM Currency.Outputs[OLE DB Source Output].Columns[CurrencyISOCode]" />
-                        <inputColumn
-                          refId="Package\SEQ Simple Dimensions\DFT Currency\OLE DB Command.Inputs[OLE DB Command Input].Columns[CurrencyName]"
-                          cachedCodepage="1252"
-                          cachedDataType="str"
-                          cachedLength="50"
-                          cachedName="CurrencyName"
-                          externalMetadataColumnId="Package\SEQ Simple Dimensions\DFT Currency\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
-                          lineageId="Package\SEQ Simple Dimensions\DFT Currency\SRC MDM Currency.Outputs[OLE DB Source Output].Columns[CurrencyName]" />
-                        <inputColumn
-                          refId="Package\SEQ Simple Dimensions\DFT Currency\OLE DB Command.Inputs[OLE DB Command Input].Columns[CurrencySymbol]"
-                          cachedCodepage="1252"
-                          cachedDataType="str"
-                          cachedLength="1"
-                          cachedName="CurrencySymbol"
-                          externalMetadataColumnId="Package\SEQ Simple Dimensions\DFT Currency\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
-                          lineageId="Package\SEQ Simple Dimensions\DFT Currency\SRC MDM Currency.Outputs[OLE DB Source Output].Columns[CurrencySymbol]" />
-                      </inputColumns>
-                      <externalMetadataColumns
-                        isUsed="True">
-                        <externalMetadataColumn
-                          refId="Package\SEQ Simple Dimensions\DFT Currency\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
-                          codePage="1252"
-                          dataType="str"
-                          length="50"
-                          name="Param_0">
-                          <properties>
-                            <property
-                              dataType="System.Int32"
-                              description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
-                              name="DBParamInfoFlags">65</property>
-                          </properties>
-                        </externalMetadataColumn>
-                        <externalMetadataColumn
-                          refId="Package\SEQ Simple Dimensions\DFT Currency\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
-                          codePage="1252"
-                          dataType="str"
-                          length="50"
-                          name="Param_1">
-                          <properties>
-                            <property
-                              dataType="System.Int32"
-                              description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
-                              name="DBParamInfoFlags">65</property>
-                          </properties>
-                        </externalMetadataColumn>
-                        <externalMetadataColumn
-                          refId="Package\SEQ Simple Dimensions\DFT Currency\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
-                          codePage="1252"
-                          dataType="str"
-                          length="1"
-                          name="Param_2">
-                          <properties>
-                            <property
-                              dataType="System.Int32"
-                              description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
-                              name="DBParamInfoFlags">65</property>
-                          </properties>
-                        </externalMetadataColumn>
-                        <externalMetadataColumn
-                          refId="Package\SEQ Simple Dimensions\DFT Currency\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
-                          codePage="1252"
-                          dataType="str"
-                          length="3"
-                          name="Param_3">
-                          <properties>
-                            <property
-                              dataType="System.Int32"
-                              description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
-                              name="DBParamInfoFlags">65</property>
-                          </properties>
-                        </externalMetadataColumn>
-                      </externalMetadataColumns>
-                    </input>
-                  </inputs>
-                  <outputs>
-                    <output
-                      refId="Package\SEQ Simple Dimensions\DFT Currency\OLE DB Command.Outputs[OLE DB Command Output]"
-                      exclusionGroup="1"
-                      name="OLE DB Command Output"
-                      synchronousInputId="Package\SEQ Simple Dimensions\DFT Currency\OLE DB Command.Inputs[OLE DB Command Input]">
-                      <externalMetadataColumns />
-                    </output>
-                    <output
-                      refId="Package\SEQ Simple Dimensions\DFT Currency\OLE DB Command.Outputs[OLE DB Command Error Output]"
-                      exclusionGroup="1"
-                      isErrorOut="true"
-                      name="OLE DB Command Error Output"
-                      synchronousInputId="Package\SEQ Simple Dimensions\DFT Currency\OLE DB Command.Inputs[OLE DB Command Input]">
-                      <outputColumns>
-                        <outputColumn
-                          refId="Package\SEQ Simple Dimensions\DFT Currency\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
-                          dataType="i4"
-                          lineageId="Package\SEQ Simple Dimensions\DFT Currency\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
-                          name="ErrorCode"
-                          specialFlags="1" />
-                        <outputColumn
-                          refId="Package\SEQ Simple Dimensions\DFT Currency\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
-                          dataType="i4"
-                          lineageId="Package\SEQ Simple Dimensions\DFT Currency\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
-                          name="ErrorColumn"
-                          specialFlags="2" />
-                      </outputColumns>
-                      <externalMetadataColumns />
-                    </output>
-                  </outputs>
-                </component>
-                <component
-                  refId="Package\SEQ Simple Dimensions\DFT Currency\SCD Dim Currency"
-                  componentClassID="Microsoft.SCD"
-                  contactInfo="Slowly Changing Dimension;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;3"
-                  description="Updates a SQL Server Analysis Services data warehouse dimension. Update dimension records that are already present and  insert dimension records that aren't. For example, update the DimProduct table of the AdventureWorksDW OLAP database with data from the Products table in the AdventureWorks OLTP database."
-                  name="SCD Dim Currency"
-                  version="3">
-                  <properties>
-                    <property
-                      dataType="System.String"
-                      description="Specifies the SELECT statement used to create a schema rowset."
-                      name="SqlCommand"
-                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT [CurrencyCountry], [CurrencyISOCode], [CurrencyName], [CurrencySymbol] FROM [DWH].[DimCurrency]</property>
-                    <property
-                      dataType="System.String"
-                      description="Specifies the WHERE clause in the SELECT statement that selects the current row among rows with identical business keys."
-                      name="CurrentRowWhere"></property>
-                    <property
-                      dataType="System.Boolean"
-                      description="Indicates whether historical attribute updates are directed to the transformation output for changing attribute updates."
-                      name="UpdateChangingAttributeHistory">true</property>
-                    <property
-                      dataType="System.Boolean"
-                      description="Indicates whether the transformation fails when columns with fixed attributes contain changes."
-                      name="FailOnFixedAttributeChange">false</property>
-                    <property
-                      dataType="System.String"
-                      description="Specifies the column name for the inferred member."
-                      name="InferredMemberIndicator"></property>
-                    <property
-                      dataType="System.Boolean"
-                      description="Indicates whether inferred member updates are detected."
-                      name="EnableInferredMember">false</property>
-                    <property
-                      dataType="System.Boolean"
-                      description="Indicates whether the transformation fails when a lookup of an existing record fails."
-                      name="FailOnLookupFailure">false</property>
-                    <property
-                      dataType="System.Int32"
-                      description="Specifies that all rows in the input are new or the transformation detects the change type."
-                      name="IncomingRowChangeType"
-                      typeConverter="IncomingRowChangeType">1</property>
-                    <property
-                      dataType="System.Int32"
-                      description="Specifies the column code page to use when code page information is unavailable from the data source."
-                      name="DefaultCodePage">1252</property>
-                  </properties>
-                  <connections>
-                    <connection
-                      refId="Package\SEQ Simple Dimensions\DFT Currency\SCD Dim Currency.Connections[LookupConnection]"
-                      connectionManagerID="{0CBC2C04-C137-495F-AF7C-FA5DE465FED0}:external"
-                      connectionManagerRefId="Project.ConnectionManagers[DWH]"
-                      description="Defines the connection to use for lookups in the dimension table"
-                      name="LookupConnection" />
-                  </connections>
-                  <inputs>
-                    <input
-                      refId="Package\SEQ Simple Dimensions\DFT Currency\SCD Dim Currency.Inputs[Slowly Changing Dimension Input]"
-                      name="Slowly Changing Dimension Input">
-                      <inputColumns>
-                        <inputColumn
-                          refId="Package\SEQ Simple Dimensions\DFT Currency\SCD Dim Currency.Inputs[Slowly Changing Dimension Input].Columns[CurrencyCountry]"
-                          cachedCodepage="1252"
-                          cachedDataType="str"
-                          cachedLength="50"
-                          cachedName="CurrencyCountry"
-                          externalMetadataColumnId="Package\SEQ Simple Dimensions\DFT Currency\SCD Dim Currency.Inputs[Slowly Changing Dimension Input].ExternalColumns[CurrencyCountry]"
-                          lineageId="Package\SEQ Simple Dimensions\DFT Currency\SRC MDM Currency.Outputs[OLE DB Source Output].Columns[CurrencyCountry]">
-                          <properties>
-                            <property
-                              dataType="System.Int32"
-                              name="ColumnType"
-                              typeConverter="ColumnType">2</property>
-                          </properties>
-                        </inputColumn>
-                        <inputColumn
-                          refId="Package\SEQ Simple Dimensions\DFT Currency\SCD Dim Currency.Inputs[Slowly Changing Dimension Input].Columns[CurrencyISOCode]"
-                          cachedCodepage="1252"
-                          cachedDataType="str"
-                          cachedLength="3"
-                          cachedName="CurrencyISOCode"
-                          externalMetadataColumnId="Package\SEQ Simple Dimensions\DFT Currency\SCD Dim Currency.Inputs[Slowly Changing Dimension Input].ExternalColumns[CurrencyISOCode]"
-                          lineageId="Package\SEQ Simple Dimensions\DFT Currency\SRC MDM Currency.Outputs[OLE DB Source Output].Columns[CurrencyISOCode]">
-                          <properties>
-                            <property
-                              dataType="System.Int32"
-                              name="ColumnType"
-                              typeConverter="ColumnType">1</property>
-                          </properties>
-                        </inputColumn>
-                        <inputColumn
-                          refId="Package\SEQ Simple Dimensions\DFT Currency\SCD Dim Currency.Inputs[Slowly Changing Dimension Input].Columns[CurrencyName]"
-                          cachedCodepage="1252"
-                          cachedDataType="str"
-                          cachedLength="50"
-                          cachedName="CurrencyName"
-                          externalMetadataColumnId="Package\SEQ Simple Dimensions\DFT Currency\SCD Dim Currency.Inputs[Slowly Changing Dimension Input].ExternalColumns[CurrencyName]"
-                          lineageId="Package\SEQ Simple Dimensions\DFT Currency\SRC MDM Currency.Outputs[OLE DB Source Output].Columns[CurrencyName]">
-                          <properties>
-                            <property
-                              dataType="System.Int32"
-                              name="ColumnType"
-                              typeConverter="ColumnType">2</property>
-                          </properties>
-                        </inputColumn>
-                        <inputColumn
-                          refId="Package\SEQ Simple Dimensions\DFT Currency\SCD Dim Currency.Inputs[Slowly Changing Dimension Input].Columns[CurrencySymbol]"
-                          cachedCodepage="1252"
-                          cachedDataType="str"
-                          cachedLength="1"
-                          cachedName="CurrencySymbol"
-                          externalMetadataColumnId="Package\SEQ Simple Dimensions\DFT Currency\SCD Dim Currency.Inputs[Slowly Changing Dimension Input].ExternalColumns[CurrencySymbol]"
-                          lineageId="Package\SEQ Simple Dimensions\DFT Currency\SRC MDM Currency.Outputs[OLE DB Source Output].Columns[CurrencySymbol]">
-                          <properties>
-                            <property
-                              dataType="System.Int32"
-                              name="ColumnType"
-                              typeConverter="ColumnType">2</property>
-                          </properties>
-                        </inputColumn>
-                      </inputColumns>
-                      <externalMetadataColumns
-                        isUsed="True">
-                        <externalMetadataColumn
-                          refId="Package\SEQ Simple Dimensions\DFT Currency\SCD Dim Currency.Inputs[Slowly Changing Dimension Input].ExternalColumns[CurrencyCountry]"
-                          codePage="1252"
-                          dataType="str"
-                          length="50"
-                          name="CurrencyCountry" />
-                        <externalMetadataColumn
-                          refId="Package\SEQ Simple Dimensions\DFT Currency\SCD Dim Currency.Inputs[Slowly Changing Dimension Input].ExternalColumns[CurrencyISOCode]"
-                          codePage="1252"
-                          dataType="str"
-                          length="3"
-                          name="CurrencyISOCode" />
-                        <externalMetadataColumn
-                          refId="Package\SEQ Simple Dimensions\DFT Currency\SCD Dim Currency.Inputs[Slowly Changing Dimension Input].ExternalColumns[CurrencyName]"
-                          codePage="1252"
-                          dataType="str"
-                          length="50"
-                          name="CurrencyName" />
-                        <externalMetadataColumn
-                          refId="Package\SEQ Simple Dimensions\DFT Currency\SCD Dim Currency.Inputs[Slowly Changing Dimension Input].ExternalColumns[CurrencySymbol]"
-                          codePage="1252"
-                          dataType="str"
-                          length="1"
-                          name="CurrencySymbol" />
-                      </externalMetadataColumns>
-                    </input>
-                  </inputs>
-                  <outputs>
-                    <output
-                      refId="Package\SEQ Simple Dimensions\DFT Currency\SCD Dim Currency.Outputs[Unchanged Output]"
-                      description="Unchanged rows"
-                      exclusionGroup="1"
-                      name="Unchanged Output"
-                      synchronousInputId="Package\SEQ Simple Dimensions\DFT Currency\SCD Dim Currency.Inputs[Slowly Changing Dimension Input]">
-                      <externalMetadataColumns />
-                    </output>
-                    <output
-                      refId="Package\SEQ Simple Dimensions\DFT Currency\SCD Dim Currency.Outputs[New Output]"
-                      description="New rows"
-                      exclusionGroup="1"
-                      name="New Output"
-                      synchronousInputId="Package\SEQ Simple Dimensions\DFT Currency\SCD Dim Currency.Inputs[Slowly Changing Dimension Input]">
-                      <externalMetadataColumns />
-                    </output>
-                    <output
-                      refId="Package\SEQ Simple Dimensions\DFT Currency\SCD Dim Currency.Outputs[Fixed Attribute Output]"
-                      description="Rows with changes in columns tagged FixedAttribute"
-                      exclusionGroup="1"
-                      name="Fixed Attribute Output"
-                      synchronousInputId="Package\SEQ Simple Dimensions\DFT Currency\SCD Dim Currency.Inputs[Slowly Changing Dimension Input]">
-                      <externalMetadataColumns />
-                    </output>
-                    <output
-                      refId="Package\SEQ Simple Dimensions\DFT Currency\SCD Dim Currency.Outputs[Changing Attribute Updates Output]"
-                      description="These rows contain new information for ChangingAttribute (Type 1) column changes"
-                      exclusionGroup="1"
-                      name="Changing Attribute Updates Output"
-                      synchronousInputId="Package\SEQ Simple Dimensions\DFT Currency\SCD Dim Currency.Inputs[Slowly Changing Dimension Input]">
-                      <externalMetadataColumns />
-                    </output>
-                    <output
-                      refId="Package\SEQ Simple Dimensions\DFT Currency\SCD Dim Currency.Outputs[Historical Attribute Inserts Output]"
-                      description="HistoricalAttribute (Type 2) changes result in these new rows"
-                      exclusionGroup="2"
-                      name="Historical Attribute Inserts Output"
-                      synchronousInputId="Package\SEQ Simple Dimensions\DFT Currency\SCD Dim Currency.Inputs[Slowly Changing Dimension Input]">
-                      <externalMetadataColumns />
-                    </output>
-                    <output
-                      refId="Package\SEQ Simple Dimensions\DFT Currency\SCD Dim Currency.Outputs[Inferred Member Updates Output]"
-                      description="Information to update unpopulated initial dimension row"
-                      exclusionGroup="1"
-                      name="Inferred Member Updates Output"
-                      synchronousInputId="Package\SEQ Simple Dimensions\DFT Currency\SCD Dim Currency.Inputs[Slowly Changing Dimension Input]">
-                      <externalMetadataColumns />
-                    </output>
-                  </outputs>
-                </component>
-                <component
-                  refId="Package\SEQ Simple Dimensions\DFT Currency\SRC MDM Currency"
-                  componentClassID="Microsoft.OLEDBSource"
-                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
-                  description="OLE DB Source"
-                  name="SRC MDM Currency"
-                  usesDispositions="true"
-                  version="7">
-                  <properties>
-                    <property
-                      dataType="System.Int32"
-                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
-                      name="CommandTimeout">0</property>
-                    <property
-                      dataType="System.String"
-                      description="Specifies the name of the database object used to open a rowset."
-                      name="OpenRowset">[dbo].[Currency]</property>
-                    <property
-                      dataType="System.String"
-                      description="Specifies the variable that contains the name of the database object used to open a rowset."
-                      name="OpenRowsetVariable"></property>
-                    <property
-                      dataType="System.String"
-                      description="The SQL command to be executed."
-                      name="SqlCommand"
-                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
-                    <property
-                      dataType="System.String"
-                      description="The variable that contains the SQL command to be executed."
-                      name="SqlCommandVariable"></property>
-                    <property
-                      dataType="System.Int32"
-                      description="Specifies the column code page to use when code page information is unavailable from the data source."
-                      name="DefaultCodePage">1252</property>
-                    <property
-                      dataType="System.Boolean"
-                      description="Forces the use of the DefaultCodePage property value when describing character data."
-                      name="AlwaysUseDefaultCodePage">false</property>
-                    <property
-                      dataType="System.Int32"
-                      description="Specifies the mode used to access the database."
-                      name="AccessMode"
-                      typeConverter="AccessMode">0</property>
-                    <property
-                      dataType="System.String"
-                      description="The mappings between the parameters in the SQL command and variables."
-                      name="ParameterMapping"></property>
-                  </properties>
-                  <connections>
-                    <connection
-                      refId="Package\SEQ Simple Dimensions\DFT Currency\SRC MDM Currency.Connections[OleDbConnection]"
-                      connectionManagerID="{A47497A7-5FAF-4DEE-9BDA-C6F78C6F84C5}:external"
-                      connectionManagerRefId="Project.ConnectionManagers[MDM]"
-                      description="The OLE DB runtime connection used to access the database."
-                      name="OleDbConnection" />
-                  </connections>
-                  <outputs>
-                    <output
-                      refId="Package\SEQ Simple Dimensions\DFT Currency\SRC MDM Currency.Outputs[OLE DB Source Output]"
-                      name="OLE DB Source Output">
-                      <outputColumns>
-                        <outputColumn
-                          refId="Package\SEQ Simple Dimensions\DFT Currency\SRC MDM Currency.Outputs[OLE DB Source Output].Columns[CurrencySymbol]"
-                          codePage="1252"
-                          dataType="str"
-                          errorOrTruncationOperation="Conversion"
-                          errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\SEQ Simple Dimensions\DFT Currency\SRC MDM Currency.Outputs[OLE DB Source Output].ExternalColumns[CurrencySymbol]"
-                          length="1"
-                          lineageId="Package\SEQ Simple Dimensions\DFT Currency\SRC MDM Currency.Outputs[OLE DB Source Output].Columns[CurrencySymbol]"
-                          name="CurrencySymbol"
-                          truncationRowDisposition="FailComponent" />
-                        <outputColumn
-                          refId="Package\SEQ Simple Dimensions\DFT Currency\SRC MDM Currency.Outputs[OLE DB Source Output].Columns[CurrencyISOCode]"
-                          codePage="1252"
-                          dataType="str"
-                          errorOrTruncationOperation="Conversion"
-                          errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\SEQ Simple Dimensions\DFT Currency\SRC MDM Currency.Outputs[OLE DB Source Output].ExternalColumns[CurrencyISOCode]"
-                          length="3"
-                          lineageId="Package\SEQ Simple Dimensions\DFT Currency\SRC MDM Currency.Outputs[OLE DB Source Output].Columns[CurrencyISOCode]"
-                          name="CurrencyISOCode"
-                          truncationRowDisposition="FailComponent" />
-                        <outputColumn
-                          refId="Package\SEQ Simple Dimensions\DFT Currency\SRC MDM Currency.Outputs[OLE DB Source Output].Columns[CurrencyName]"
-                          codePage="1252"
-                          dataType="str"
-                          errorOrTruncationOperation="Conversion"
-                          errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\SEQ Simple Dimensions\DFT Currency\SRC MDM Currency.Outputs[OLE DB Source Output].ExternalColumns[CurrencyName]"
-                          length="50"
-                          lineageId="Package\SEQ Simple Dimensions\DFT Currency\SRC MDM Currency.Outputs[OLE DB Source Output].Columns[CurrencyName]"
-                          name="CurrencyName"
-                          truncationRowDisposition="FailComponent" />
-                        <outputColumn
-                          refId="Package\SEQ Simple Dimensions\DFT Currency\SRC MDM Currency.Outputs[OLE DB Source Output].Columns[CurrencyCountry]"
-                          codePage="1252"
-                          dataType="str"
-                          errorOrTruncationOperation="Conversion"
-                          errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\SEQ Simple Dimensions\DFT Currency\SRC MDM Currency.Outputs[OLE DB Source Output].ExternalColumns[CurrencyCountry]"
-                          length="50"
-                          lineageId="Package\SEQ Simple Dimensions\DFT Currency\SRC MDM Currency.Outputs[OLE DB Source Output].Columns[CurrencyCountry]"
-                          name="CurrencyCountry"
-                          truncationRowDisposition="FailComponent" />
-                      </outputColumns>
-                      <externalMetadataColumns
-                        isUsed="True">
-                        <externalMetadataColumn
-                          refId="Package\SEQ Simple Dimensions\DFT Currency\SRC MDM Currency.Outputs[OLE DB Source Output].ExternalColumns[CurrencySymbol]"
-                          codePage="1252"
-                          dataType="str"
-                          length="1"
-                          name="CurrencySymbol" />
-                        <externalMetadataColumn
-                          refId="Package\SEQ Simple Dimensions\DFT Currency\SRC MDM Currency.Outputs[OLE DB Source Output].ExternalColumns[CurrencyISOCode]"
-                          codePage="1252"
-                          dataType="str"
-                          length="3"
-                          name="CurrencyISOCode" />
-                        <externalMetadataColumn
-                          refId="Package\SEQ Simple Dimensions\DFT Currency\SRC MDM Currency.Outputs[OLE DB Source Output].ExternalColumns[CurrencyName]"
-                          codePage="1252"
-                          dataType="str"
-                          length="50"
-                          name="CurrencyName" />
-                        <externalMetadataColumn
-                          refId="Package\SEQ Simple Dimensions\DFT Currency\SRC MDM Currency.Outputs[OLE DB Source Output].ExternalColumns[CurrencyCountry]"
-                          codePage="1252"
-                          dataType="str"
-                          length="50"
-                          name="CurrencyCountry" />
-                      </externalMetadataColumns>
-                    </output>
-                    <output
-                      refId="Package\SEQ Simple Dimensions\DFT Currency\SRC MDM Currency.Outputs[OLE DB Source Error Output]"
-                      isErrorOut="true"
-                      name="OLE DB Source Error Output">
-                      <outputColumns>
-                        <outputColumn
-                          refId="Package\SEQ Simple Dimensions\DFT Currency\SRC MDM Currency.Outputs[OLE DB Source Error Output].Columns[CurrencySymbol]"
-                          codePage="1252"
-                          dataType="str"
-                          length="1"
-                          lineageId="Package\SEQ Simple Dimensions\DFT Currency\SRC MDM Currency.Outputs[OLE DB Source Error Output].Columns[CurrencySymbol]"
-                          name="CurrencySymbol" />
-                        <outputColumn
-                          refId="Package\SEQ Simple Dimensions\DFT Currency\SRC MDM Currency.Outputs[OLE DB Source Error Output].Columns[CurrencyISOCode]"
-                          codePage="1252"
-                          dataType="str"
-                          length="3"
-                          lineageId="Package\SEQ Simple Dimensions\DFT Currency\SRC MDM Currency.Outputs[OLE DB Source Error Output].Columns[CurrencyISOCode]"
-                          name="CurrencyISOCode" />
-                        <outputColumn
-                          refId="Package\SEQ Simple Dimensions\DFT Currency\SRC MDM Currency.Outputs[OLE DB Source Error Output].Columns[CurrencyName]"
-                          codePage="1252"
-                          dataType="str"
-                          length="50"
-                          lineageId="Package\SEQ Simple Dimensions\DFT Currency\SRC MDM Currency.Outputs[OLE DB Source Error Output].Columns[CurrencyName]"
-                          name="CurrencyName" />
-                        <outputColumn
-                          refId="Package\SEQ Simple Dimensions\DFT Currency\SRC MDM Currency.Outputs[OLE DB Source Error Output].Columns[CurrencyCountry]"
-                          codePage="1252"
-                          dataType="str"
-                          length="50"
-                          lineageId="Package\SEQ Simple Dimensions\DFT Currency\SRC MDM Currency.Outputs[OLE DB Source Error Output].Columns[CurrencyCountry]"
-                          name="CurrencyCountry" />
-                        <outputColumn
-                          refId="Package\SEQ Simple Dimensions\DFT Currency\SRC MDM Currency.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
-                          dataType="i4"
-                          lineageId="Package\SEQ Simple Dimensions\DFT Currency\SRC MDM Currency.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
-                          name="ErrorCode"
-                          specialFlags="1" />
-                        <outputColumn
-                          refId="Package\SEQ Simple Dimensions\DFT Currency\SRC MDM Currency.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
-                          dataType="i4"
-                          lineageId="Package\SEQ Simple Dimensions\DFT Currency\SRC MDM Currency.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
-                          name="ErrorColumn"
-                          specialFlags="2" />
-                      </outputColumns>
-                      <externalMetadataColumns />
-                    </output>
-                  </outputs>
-                </component>
-              </components>
-              <paths>
-                <path
-                  refId="Package\SEQ Simple Dimensions\DFT Currency.Paths[Changing Attribute Updates Output]"
-                  endId="Package\SEQ Simple Dimensions\DFT Currency\OLE DB Command.Inputs[OLE DB Command Input]"
-                  name="Changing Attribute Updates Output"
-                  startId="Package\SEQ Simple Dimensions\DFT Currency\SCD Dim Currency.Outputs[Changing Attribute Updates Output]" />
-                <path
-                  refId="Package\SEQ Simple Dimensions\DFT Currency.Paths[New Output]"
-                  endId="Package\SEQ Simple Dimensions\DFT Currency\Insert Destination.Inputs[OLE DB Destination Input]"
-                  name="New Output"
-                  startId="Package\SEQ Simple Dimensions\DFT Currency\SCD Dim Currency.Outputs[New Output]" />
-                <path
-                  refId="Package\SEQ Simple Dimensions\DFT Currency.Paths[OLE DB Source Output]"
-                  endId="Package\SEQ Simple Dimensions\DFT Currency\SCD Dim Currency.Inputs[Slowly Changing Dimension Input]"
-                  name="OLE DB Source Output"
-                  startId="Package\SEQ Simple Dimensions\DFT Currency\SRC MDM Currency.Outputs[OLE DB Source Output]" />
-              </paths>
-            </pipeline>
-          </DTS:ObjectData>
-        </DTS:Executable>
         <DTS:Executable
           DTS:refId="Package\SEQ Simple Dimensions\DFT Index"
           DTS:CreationName="Microsoft.Pipeline"
@@ -9861,7 +9886,7 @@ where [refTable].[StatusName] = ?</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="SQL Clear Fee Bands"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="1">
+          DTS:ThreadHint="2">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -9941,15 +9966,15 @@ where [refTable].[StatusName] = ?</property>
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="215,42"
           Id="Package\SEQ Complex dimensions\DFT Date"
           TopLeft="53.1666666666666,222.833333333333" />
         <NodeLayout
-          Size="215,42"
+          Size="216,42"
           Id="Package\SEQ Complex dimensions\DFT Dim Broker"
-          TopLeft="297.944444444445,19.8333333333333" />
+          TopLeft="295.5,19.8333333333333" />
         <NodeLayout
           Size="215,42"
           Id="Package\SEQ Complex dimensions\DFT Refresh Date Controls"
@@ -9957,11 +9982,11 @@ where [refTable].[StatusName] = ?</property>
         <NodeLayout
           Size="215,42"
           Id="Package\SEQ Complex dimensions\DFT Tme"
-          TopLeft="297.944444444445,119.833333333333" />
+          TopLeft="58.944444444445,318.833333333333" />
         <NodeLayout
-          Size="215,42"
+          Size="216,42"
           Id="Package\SEQ Complex dimensions\DFT Trader"
-          TopLeft="297.944444444445,223.944444444444" />
+          TopLeft="295.5,119.944444444444" />
         <NodeLayout
           Size="215,42"
           Id="Package\SEQ Complex dimensions\SQL Clear Staging Controls"
@@ -9971,7 +9996,7 @@ where [refTable].[StatusName] = ?</property>
           TopLeft="160.666666666667,60.8333333333333">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="0,59.9999999999997"
               Start="0,0"
               End="0,52.4999999999997">
@@ -9993,7 +10018,7 @@ where [refTable].[StatusName] = ?</property>
           TopLeft="160.666666666667,162.833333333333">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="0,60"
               Start="0,0"
               End="0,52.5">
@@ -10010,40 +10035,66 @@ where [refTable].[StatusName] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <NodeLayout
+          Size="216,42"
+          Id="Package\SEQ Complex dimensions\DFT Currency"
+          TopLeft="295.5,222.833333333333" />
+        <NodeLayout
+          Size="216,42"
+          Id="Package\SEQ Complex dimensions\SQL Dummy Exchange Rates"
+          TopLeft="295.5,318.833333333333" />
+        <EdgeLayout
+          Id="Package\SEQ Complex dimensions.PrecedenceConstraints[Constraint 2]"
+          TopLeft="403.5,264.833333333333">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,54"
+              Start="0,0"
+              End="0,46.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,46.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="550,299"
-          Size="550,342"
+          PanelSize="549,405"
+          Size="549,448"
           Id="Package\SEQ Complex dimensions"
-          TopLeft="139.944444444445,107.5" />
-        <NodeLayout
-          Size="215,42"
-          Id="Package\SEQ Simple Dimensions\DFT Currency"
-          TopLeft="28.5,34.5" />
+          TopLeft="48.944444444445,105.5" />
         <NodeLayout
           Size="215,42"
           Id="Package\SEQ Simple Dimensions\DFT Index"
-          TopLeft="311.777777777778,34.5" />
+          TopLeft="29.5,17.5" />
         <NodeLayout
           Size="215,42"
           Id="Package\SEQ Simple Dimensions\DFT Market"
-          TopLeft="28.5,124.833333333333" />
+          TopLeft="29.5,114.277777777778" />
         <NodeLayout
           Size="215,42"
           Id="Package\SEQ Simple Dimensions\DFT Status"
-          TopLeft="311.777777777778,124.833333333333" />
+          TopLeft="29.5,307.833333333333" />
         <NodeLayout
           Size="215,42"
           Id="Package\SEQ Simple Dimensions\DFT Trade Modification Type"
-          TopLeft="28.5,202.944444444444" />
+          TopLeft="29.5,211.055555555555" />
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="556,296"
-          Size="556,339"
+          PanelSize="281,408"
+          Size="281,451"
           Id="Package\SEQ Simple Dimensions"
-          TopLeft="739.222222222223,107.5" />
+          TopLeft="627.222222222223,109.5" />
         <NodeLayout
           Size="183,42"
           Id="Package\SEQ Simple Report Helpers\DFT Equity Feee Band"
@@ -10057,7 +10108,7 @@ where [refTable].[StatusName] = ?</property>
           TopLeft="112,65">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="0,25.5"
               Start="0,0"
               End="0,18">
@@ -10080,37 +10131,37 @@ where [refTable].[StatusName] = ?</property>
           PanelSize="229,239"
           Size="229,282"
           Id="Package\SEQ Simple Report Helpers"
-          TopLeft="1351.33333333333,108.5" />
+          TopLeft="939.33333333333,109.5" />
         <NodeLayout
           Size="163,42"
           Id="Package\SQL Get BatchID"
-          TopLeft="814.5,13.2777777777777" />
+          TopLeft="486.5,7.2777777777777" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="896,55.2777777777777">
+          TopLeft="568,49.2777777777777">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
-              EndConnector="121.222222222223,52.2222222222223"
+              StartConnector="{assembly:Null}"
+              EndConnector="199.722222222223,60.2222222222223"
               Start="0,0"
-              End="121.222222222223,44.7222222222223">
+              End="199.722222222223,52.7222222222223">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,22.1111111111112" />
+                    End="0,26.1111111111112" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,22.1111111111112"
-                    Point2="0,26.1111111111112"
-                    Point3="4,26.1111111111112" />
+                    Point1="0,26.1111111111112"
+                    Point2="0,30.1111111111112"
+                    Point3="4,30.1111111111112" />
                   <mssgle:LineSegment
-                    End="117.222222222223,26.1111111111112" />
+                    End="195.722222222223,30.1111111111112" />
                   <mssgle:CubicBezierSegment
-                    Point1="117.222222222223,26.1111111111112"
-                    Point2="121.222222222223,26.1111111111112"
-                    Point3="121.222222222223,30.1111111111112" />
+                    Point1="195.722222222223,30.1111111111112"
+                    Point2="199.722222222223,30.1111111111112"
+                    Point3="199.722222222223,34.1111111111112" />
                   <mssgle:LineSegment
-                    End="121.222222222223,44.7222222222223" />
+                    End="199.722222222223,52.7222222222223" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -10121,30 +10172,30 @@ where [refTable].[StatusName] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="857.25,55.2777777777777">
+          TopLeft="529.25,49.2777777777777">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
-              EndConnector="-442.305555555555,52.2222222222223"
+              StartConnector="{assembly:Null}"
+              EndConnector="-205.805555555555,56.2222222222223"
               Start="0,0"
-              End="-442.305555555555,44.7222222222223">
+              End="-205.805555555555,48.7222222222223">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,13.9678068410463" />
+                    End="0,15.3440643863179" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,13.9678068410463"
-                    Point2="0,17.9678068410463"
-                    Point3="-4,17.9678068410463" />
+                    Point1="0,15.3440643863179"
+                    Point2="0,19.3440643863179"
+                    Point3="-4,19.3440643863179" />
                   <mssgle:LineSegment
-                    End="-438.305555555555,17.9678068410463" />
+                    End="-201.805555555555,19.3440643863179" />
                   <mssgle:CubicBezierSegment
-                    Point1="-438.305555555555,17.9678068410463"
-                    Point2="-442.305555555555,17.9678068410463"
-                    Point3="-442.305555555555,21.9678068410463" />
+                    Point1="-201.805555555555,19.3440643863179"
+                    Point2="-205.805555555555,19.3440643863179"
+                    Point3="-205.805555555555,23.3440643863179" />
                   <mssgle:LineSegment
-                    End="-442.305555555555,44.7222222222223" />
+                    End="-205.805555555555,48.7222222222223" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -10155,30 +10206,30 @@ where [refTable].[StatusName] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 2]"
-          TopLeft="934.75,55.2777777777777">
+          TopLeft="606.75,49.2777777777777">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
-              EndConnector="531.08333333333,53.2222222222223"
+              StartConnector="{assembly:Null}"
+              EndConnector="447.08333333333,60.2222222222223"
               Start="0,0"
-              End="531.08333333333,45.7222222222223">
+              End="447.08333333333,52.7222222222223">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,14.3118712273642" />
+                    End="0,16.7203219315896" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,14.3118712273642"
-                    Point2="0,18.3118712273642"
-                    Point3="4,18.3118712273642" />
+                    Point1="0,16.7203219315896"
+                    Point2="0,20.7203219315896"
+                    Point3="4,20.7203219315896" />
                   <mssgle:LineSegment
-                    End="527.08333333333,18.3118712273642" />
+                    End="443.08333333333,20.7203219315896" />
                   <mssgle:CubicBezierSegment
-                    Point1="527.08333333333,18.3118712273642"
-                    Point2="531.08333333333,18.3118712273642"
-                    Point3="531.08333333333,22.3118712273642" />
+                    Point1="443.08333333333,20.7203219315896"
+                    Point2="447.08333333333,20.7203219315896"
+                    Point3="447.08333333333,24.7203219315896" />
                   <mssgle:LineSegment
-                    End="531.08333333333,45.7222222222223" />
+                    End="447.08333333333,52.7222222222223" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -10194,7 +10245,7 @@ where [refTable].[StatusName] = ?</property>
     design-time-name="Package\SEQ Complex dimensions\DFT Date">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="166,42"
           Id="Package\SEQ Complex dimensions\DFT Date\OLE DB Command"
@@ -10216,7 +10267,7 @@ where [refTable].[StatusName] = ?</property>
           TopLeft="312,47.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="0,60"
               Start="0,0"
               End="0,52.5">
@@ -10240,7 +10291,7 @@ where [refTable].[StatusName] = ?</property>
           TopLeft="289.5,149.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="-202.5,60"
               Start="0,0"
               End="-202.5,52.5">
@@ -10276,7 +10327,7 @@ where [refTable].[StatusName] = ?</property>
           TopLeft="334.5,149.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="-22.5,60"
               Start="0,0"
               End="-22.5,52.5">
@@ -10455,7 +10506,7 @@ where [refTable].[StatusName] = ?</property>
     design-time-name="Package\SEQ Complex dimensions\DFT Dim Broker">
     <LayoutInfo>
       <GraphLayout
-        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="196,42"
           Id="Package\SEQ Complex dimensions\DFT Dim Broker\DER Broker Columns"
@@ -10493,7 +10544,7 @@ where [refTable].[StatusName] = ?</property>
           TopLeft="415,47.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="0,60"
               Start="0,0"
               End="0,52.5">
@@ -10517,7 +10568,7 @@ where [refTable].[StatusName] = ?</property>
           TopLeft="548.5,443.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="0,57"
               Start="0,0"
               End="0,49.5">
@@ -10541,7 +10592,7 @@ where [refTable].[StatusName] = ?</property>
           TopLeft="383.666666666667,251.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="-101.666666666667,65"
               Start="0,0"
               End="-101.666666666667,57.5">
@@ -10577,7 +10628,7 @@ where [refTable].[StatusName] = ?</property>
           TopLeft="446.333333333333,251.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="103.166666666667,65"
               Start="0,0"
               End="103.166666666667,57.5">
@@ -10613,7 +10664,7 @@ where [refTable].[StatusName] = ?</property>
           TopLeft="647.5,337.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="117.5,0"
               Start="0,0"
               End="110,0">
@@ -10637,7 +10688,7 @@ where [refTable].[StatusName] = ?</property>
           TopLeft="547.75,358.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="0,43"
               Start="0,0"
               End="0,35.5">
@@ -10661,7 +10712,7 @@ where [refTable].[StatusName] = ?</property>
           TopLeft="415,149.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="0,60"
               Start="0,0"
               End="0,52.5">
@@ -10749,7 +10800,7 @@ where [refTable].[StatusName] = ?</property>
     design-time-name="Package\SEQ Complex dimensions\DFT Refresh Date Controls">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="184,42"
           Id="Package\SEQ Complex dimensions\DFT Refresh Date Controls\DST STG SpecialDates"
@@ -10771,7 +10822,7 @@ where [refTable].[StatusName] = ?</property>
           TopLeft="344.5,47.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="0,60"
               Start="0,0"
               End="0,52.5">
@@ -10795,7 +10846,7 @@ where [refTable].[StatusName] = ?</property>
           TopLeft="97.5,47.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="0,60"
               Start="0,0"
               End="0,52.5">
@@ -10873,7 +10924,7 @@ where [refTable].[StatusName] = ?</property>
     design-time-name="Package\SEQ Complex dimensions\DFT Tme">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="166,42"
           Id="Package\SEQ Complex dimensions\DFT Tme\OLE DB Command"
@@ -10895,7 +10946,7 @@ where [refTable].[StatusName] = ?</property>
           TopLeft="312,47.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="0,60"
               Start="0,0"
               End="0,52.5">
@@ -10919,7 +10970,7 @@ where [refTable].[StatusName] = ?</property>
           TopLeft="289.333333333333,149.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="-202.333333333333,60"
               Start="0,0"
               End="-202.333333333333,52.5">
@@ -10955,7 +11006,7 @@ where [refTable].[StatusName] = ?</property>
           TopLeft="334.666666666667,149.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="-22.6666666666667,60"
               Start="0,0"
               End="-22.6666666666667,52.5">
@@ -11056,7 +11107,7 @@ where [refTable].[StatusName] = ?</property>
     design-time-name="Package\SEQ Complex dimensions\DFT Trader">
     <LayoutInfo>
       <GraphLayout
-        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="228,42"
           Id="Package\SEQ Complex dimensions\DFT Trader\SRC MDM Trader"
@@ -11098,7 +11149,7 @@ where [refTable].[StatusName] = ?</property>
           TopLeft="574,418">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="110,82"
               Start="0,0"
               End="110,74.5">
@@ -11134,7 +11185,7 @@ where [refTable].[StatusName] = ?</property>
           TopLeft="375,47.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="0,41.5"
               Start="0,0"
               End="0,34">
@@ -11158,7 +11209,7 @@ where [refTable].[StatusName] = ?</property>
           TopLeft="338.333333333333,222">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="-215.333333333333,149"
               Start="0,0"
               End="-215.333333333333,141.5">
@@ -11194,7 +11245,7 @@ where [refTable].[StatusName] = ?</property>
           TopLeft="375,131">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="0,49"
               Start="0,0"
               End="0,41.5">
@@ -11218,7 +11269,7 @@ where [refTable].[StatusName] = ?</property>
           TopLeft="639,396.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="156,0"
               Start="0,0"
               End="148.5,0">
@@ -11242,7 +11293,7 @@ where [refTable].[StatusName] = ?</property>
           TopLeft="513,418">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="-109,82"
               Start="0,0"
               End="-109,74.5">
@@ -11278,7 +11329,7 @@ where [refTable].[StatusName] = ?</property>
           TopLeft="411.666666666667,222">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="131.833333333333,154"
               Start="0,0"
               End="131.833333333333,146.5">
@@ -11314,7 +11365,7 @@ where [refTable].[StatusName] = ?</property>
           TopLeft="123,413">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="0,87"
               Start="0,0"
               End="0,79.5">
@@ -11386,24 +11437,32 @@ where [refTable].[StatusName] = ?</property>
     </Properties>
   </PipelineComponentMetadata>
   <TaskHost
-    design-time-name="Package\SEQ Simple Dimensions\DFT Currency">
+    design-time-name="Package\SEQ Complex dimensions\DFT Currency">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="170,42"
-          Id="Package\SEQ Simple Dimensions\DFT Currency\SRC MDM Currency"
+          Id="Package\SEQ Complex dimensions\DFT Currency\SRC MDM Currency"
           TopLeft="227,5.5" />
         <NodeLayout
+          Size="163,42"
+          Id="Package\SEQ Complex dimensions\DFT Currency\Insert Destination"
+          TopLeft="5.50000000000006,209.5" />
+        <NodeLayout
           Size="166,42"
-          Id="Package\SEQ Simple Dimensions\DFT Currency\SCD Dim Currency"
+          Id="Package\SEQ Complex dimensions\DFT Currency\SCD Dim Currency"
           TopLeft="229,107.5" />
+        <NodeLayout
+          Size="166,42"
+          Id="Package\SEQ Complex dimensions\DFT Currency\OLE DB Command"
+          TopLeft="229,209.5" />
         <EdgeLayout
-          Id="Package\SEQ Simple Dimensions\DFT Currency.Paths[OLE DB Source Output]"
+          Id="Package\SEQ Complex dimensions\DFT Currency.Paths[OLE DB Source Output]"
           TopLeft="312,47.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="0,60"
               Start="0,0"
               End="0,52.5">
@@ -11417,19 +11476,17 @@ where [refTable].[StatusName] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="163,42"
-          Id="Package\SEQ Simple Dimensions\DFT Currency\Insert Destination"
-          TopLeft="5.50000000000006,209.5" />
         <EdgeLayout
-          Id="Package\SEQ Simple Dimensions\DFT Currency.Paths[New Output]"
+          Id="Package\SEQ Complex dimensions\DFT Currency.Paths[New Output]"
           TopLeft="285.666666666667,149.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="-198.666666666667,60"
               Start="0,0"
               End="-198.666666666667,52.5">
@@ -11460,16 +11517,12 @@ where [refTable].[StatusName] = ?</property>
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="166,42"
-          Id="Package\SEQ Simple Dimensions\DFT Currency\OLE DB Command"
-          TopLeft="229,209.5" />
         <EdgeLayout
-          Id="Package\SEQ Simple Dimensions\DFT Currency.Paths[Changing Attribute Updates Output]"
+          Id="Package\SEQ Complex dimensions\DFT Currency.Paths[Changing Attribute Updates Output]"
           TopLeft="338.333333333333,149.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="-26.3333333333333,60"
               Start="0,0"
               End="-26.3333333333333,52.5">
@@ -11504,7 +11557,7 @@ where [refTable].[StatusName] = ?</property>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\SEQ Simple Dimensions\DFT Currency\SRC MDM Currency">
+    design-time-name="Package\SEQ Complex dimensions\DFT Currency\SRC MDM Currency">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -11517,7 +11570,7 @@ where [refTable].[StatusName] = ?</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\SEQ Simple Dimensions\DFT Currency\SCD Dim Currency">
+    design-time-name="Package\SEQ Complex dimensions\DFT Currency\SCD Dim Currency">
     <Properties>
       <Property>
         <Name>SCDMetadata</Name>
@@ -11575,7 +11628,7 @@ where [refTable].[StatusName] = ?</property>
     design-time-name="Package\SEQ Simple Dimensions\DFT Index">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="155,42"
           Id="Package\SEQ Simple Dimensions\DFT Index\SRC MDM Index"
@@ -11597,7 +11650,7 @@ where [refTable].[StatusName] = ?</property>
           TopLeft="312,47.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="0,60"
               Start="0,0"
               End="0,52.5">
@@ -11621,7 +11674,7 @@ where [refTable].[StatusName] = ?</property>
           TopLeft="288.166666666667,149.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="-201.166666666667,60"
               Start="0,0"
               End="-201.166666666667,52.5">
@@ -11657,7 +11710,7 @@ where [refTable].[StatusName] = ?</property>
           TopLeft="335.833333333333,149.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="-23.8333333333333,60"
               Start="0,0"
               End="-23.8333333333333,52.5">
@@ -11775,7 +11828,7 @@ where [refTable].[StatusName] = ?</property>
     design-time-name="Package\SEQ Simple Dimensions\DFT Market">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="156,42"
           Id="Package\SEQ Simple Dimensions\DFT Market\SCD Dim Market"
@@ -11797,7 +11850,7 @@ where [refTable].[StatusName] = ?</property>
           TopLeft="312,47.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="0,60"
               Start="0,0"
               End="0,52.5">
@@ -11821,7 +11874,7 @@ where [refTable].[StatusName] = ?</property>
           TopLeft="287.333333333333,149.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="-200.333333333333,60"
               Start="0,0"
               End="-200.333333333333,52.5">
@@ -11857,7 +11910,7 @@ where [refTable].[StatusName] = ?</property>
           TopLeft="336.666666666667,149.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="-24.6666666666667,60"
               Start="0,0"
               End="-24.6666666666667,52.5">
@@ -11951,7 +12004,7 @@ where [refTable].[StatusName] = ?</property>
     design-time-name="Package\SEQ Simple Dimensions\DFT Status">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="158,42"
           Id="Package\SEQ Simple Dimensions\DFT Status\SRC MDM Status"
@@ -11969,7 +12022,7 @@ where [refTable].[StatusName] = ?</property>
           TopLeft="94,47.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="0,60"
               Start="0,0"
               End="0,52.5">
@@ -11993,7 +12046,7 @@ where [refTable].[StatusName] = ?</property>
           TopLeft="94.0000000000001,149.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="0,60"
               Start="0,0"
               End="0,52.5">
@@ -12015,7 +12068,7 @@ where [refTable].[StatusName] = ?</property>
         <AnnotationLayout
           Text="Only a status name =&gt; can't use SCD wizard"
           ParentId="Package\SEQ Simple Dimensions\DFT Status"
-          FontInfo="{x:Null}"
+          FontInfo="{assembly:Null}"
           Size="273,NaN"
           Id="1aae7ff4-55e4-4ab8-898c-e978c770a0ce"
           TopLeft="233.5,11.5" />
@@ -12075,7 +12128,7 @@ where [refTable].[StatusName] = ?</property>
     design-time-name="Package\SEQ Simple Dimensions\DFT Trade Modification Type">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="166,42"
           Id="Package\SEQ Simple Dimensions\DFT Trade Modification Type\OLE DB Command"
@@ -12097,7 +12150,7 @@ where [refTable].[StatusName] = ?</property>
           TopLeft="277.5,149.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="-190.5,60"
               Start="0,0"
               End="-190.5,52.5">
@@ -12133,7 +12186,7 @@ where [refTable].[StatusName] = ?</property>
           TopLeft="346.5,149.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="-34.5,60"
               Start="0,0"
               End="-34.5,52.5">
@@ -12169,7 +12222,7 @@ where [refTable].[StatusName] = ?</property>
           TopLeft="312,47.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="0,60"
               Start="0,0"
               End="0,52.5">
@@ -12257,7 +12310,7 @@ where [refTable].[StatusName] = ?</property>
     design-time-name="Package\SEQ Simple Report Helpers\DFT Equity Feee Band">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="205,42"
           Id="Package\SEQ Simple Report Helpers\DFT Equity Feee Band\SRC MDM Equity Fee Band"
@@ -12271,7 +12324,7 @@ where [refTable].[StatusName] = ?</property>
           TopLeft="313.5,47.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="0,46.5"
               Start="0,0"
               End="0,39">

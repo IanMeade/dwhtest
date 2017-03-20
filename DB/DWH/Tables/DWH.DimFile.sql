@@ -6,7 +6,10 @@ CREATE TABLE [DWH].[DimFile]
 [FileTypeTag] [varchar] (50) COLLATE Latin1_General_CI_AS NOT NULL,
 [SaftFileLetter] [char] (1) COLLATE Latin1_General_CI_AS NOT NULL,
 [FileProcessedTime] [datetime2] NOT NULL,
-[FilePrcocessedStatus] [varchar] (50) COLLATE Latin1_General_CI_AS NOT NULL
+[FilePrcocessedStatus] [varchar] (50) COLLATE Latin1_General_CI_AS NOT NULL,
+[ExpectedStartTime] [time] NULL,
+[ExpectedFinishTime] [time] NULL,
+[ContainsEndOfDayDetails] [char] (1) COLLATE Latin1_General_CI_AS NULL
 ) ON [PRIMARY]
 GO
 ALTER TABLE [DWH].[DimFile] ADD CONSTRAINT [PK_DimFile] PRIMARY KEY CLUSTERED  ([FileID]) ON [PRIMARY]

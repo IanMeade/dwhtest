@@ -1,6 +1,6 @@
 CREATE TABLE [dbo].[TxSaft]
 (
-[TxSfaftID] [int] NOT NULL IDENTITY(1, 1),
+[TxSfaftID] [bigint] NOT NULL IDENTITY(1, 1),
 [DwhFileID] [int] NOT NULL,
 [A_MOD_TIMESTAMP] [datetime2] NOT NULL,
 [A_MOD_TIMESTAMP_GMT] [datetimeoffset] NULL,

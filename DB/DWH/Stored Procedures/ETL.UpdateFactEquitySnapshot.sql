@@ -2,182 +2,245 @@ SET QUOTED_IDENTIFIER ON
 GO
 SET ANSI_NULLS ON
 GO
-CREATE PROCEDURE [ETL].[UpdateFactEquitySnapshot] AS
-	/* STILL WIP */
+
+CREATE PROCEDURE [ETL].[UpdateFactEquitySnapshot] AS 
+
+BEGIN
+	/* STATS SECTION NOT POPULATED BY ETL YET */
 
 
-	/* SET DUMMY FOREIGN KEYS FOR NULL DATES / TIMES */
-	UPDATE
-		ETL.TradeAggregationsFactEquityTradeSnapshot
-	SET
-		/* InstrumentID */
-		/* CurrencyID */
-		OCP_DATEID = ISNULL( OCP_DATEID, -1),
-		/* OCP_TIME */
-		OCP_TIME_ID = ISNULL( OCP_TIME_ID, 0),
-		/* OCP_TIME_UTC */
-		LTPDateID = ISNULL( LTPDateID, -1),
-		LTPTimeID = ISNULL( LTPTimeID, 0)
-		/* LTPTime */
-		/* UtcLTPTime */
-
-
-	/* Update any existing entires */
+	/* Update existing and insert any new puppies */
 
 	UPDATE
-		I
+		DWH
 	SET
-			OCPDateID = O.OCP_DATEID,
-			OCPTimeID = O.OCP_TIME_ID,
-			OCPTime = O.OCP_TIME,
-			UtcOCPTime = O.OCP_TIME_UTC,
-			OCP = O.OCP,		
-			OpenPrice = O.OOP,
-			LTP = O.LastPrice,
-			LTPDateID = O.LTPDateID,
-			LTPTimeID = O.LTPTimeID,
-			LTPTime = O.LTPTime,
-			UtcLTPTime = O.UtcLTPTime,
-
-			/*
-			LastPriceTimeID, 
-			*/
-			LowPrice = O.LowPrice , 
-			HighPrice = O.HighPrice, 
-			Deals = O.Deals, 
-			DealsOB = O.DealsOB, 
-			DealsND = O.DealsND,
-			/*
-			Volume = O.Volume, 
-			VolumeOB = O.VolumeOB, 
-			VolumeND = O.VolumeND, 
-			*/
-
-			Turnover = O.Turnover, 
-			TurnoverOB = O.TurnoverOB, 
-			TurnoverND = O.TurnoverND, 
-			TurnoverEur = O.TurnoverEur, 
-			TurnoverObEur = O.TurnoverObEur, 
-			TurnoverNdEur = O.TurnoverNdEur,
-
-			BidPrice = O.BidPrice,
-			OfferPrice = O.OfferPrice,
-			ClosingAuctionBidPrice = O.ClosingAuctionBidPrice, 
-			ClosingAuctionOfferPrice = O.ClosingAuctionOfferPrice
-
+		InstrumentID = E.CurrentInstrumentID,
+		InstrumentStatusID = E.InstrumentStatusID,
+		DateID = E.DateID,
+		LastExDivDateID = E.LastExDivDateID,
+		OCPDateID = E.OCPDateID,
+		OCPTimeID = E.OCPTimeID,
+		OCPTime = E.OCPTime,
+		UtcOCPTime = E.UtcOCPTime,
+		LTPDateID = E.LTPDateID,
+		LTPTimeID = E.LTPTimeID,
+		LTPTime = E.LTPTime,
+		UtcLTPTime = E.UtcLTPTime,
+		MarketID = E.MarketID,
+		TotalSharesInIssue = E.TotalSharesInIssue,
+		IssuedSharesToday = E.IssuedSharesToday,
+		ExDivYN = E.ExDivYN,
+		OpenPrice = E.OpenPrice,
+		LowPrice = E.LowPrice,
+		HighPrice = E.HighPrice,
+		BidPrice = E.BidPrice,
+		OfferPrice = E.OfferPrice,
+		ClosingAuctionBidPrice = E.ClosingAuctionBidPrice,
+		ClosingAuctionOfferPrice = E.ClosingAuctionOfferPrice,
+		OCP = E.OCP,
+		LTP = E.LTP,
+		MarketCap = E.MarketCap,
+		MarketCapEur = E.MarketCapEur,
+		Turnover = E.Turnover,
+		TurnoverND = E.TurnoverND,
+		TurnoverEur = E.TurnoverEur,
+		TurnoverNDEur = E.TurnoverNDEur,
+		TurnoverOB = E.TurnoverOB,
+		TurnoverOBEur = E.TurnoverOBEur,
+		Volume = E.Volume,
+		VolumeND = E.VolumeND,
+		VolumeOB = E.VolumeOB,
+		Deals = E.Deals,
+		DealsOB = E.DealsOB,
+		DealsND = E.DealsND,
+		ISEQ20Shares = E.ISEQ20Shares,
+		ISEQ20Price = E.ISEQ20Price,
+		ISEQ20Weighting = E.ISEQ20Weighting,
+		ISEQ20MarketCap = E.ISEQ20MarketCap,
+		ISEQ20FreeFloat = E.ISEQ20FreeFloat,
+		ISEQOverallWeighting = E.ISEQOverallWeighting,
+		ISEQOverallMarketCap = E.ISEQOverallMarketCap,
+		ISEQOverallBeta30 = E.ISEQOverallBeta30,
+		ISEQOverallBeta250 = E.ISEQOverallBeta250,
+		ISEQOverallFreefloat = E.ISEQOverallFreefloat,
+		ISEQOverallPrice = E.ISEQOverallPrice,
+		ISEQOverallShares = E.ISEQOverallShares,
+		OverallIndexYN = E.OverallIndexYN,
+		GeneralIndexYN = E.GeneralIndexYN,
+		FinancialIndexYN = E.FinancialIndexYN,
+		SmallCapIndexYN = E.SmallCapIndexYN,
+		ITEQIndexYN = E.ITEQIndexYN,
+		ISEQ20IndexYN = E.ISEQ20IndexYN,
+		ESMIndexYN = E.ESMIndexYN,
+		ExCapYN = E.ExCapYN,
+		ExEntitlementYN = E.ExEntitlementYN,
+		ExRightsYN = E.ExRightsYN,
+		ExSpecialYN = E.ExSpecialYN,
+		PrimaryMarket = E.PrimaryMarket,
+		BatchID = E.BatchID
 	FROM
-			DWH.FactEquitySnapshot I
+			DWH.FactEquitySnapshot DWH
 		INNER JOIN
-			DWH.DimInstrumentEquity EQUITY
+			DWH.DimInstrumentEquity I
+		ON DWH.InstrumentID = I.InstrumentID
+		INNER JOIN		
+			ETL.FactEquitySnapshotMerge E
 		ON 
-			I.InstrumentID = EQUITY.InstrumentID
-		INNER JOIN
-			ETL.TradeAggregationsFactEquityTradeSnapshot O
-		ON 
-			O.AggregateDateID = I.DateID
+			I.ISIN = E.ISIN
 		AND
-			O.ISIN = EQUITY.ISIN
-	
-	
+			DWH.DateID = E.DateID
 
-
-	/* Insert new rows */
 
 	INSERT INTO
 			DWH.FactEquitySnapshot
 		(
-			InstrumentID, 
-			DateID, 
-
+			InstrumentID,
+			InstrumentStatusID,
+			DateID,
+			LastExDivDateID,
 			OCPDateID,
 			OCPTimeID,
 			OCPTime,
 			UtcOCPTime,
-			OCP, 
-			OpenPrice,
-
-			/*
-			OOP, 
-			*/
-			LTP,
 			LTPDateID,
 			LTPTimeID,
 			LTPTime,
 			UtcLTPTime,
-			LowPrice, 
-			HighPrice, 
-			Deals, 
-			DealsOB, 
-			DealsND, 
-			Volume, 
-			VolumeOB, 
-			VolumeND, 
-			Turnover, 
-			TurnoverOB, 
-			TurnoverND, 
-			TurnoverEur, 
-			TurnoverObEur, 
-			TurnoverNdEur,
-
+			MarketID,
+			TotalSharesInIssue,
+			IssuedSharesToday,
+			ExDivYN,
+			OpenPrice,
+			LowPrice,
+			HighPrice,
 			BidPrice,
 			OfferPrice,
-			ClosingAuctionBidPrice, 
-			ClosingAuctionOfferPrice 
-
+			ClosingAuctionBidPrice,
+			ClosingAuctionOfferPrice,
+			OCP,
+			LTP,
+			MarketCap,
+			MarketCapEur,
+			Turnover,
+			TurnoverND,
+			TurnoverEur,
+			TurnoverNDEur,
+			TurnoverOB,
+			TurnoverOBEur,
+			Volume,
+			VolumeND,
+			VolumeOB,
+			Deals,
+			DealsOB,
+			DealsND,
+			ISEQ20Shares,
+			ISEQ20Price,
+			ISEQ20Weighting,
+			ISEQ20MarketCap,
+			ISEQ20FreeFloat,
+			ISEQOverallWeighting,
+			ISEQOverallMarketCap,
+			ISEQOverallBeta30,
+			ISEQOverallBeta250,
+			ISEQOverallFreefloat,
+			ISEQOverallPrice,
+			ISEQOverallShares,
+			OverallIndexYN,
+			GeneralIndexYN,
+			FinancialIndexYN,
+			SmallCapIndexYN,
+			ITEQIndexYN,
+			ISEQ20IndexYN,
+			ESMIndexYN,
+			ExCapYN,
+			ExEntitlementYN,
+			ExRightsYN,
+			ExSpecialYN,
+			PrimaryMarket,
+			BatchID
 		)
 		SELECT
-			InstrumentID, 
-			AggregateDateID, 
-
-			OCP_DATEID,
-			OCP_TIME_ID,
-			OCP_TIME,
-			OCP_TIME_UTC,
-			OCP, 
-			OOP, 
-			LastPrice, 
+			CurrentInstrumentID,
+			InstrumentStatusID,
+			DateID,
+			LastExDivDateID,
+			OCPDateID,
+			OCPTimeID,
+			OCPTime,
+			UtcOCPTime,
 			LTPDateID,
 			LTPTimeID,
 			LTPTime,
 			UtcLTPTime,
-			LowPrice, 
-			HighPrice, 
-			Deals, 
-			DealsOB, 
-			DealsND, 
-			TradeVolume, 
-			TradeVolumeOB, 
-			TradeVolumeND, 
-			Turnover, 
-			TurnoverOB, 
-			TurnoverND, 
-			TurnoverEur, 
-			TurnoverObEur, 
-			TurnoverNdEur,
-
+			MarketID,
+			TotalSharesInIssue,
+			IssuedSharesToday,
+			ExDivYN,
+			OpenPrice,
+			LowPrice,
+			HighPrice,
 			BidPrice,
 			OfferPrice,
-			ClosingAuctionBidPrice, 
-			ClosingAuctionOfferPrice 
-
-
+			ClosingAuctionBidPrice,
+			ClosingAuctionOfferPrice,
+			OCP,
+			LTP,
+			MarketCap,
+			MarketCapEur,
+			Turnover,
+			TurnoverND,
+			TurnoverEur,
+			TurnoverNDEur,
+			TurnoverOB,
+			TurnoverOBEur,
+			Volume,
+			VolumeND,
+			VolumeOB,
+			Deals,
+			DealsOB,
+			DealsND,
+			ISEQ20Shares,
+			ISEQ20Price,
+			ISEQ20Weighting,
+			ISEQ20MarketCap,
+			ISEQ20FreeFloat,
+			ISEQOverallWeighting,
+			ISEQOverallMarketCap,
+			ISEQOverallBeta30,
+			ISEQOverallBeta250,
+			ISEQOverallFreefloat,
+			ISEQOverallPrice,
+			ISEQOverallShares,
+			OverallIndexYN,
+			GeneralIndexYN,
+			FinancialIndexYN,
+			SmallCapIndexYN,
+			ITEQIndexYN,
+			ISEQ20IndexYN,
+			ESMIndexYN,
+			ExCapYN,
+			ExEntitlementYN,
+			ExRightsYN,
+			ExSpecialYN,
+			PrimaryMarket,
+			BatchID
 		FROM
-			ETL.TradeAggregationsFactEquityTradeSnapshot O
+			ETL.FactEquitySnapshotMerge E
 		WHERE
 			NOT EXISTS (
 					SELECT
 						*
-					FROM
-							DWH.FactEquitySnapshot I
+					FROM	
+							DWH.FactEquitySnapshot DWH
 						INNER JOIN
-
-							DWH.DimInstrumentEquity EQUITY
-						ON 
-							I.InstrumentID = EQUITY.InstrumentID
+							DWH.DimInstrumentEquity I
+						ON DWH.InstrumentID = I.InstrumentID
 					WHERE
-						O.AggregateDateID = I.DateID
-					AND
-						O.ISIN = EQUITY.ISIN
-				)
+							I.ISIN = E.ISIN
+						AND
+							DWH.DateID = E.DateID
+				)			
 
+
+END
 GO

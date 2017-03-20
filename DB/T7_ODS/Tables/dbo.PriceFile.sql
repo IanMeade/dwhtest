@@ -1,5 +1,6 @@
 CREATE TABLE [dbo].[PriceFile]
 (
+[PriceFileID] [bigint] NOT NULL IDENTITY(1, 1),
 [FileID] [int] NOT NULL,
 [ISIN] [varchar] (12) COLLATE Latin1_General_CI_AS NOT NULL,
 [CURRENCY] [varchar] (3) COLLATE Latin1_General_CI_AS NULL,
@@ -15,7 +16,7 @@ CREATE TABLE [dbo].[PriceFile]
 [INSERT_DATE] [date] NULL
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[PriceFile] ADD CONSTRAINT [PK_PriceFile] PRIMARY KEY CLUSTERED  ([FileID], [ISIN], [PRICE_TIMESTAMP]) ON [PRIMARY]
+ALTER TABLE [dbo].[PriceFile] ADD CONSTRAINT [PK_PriceFile] PRIMARY KEY CLUSTERED  ([PriceFileID]) ON [PRIMARY]
 GO
 CREATE NONCLUSTERED INDEX [IX_PriceFile] ON [dbo].[PriceFile] ([ISIN], [PRICE_DATE], [PRICE_TIMESTAMP_NO]) ON [PRIMARY]
 GO

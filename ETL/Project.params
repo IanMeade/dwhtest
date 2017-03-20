@@ -1,2 +1,45 @@
 ﻿<?xml version="1.0"?>
-<SSIS:Parameters xmlns:SSIS="www.microsoft.com/SqlServer/SSIS" />
+<SSIS:Parameters xmlns:SSIS="www.microsoft.com/SqlServer/SSIS">
+  <SSIS:Parameter
+    SSIS:Name="DWH_ConnectionString">
+    <SSIS:Properties>
+      <SSIS:Property
+        SSIS:Name="ID">{d962ddf0-0824-43b6-ba96-d27cf1153413}</SSIS:Property>
+      <SSIS:Property
+        SSIS:Name="CreationName"></SSIS:Property>
+      <SSIS:Property
+        SSIS:Name="Description"></SSIS:Property>
+      <SSIS:Property
+        SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+      <SSIS:Property
+        SSIS:Name="Required">0</SSIS:Property>
+      <SSIS:Property
+        SSIS:Name="Sensitive">0</SSIS:Property>
+      <SSIS:Property
+        SSIS:Name="Value">Data Source=T7-SYS-dw-01;Initial Catalog=DWH;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;</SSIS:Property>
+      <SSIS:Property
+        SSIS:Name="DataType">18</SSIS:Property>
+    </SSIS:Properties>
+  </SSIS:Parameter>
+  <SSIS:Parameter
+    SSIS:Name="Staging_ConnectionString">
+    <SSIS:Properties>
+      <SSIS:Property
+        SSIS:Name="ID">{b7c7530d-df64-406e-a8f3-f58b64099a65}</SSIS:Property>
+      <SSIS:Property
+        SSIS:Name="CreationName"></SSIS:Property>
+      <SSIS:Property
+        SSIS:Name="Description"></SSIS:Property>
+      <SSIS:Property
+        SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+      <SSIS:Property
+        SSIS:Name="Required">0</SSIS:Property>
+      <SSIS:Property
+        SSIS:Name="Sensitive">0</SSIS:Property>
+      <SSIS:Property
+        SSIS:Name="Value">Data Source=T7-SYS-dw-01;Initial Catalog=Staging;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;</SSIS:Property>
+      <SSIS:Property
+        SSIS:Name="DataType">18</SSIS:Property>
+    </SSIS:Properties>
+  </SSIS:Parameter>
+</SSIS:Parameters>

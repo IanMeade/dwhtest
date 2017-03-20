@@ -13,6 +13,6 @@ CREATE TABLE [dbo].[CanceledTradeReviewList]
 [DwhFileID] [int] NOT NULL,
 [CancelationLogged] [datetime2] NOT NULL CONSTRAINT [DF_CanceledTradeReviewList_CancelationLogged] DEFAULT (getdate()),
 [CancelationProcessed] [datetime2] NULL,
-[BatchID] [int] NOT NULL
+[BatchID] [int] NULL
 ) ON [PRIMARY]
 GO

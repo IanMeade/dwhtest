@@ -9,7 +9,7 @@ CREATE TABLE [DWH].[DimInstrumentEquity]
 [SEDOL] [varchar] (7) COLLATE Latin1_General_CI_AS NOT NULL,
 [InstrumentStatusID] [smallint] NOT NULL,
 [InstrumentStatusDate] [date] NOT NULL,
-[InstrumentListedDate] [date] NOT NULL,
+[InstrumentListedDate] [date] NULL,
 [TradingSysInstrumentName] [varchar] (200) COLLATE Latin1_General_CI_AS NOT NULL,
 [IssuerName] [varchar] (200) COLLATE Latin1_General_CI_AS NOT NULL,
 [IssuerGlobalID] [varchar] (20) COLLATE Latin1_General_CI_AS NOT NULL,
@@ -52,13 +52,11 @@ CREATE TABLE [DWH].[DimInstrumentEquity]
 [QuotationCurrencyID] [smallint] NOT NULL,
 [ISEQ20Freefloat] [numeric] (19, 6) NOT NULL,
 [ISEQOverallFreeFloat] [numeric] (19, 6) NOT NULL,
-[SecurityQualifier] [varchar] (10) COLLATE Latin1_General_CI_AS NOT NULL,
 [IssuerSedolMasterFileName] [varchar] (35) COLLATE Latin1_General_CI_AS NOT NULL,
 [InstrumentDomesticYN] [char] (1) COLLATE Latin1_General_CI_AS NOT NULL,
 [CFIName] [varchar] (200) COLLATE Latin1_General_CI_AS NOT NULL,
 [CFICode] [varchar] (6) COLLATE Latin1_General_CI_AS NOT NULL,
 [InstrumentSedolMasterFileName] [varchar] (40) COLLATE Latin1_General_CI_AS NOT NULL,
-[ExternalMarkets] [varchar] (200) COLLATE Latin1_General_CI_AS NOT NULL,
 [TotalSharesInIssue] [numeric] (28, 6) NOT NULL,
 [LastEXDivDate] [date] NULL,
 [CompanyStatusID] [smallint] NOT NULL,
@@ -68,4 +66,8 @@ CREATE TABLE [DWH].[DimInstrumentEquity]
 [CurrentRowYN] [char] (1) COLLATE Latin1_General_CI_AS NOT NULL,
 [BatchID] [int] NOT NULL
 ) ON [PRIMARY]
+GO
+ALTER TABLE [DWH].[DimInstrumentEquity] ADD CONSTRAINT [PK_DimInstrumentEquity] PRIMARY KEY CLUSTERED  ([InstrumentID]) ON [PRIMARY]
+GO
+ALTER TABLE [DWH].[DimInstrumentEquity] ADD CONSTRAINT [FK_DimInstrumentEquity_DimInstrument] FOREIGN KEY ([InstrumentID]) REFERENCES [DWH].[DimInstrument] ([InstrumentID])
 GO

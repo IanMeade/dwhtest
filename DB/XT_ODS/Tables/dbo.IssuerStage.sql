@@ -1,25 +1,27 @@
 CREATE TABLE [dbo].[IssuerStage]
 (
-[Name] [varchar] (600) COLLATE Latin1_General_CI_AS NULL,
+[Name] [varchar] (300) COLLATE Latin1_General_CI_AS NOT NULL,
 [DateOfIncorporation] [datetime] NULL,
-[DebtorCode] [varchar] (200) COLLATE Latin1_General_CI_AS NULL,
-[DebtorCodeEquity] [varchar] (200) COLLATE Latin1_General_CI_AS NULL,
-[Domicile] [varchar] (200) COLLATE Latin1_General_CI_AS NULL,
-[DomicileDomesticFlag] [varchar] (1) COLLATE Latin1_General_CI_AS NULL,
+[DebtorCode] [varchar] (100) COLLATE Latin1_General_CI_AS NULL,
+[DebtorCodeEquity] [varchar] (100) COLLATE Latin1_General_CI_AS NULL,
+[Domicile] [varchar] (100) COLLATE Latin1_General_CI_AS NULL,
+[DomicileDomesticFlag] [bit] NULL,
 [FeeCode] [int] NULL,
-[SmfName] [varchar] (600) COLLATE Latin1_General_CI_AS NULL,
-[Td_Home_Member_Country] [varchar] (400) COLLATE Latin1_General_CI_AS NULL,
-[VatNumber] [varchar] (200) COLLATE Latin1_General_CI_AS NULL,
+[SmfName] [varchar] (300) COLLATE Latin1_General_CI_AS NULL,
+[Td_Home_Member_Country] [varchar] (200) COLLATE Latin1_General_CI_AS NULL,
+[VatNumber] [varchar] (100) COLLATE Latin1_General_CI_AS NULL,
 [AccountingStandard] [varchar] (200) COLLATE Latin1_General_CI_AS NULL,
-[LegalStructure] [varchar] (40) COLLATE Latin1_General_CI_AS NULL,
+[LegalStructure] [varchar] (50) COLLATE Latin1_General_CI_AS NULL,
 [YearEnd] [datetime] NULL,
 [Pd_Home_Member_Country] [varchar] (200) COLLATE Latin1_General_CI_AS NULL,
-[Lei_Code] [varchar] (40) COLLATE Latin1_General_CI_AS NULL,
-[EUFlag] [varchar] (20) COLLATE Latin1_General_CI_AS NULL,
-[IsoCode] [varchar] (20) COLLATE Latin1_General_CI_AS NULL,
-[Gid] [varchar] (40) COLLATE Latin1_General_CI_AS NULL,
+[Lei_Code] [varchar] (20) COLLATE Latin1_General_CI_AS NULL,
+[EUFlag] [bit] NULL,
+[IsoCode] [varchar] (2) COLLATE Latin1_General_CI_AS NULL,
+[Gid] [varchar] (30) COLLATE Latin1_General_CI_AS NOT NULL,
 [ExtractSequenceId] [bigint] NOT NULL IDENTITY(1, 1),
-[ExtractDate] [datetime] NULL CONSTRAINT [DF__IssuerSta__Extra__15502E78] DEFAULT (getdate()),
-[MessageId] [bigint] NULL
+[ExtractDate] [datetime] NULL CONSTRAINT [DF__IssuerSta__Extra__182C9B23] DEFAULT (getdate()),
+[MessageId] [varchar] (256) COLLATE Latin1_General_CI_AS NULL
 ) ON [PRIMARY]
+GO
+ALTER TABLE [dbo].[IssuerStage] ADD CONSTRAINT [PK__IssuerSt__A1071C3D4A988E36] PRIMARY KEY CLUSTERED  ([ExtractSequenceId]) WITH (FILLFACTOR=80) ON [PRIMARY]
 GO
