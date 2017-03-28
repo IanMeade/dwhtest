@@ -14,6 +14,15 @@ AS
 BEGIN  
 	SET NOCOUNT ON;  
   
+	DELETE
+		dbo.XtOdsInstrumentEquityEtfUpdate  
+	WHERE
+		ISIN IS NULL
+
+	DELETE
+		dbo.XtOdsInstrumentEquityEtfUpdate  
+	WHERE
+		IssuerGlobalID IS NULL
   
 	UPDATE  
 		dbo.XtOdsInstrumentEquityEtfUpdate  
@@ -27,7 +36,7 @@ BEGIN
 		MNEM = ISNULL(MNEM, 'UNKNOWN'),  
 		FinancialIndexYN = ISNULL(FinancialIndexYN, 'X'),  
 		PrimaryMarket = ISNULL(PrimaryMarket, 'UNKNOWN'),  
-		IssuedDate ='19900101',  
+		IssuedDate = ISNULL(IssuedDate, '19900101'),  
 		CurrencyISOCode = ISNULL(CurrencyISOCode, 'UNK'),  
 		QuotationCurrencyISOCode = ISNULL(QuotationCurrencyISOCode, 'UNK'),  
 		ISEQ20Freefloat = ISNULL(ISEQ20Freefloat, 0),  
@@ -38,6 +47,7 @@ BEGIN
 		CompanyListedDate = ISNULL(CompanyListedDate, '19900101'),  
 		CompanyApprovalDate = ISNULL(CompanyApprovalDate, '19900101'),  
 		CompanyStatusName = ISNULL(CompanyStatusName, 'UNKNOWN'),  
+		CompanyApprovalType = ISNULL(CompanyApprovalType, 'UNKNOWN'),  
 		Note = ISNULL( Note, ''),  
 		PrimaryBusinessSector = ISNULL(PrimaryBusinessSector,''),   
 		SubBusinessSector1 = ISNULL(SubBusinessSector1, ''),  

@@ -19,6 +19,8 @@ CREATE TABLE [dbo].[T7TradeMainDataFlowOutput]
 [UTCTradeTimeStamp] [time] NULL,
 [PublishDateID] [int] NULL,
 [PublishTimeID] [smallint] NULL,
+[PublishDateTime] [datetime] NULL,
+[UTCPublishDateTime] [datetime] NULL,
 [TradingSysTransNo] [int] NULL,
 [TradePrice] [numeric] (19, 6) NULL,
 [BidPrice] [numeric] (19, 6) NULL,

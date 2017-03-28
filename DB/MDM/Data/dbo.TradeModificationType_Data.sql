@@ -1,3 +1,3 @@
-INSERT INTO [dbo].[TradeModificationType] ([TradeModificationTypeCode], [TradingSysModificationTypeCode], [TradeModificationTypeName]) VALUES ('C', '003', 'TEST')
-INSERT INTO [dbo].[TradeModificationType] ([TradeModificationTypeCode], [TradingSysModificationTypeCode], [TradeModificationTypeName]) VALUES ('A', '001', 'TEST')
-INSERT INTO [dbo].[TradeModificationType] ([TradeModificationTypeCode], [TradingSysModificationTypeCode], [TradeModificationTypeName]) VALUES ('B', '002', 'TEST')
+INSERT INTO [dbo].[TradeModificationType] ([TradingSysModificationTypeCode], [TradeModificationTypeName], [CancelTradeYN]) VALUES ('001', 'Insert', 'N')
+INSERT INTO [dbo].[TradeModificationType] ([TradingSysModificationTypeCode], [TradeModificationTypeName], [CancelTradeYN]) VALUES ('002', 'Amend', 'N')
+INSERT INTO [dbo].[TradeModificationType] ([TradingSysModificationTypeCode], [TradeModificationTypeName], [CancelTradeYN]) VALUES ('003', 'Cancel', 'Y')

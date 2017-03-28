@@ -1,6 +1,6 @@
 CREATE TABLE [dbo].[EquityStage]
 (
-[Asset_Type] [varchar] (100) COLLATE Latin1_General_CI_AS NULL,
+[Asset_Type] [varchar] (100) COLLATE Latin1_General_CI_AS NOT NULL,
 [Name] [varchar] (450) COLLATE Latin1_General_CI_AS NOT NULL,
 [DelistedDefunct] [bit] NULL,
 [ListingDate] [datetime] NULL,
@@ -19,7 +19,7 @@ CREATE TABLE [dbo].[EquityStage]
 [MadFlag] [bit] NULL,
 [PdFlag] [bit] NULL,
 [Gid] [varchar] (30) COLLATE Latin1_General_CI_AS NOT NULL,
-[IssuerGid] [varchar] (30) COLLATE Latin1_General_CI_AS NULL,
+[IssuerGid] [varchar] (30) COLLATE Latin1_General_CI_AS NOT NULL,
 [Isin] [varchar] (100) COLLATE Latin1_General_CI_AS NULL,
 [Sedol] [varchar] (100) COLLATE Latin1_General_CI_AS NULL,
 [IssuedDate] [datetime] NULL,

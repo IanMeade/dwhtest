@@ -9,7 +9,8 @@ CREATE TABLE [DWH].[FactEtfTrade]
 [UTCTradeTimeStamp] [time] NOT NULL,
 [PublishDateID] [int] NOT NULL,
 [PublishTimeID] [smallint] NOT NULL,
-[PublishedDateTime] [datetime2] NULL,
+[PublishedDateTime] [datetime2] NOT NULL,
+[UTCPublishedDateTime] [datetime2] NOT NULL,
 [DelayedTradeYN] [char] (1) COLLATE Latin1_General_CI_AS NOT NULL,
 [EquityTradeJunkID] [smallint] NOT NULL,
 [BrokerID] [smallint] NOT NULL,
@@ -21,13 +22,15 @@ CREATE TABLE [DWH].[FactEtfTrade]
 [TradeVolume] [int] NOT NULL,
 [TradeTurnover] [numeric] (19, 6) NOT NULL,
 [TradeModificationTypeID] [smallint] NOT NULL,
-[TradeFileID] [int] NULL,
-[BatchID] [int] NULL CONSTRAINT [DF_FactEtfTrade_BatchID] DEFAULT ((0)),
+[TradeFileID] [int] NOT NULL,
+[BatchID] [int] NOT NULL CONSTRAINT [DF_FactEtfTrade_BatchID] DEFAULT ((0)),
 [CancelBatchID] [int] NULL,
-[InColumnStore] [bit] NULL
+[InColumnStore] [bit] NOT NULL
 ) ON [PRIMARY]
 GO
 ALTER TABLE [DWH].[FactEtfTrade] ADD CONSTRAINT [PK_FactEtfTrade] PRIMARY KEY CLUSTERED  ([EtfTradeID]) ON [PRIMARY]
+GO
+CREATE NONCLUSTERED INDEX [IX_FactEtfTrade_DuplicateCheck] ON [DWH].[FactEtfTrade] ([TradeDateID], [TradingSysTransNo]) ON [PRIMARY]
 GO
 ALTER TABLE [DWH].[FactEtfTrade] ADD CONSTRAINT [FK_FactEquityTrade_DimEtfTradeJunk] FOREIGN KEY ([EquityTradeJunkID]) REFERENCES [DWH].[DimEquityTradeJunk] ([EquityTradeJunkID])
 GO

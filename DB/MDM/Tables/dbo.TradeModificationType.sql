@@ -1,9 +1,9 @@
 CREATE TABLE [dbo].[TradeModificationType]
 (
-[TradeModificationTypeCode] [char] (1) COLLATE Latin1_General_CI_AS NOT NULL,
 [TradingSysModificationTypeCode] [char] (3) COLLATE Latin1_General_CI_AS NOT NULL,
-[TradeModificationTypeName] [varchar] (10) COLLATE Latin1_General_CI_AS NOT NULL
+[TradeModificationTypeName] [varchar] (10) COLLATE Latin1_General_CI_AS NOT NULL,
+[CancelTradeYN] [char] (1) COLLATE Latin1_General_CI_AS NOT NULL
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[TradeModificationType] ADD CONSTRAINT [PK_TradeModificationType] PRIMARY KEY CLUSTERED  ([TradeModificationTypeCode]) ON [PRIMARY]
+ALTER TABLE [dbo].[TradeModificationType] ADD CONSTRAINT [PK_TradeModificationType_1] PRIMARY KEY CLUSTERED  ([TradingSysModificationTypeCode]) ON [PRIMARY]
 GO

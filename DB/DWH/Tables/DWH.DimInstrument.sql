@@ -1,7 +1,7 @@
 CREATE TABLE [DWH].[DimInstrument]
 (
 [InstrumentID] [int] NOT NULL IDENTITY(1, 1),
-[InstrumentGlobalID] [varchar] (20) COLLATE Latin1_General_CI_AS NOT NULL,
+[InstrumentGlobalID] [varchar] (30) COLLATE Latin1_General_CI_AS NOT NULL,
 [InstrumentName] [varchar] (256) COLLATE Latin1_General_CI_AS NOT NULL,
 [InstrumentType] [varchar] (50) COLLATE Latin1_General_CI_AS NOT NULL,
 [SecurityType] [varchar] (50) COLLATE Latin1_General_CI_AS NOT NULL,
@@ -11,7 +11,7 @@ CREATE TABLE [DWH].[DimInstrument]
 [InstrumentStatusDate] [date] NOT NULL,
 [InstrumentListedDate] [date] NULL,
 [IssuerName] [varchar] (200) COLLATE Latin1_General_CI_AS NOT NULL,
-[IssuerGlobalID] [varchar] (20) COLLATE Latin1_General_CI_AS NOT NULL,
+[IssuerGlobalID] [varchar] (30) COLLATE Latin1_General_CI_AS NOT NULL,
 [MarketID] [smallint] NOT NULL,
 [IssuerDomicile] [varchar] (200) COLLATE Latin1_General_CI_AS NOT NULL,
 [FinancialYearEndDate] [date] NOT NULL,
@@ -26,7 +26,7 @@ CREATE TABLE [DWH].[DimInstrument]
 [MNEM] [varchar] (4) COLLATE Latin1_General_CI_AS NOT NULL,
 [IssuedDate] [date] NULL,
 [IssuerSedolMasterFileName] [varchar] (40) COLLATE Latin1_General_CI_AS NOT NULL,
-[CompnayGlobalID] [varchar] (40) COLLATE Latin1_General_CI_AS NULL,
+[CompanyGlobalID] [varchar] (30) COLLATE Latin1_General_CI_AS NULL,
 [CompanyApprovalDate] [date] NOT NULL,
 [CompanyApprovalType] [varchar] (50) COLLATE Latin1_General_CI_AS NOT NULL,
 [InstrumentDomesticYN] [char] (1) COLLATE Latin1_General_CI_AS NOT NULL,

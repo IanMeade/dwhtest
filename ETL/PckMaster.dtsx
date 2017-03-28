@@ -11,8 +11,8 @@
   DTS:LocaleID="6153"
   DTS:ObjectName="PckMaster"
   DTS:PackageType="5"
-  DTS:VersionBuild="74"
-  DTS:VersionGUID="{697742A9-D822-49F0-A4F7-BD925C0B7598}">
+  DTS:VersionBuild="76"
+  DTS:VersionGUID="{34AFA719-7C57-4F92-A4FA-1443EE9E5499}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>

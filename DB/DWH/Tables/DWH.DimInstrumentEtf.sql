@@ -1,7 +1,7 @@
 CREATE TABLE [DWH].[DimInstrumentEtf]
 (
 [InstrumentID] [int] NOT NULL,
-[InstrumentGlobalID] [varchar] (20) COLLATE Latin1_General_CI_AS NOT NULL,
+[InstrumentGlobalID] [varchar] (30) COLLATE Latin1_General_CI_AS NOT NULL,
 [InstrumentName] [varchar] (256) COLLATE Latin1_General_CI_AS NOT NULL,
 [InstrumentType] [varchar] (50) COLLATE Latin1_General_CI_AS NOT NULL,
 [SecurityType] [varchar] (50) COLLATE Latin1_General_CI_AS NOT NULL,
@@ -12,8 +12,8 @@ CREATE TABLE [DWH].[DimInstrumentEtf]
 [InstrumentListedDate] [date] NULL,
 [TradingSysInstrumentName] [varchar] (200) COLLATE Latin1_General_CI_AS NOT NULL,
 [IssuerName] [varchar] (200) COLLATE Latin1_General_CI_AS NOT NULL,
-[IssuerGlobalID] [varchar] (20) COLLATE Latin1_General_CI_AS NOT NULL,
-[CompanyGlobalID] [varchar] (20) COLLATE Latin1_General_CI_AS NOT NULL,
+[IssuerGlobalID] [varchar] (30) COLLATE Latin1_General_CI_AS NOT NULL,
+[CompanyGlobalID] [varchar] (30) COLLATE Latin1_General_CI_AS NOT NULL,
 [CompanyListedDate] [date] NOT NULL,
 [CompanyApprovalType] [varchar] (50) COLLATE Latin1_General_CI_AS NOT NULL,
 [CompanyApprovalDate] [date] NOT NULL,

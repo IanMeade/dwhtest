@@ -57,7 +57,7 @@
     <DataWriteAllFilesInOneDirectory>True</DataWriteAllFilesInOneDirectory>
   </WriteToFileOptions>
   <DataFileSet>
-    <Count>13</Count>
+    <Count>14</Count>
     <DataFile>dbo.AggregationRebuild_Data.sql</DataFile>
     <DataFile>dbo.AggregationRule_Data.sql</DataFile>
     <DataFile>dbo.EmailMessageControl_Data.sql</DataFile>
@@ -71,5 +71,6 @@
     <DataFile>dbo.FileControlT7_Data.sql</DataFile>
     <DataFile>dbo.ValidationTestSuite_Data.sql</DataFile>
     <DataFile>dbo.ValidationUnitTest_Data.sql</DataFile>
+    <DataFile>dbo.XT_UpdateControl_Data.sql</DataFile>
   </DataFileSet>
 </DatabaseInformation>
