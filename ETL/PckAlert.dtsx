@@ -12,8 +12,8 @@
   DTS:LocaleID="6153"
   DTS:ObjectName="PckAlert"
   DTS:PackageType="5"
-  DTS:VersionBuild="39"
-  DTS:VersionGUID="{8D870857-4690-484C-9471-9175133724A4}">
+  DTS:VersionBuild="51"
+  DTS:VersionGUID="{C64FAB8F-477E-450A-B5F0-76FFFDFCE5F7}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -26,7 +26,7 @@
         DTS:Name="ConnectionString">@[User::SmptServerConnectionString]</DTS:PropertyExpression>
       <DTS:ObjectData>
         <SmtpConnectionManager
-          ConnectionString="SmtpServer=test;UseWindowsAuthentication=False;EnableSsl=False;" />
+          ConnectionString="SmtpServer=172.20.12.44;UseWindowsAuthentication=False;EnableSsl=False;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
   </DTS:ConnectionManagers>
@@ -92,6 +92,18 @@
       DTS:ObjectName="AlertLogID">
       <DTS:VariableValue
         DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{EB570051-2786-4D66-8DB3-558ABFFEEDB6}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="LEN( @[$Package::AlertMessage1] ) != 0 ?  @[$Package::AlertMessage1] : @[User::MessageBody]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="EmaailMessage">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -233,6 +245,16 @@
           <DTS:VariableValue
             DTS:DataType="19">0</DTS:VariableValue>
         </DTS:Variable>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{0055C835-D640-4AE6-A1C6-E95273E315FE}"
+          DTS:IncludeInDebugDump="2345"
+          DTS:Namespace="User"
+          DTS:ObjectName="SentFromMessageBox">
+          <DTS:VariableValue
+            DTS:DataType="8"
+            xml:space="preserve"></DTS:VariableValue>
+        </DTS:Variable>
       </DTS:Variables>
       <DTS:Executables>
         <DTS:Executable
@@ -244,7 +266,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="Get Batch"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -266,7 +288,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="Log an event"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -319,7 +341,6 @@
           DTS:refId="Package\SEQ Process alert\Send Mail Task"
           DTS:CreationName="Microsoft.SendMailTask"
           DTS:DelayValidation="True"
-          DTS:Description="Send Mail Task"
           DTS:DisableEventHandlers="True"
           DTS:DTSID="{0E31C50B-3775-4E6B-95BC-CB6FED47BD7D}"
           DTS:ExecutableType="Microsoft.SendMailTask"
@@ -331,6 +352,10 @@
           <DTS:PropertyExpression
             DTS:Name="CCLine">@[User::MessageCC]</DTS:PropertyExpression>
           <DTS:PropertyExpression
+            DTS:Name="Description">@[User::MessageBody]</DTS:PropertyExpression>
+          <DTS:PropertyExpression
+            DTS:Name="FromLine">@[User::SentFromMessageBox]</DTS:PropertyExpression>
+          <DTS:PropertyExpression
             DTS:Name="Priority">@[User::MessagePriority]</DTS:PropertyExpression>
           <DTS:PropertyExpression
             DTS:Name="Subject">@[User::MessageSubject]</DTS:PropertyExpression>
@@ -341,7 +366,7 @@
               SendMailTask:SMTPServer="{9D3BB62C-C4C5-46B3-8EF7-FC09A47D17DC}"
               SendMailTask:Priority="0"
               SendMailTask:MessageSourceType="Variable"
-              SendMailTask:MessageSource="User::MessageSubject" xmlns:SendMailTask="www.microsoft.com/sqlserver/dts/tasks/sendmailtask" />
+              SendMailTask:MessageSource="User::EmaailMessage" xmlns:SendMailTask="www.microsoft.com/sqlserver/dts/tasks/sendmailtask" />
           </DTS:ObjectData>
         </DTS:Executable>
         <DTS:Executable
@@ -353,7 +378,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="SQL Does email message exist"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -382,7 +407,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="SQL Get email message"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -429,12 +454,12 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="SQL Get email server settings"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="1">
+          DTS:ThreadHint="0">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{88A180A2-BD32-40DF-AB41-4FDAC0D5C73C}"
-              SQLTask:SqlStatementSource="SELECT&#xA;&#x9;SmptServerAddress,&#xA;&#x9;EnabledYN&#xA;FROM &#xA;&#x9;dbo.EmailServer&#xA;&#xA;"
+              SQLTask:SqlStatementSource="SELECT&#xA;&#x9;SmptServerAddress,&#xA;&#x9;SentFromMessageBox,&#xA;&#x9;EnabledYN&#xA;FROM &#xA;&#x9;dbo.EmailServer&#xA;&#xA;"
               SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ResultBinding
                 SQLTask:ResultName="SmptServerAddress"
@@ -442,6 +467,9 @@
               <SQLTask:ResultBinding
                 SQLTask:ResultName="EnabledYN"
                 SQLTask:DtsVariableName="User::SmptServerEnabledYN" />
+              <SQLTask:ResultBinding
+                SQLTask:ResultName="SentFromMessageBox"
+                SQLTask:DtsVariableName="User::SentFromMessageBox" />
             </SQLTask:SqlTaskData>
           </DTS:ObjectData>
         </DTS:Executable>
@@ -458,7 +486,7 @@
         <DTS:PrecedenceConstraint
           DTS:refId="Package\SEQ Process alert.PrecedenceConstraints[Constraint 1]"
           DTS:CreationName=""
-          DTS:DTSID="{F1B4B6D5-2948-4BEB-A577-571C6F966C3C}"
+          DTS:DTSID="{A223E73E-A618-4773-9AD0-9F894A70F211}"
           DTS:EvalOp="3"
           DTS:Expression="@[User::MessageEnabledYN]==&quot;Y&quot;"
           DTS:From="Package\SEQ Process alert\SQL Get email message"
@@ -542,7 +570,7 @@
         <NodeLayout
           Size="150,42"
           Id="Package\SEQ Process alert\Send Mail Task"
-          TopLeft="304.5,413.5" />
+          TopLeft="290.5,514.5" />
         <NodeLayout
           Size="222,42"
           Id="Package\SEQ Process alert\SQL Does email message exist"
@@ -583,33 +611,33 @@
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="23.6666666666667,60"
+              EndConnector="9.66666666666663,161"
               Start="0,0"
-              End="23.6666666666667,52.5">
+              End="9.66666666666663,153.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,31.6200527704486" />
+                    End="0,91.5804749340369" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,31.6200527704486"
-                    Point2="0,35.6200527704486"
-                    Point3="4,35.6200527704486" />
+                    Point1="0,91.5804749340369"
+                    Point2="0,95.5804749340369"
+                    Point3="4,95.5804749340369" />
                   <mssgle:LineSegment
-                    End="19.6666666666667,35.6200527704486" />
+                    End="5.66666666666663,95.5804749340369" />
                   <mssgle:CubicBezierSegment
-                    Point1="19.6666666666667,35.6200527704486"
-                    Point2="23.6666666666667,35.6200527704486"
-                    Point3="23.6666666666667,39.6200527704486" />
+                    Point1="5.66666666666663,95.5804749340369"
+                    Point2="9.66666666666663,95.5804749340369"
+                    Point3="9.66666666666663,99.5804749340369" />
                   <mssgle:LineSegment
-                    End="23.6666666666667,52.5" />
+                    End="9.66666666666663,153.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="3.83333333333334,40.6200527704486,16,16"
+              BoundingBox="-3.16666666666669,100.580474934037,16,16"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -619,33 +647,33 @@
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="241.333333333333,60"
+              EndConnector="227.333333333333,161"
               Start="0,0"
-              End="241.333333333333,52.5">
+              End="227.333333333333,153.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,31.6200527704486" />
+                    End="0,91.580474934037" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,31.6200527704486"
-                    Point2="0,35.6200527704486"
-                    Point3="4,35.6200527704486" />
+                    Point1="0,91.580474934037"
+                    Point2="0,95.580474934037"
+                    Point3="4,95.580474934037" />
                   <mssgle:LineSegment
-                    End="237.333333333333,35.6200527704486" />
+                    End="223.333333333333,95.580474934037" />
                   <mssgle:CubicBezierSegment
-                    Point1="237.333333333333,35.6200527704486"
-                    Point2="241.333333333333,35.6200527704486"
-                    Point3="241.333333333333,39.6200527704486" />
+                    Point1="223.333333333333,95.580474934037"
+                    Point2="227.333333333333,95.580474934037"
+                    Point3="227.333333333333,99.580474934037" />
                   <mssgle:LineSegment
-                    End="241.333333333333,52.5" />
+                    End="227.333333333333,153.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="112.666666666667,40.6200527704486,16,16"
+              BoundingBox="105.666666666667,100.580474934037,16,16"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -698,10 +726,10 @@
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="496,511"
-          Size="496,554"
+          PanelSize="751,615"
+          Size="751,658"
           Id="Package\SEQ Process alert"
-          TopLeft="5.50000000000009,5.5" />
+          TopLeft="5.50000000000011,5.5" />
       </GraphLayout>
     </LayoutInfo>
   </Package>

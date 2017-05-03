@@ -4,6 +4,7 @@ CREATE TABLE [DWH].[FactEtfSnapshot]
 [InstrumentID] [int] NOT NULL,
 [InstrumentStatusID] [smallint] NULL,
 [DateID] [int] NOT NULL,
+[NAVCalcDateID] [int] NOT NULL CONSTRAINT [DF_FactEtfSnapshot_NAVCalcDateID] DEFAULT ((-1)),
 [LastExDivDateID] [int] NULL,
 [OCPDateID] [int] NULL,
 [OCPTimeID] [smallint] NULL,
@@ -14,7 +15,8 @@ CREATE TABLE [DWH].[FactEtfSnapshot]
 [LTPTime] [time] NULL,
 [UtcLTPTime] [time] NULL,
 [MarketID] [smallint] NULL,
-[TotalSharesInIssue] [numeric] (28, 6) NULL,
+[NAV] [numeric] (19, 6) NULL,
+[ETFSharesInIssue] [numeric] (28, 6) NULL,
 [IssuedSharesToday] [numeric] (28, 6) NULL,
 [ExDivYN] [char] (1) COLLATE Latin1_General_CI_AS NULL,
 [OpenPrice] [numeric] (19, 6) NULL,
@@ -68,6 +70,8 @@ CREATE TABLE [DWH].[FactEtfSnapshot]
 ) ON [PRIMARY]
 GO
 ALTER TABLE [DWH].[FactEtfSnapshot] ADD CONSTRAINT [PK_FactEtfSnapshot] PRIMARY KEY CLUSTERED  ([EtfSnapshotID]) ON [PRIMARY]
+GO
+CREATE NONCLUSTERED INDEX [IX_FactEtfSnapshot] ON [DWH].[FactEtfSnapshot] ([DateID], [InstrumentID]) ON [PRIMARY]
 GO
 ALTER TABLE [DWH].[FactEtfSnapshot] ADD CONSTRAINT [FK_FactEtfSnapshot_DimBatch] FOREIGN KEY ([BatchID]) REFERENCES [DWH].[DimBatch] ([BatchID])
 GO

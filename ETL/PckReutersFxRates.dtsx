@@ -1,0 +1,1084 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="4/24/2017 9:43:54 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="T7-DDT-01"
+  DTS:CreatorName="SYS-ISE\ianm"
+  DTS:DTSID="{6DADD419-F667-4E5B-85F4-B9067617B980}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="13.0.4001.0"
+  DTS:LocaleID="6153"
+  DTS:ObjectName="PckReutersFxRates"
+  DTS:PackageType="5"
+  DTS:VersionBuild="19"
+  DTS:VersionGUID="{CDFC9B93-42D7-434C-86E5-0F523CCAAE29}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{2FCB49DC-E9CF-4622-9B06-8F227ED1A6FB}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="BatchID">
+      <DTS:VariableValue
+        DTS:DataType="3">-1</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\SEQ Index Values"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{30ce2355-c421-4318-8522-cbb8034a2f07}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SEQ Index Values">
+      <DTS:Variables>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{5F91F2EC-3946-4067-B13B-215D76AC5B82}"
+          DTS:IncludeInDebugDump="6789"
+          DTS:Namespace="User"
+          DTS:ObjectName="ExchangeRateID">
+          <DTS:VariableValue
+            DTS:DataType="3">0</DTS:VariableValue>
+        </DTS:Variable>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{828f6cf3-557b-4922-ace5-58373cf09c98}"
+          DTS:IncludeInDebugDump="6789"
+          DTS:Namespace="User"
+          DTS:ObjectName="IndexValueID">
+          <DTS:VariableValue
+            DTS:DataType="3">0</DTS:VariableValue>
+        </DTS:Variable>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{6b12fa1a-b861-477a-9a61-c690c9dca342}"
+          DTS:IncludeInDebugDump="6789"
+          DTS:Namespace="User"
+          DTS:ObjectName="LastCutOffCounterUsed">
+          <DTS:VariableValue
+            DTS:DataType="3">0</DTS:VariableValue>
+        </DTS:Variable>
+      </DTS:Variables>
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\SEQ Index Values\DFT Load Exchange Rates"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{fa9253c0-3c19-4f40-97e3-8ed74d206c57}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="DFT Load Exchange Rates"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\SEQ Index Values\DFT Load Exchange Rates\DER Exchange Rate BatchID"
+                  componentClassID="Microsoft.DerivedColumn"
+                  contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+                  name="DER Exchange Rate BatchID"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\SEQ Index Values\DFT Load Exchange Rates\DER Exchange Rate BatchID.Inputs[Derived Column Input]"
+                      description="Input to the Derived Column Transformation"
+                      name="Derived Column Input">
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\SEQ Index Values\DFT Load Exchange Rates\DER Exchange Rate BatchID.Outputs[Derived Column Output]"
+                      description="Default Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      name="Derived Column Output"
+                      synchronousInputId="Package\SEQ Index Values\DFT Load Exchange Rates\DER Exchange Rate BatchID.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\SEQ Index Values\DFT Load Exchange Rates\DER Exchange Rate BatchID.Outputs[Derived Column Output].Columns[BatchID]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\SEQ Index Values\DFT Load Exchange Rates\DER Exchange Rate BatchID.Outputs[Derived Column Output].Columns[BatchID]"
+                          name="BatchID"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">@[User::BatchID]</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">@[User::BatchID]</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\SEQ Index Values\DFT Load Exchange Rates\DER Exchange Rate BatchID.Outputs[Derived Column Error Output]"
+                      description="Error Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Derived Column Error Output"
+                      synchronousInputId="Package\SEQ Index Values\DFT Load Exchange Rates\DER Exchange Rate BatchID.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\SEQ Index Values\DFT Load Exchange Rates\DER Exchange Rate BatchID.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\SEQ Index Values\DFT Load Exchange Rates\DER Exchange Rate BatchID.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\SEQ Index Values\DFT Load Exchange Rates\DER Exchange Rate BatchID.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\SEQ Index Values\DFT Load Exchange Rates\DER Exchange Rate BatchID.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\SEQ Index Values\DFT Load Exchange Rates\DST DWH FactExchangeRate"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="DST DWH FactExchangeRate"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[DWH].[FactExchangeRate]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\SEQ Index Values\DFT Load Exchange Rates\DST DWH FactExchangeRate.Connections[OleDbConnection]"
+                      connectionManagerID="{0CBC2C04-C137-495F-AF7C-FA5DE465FED0}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[DWH]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\SEQ Index Values\DFT Load Exchange Rates\DST DWH FactExchangeRate.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\SEQ Index Values\DFT Load Exchange Rates\DST DWH FactExchangeRate.Inputs[OLE DB Destination Input].Columns[CurrencyID]"
+                          cachedDataType="i2"
+                          cachedName="CurrencyID"
+                          externalMetadataColumnId="Package\SEQ Index Values\DFT Load Exchange Rates\DST DWH FactExchangeRate.Inputs[OLE DB Destination Input].ExternalColumns[CurrencyID]"
+                          lineageId="Package\SEQ Index Values\DFT Load Exchange Rates\LKP Reuters Currency.Outputs[Lookup Match Output].Columns[CurrencyID]" />
+                        <inputColumn
+                          refId="Package\SEQ Index Values\DFT Load Exchange Rates\DST DWH FactExchangeRate.Inputs[OLE DB Destination Input].Columns[BatchID]"
+                          cachedDataType="i4"
+                          cachedName="BatchID"
+                          externalMetadataColumnId="Package\SEQ Index Values\DFT Load Exchange Rates\DST DWH FactExchangeRate.Inputs[OLE DB Destination Input].ExternalColumns[BatchID]"
+                          lineageId="Package\SEQ Index Values\DFT Load Exchange Rates\DER Exchange Rate BatchID.Outputs[Derived Column Output].Columns[BatchID]" />
+                        <inputColumn
+                          refId="Package\SEQ Index Values\DFT Load Exchange Rates\DST DWH FactExchangeRate.Inputs[OLE DB Destination Input].Columns[ExchangeRateDateID]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="8"
+                          cachedName="ExchangeRateDateID"
+                          externalMetadataColumnId="Package\SEQ Index Values\DFT Load Exchange Rates\DST DWH FactExchangeRate.Inputs[OLE DB Destination Input].ExternalColumns[DateID]"
+                          lineageId="Package\SEQ Index Values\DFT Load Exchange Rates\SRC Reuters_ODS ExchangeVale.Outputs[OLE DB Source Output].Columns[ExchangeRateDateID]" />
+                        <inputColumn
+                          refId="Package\SEQ Index Values\DFT Load Exchange Rates\DST DWH FactExchangeRate.Inputs[OLE DB Destination Input].Columns[VAL]"
+                          cachedDataType="numeric"
+                          cachedName="VAL"
+                          cachedPrecision="19"
+                          cachedScale="6"
+                          externalMetadataColumnId="Package\SEQ Index Values\DFT Load Exchange Rates\DST DWH FactExchangeRate.Inputs[OLE DB Destination Input].ExternalColumns[ExchangeRate]"
+                          lineageId="Package\SEQ Index Values\DFT Load Exchange Rates\SRC Reuters_ODS ExchangeVale.Outputs[OLE DB Source Output].Columns[VAL]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\SEQ Index Values\DFT Load Exchange Rates\DST DWH FactExchangeRate.Inputs[OLE DB Destination Input].ExternalColumns[ExchangeRateID]"
+                          dataType="i4"
+                          name="ExchangeRateID" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ Index Values\DFT Load Exchange Rates\DST DWH FactExchangeRate.Inputs[OLE DB Destination Input].ExternalColumns[DateID]"
+                          dataType="i4"
+                          name="DateID" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ Index Values\DFT Load Exchange Rates\DST DWH FactExchangeRate.Inputs[OLE DB Destination Input].ExternalColumns[CurrencyID]"
+                          dataType="i2"
+                          name="CurrencyID" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ Index Values\DFT Load Exchange Rates\DST DWH FactExchangeRate.Inputs[OLE DB Destination Input].ExternalColumns[ExchangeRate]"
+                          dataType="numeric"
+                          name="ExchangeRate"
+                          precision="19"
+                          scale="6" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ Index Values\DFT Load Exchange Rates\DST DWH FactExchangeRate.Inputs[OLE DB Destination Input].ExternalColumns[BatchID]"
+                          dataType="i4"
+                          name="BatchID" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\SEQ Index Values\DFT Load Exchange Rates\DST DWH FactExchangeRate.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\SEQ Index Values\DFT Load Exchange Rates\DST DWH FactExchangeRate.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\SEQ Index Values\DFT Load Exchange Rates\DST DWH FactExchangeRate.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\SEQ Index Values\DFT Load Exchange Rates\DST DWH FactExchangeRate.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\SEQ Index Values\DFT Load Exchange Rates\DST DWH FactExchangeRate.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\SEQ Index Values\DFT Load Exchange Rates\DST DWH FactExchangeRate.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\SEQ Index Values\DFT Load Exchange Rates\LKP Reuters Currency"
+                  componentClassID="Microsoft.Lookup"
+                  contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+                  description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+                  name="LKP Reuters Currency"
+                  usesDispositions="true"
+                  version="6">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the SQL statement that generates the lookup table."
+                      expressionType="Notify"
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT
+	CurrencyID,
+	UPPER(CurrencyISOCode) AS CurrencyISOCode
+FROM
+	DWH.DWH.DimCurrency</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                      expressionType="Notify"
+                      name="SqlCommandParam"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (SELECT
+	CurrencyID,
+	UPPER(CurrencyISOCode) AS CurrencyISOCode
+FROM
+	DWH.DWH.DimCurrency) [refTable]
+where [refTable].[CurrencyISOCode] = ?</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the type of connection used to access the reference dataset."
+                      name="ConnectionType"
+                      typeConverter="LookupConnectionType">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the cache type of the lookup table."
+                      name="CacheType"
+                      typeConverter="CacheType">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                      name="NoMatchBehavior"
+                      typeConverter="LookupNoMatchBehavior">1</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                      name="NoMatchCachePercentage">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                      name="MaxMemoryUsage">25</property>
+                    <property
+                      dataType="System.Int64"
+                      description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                      name="MaxMemoryUsage64">25</property>
+                    <property
+                      dataType="System.String"
+                      description="Indicates whether to reference metadata in an XML format."
+                      name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="CurrencyID" dataType="DT_I2" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="CurrencyISOCode" dataType="DT_STR" length="3" precision="0" scale="0" codePage="1252"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                      name="ParameterMap">#{Package\SEQ Index Values\DFT Load Exchange Rates\SRC Reuters_ODS ExchangeVale.Outputs[OLE DB Source Output].Columns[CCY]};</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                      name="TreatDuplicateKeysAsError">false</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\SEQ Index Values\DFT Load Exchange Rates\LKP Reuters Currency.Connections[OleDbConnection]"
+                      connectionManagerID="{0CBC2C04-C137-495F-AF7C-FA5DE465FED0}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[DWH]"
+                      description="Connection manager used to access lookup data."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\SEQ Index Values\DFT Load Exchange Rates\LKP Reuters Currency.Inputs[Lookup Input]"
+                      name="Lookup Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\SEQ Index Values\DFT Load Exchange Rates\LKP Reuters Currency.Inputs[Lookup Input].Columns[CCY]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="3"
+                          cachedName="CCY"
+                          lineageId="Package\SEQ Index Values\DFT Load Exchange Rates\SRC Reuters_ODS ExchangeVale.Outputs[OLE DB Source Output].Columns[CCY]">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Specifies the column in the reference table that a column joins."
+                              name="JoinToReferenceColumn">CurrencyISOCode</property>
+                            <property
+                              dataType="System.Null"
+                              description="Specifies the column in the reference table from which a column is copied."
+                              name="CopyFromReferenceColumn" />
+                          </properties>
+                        </inputColumn>
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\SEQ Index Values\DFT Load Exchange Rates\LKP Reuters Currency.Outputs[Lookup Match Output]"
+                      errorOrTruncationOperation="Lookup"
+                      exclusionGroup="1"
+                      name="Lookup Match Output"
+                      synchronousInputId="Package\SEQ Index Values\DFT Load Exchange Rates\LKP Reuters Currency.Inputs[Lookup Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\SEQ Index Values\DFT Load Exchange Rates\LKP Reuters Currency.Outputs[Lookup Match Output].Columns[CurrencyID]"
+                          dataType="i2"
+                          errorOrTruncationOperation="Copy Column"
+                          lineageId="Package\SEQ Index Values\DFT Load Exchange Rates\LKP Reuters Currency.Outputs[Lookup Match Output].Columns[CurrencyID]"
+                          name="CurrencyID"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Specifies the column in the reference table from which a column is copied."
+                              name="CopyFromReferenceColumn">CurrencyID</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\SEQ Index Values\DFT Load Exchange Rates\LKP Reuters Currency.Outputs[Lookup No Match Output]"
+                      description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                      exclusionGroup="1"
+                      name="Lookup No Match Output"
+                      synchronousInputId="Package\SEQ Index Values\DFT Load Exchange Rates\LKP Reuters Currency.Inputs[Lookup Input]">
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\SEQ Index Values\DFT Load Exchange Rates\LKP Reuters Currency.Outputs[Lookup Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Lookup Error Output"
+                      synchronousInputId="Package\SEQ Index Values\DFT Load Exchange Rates\LKP Reuters Currency.Inputs[Lookup Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\SEQ Index Values\DFT Load Exchange Rates\LKP Reuters Currency.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\SEQ Index Values\DFT Load Exchange Rates\LKP Reuters Currency.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\SEQ Index Values\DFT Load Exchange Rates\LKP Reuters Currency.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\SEQ Index Values\DFT Load Exchange Rates\LKP Reuters Currency.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\SEQ Index Values\DFT Load Exchange Rates\SRC Reuters_ODS ExchangeVale"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="SRC Reuters_ODS ExchangeVale"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset"></property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT
+	CONVERT(CHAR(8), ExchangeRateDate, 112) AS  ExchangeRateDateID,
+	UPPER(CCY) AS CCY,
+	VAL
+FROM
+	dbo.ExchangeRateValue
+WHERE
+	ExchangeRateID &gt; ?
+AND
+	ExchangeRateID &lt;= ?</property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">2</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping">"0:Input",{6b12fa1a-b861-477a-9a61-c690c9dca342};"1:Input",{5F91F2EC-3946-4067-B13B-215D76AC5B82};</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\SEQ Index Values\DFT Load Exchange Rates\SRC Reuters_ODS ExchangeVale.Connections[OleDbConnection]"
+                      connectionManagerID="{6003E35A-E6C7-4620-A7CB-3E3A41FB8106}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[Reuters_ODS]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\SEQ Index Values\DFT Load Exchange Rates\SRC Reuters_ODS ExchangeVale.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\SEQ Index Values\DFT Load Exchange Rates\SRC Reuters_ODS ExchangeVale.Outputs[OLE DB Source Output].Columns[CCY]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SEQ Index Values\DFT Load Exchange Rates\SRC Reuters_ODS ExchangeVale.Outputs[OLE DB Source Output].ExternalColumns[CCY]"
+                          length="3"
+                          lineageId="Package\SEQ Index Values\DFT Load Exchange Rates\SRC Reuters_ODS ExchangeVale.Outputs[OLE DB Source Output].Columns[CCY]"
+                          name="CCY"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SEQ Index Values\DFT Load Exchange Rates\SRC Reuters_ODS ExchangeVale.Outputs[OLE DB Source Output].Columns[VAL]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SEQ Index Values\DFT Load Exchange Rates\SRC Reuters_ODS ExchangeVale.Outputs[OLE DB Source Output].ExternalColumns[VAL]"
+                          lineageId="Package\SEQ Index Values\DFT Load Exchange Rates\SRC Reuters_ODS ExchangeVale.Outputs[OLE DB Source Output].Columns[VAL]"
+                          name="VAL"
+                          precision="19"
+                          scale="6"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SEQ Index Values\DFT Load Exchange Rates\SRC Reuters_ODS ExchangeVale.Outputs[OLE DB Source Output].Columns[ExchangeRateDateID]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SEQ Index Values\DFT Load Exchange Rates\SRC Reuters_ODS ExchangeVale.Outputs[OLE DB Source Output].ExternalColumns[ExchangeRateDateID]"
+                          length="8"
+                          lineageId="Package\SEQ Index Values\DFT Load Exchange Rates\SRC Reuters_ODS ExchangeVale.Outputs[OLE DB Source Output].Columns[ExchangeRateDateID]"
+                          name="ExchangeRateDateID"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\SEQ Index Values\DFT Load Exchange Rates\SRC Reuters_ODS ExchangeVale.Outputs[OLE DB Source Output].ExternalColumns[CCY]"
+                          codePage="1252"
+                          dataType="str"
+                          length="3"
+                          name="CCY" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ Index Values\DFT Load Exchange Rates\SRC Reuters_ODS ExchangeVale.Outputs[OLE DB Source Output].ExternalColumns[VAL]"
+                          dataType="numeric"
+                          name="VAL"
+                          precision="19"
+                          scale="6" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ Index Values\DFT Load Exchange Rates\SRC Reuters_ODS ExchangeVale.Outputs[OLE DB Source Output].ExternalColumns[ExchangeRateDateID]"
+                          codePage="1252"
+                          dataType="str"
+                          length="8"
+                          name="ExchangeRateDateID" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\SEQ Index Values\DFT Load Exchange Rates\SRC Reuters_ODS ExchangeVale.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\SEQ Index Values\DFT Load Exchange Rates\SRC Reuters_ODS ExchangeVale.Outputs[OLE DB Source Error Output].Columns[ExchangeRateDateID]"
+                          codePage="1252"
+                          dataType="str"
+                          length="8"
+                          lineageId="Package\SEQ Index Values\DFT Load Exchange Rates\SRC Reuters_ODS ExchangeVale.Outputs[OLE DB Source Error Output].Columns[ExchangeRateDateID]"
+                          name="ExchangeRateDateID" />
+                        <outputColumn
+                          refId="Package\SEQ Index Values\DFT Load Exchange Rates\SRC Reuters_ODS ExchangeVale.Outputs[OLE DB Source Error Output].Columns[CCY]"
+                          codePage="1252"
+                          dataType="str"
+                          length="3"
+                          lineageId="Package\SEQ Index Values\DFT Load Exchange Rates\SRC Reuters_ODS ExchangeVale.Outputs[OLE DB Source Error Output].Columns[CCY]"
+                          name="CCY" />
+                        <outputColumn
+                          refId="Package\SEQ Index Values\DFT Load Exchange Rates\SRC Reuters_ODS ExchangeVale.Outputs[OLE DB Source Error Output].Columns[VAL]"
+                          dataType="numeric"
+                          lineageId="Package\SEQ Index Values\DFT Load Exchange Rates\SRC Reuters_ODS ExchangeVale.Outputs[OLE DB Source Error Output].Columns[VAL]"
+                          name="VAL"
+                          precision="19"
+                          scale="6" />
+                        <outputColumn
+                          refId="Package\SEQ Index Values\DFT Load Exchange Rates\SRC Reuters_ODS ExchangeVale.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\SEQ Index Values\DFT Load Exchange Rates\SRC Reuters_ODS ExchangeVale.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\SEQ Index Values\DFT Load Exchange Rates\SRC Reuters_ODS ExchangeVale.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\SEQ Index Values\DFT Load Exchange Rates\SRC Reuters_ODS ExchangeVale.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\SEQ Index Values\DFT Load Exchange Rates.Paths[Derived Column Output]"
+                  endId="Package\SEQ Index Values\DFT Load Exchange Rates\DST DWH FactExchangeRate.Inputs[OLE DB Destination Input]"
+                  name="Derived Column Output"
+                  startId="Package\SEQ Index Values\DFT Load Exchange Rates\DER Exchange Rate BatchID.Outputs[Derived Column Output]" />
+                <path
+                  refId="Package\SEQ Index Values\DFT Load Exchange Rates.Paths[Lookup Match Output]"
+                  endId="Package\SEQ Index Values\DFT Load Exchange Rates\DER Exchange Rate BatchID.Inputs[Derived Column Input]"
+                  name="Lookup Match Output"
+                  startId="Package\SEQ Index Values\DFT Load Exchange Rates\LKP Reuters Currency.Outputs[Lookup Match Output]" />
+                <path
+                  refId="Package\SEQ Index Values\DFT Load Exchange Rates.Paths[OLE DB Source Output]"
+                  endId="Package\SEQ Index Values\DFT Load Exchange Rates\LKP Reuters Currency.Inputs[Lookup Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\SEQ Index Values\DFT Load Exchange Rates\SRC Reuters_ODS ExchangeVale.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\SEQ Index Values\SQL Check ExchangeRate Cutoff"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{2181f781-79ab-4ddf-b3ae-d3fce1860019}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SQL Check ExchangeRate Cutoff"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{6003E35A-E6C7-4620-A7CB-3E3A41FB8106}"
+              SQLTask:SqlStatementSource="SELECT&#xA;&#x9;ISNULL(MAX(ExchangeRateID),0) AS ExchangeRateID&#xA;FROM&#xA;&#x9;ExchangeRateValue&#xA;"
+              SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ResultBinding
+                SQLTask:ResultName="ExchangeRateID"
+                SQLTask:DtsVariableName="User::ExchangeRateID" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\SEQ Index Values\SQL Get Exchange Rate ID"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{0e4e1822-d976-404c-9010-c2b8ac0dffc4}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SQL Get Exchange Rate ID"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{88A180A2-BD32-40DF-AB41-4FDAC0D5C73C}"
+              SQLTask:SqlStatementSource="SELECT&#xA;&#x9;LastCutOffCounterUsed&#xA;FROM&#xA;&#x9;dbo.Reuters_UpdateControl&#xA;WHERE&#xA;&#x9;TableName = 'ExchangeRateValue'&#xA;"
+              SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ResultBinding
+                SQLTask:ResultName="LastCutOffCounterUsed"
+                SQLTask:DtsVariableName="User::LastCutOffCounterUsed" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\SEQ Index Values\SQL Log try with update"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{5387e2b3-106d-4364-83a8-ec1b641df0f2}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SQL Log try with update"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{88A180A2-BD32-40DF-AB41-4FDAC0D5C73C}"
+              SQLTask:SqlStatementSource="UPDATE&#xA; dbo.Reuters_UpdateControl&#xA;SET&#xA; LastCutOffCounterUsed = ?,&#xA; LastChecked = GETDATE(),&#xA; LastUpdated = GETDATE()&#xA;WHERE&#xA; TableName = 'ExchangeRateValue'" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::ExchangeRateID"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\SEQ Index Values\SQL Log try without update"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{9a928f60-46c6-4010-8631-cec5617345af}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SQL Log try without update"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{88A180A2-BD32-40DF-AB41-4FDAC0D5C73C}"
+              SQLTask:SqlStatementSource="UPDATE&#xA; dbo.Reuters_UpdateControl&#xA;SET&#xA; LastChecked = GETDATE()&#xA;WHERE&#xA; TableName = 'ExchangeValue'" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\SEQ Index Values.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{c2c75b49-266a-43c4-b532-0b38a2775355}"
+          DTS:EvalOp="3"
+          DTS:Expression="@[User::ExchangeRateID] &gt;  @[User::LastCutOffCounterUsed]"
+          DTS:From="Package\SEQ Index Values\SQL Get Exchange Rate ID"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\SEQ Index Values\DFT Load Exchange Rates" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\SEQ Index Values.PrecedenceConstraints[Constraint 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{E1245D94-0ABA-4593-A2D1-700710050F06}"
+          DTS:From="Package\SEQ Index Values\DFT Load Exchange Rates"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 1"
+          DTS:To="Package\SEQ Index Values\SQL Log try with update" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\SEQ Index Values.PrecedenceConstraints[Constraint 2]"
+          DTS:CreationName=""
+          DTS:DTSID="{CBEF1827-E928-4BA6-8442-CD4623F92AE5}"
+          DTS:From="Package\SEQ Index Values\SQL Check ExchangeRate Cutoff"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 2"
+          DTS:To="Package\SEQ Index Values\SQL Get Exchange Rate ID" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\SEQ Index Values.PrecedenceConstraints[Constraint 3]"
+          DTS:CreationName=""
+          DTS:DTSID="{554525DA-7BA9-477E-8662-8D6ABF00A836}"
+          DTS:EvalOp="3"
+          DTS:Expression="! (@[User::ExchangeRateID] &gt;  @[User::LastCutOffCounterUsed])"
+          DTS:From="Package\SEQ Index Values\SQL Get Exchange Rate ID"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 3"
+          DTS:To="Package\SEQ Index Values\SQL Log try without update" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL Get DHW BatchID"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{28a4139c-619b-4100-8ff9-f72c3a7513b3}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL Get DHW BatchID"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{0CBC2C04-C137-495F-AF7C-FA5DE465FED0}"
+          SQLTask:SqlStatementSource="SELECT DWH.GetBatchid() AS BatchID&#xA;"
+          SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="BatchID"
+            SQLTask:DtsVariableName="User::BatchID" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{CCAC5343-1534-4EBC-905D-84B03706A538}"
+      DTS:From="Package\SQL Get DHW BatchID"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\SEQ Index Values" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="231,42"
+          Id="Package\SEQ Index Values\DFT Load Exchange Rates"
+          TopLeft="49,250" />
+        <NodeLayout
+          Size="231,42"
+          Id="Package\SEQ Index Values\SQL Check ExchangeRate Cutoff"
+          TopLeft="49,49" />
+        <NodeLayout
+          Size="231,42"
+          Id="Package\SEQ Index Values\SQL Get Exchange Rate ID"
+          TopLeft="49,155" />
+        <NodeLayout
+          Size="231,42"
+          Id="Package\SEQ Index Values\SQL Log try with update"
+          TopLeft="49,342" />
+        <NodeLayout
+          Size="231,42"
+          Id="Package\SEQ Index Values\SQL Log try without update"
+          TopLeft="351,155" />
+        <EdgeLayout
+          Id="Package\SEQ Index Values.PrecedenceConstraints[Constraint]"
+          TopLeft="164.5,197">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,53"
+              Start="0,0"
+              End="0,45.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,45.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-8,14.75,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ Index Values.PrecedenceConstraints[Constraint 1]"
+          TopLeft="164.5,292">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,50"
+              Start="0,0"
+              End="0,42.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,42.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ Index Values.PrecedenceConstraints[Constraint 2]"
+          TopLeft="164.5,91">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,64"
+              Start="0,0"
+              End="0,56.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,56.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ Index Values.PrecedenceConstraints[Constraint 3]"
+          TopLeft="280,176">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="71,0"
+              Start="0,0"
+              End="63.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="63.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="23.75,5,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="631,439"
+          Size="631,482"
+          Id="Package\SEQ Index Values"
+          TopLeft="75,123" />
+        <NodeLayout
+          Size="186,42"
+          Id="Package\SQL Get DHW BatchID"
+          TopLeft="293,35" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="388.25,77">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,46"
+              Start="0,0"
+              End="0,38.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,38.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\SEQ Index Values\DFT Load Exchange Rates">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="232,42"
+          Id="Package\SEQ Index Values\DFT Load Exchange Rates\SRC Reuters_ODS ExchangeVale"
+          TopLeft="91,32" />
+        <NodeLayout
+          Size="232,42"
+          Id="Package\SEQ Index Values\DFT Load Exchange Rates\DST DWH FactExchangeRate"
+          TopLeft="91,315" />
+        <NodeLayout
+          Size="232,42"
+          Id="Package\SEQ Index Values\DFT Load Exchange Rates\DER Exchange Rate BatchID"
+          TopLeft="91,215" />
+        <NodeLayout
+          Size="232,42"
+          Id="Package\SEQ Index Values\DFT Load Exchange Rates\LKP Reuters Currency"
+          TopLeft="91,118" />
+        <EdgeLayout
+          Id="Package\SEQ Index Values\DFT Load Exchange Rates.Paths[OLE DB Source Output]"
+          TopLeft="207,74">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,44"
+              Start="0,0"
+              End="0,36.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,36.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ Index Values\DFT Load Exchange Rates.Paths[Lookup Match Output]"
+          TopLeft="207,160">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,55"
+              Start="0,0"
+              End="0,47.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,47.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,17.9453125,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ Index Values\DFT Load Exchange Rates.Paths[Derived Column Output]"
+          TopLeft="207,257">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,58"
+              Start="0,0"
+              End="0,50.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,50.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\SEQ Index Values\DFT Load Exchange Rates\SRC Reuters_ODS ExchangeVale">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

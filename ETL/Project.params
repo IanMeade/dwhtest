@@ -126,4 +126,67 @@
         SSIS:Name="DataType">18</SSIS:Property>
     </SSIS:Properties>
   </SSIS:Parameter>
+  <SSIS:Parameter
+    SSIS:Name="Stoxx_ODS_ConnectionString">
+    <SSIS:Properties>
+      <SSIS:Property
+        SSIS:Name="ID">{d3ae7e78-3961-444e-88d7-080fc0d389a4}</SSIS:Property>
+      <SSIS:Property
+        SSIS:Name="CreationName"></SSIS:Property>
+      <SSIS:Property
+        SSIS:Name="Description"></SSIS:Property>
+      <SSIS:Property
+        SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+      <SSIS:Property
+        SSIS:Name="Required">1</SSIS:Property>
+      <SSIS:Property
+        SSIS:Name="Sensitive">0</SSIS:Property>
+      <SSIS:Property
+        SSIS:Name="Value">Data Source=.;Initial Catalog=Stoxx_ODS;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;</SSIS:Property>
+      <SSIS:Property
+        SSIS:Name="DataType">18</SSIS:Property>
+    </SSIS:Properties>
+  </SSIS:Parameter>
+  <SSIS:Parameter
+    SSIS:Name="StateStreet_ODS_ConnectionString">
+    <SSIS:Properties>
+      <SSIS:Property
+        SSIS:Name="ID">{8232900d-6f91-4c00-aac4-1475028fba73}</SSIS:Property>
+      <SSIS:Property
+        SSIS:Name="CreationName"></SSIS:Property>
+      <SSIS:Property
+        SSIS:Name="Description"></SSIS:Property>
+      <SSIS:Property
+        SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+      <SSIS:Property
+        SSIS:Name="Required">1</SSIS:Property>
+      <SSIS:Property
+        SSIS:Name="Sensitive">0</SSIS:Property>
+      <SSIS:Property
+        SSIS:Name="Value">Data Source=.;Initial Catalog=StateStreet_ODS;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;</SSIS:Property>
+      <SSIS:Property
+        SSIS:Name="DataType">18</SSIS:Property>
+    </SSIS:Properties>
+  </SSIS:Parameter>
+  <SSIS:Parameter
+    SSIS:Name="Reuters_ODS_ConnectionString">
+    <SSIS:Properties>
+      <SSIS:Property
+        SSIS:Name="ID">{121f59ad-87f8-41e3-afcb-5d4826aa802c}</SSIS:Property>
+      <SSIS:Property
+        SSIS:Name="CreationName"></SSIS:Property>
+      <SSIS:Property
+        SSIS:Name="Description"></SSIS:Property>
+      <SSIS:Property
+        SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+      <SSIS:Property
+        SSIS:Name="Required">1</SSIS:Property>
+      <SSIS:Property
+        SSIS:Name="Sensitive">0</SSIS:Property>
+      <SSIS:Property
+        SSIS:Name="Value">Data Source=.;Initial Catalog=Reuters_ODS;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;</SSIS:Property>
+      <SSIS:Property
+        SSIS:Name="DataType">18</SSIS:Property>
+    </SSIS:Properties>
+  </SSIS:Parameter>
 </SSIS:Parameters>

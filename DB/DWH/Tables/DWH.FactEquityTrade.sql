@@ -30,6 +30,10 @@ CREATE TABLE [DWH].[FactEquityTrade]
 GO
 ALTER TABLE [DWH].[FactEquityTrade] ADD CONSTRAINT [PK_FactEquityTrade] PRIMARY KEY CLUSTERED  ([EquityTradeID]) ON [PRIMARY]
 GO
+CREATE NONCLUSTERED COLUMNSTORE INDEX [FactEquityTradeNonClusteredColumnStoreIndex] ON [DWH].[FactEquityTrade] ([EquityTradeID], [InstrumentID], [TradingSysTransNo], [TradeDateID], [TradeTimeID], [TradeTimestamp], [UTCTradeTimeStamp], [PublishDateID], [PublishTimeID], [PublishedDateTime], [UTCPublishedDateTime], [DelayedTradeYN], [EquityTradeJunkID], [BrokerID], [TraderID], [CurrencyID], [TradePrice], [BidPrice], [OfferPrice], [TradeVolume], [TradeTurnover], [TradeModificationTypeID], [InColumnStore], [TradeFileID], [BatchID], [CancelBatchID]) WHERE ([InColumnStore]=(1)) ON [PRIMARY]
+GO
+CREATE NONCLUSTERED INDEX [IX_FactEquityTradeInColumStore] ON [DWH].[FactEquityTrade] ([InColumnStore]) ON [PRIMARY]
+GO
 CREATE NONCLUSTERED INDEX [IX_FactEquityTrade_DuplicateCheck] ON [DWH].[FactEquityTrade] ([TradeDateID], [TradingSysTransNo]) ON [PRIMARY]
 GO
 ALTER TABLE [DWH].[FactEquityTrade] ADD CONSTRAINT [FK_FactEquityTrade_DimBatch] FOREIGN KEY ([BatchID]) REFERENCES [DWH].[DimBatch] ([BatchID])

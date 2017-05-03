@@ -44,12 +44,12 @@ CREATE TABLE [DWH].[FactEquitySnapshot]
 [ISEQ20Price] [numeric] (19, 6) NULL,
 [ISEQ20Weighting] [numeric] (9, 6) NULL,
 [ISEQ20MarketCap] [numeric] (28, 6) NULL,
-[ISEQ20FreeFloat] [numeric] (9, 6) NULL,
+[ISEQ20FreeFloat] [numeric] (19, 6) NULL,
 [ISEQOverallWeighting] [numeric] (9, 6) NULL,
 [ISEQOverallMarketCap] [numeric] (28, 6) NULL,
 [ISEQOverallBeta30] [numeric] (19, 6) NULL,
 [ISEQOverallBeta250] [numeric] (19, 6) NULL,
-[ISEQOverallFreefloat] [numeric] (9, 6) NULL,
+[ISEQOverallFreefloat] [numeric] (19, 6) NULL,
 [ISEQOverallPrice] [numeric] (19, 6) NULL,
 [ISEQOverallShares] [numeric] (28, 6) NULL,
 [OverallIndexYN] [char] (1) COLLATE Latin1_General_CI_AS NULL,
@@ -64,14 +64,17 @@ CREATE TABLE [DWH].[FactEquitySnapshot]
 [ExRightsYN] [char] (1) COLLATE Latin1_General_CI_AS NULL,
 [ExSpecialYN] [char] (1) COLLATE Latin1_General_CI_AS NULL,
 [PrimaryMarket] [varchar] (50) COLLATE Latin1_General_CI_AS NULL,
+[LseTurnover] [numeric] (19, 6) NULL,
+[LseVolume] [bigint] NULL,
+[ETFFMShares] [int] NULL,
 [BatchID] [int] NULL
 ) ON [PRIMARY]
-WITH
-(
-DATA_COMPRESSION = PAGE
-)
 GO
-ALTER TABLE [DWH].[FactEquitySnapshot] ADD CONSTRAINT [PK_FactEquitySnapshot] PRIMARY KEY CLUSTERED  ([EquitySnapshotID]) WITH (DATA_COMPRESSION = PAGE) ON [PRIMARY]
+ALTER TABLE [DWH].[FactEquitySnapshot] ADD CONSTRAINT [PK_FactEquitySnapshot] PRIMARY KEY CLUSTERED  ([EquitySnapshotID]) ON [PRIMARY]
+GO
+CREATE NONCLUSTERED INDEX [IX_FactEquitySnapshot] ON [DWH].[FactEquitySnapshot] ([DateID], [InstrumentID]) ON [PRIMARY]
+GO
+CREATE NONCLUSTERED INDEX [IX_FactEquitySnapshot_1] ON [DWH].[FactEquitySnapshot] ([InstrumentID], [DateID]) ON [PRIMARY]
 GO
 ALTER TABLE [DWH].[FactEquitySnapshot] ADD CONSTRAINT [FK_FactEquitySnapshot_DimBatch] FOREIGN KEY ([BatchID]) REFERENCES [DWH].[DimBatch] ([BatchID])
 GO

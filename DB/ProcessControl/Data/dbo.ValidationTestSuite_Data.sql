@@ -1,4 +1,7 @@
 SET IDENTITY_INSERT [dbo].[ValidationTestSuite] ON
+INSERT INTO [dbo].[ValidationTestSuite] ([ValidationTestSuiteID], [ValidationTestSuiteName], [ValidationTestSuiteTag], [Enabled]) VALUES (14, 'XT - Early arriving facts check', 'XT_EARLY_ARRIVING_FACTS', 1)
+SET IDENTITY_INSERT [dbo].[ValidationTestSuite] OFF
+SET IDENTITY_INSERT [dbo].[ValidationTestSuite] ON
 INSERT INTO [dbo].[ValidationTestSuite] ([ValidationTestSuiteID], [ValidationTestSuiteName], [ValidationTestSuiteTag], [Enabled]) VALUES (1, 'Unit test', 'UNIT_TEST', 1)
 INSERT INTO [dbo].[ValidationTestSuite] ([ValidationTestSuiteID], [ValidationTestSuiteName], [ValidationTestSuiteTag], [Enabled]) VALUES (4, 'T7 File names', 'T7_FILENAMES', 1)
 INSERT INTO [dbo].[ValidationTestSuite] ([ValidationTestSuiteID], [ValidationTestSuiteName], [ValidationTestSuiteTag], [Enabled]) VALUES (5, 'XT Interface checks', 'XT_INTERFACE', 1)

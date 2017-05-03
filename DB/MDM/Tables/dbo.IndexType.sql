@@ -1,6 +1,6 @@
-CREATE TABLE [dbo].[Index]
+CREATE TABLE [dbo].[IndexType]
 (
-[IndexCode] [varchar] (10) COLLATE Latin1_General_CI_AS NOT NULL,
+[IndexCode] [varchar] (20) COLLATE Latin1_General_CI_AS NOT NULL,
 [IndexName] [varchar] (30) COLLATE Latin1_General_CI_AS NOT NULL,
 [ISIN] [varchar] (7) COLLATE Latin1_General_CI_AS NOT NULL,
 [SEDOL] [varchar] (12) COLLATE Latin1_General_CI_AS NOT NULL,
@@ -8,5 +8,5 @@ CREATE TABLE [dbo].[Index]
 [ReturnSEDOL] [varchar] (12) COLLATE Latin1_General_CI_AS NOT NULL
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[Index] ADD CONSTRAINT [PK_Index] PRIMARY KEY CLUSTERED  ([IndexCode]) ON [PRIMARY]
+ALTER TABLE [dbo].[IndexType] ADD CONSTRAINT [PK_Index] PRIMARY KEY CLUSTERED  ([IndexCode]) ON [PRIMARY]
 GO

@@ -5,14 +5,14 @@
   DTS:CreationName="Microsoft.Package"
   DTS:CreatorComputerName="T7-DDT-01"
   DTS:CreatorName="STOCK_EXCHANGE\ianm"
-  DTS:DTSID="{33E18BFC-73DF-4D09-8A8D-3FB9C99916B6}"
+  DTS:DTSID="{98C64E3B-C42B-4255-930B-7801068846F5}"
   DTS:ExecutableType="Microsoft.Package"
   DTS:LastModifiedProductVersion="13.0.4001.0"
   DTS:LocaleID="6153"
-  DTS:ObjectName="PckSaftPriceStage"
+  DTS:ObjectName="PckT7PriceStage"
   DTS:PackageType="5"
-  DTS:VersionBuild="46"
-  DTS:VersionGUID="{93A3B4EE-87FA-400B-A99C-AB1A3D18CCF6}">
+  DTS:VersionBuild="50"
+  DTS:VersionGUID="{87E8192A-AFA9-4A6D-BC1D-16D5B1179608}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -40,7 +40,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="MIXED"
-              DTS:DTSID="{06EAB383-8988-4CF5-A296-3950370D8821}"
+              DTS:DTSID="{6D4C9707-D587-4C63-9C22-DC017509A8D5}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -49,7 +49,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="CURRENCY"
-              DTS:DTSID="{08985BA7-5FDB-493F-BDAF-409DF9249BF9}"
+              DTS:DTSID="{959383C1-FBAC-4FDC-ABAD-A96CCD64BCFB}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -58,7 +58,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="PRICE_TIMESTAMP"
-              DTS:DTSID="{757BBEF7-18EE-4967-B5CC-EBB8091818B7}"
+              DTS:DTSID="{C172A777-8070-41EC-9E43-84C798178D34}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -66,7 +66,7 @@
               DTS:DataType="3"
               DTS:TextQualified="True"
               DTS:ObjectName="PRICE_TIMESTAMP_NO"
-              DTS:DTSID="{C8DA2F98-719D-4ACB-97CE-3735464E1B5E}"
+              DTS:DTSID="{6FA7AAD4-D152-4447-9770-839B4A575E73}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -75,7 +75,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="MOD_TIMESTAMP"
-              DTS:DTSID="{72CEB319-DC91-4265-8E9A-44EC51E9393F}"
+              DTS:DTSID="{4905F26A-1A80-435E-A4D2-C1B03177741D}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -84,7 +84,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="PRICE_DATE"
-              DTS:DTSID="{C956699F-CC6C-4B81-9E36-A279E8FE4434}"
+              DTS:DTSID="{7A618A02-EB1F-4291-9AEB-7FB0A5792BE1}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -93,39 +93,47 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="MARKET_PRICE_TYPE"
-              DTS:DTSID="{3BE74BAA-0504-4E5D-A8C1-A1A88609ABD0}"
+              DTS:DTSID="{81A2F396-F7FB-4DF1-8D14-B731F543582A}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
               DTS:ColumnDelimiter="_x002C_"
-              DTS:DataType="4"
+              DTS:DataType="131"
+              DTS:DataPrecision="19"
+              DTS:DataScale="6"
               DTS:TextQualified="True"
               DTS:ObjectName="BEST_BID_PRICE"
-              DTS:DTSID="{06738897-208B-42F5-803B-A07F9566754B}"
+              DTS:DTSID="{DB93EAF4-8666-420F-AC20-2BA878DBAA9D}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
               DTS:ColumnDelimiter="_x002C_"
-              DTS:DataType="4"
+              DTS:DataType="131"
+              DTS:DataPrecision="19"
+              DTS:DataScale="6"
               DTS:TextQualified="True"
               DTS:ObjectName="BEST_ASK_PRICE"
-              DTS:DTSID="{471E11BA-34E1-4AAA-997E-4993345D730C}"
+              DTS:DTSID="{C79EB3CD-3E3A-4090-A318-B28174411F6D}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
               DTS:ColumnDelimiter="_x002C_"
-              DTS:DataType="4"
+              DTS:DataType="131"
+              DTS:DataPrecision="19"
+              DTS:DataScale="6"
               DTS:TextQualified="True"
               DTS:ObjectName="CLOSING_AUCT_BID_PRICE"
-              DTS:DTSID="{193849C8-1B13-4B6C-9BE7-B90BA48C2456}"
+              DTS:DTSID="{7881AAD9-8030-4ABE-A0F4-C5EFD956EDFA}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
               DTS:ColumnDelimiter="_x002C_"
-              DTS:DataType="4"
+              DTS:DataType="131"
+              DTS:DataPrecision="19"
+              DTS:DataScale="6"
               DTS:TextQualified="True"
               DTS:ObjectName="CLOSING_AUCT_ASK_PRICE"
-              DTS:DTSID="{01232288-B600-4F6F-91D9-F3C01970DEB8}"
+              DTS:DTSID="{F8C9303B-469C-4EF8-A4EE-1CB7BE423E89}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -134,7 +142,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="INSERT_DATE"
-              DTS:DTSID="{11FF7765-E034-4389-A353-C4A9B806A668}"
+              DTS:DTSID="{B32FE2AD-769C-4269-B068-93A71AB3533A}"
               DTS:CreationName="" />
           </DTS:FlatFileColumns>
         </DTS:ConnectionManager>
@@ -767,26 +775,34 @@
                           lineageId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\FF_SRC Saft Price.Outputs[Flat File Source Output].Columns[MARKET_PRICE_TYPE]" />
                         <inputColumn
                           refId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\DST STG Saft Price File.Inputs[OLE DB Destination Input].Columns[BEST_BID_PRICE]"
-                          cachedDataType="r4"
+                          cachedDataType="numeric"
                           cachedName="BEST_BID_PRICE"
+                          cachedPrecision="19"
+                          cachedScale="6"
                           externalMetadataColumnId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\DST STG Saft Price File.Inputs[OLE DB Destination Input].ExternalColumns[BEST_BID_PRICE]"
                           lineageId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\FF_SRC Saft Price.Outputs[Flat File Source Output].Columns[BEST_BID_PRICE]" />
                         <inputColumn
                           refId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\DST STG Saft Price File.Inputs[OLE DB Destination Input].Columns[BEST_ASK_PRICE]"
-                          cachedDataType="r4"
+                          cachedDataType="numeric"
                           cachedName="BEST_ASK_PRICE"
+                          cachedPrecision="19"
+                          cachedScale="6"
                           externalMetadataColumnId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\DST STG Saft Price File.Inputs[OLE DB Destination Input].ExternalColumns[BEST_ASK_PRICE]"
                           lineageId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\FF_SRC Saft Price.Outputs[Flat File Source Output].Columns[BEST_ASK_PRICE]" />
                         <inputColumn
                           refId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\DST STG Saft Price File.Inputs[OLE DB Destination Input].Columns[CLOSING_AUCT_BID_PRICE]"
-                          cachedDataType="r4"
+                          cachedDataType="numeric"
                           cachedName="CLOSING_AUCT_BID_PRICE"
+                          cachedPrecision="19"
+                          cachedScale="6"
                           externalMetadataColumnId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\DST STG Saft Price File.Inputs[OLE DB Destination Input].ExternalColumns[CLOSING_AUCT_BID_PRICE]"
                           lineageId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\FF_SRC Saft Price.Outputs[Flat File Source Output].Columns[CLOSING_AUCT_BID_PRICE]" />
                         <inputColumn
                           refId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\DST STG Saft Price File.Inputs[OLE DB Destination Input].Columns[CLOSING_AUCT_ASK_PRICE]"
-                          cachedDataType="r4"
+                          cachedDataType="numeric"
                           cachedName="CLOSING_AUCT_ASK_PRICE"
+                          cachedPrecision="19"
+                          cachedScale="6"
                           externalMetadataColumnId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\DST STG Saft Price File.Inputs[OLE DB Destination Input].ExternalColumns[CLOSING_AUCT_ASK_PRICE]"
                           lineageId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\FF_SRC Saft Price.Outputs[Flat File Source Output].Columns[CLOSING_AUCT_ASK_PRICE]" />
                         <inputColumn
@@ -1101,12 +1117,14 @@
                         </outputColumn>
                         <outputColumn
                           refId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\FF_SRC Saft Price.Outputs[Flat File Source Output].Columns[BEST_BID_PRICE]"
-                          dataType="r4"
+                          dataType="numeric"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
                           externalMetadataColumnId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\FF_SRC Saft Price.Outputs[Flat File Source Output].ExternalColumns[BEST_BID_PRICE]"
                           lineageId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\FF_SRC Saft Price.Outputs[Flat File Source Output].Columns[BEST_BID_PRICE]"
                           name="BEST_BID_PRICE"
+                          precision="19"
+                          scale="6"
                           truncationRowDisposition="FailComponent">
                           <properties>
                             <property
@@ -1121,12 +1139,14 @@
                         </outputColumn>
                         <outputColumn
                           refId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\FF_SRC Saft Price.Outputs[Flat File Source Output].Columns[BEST_ASK_PRICE]"
-                          dataType="r4"
+                          dataType="numeric"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
                           externalMetadataColumnId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\FF_SRC Saft Price.Outputs[Flat File Source Output].ExternalColumns[BEST_ASK_PRICE]"
                           lineageId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\FF_SRC Saft Price.Outputs[Flat File Source Output].Columns[BEST_ASK_PRICE]"
                           name="BEST_ASK_PRICE"
+                          precision="19"
+                          scale="6"
                           truncationRowDisposition="FailComponent">
                           <properties>
                             <property
@@ -1141,12 +1161,14 @@
                         </outputColumn>
                         <outputColumn
                           refId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\FF_SRC Saft Price.Outputs[Flat File Source Output].Columns[CLOSING_AUCT_BID_PRICE]"
-                          dataType="r4"
+                          dataType="numeric"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
                           externalMetadataColumnId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\FF_SRC Saft Price.Outputs[Flat File Source Output].ExternalColumns[CLOSING_AUCT_BID_PRICE]"
                           lineageId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\FF_SRC Saft Price.Outputs[Flat File Source Output].Columns[CLOSING_AUCT_BID_PRICE]"
                           name="CLOSING_AUCT_BID_PRICE"
+                          precision="19"
+                          scale="6"
                           truncationRowDisposition="FailComponent">
                           <properties>
                             <property
@@ -1161,12 +1183,14 @@
                         </outputColumn>
                         <outputColumn
                           refId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\FF_SRC Saft Price.Outputs[Flat File Source Output].Columns[CLOSING_AUCT_ASK_PRICE]"
-                          dataType="r4"
+                          dataType="numeric"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
                           externalMetadataColumnId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\FF_SRC Saft Price.Outputs[Flat File Source Output].ExternalColumns[CLOSING_AUCT_ASK_PRICE]"
                           lineageId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\FF_SRC Saft Price.Outputs[Flat File Source Output].Columns[CLOSING_AUCT_ASK_PRICE]"
                           name="CLOSING_AUCT_ASK_PRICE"
+                          precision="19"
+                          scale="6"
                           truncationRowDisposition="FailComponent">
                           <properties>
                             <property
@@ -1262,20 +1286,28 @@
                           name="MARKET_PRICE_TYPE" />
                         <externalMetadataColumn
                           refId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\FF_SRC Saft Price.Outputs[Flat File Source Output].ExternalColumns[BEST_BID_PRICE]"
-                          dataType="r4"
-                          name="BEST_BID_PRICE" />
+                          dataType="numeric"
+                          name="BEST_BID_PRICE"
+                          precision="19"
+                          scale="6" />
                         <externalMetadataColumn
                           refId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\FF_SRC Saft Price.Outputs[Flat File Source Output].ExternalColumns[BEST_ASK_PRICE]"
-                          dataType="r4"
-                          name="BEST_ASK_PRICE" />
+                          dataType="numeric"
+                          name="BEST_ASK_PRICE"
+                          precision="19"
+                          scale="6" />
                         <externalMetadataColumn
                           refId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\FF_SRC Saft Price.Outputs[Flat File Source Output].ExternalColumns[CLOSING_AUCT_BID_PRICE]"
-                          dataType="r4"
-                          name="CLOSING_AUCT_BID_PRICE" />
+                          dataType="numeric"
+                          name="CLOSING_AUCT_BID_PRICE"
+                          precision="19"
+                          scale="6" />
                         <externalMetadataColumn
                           refId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\FF_SRC Saft Price.Outputs[Flat File Source Output].ExternalColumns[CLOSING_AUCT_ASK_PRICE]"
-                          dataType="r4"
-                          name="CLOSING_AUCT_ASK_PRICE" />
+                          dataType="numeric"
+                          name="CLOSING_AUCT_ASK_PRICE"
+                          precision="19"
+                          scale="6" />
                         <externalMetadataColumn
                           refId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\FF_SRC Saft Price.Outputs[Flat File Source Output].ExternalColumns[INSERT_DATE]"
                           codePage="1252"
@@ -1666,7 +1698,7 @@
               DTS:LocaleID="-1"
               DTS:ObjectName="FSYS Move bad files"
               DTS:TaskContact="File System Task;Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-              DTS:ThreadHint="0">
+              DTS:ThreadHint="2">
               <DTS:Variables />
               <DTS:ObjectData>
                 <FileSystemData
@@ -1721,7 +1753,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="SQL Bad file names"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="2">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -1898,7 +1930,7 @@
                     <property
                       dataType="System.String"
                       description="Specifies the name of the database object used to open a rowset."
-                      name="OpenRowset">[dbo].[File]</property>
+                      name="OpenRowset">[dbo].[FileList]</property>
                     <property
                       dataType="System.String"
                       description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -2264,7 +2296,7 @@ where [refTable].[FileLetter] = ?</property>
                       description="The SQL command to be executed."
                       expressionType="Notify"
                       name="SqlCommand"
-                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE [dbo].[File] SET [ContainsEndOfDayDetailsYN] = ?,[DwhFileID] = ?,[DwhStatus] = ?,[EtlVersion] = ?,[FileLetter] = ?,[FileTag] = ? WHERE [FileName] = ?</property>
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE [dbo].[FileList] SET [ContainsEndOfDayDetailsYN] = ?,[DwhFileID] = ?,[DwhStatus] = ?,[EtlVersion] = ?,[FileLetter] = ?,[FileTag] = ? WHERE [FileName] = ?</property>
                     <property
                       dataType="System.Int32"
                       description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -2479,7 +2511,7 @@ where [refTable].[FileLetter] = ?</property>
                       dataType="System.String"
                       description="Specifies the SELECT statement used to create a schema rowset."
                       name="SqlCommand"
-                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT [ContainsEndOfDayDetailsYN], [DwhFileID], [DwhStatus], [EtlVersion], [FileLetter], [FileName], [FileTag] FROM [dbo].[File]</property>
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT [ContainsEndOfDayDetailsYN], [DwhFileID], [DwhStatus], [EtlVersion], [FileLetter], [FileName], [FileTag] FROM [dbo].[FileList]</property>
                     <property
                       dataType="System.String"
                       description="Specifies the WHERE clause in the SELECT statement that selects the current row among rows with identical business keys."
@@ -2527,6 +2559,21 @@ where [refTable].[FileLetter] = ?</property>
                       refId="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\SCD T7 ODS File Table.Inputs[Slowly Changing Dimension Input]"
                       name="Slowly Changing Dimension Input">
                       <inputColumns>
+                        <inputColumn
+                          refId="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\SCD T7 ODS File Table.Inputs[Slowly Changing Dimension Input].Columns[ContainsEndOfDayDetailsYN]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="1"
+                          cachedName="ContainsEndOfDayDetailsYN"
+                          externalMetadataColumnId="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\SCD T7 ODS File Table.Inputs[Slowly Changing Dimension Input].ExternalColumns[ContainsEndOfDayDetailsYN]"
+                          lineageId="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\LKP ProcessControl Details.Outputs[Lookup Match Output].Columns[ContainsEndOfDayDetailsYN]">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              name="ColumnType"
+                              typeConverter="ColumnType">2</property>
+                          </properties>
+                        </inputColumn>
                         <inputColumn
                           refId="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\SCD T7 ODS File Table.Inputs[Slowly Changing Dimension Input].Columns[DwhFileID]"
                           cachedDataType="i4"
@@ -2608,21 +2655,6 @@ where [refTable].[FileLetter] = ?</property>
                           cachedName="FileTag"
                           externalMetadataColumnId="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\SCD T7 ODS File Table.Inputs[Slowly Changing Dimension Input].ExternalColumns[FileTag]"
                           lineageId="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\SRC STG FileList.Outputs[OLE DB Source Output].Columns[FileTag]">
-                          <properties>
-                            <property
-                              dataType="System.Int32"
-                              name="ColumnType"
-                              typeConverter="ColumnType">2</property>
-                          </properties>
-                        </inputColumn>
-                        <inputColumn
-                          refId="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\SCD T7 ODS File Table.Inputs[Slowly Changing Dimension Input].Columns[ContainsEndOfDayDetailsYN]"
-                          cachedCodepage="1252"
-                          cachedDataType="str"
-                          cachedLength="1"
-                          cachedName="ContainsEndOfDayDetailsYN"
-                          externalMetadataColumnId="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\SCD T7 ODS File Table.Inputs[Slowly Changing Dimension Input].ExternalColumns[ContainsEndOfDayDetailsYN]"
-                          lineageId="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\LKP ProcessControl Details.Outputs[Lookup Match Output].Columns[ContainsEndOfDayDetailsYN]">
                           <properties>
                             <property
                               dataType="System.Int32"
@@ -3702,7 +3734,7 @@ FROM
               DTS:LocaleID="-1"
               DTS:ObjectName="FSYS Move good files"
               DTS:TaskContact="File System Task;Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-              DTS:ThreadHint="1">
+              DTS:ThreadHint="0">
               <DTS:Variables />
               <DTS:EventHandlers>
                 <DTS:EventHandler
@@ -3746,7 +3778,7 @@ FROM
               DTS:LocaleID="-1"
               DTS:ObjectName="SQL T7 ODS PriceFIle"
               DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-              DTS:ThreadHint="2">
+              DTS:ThreadHint="1">
               <DTS:Variables />
               <DTS:ObjectData>
                 <SQLTask:SqlTaskData
@@ -3798,7 +3830,7 @@ FROM
           DTS:LocaleID="-1"
           DTS:ObjectName="SQL Good file name"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="1">
+          DTS:ThreadHint="0">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -3873,7 +3905,7 @@ FROM
           DTS:LocaleID="-1"
           DTS:ObjectName="SQL Get ETL Version"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="2">
+          DTS:ThreadHint="0">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -3895,7 +3927,7 @@ FROM
           DTS:LocaleID="-1"
           DTS:ObjectName="SQL Get Saft Files to Stage"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -3917,7 +3949,7 @@ FROM
           DTS:LocaleID="-1"
           DTS:ObjectName="SQL Staging Clear SAFT TradeFile"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="1">
+          DTS:ThreadHint="2">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -4538,6 +4570,14 @@ FROM
           Id="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\SCD T7 ODS File Table"
           TopLeft="210,311.5" />
         <NodeLayout
+          Size="163,42"
+          Id="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\Insert Destination"
+          TopLeft="5.50000000000006,413.5" />
+        <NodeLayout
+          Size="204,42"
+          Id="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\LKP ProcessControl Details"
+          TopLeft="210,209.5" />
+        <NodeLayout
           Size="204,42"
           Id="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\SRC STG FileList"
           TopLeft="210,5.5" />
@@ -4545,32 +4585,10 @@ FROM
           Size="204,42"
           Id="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\DER Etl Version"
           TopLeft="210,107.5" />
-        <EdgeLayout
-          Id="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table.Paths[OLE DB Source Output]"
-          TopLeft="312,47.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
         <NodeLayout
-          Size="204,42"
-          Id="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\LKP ProcessControl Details"
-          TopLeft="210,209.5" />
+          Size="166,42"
+          Id="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\OLE DB Command"
+          TopLeft="229,413.5" />
         <EdgeLayout
           Id="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table.Paths[Derived Column Output]"
           TopLeft="312,149.5">
@@ -4590,77 +4608,11 @@ FROM
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table.Paths[Lookup Match Output]"
-          TopLeft="312,251.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,20.4453125,96.3827734375,11.609375"
+              BoundingBox="0,0,0,0"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="163,42"
-          Id="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\Insert Destination"
-          TopLeft="5.50000000000006,413.5" />
-        <EdgeLayout
-          Id="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table.Paths[New Output]"
-          TopLeft="279.333333333333,353.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-192.333333333333,60"
-              Start="0,0"
-              End="-192.333333333333,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,20.2801556420233" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,20.2801556420233"
-                    Point2="0,24.2801556420233"
-                    Point3="-4,24.2801556420233" />
-                  <mssgle:LineSegment
-                    End="-188.333333333333,24.2801556420233" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-188.333333333333,24.2801556420233"
-                    Point2="-192.333333333333,24.2801556420233"
-                    Point3="-192.333333333333,28.2801556420233" />
-                  <mssgle:LineSegment
-                    End="-192.333333333333,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-123.258053385417,29.2801556420233,54.1827734375,11.43359375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="166,42"
-          Id="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\OLE DB Command"
-          TopLeft="229,413.5" />
         <EdgeLayout
           Id="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table.Paths[Changing Attribute Updates Output]"
           TopLeft="344.666666666667,353.5">
@@ -4697,17 +4649,93 @@ FROM
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table.Paths[OLE DB Source Output]"
+          TopLeft="312,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table.Paths[New Output]"
+          TopLeft="279.333333333333,353.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-192.333333333333,60"
+              Start="0,0"
+              End="-192.333333333333,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.2801556420233" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.2801556420233"
+                    Point2="0,24.2801556420233"
+                    Point3="-4,24.2801556420233" />
+                  <mssgle:LineSegment
+                    End="-188.333333333333,24.2801556420233" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-188.333333333333,24.2801556420233"
+                    Point2="-192.333333333333,24.2801556420233"
+                    Point3="-192.333333333333,28.2801556420233" />
+                  <mssgle:LineSegment
+                    End="-192.333333333333,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-123.258053385417,29.2801556420233,54.1827734375,11.43359375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table.Paths[Lookup Match Output]"
+          TopLeft="312,251.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,20.4453125,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\SRC STG FileList">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\SCD T7 ODS File Table">
     <Properties>
@@ -4717,7 +4745,7 @@ FROM
           type="q2:string">&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;SCDWizardMetadata xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
   &lt;ConnectionID&gt;{F999064D-8B23-4E16-A7BA-3B7EFA1D9959}&lt;/ConnectionID&gt;
-  &lt;TableName&gt;[dbo].[File]&lt;/TableName&gt;
+  &lt;TableName&gt;[dbo].[FileList]&lt;/TableName&gt;
   &lt;InputToColumnsCollection&gt;
     &lt;InputColumnToDBColumn&gt;
       &lt;IdentificationString&gt;LKP ProcessControl Details.Outputs[Lookup Match Output].Columns[ContainsEndOfDayDetailsYN]&lt;/IdentificationString&gt;
@@ -4781,11 +4809,42 @@ FROM
       </Property>
     </Properties>
   </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\LKP ProcessControl Details">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[FileControlT7]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\SRC STG FileList">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
   <TaskHost
     design-time-name="Package\SEQ Move Good Files to Archive\DFT T7 ODS PriceFile">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="180,42"
           Id="Package\SEQ Move Good Files to Archive\DFT T7 ODS PriceFile\SRC STG PriceFile"
@@ -4813,7 +4872,9 @@ FROM
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -4835,29 +4896,6 @@ FROM
   <PipelineComponentMetadata
     design-time-name="Package\SEQ Move Good Files to Archive\DFT T7 ODS PriceFile\SRC STG PriceFile">
     <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\LKP ProcessControl Details">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:boolean">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[dbo].[FileControlT7]</Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:int">0</Value>
-      </Property>
       <Property>
         <Name>DataSourceViewID</Name>
       </Property>

@@ -1,0 +1,3 @@
+CREATE ROLE [OdsWriter]
+AUTHORIZATION [dbo]
+GO

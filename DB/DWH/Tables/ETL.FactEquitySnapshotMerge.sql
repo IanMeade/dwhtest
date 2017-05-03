@@ -45,12 +45,12 @@ CREATE TABLE [ETL].[FactEquitySnapshotMerge]
 [ISEQ20Price] [numeric] (19, 6) NULL,
 [ISEQ20Weighting] [numeric] (9, 6) NULL,
 [ISEQ20MarketCap] [numeric] (28, 6) NULL,
-[ISEQ20FreeFloat] [numeric] (9, 6) NULL,
+[ISEQ20FreeFloat] [numeric] (19, 6) NULL,
 [ISEQOverallWeighting] [numeric] (9, 6) NULL,
 [ISEQOverallMarketCap] [numeric] (28, 6) NULL,
 [ISEQOverallBeta30] [numeric] (19, 6) NULL,
 [ISEQOverallBeta250] [numeric] (19, 6) NULL,
-[ISEQOverallFreefloat] [numeric] (9, 6) NULL,
+[ISEQOverallFreefloat] [numeric] (19, 6) NULL,
 [ISEQOverallPrice] [numeric] (19, 6) NULL,
 [ISEQOverallShares] [numeric] (28, 6) NULL,
 [OverallIndexYN] [char] (1) COLLATE Latin1_General_CI_AS NULL,
@@ -65,6 +65,9 @@ CREATE TABLE [ETL].[FactEquitySnapshotMerge]
 [ExRightsYN] [char] (1) COLLATE Latin1_General_CI_AS NULL,
 [ExSpecialYN] [char] (1) COLLATE Latin1_General_CI_AS NULL,
 [PrimaryMarket] [varchar] (50) COLLATE Latin1_General_CI_AS NULL,
+[LseTurnover] [int] NULL,
+[LseVolume] [numeric] (19, 6) NULL,
+[ETFFMShares] [int] NULL,
 [BatchID] [int] NULL
 ) ON [PRIMARY]
 GO

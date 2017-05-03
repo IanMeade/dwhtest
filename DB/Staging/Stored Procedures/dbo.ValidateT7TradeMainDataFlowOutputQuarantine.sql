@@ -32,7 +32,7 @@ BEGIN
 			T7TradeMainDataFlowOutput 
 		WHERE 
 			InstrumentID IS NULL 
-		UNION 
+		UNION
 		SELECT 
 			TradeDateID, 
 			TradingSysTransNo, 
@@ -42,7 +42,7 @@ BEGIN
 			T7TradeMainDataFlowOutput 
 		WHERE 
 			CurrencyID IS NULL 
-		UNION 
+		UNION
 		SELECT 
 			TradeDateID, 
 			TradingSysTransNo, 
@@ -52,7 +52,7 @@ BEGIN
 			T7TradeMainDataFlowOutput 
 		WHERE 
 			EquityTradeJunkID IS NULL 
-		UNION 
+		UNION
 		SELECT 
 			TradeDateID, 
 			TradingSysTransNo, 
@@ -62,7 +62,7 @@ BEGIN
 			T7TradeMainDataFlowOutput 
 		WHERE 
 			TradeModificationTypeID IS NULL 
-		UNION 
+		UNION
 		SELECT 
 			TradeDateID, 
 			TradingSysTransNo, 
@@ -72,6 +72,8 @@ BEGIN
 			T7TradeMainDataFlowOutput 
 		WHERE 
 			BrokerID IS NULL 
+		/* MOVED TO SEPERATE STORED PROCEDURE TO ALLOW CONTROL FROM PROCESS CONTROL */
+		/*
 		UNION 
 		SELECT 
 			TradeDateID, 
@@ -84,6 +86,27 @@ BEGIN
 				DelayedTradeYN = 'Y'
 			AND
 				PublishDateTime IS NULL
+		*/
+		UNION
+		SELECT 
+			TradeDateID, 
+			TradingSysTransNo, 
+			6 AS Code, 
+			'Trade [' + CAST(TradeDateID AS CHAR(8)) + '\' + RTRIM(CAST(TradingSysTransNo AS CHAR)) + '] moved to quarantine: ISIN [' + A_ISIN + '] with Instrument Status [' + StatusName + '] is not supported .' AS Message 
+		FROM 
+			T7TradeMainDataFlowOutput 
+		WHERE 
+			StatusName NOT IN ( 'Listed', 'Conditional Dealings' )
+		UNION
+		SELECT 
+			TradeDateID, 
+			TradingSysTransNo, 
+			7 AS Code, 
+			'Trade [' + CAST(TradeDateID AS CHAR(8)) + '\' + RTRIM(CAST(TradingSysTransNo AS CHAR)) + '] moved to quarantine: ISIN [' + A_ISIN + '] with Instrument Type [' + InstrumentType + '] is not supported.' AS Message 
+		FROM 
+			T7TradeMainDataFlowOutput 
+		WHERE 
+			InstrumentType NOT IN ( 'EQUITY', 'ETF' )
 
 	/* Second set of validation - removes trades without 2 rws in thetrade. Possible 1 row has been removed by validation above and left an orphan */
  	INSERT INTO 
@@ -136,4 +159,5 @@ BEGIN
  
  
 END 
+
 GO

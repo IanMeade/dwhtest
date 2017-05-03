@@ -5,14 +5,14 @@
   DTS:CreationName="Microsoft.Package"
   DTS:CreatorComputerName="T7-DDT-01"
   DTS:CreatorName="STOCK_EXCHANGE\ianm"
-  DTS:DTSID="{C594B2BD-B214-4625-9CE0-930F97CCA698}"
+  DTS:DTSID="{B95CAB57-50D1-42A5-970B-7D62769CA308}"
   DTS:ExecutableType="Microsoft.Package"
   DTS:LastModifiedProductVersion="13.0.4001.0"
   DTS:LocaleID="6153"
-  DTS:ObjectName="PckSaftTxSaftStage"
+  DTS:ObjectName="PckT7TradeStage"
   DTS:PackageType="5"
-  DTS:VersionBuild="83"
-  DTS:VersionGUID="{B61A9A4F-C82C-4F4C-B6DC-25E00FE8D0EF}">
+  DTS:VersionBuild="90"
+  DTS:VersionGUID="{887B25DB-8702-457F-BCFF-765FEFBAFFEC}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -41,7 +41,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="Mixed"
-              DTS:DTSID="{E35BF58A-896F-4553-A16D-DB7E49D1B07E}"
+              DTS:DTSID="{0C19B498-AADD-4A0C-AD1D-1A142CB7E943}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -49,7 +49,7 @@
               DTS:DataType="3"
               DTS:TextQualified="True"
               DTS:ObjectName="A_TRADE_LINK_NO"
-              DTS:DTSID="{C245B708-D02E-4C28-BBF3-FA517F768B4C}"
+              DTS:DTSID="{84D7543D-E5F5-4DFC-9FC8-2195E0CC5104}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -57,7 +57,7 @@
               DTS:DataType="3"
               DTS:TextQualified="True"
               DTS:ObjectName="A_SUB_TRANSACTION_NO"
-              DTS:DTSID="{7DF56270-F453-4197-97FF-69B1C63A5A7F}"
+              DTS:DTSID="{B725EBBF-39BE-4BCD-BD60-ADD464114466}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -66,7 +66,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="A_BUY_SELL_FLAG"
-              DTS:DTSID="{CD42CCBB-05BA-466F-89AE-E12C4C576ED2}"
+              DTS:DTSID="{C20B2AF6-6D70-47F1-977F-E46C388E71BB}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -75,7 +75,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="A_ISIN"
-              DTS:DTSID="{CB2BBD1B-06B0-4674-B0E2-FA29F8F21D37}"
+              DTS:DTSID="{3F7C8E88-73D7-46B4-AEDE-19B06088C2DC}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -84,7 +84,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="A_TRADE_TYPE"
-              DTS:DTSID="{95D95BB0-7CFE-453F-BA13-B6F8C53F68E9}"
+              DTS:DTSID="{FEE229CF-CB57-4870-A0AE-E727B7319EEE}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -92,7 +92,7 @@
               DTS:DataType="7"
               DTS:TextQualified="True"
               DTS:ObjectName="A_TRADE_DATE"
-              DTS:DTSID="{57289089-7C82-4E07-A27D-FF939E9C15A5}"
+              DTS:DTSID="{F600D972-BB83-4245-8641-98B05E90D39C}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -100,7 +100,7 @@
               DTS:DataType="135"
               DTS:TextQualified="True"
               DTS:ObjectName="A_TRADE_TIMESTAMP"
-              DTS:DTSID="{914E5A72-D998-45DB-BBB1-9B46CC28E628}"
+              DTS:DTSID="{A8AAFA1F-5AA1-4BDA-9138-A97C02888311}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -109,7 +109,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="A_OTC_TRADE_TIME"
-              DTS:DTSID="{5213AD6D-6967-472F-A91E-4F6BDBE949CA}"
+              DTS:DTSID="{08973FFF-2703-4442-9789-2C9D367B58C6}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -118,23 +118,27 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="A_PRICE_CURRENCY"
-              DTS:DTSID="{C3E91A45-BCB3-4F7E-9FEC-F54757605899}"
+              DTS:DTSID="{3515DCA6-E332-4A46-9FD0-2BF2FB2C8388}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
               DTS:ColumnDelimiter="_x002C_"
-              DTS:DataType="4"
+              DTS:DataType="131"
+              DTS:DataPrecision="19"
+              DTS:DataScale="6"
               DTS:TextQualified="True"
               DTS:ObjectName="A_MATCH_PRICE_X"
-              DTS:DTSID="{5F608267-B176-4B7D-9339-5AC7067A0BA6}"
+              DTS:DTSID="{07A69AA2-E799-4722-AB70-9E857A07944F}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
               DTS:ColumnDelimiter="_x002C_"
-              DTS:DataType="4"
+              DTS:DataType="131"
+              DTS:DataPrecision="19"
+              DTS:DataScale="6"
               DTS:TextQualified="True"
               DTS:ObjectName="A_TRADE_SIZE_X"
-              DTS:DTSID="{5A11F6DE-42C5-4307-A596-D92C86BD15C5}"
+              DTS:DTSID="{9CF18C2F-6F30-4525-8802-78C429AC012F}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -143,7 +147,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="A_AUCTION_TRADE_FLAG"
-              DTS:DTSID="{8966AF70-C278-456F-A37C-A8211CD6C302}"
+              DTS:DTSID="{41F815EC-6512-43A8-A081-A4668EDBF44E}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -152,7 +156,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="A_MEMBER_ID"
-              DTS:DTSID="{4FA42164-C8BA-4FE7-96DF-B8C17F0CFD65}"
+              DTS:DTSID="{BF0A6DCB-5681-4265-93CA-9D38ACA68F21}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -161,7 +165,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="A_ACCOUNT_TYPE"
-              DTS:DTSID="{197C82F4-E910-4955-8735-0A8EEB5384BC}"
+              DTS:DTSID="{D8A35349-E074-48CA-A30A-18CC69C06D23}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -170,7 +174,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="A_ORDER_TYPE"
-              DTS:DTSID="{6BB2DD10-F8B4-4A22-B79D-F640B0A9F83B}"
+              DTS:DTSID="{4A2A45E0-D509-4B1D-A1C9-73AC3EC7C059}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -179,15 +183,17 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="A_ORDER_RESTRICTION"
-              DTS:DTSID="{3C7DFA7C-38BE-4AE9-8630-C822C94C0E66}"
+              DTS:DTSID="{3519592A-5C36-4947-8BE7-BA01915E42D5}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
               DTS:ColumnDelimiter="_x002C_"
-              DTS:DataType="4"
+              DTS:DataType="131"
+              DTS:DataPrecision="19"
+              DTS:DataScale="6"
               DTS:TextQualified="True"
               DTS:ObjectName="A_ORDER_MARKET_VALUE"
-              DTS:DTSID="{B1590324-A1CD-4EF0-83EC-C53909093204}"
+              DTS:DTSID="{A2740EAE-8573-49BE-94C3-DFC45C8EC665}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -196,7 +202,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="A_MEMBER_CTPY_ID"
-              DTS:DTSID="{33BE5A6D-FDE2-41D7-BBBB-B5B348F7706C}"
+              DTS:DTSID="{EEEC5AB2-4955-4E9F-AC18-05438F2C784E}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -204,7 +210,7 @@
               DTS:DataType="133"
               DTS:TextQualified="True"
               DTS:ObjectName="A_SETTLEMENT_DATE"
-              DTS:DTSID="{55C48F12-11C4-4FB0-B458-D18F1ACB6103}"
+              DTS:DTSID="{A4046646-45B7-4DB4-BCA1-718E65C1E9EE}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -213,7 +219,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="A_SETTLEMENT_TYPE"
-              DTS:DTSID="{1EFB7E16-79BC-47EE-8F4E-6B92831C4DD7}"
+              DTS:DTSID="{2799EC21-C247-449F-9413-29974B9230B4}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -222,7 +228,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="A_MOD_REASON_CODE"
-              DTS:DTSID="{6653B553-9E2C-485F-8892-804604A7843F}"
+              DTS:DTSID="{AC3969A7-8036-422C-B13D-AC13D4CD0E16}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -230,7 +236,7 @@
               DTS:DataType="135"
               DTS:TextQualified="True"
               DTS:ObjectName="A_INSERT_TIMESTAMP"
-              DTS:DTSID="{281F55D2-DA20-49DF-B015-CA8749526F2B}"
+              DTS:DTSID="{CB82C83D-71FC-4362-A7F9-66C682EA0733}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -239,7 +245,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="A_OTC_TRADE_FLAG_1"
-              DTS:DTSID="{74DA93B6-32ED-478F-A7D8-98CA61B021B7}"
+              DTS:DTSID="{F573F1B3-9A28-4841-BC59-A36E998FCE1B}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -248,7 +254,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="A_OTC_TRADE_FLAG_2"
-              DTS:DTSID="{1930D532-775E-4048-8918-A3D8FD253083}"
+              DTS:DTSID="{F0783C81-6565-41B5-9366-8B8888CEA7EA}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -257,7 +263,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="A_OTC_TRADE_FLAG_3"
-              DTS:DTSID="{983A9947-A96C-46AD-80A5-2F2E70DD7B17}"
+              DTS:DTSID="{2E64F831-B02C-4AC6-8CC1-3A561167959D}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -266,7 +272,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="A_DEFERRED_IND"
-              DTS:DTSID="{8DD7EB68-6014-402A-AADC-865BCAA68478}"
+              DTS:DTSID="{9E39CD18-212D-46EE-97B6-1404C41D0461}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -275,7 +281,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="A_IND_PUBLICATION_TIME"
-              DTS:DTSID="{89696A77-481B-4B35-B255-0CD11BD55B9A}"
+              DTS:DTSID="{210BB79C-67BF-45B8-9109-2BB6BA5A9A21}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -284,39 +290,47 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="A_TRADER_ID"
-              DTS:DTSID="{11D6FA59-49D2-4DC9-AF9F-8A968743037D}"
+              DTS:DTSID="{4A625A2C-B27A-42A9-B3D1-09129017B416}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
               DTS:ColumnDelimiter="_x002C_"
-              DTS:DataType="4"
+              DTS:DataType="131"
+              DTS:DataPrecision="19"
+              DTS:DataScale="6"
               DTS:TextQualified="True"
               DTS:ObjectName="A_BEST_BID_PRICE"
-              DTS:DTSID="{8D17BDC3-E077-45AE-B4C0-ED7F72CF02B0}"
+              DTS:DTSID="{3AAA8638-3C20-4081-A64D-102945A7A713}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
               DTS:ColumnDelimiter="_x002C_"
-              DTS:DataType="4"
+              DTS:DataType="131"
+              DTS:DataPrecision="19"
+              DTS:DataScale="6"
               DTS:TextQualified="True"
               DTS:ObjectName="A_BEST_ASK_PRICE"
-              DTS:DTSID="{4D77175E-AF7E-4487-9966-4BC48110FA19}"
+              DTS:DTSID="{EF703B8E-0D19-4921-98C6-DB3F7C331B67}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
               DTS:ColumnDelimiter="_x002C_"
-              DTS:DataType="4"
+              DTS:DataType="131"
+              DTS:DataPrecision="19"
+              DTS:DataScale="6"
               DTS:TextQualified="True"
               DTS:ObjectName="A_OFFICIAL_OPENING_PRICE"
-              DTS:DTSID="{4BD6EDF4-3454-476A-A8E1-1D7074950FBD}"
+              DTS:DTSID="{D1B0A844-1765-4630-AD19-7676AA7E2DEA}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
               DTS:ColumnDelimiter="_x002C_"
-              DTS:DataType="4"
+              DTS:DataType="131"
+              DTS:DataPrecision="19"
+              DTS:DataScale="6"
               DTS:TextQualified="True"
               DTS:ObjectName="A_OFFICIAL_CLOSING_PRICE"
-              DTS:DTSID="{F04807E0-26B5-473B-B683-42C8B0AE4EDD}"
+              DTS:DTSID="{DC43206C-5337-458A-A634-D650B3471484}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -324,7 +338,7 @@
               DTS:DataType="135"
               DTS:TextQualified="True"
               DTS:ObjectName="A_TRADE_TIME_OCP"
-              DTS:DTSID="{6447F0AC-C25E-413C-895F-126D449FCA95}"
+              DTS:DTSID="{BA30ABEB-3F4F-44E8-8F68-1E2E4EB827FD}"
               DTS:CreationName="" />
           </DTS:FlatFileColumns>
         </DTS:ConnectionManager>
@@ -535,7 +549,7 @@
                           cachedDataType="str"
                           cachedLength="50"
                           cachedName="Mixed"
-                          lineageId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].Columns[Mixed]" />
+                          lineageId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].Columns[Mixed]" />
                       </inputColumns>
                       <externalMetadataColumns />
                     </input>
@@ -555,7 +569,7 @@
                           containsID="true"
                           dataType="System.String"
                           description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
-                          name="Expression">[LEN](#{Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].Columns[Mixed]}) &lt; 10</property>
+                          name="Expression">[LEN](#{Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].Columns[Mixed]}) &lt; 10</property>
                         <property
                           containsID="true"
                           dataType="System.String"
@@ -625,7 +639,7 @@
                           cachedDataType="str"
                           cachedLength="50"
                           cachedName="Mixed"
-                          lineageId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].Columns[Mixed]" />
+                          lineageId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].Columns[Mixed]" />
                       </inputColumns>
                       <externalMetadataColumns />
                     </input>
@@ -650,7 +664,7 @@
                               containsID="true"
                               dataType="System.Int32"
                               description="Specifies the input column used as the source of data for the conversion."
-                              name="SourceInputColumnLineageID">#{Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].Columns[Mixed]}</property>
+                              name="SourceInputColumnLineageID">#{Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].Columns[Mixed]}</property>
                             <property
                               dataType="System.Boolean"
                               description="Indicates whether the column uses the faster, locale-neutral parsing routines."
@@ -702,7 +716,7 @@
                           cachedDataType="str"
                           cachedLength="50"
                           cachedName="Mixed"
-                          lineageId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].Columns[Mixed]" />
+                          lineageId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].Columns[Mixed]" />
                       </inputColumns>
                       <externalMetadataColumns />
                     </input>
@@ -727,7 +741,7 @@
                               containsID="true"
                               dataType="System.Int32"
                               description="Specifies the input column used as the source of data for the conversion."
-                              name="SourceInputColumnLineageID">#{Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].Columns[Mixed]}</property>
+                              name="SourceInputColumnLineageID">#{Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].Columns[Mixed]}</property>
                             <property
                               dataType="System.Boolean"
                               description="Indicates whether the column uses the faster, locale-neutral parsing routines."
@@ -1058,13 +1072,13 @@
                           cachedDataType="i4"
                           cachedName="A_TRADE_LINK_NO"
                           externalMetadataColumnId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\DST STG TxSaft.Inputs[OLE DB Destination Input].ExternalColumns[A_TRADE_LINK_NO]"
-                          lineageId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].Columns[A_TRADE_LINK_NO]" />
+                          lineageId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].Columns[A_TRADE_LINK_NO]" />
                         <inputColumn
                           refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\DST STG TxSaft.Inputs[OLE DB Destination Input].Columns[A_SUB_TRANSACTION_NO]"
                           cachedDataType="i4"
                           cachedName="A_SUB_TRANSACTION_NO"
                           externalMetadataColumnId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\DST STG TxSaft.Inputs[OLE DB Destination Input].ExternalColumns[A_SUB_TRANSACTION_NO]"
-                          lineageId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].Columns[A_SUB_TRANSACTION_NO]" />
+                          lineageId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].Columns[A_SUB_TRANSACTION_NO]" />
                         <inputColumn
                           refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\DST STG TxSaft.Inputs[OLE DB Destination Input].Columns[A_BUY_SELL_FLAG]"
                           cachedCodepage="1252"
@@ -1072,7 +1086,7 @@
                           cachedLength="1"
                           cachedName="A_BUY_SELL_FLAG"
                           externalMetadataColumnId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\DST STG TxSaft.Inputs[OLE DB Destination Input].ExternalColumns[A_BUY_SELL_FLAG]"
-                          lineageId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].Columns[A_BUY_SELL_FLAG]" />
+                          lineageId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].Columns[A_BUY_SELL_FLAG]" />
                         <inputColumn
                           refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\DST STG TxSaft.Inputs[OLE DB Destination Input].Columns[A_ISIN]"
                           cachedCodepage="1252"
@@ -1080,7 +1094,7 @@
                           cachedLength="12"
                           cachedName="A_ISIN"
                           externalMetadataColumnId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\DST STG TxSaft.Inputs[OLE DB Destination Input].ExternalColumns[A_ISIN]"
-                          lineageId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].Columns[A_ISIN]" />
+                          lineageId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].Columns[A_ISIN]" />
                         <inputColumn
                           refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\DST STG TxSaft.Inputs[OLE DB Destination Input].Columns[A_TRADE_TYPE]"
                           cachedCodepage="1252"
@@ -1088,19 +1102,19 @@
                           cachedLength="1"
                           cachedName="A_TRADE_TYPE"
                           externalMetadataColumnId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\DST STG TxSaft.Inputs[OLE DB Destination Input].ExternalColumns[A_TRADE_TYPE]"
-                          lineageId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].Columns[A_TRADE_TYPE]" />
+                          lineageId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].Columns[A_TRADE_TYPE]" />
                         <inputColumn
                           refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\DST STG TxSaft.Inputs[OLE DB Destination Input].Columns[A_TRADE_DATE]"
                           cachedDataType="date"
                           cachedName="A_TRADE_DATE"
                           externalMetadataColumnId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\DST STG TxSaft.Inputs[OLE DB Destination Input].ExternalColumns[A_TRADE_DATE]"
-                          lineageId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].Columns[A_TRADE_DATE]" />
+                          lineageId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].Columns[A_TRADE_DATE]" />
                         <inputColumn
                           refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\DST STG TxSaft.Inputs[OLE DB Destination Input].Columns[A_TRADE_TIMESTAMP]"
                           cachedDataType="dbTimeStamp"
                           cachedName="A_TRADE_TIMESTAMP"
                           externalMetadataColumnId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\DST STG TxSaft.Inputs[OLE DB Destination Input].ExternalColumns[A_TRADE_TIMESTAMP]"
-                          lineageId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].Columns[A_TRADE_TIMESTAMP]" />
+                          lineageId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].Columns[A_TRADE_TIMESTAMP]" />
                         <inputColumn
                           refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\DST STG TxSaft.Inputs[OLE DB Destination Input].Columns[A_PRICE_CURRENCY]"
                           cachedCodepage="1252"
@@ -1108,19 +1122,23 @@
                           cachedLength="3"
                           cachedName="A_PRICE_CURRENCY"
                           externalMetadataColumnId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\DST STG TxSaft.Inputs[OLE DB Destination Input].ExternalColumns[A_PRICE_CURRENCY]"
-                          lineageId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].Columns[A_PRICE_CURRENCY]" />
+                          lineageId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].Columns[A_PRICE_CURRENCY]" />
                         <inputColumn
                           refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\DST STG TxSaft.Inputs[OLE DB Destination Input].Columns[A_MATCH_PRICE_X]"
-                          cachedDataType="r4"
+                          cachedDataType="numeric"
                           cachedName="A_MATCH_PRICE_X"
+                          cachedPrecision="19"
+                          cachedScale="6"
                           externalMetadataColumnId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\DST STG TxSaft.Inputs[OLE DB Destination Input].ExternalColumns[A_MATCH_PRICE_X]"
-                          lineageId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].Columns[A_MATCH_PRICE_X]" />
+                          lineageId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].Columns[A_MATCH_PRICE_X]" />
                         <inputColumn
                           refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\DST STG TxSaft.Inputs[OLE DB Destination Input].Columns[A_TRADE_SIZE_X]"
-                          cachedDataType="r4"
+                          cachedDataType="numeric"
                           cachedName="A_TRADE_SIZE_X"
+                          cachedPrecision="19"
+                          cachedScale="6"
                           externalMetadataColumnId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\DST STG TxSaft.Inputs[OLE DB Destination Input].ExternalColumns[A_TRADE_SIZE_X]"
-                          lineageId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].Columns[A_TRADE_SIZE_X]" />
+                          lineageId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].Columns[A_TRADE_SIZE_X]" />
                         <inputColumn
                           refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\DST STG TxSaft.Inputs[OLE DB Destination Input].Columns[A_AUCTION_TRADE_FLAG]"
                           cachedCodepage="1252"
@@ -1128,7 +1146,7 @@
                           cachedLength="2"
                           cachedName="A_AUCTION_TRADE_FLAG"
                           externalMetadataColumnId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\DST STG TxSaft.Inputs[OLE DB Destination Input].ExternalColumns[A_AUCTION_TRADE_FLAG]"
-                          lineageId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].Columns[A_AUCTION_TRADE_FLAG]" />
+                          lineageId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].Columns[A_AUCTION_TRADE_FLAG]" />
                         <inputColumn
                           refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\DST STG TxSaft.Inputs[OLE DB Destination Input].Columns[A_MEMBER_ID]"
                           cachedCodepage="1252"
@@ -1136,7 +1154,7 @@
                           cachedLength="10"
                           cachedName="A_MEMBER_ID"
                           externalMetadataColumnId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\DST STG TxSaft.Inputs[OLE DB Destination Input].ExternalColumns[A_MEMBER_ID]"
-                          lineageId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].Columns[A_MEMBER_ID]" />
+                          lineageId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].Columns[A_MEMBER_ID]" />
                         <inputColumn
                           refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\DST STG TxSaft.Inputs[OLE DB Destination Input].Columns[A_ACCOUNT_TYPE]"
                           cachedCodepage="1252"
@@ -1144,7 +1162,7 @@
                           cachedLength="3"
                           cachedName="A_ACCOUNT_TYPE"
                           externalMetadataColumnId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\DST STG TxSaft.Inputs[OLE DB Destination Input].ExternalColumns[A_ACCOUNT_TYPE]"
-                          lineageId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].Columns[A_ACCOUNT_TYPE]" />
+                          lineageId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].Columns[A_ACCOUNT_TYPE]" />
                         <inputColumn
                           refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\DST STG TxSaft.Inputs[OLE DB Destination Input].Columns[A_ORDER_TYPE]"
                           cachedCodepage="1252"
@@ -1152,7 +1170,7 @@
                           cachedLength="3"
                           cachedName="A_ORDER_TYPE"
                           externalMetadataColumnId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\DST STG TxSaft.Inputs[OLE DB Destination Input].ExternalColumns[A_ORDER_TYPE]"
-                          lineageId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].Columns[A_ORDER_TYPE]" />
+                          lineageId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].Columns[A_ORDER_TYPE]" />
                         <inputColumn
                           refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\DST STG TxSaft.Inputs[OLE DB Destination Input].Columns[A_ORDER_RESTRICTION]"
                           cachedCodepage="1252"
@@ -1160,13 +1178,15 @@
                           cachedLength="1"
                           cachedName="A_ORDER_RESTRICTION"
                           externalMetadataColumnId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\DST STG TxSaft.Inputs[OLE DB Destination Input].ExternalColumns[A_ORDER_RESTRICTION]"
-                          lineageId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].Columns[A_ORDER_RESTRICTION]" />
+                          lineageId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].Columns[A_ORDER_RESTRICTION]" />
                         <inputColumn
                           refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\DST STG TxSaft.Inputs[OLE DB Destination Input].Columns[A_ORDER_MARKET_VALUE]"
-                          cachedDataType="r4"
+                          cachedDataType="numeric"
                           cachedName="A_ORDER_MARKET_VALUE"
+                          cachedPrecision="19"
+                          cachedScale="6"
                           externalMetadataColumnId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\DST STG TxSaft.Inputs[OLE DB Destination Input].ExternalColumns[A_ORDER_MARKET_VALUE]"
-                          lineageId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].Columns[A_ORDER_MARKET_VALUE]" />
+                          lineageId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].Columns[A_ORDER_MARKET_VALUE]" />
                         <inputColumn
                           refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\DST STG TxSaft.Inputs[OLE DB Destination Input].Columns[A_MEMBER_CTPY_ID]"
                           cachedCodepage="1252"
@@ -1174,13 +1194,13 @@
                           cachedLength="10"
                           cachedName="A_MEMBER_CTPY_ID"
                           externalMetadataColumnId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\DST STG TxSaft.Inputs[OLE DB Destination Input].ExternalColumns[A_MEMBER_CTPY_ID]"
-                          lineageId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].Columns[A_MEMBER_CTPY_ID]" />
+                          lineageId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].Columns[A_MEMBER_CTPY_ID]" />
                         <inputColumn
                           refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\DST STG TxSaft.Inputs[OLE DB Destination Input].Columns[A_SETTLEMENT_DATE]"
                           cachedDataType="dbDate"
                           cachedName="A_SETTLEMENT_DATE"
                           externalMetadataColumnId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\DST STG TxSaft.Inputs[OLE DB Destination Input].ExternalColumns[A_SETTLEMENT_DATE]"
-                          lineageId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].Columns[A_SETTLEMENT_DATE]" />
+                          lineageId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].Columns[A_SETTLEMENT_DATE]" />
                         <inputColumn
                           refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\DST STG TxSaft.Inputs[OLE DB Destination Input].Columns[A_SETTLEMENT_TYPE]"
                           cachedCodepage="1252"
@@ -1188,7 +1208,7 @@
                           cachedLength="4"
                           cachedName="A_SETTLEMENT_TYPE"
                           externalMetadataColumnId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\DST STG TxSaft.Inputs[OLE DB Destination Input].ExternalColumns[A_SETTLEMENT_TYPE]"
-                          lineageId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].Columns[A_SETTLEMENT_TYPE]" />
+                          lineageId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].Columns[A_SETTLEMENT_TYPE]" />
                         <inputColumn
                           refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\DST STG TxSaft.Inputs[OLE DB Destination Input].Columns[A_MOD_REASON_CODE]"
                           cachedCodepage="1252"
@@ -1196,13 +1216,13 @@
                           cachedLength="3"
                           cachedName="A_MOD_REASON_CODE"
                           externalMetadataColumnId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\DST STG TxSaft.Inputs[OLE DB Destination Input].ExternalColumns[A_MOD_REASON_CODE]"
-                          lineageId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].Columns[A_MOD_REASON_CODE]" />
+                          lineageId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].Columns[A_MOD_REASON_CODE]" />
                         <inputColumn
                           refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\DST STG TxSaft.Inputs[OLE DB Destination Input].Columns[A_INSERT_TIMESTAMP]"
                           cachedDataType="dbTimeStamp"
                           cachedName="A_INSERT_TIMESTAMP"
                           externalMetadataColumnId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\DST STG TxSaft.Inputs[OLE DB Destination Input].ExternalColumns[A_INSERT_TIMESTAMP]"
-                          lineageId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].Columns[A_INSERT_TIMESTAMP]" />
+                          lineageId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].Columns[A_INSERT_TIMESTAMP]" />
                         <inputColumn
                           refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\DST STG TxSaft.Inputs[OLE DB Destination Input].Columns[A_OTC_TRADE_FLAG_1]"
                           cachedCodepage="1252"
@@ -1210,7 +1230,7 @@
                           cachedLength="3"
                           cachedName="A_OTC_TRADE_FLAG_1"
                           externalMetadataColumnId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\DST STG TxSaft.Inputs[OLE DB Destination Input].ExternalColumns[A_OTC_TRADE_FLAG_1]"
-                          lineageId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].Columns[A_OTC_TRADE_FLAG_1]" />
+                          lineageId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].Columns[A_OTC_TRADE_FLAG_1]" />
                         <inputColumn
                           refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\DST STG TxSaft.Inputs[OLE DB Destination Input].Columns[A_OTC_TRADE_FLAG_2]"
                           cachedCodepage="1252"
@@ -1218,7 +1238,7 @@
                           cachedLength="3"
                           cachedName="A_OTC_TRADE_FLAG_2"
                           externalMetadataColumnId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\DST STG TxSaft.Inputs[OLE DB Destination Input].ExternalColumns[A_OTC_TRADE_FLAG_2]"
-                          lineageId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].Columns[A_OTC_TRADE_FLAG_2]" />
+                          lineageId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].Columns[A_OTC_TRADE_FLAG_2]" />
                         <inputColumn
                           refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\DST STG TxSaft.Inputs[OLE DB Destination Input].Columns[A_OTC_TRADE_FLAG_3]"
                           cachedCodepage="1252"
@@ -1226,7 +1246,7 @@
                           cachedLength="3"
                           cachedName="A_OTC_TRADE_FLAG_3"
                           externalMetadataColumnId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\DST STG TxSaft.Inputs[OLE DB Destination Input].ExternalColumns[A_OTC_TRADE_FLAG_3]"
-                          lineageId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].Columns[A_OTC_TRADE_FLAG_3]" />
+                          lineageId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].Columns[A_OTC_TRADE_FLAG_3]" />
                         <inputColumn
                           refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\DST STG TxSaft.Inputs[OLE DB Destination Input].Columns[A_DEFERRED_IND]"
                           cachedCodepage="1252"
@@ -1234,7 +1254,7 @@
                           cachedLength="1"
                           cachedName="A_DEFERRED_IND"
                           externalMetadataColumnId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\DST STG TxSaft.Inputs[OLE DB Destination Input].ExternalColumns[A_DEFERRED_IND]"
-                          lineageId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].Columns[A_DEFERRED_IND]" />
+                          lineageId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].Columns[A_DEFERRED_IND]" />
                         <inputColumn
                           refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\DST STG TxSaft.Inputs[OLE DB Destination Input].Columns[A_TRADER_ID]"
                           cachedCodepage="1252"
@@ -1242,37 +1262,45 @@
                           cachedLength="10"
                           cachedName="A_TRADER_ID"
                           externalMetadataColumnId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\DST STG TxSaft.Inputs[OLE DB Destination Input].ExternalColumns[A_TRADER_ID]"
-                          lineageId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].Columns[A_TRADER_ID]" />
+                          lineageId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].Columns[A_TRADER_ID]" />
                         <inputColumn
                           refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\DST STG TxSaft.Inputs[OLE DB Destination Input].Columns[A_BEST_BID_PRICE]"
-                          cachedDataType="r4"
+                          cachedDataType="numeric"
                           cachedName="A_BEST_BID_PRICE"
+                          cachedPrecision="19"
+                          cachedScale="6"
                           externalMetadataColumnId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\DST STG TxSaft.Inputs[OLE DB Destination Input].ExternalColumns[A_BEST_BID_PRICE]"
-                          lineageId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].Columns[A_BEST_BID_PRICE]" />
+                          lineageId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].Columns[A_BEST_BID_PRICE]" />
                         <inputColumn
                           refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\DST STG TxSaft.Inputs[OLE DB Destination Input].Columns[A_BEST_ASK_PRICE]"
-                          cachedDataType="r4"
+                          cachedDataType="numeric"
                           cachedName="A_BEST_ASK_PRICE"
+                          cachedPrecision="19"
+                          cachedScale="6"
                           externalMetadataColumnId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\DST STG TxSaft.Inputs[OLE DB Destination Input].ExternalColumns[A_BEST_ASK_PRICE]"
-                          lineageId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].Columns[A_BEST_ASK_PRICE]" />
+                          lineageId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].Columns[A_BEST_ASK_PRICE]" />
                         <inputColumn
                           refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\DST STG TxSaft.Inputs[OLE DB Destination Input].Columns[A_OFFICIAL_OPENING_PRICE]"
-                          cachedDataType="r4"
+                          cachedDataType="numeric"
                           cachedName="A_OFFICIAL_OPENING_PRICE"
+                          cachedPrecision="19"
+                          cachedScale="6"
                           externalMetadataColumnId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\DST STG TxSaft.Inputs[OLE DB Destination Input].ExternalColumns[A_OFFICIAL_OPENING_PRICE]"
-                          lineageId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].Columns[A_OFFICIAL_OPENING_PRICE]" />
+                          lineageId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].Columns[A_OFFICIAL_OPENING_PRICE]" />
                         <inputColumn
                           refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\DST STG TxSaft.Inputs[OLE DB Destination Input].Columns[A_OFFICIAL_CLOSING_PRICE]"
-                          cachedDataType="r4"
+                          cachedDataType="numeric"
                           cachedName="A_OFFICIAL_CLOSING_PRICE"
+                          cachedPrecision="19"
+                          cachedScale="6"
                           externalMetadataColumnId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\DST STG TxSaft.Inputs[OLE DB Destination Input].ExternalColumns[A_OFFICIAL_CLOSING_PRICE]"
-                          lineageId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].Columns[A_OFFICIAL_CLOSING_PRICE]" />
+                          lineageId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].Columns[A_OFFICIAL_CLOSING_PRICE]" />
                         <inputColumn
                           refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\DST STG TxSaft.Inputs[OLE DB Destination Input].Columns[A_TRADE_TIME_OCP]"
                           cachedDataType="dbTimeStamp"
                           cachedName="A_TRADE_TIME_OCP"
                           externalMetadataColumnId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\DST STG TxSaft.Inputs[OLE DB Destination Input].ExternalColumns[A_TRADE_TIME_OCP]"
-                          lineageId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].Columns[A_TRADE_TIME_OCP]" />
+                          lineageId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].Columns[A_TRADE_TIME_OCP]" />
                         <inputColumn
                           refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\DST STG TxSaft.Inputs[OLE DB Destination Input].Columns[FileName]"
                           cachedCodepage="1252"
@@ -1300,7 +1328,7 @@
                           cachedLength="50"
                           cachedName="A_IND_PUBLICATION_TIME"
                           externalMetadataColumnId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\DST STG TxSaft.Inputs[OLE DB Destination Input].ExternalColumns[A_IND_PUBLICATION_TIME]"
-                          lineageId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].Columns[A_IND_PUBLICATION_TIME]" />
+                          lineageId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].Columns[A_IND_PUBLICATION_TIME]" />
                         <inputColumn
                           refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\DST STG TxSaft.Inputs[OLE DB Destination Input].Columns[A_OTC_TRADE_TIME]"
                           cachedCodepage="1252"
@@ -1308,7 +1336,7 @@
                           cachedLength="50"
                           cachedName="A_OTC_TRADE_TIME"
                           externalMetadataColumnId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\DST STG TxSaft.Inputs[OLE DB Destination Input].ExternalColumns[A_OTC_TRADE_TIME]"
-                          lineageId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].Columns[A_OTC_TRADE_TIME]" />
+                          lineageId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].Columns[A_OTC_TRADE_TIME]" />
                       </inputColumns>
                       <externalMetadataColumns
                         isUsed="True">
@@ -1543,12 +1571,12 @@
                   </outputs>
                 </component>
                 <component
-                  refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft"
+                  refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade"
                   componentClassID="Microsoft.FlatFileSource"
                   contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
                   description="Flat File Source"
                   localeId="6153"
-                  name="FF_SRC TxSaft"
+                  name="FF_SRC SAFT Trade"
                   usesDispositions="true"
                   version="1">
                   <properties>
@@ -1563,25 +1591,25 @@
                   </properties>
                   <connections>
                     <connection
-                      refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Connections[FlatFileConnection]"
+                      refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Connections[FlatFileConnection]"
                       connectionManagerID="Package.ConnectionManagers[TxSaft File]"
                       connectionManagerRefId="Package.ConnectionManagers[TxSaft File]"
                       name="FlatFileConnection" />
                   </connections>
                   <outputs>
                     <output
-                      refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output]"
+                      refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output]"
                       name="Flat File Source Output">
                       <outputColumns>
                         <outputColumn
-                          refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].Columns[Mixed]"
+                          refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].Columns[Mixed]"
                           codePage="1252"
                           dataType="str"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].ExternalColumns[Mixed]"
+                          externalMetadataColumnId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].ExternalColumns[Mixed]"
                           length="50"
-                          lineageId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].Columns[Mixed]"
+                          lineageId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].Columns[Mixed]"
                           name="Mixed"
                           truncationRowDisposition="FailComponent">
                           <properties>
@@ -1596,12 +1624,12 @@
                           </properties>
                         </outputColumn>
                         <outputColumn
-                          refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].Columns[A_TRADE_LINK_NO]"
+                          refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].Columns[A_TRADE_LINK_NO]"
                           dataType="i4"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].ExternalColumns[A_TRADE_LINK_NO]"
-                          lineageId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].Columns[A_TRADE_LINK_NO]"
+                          externalMetadataColumnId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].ExternalColumns[A_TRADE_LINK_NO]"
+                          lineageId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].Columns[A_TRADE_LINK_NO]"
                           name="A_TRADE_LINK_NO"
                           truncationRowDisposition="FailComponent">
                           <properties>
@@ -1616,12 +1644,12 @@
                           </properties>
                         </outputColumn>
                         <outputColumn
-                          refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].Columns[A_SUB_TRANSACTION_NO]"
+                          refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].Columns[A_SUB_TRANSACTION_NO]"
                           dataType="i4"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].ExternalColumns[A_SUB_TRANSACTION_NO]"
-                          lineageId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].Columns[A_SUB_TRANSACTION_NO]"
+                          externalMetadataColumnId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].ExternalColumns[A_SUB_TRANSACTION_NO]"
+                          lineageId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].Columns[A_SUB_TRANSACTION_NO]"
                           name="A_SUB_TRANSACTION_NO"
                           truncationRowDisposition="FailComponent">
                           <properties>
@@ -1636,14 +1664,14 @@
                           </properties>
                         </outputColumn>
                         <outputColumn
-                          refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].Columns[A_BUY_SELL_FLAG]"
+                          refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].Columns[A_BUY_SELL_FLAG]"
                           codePage="1252"
                           dataType="str"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].ExternalColumns[A_BUY_SELL_FLAG]"
+                          externalMetadataColumnId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].ExternalColumns[A_BUY_SELL_FLAG]"
                           length="1"
-                          lineageId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].Columns[A_BUY_SELL_FLAG]"
+                          lineageId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].Columns[A_BUY_SELL_FLAG]"
                           name="A_BUY_SELL_FLAG"
                           truncationRowDisposition="FailComponent">
                           <properties>
@@ -1658,14 +1686,14 @@
                           </properties>
                         </outputColumn>
                         <outputColumn
-                          refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].Columns[A_ISIN]"
+                          refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].Columns[A_ISIN]"
                           codePage="1252"
                           dataType="str"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].ExternalColumns[A_ISIN]"
+                          externalMetadataColumnId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].ExternalColumns[A_ISIN]"
                           length="12"
-                          lineageId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].Columns[A_ISIN]"
+                          lineageId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].Columns[A_ISIN]"
                           name="A_ISIN"
                           truncationRowDisposition="FailComponent">
                           <properties>
@@ -1680,14 +1708,14 @@
                           </properties>
                         </outputColumn>
                         <outputColumn
-                          refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].Columns[A_TRADE_TYPE]"
+                          refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].Columns[A_TRADE_TYPE]"
                           codePage="1252"
                           dataType="str"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].ExternalColumns[A_TRADE_TYPE]"
+                          externalMetadataColumnId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].ExternalColumns[A_TRADE_TYPE]"
                           length="1"
-                          lineageId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].Columns[A_TRADE_TYPE]"
+                          lineageId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].Columns[A_TRADE_TYPE]"
                           name="A_TRADE_TYPE"
                           truncationRowDisposition="FailComponent">
                           <properties>
@@ -1702,12 +1730,12 @@
                           </properties>
                         </outputColumn>
                         <outputColumn
-                          refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].Columns[A_TRADE_DATE]"
+                          refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].Columns[A_TRADE_DATE]"
                           dataType="date"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].ExternalColumns[A_TRADE_DATE]"
-                          lineageId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].Columns[A_TRADE_DATE]"
+                          externalMetadataColumnId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].ExternalColumns[A_TRADE_DATE]"
+                          lineageId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].Columns[A_TRADE_DATE]"
                           name="A_TRADE_DATE"
                           truncationRowDisposition="FailComponent">
                           <properties>
@@ -1722,12 +1750,12 @@
                           </properties>
                         </outputColumn>
                         <outputColumn
-                          refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].Columns[A_TRADE_TIMESTAMP]"
+                          refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].Columns[A_TRADE_TIMESTAMP]"
                           dataType="dbTimeStamp"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].ExternalColumns[A_TRADE_TIMESTAMP]"
-                          lineageId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].Columns[A_TRADE_TIMESTAMP]"
+                          externalMetadataColumnId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].ExternalColumns[A_TRADE_TIMESTAMP]"
+                          lineageId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].Columns[A_TRADE_TIMESTAMP]"
                           name="A_TRADE_TIMESTAMP"
                           truncationRowDisposition="FailComponent">
                           <properties>
@@ -1742,14 +1770,14 @@
                           </properties>
                         </outputColumn>
                         <outputColumn
-                          refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].Columns[A_OTC_TRADE_TIME]"
+                          refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].Columns[A_OTC_TRADE_TIME]"
                           codePage="1252"
                           dataType="str"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].ExternalColumns[A_OTC_TRADE_TIME]"
+                          externalMetadataColumnId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].ExternalColumns[A_OTC_TRADE_TIME]"
                           length="50"
-                          lineageId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].Columns[A_OTC_TRADE_TIME]"
+                          lineageId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].Columns[A_OTC_TRADE_TIME]"
                           name="A_OTC_TRADE_TIME"
                           truncationRowDisposition="FailComponent">
                           <properties>
@@ -1764,14 +1792,14 @@
                           </properties>
                         </outputColumn>
                         <outputColumn
-                          refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].Columns[A_PRICE_CURRENCY]"
+                          refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].Columns[A_PRICE_CURRENCY]"
                           codePage="1252"
                           dataType="str"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].ExternalColumns[A_PRICE_CURRENCY]"
+                          externalMetadataColumnId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].ExternalColumns[A_PRICE_CURRENCY]"
                           length="3"
-                          lineageId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].Columns[A_PRICE_CURRENCY]"
+                          lineageId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].Columns[A_PRICE_CURRENCY]"
                           name="A_PRICE_CURRENCY"
                           truncationRowDisposition="FailComponent">
                           <properties>
@@ -1786,13 +1814,15 @@
                           </properties>
                         </outputColumn>
                         <outputColumn
-                          refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].Columns[A_MATCH_PRICE_X]"
-                          dataType="r4"
+                          refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].Columns[A_MATCH_PRICE_X]"
+                          dataType="numeric"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].ExternalColumns[A_MATCH_PRICE_X]"
-                          lineageId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].Columns[A_MATCH_PRICE_X]"
+                          externalMetadataColumnId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].ExternalColumns[A_MATCH_PRICE_X]"
+                          lineageId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].Columns[A_MATCH_PRICE_X]"
                           name="A_MATCH_PRICE_X"
+                          precision="19"
+                          scale="6"
                           truncationRowDisposition="FailComponent">
                           <properties>
                             <property
@@ -1806,13 +1836,15 @@
                           </properties>
                         </outputColumn>
                         <outputColumn
-                          refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].Columns[A_TRADE_SIZE_X]"
-                          dataType="r4"
+                          refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].Columns[A_TRADE_SIZE_X]"
+                          dataType="numeric"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].ExternalColumns[A_TRADE_SIZE_X]"
-                          lineageId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].Columns[A_TRADE_SIZE_X]"
+                          externalMetadataColumnId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].ExternalColumns[A_TRADE_SIZE_X]"
+                          lineageId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].Columns[A_TRADE_SIZE_X]"
                           name="A_TRADE_SIZE_X"
+                          precision="19"
+                          scale="6"
                           truncationRowDisposition="FailComponent">
                           <properties>
                             <property
@@ -1826,14 +1858,14 @@
                           </properties>
                         </outputColumn>
                         <outputColumn
-                          refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].Columns[A_AUCTION_TRADE_FLAG]"
+                          refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].Columns[A_AUCTION_TRADE_FLAG]"
                           codePage="1252"
                           dataType="str"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].ExternalColumns[A_AUCTION_TRADE_FLAG]"
+                          externalMetadataColumnId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].ExternalColumns[A_AUCTION_TRADE_FLAG]"
                           length="2"
-                          lineageId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].Columns[A_AUCTION_TRADE_FLAG]"
+                          lineageId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].Columns[A_AUCTION_TRADE_FLAG]"
                           name="A_AUCTION_TRADE_FLAG"
                           truncationRowDisposition="FailComponent">
                           <properties>
@@ -1848,14 +1880,14 @@
                           </properties>
                         </outputColumn>
                         <outputColumn
-                          refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].Columns[A_MEMBER_ID]"
+                          refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].Columns[A_MEMBER_ID]"
                           codePage="1252"
                           dataType="str"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].ExternalColumns[A_MEMBER_ID]"
+                          externalMetadataColumnId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].ExternalColumns[A_MEMBER_ID]"
                           length="10"
-                          lineageId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].Columns[A_MEMBER_ID]"
+                          lineageId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].Columns[A_MEMBER_ID]"
                           name="A_MEMBER_ID"
                           truncationRowDisposition="FailComponent">
                           <properties>
@@ -1870,14 +1902,14 @@
                           </properties>
                         </outputColumn>
                         <outputColumn
-                          refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].Columns[A_ACCOUNT_TYPE]"
+                          refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].Columns[A_ACCOUNT_TYPE]"
                           codePage="1252"
                           dataType="str"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].ExternalColumns[A_ACCOUNT_TYPE]"
+                          externalMetadataColumnId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].ExternalColumns[A_ACCOUNT_TYPE]"
                           length="3"
-                          lineageId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].Columns[A_ACCOUNT_TYPE]"
+                          lineageId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].Columns[A_ACCOUNT_TYPE]"
                           name="A_ACCOUNT_TYPE"
                           truncationRowDisposition="FailComponent">
                           <properties>
@@ -1892,14 +1924,14 @@
                           </properties>
                         </outputColumn>
                         <outputColumn
-                          refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].Columns[A_ORDER_TYPE]"
+                          refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].Columns[A_ORDER_TYPE]"
                           codePage="1252"
                           dataType="str"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].ExternalColumns[A_ORDER_TYPE]"
+                          externalMetadataColumnId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].ExternalColumns[A_ORDER_TYPE]"
                           length="3"
-                          lineageId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].Columns[A_ORDER_TYPE]"
+                          lineageId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].Columns[A_ORDER_TYPE]"
                           name="A_ORDER_TYPE"
                           truncationRowDisposition="FailComponent">
                           <properties>
@@ -1914,14 +1946,14 @@
                           </properties>
                         </outputColumn>
                         <outputColumn
-                          refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].Columns[A_ORDER_RESTRICTION]"
+                          refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].Columns[A_ORDER_RESTRICTION]"
                           codePage="1252"
                           dataType="str"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].ExternalColumns[A_ORDER_RESTRICTION]"
+                          externalMetadataColumnId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].ExternalColumns[A_ORDER_RESTRICTION]"
                           length="1"
-                          lineageId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].Columns[A_ORDER_RESTRICTION]"
+                          lineageId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].Columns[A_ORDER_RESTRICTION]"
                           name="A_ORDER_RESTRICTION"
                           truncationRowDisposition="FailComponent">
                           <properties>
@@ -1936,13 +1968,15 @@
                           </properties>
                         </outputColumn>
                         <outputColumn
-                          refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].Columns[A_ORDER_MARKET_VALUE]"
-                          dataType="r4"
+                          refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].Columns[A_ORDER_MARKET_VALUE]"
+                          dataType="numeric"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].ExternalColumns[A_ORDER_MARKET_VALUE]"
-                          lineageId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].Columns[A_ORDER_MARKET_VALUE]"
+                          externalMetadataColumnId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].ExternalColumns[A_ORDER_MARKET_VALUE]"
+                          lineageId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].Columns[A_ORDER_MARKET_VALUE]"
                           name="A_ORDER_MARKET_VALUE"
+                          precision="19"
+                          scale="6"
                           truncationRowDisposition="FailComponent">
                           <properties>
                             <property
@@ -1956,14 +1990,14 @@
                           </properties>
                         </outputColumn>
                         <outputColumn
-                          refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].Columns[A_MEMBER_CTPY_ID]"
+                          refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].Columns[A_MEMBER_CTPY_ID]"
                           codePage="1252"
                           dataType="str"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].ExternalColumns[A_MEMBER_CTPY_ID]"
+                          externalMetadataColumnId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].ExternalColumns[A_MEMBER_CTPY_ID]"
                           length="10"
-                          lineageId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].Columns[A_MEMBER_CTPY_ID]"
+                          lineageId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].Columns[A_MEMBER_CTPY_ID]"
                           name="A_MEMBER_CTPY_ID"
                           truncationRowDisposition="FailComponent">
                           <properties>
@@ -1978,12 +2012,12 @@
                           </properties>
                         </outputColumn>
                         <outputColumn
-                          refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].Columns[A_SETTLEMENT_DATE]"
+                          refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].Columns[A_SETTLEMENT_DATE]"
                           dataType="dbDate"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].ExternalColumns[A_SETTLEMENT_DATE]"
-                          lineageId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].Columns[A_SETTLEMENT_DATE]"
+                          externalMetadataColumnId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].ExternalColumns[A_SETTLEMENT_DATE]"
+                          lineageId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].Columns[A_SETTLEMENT_DATE]"
                           name="A_SETTLEMENT_DATE"
                           truncationRowDisposition="FailComponent">
                           <properties>
@@ -1998,14 +2032,14 @@
                           </properties>
                         </outputColumn>
                         <outputColumn
-                          refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].Columns[A_SETTLEMENT_TYPE]"
+                          refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].Columns[A_SETTLEMENT_TYPE]"
                           codePage="1252"
                           dataType="str"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].ExternalColumns[A_SETTLEMENT_TYPE]"
+                          externalMetadataColumnId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].ExternalColumns[A_SETTLEMENT_TYPE]"
                           length="4"
-                          lineageId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].Columns[A_SETTLEMENT_TYPE]"
+                          lineageId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].Columns[A_SETTLEMENT_TYPE]"
                           name="A_SETTLEMENT_TYPE"
                           truncationRowDisposition="FailComponent">
                           <properties>
@@ -2020,14 +2054,14 @@
                           </properties>
                         </outputColumn>
                         <outputColumn
-                          refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].Columns[A_MOD_REASON_CODE]"
+                          refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].Columns[A_MOD_REASON_CODE]"
                           codePage="1252"
                           dataType="str"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].ExternalColumns[A_MOD_REASON_CODE]"
+                          externalMetadataColumnId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].ExternalColumns[A_MOD_REASON_CODE]"
                           length="3"
-                          lineageId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].Columns[A_MOD_REASON_CODE]"
+                          lineageId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].Columns[A_MOD_REASON_CODE]"
                           name="A_MOD_REASON_CODE"
                           truncationRowDisposition="FailComponent">
                           <properties>
@@ -2042,12 +2076,12 @@
                           </properties>
                         </outputColumn>
                         <outputColumn
-                          refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].Columns[A_INSERT_TIMESTAMP]"
+                          refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].Columns[A_INSERT_TIMESTAMP]"
                           dataType="dbTimeStamp"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].ExternalColumns[A_INSERT_TIMESTAMP]"
-                          lineageId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].Columns[A_INSERT_TIMESTAMP]"
+                          externalMetadataColumnId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].ExternalColumns[A_INSERT_TIMESTAMP]"
+                          lineageId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].Columns[A_INSERT_TIMESTAMP]"
                           name="A_INSERT_TIMESTAMP"
                           truncationRowDisposition="FailComponent">
                           <properties>
@@ -2062,14 +2096,14 @@
                           </properties>
                         </outputColumn>
                         <outputColumn
-                          refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].Columns[A_OTC_TRADE_FLAG_1]"
+                          refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].Columns[A_OTC_TRADE_FLAG_1]"
                           codePage="1252"
                           dataType="str"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].ExternalColumns[A_OTC_TRADE_FLAG_1]"
+                          externalMetadataColumnId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].ExternalColumns[A_OTC_TRADE_FLAG_1]"
                           length="3"
-                          lineageId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].Columns[A_OTC_TRADE_FLAG_1]"
+                          lineageId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].Columns[A_OTC_TRADE_FLAG_1]"
                           name="A_OTC_TRADE_FLAG_1"
                           truncationRowDisposition="FailComponent">
                           <properties>
@@ -2084,14 +2118,14 @@
                           </properties>
                         </outputColumn>
                         <outputColumn
-                          refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].Columns[A_OTC_TRADE_FLAG_2]"
+                          refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].Columns[A_OTC_TRADE_FLAG_2]"
                           codePage="1252"
                           dataType="str"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].ExternalColumns[A_OTC_TRADE_FLAG_2]"
+                          externalMetadataColumnId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].ExternalColumns[A_OTC_TRADE_FLAG_2]"
                           length="3"
-                          lineageId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].Columns[A_OTC_TRADE_FLAG_2]"
+                          lineageId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].Columns[A_OTC_TRADE_FLAG_2]"
                           name="A_OTC_TRADE_FLAG_2"
                           truncationRowDisposition="FailComponent">
                           <properties>
@@ -2106,14 +2140,14 @@
                           </properties>
                         </outputColumn>
                         <outputColumn
-                          refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].Columns[A_OTC_TRADE_FLAG_3]"
+                          refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].Columns[A_OTC_TRADE_FLAG_3]"
                           codePage="1252"
                           dataType="str"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].ExternalColumns[A_OTC_TRADE_FLAG_3]"
+                          externalMetadataColumnId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].ExternalColumns[A_OTC_TRADE_FLAG_3]"
                           length="3"
-                          lineageId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].Columns[A_OTC_TRADE_FLAG_3]"
+                          lineageId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].Columns[A_OTC_TRADE_FLAG_3]"
                           name="A_OTC_TRADE_FLAG_3"
                           truncationRowDisposition="FailComponent">
                           <properties>
@@ -2128,14 +2162,14 @@
                           </properties>
                         </outputColumn>
                         <outputColumn
-                          refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].Columns[A_DEFERRED_IND]"
+                          refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].Columns[A_DEFERRED_IND]"
                           codePage="1252"
                           dataType="str"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].ExternalColumns[A_DEFERRED_IND]"
+                          externalMetadataColumnId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].ExternalColumns[A_DEFERRED_IND]"
                           length="1"
-                          lineageId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].Columns[A_DEFERRED_IND]"
+                          lineageId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].Columns[A_DEFERRED_IND]"
                           name="A_DEFERRED_IND"
                           truncationRowDisposition="FailComponent">
                           <properties>
@@ -2150,14 +2184,36 @@
                           </properties>
                         </outputColumn>
                         <outputColumn
-                          refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].Columns[A_TRADER_ID]"
+                          refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].Columns[A_IND_PUBLICATION_TIME]"
                           codePage="1252"
                           dataType="str"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].ExternalColumns[A_TRADER_ID]"
+                          externalMetadataColumnId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].ExternalColumns[A_IND_PUBLICATION_TIME]"
+                          length="50"
+                          lineageId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].Columns[A_IND_PUBLICATION_TIME]"
+                          name="A_IND_PUBLICATION_TIME"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].Columns[A_TRADER_ID]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].ExternalColumns[A_TRADER_ID]"
                           length="10"
-                          lineageId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].Columns[A_TRADER_ID]"
+                          lineageId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].Columns[A_TRADER_ID]"
                           name="A_TRADER_ID"
                           truncationRowDisposition="FailComponent">
                           <properties>
@@ -2172,13 +2228,15 @@
                           </properties>
                         </outputColumn>
                         <outputColumn
-                          refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].Columns[A_BEST_BID_PRICE]"
-                          dataType="r4"
+                          refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].Columns[A_BEST_BID_PRICE]"
+                          dataType="numeric"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].ExternalColumns[A_BEST_BID_PRICE]"
-                          lineageId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].Columns[A_BEST_BID_PRICE]"
+                          externalMetadataColumnId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].ExternalColumns[A_BEST_BID_PRICE]"
+                          lineageId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].Columns[A_BEST_BID_PRICE]"
                           name="A_BEST_BID_PRICE"
+                          precision="19"
+                          scale="6"
                           truncationRowDisposition="FailComponent">
                           <properties>
                             <property
@@ -2192,13 +2250,15 @@
                           </properties>
                         </outputColumn>
                         <outputColumn
-                          refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].Columns[A_BEST_ASK_PRICE]"
-                          dataType="r4"
+                          refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].Columns[A_BEST_ASK_PRICE]"
+                          dataType="numeric"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].ExternalColumns[A_BEST_ASK_PRICE]"
-                          lineageId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].Columns[A_BEST_ASK_PRICE]"
+                          externalMetadataColumnId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].ExternalColumns[A_BEST_ASK_PRICE]"
+                          lineageId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].Columns[A_BEST_ASK_PRICE]"
                           name="A_BEST_ASK_PRICE"
+                          precision="19"
+                          scale="6"
                           truncationRowDisposition="FailComponent">
                           <properties>
                             <property
@@ -2212,13 +2272,15 @@
                           </properties>
                         </outputColumn>
                         <outputColumn
-                          refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].Columns[A_OFFICIAL_OPENING_PRICE]"
-                          dataType="r4"
+                          refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].Columns[A_OFFICIAL_OPENING_PRICE]"
+                          dataType="numeric"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].ExternalColumns[A_OFFICIAL_OPENING_PRICE]"
-                          lineageId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].Columns[A_OFFICIAL_OPENING_PRICE]"
+                          externalMetadataColumnId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].ExternalColumns[A_OFFICIAL_OPENING_PRICE]"
+                          lineageId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].Columns[A_OFFICIAL_OPENING_PRICE]"
                           name="A_OFFICIAL_OPENING_PRICE"
+                          precision="19"
+                          scale="6"
                           truncationRowDisposition="FailComponent">
                           <properties>
                             <property
@@ -2232,13 +2294,15 @@
                           </properties>
                         </outputColumn>
                         <outputColumn
-                          refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].Columns[A_OFFICIAL_CLOSING_PRICE]"
-                          dataType="r4"
+                          refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].Columns[A_OFFICIAL_CLOSING_PRICE]"
+                          dataType="numeric"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].ExternalColumns[A_OFFICIAL_CLOSING_PRICE]"
-                          lineageId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].Columns[A_OFFICIAL_CLOSING_PRICE]"
+                          externalMetadataColumnId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].ExternalColumns[A_OFFICIAL_CLOSING_PRICE]"
+                          lineageId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].Columns[A_OFFICIAL_CLOSING_PRICE]"
                           name="A_OFFICIAL_CLOSING_PRICE"
+                          precision="19"
+                          scale="6"
                           truncationRowDisposition="FailComponent">
                           <properties>
                             <property
@@ -2252,35 +2316,13 @@
                           </properties>
                         </outputColumn>
                         <outputColumn
-                          refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].Columns[A_TRADE_TIME_OCP]"
+                          refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].Columns[A_TRADE_TIME_OCP]"
                           dataType="dbTimeStamp"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].ExternalColumns[A_TRADE_TIME_OCP]"
-                          lineageId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].Columns[A_TRADE_TIME_OCP]"
+                          externalMetadataColumnId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].ExternalColumns[A_TRADE_TIME_OCP]"
+                          lineageId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].Columns[A_TRADE_TIME_OCP]"
                           name="A_TRADE_TIME_OCP"
-                          truncationRowDisposition="FailComponent">
-                          <properties>
-                            <property
-                              dataType="System.Boolean"
-                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
-                              name="FastParse">false</property>
-                            <property
-                              dataType="System.Boolean"
-                              description="Indicates whether the data is in binary format."
-                              name="UseBinaryFormat">false</property>
-                          </properties>
-                        </outputColumn>
-                        <outputColumn
-                          refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].Columns[A_IND_PUBLICATION_TIME]"
-                          codePage="1252"
-                          dataType="str"
-                          errorOrTruncationOperation="Conversion"
-                          errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].ExternalColumns[A_IND_PUBLICATION_TIME]"
-                          length="50"
-                          lineageId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].Columns[A_IND_PUBLICATION_TIME]"
-                          name="A_IND_PUBLICATION_TIME"
                           truncationRowDisposition="FailComponent">
                           <properties>
                             <property
@@ -2297,205 +2339,219 @@
                       <externalMetadataColumns
                         isUsed="True">
                         <externalMetadataColumn
-                          refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].ExternalColumns[Mixed]"
+                          refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].ExternalColumns[Mixed]"
                           codePage="1252"
                           dataType="str"
                           length="50"
                           name="Mixed" />
                         <externalMetadataColumn
-                          refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].ExternalColumns[A_TRADE_LINK_NO]"
+                          refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].ExternalColumns[A_TRADE_LINK_NO]"
                           dataType="i4"
                           name="A_TRADE_LINK_NO" />
                         <externalMetadataColumn
-                          refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].ExternalColumns[A_SUB_TRANSACTION_NO]"
+                          refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].ExternalColumns[A_SUB_TRANSACTION_NO]"
                           dataType="i4"
                           name="A_SUB_TRANSACTION_NO" />
                         <externalMetadataColumn
-                          refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].ExternalColumns[A_BUY_SELL_FLAG]"
+                          refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].ExternalColumns[A_BUY_SELL_FLAG]"
                           codePage="1252"
                           dataType="str"
                           length="1"
                           name="A_BUY_SELL_FLAG" />
                         <externalMetadataColumn
-                          refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].ExternalColumns[A_ISIN]"
+                          refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].ExternalColumns[A_ISIN]"
                           codePage="1252"
                           dataType="str"
                           length="12"
                           name="A_ISIN" />
                         <externalMetadataColumn
-                          refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].ExternalColumns[A_TRADE_TYPE]"
+                          refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].ExternalColumns[A_TRADE_TYPE]"
                           codePage="1252"
                           dataType="str"
                           length="1"
                           name="A_TRADE_TYPE" />
                         <externalMetadataColumn
-                          refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].ExternalColumns[A_TRADE_DATE]"
+                          refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].ExternalColumns[A_TRADE_DATE]"
                           dataType="date"
                           name="A_TRADE_DATE" />
                         <externalMetadataColumn
-                          refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].ExternalColumns[A_TRADE_TIMESTAMP]"
+                          refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].ExternalColumns[A_TRADE_TIMESTAMP]"
                           dataType="dbTimeStamp"
                           name="A_TRADE_TIMESTAMP" />
                         <externalMetadataColumn
-                          refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].ExternalColumns[A_OTC_TRADE_TIME]"
+                          refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].ExternalColumns[A_OTC_TRADE_TIME]"
                           codePage="1252"
                           dataType="str"
                           length="50"
                           name="A_OTC_TRADE_TIME" />
                         <externalMetadataColumn
-                          refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].ExternalColumns[A_PRICE_CURRENCY]"
+                          refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].ExternalColumns[A_PRICE_CURRENCY]"
                           codePage="1252"
                           dataType="str"
                           length="3"
                           name="A_PRICE_CURRENCY" />
                         <externalMetadataColumn
-                          refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].ExternalColumns[A_MATCH_PRICE_X]"
-                          dataType="r4"
-                          name="A_MATCH_PRICE_X" />
+                          refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].ExternalColumns[A_MATCH_PRICE_X]"
+                          dataType="numeric"
+                          name="A_MATCH_PRICE_X"
+                          precision="19"
+                          scale="6" />
                         <externalMetadataColumn
-                          refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].ExternalColumns[A_TRADE_SIZE_X]"
-                          dataType="r4"
-                          name="A_TRADE_SIZE_X" />
+                          refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].ExternalColumns[A_TRADE_SIZE_X]"
+                          dataType="numeric"
+                          name="A_TRADE_SIZE_X"
+                          precision="19"
+                          scale="6" />
                         <externalMetadataColumn
-                          refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].ExternalColumns[A_AUCTION_TRADE_FLAG]"
+                          refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].ExternalColumns[A_AUCTION_TRADE_FLAG]"
                           codePage="1252"
                           dataType="str"
                           length="2"
                           name="A_AUCTION_TRADE_FLAG" />
                         <externalMetadataColumn
-                          refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].ExternalColumns[A_MEMBER_ID]"
+                          refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].ExternalColumns[A_MEMBER_ID]"
                           codePage="1252"
                           dataType="str"
                           length="10"
                           name="A_MEMBER_ID" />
                         <externalMetadataColumn
-                          refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].ExternalColumns[A_ACCOUNT_TYPE]"
+                          refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].ExternalColumns[A_ACCOUNT_TYPE]"
                           codePage="1252"
                           dataType="str"
                           length="3"
                           name="A_ACCOUNT_TYPE" />
                         <externalMetadataColumn
-                          refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].ExternalColumns[A_ORDER_TYPE]"
+                          refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].ExternalColumns[A_ORDER_TYPE]"
                           codePage="1252"
                           dataType="str"
                           length="3"
                           name="A_ORDER_TYPE" />
                         <externalMetadataColumn
-                          refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].ExternalColumns[A_ORDER_RESTRICTION]"
+                          refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].ExternalColumns[A_ORDER_RESTRICTION]"
                           codePage="1252"
                           dataType="str"
                           length="1"
                           name="A_ORDER_RESTRICTION" />
                         <externalMetadataColumn
-                          refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].ExternalColumns[A_ORDER_MARKET_VALUE]"
-                          dataType="r4"
-                          name="A_ORDER_MARKET_VALUE" />
+                          refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].ExternalColumns[A_ORDER_MARKET_VALUE]"
+                          dataType="numeric"
+                          name="A_ORDER_MARKET_VALUE"
+                          precision="19"
+                          scale="6" />
                         <externalMetadataColumn
-                          refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].ExternalColumns[A_MEMBER_CTPY_ID]"
+                          refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].ExternalColumns[A_MEMBER_CTPY_ID]"
                           codePage="1252"
                           dataType="str"
                           length="10"
                           name="A_MEMBER_CTPY_ID" />
                         <externalMetadataColumn
-                          refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].ExternalColumns[A_SETTLEMENT_DATE]"
+                          refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].ExternalColumns[A_SETTLEMENT_DATE]"
                           dataType="dbDate"
                           name="A_SETTLEMENT_DATE" />
                         <externalMetadataColumn
-                          refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].ExternalColumns[A_SETTLEMENT_TYPE]"
+                          refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].ExternalColumns[A_SETTLEMENT_TYPE]"
                           codePage="1252"
                           dataType="str"
                           length="4"
                           name="A_SETTLEMENT_TYPE" />
                         <externalMetadataColumn
-                          refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].ExternalColumns[A_MOD_REASON_CODE]"
+                          refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].ExternalColumns[A_MOD_REASON_CODE]"
                           codePage="1252"
                           dataType="str"
                           length="3"
                           name="A_MOD_REASON_CODE" />
                         <externalMetadataColumn
-                          refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].ExternalColumns[A_INSERT_TIMESTAMP]"
+                          refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].ExternalColumns[A_INSERT_TIMESTAMP]"
                           dataType="dbTimeStamp"
                           name="A_INSERT_TIMESTAMP" />
                         <externalMetadataColumn
-                          refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].ExternalColumns[A_OTC_TRADE_FLAG_1]"
+                          refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].ExternalColumns[A_OTC_TRADE_FLAG_1]"
                           codePage="1252"
                           dataType="str"
                           length="3"
                           name="A_OTC_TRADE_FLAG_1" />
                         <externalMetadataColumn
-                          refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].ExternalColumns[A_OTC_TRADE_FLAG_2]"
+                          refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].ExternalColumns[A_OTC_TRADE_FLAG_2]"
                           codePage="1252"
                           dataType="str"
                           length="3"
                           name="A_OTC_TRADE_FLAG_2" />
                         <externalMetadataColumn
-                          refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].ExternalColumns[A_OTC_TRADE_FLAG_3]"
+                          refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].ExternalColumns[A_OTC_TRADE_FLAG_3]"
                           codePage="1252"
                           dataType="str"
                           length="3"
                           name="A_OTC_TRADE_FLAG_3" />
                         <externalMetadataColumn
-                          refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].ExternalColumns[A_DEFERRED_IND]"
+                          refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].ExternalColumns[A_DEFERRED_IND]"
                           codePage="1252"
                           dataType="str"
                           length="1"
                           name="A_DEFERRED_IND" />
                         <externalMetadataColumn
-                          refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].ExternalColumns[A_TRADER_ID]"
+                          refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].ExternalColumns[A_IND_PUBLICATION_TIME]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="A_IND_PUBLICATION_TIME" />
+                        <externalMetadataColumn
+                          refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].ExternalColumns[A_TRADER_ID]"
                           codePage="1252"
                           dataType="str"
                           length="10"
                           name="A_TRADER_ID" />
                         <externalMetadataColumn
-                          refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].ExternalColumns[A_BEST_BID_PRICE]"
-                          dataType="r4"
-                          name="A_BEST_BID_PRICE" />
+                          refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].ExternalColumns[A_BEST_BID_PRICE]"
+                          dataType="numeric"
+                          name="A_BEST_BID_PRICE"
+                          precision="19"
+                          scale="6" />
                         <externalMetadataColumn
-                          refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].ExternalColumns[A_BEST_ASK_PRICE]"
-                          dataType="r4"
-                          name="A_BEST_ASK_PRICE" />
+                          refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].ExternalColumns[A_BEST_ASK_PRICE]"
+                          dataType="numeric"
+                          name="A_BEST_ASK_PRICE"
+                          precision="19"
+                          scale="6" />
                         <externalMetadataColumn
-                          refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].ExternalColumns[A_OFFICIAL_OPENING_PRICE]"
-                          dataType="r4"
-                          name="A_OFFICIAL_OPENING_PRICE" />
+                          refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].ExternalColumns[A_OFFICIAL_OPENING_PRICE]"
+                          dataType="numeric"
+                          name="A_OFFICIAL_OPENING_PRICE"
+                          precision="19"
+                          scale="6" />
                         <externalMetadataColumn
-                          refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].ExternalColumns[A_OFFICIAL_CLOSING_PRICE]"
-                          dataType="r4"
-                          name="A_OFFICIAL_CLOSING_PRICE" />
+                          refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].ExternalColumns[A_OFFICIAL_CLOSING_PRICE]"
+                          dataType="numeric"
+                          name="A_OFFICIAL_CLOSING_PRICE"
+                          precision="19"
+                          scale="6" />
                         <externalMetadataColumn
-                          refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].ExternalColumns[A_TRADE_TIME_OCP]"
+                          refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output].ExternalColumns[A_TRADE_TIME_OCP]"
                           dataType="dbTimeStamp"
                           name="A_TRADE_TIME_OCP" />
-                        <externalMetadataColumn
-                          refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output].ExternalColumns[A_IND_PUBLICATION_TIME]"
-                          codePage="1252"
-                          dataType="str"
-                          length="50"
-                          name="A_IND_PUBLICATION_TIME" />
                       </externalMetadataColumns>
                     </output>
                     <output
-                      refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Error Output]"
+                      refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Error Output]"
                       isErrorOut="true"
                       name="Flat File Source Error Output">
                       <outputColumns>
                         <outputColumn
-                          refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                          refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
                           codePage="1252"
                           dataType="text"
                           description="Flat File Source Error Output Column"
-                          lineageId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                          lineageId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
                           name="Flat File Source Error Output Column" />
                         <outputColumn
-                          refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                          refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
                           dataType="i4"
-                          lineageId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                          lineageId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
                           name="ErrorCode"
                           specialFlags="1" />
                         <outputColumn
-                          refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                          refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
                           dataType="i4"
-                          lineageId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                          lineageId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
                           name="ErrorColumn"
                           specialFlags="2" />
                       </outputColumns>
@@ -2524,7 +2580,7 @@
                   refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle.Paths[Flat File Source Output]"
                   endId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\DER File Details.Inputs[Derived Column Input]"
                   name="Flat File Source Output"
-                  startId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft.Outputs[Flat File Source Output]" />
+                  startId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade.Outputs[Flat File Source Output]" />
                 <path
                   refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle.Paths[Row Count]"
                   endId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\DCNV TxSaft Row Count.Inputs[Data Conversion Input]"
@@ -3088,7 +3144,7 @@
                     <property
                       dataType="System.String"
                       description="Specifies the name of the database object used to open a rowset."
-                      name="OpenRowset">[dbo].[File]</property>
+                      name="OpenRowset">[dbo].[FileList]</property>
                     <property
                       dataType="System.String"
                       description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -3186,7 +3242,7 @@
                           refId="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\Insert Destination.Inputs[OLE DB Destination Input].Columns[FileTag]"
                           cachedCodepage="1252"
                           cachedDataType="str"
-                          cachedLength="20"
+                          cachedLength="50"
                           cachedName="FileTag"
                           externalMetadataColumnId="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[FileTag]"
                           lineageId="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\SRC STG FileList.Outputs[OLE DB Source Output].Columns[FileTag]" />
@@ -3238,7 +3294,7 @@
                           refId="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[FileTag]"
                           codePage="1252"
                           dataType="str"
-                          length="20"
+                          length="50"
                           name="FileTag" />
                         <externalMetadataColumn
                           refId="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[ContainsEndOfDayDetailsYN]"
@@ -3454,7 +3510,7 @@ where [refTable].[FileLetter] = ?</property>
                       description="The SQL command to be executed."
                       expressionType="Notify"
                       name="SqlCommand"
-                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE [dbo].[File] SET [ContainsEndOfDayDetailsYN] = ?,[DwhFileID] = ?,[DwhStatus] = ?,[EtlVersion] = ?,[FileLetter] = ?,[FileTag] = ? WHERE [FileName] = ?</property>
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE [dbo].[FileList] SET [ContainsEndOfDayDetailsYN] = ?,[DwhFileID] = ?,[DwhStatus] = ?,[EtlVersion] = ?,[FileLetter] = ?,[FileTag] = ? WHERE [FileName] = ?</property>
                     <property
                       dataType="System.Int32"
                       description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -3526,7 +3582,7 @@ where [refTable].[FileLetter] = ?</property>
                           refId="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\OLE DB Command.Inputs[OLE DB Command Input].Columns[FileTag]"
                           cachedCodepage="1252"
                           cachedDataType="str"
-                          cachedLength="20"
+                          cachedLength="50"
                           cachedName="FileTag"
                           externalMetadataColumnId="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_5]"
                           lineageId="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\SRC STG FileList.Outputs[OLE DB Source Output].Columns[FileTag]" />
@@ -3669,7 +3725,7 @@ where [refTable].[FileLetter] = ?</property>
                       dataType="System.String"
                       description="Specifies the SELECT statement used to create a schema rowset."
                       name="SqlCommand"
-                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT [ContainsEndOfDayDetailsYN], [DwhFileID], [DwhStatus], [EtlVersion], [FileLetter], [FileName], [FileTag] FROM [dbo].[File]</property>
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT [ContainsEndOfDayDetailsYN], [DwhFileID], [DwhStatus], [EtlVersion], [FileLetter], [FileName], [FileTag] FROM [dbo].[FileList]</property>
                     <property
                       dataType="System.String"
                       description="Specifies the WHERE clause in the SELECT statement that selects the current row among rows with identical business keys."
@@ -3809,7 +3865,7 @@ where [refTable].[FileLetter] = ?</property>
                           refId="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\SCD T7 ODS File Table.Inputs[Slowly Changing Dimension Input].Columns[FileTag]"
                           cachedCodepage="1252"
                           cachedDataType="str"
-                          cachedLength="20"
+                          cachedLength="50"
                           cachedName="FileTag"
                           externalMetadataColumnId="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\SCD T7 ODS File Table.Inputs[Slowly Changing Dimension Input].ExternalColumns[FileTag]"
                           lineageId="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\SRC STG FileList.Outputs[OLE DB Source Output].Columns[FileTag]">
@@ -4027,7 +4083,7 @@ AND
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
                           externalMetadataColumnId="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\SRC STG FileList.Outputs[OLE DB Source Output].ExternalColumns[FileTag]"
-                          length="20"
+                          length="50"
                           lineageId="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\SRC STG FileList.Outputs[OLE DB Source Output].Columns[FileTag]"
                           name="FileTag"
                           truncationRowDisposition="FailComponent" />
@@ -4065,7 +4121,7 @@ AND
                           refId="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\SRC STG FileList.Outputs[OLE DB Source Output].ExternalColumns[FileTag]"
                           codePage="1252"
                           dataType="str"
-                          length="20"
+                          length="50"
                           name="FileTag" />
                         <externalMetadataColumn
                           refId="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\SRC STG FileList.Outputs[OLE DB Source Output].ExternalColumns[SaftLetter]"
@@ -4103,7 +4159,7 @@ AND
                           refId="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\SRC STG FileList.Outputs[OLE DB Source Error Output].Columns[FileTag]"
                           codePage="1252"
                           dataType="str"
-                          length="20"
+                          length="50"
                           lineageId="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\SRC STG FileList.Outputs[OLE DB Source Error Output].Columns[FileTag]"
                           name="FileTag" />
                         <outputColumn
@@ -6328,7 +6384,7 @@ FROM
           PanelSize="239,177"
           Size="239,220"
           Id="Package\SEQ Move Good Files to Archive\FELC Move good files to process"
-          TopLeft="11.5,85.5" />
+          TopLeft="18.5,78.5" />
         <NodeLayout
           Size="172,42"
           Id="Package\SEQ Move Good Files to Archive\SQL Good file name"
@@ -6339,26 +6395,26 @@ FROM
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="22.5,38"
+              EndConnector="29.5,31"
               Start="0,0"
-              End="22.5,30.5">
+              End="29.5,23.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,15" />
+                    End="0,11.5" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,15"
-                    Point2="0,19"
-                    Point3="4,19" />
+                    Point1="0,11.5"
+                    Point2="0,15.5"
+                    Point3="4,15.5" />
                   <mssgle:LineSegment
-                    End="18.5,19" />
+                    End="25.5,15.5" />
                   <mssgle:CubicBezierSegment
-                    Point1="18.5,19"
-                    Point2="22.5,19"
-                    Point3="22.5,23" />
+                    Point1="25.5,15.5"
+                    Point2="29.5,15.5"
+                    Point3="29.5,19.5" />
                   <mssgle:LineSegment
-                    End="22.5,30.5" />
+                    End="29.5,23.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -6557,10 +6613,6 @@ FROM
           TopLeft="360,221" />
         <NodeLayout
           Size="213,42"
-          Id="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC TxSaft"
-          TopLeft="76,32" />
-        <NodeLayout
-          Size="213,42"
           Id="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\CSPL Row Counter"
           TopLeft="76,221" />
         <NodeLayout
@@ -6589,28 +6641,6 @@ FROM
             <mssgm:EdgeLabel
               BoundingBox="7.05861328125,5,49.3827734375,9.5537109375"
               RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle.Paths[Flat File Source Output]"
-          TopLeft="182.5,74">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,52.5"
-              Start="0,0"
-              End="0,45">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,45" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -6703,6 +6733,32 @@ FROM
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <NodeLayout
+          Size="213,42"
+          Id="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade"
+          TopLeft="76,29" />
+        <EdgeLayout
+          Id="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle.Paths[Flat File Source Output]"
+          TopLeft="182.5,71">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,55.5"
+              Start="0,0"
+              End="0,48">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,48" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
@@ -6739,8 +6795,12 @@ FROM
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="224,42"
-          Id="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\DER Etl Version"
-          TopLeft="200,107.5" />
+          Id="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\SCD T7 ODS File Table"
+          TopLeft="200,311.5" />
+        <NodeLayout
+          Size="163,42"
+          Id="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\Insert Destination"
+          TopLeft="5.50000000000006,413.5" />
         <NodeLayout
           Size="224,42"
           Id="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\LKP ProcessControl File Details"
@@ -6751,54 +6811,12 @@ FROM
           TopLeft="200,5.5" />
         <NodeLayout
           Size="224,42"
-          Id="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\SCD T7 ODS File Table"
-          TopLeft="200,311.5" />
-        <EdgeLayout
-          Id="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table.Paths[OLE DB Source Output]"
-          TopLeft="312,47.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table.Paths[Lookup Match Output]"
-          TopLeft="312,251.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,20.4453125,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+          Id="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\DER Etl Version"
+          TopLeft="200,107.5" />
+        <NodeLayout
+          Size="166,42"
+          Id="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\OLE DB Command"
+          TopLeft="229,413.5" />
         <EdgeLayout
           Id="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table.Paths[Derived Column Output]"
           TopLeft="312,149.5">
@@ -6818,53 +6836,11 @@ FROM
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="163,42"
-          Id="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\Insert Destination"
-          TopLeft="5.50000000000006,413.5" />
-        <EdgeLayout
-          Id="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table.Paths[New Output]"
-          TopLeft="276,353.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-189,60"
-              Start="0,0"
-              End="-189,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,20.2553191489362" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,20.2553191489362"
-                    Point2="0,24.2553191489362"
-                    Point3="-4,24.2553191489362" />
-                  <mssgle:LineSegment
-                    End="-185,24.2553191489362" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-185,24.2553191489362"
-                    Point2="-189,24.2553191489362"
-                    Point3="-189,28.2553191489362" />
-                  <mssgle:LineSegment
-                    End="-189,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-121.59138671875,29.2553191489362,54.1827734375,11.43359375"
+              BoundingBox="0,0,0,0"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="166,42"
-          Id="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\OLE DB Command"
-          TopLeft="229,413.5" />
         <EdgeLayout
           Id="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table.Paths[Changing Attribute Updates Output]"
           TopLeft="348,353.5">
@@ -6901,40 +6877,93 @@ FROM
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table.Paths[OLE DB Source Output]"
+          TopLeft="312,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table.Paths[New Output]"
+          TopLeft="276,353.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-189,60"
+              Start="0,0"
+              End="-189,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.2553191489362" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.2553191489362"
+                    Point2="0,24.2553191489362"
+                    Point3="-4,24.2553191489362" />
+                  <mssgle:LineSegment
+                    End="-185,24.2553191489362" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-185,24.2553191489362"
+                    Point2="-189,24.2553191489362"
+                    Point3="-189,28.2553191489362" />
+                  <mssgle:LineSegment
+                    End="-189,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-121.59138671875,29.2553191489362,54.1827734375,11.43359375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table.Paths[Lookup Match Output]"
+          TopLeft="312,251.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,20.4453125,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\LKP ProcessControl File Details">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:boolean">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[dbo].[FileControlT7]</Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:int">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\SRC STG FileList">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\SCD T7 ODS File Table">
     <Properties>
@@ -6944,7 +6973,7 @@ FROM
           type="q2:string">&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;SCDWizardMetadata xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
   &lt;ConnectionID&gt;{F999064D-8B23-4E16-A7BA-3B7EFA1D9959}&lt;/ConnectionID&gt;
-  &lt;TableName&gt;[dbo].[File]&lt;/TableName&gt;
+  &lt;TableName&gt;[dbo].[FileList]&lt;/TableName&gt;
   &lt;InputToColumnsCollection&gt;
     &lt;InputColumnToDBColumn&gt;
       &lt;IdentificationString&gt;LKP ProcessControl File Details.Outputs[Lookup Match Output].Columns[ContainsEndOfDayDetailsYN]&lt;/IdentificationString&gt;
@@ -7008,11 +7037,55 @@ FROM
       </Property>
     </Properties>
   </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\Insert Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\LKP ProcessControl File Details">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[FileControlT7]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\SRC STG FileList">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
   <TaskHost
     design-time-name="Package\SEQ Move Good Files to Archive\DFT T7 ODS TxSaft">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="168,42"
           Id="Package\SEQ Move Good Files to Archive\DFT T7 ODS TxSaft\DST T7ODS TxSaft"
@@ -7040,7 +7113,9 @@ FROM
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>

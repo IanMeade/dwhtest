@@ -24,52 +24,55 @@ BEGIN
 	WHERE
 		IssuerGlobalID IS NULL
   
+	/* MAKE EVERYTHING THAT IS NOT AN ETF AN EQUITY */
+	/* COULD CAUSE ISSUES IF EquityStage IS POPULATED WITH NON-SHARE BASED INSTRUMENTS */
+	UPDATE
+		dbo.XtOdsInstrumentEquityEtfUpdate  
+	SET
+		InstrumentType = 'Equity'
+	WHERE
+		InstrumentType NOT IN ( 'Equity', 'ETF' )
+
+	/* REPLACE NULLS WITH EMPTY STRINGS */
 	UPDATE  
 		dbo.XtOdsInstrumentEquityEtfUpdate  
 	SET  
-		SecurityType = ISNULL(SecurityType, 'UNKNOWN'),  
-		InstrumentStatusDate = ISNULL( InstrumentStatusDate, '19900101'),  
-		TradingSysInstrumentName = ISNULL(TradingSysInstrumentName, 'UNKNOWN'),  
-		MarketName = ISNULL(MarketName, 'UNK'),  
-		SEDOL = ISNULL(SEDOL,'UNKNOWN'),  
-		WKN = ISNULL(WKN, 'UNK'),  
-		MNEM = ISNULL(MNEM, 'UNKNOWN'),  
-		FinancialIndexYN = ISNULL(FinancialIndexYN, 'X'),  
-		PrimaryMarket = ISNULL(PrimaryMarket, 'UNKNOWN'),  
-		IssuedDate = ISNULL(IssuedDate, '19900101'),  
-		CurrencyISOCode = ISNULL(CurrencyISOCode, 'UNK'),  
-		QuotationCurrencyISOCode = ISNULL(QuotationCurrencyISOCode, 'UNK'),  
-		ISEQ20Freefloat = ISNULL(ISEQ20Freefloat, 0),  
-		ISEQOverallFreeFloat = ISNULL(ISEQOverallFreeFloat, 0),  
-		CFIName = ISNULL(CFIName, ''),  
-		CFICode = ISNULL(CFICode, ''),  
-		TotalSharesInIssue = ISNULL(TotalSharesInIssue, 0),  
-		CompanyListedDate = ISNULL(CompanyListedDate, '19900101'),  
-		CompanyApprovalDate = ISNULL(CompanyApprovalDate, '19900101'),  
-		CompanyStatusName = ISNULL(CompanyStatusName, 'UNKNOWN'),  
-		CompanyApprovalType = ISNULL(CompanyApprovalType, 'UNKNOWN'),  
-		Note = ISNULL( Note, ''),  
-		PrimaryBusinessSector = ISNULL(PrimaryBusinessSector,''),   
-		SubBusinessSector1 = ISNULL(SubBusinessSector1, ''),  
-		SubBusinessSector2 = ISNULL(SubBusinessSector2, ''),  
-		SubBusinessSector3 = ISNULL(SubBusinessSector3, ''),  
-		SubBusinessSector4 = ISNULL(SubBusinessSector4, ''),  
-		SubBusinessSector5 = ISNULL(SubBusinessSector5, ''),  
-		IssuerDomicile = ISNULL(IssuerDomicile , ''),  
-		FinancialYearEndDate = ISNULL(FinancialYearEndDate, '19900101'),  
-		IncorporationDate = ISNULL(IncorporationDate, '19900101'),   
-		LegalStructure = ISNULL(LegalStructure, 'UNKNOWN'),  
-		AccountingStandard = ISNULL(AccountingStandard, 'UNKNOWN'),  
-		TransparencyDirectiveHomeMemberCountry = ISNULL(TransparencyDirectiveHomeMemberCountry, 'UNKNOWN'),  
-		ProspectusDirectiveHomeMemberCountry = ISNULL(ProspectusDirectiveHomeMemberCountry, 'UNKNOWN'),  
-		FeeCodeName = ISNULL(FeeCodeName, 'UNKNOWN' ),  
-		IssuerName = ISNULL(IssuerName, 'UNKNOWN'),  
-		IssuerDomicileDomesticYN = ISNULL(IssuerDomicileDomesticYN, 'X'), 
-		InstrumentSedolMasterFileName = ISNULL( InstrumentSedolMasterFileName, ''), 
-		IssuerSedolMasterFileName = ISNULL( IssuerSedolMasterFileName, '') ,
---		ISEQ20IndexYN = ISNULL( ISEQ20IndexYN, 'N'),
-		ESMIndexYN = ISNULL( ESMIndexYN, 'N'),
-		ISEQ20IndexYN = ISNULL( ISEQ20IndexYN, 'N')
+		SecurityType = ISNULL(SecurityType, ''),
+		ISIN = ISNULL(ISIN, ''),
+		SEDOL = ISNULL(SEDOL, ''),
+		TradingSysInstrumentName = ISNULL( TradingSysInstrumentName, ''),
+		CompanyApprovalType = ISNULL( CompanyApprovalType, ''),
+		TransparencyDirectiveYN = ISNULL( TransparencyDirectiveYN, ''),
+		MarketAbuseDirectiveYN = ISNULL( MarketAbuseDirectiveYN, ''),
+		ProspectusDirectiveYN = ISNULL( ProspectusDirectiveYN, ''),
+		IssuerDomicile = ISNULL( IssuerDomicile, ''),
+		WKN = ISNULL( WKN, ''),
+		MNEM = ISNULL( MNEM, ''),
+		PrimaryBusinessSector = ISNULL(PrimaryBusinessSector, ''),
+		SubBusinessSector1 = ISNULL(SubBusinessSector1, ''),
+		SubBusinessSector2 = ISNULL(SubBusinessSector2, ''),
+		SubBusinessSector3 = ISNULL(SubBusinessSector3, ''),
+		SubBusinessSector4 = ISNULL(SubBusinessSector4, ''),
+		SubBusinessSector5 = ISNULL(SubBusinessSector5, ''),
+		PrimaryMarket = ISNULL(PrimaryMarket, ''),
+		LegalStructure = ISNULL(LegalStructure, ''),
+		AccountingStandard = ISNULL(AccountingStandard, ''),
+		TransparencyDirectiveHomeMemberCountry = ISNULL(TransparencyDirectiveHomeMemberCountry, ''),
+		ProspectusDirectiveHomeMemberCountry = ISNULL(ProspectusDirectiveHomeMemberCountry, ''),
+		IssuerDomicileDomesticYN = ISNULL(IssuerDomicileDomesticYN, ''),
+		FeeCodeName = ISNULL(FeeCodeName, ''),
+		UnitOfQuotation = ISNULL(UnitOfQuotation, 0),
+		IssuerSedolMasterFileName = ISNULL(IssuerSedolMasterFileName, ''),
+		CFIName = ISNULL(CFIName, ''),
+		CFICode = ISNULL(CFICode, ''),
+		InstrumentSedolMasterFileName = ISNULL(InstrumentSedolMasterFileName, ''),
+		Note = ISNULL(Note, '')
+
+	/* EXPECT TO REMOVE IN EQ2 */
+	UPDATE  
+		dbo.XtOdsInstrumentEquityEtfUpdate  
+	SET  
+		TotalSharesInIssue = ISNULL(TotalSharesInIssue,0)
 
   
   

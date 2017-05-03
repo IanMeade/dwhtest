@@ -1,6 +1,6 @@
 CREATE TABLE [DWH].[FactExchangeRate]
 (
-[ExchangeRateID] [int] NOT NULL IDENTITY(1, 1),
+[ExchangeRateID] [int] NOT NULL IDENTITY(1, 15),
 [DateID] [int] NOT NULL,
 [CurrencyID] [smallint] NOT NULL,
 [ExchangeRate] [numeric] (19, 6) NOT NULL,

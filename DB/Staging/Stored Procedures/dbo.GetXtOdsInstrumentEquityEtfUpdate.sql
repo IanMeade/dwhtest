@@ -5,7 +5,7 @@ GO
 -- =============================================  
 -- Author:		Ian Meade  
 -- Create date: 23/2/2017  
--- Description:	Get XT details prepareed for DWH / ETL pipelins  
+-- Description:	Get XT details prepared for DWH / ETL pipelins  
 -- =============================================  
 CREATE PROCEDURE [dbo].[GetXtOdsInstrumentEquityEtfUpdate] AS  
 BEGIN  
@@ -18,11 +18,10 @@ BEGIN
 		SecurityType,   
 		LEFT(ISIN,12) AS ISIN,   
 		LEFT(SEDOL,7) AS SEDOL,  
-		UPPER(InstrumentStatusName) AS InstrumentStatusName, 
 		InstrumentStatusDate,   
 		TradingSysInstrumentName,   
 		CompanyGlobalID,   
-		MarketName,   
+		I.MarketName,   
 		LEFT(WKN,6) AS WKN,  
 		LEFT(MNEM,4) AS MNEM,   
 		GeneralIndexYN,   
@@ -37,9 +36,7 @@ BEGIN
 		SmallCapIndexYN,   
 		PrimaryMarket,   
 		IssuedDate,   
-		UPPER(CurrencyISOCode) AS CurrencyISOCode,   
 		UnitOfQuotation,   
-		UPPER(QuotationCurrencyISOCode) AS QuotationCurrencyISOCode,   
 		ISEQ20Freefloat,   
 		ISEQOverallFreeFloat,   
 		CFIName,   
@@ -48,7 +45,6 @@ BEGIN
 		CompanyListedDate,   
 		CompanyApprovalDate,   
 		CompanyApprovalType,   
-		UPPER(CompanyStatusName) AS CompanyStatusName,   
 		Note,   
 		TransparencyDirectiveYN,   
 		MarketAbuseDirectiveYN,   
@@ -71,15 +67,32 @@ BEGIN
 		IssuerDomicileDomesticYN,   
 		FeeCodeName, 
 		ESMIndexYN, 
-		IIF( LEFT(ISIN,2) = 'IE', 'Y', 'N' ) AS InstrumentDomesticYN 
+		IIF( LEFT(ISIN,2) = 'IE', 'Y', 'N' ) AS InstrumentDomesticYN,
+		ES.StatusID AS InstrumentStatusID,
+		CS.StatusID AS CompanyStatusID,
+		CC.CurrencyID AS CurrencyID,
+		QC.CurrencyID AS QuotationCurrencyID,
+		DM.MarketID
 	FROM  
-		dbo.XtOdsInstrumentEquityEtfUpdate  
-	/* REPLACED BY VALIDATION ROUTINE 
-	WHERE 
-		ISIN IS NOT NULL 
-	AND 
- 		CompanyApprovalType IS NOT NULL 
-	*/ 
- 
+			dbo.XtOdsInstrumentEquityEtfUpdate I
+		INNER JOIN
+			dbo.DwhDimStatus ES
+		ON I.InstrumentStatusName = ES.StatusName
+		INNER JOIN
+			dbo.DwhDimStatus CS
+		ON I.CompanyStatusName = CS.StatusName
+		INNER JOIN
+			dbo.DwhDimCurrency CC 
+		ON I.CurrencyISOCode = CC.CurrencyISOCode
+		INNER JOIN
+			dbo.DwhDimCurrency QC 
+		ON I.QuotationCurrencyISOCode = QC.CurrencyISOCode
+		INNER JOIN
+			dbo.MdmMarket MM
+		ON I.MarketName = MM.XtCode
+		INNER JOIN
+			dbo.DwhDimMarket DM
+		ON MM.MarketCode = DM.MarketCode
+
 END  
 GO

@@ -1,6 +1,8 @@
 CREATE SCHEMA [Report]
 AUTHORIZATION [dbo]
 GO
+GRANT ALTER ON SCHEMA:: [Report] TO [EtlRunner]
+GO
 GRANT SELECT ON SCHEMA:: [Report] TO [EtlRunner]
 GO
 GRANT INSERT ON SCHEMA:: [Report] TO [EtlRunner]

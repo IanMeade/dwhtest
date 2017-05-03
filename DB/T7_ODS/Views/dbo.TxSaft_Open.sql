@@ -3,6 +3,8 @@ GO
 SET ANSI_NULLS ON
 GO
 
+
+
  
  
  
@@ -48,11 +50,12 @@ CREATE VIEW [dbo].[TxSaft_Open] AS
 		A_ORDER_MARKET_VALUE AS TradeTurnover, 
 		O.DwhFileID, 
 		/* MINOR CHANGES */ 
-		IIF(A_DEFERRED_IND = 'Y' , 'Y', 'N' ) AS DelayedTradeYN 
+	--	IIF(A_DEFERRED_IND = 'Y' , 'Y', 'N' ) AS DelayedTradeYN 
+		A_DEFERRED_IND AS DelayedTradeYN 
 	FROM 
 			dbo.TxSaft O 
 		INNER JOIN 
-			dbo.[File] F 
+			dbo.FileList F 
 		ON O.DwhFileID = F.DwhFileID 
  
  
@@ -72,5 +75,7 @@ CREATE VIEW [dbo].[TxSaft_Open] AS
 			 
  
  
+
+
 
 GO

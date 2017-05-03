@@ -1,0 +1,187 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="3/30/2017 4:15:57 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="T7-DDT-01"
+  DTS:CreatorName="SYS-ISE\ianm"
+  DTS:DTSID="{E0B2E51D-BFB0-4872-99A5-F4B4971BA599}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="13.0.4001.0"
+  DTS:LocaleID="6153"
+  DTS:ObjectName="Package1"
+  DTS:PackageType="5"
+  DTS:VersionBuild="5"
+  DTS:VersionGUID="{9B29C79F-0E04-4F63-BC65-6FE6CE95D1C9}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{214EB798-5085-4F58-BF23-F18695EE4382}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="BatchID">
+      <DTS:VariableValue
+        DTS:DataType="3">22</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{D30A4186-0E83-4039-A33E-A128B919496F}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="Message1">
+      <DTS:VariableValue
+        DTS:DataType="8">Message 1</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{E1D66CD6-C94B-4B09-A58C-2D7731A5A225}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="Message2">
+      <DTS:VariableValue
+        DTS:DataType="8">Message 2</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{340370C8-8FC6-464C-9B49-5FE8C66E0054}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="MessageTag">
+      <DTS:VariableValue
+        DTS:DataType="8">GENERIC_VALIDATION_ERROR</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{1CF4943E-B914-4830-958A-79CBEE68EB4C}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="ValidationTestSuite">
+      <DTS:VariableValue
+        DTS:DataType="8">UNIT_TEST</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Alert task"
+      DTS:CreationName="Microsoft.ExecutePackageTask"
+      DTS:Description="Execute Package Task"
+      DTS:DTSID="{917B50D0-5908-46F1-96FC-085062CECF99}"
+      DTS:ExecutableType="Microsoft.ExecutePackageTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Alert task"
+      DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <ExecutePackageTask>
+          <UseProjectReference>True</UseProjectReference>
+          <PackageName>PckAlert.dtsx</PackageName>
+          <ParameterAssignment>
+            <ParameterName>MessageTag</ParameterName>
+            <BindedVariableOrParameterName>User::MessageTag</BindedVariableOrParameterName>
+          </ParameterAssignment>
+        </ExecutePackageTask>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Execute Package Task"
+      DTS:CreationName="Microsoft.ExecutePackageTask"
+      DTS:Description="Execute Package Task"
+      DTS:DTSID="{7693D41B-5F25-4F7C-A6D2-AD84433B69AF}"
+      DTS:ExecutableType="Microsoft.ExecutePackageTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Execute Package Task"
+      DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <ExecutePackageTask>
+          <UseProjectReference>True</UseProjectReference>
+          <PackageName>PckProcessStatus.dtsx</PackageName>
+          <ParameterAssignment>
+            <ParameterName>BatchID</ParameterName>
+            <BindedVariableOrParameterName>User::BatchID</BindedVariableOrParameterName>
+          </ParameterAssignment>
+          <ParameterAssignment>
+            <ParameterName>Message</ParameterName>
+            <BindedVariableOrParameterName>User::Message1</BindedVariableOrParameterName>
+          </ParameterAssignment>
+        </ExecutePackageTask>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Execute Package Task 1"
+      DTS:CreationName="Microsoft.ExecutePackageTask"
+      DTS:Description="Execute Package Task"
+      DTS:DTSID="{2e9582f8-dbdf-4f61-875c-c1ef5e67a7b7}"
+      DTS:ExecutableType="Microsoft.ExecutePackageTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Execute Package Task 1"
+      DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <ExecutePackageTask>
+          <UseProjectReference>True</UseProjectReference>
+          <PackageName>PckProcessStatus.dtsx</PackageName>
+          <ParameterAssignment>
+            <ParameterName>Message</ParameterName>
+            <BindedVariableOrParameterName>User::Message2</BindedVariableOrParameterName>
+          </ParameterAssignment>
+        </ExecutePackageTask>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Validate XT Interface"
+      DTS:CreationName="Microsoft.ExecutePackageTask"
+      DTS:Description="Execute Package Task"
+      DTS:DTSID="{fa3552c4-1fef-47a6-9fe4-2215dffb3ef0}"
+      DTS:ExecutableType="Microsoft.ExecutePackageTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Validate XT Interface"
+      DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <ExecutePackageTask>
+          <UseProjectReference>True</UseProjectReference>
+          <PackageName>PckValidate.dtsx</PackageName>
+          <ParameterAssignment>
+            <ParameterName>ValidationTestSuit</ParameterName>
+            <BindedVariableOrParameterName>User::ValidationTestSuite</BindedVariableOrParameterName>
+          </ParameterAssignment>
+        </ExecutePackageTask>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="123,42"
+          Id="Package\Alert task"
+          TopLeft="221,43" />
+        <NodeLayout
+          Size="178,42"
+          Id="Package\Validate XT Interface"
+          TopLeft="312,214" />
+        <NodeLayout
+          Size="183,42"
+          Id="Package\Execute Package Task"
+          TopLeft="688,47" />
+        <NodeLayout
+          Size="183,42"
+          Id="Package\Execute Package Task 1"
+          TopLeft="698,188" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

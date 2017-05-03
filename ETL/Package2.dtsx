@@ -1,0 +1,2756 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="4/11/2017 1:48:34 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="T7-DDT-01"
+  DTS:CreatorName="SYS-ISE\ianm"
+  DTS:DTSID="{BA01608C-309F-4910-BCC2-9DAF912E1B71}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="13.0.4001.0"
+  DTS:LocaleID="6153"
+  DTS:ObjectName="Package2"
+  DTS:PackageType="5"
+  DTS:VersionBuild="6"
+  DTS:VersionGUID="{CAF5DE55-B9A3-4DE0-A7E7-C34BE75F8E74}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Flat File Connection Manager 2]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{CE5A936E-2521-411D-AA05-632E2D3EA688}"
+      DTS:ObjectName="Flat File Connection Manager 2">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="6153"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="C:\DWH\Files\Process\ISEQ_Leveraged_20170404.csv">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="TRADE_DATE"
+              DTS:DTSID="{5BE24D8E-5A75-4EFA-B2E5-FC05C1C4B0F8}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Eonia"
+              DTS:DTSID="{958CD7CC-3628-4468-B9EF-8A7D92ACC92F}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="ISEQ 20 RETURN INDEX"
+              DTS:DTSID="{069C17A6-F678-4B26-BC15-E99B68655C36}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="ISEQ 20 PRICE INDEX"
+              DTS:DTSID="{8465159C-CE33-4791-AF06-FE4ED25993C5}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000A_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="ISEQ LEVERAGED INDEX"
+              DTS:DTSID="{FABB54EB-F4BA-42A5-AB80-DA5357E3D345}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Iseq20Stats]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{DB543F34-83BB-42F9-85E2-67F38B62178E}"
+      DTS:ObjectName="Iseq20Stats">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="6153"
+          DTS:HeaderRowDelimiter="_x000A_"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="C:\DWH\Files\Process\etfsf_20170404.csv">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="300"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Column 0"
+              DTS:DTSID="{09EEB8D5-B1F7-47E5-A5F1-9A19C06DD17B}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Column 1"
+              DTS:DTSID="{048FB73B-66D8-4755-9EDD-F5B0A4139A7D}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Column 2"
+              DTS:DTSID="{5080A8FA-B439-4295-B3AC-93259D74962F}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Column 3"
+              DTS:DTSID="{EB7AA368-D036-4FCF-B659-C57E681B1778}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Column 4"
+              DTS:DTSID="{5C87D4A3-8F50-44D6-8C3E-E1F5FAD47BD1}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Column 5"
+              DTS:DTSID="{7F7F48E1-17B3-4FBF-A66D-754CDB19215D}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Column 6"
+              DTS:DTSID="{1ECA1518-BF9E-445E-9774-29144FA9BD5D}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Column 7"
+              DTS:DTSID="{600B15C5-FAEF-410C-B177-922006C9647A}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Column 8"
+              DTS:DTSID="{6E22ACD2-B57B-4E4D-96AD-6FBFE678979E}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Column 9"
+              DTS:DTSID="{0B6170CF-4212-46EA-BECF-6B9B829D30A7}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Column 10"
+              DTS:DTSID="{2F8408AB-2874-47AF-A2FF-8572A895CD00}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Column 11"
+              DTS:DTSID="{21B8230C-92F4-4014-812A-203B3BAB60AB}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Column 12"
+              DTS:DTSID="{CDB74AA1-FCAE-4862-8104-283A81E8402C}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Column 13"
+              DTS:DTSID="{89255079-8B0F-4EE2-A872-5F471A323E3F}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Column 14"
+              DTS:DTSID="{0E4DBD27-460A-4CB8-A788-41BE1E323AB4}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000A_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Column 15"
+              DTS:DTSID="{C72B17D6-6EB8-4CBB-9123-7EDB48856878}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Stats]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{B187F438-400B-4E7A-B223-4A298A8A83BF}"
+      DTS:ObjectName="Stats">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="6153"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="C:\DWH\Files\Process\sf_20170404.csv">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Column 0"
+              DTS:DTSID="{6C3CB8F0-08DD-4EF4-AD0D-7AF2796BAAC2}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Column 1"
+              DTS:DTSID="{56AFD985-DB9C-45D7-9C6F-58083EFA6D25}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Column 2"
+              DTS:DTSID="{138F2FBE-B8E9-441F-B0CF-6BA5AE76EEE3}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Column 3"
+              DTS:DTSID="{1AC06CAB-7FF5-49B3-AABA-7BD6E0E90D0A}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Column 4"
+              DTS:DTSID="{F153D79B-01E6-4E07-9AE8-341005774E48}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Column 5"
+              DTS:DTSID="{2CA569D0-CBA1-46E6-8C62-C809F9562574}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Column 6"
+              DTS:DTSID="{632C3DCB-6F18-410D-920B-0F78CABC59BC}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000A_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Column 7"
+              DTS:DTSID="{A7CA309A-1A0C-4AD2-8FFA-BE2613BBA501}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\ISEQ20 STATS"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{5B44A0F2-9545-47DB-AEFE-443109796EEA}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="ISEQ20 STATS"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\ISEQ20 STATS\Derived Column"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\ISEQ20 STATS\Derived Column.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\ISEQ20 STATS\Derived Column.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\ISEQ20 STATS\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\ISEQ20 STATS\Derived Column.Outputs[Derived Column Output].Columns[FileName]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\ISEQ20 STATS\Derived Column.Outputs[Derived Column Output].Columns[FileName]"
+                      name="FileName"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_STR,50,1252)"file name"</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_STR,50,1252)"file name"</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\ISEQ20 STATS\Derived Column.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\ISEQ20 STATS\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\ISEQ20 STATS\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\ISEQ20 STATS\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\ISEQ20 STATS\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\ISEQ20 STATS\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\ISEQ20 STATS\Flat File Source"
+              componentClassID="Microsoft.FlatFileSource"
+              contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Flat File Source"
+              localeId="6153"
+              name="Flat File Source"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether zero-length columns are treated as null."
+                  name="RetainNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of an output column containing the file name. If no name is specified, no output column containing the file name will be generated."
+                  name="FileNameColumnName"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\ISEQ20 STATS\Flat File Source.Connections[FlatFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Iseq20Stats]"
+                  connectionManagerRefId="Package.ConnectionManagers[Iseq20Stats]"
+                  name="FlatFileConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\ISEQ20 STATS\Flat File Source.Outputs[Flat File Source Output]"
+                  name="Flat File Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\ISEQ20 STATS\Flat File Source.Outputs[Flat File Source Output].Columns[Column 0]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ISEQ20 STATS\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Column 0]"
+                      length="300"
+                      lineageId="Package\ISEQ20 STATS\Flat File Source.Outputs[Flat File Source Output].Columns[Column 0]"
+                      name="Column 0"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\ISEQ20 STATS\Flat File Source.Outputs[Flat File Source Output].Columns[Column 1]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ISEQ20 STATS\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Column 1]"
+                      length="50"
+                      lineageId="Package\ISEQ20 STATS\Flat File Source.Outputs[Flat File Source Output].Columns[Column 1]"
+                      name="Column 1"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\ISEQ20 STATS\Flat File Source.Outputs[Flat File Source Output].Columns[Column 2]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ISEQ20 STATS\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Column 2]"
+                      length="50"
+                      lineageId="Package\ISEQ20 STATS\Flat File Source.Outputs[Flat File Source Output].Columns[Column 2]"
+                      name="Column 2"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\ISEQ20 STATS\Flat File Source.Outputs[Flat File Source Output].Columns[Column 3]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ISEQ20 STATS\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Column 3]"
+                      length="50"
+                      lineageId="Package\ISEQ20 STATS\Flat File Source.Outputs[Flat File Source Output].Columns[Column 3]"
+                      name="Column 3"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\ISEQ20 STATS\Flat File Source.Outputs[Flat File Source Output].Columns[Column 4]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ISEQ20 STATS\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Column 4]"
+                      length="50"
+                      lineageId="Package\ISEQ20 STATS\Flat File Source.Outputs[Flat File Source Output].Columns[Column 4]"
+                      name="Column 4"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\ISEQ20 STATS\Flat File Source.Outputs[Flat File Source Output].Columns[Column 5]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ISEQ20 STATS\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Column 5]"
+                      length="50"
+                      lineageId="Package\ISEQ20 STATS\Flat File Source.Outputs[Flat File Source Output].Columns[Column 5]"
+                      name="Column 5"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\ISEQ20 STATS\Flat File Source.Outputs[Flat File Source Output].Columns[Column 6]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ISEQ20 STATS\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Column 6]"
+                      length="50"
+                      lineageId="Package\ISEQ20 STATS\Flat File Source.Outputs[Flat File Source Output].Columns[Column 6]"
+                      name="Column 6"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\ISEQ20 STATS\Flat File Source.Outputs[Flat File Source Output].Columns[Column 7]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ISEQ20 STATS\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Column 7]"
+                      length="50"
+                      lineageId="Package\ISEQ20 STATS\Flat File Source.Outputs[Flat File Source Output].Columns[Column 7]"
+                      name="Column 7"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\ISEQ20 STATS\Flat File Source.Outputs[Flat File Source Output].Columns[Column 8]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ISEQ20 STATS\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Column 8]"
+                      length="50"
+                      lineageId="Package\ISEQ20 STATS\Flat File Source.Outputs[Flat File Source Output].Columns[Column 8]"
+                      name="Column 8"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\ISEQ20 STATS\Flat File Source.Outputs[Flat File Source Output].Columns[Column 9]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ISEQ20 STATS\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Column 9]"
+                      length="50"
+                      lineageId="Package\ISEQ20 STATS\Flat File Source.Outputs[Flat File Source Output].Columns[Column 9]"
+                      name="Column 9"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\ISEQ20 STATS\Flat File Source.Outputs[Flat File Source Output].Columns[Column 10]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ISEQ20 STATS\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Column 10]"
+                      length="50"
+                      lineageId="Package\ISEQ20 STATS\Flat File Source.Outputs[Flat File Source Output].Columns[Column 10]"
+                      name="Column 10"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\ISEQ20 STATS\Flat File Source.Outputs[Flat File Source Output].Columns[Column 11]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ISEQ20 STATS\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Column 11]"
+                      length="50"
+                      lineageId="Package\ISEQ20 STATS\Flat File Source.Outputs[Flat File Source Output].Columns[Column 11]"
+                      name="Column 11"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\ISEQ20 STATS\Flat File Source.Outputs[Flat File Source Output].Columns[Column 12]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ISEQ20 STATS\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Column 12]"
+                      length="50"
+                      lineageId="Package\ISEQ20 STATS\Flat File Source.Outputs[Flat File Source Output].Columns[Column 12]"
+                      name="Column 12"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\ISEQ20 STATS\Flat File Source.Outputs[Flat File Source Output].Columns[Column 13]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ISEQ20 STATS\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Column 13]"
+                      length="50"
+                      lineageId="Package\ISEQ20 STATS\Flat File Source.Outputs[Flat File Source Output].Columns[Column 13]"
+                      name="Column 13"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\ISEQ20 STATS\Flat File Source.Outputs[Flat File Source Output].Columns[Column 14]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ISEQ20 STATS\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Column 14]"
+                      length="50"
+                      lineageId="Package\ISEQ20 STATS\Flat File Source.Outputs[Flat File Source Output].Columns[Column 14]"
+                      name="Column 14"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\ISEQ20 STATS\Flat File Source.Outputs[Flat File Source Output].Columns[Column 15]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ISEQ20 STATS\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Column 15]"
+                      length="50"
+                      lineageId="Package\ISEQ20 STATS\Flat File Source.Outputs[Flat File Source Output].Columns[Column 15]"
+                      name="Column 15"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\ISEQ20 STATS\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Column 0]"
+                      codePage="1252"
+                      dataType="str"
+                      length="300"
+                      name="Column 0" />
+                    <externalMetadataColumn
+                      refId="Package\ISEQ20 STATS\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Column 1]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Column 1" />
+                    <externalMetadataColumn
+                      refId="Package\ISEQ20 STATS\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Column 2]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Column 2" />
+                    <externalMetadataColumn
+                      refId="Package\ISEQ20 STATS\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Column 3]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Column 3" />
+                    <externalMetadataColumn
+                      refId="Package\ISEQ20 STATS\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Column 4]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Column 4" />
+                    <externalMetadataColumn
+                      refId="Package\ISEQ20 STATS\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Column 5]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Column 5" />
+                    <externalMetadataColumn
+                      refId="Package\ISEQ20 STATS\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Column 6]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Column 6" />
+                    <externalMetadataColumn
+                      refId="Package\ISEQ20 STATS\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Column 7]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Column 7" />
+                    <externalMetadataColumn
+                      refId="Package\ISEQ20 STATS\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Column 8]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Column 8" />
+                    <externalMetadataColumn
+                      refId="Package\ISEQ20 STATS\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Column 9]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Column 9" />
+                    <externalMetadataColumn
+                      refId="Package\ISEQ20 STATS\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Column 10]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Column 10" />
+                    <externalMetadataColumn
+                      refId="Package\ISEQ20 STATS\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Column 11]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Column 11" />
+                    <externalMetadataColumn
+                      refId="Package\ISEQ20 STATS\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Column 12]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Column 12" />
+                    <externalMetadataColumn
+                      refId="Package\ISEQ20 STATS\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Column 13]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Column 13" />
+                    <externalMetadataColumn
+                      refId="Package\ISEQ20 STATS\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Column 14]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Column 14" />
+                    <externalMetadataColumn
+                      refId="Package\ISEQ20 STATS\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Column 15]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Column 15" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\ISEQ20 STATS\Flat File Source.Outputs[Flat File Source Error Output]"
+                  isErrorOut="true"
+                  name="Flat File Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\ISEQ20 STATS\Flat File Source.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      codePage="1252"
+                      dataType="text"
+                      description="Flat File Source Error Output Column"
+                      lineageId="Package\ISEQ20 STATS\Flat File Source.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      name="Flat File Source Error Output Column" />
+                    <outputColumn
+                      refId="Package\ISEQ20 STATS\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\ISEQ20 STATS\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\ISEQ20 STATS\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\ISEQ20 STATS\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\ISEQ20 STATS\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[StoxxIseq20Stats]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\ISEQ20 STATS\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="{7AE745A6-BA4C-482E-9695-63779ECE70D4}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Staging]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\ISEQ20 STATS\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\ISEQ20 STATS\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Column 0]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="300"
+                      cachedName="Column 0"
+                      externalMetadataColumnId="Package\ISEQ20 STATS\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Column 0]"
+                      lineageId="Package\ISEQ20 STATS\Flat File Source.Outputs[Flat File Source Output].Columns[Column 0]" />
+                    <inputColumn
+                      refId="Package\ISEQ20 STATS\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Column 1]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Column 1"
+                      externalMetadataColumnId="Package\ISEQ20 STATS\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Column 1]"
+                      lineageId="Package\ISEQ20 STATS\Flat File Source.Outputs[Flat File Source Output].Columns[Column 1]" />
+                    <inputColumn
+                      refId="Package\ISEQ20 STATS\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Column 2]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Column 2"
+                      externalMetadataColumnId="Package\ISEQ20 STATS\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Column 2]"
+                      lineageId="Package\ISEQ20 STATS\Flat File Source.Outputs[Flat File Source Output].Columns[Column 2]" />
+                    <inputColumn
+                      refId="Package\ISEQ20 STATS\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Column 3]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Column 3"
+                      externalMetadataColumnId="Package\ISEQ20 STATS\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Column 3]"
+                      lineageId="Package\ISEQ20 STATS\Flat File Source.Outputs[Flat File Source Output].Columns[Column 3]" />
+                    <inputColumn
+                      refId="Package\ISEQ20 STATS\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Column 4]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Column 4"
+                      externalMetadataColumnId="Package\ISEQ20 STATS\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Column 4]"
+                      lineageId="Package\ISEQ20 STATS\Flat File Source.Outputs[Flat File Source Output].Columns[Column 4]" />
+                    <inputColumn
+                      refId="Package\ISEQ20 STATS\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Column 5]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Column 5"
+                      externalMetadataColumnId="Package\ISEQ20 STATS\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Column 5]"
+                      lineageId="Package\ISEQ20 STATS\Flat File Source.Outputs[Flat File Source Output].Columns[Column 5]" />
+                    <inputColumn
+                      refId="Package\ISEQ20 STATS\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Column 6]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Column 6"
+                      externalMetadataColumnId="Package\ISEQ20 STATS\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Column 6]"
+                      lineageId="Package\ISEQ20 STATS\Flat File Source.Outputs[Flat File Source Output].Columns[Column 6]" />
+                    <inputColumn
+                      refId="Package\ISEQ20 STATS\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Column 7]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Column 7"
+                      externalMetadataColumnId="Package\ISEQ20 STATS\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Column 7]"
+                      lineageId="Package\ISEQ20 STATS\Flat File Source.Outputs[Flat File Source Output].Columns[Column 7]" />
+                    <inputColumn
+                      refId="Package\ISEQ20 STATS\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Column 8]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Column 8"
+                      externalMetadataColumnId="Package\ISEQ20 STATS\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Column 8]"
+                      lineageId="Package\ISEQ20 STATS\Flat File Source.Outputs[Flat File Source Output].Columns[Column 8]" />
+                    <inputColumn
+                      refId="Package\ISEQ20 STATS\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Column 9]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Column 9"
+                      externalMetadataColumnId="Package\ISEQ20 STATS\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Column 9]"
+                      lineageId="Package\ISEQ20 STATS\Flat File Source.Outputs[Flat File Source Output].Columns[Column 9]" />
+                    <inputColumn
+                      refId="Package\ISEQ20 STATS\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Column 10]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Column 10"
+                      externalMetadataColumnId="Package\ISEQ20 STATS\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Column 10]"
+                      lineageId="Package\ISEQ20 STATS\Flat File Source.Outputs[Flat File Source Output].Columns[Column 10]" />
+                    <inputColumn
+                      refId="Package\ISEQ20 STATS\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Column 11]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Column 11"
+                      externalMetadataColumnId="Package\ISEQ20 STATS\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Column 11]"
+                      lineageId="Package\ISEQ20 STATS\Flat File Source.Outputs[Flat File Source Output].Columns[Column 11]" />
+                    <inputColumn
+                      refId="Package\ISEQ20 STATS\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Column 12]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Column 12"
+                      externalMetadataColumnId="Package\ISEQ20 STATS\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Column 12]"
+                      lineageId="Package\ISEQ20 STATS\Flat File Source.Outputs[Flat File Source Output].Columns[Column 12]" />
+                    <inputColumn
+                      refId="Package\ISEQ20 STATS\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Column 13]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Column 13"
+                      externalMetadataColumnId="Package\ISEQ20 STATS\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Column 13]"
+                      lineageId="Package\ISEQ20 STATS\Flat File Source.Outputs[Flat File Source Output].Columns[Column 13]" />
+                    <inputColumn
+                      refId="Package\ISEQ20 STATS\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Column 14]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Column 14"
+                      externalMetadataColumnId="Package\ISEQ20 STATS\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Column 14]"
+                      lineageId="Package\ISEQ20 STATS\Flat File Source.Outputs[Flat File Source Output].Columns[Column 14]" />
+                    <inputColumn
+                      refId="Package\ISEQ20 STATS\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Column 15]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Column 15"
+                      externalMetadataColumnId="Package\ISEQ20 STATS\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Column 15]"
+                      lineageId="Package\ISEQ20 STATS\Flat File Source.Outputs[Flat File Source Output].Columns[Column 15]" />
+                    <inputColumn
+                      refId="Package\ISEQ20 STATS\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[FileName]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="FileName"
+                      externalMetadataColumnId="Package\ISEQ20 STATS\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FileName]"
+                      lineageId="Package\ISEQ20 STATS\Derived Column.Outputs[Derived Column Output].Columns[FileName]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\ISEQ20 STATS\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FileName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="FileName" />
+                    <externalMetadataColumn
+                      refId="Package\ISEQ20 STATS\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Column 0]"
+                      codePage="1252"
+                      dataType="str"
+                      length="300"
+                      name="Column 0" />
+                    <externalMetadataColumn
+                      refId="Package\ISEQ20 STATS\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Column 1]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Column 1" />
+                    <externalMetadataColumn
+                      refId="Package\ISEQ20 STATS\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Column 2]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Column 2" />
+                    <externalMetadataColumn
+                      refId="Package\ISEQ20 STATS\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Column 3]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Column 3" />
+                    <externalMetadataColumn
+                      refId="Package\ISEQ20 STATS\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Column 4]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Column 4" />
+                    <externalMetadataColumn
+                      refId="Package\ISEQ20 STATS\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Column 5]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Column 5" />
+                    <externalMetadataColumn
+                      refId="Package\ISEQ20 STATS\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Column 6]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Column 6" />
+                    <externalMetadataColumn
+                      refId="Package\ISEQ20 STATS\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Column 7]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Column 7" />
+                    <externalMetadataColumn
+                      refId="Package\ISEQ20 STATS\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Column 8]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Column 8" />
+                    <externalMetadataColumn
+                      refId="Package\ISEQ20 STATS\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Column 9]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Column 9" />
+                    <externalMetadataColumn
+                      refId="Package\ISEQ20 STATS\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Column 10]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Column 10" />
+                    <externalMetadataColumn
+                      refId="Package\ISEQ20 STATS\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Column 11]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Column 11" />
+                    <externalMetadataColumn
+                      refId="Package\ISEQ20 STATS\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Column 12]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Column 12" />
+                    <externalMetadataColumn
+                      refId="Package\ISEQ20 STATS\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Column 13]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Column 13" />
+                    <externalMetadataColumn
+                      refId="Package\ISEQ20 STATS\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Column 14]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Column 14" />
+                    <externalMetadataColumn
+                      refId="Package\ISEQ20 STATS\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Column 15]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Column 15" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\ISEQ20 STATS\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\ISEQ20 STATS\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\ISEQ20 STATS\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\ISEQ20 STATS\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\ISEQ20 STATS\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\ISEQ20 STATS\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\ISEQ20 STATS.Paths[Derived Column Output]"
+              endId="Package\ISEQ20 STATS\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="Derived Column Output"
+              startId="Package\ISEQ20 STATS\Derived Column.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\ISEQ20 STATS.Paths[Flat File Source Output]"
+              endId="Package\ISEQ20 STATS\Derived Column.Inputs[Derived Column Input]"
+              name="Flat File Source Output"
+              startId="Package\ISEQ20 STATS\Flat File Source.Outputs[Flat File Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\ISEQ20_LEVERAGED"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{5C005EC6-2662-4614-AA72-72B6F40A4590}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="ISEQ20_LEVERAGED"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\ISEQ20_LEVERAGED\Derived Column"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\ISEQ20_LEVERAGED\Derived Column.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\ISEQ20_LEVERAGED\Derived Column.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\ISEQ20_LEVERAGED\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\ISEQ20_LEVERAGED\Derived Column.Outputs[Derived Column Output].Columns[FileName]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\ISEQ20_LEVERAGED\Derived Column.Outputs[Derived Column Output].Columns[FileName]"
+                      name="FileName"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_STR,50,1252)"File name"</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_STR,50,1252)"File name"</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\ISEQ20_LEVERAGED\Derived Column.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\ISEQ20_LEVERAGED\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\ISEQ20_LEVERAGED\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\ISEQ20_LEVERAGED\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\ISEQ20_LEVERAGED\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\ISEQ20_LEVERAGED\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\ISEQ20_LEVERAGED\Flat File Source"
+              componentClassID="Microsoft.FlatFileSource"
+              contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Flat File Source"
+              localeId="6153"
+              name="Flat File Source"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether zero-length columns are treated as null."
+                  name="RetainNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of an output column containing the file name. If no name is specified, no output column containing the file name will be generated."
+                  name="FileNameColumnName"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\ISEQ20_LEVERAGED\Flat File Source.Connections[FlatFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Flat File Connection Manager 2]"
+                  connectionManagerRefId="Package.ConnectionManagers[Flat File Connection Manager 2]"
+                  name="FlatFileConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\ISEQ20_LEVERAGED\Flat File Source.Outputs[Flat File Source Output]"
+                  name="Flat File Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\ISEQ20_LEVERAGED\Flat File Source.Outputs[Flat File Source Output].Columns[TRADE_DATE]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ISEQ20_LEVERAGED\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[TRADE_DATE]"
+                      length="50"
+                      lineageId="Package\ISEQ20_LEVERAGED\Flat File Source.Outputs[Flat File Source Output].Columns[TRADE_DATE]"
+                      name="TRADE_DATE"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\ISEQ20_LEVERAGED\Flat File Source.Outputs[Flat File Source Output].Columns[Eonia]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ISEQ20_LEVERAGED\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Eonia]"
+                      length="50"
+                      lineageId="Package\ISEQ20_LEVERAGED\Flat File Source.Outputs[Flat File Source Output].Columns[Eonia]"
+                      name="Eonia"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\ISEQ20_LEVERAGED\Flat File Source.Outputs[Flat File Source Output].Columns[ISEQ 20 RETURN INDEX]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ISEQ20_LEVERAGED\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[ISEQ 20 RETURN INDEX]"
+                      length="50"
+                      lineageId="Package\ISEQ20_LEVERAGED\Flat File Source.Outputs[Flat File Source Output].Columns[ISEQ 20 RETURN INDEX]"
+                      name="ISEQ 20 RETURN INDEX"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\ISEQ20_LEVERAGED\Flat File Source.Outputs[Flat File Source Output].Columns[ISEQ 20 PRICE INDEX]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ISEQ20_LEVERAGED\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[ISEQ 20 PRICE INDEX]"
+                      length="50"
+                      lineageId="Package\ISEQ20_LEVERAGED\Flat File Source.Outputs[Flat File Source Output].Columns[ISEQ 20 PRICE INDEX]"
+                      name="ISEQ 20 PRICE INDEX"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\ISEQ20_LEVERAGED\Flat File Source.Outputs[Flat File Source Output].Columns[ISEQ LEVERAGED INDEX]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ISEQ20_LEVERAGED\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[ISEQ LEVERAGED INDEX]"
+                      length="50"
+                      lineageId="Package\ISEQ20_LEVERAGED\Flat File Source.Outputs[Flat File Source Output].Columns[ISEQ LEVERAGED INDEX]"
+                      name="ISEQ LEVERAGED INDEX"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\ISEQ20_LEVERAGED\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[TRADE_DATE]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="TRADE_DATE" />
+                    <externalMetadataColumn
+                      refId="Package\ISEQ20_LEVERAGED\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Eonia]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Eonia" />
+                    <externalMetadataColumn
+                      refId="Package\ISEQ20_LEVERAGED\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[ISEQ 20 RETURN INDEX]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="ISEQ 20 RETURN INDEX" />
+                    <externalMetadataColumn
+                      refId="Package\ISEQ20_LEVERAGED\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[ISEQ 20 PRICE INDEX]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="ISEQ 20 PRICE INDEX" />
+                    <externalMetadataColumn
+                      refId="Package\ISEQ20_LEVERAGED\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[ISEQ LEVERAGED INDEX]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="ISEQ LEVERAGED INDEX" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\ISEQ20_LEVERAGED\Flat File Source.Outputs[Flat File Source Error Output]"
+                  isErrorOut="true"
+                  name="Flat File Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\ISEQ20_LEVERAGED\Flat File Source.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      codePage="1252"
+                      dataType="text"
+                      description="Flat File Source Error Output Column"
+                      lineageId="Package\ISEQ20_LEVERAGED\Flat File Source.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      name="Flat File Source Error Output Column" />
+                    <outputColumn
+                      refId="Package\ISEQ20_LEVERAGED\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\ISEQ20_LEVERAGED\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\ISEQ20_LEVERAGED\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\ISEQ20_LEVERAGED\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\ISEQ20_LEVERAGED\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[StoxxIseq20Leveraged]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\ISEQ20_LEVERAGED\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="{7AE745A6-BA4C-482E-9695-63779ECE70D4}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Staging]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\ISEQ20_LEVERAGED\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\ISEQ20_LEVERAGED\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[TRADE_DATE]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="TRADE_DATE"
+                      externalMetadataColumnId="Package\ISEQ20_LEVERAGED\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TRADE_DATE]"
+                      lineageId="Package\ISEQ20_LEVERAGED\Flat File Source.Outputs[Flat File Source Output].Columns[TRADE_DATE]" />
+                    <inputColumn
+                      refId="Package\ISEQ20_LEVERAGED\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Eonia]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Eonia"
+                      externalMetadataColumnId="Package\ISEQ20_LEVERAGED\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Eonia]"
+                      lineageId="Package\ISEQ20_LEVERAGED\Flat File Source.Outputs[Flat File Source Output].Columns[Eonia]" />
+                    <inputColumn
+                      refId="Package\ISEQ20_LEVERAGED\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ISEQ 20 RETURN INDEX]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="ISEQ 20 RETURN INDEX"
+                      externalMetadataColumnId="Package\ISEQ20_LEVERAGED\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ISEQ 20 RETURN INDEX]"
+                      lineageId="Package\ISEQ20_LEVERAGED\Flat File Source.Outputs[Flat File Source Output].Columns[ISEQ 20 RETURN INDEX]" />
+                    <inputColumn
+                      refId="Package\ISEQ20_LEVERAGED\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ISEQ 20 PRICE INDEX]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="ISEQ 20 PRICE INDEX"
+                      externalMetadataColumnId="Package\ISEQ20_LEVERAGED\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ISEQ 20 PRICE INDEX]"
+                      lineageId="Package\ISEQ20_LEVERAGED\Flat File Source.Outputs[Flat File Source Output].Columns[ISEQ 20 PRICE INDEX]" />
+                    <inputColumn
+                      refId="Package\ISEQ20_LEVERAGED\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ISEQ LEVERAGED INDEX]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="ISEQ LEVERAGED INDEX"
+                      externalMetadataColumnId="Package\ISEQ20_LEVERAGED\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ISEQ LEVERAGED INDEX]"
+                      lineageId="Package\ISEQ20_LEVERAGED\Flat File Source.Outputs[Flat File Source Output].Columns[ISEQ LEVERAGED INDEX]" />
+                    <inputColumn
+                      refId="Package\ISEQ20_LEVERAGED\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[FileName]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="FileName"
+                      externalMetadataColumnId="Package\ISEQ20_LEVERAGED\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FileName]"
+                      lineageId="Package\ISEQ20_LEVERAGED\Derived Column.Outputs[Derived Column Output].Columns[FileName]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\ISEQ20_LEVERAGED\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FileName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="FileName" />
+                    <externalMetadataColumn
+                      refId="Package\ISEQ20_LEVERAGED\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TRADE_DATE]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="TRADE_DATE" />
+                    <externalMetadataColumn
+                      refId="Package\ISEQ20_LEVERAGED\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Eonia]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Eonia" />
+                    <externalMetadataColumn
+                      refId="Package\ISEQ20_LEVERAGED\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ISEQ 20 RETURN INDEX]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="ISEQ 20 RETURN INDEX" />
+                    <externalMetadataColumn
+                      refId="Package\ISEQ20_LEVERAGED\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ISEQ 20 PRICE INDEX]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="ISEQ 20 PRICE INDEX" />
+                    <externalMetadataColumn
+                      refId="Package\ISEQ20_LEVERAGED\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ISEQ LEVERAGED INDEX]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="ISEQ LEVERAGED INDEX" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\ISEQ20_LEVERAGED\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\ISEQ20_LEVERAGED\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\ISEQ20_LEVERAGED\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\ISEQ20_LEVERAGED\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\ISEQ20_LEVERAGED\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\ISEQ20_LEVERAGED\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\ISEQ20_LEVERAGED.Paths[Derived Column Output]"
+              endId="Package\ISEQ20_LEVERAGED\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="Derived Column Output"
+              startId="Package\ISEQ20_LEVERAGED\Derived Column.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\ISEQ20_LEVERAGED.Paths[Flat File Source Output]"
+              endId="Package\ISEQ20_LEVERAGED\Derived Column.Inputs[Derived Column Input]"
+              name="Flat File Source Output"
+              startId="Package\ISEQ20_LEVERAGED\Flat File Source.Outputs[Flat File Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\STATS"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{C4C0D9C2-2BA0-4766-9271-C5E64BB12A06}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="STATS"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\STATS\Derived Column"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\STATS\Derived Column.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\STATS\Derived Column.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\STATS\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\STATS\Derived Column.Outputs[Derived Column Output].Columns[FileName]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\STATS\Derived Column.Outputs[Derived Column Output].Columns[FileName]"
+                      name="FileName"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_STR,50,1252)"FILE NAME"</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_STR,50,1252)"FILE NAME"</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\STATS\Derived Column.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\STATS\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\STATS\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\STATS\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\STATS\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\STATS\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\STATS\Flat File Source"
+              componentClassID="Microsoft.FlatFileSource"
+              contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Flat File Source"
+              localeId="6153"
+              name="Flat File Source"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether zero-length columns are treated as null."
+                  name="RetainNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of an output column containing the file name. If no name is specified, no output column containing the file name will be generated."
+                  name="FileNameColumnName"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\STATS\Flat File Source.Connections[FlatFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Stats]"
+                  connectionManagerRefId="Package.ConnectionManagers[Stats]"
+                  name="FlatFileConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\STATS\Flat File Source.Outputs[Flat File Source Output]"
+                  name="Flat File Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\STATS\Flat File Source.Outputs[Flat File Source Output].Columns[Column 0]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\STATS\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Column 0]"
+                      length="50"
+                      lineageId="Package\STATS\Flat File Source.Outputs[Flat File Source Output].Columns[Column 0]"
+                      name="Column 0"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\STATS\Flat File Source.Outputs[Flat File Source Output].Columns[Column 1]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\STATS\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Column 1]"
+                      length="50"
+                      lineageId="Package\STATS\Flat File Source.Outputs[Flat File Source Output].Columns[Column 1]"
+                      name="Column 1"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\STATS\Flat File Source.Outputs[Flat File Source Output].Columns[Column 2]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\STATS\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Column 2]"
+                      length="50"
+                      lineageId="Package\STATS\Flat File Source.Outputs[Flat File Source Output].Columns[Column 2]"
+                      name="Column 2"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\STATS\Flat File Source.Outputs[Flat File Source Output].Columns[Column 3]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\STATS\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Column 3]"
+                      length="50"
+                      lineageId="Package\STATS\Flat File Source.Outputs[Flat File Source Output].Columns[Column 3]"
+                      name="Column 3"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\STATS\Flat File Source.Outputs[Flat File Source Output].Columns[Column 4]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\STATS\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Column 4]"
+                      length="50"
+                      lineageId="Package\STATS\Flat File Source.Outputs[Flat File Source Output].Columns[Column 4]"
+                      name="Column 4"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\STATS\Flat File Source.Outputs[Flat File Source Output].Columns[Column 5]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\STATS\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Column 5]"
+                      length="50"
+                      lineageId="Package\STATS\Flat File Source.Outputs[Flat File Source Output].Columns[Column 5]"
+                      name="Column 5"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\STATS\Flat File Source.Outputs[Flat File Source Output].Columns[Column 6]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\STATS\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Column 6]"
+                      length="50"
+                      lineageId="Package\STATS\Flat File Source.Outputs[Flat File Source Output].Columns[Column 6]"
+                      name="Column 6"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\STATS\Flat File Source.Outputs[Flat File Source Output].Columns[Column 7]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\STATS\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Column 7]"
+                      length="50"
+                      lineageId="Package\STATS\Flat File Source.Outputs[Flat File Source Output].Columns[Column 7]"
+                      name="Column 7"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\STATS\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Column 0]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Column 0" />
+                    <externalMetadataColumn
+                      refId="Package\STATS\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Column 1]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Column 1" />
+                    <externalMetadataColumn
+                      refId="Package\STATS\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Column 2]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Column 2" />
+                    <externalMetadataColumn
+                      refId="Package\STATS\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Column 3]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Column 3" />
+                    <externalMetadataColumn
+                      refId="Package\STATS\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Column 4]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Column 4" />
+                    <externalMetadataColumn
+                      refId="Package\STATS\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Column 5]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Column 5" />
+                    <externalMetadataColumn
+                      refId="Package\STATS\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Column 6]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Column 6" />
+                    <externalMetadataColumn
+                      refId="Package\STATS\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Column 7]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Column 7" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\STATS\Flat File Source.Outputs[Flat File Source Error Output]"
+                  isErrorOut="true"
+                  name="Flat File Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\STATS\Flat File Source.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      codePage="1252"
+                      dataType="text"
+                      description="Flat File Source Error Output Column"
+                      lineageId="Package\STATS\Flat File Source.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      name="Flat File Source Error Output Column" />
+                    <outputColumn
+                      refId="Package\STATS\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\STATS\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\STATS\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\STATS\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\STATS\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[StoxxStats]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\STATS\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="{7AE745A6-BA4C-482E-9695-63779ECE70D4}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Staging]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\STATS\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\STATS\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Column 0]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Column 0"
+                      externalMetadataColumnId="Package\STATS\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Column 0]"
+                      lineageId="Package\STATS\Flat File Source.Outputs[Flat File Source Output].Columns[Column 0]" />
+                    <inputColumn
+                      refId="Package\STATS\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Column 1]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Column 1"
+                      externalMetadataColumnId="Package\STATS\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Column 1]"
+                      lineageId="Package\STATS\Flat File Source.Outputs[Flat File Source Output].Columns[Column 1]" />
+                    <inputColumn
+                      refId="Package\STATS\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Column 2]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Column 2"
+                      externalMetadataColumnId="Package\STATS\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Column 2]"
+                      lineageId="Package\STATS\Flat File Source.Outputs[Flat File Source Output].Columns[Column 2]" />
+                    <inputColumn
+                      refId="Package\STATS\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Column 3]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Column 3"
+                      externalMetadataColumnId="Package\STATS\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Column 3]"
+                      lineageId="Package\STATS\Flat File Source.Outputs[Flat File Source Output].Columns[Column 3]" />
+                    <inputColumn
+                      refId="Package\STATS\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Column 4]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Column 4"
+                      externalMetadataColumnId="Package\STATS\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Column 4]"
+                      lineageId="Package\STATS\Flat File Source.Outputs[Flat File Source Output].Columns[Column 4]" />
+                    <inputColumn
+                      refId="Package\STATS\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Column 5]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Column 5"
+                      externalMetadataColumnId="Package\STATS\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Column 5]"
+                      lineageId="Package\STATS\Flat File Source.Outputs[Flat File Source Output].Columns[Column 5]" />
+                    <inputColumn
+                      refId="Package\STATS\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Column 6]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Column 6"
+                      externalMetadataColumnId="Package\STATS\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Column 6]"
+                      lineageId="Package\STATS\Flat File Source.Outputs[Flat File Source Output].Columns[Column 6]" />
+                    <inputColumn
+                      refId="Package\STATS\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Column 7]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Column 7"
+                      externalMetadataColumnId="Package\STATS\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Column 7]"
+                      lineageId="Package\STATS\Flat File Source.Outputs[Flat File Source Output].Columns[Column 7]" />
+                    <inputColumn
+                      refId="Package\STATS\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[FileName]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="FileName"
+                      externalMetadataColumnId="Package\STATS\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FileName]"
+                      lineageId="Package\STATS\Derived Column.Outputs[Derived Column Output].Columns[FileName]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\STATS\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FileName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="FileName" />
+                    <externalMetadataColumn
+                      refId="Package\STATS\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Column 0]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Column 0" />
+                    <externalMetadataColumn
+                      refId="Package\STATS\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Column 1]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Column 1" />
+                    <externalMetadataColumn
+                      refId="Package\STATS\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Column 2]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Column 2" />
+                    <externalMetadataColumn
+                      refId="Package\STATS\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Column 3]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Column 3" />
+                    <externalMetadataColumn
+                      refId="Package\STATS\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Column 4]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Column 4" />
+                    <externalMetadataColumn
+                      refId="Package\STATS\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Column 5]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Column 5" />
+                    <externalMetadataColumn
+                      refId="Package\STATS\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Column 6]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Column 6" />
+                    <externalMetadataColumn
+                      refId="Package\STATS\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Column 7]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Column 7" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\STATS\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\STATS\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\STATS\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\STATS\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\STATS\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\STATS\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\STATS.Paths[Derived Column Output]"
+              endId="Package\STATS\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="Derived Column Output"
+              startId="Package\STATS\Derived Column.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\STATS.Paths[Flat File Source Output]"
+              endId="Package\STATS\Derived Column.Inputs[Derived Column Input]"
+              name="Flat File Source Output"
+              startId="Package\STATS\Flat File Source.Outputs[Flat File Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="148,42"
+          Id="Package\ISEQ20 STATS"
+          TopLeft="139,33" />
+        <NodeLayout
+          Size="177,42"
+          Id="Package\ISEQ20_LEVERAGED"
+          TopLeft="143,214" />
+        <NodeLayout
+          Size="110,42"
+          Id="Package\STATS"
+          TopLeft="149,119" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\ISEQ20 STATS">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="151,42"
+          Id="Package\ISEQ20 STATS\Flat File Source"
+          TopLeft="337,48" />
+        <NodeLayout
+          Size="154,42"
+          Id="Package\ISEQ20 STATS\Derived Column"
+          TopLeft="368,149" />
+        <NodeLayout
+          Size="171,42"
+          Id="Package\ISEQ20 STATS\OLE DB Destination"
+          TopLeft="269,247" />
+        <EdgeLayout
+          Id="Package\ISEQ20 STATS.Paths[Flat File Source Output]"
+          TopLeft="412.5,90">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="32.5,59"
+              Start="0,0"
+              End="32.5,51.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,25.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,25.5"
+                    Point2="0,29.5"
+                    Point3="4,29.5" />
+                  <mssgle:LineSegment
+                    End="28.5,29.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="28.5,29.5"
+                    Point2="32.5,29.5"
+                    Point3="32.5,33.5" />
+                  <mssgle:LineSegment
+                    End="32.5,51.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\ISEQ20 STATS.Paths[Derived Column Output]"
+          TopLeft="445,191">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-90.5,56"
+              Start="0,0"
+              End="-90.5,48.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,24" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,24"
+                    Point2="0,28"
+                    Point3="-4,28" />
+                  <mssgle:LineSegment
+                    End="-86.5,28" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-86.5,28"
+                    Point2="-90.5,28"
+                    Point3="-90.5,32" />
+                  <mssgle:LineSegment
+                    End="-90.5,48.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\ISEQ20 STATS\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\ISEQ20_LEVERAGED">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="171,42"
+          Id="Package\ISEQ20_LEVERAGED\OLE DB Destination"
+          TopLeft="181,265" />
+        <NodeLayout
+          Size="151,42"
+          Id="Package\ISEQ20_LEVERAGED\Flat File Source"
+          TopLeft="159,38" />
+        <NodeLayout
+          Size="154,42"
+          Id="Package\ISEQ20_LEVERAGED\Derived Column"
+          TopLeft="181,155" />
+        <EdgeLayout
+          Id="Package\ISEQ20_LEVERAGED.Paths[Derived Column Output]"
+          TopLeft="258,197">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="8.5,68"
+              Start="0,0"
+              End="8.5,60.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,30" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,30"
+                    Point2="0,34"
+                    Point3="4,34" />
+                  <mssgle:LineSegment
+                    End="4.5,34" />
+                  <mssgle:CubicBezierSegment
+                    Point1="4.5,34"
+                    Point2="8.5,34"
+                    Point3="8.5,38" />
+                  <mssgle:LineSegment
+                    End="8.5,60.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\ISEQ20_LEVERAGED.Paths[Flat File Source Output]"
+          TopLeft="234.5,80">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="23.5,75"
+              Start="0,0"
+              End="23.5,67.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,33.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,33.5"
+                    Point2="0,37.5"
+                    Point3="4,37.5" />
+                  <mssgle:LineSegment
+                    End="19.5,37.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="19.5,37.5"
+                    Point2="23.5,37.5"
+                    Point3="23.5,41.5" />
+                  <mssgle:LineSegment
+                    End="23.5,67.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\ISEQ20_LEVERAGED\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\STATS">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="151,42"
+          Id="Package\STATS\Flat File Source"
+          TopLeft="183,86" />
+        <NodeLayout
+          Size="171,42"
+          Id="Package\STATS\OLE DB Destination"
+          TopLeft="248,318" />
+        <NodeLayout
+          Size="154,42"
+          Id="Package\STATS\Derived Column"
+          TopLeft="221,185" />
+        <EdgeLayout
+          Id="Package\STATS.Paths[Flat File Source Output]"
+          TopLeft="258.5,128">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="39.5,57"
+              Start="0,0"
+              End="39.5,49.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,24.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,24.5"
+                    Point2="0,28.5"
+                    Point3="4,28.5" />
+                  <mssgle:LineSegment
+                    End="35.5,28.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="35.5,28.5"
+                    Point2="39.5,28.5"
+                    Point3="39.5,32.5" />
+                  <mssgle:LineSegment
+                    End="39.5,49.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\STATS.Paths[Derived Column Output]"
+          TopLeft="298,227">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="35.5,91"
+              Start="0,0"
+              End="35.5,83.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,41.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,41.5"
+                    Point2="0,45.5"
+                    Point3="4,45.5" />
+                  <mssgle:LineSegment
+                    End="31.5,45.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="31.5,45.5"
+                    Point2="35.5,45.5"
+                    Point3="35.5,49.5" />
+                  <mssgle:LineSegment
+                    End="35.5,83.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\STATS\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
