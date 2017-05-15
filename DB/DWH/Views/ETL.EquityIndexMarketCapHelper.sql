@@ -3,6 +3,7 @@ GO
 SET ANSI_NULLS ON
 GO
 
+
 CREATE VIEW [ETL].[EquityIndexMarketCapHelper] AS
 	WITH ISEQ20_Common  AS (
 				SELECT
@@ -25,7 +26,7 @@ CREATE VIEW [ETL].[EquityIndexMarketCapHelper] AS
 		FROM
 				DWH.FactEquitySnapshot F
 			INNER JOIN
-				ETL.ActiveInstrumentsDates A
+				ETL.AggregationDateList A
 			ON F.DateID = A.AggregateDateID
 		WHERE
 			OverallIndexYN = 'Y'
@@ -40,7 +41,7 @@ CREATE VIEW [ETL].[EquityIndexMarketCapHelper] AS
 		FROM
 				DWH.FactEquitySnapshot F
 			INNER JOIN
-				ETL.ActiveInstrumentsDates A
+				ETL.AggregationDateList A
 			ON F.DateID = A.AggregateDateID
 		WHERE
 			FinancialIndexYN = 'Y'
@@ -54,7 +55,7 @@ CREATE VIEW [ETL].[EquityIndexMarketCapHelper] AS
 		FROM
 				DWH.FactEquitySnapshot F
 			INNER JOIN
-				ETL.ActiveInstrumentsDates A
+				ETL.AggregationDateList A
 			ON F.DateID = A.AggregateDateID
 		WHERE
 			GeneralIndexYN = 'Y'
@@ -68,7 +69,7 @@ CREATE VIEW [ETL].[EquityIndexMarketCapHelper] AS
 		FROM
 				DWH.FactEquitySnapshot F
 			INNER JOIN
-				ETL.ActiveInstrumentsDates A
+				ETL.AggregationDateList A
 			ON F.DateID = A.AggregateDateID
 		WHERE
 			SmallCapIndexYN = 'Y'
@@ -83,7 +84,7 @@ CREATE VIEW [ETL].[EquityIndexMarketCapHelper] AS
 		FROM
 				DWH.FactEquitySnapshot F
 			INNER JOIN
-				ETL.ActiveInstrumentsDates A
+				ETL.AggregationDateList A
 			ON F.DateID = A.AggregateDateID
 		WHERE
 			ESMIndexYN = 'Y'
@@ -118,5 +119,6 @@ CREATE VIEW [ETL].[EquityIndexMarketCapHelper] AS
 		FROM
 			ISEQ20_Common  
 	
+
 
 GO

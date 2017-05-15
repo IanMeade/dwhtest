@@ -20,12 +20,15 @@ BEGIN
 	TRUNCATE TABLE DWH.FactExchangeRate  
 	TRUNCATE TABLE DWH.FactInstrumentStatusHistory  
 	TRUNCATE TABLE DWH.FactMarketAggregation
+	TRUNCATE TABLE DWH.FactEquityIndex
+	TRUNCATE TABLE DWH.FactEquityIndexSnapshot
+	TRUNCATE TABLE DWH.FactEquityPriceSnapshot
 
 	/* EMPTY TABLES REFERENCED BY FOREIGN KEYS */  
 	DELETE DWH.DimInstrumentEquity  
 	DELETE DWH.DimInstrumentEtf 
 	DELETE DWH.DimInstrument 
-	DELETE DWH.DimIndex  
+	DELETE DWH.DimIndexType
 	DELETE DWH.DimMarket  
 	DELETE DWH.DimMarketAggregation
 	DELETE DWH.DimBatch  
@@ -40,7 +43,7 @@ BEGIN
 	DELETE DWH.DimTrader  
   
 	/* RESET IDENTITIES FOR DELETED TABLES */  
-	DBCC CHECKIDENT ('DWH.DimIndex',RESEED,0);    
+	DBCC CHECKIDENT ('DWH.DimIndexType',RESEED,0);    
 	DBCC CHECKIDENT ('DWH.DimMarket',RESEED,0);   
 	DBCC CHECKIDENT ('DWH.DimBatch',RESEED,0);    
 	DBCC CHECKIDENT ('DWH.DimBroker',RESEED,0);    
@@ -142,39 +145,22 @@ BEGIN
 			'00:00'  
 		)  
   
-	/* Need to add using dimension manager */ 
-	/* 
-	/* DUMMY CURRENCIES */  
-	INSERT INTO  
-			DWH.FactExchangeRate  
-		(  
-			DateID, CurrencyID, ExchangeRate, BatchID  
-		)  
-		VALUES   
-		( -1,	1,	1,	-1 ),  
-		( -1,	2,	1,	-1 ),  
-		( -1,	3,	1,	-1 ),  
-		( -1,	4,	1,	-1 ),  
-		( -1,	5,	1,	-1 ),  
-		( -1,	6,	1,	-1 ),  
-		( -1,	7,	1,	-1 ),  
-		( -1,	8,	1,	-1 ),  
-		( -1,	9,	1,	-1 ),  
-		( -1,	10,	1,	-1 ),  
-		( -1,	11,	1,	-1 )  
-	*/ 
  
 	/* EXTRA TABLES - THESE ARE NOT PART OF THE DWH MODEL */  
-	TRUNCATE TABLE ETL.AggregationDateList  
-	TRUNCATE TABLE ETL.BidOfferPrice  
-	TRUNCATE TABLE ETL.ClosingPrice  
-	TRUNCATE TABLE ETL.EquityTradeSnapshot  
-	TRUNCATE TABLE ETL.OCP  
-	TRUNCATE TABLE ETL.OOP  
+	TRUNCATE TABLE ETL.EquityTradeDate
+	TRUNCATE TABLE ETL.OOP
+	TRUNCATE TABLE ETL.FactEtfSnapshotMerge
+	TRUNCATE TABLE ETL.OCP
+	TRUNCATE TABLE ETL.ClosingPrice
+	TRUNCATE TABLE ETL.BidOfferPrice
+	TRUNCATE TABLE ETL.AggregationDateList
+	TRUNCATE TABLE ETL.FactEquitySnapshotMerge
+	TRUNCATE TABLE ETL.FactEquityIndexPrep
+	TRUNCATE TABLE ETL.FactEquityIndexSnapshotMerge
+	TRUNCATE TABLE ETL.StateStreet_ISEQ20_NAV
+
 	TRUNCATE TABLE Report.RefEquityFeeBand  
-	TRUNCATE TABLE ETL.EquityTradeDate 
-	TRUNCATE TABLE ETL.FactEquitySnapshotMerge 
-	TRUNCATE TABLE ETL.FactEtfSnapshotMerge 
+	TRUNCATE TABLE Report.RawTcC810
  
 END  
 GO

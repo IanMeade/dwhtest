@@ -2,13 +2,13 @@ SET QUOTED_IDENTIFIER ON
 GO
 SET ANSI_NULLS ON
 GO
-  
+
+
+
 CREATE VIEW [ETL].[EquityVolume] AS  
 		SELECT  
-			AID.AggregateDate,   
-			AID.AggregateDateID,   
-			AID.InstrumentID,   
-			AID.ISIN,   
+			D.AggregateDateID,   
+			I.InstrumentGlobalID,
 			/* DEALS */  
 			COUNT(*) AS Deals,  
 			SUM( IIF( JK.TradeTypeCategory = 'OB',1,0) ) AS DealsOB,  
@@ -23,23 +23,25 @@ CREATE VIEW [ETL].[EquityVolume] AS
 			SUM( IIF( JK.TradeTypeCategory = 'OB',0,TradeTurnover) ) AS TurnoverND,  
 			/* TURN OVER - EUR */  
 			SUM( TradeTurnover * ExRate.ExchangeRate ) AS TurnoverEur,  
-			SUM( IIF( JK.TradeTypeCategory = 'OB',TradeTurnover * ExRate.ExchangeRate ,0) ) AS TurnoverObEur,  
-			SUM( IIF( JK.TradeTypeCategory = 'OB',0,TradeTurnover * ExRate.ExchangeRate ) ) AS TurnoverNdEur,  
+			SUM( IIF( JK.TradeTypeCategory = 'OB',TradeTurnover / ExRate.ExchangeRate ,0) ) AS TurnoverObEur,  
+			SUM( IIF( JK.TradeTypeCategory = 'OB',0,TradeTurnover / ExRate.ExchangeRate ) ) AS TurnoverNdEur,  
 			MIN(ExRate.ExchangeRate ) EXR  
   
 		FROM  
-				ETL.ActiveInstrumentsDates AID  
+				ETL.AggregationDateList D
 			INNER JOIN  
 				DWH.FactEquityTrade T  
-			ON AID.InstrumentID = T.InstrumentID  
-			AND AID.AggregateDateID = T.TradeDateID  
+			ON D.AggregateDateID = T.TradeDateID  
+			INNER JOIN
+				DWH.DimInstrumentEquity I
+			ON T.InstrumentID = I.InstrumentID
 			INNER JOIN  
 				DWH.DimEquityTradeJunk JK  
-			ON T.EquityTradeJunkID = JK.EquityTradeJunkID  
+			ON T.EquityTradeJunkID = JK.EquityTradeJunkID 
 			INNER JOIN  
 				DWH.DimTradeModificationType MT  
 			ON T.TradeModificationTypeID = MT.TradeModificationTypeID  
-			AND MT.CancelTradeYN <> 'N'
+			AND MT.CancelTradeYN = 'N'
 			CROSS APPLY   
 			(  
 				SELECT  
@@ -48,9 +50,9 @@ CREATE VIEW [ETL].[EquityVolume] AS
 				FROM  
 					DWH.FactExchangeRate EX  
 				WHERE  
-					AID.AggregateDateID >= EX.DateID   
+					D.AggregateDateID >= EX.DateID   
 				AND  
-					AID.CurrencyID = EX.CurrencyID  
+					T.CurrencyID = EX.CurrencyID  
 				ORDER BY  
 					EX.DateID DESC  
 			) AS ExRate  
@@ -63,15 +65,8 @@ CREATE VIEW [ETL].[EquityVolume] AS
 						T.PublishedDateTime < GETDATE()  
 				)  
 		GROUP BY  
-			AID.AggregateDate,   
-			AID.AggregateDateID,   
-			AID.InstrumentID,   
-			AID.ISIN  
-  
-  
-  
-  
-  
- 
+			D.AggregateDateID,
+			I.InstrumentGlobalID
+
 
 GO

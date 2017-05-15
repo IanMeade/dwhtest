@@ -22,10 +22,11 @@ CREATE TABLE [DWH].[FactEtfTrade]
 [TradeVolume] [int] NOT NULL,
 [TradeTurnover] [numeric] (19, 6) NOT NULL,
 [TradeModificationTypeID] [smallint] NOT NULL,
+[TradeCancelled] [char] (1) COLLATE Latin1_General_CI_AS NULL,
 [TradeFileID] [int] NOT NULL,
 [BatchID] [int] NOT NULL CONSTRAINT [DF_FactEtfTrade_BatchID] DEFAULT ((0)),
 [CancelBatchID] [int] NULL,
-[InColumnStore] [bit] NOT NULL
+[InColumnStore] [bit] NOT NULL CONSTRAINT [DF_FactEtfTrade_InColumnStore] DEFAULT ((0))
 ) ON [PRIMARY]
 GO
 ALTER TABLE [DWH].[FactEtfTrade] ADD CONSTRAINT [PK_FactEtfTrade] PRIMARY KEY CLUSTERED  ([EtfTradeID]) ON [PRIMARY]

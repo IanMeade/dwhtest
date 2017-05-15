@@ -7,7 +7,7 @@ GO
 -- Create date: 20/2/2017  
 -- Description:	Get XT Interface changes  
 -- =============================================  
-CREATE PROCEDURE [dbo].[AssembleXtInterfaceEquityEtfUpdate]  
+CREATE PROCEDURE [dbo].[XtAssembleXtInterfaceEquityEtfUpdate]  
 AS  
 BEGIN  
 	-- SET NOCOUNT ON added to prevent extra result sets from  

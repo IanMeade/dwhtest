@@ -11,8 +11,8 @@
   DTS:LocaleID="6153"
   DTS:ObjectName="PckMaster_ReutersIndexValues"
   DTS:PackageType="5"
-  DTS:VersionBuild="28"
-  DTS:VersionGUID="{463703D4-46AE-4E96-B25F-264B99E62AE3}">
+  DTS:VersionBuild="31"
+  DTS:VersionGUID="{726E1D0E-4CD1-427B-A6C4-22C011779EBC}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -827,14 +827,6 @@
                                   externalMetadataColumnId="Package\For Loop Container\SEQ Load Reuters Index Values\SEQ Index Values\DFT Load Reuters Index Values\DST DWH FactEquityIndex.Inputs[OLE DB Destination Input].ExternalColumns[ISEQ20LeveragedLow]"
                                   lineageId="Package\For Loop Container\SEQ Load Reuters Index Values\SEQ Index Values\DFT Load Reuters Index Values\SRC Reuters_ODS IndexValues.Outputs[OLE DB Source Output].Columns[LLOW]" />
                                 <inputColumn
-                                  refId="Package\For Loop Container\SEQ Load Reuters Index Values\SEQ Index Values\DFT Load Reuters Index Values\DST DWH FactEquityIndex.Inputs[OLE DB Destination Input].Columns[LRETURN]"
-                                  cachedDataType="numeric"
-                                  cachedName="LRETURN"
-                                  cachedPrecision="8"
-                                  cachedScale="3"
-                                  externalMetadataColumnId="Package\For Loop Container\SEQ Load Reuters Index Values\SEQ Index Values\DFT Load Reuters Index Values\DST DWH FactEquityIndex.Inputs[OLE DB Destination Input].ExternalColumns[ISEQ20LeveragedReturn]"
-                                  lineageId="Package\For Loop Container\SEQ Load Reuters Index Values\SEQ Index Values\DFT Load Reuters Index Values\SRC Reuters_ODS IndexValues.Outputs[OLE DB Source Output].Columns[LRETURN]" />
-                                <inputColumn
                                   refId="Package\For Loop Container\SEQ Load Reuters Index Values\SEQ Index Values\DFT Load Reuters Index Values\DST DWH FactEquityIndex.Inputs[OLE DB Destination Input].Columns[CLAST]"
                                   cachedDataType="numeric"
                                   cachedName="CLAST"
@@ -877,10 +869,6 @@
                               </inputColumns>
                               <externalMetadataColumns
                                 isUsed="True">
-                                <externalMetadataColumn
-                                  refId="Package\For Loop Container\SEQ Load Reuters Index Values\SEQ Index Values\DFT Load Reuters Index Values\DST DWH FactEquityIndex.Inputs[OLE DB Destination Input].ExternalColumns[IndexID]"
-                                  dataType="i4"
-                                  name="IndexID" />
                                 <externalMetadataColumn
                                   refId="Package\For Loop Container\SEQ Load Reuters Index Values\SEQ Index Values\DFT Load Reuters Index Values\DST DWH FactEquityIndex.Inputs[OLE DB Destination Input].ExternalColumns[IndexDateID]"
                                   dataType="i4"
@@ -1178,12 +1166,6 @@
                                   precision="8"
                                   scale="3" />
                                 <externalMetadataColumn
-                                  refId="Package\For Loop Container\SEQ Load Reuters Index Values\SEQ Index Values\DFT Load Reuters Index Values\DST DWH FactEquityIndex.Inputs[OLE DB Destination Input].ExternalColumns[ISEQ20LeveragedReturn]"
-                                  dataType="numeric"
-                                  name="ISEQ20LeveragedReturn"
-                                  precision="8"
-                                  scale="3" />
-                                <externalMetadataColumn
                                   refId="Package\For Loop Container\SEQ Load Reuters Index Values\SEQ Index Values\DFT Load Reuters Index Values\DST DWH FactEquityIndex.Inputs[OLE DB Destination Input].ExternalColumns[ISEQ20CappedLast]"
                                   dataType="numeric"
                                   name="ISEQ20CappedLast"
@@ -1217,6 +1199,10 @@
                                   refId="Package\For Loop Container\SEQ Load Reuters Index Values\SEQ Index Values\DFT Load Reuters Index Values\DST DWH FactEquityIndex.Inputs[OLE DB Destination Input].ExternalColumns[BatchID]"
                                   dataType="i4"
                                   name="BatchID" />
+                                <externalMetadataColumn
+                                  refId="Package\For Loop Container\SEQ Load Reuters Index Values\SEQ Index Values\DFT Load Reuters Index Values\DST DWH FactEquityIndex.Inputs[OLE DB Destination Input].ExternalColumns[EquityIndexID]"
+                                  dataType="i4"
+                                  name="EquityIndexID" />
                               </externalMetadataColumns>
                             </input>
                           </inputs>
@@ -2752,7 +2738,7 @@ AND
                   DTS:LocaleID="-1"
                   DTS:ObjectName="SQL Check IndexValue cut off"
                   DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-                  DTS:ThreadHint="1">
+                  DTS:ThreadHint="0">
                   <DTS:Variables />
                   <DTS:ObjectData>
                     <SQLTask:SqlTaskData
@@ -2774,7 +2760,7 @@ AND
                   DTS:LocaleID="-1"
                   DTS:ObjectName="SQL Get IndexValueID"
                   DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-                  DTS:ThreadHint="1">
+                  DTS:ThreadHint="0">
                   <DTS:Variables />
                   <DTS:ObjectData>
                     <SQLTask:SqlTaskData
@@ -2796,7 +2782,7 @@ AND
                   DTS:LocaleID="-1"
                   DTS:ObjectName="SQL Update Reuters ProcessControl"
                   DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-                  DTS:ThreadHint="1">
+                  DTS:ThreadHint="0">
                   <DTS:Variables />
                   <DTS:ObjectData>
                     <SQLTask:SqlTaskData
@@ -2820,7 +2806,7 @@ AND
                   DTS:LocaleID="-1"
                   DTS:ObjectName="SQL Update Reuters ProcessControl - no update"
                   DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-                  DTS:ThreadHint="1">
+                  DTS:ThreadHint="0">
                   <DTS:Variables />
                   <DTS:ObjectData>
                     <SQLTask:SqlTaskData
@@ -2877,7 +2863,7 @@ AND
               DTS:LocaleID="-1"
               DTS:ObjectName="SQL Reuters Poll Delay"
               DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-              DTS:ThreadHint="0">
+              DTS:ThreadHint="1">
               <DTS:Variables />
               <DTS:ObjectData>
                 <SQLTask:SqlTaskData
@@ -2963,6 +2949,100 @@ AND
                 SQLTask:DataType="3"
                 SQLTask:ParameterSize="-1" />
             </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SEQ Process Complete"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{529db6bf-a256-4bc9-9ced-9e9c45b31020}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SEQ Process Complete">
+      <DTS:Variables>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{b5d826eb-01fa-425c-bccf-24e1793c008f}"
+          DTS:IncludeInDebugDump="2345"
+          DTS:Namespace="User"
+          DTS:ObjectName="ProcessStatus">
+          <DTS:VariableValue
+            DTS:DataType="8">REUTERS_LOOP_EXIT</DTS:VariableValue>
+        </DTS:Variable>
+      </DTS:Variables>
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\SEQ Process Complete\EPT ProcessStatus"
+          DTS:CreationName="Microsoft.ExecutePackageTask"
+          DTS:Description="Execute Package Task"
+          DTS:DTSID="{aad4dfd2-9681-4e58-b265-5cd09dd75c79}"
+          DTS:ExecutableType="Microsoft.ExecutePackageTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="EPT ProcessStatus"
+          DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <ExecutePackageTask>
+              <UseProjectReference>True</UseProjectReference>
+              <PackageName>PckProcessStatus.dtsx</PackageName>
+              <ParameterAssignment>
+                <ParameterName>Message</ParameterName>
+                <BindedVariableOrParameterName>User::ProcessStatus</BindedVariableOrParameterName>
+              </ParameterAssignment>
+              <ParameterAssignment>
+                <ParameterName>BatchID</ParameterName>
+                <BindedVariableOrParameterName>User::BatchID</BindedVariableOrParameterName>
+              </ParameterAssignment>
+            </ExecutePackageTask>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SEQ Process Start"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{0914ef61-cfcd-407b-95ef-5acb76cecac3}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SEQ Process Start">
+      <DTS:Variables>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{fa94b99a-94e2-444e-9a20-21e641518db5}"
+          DTS:IncludeInDebugDump="2345"
+          DTS:Namespace="User"
+          DTS:ObjectName="ProcessStatus">
+          <DTS:VariableValue
+            DTS:DataType="8">REUTERS_LOOP_ENTRY</DTS:VariableValue>
+        </DTS:Variable>
+      </DTS:Variables>
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\SEQ Process Start\EPT ProcessStatus"
+          DTS:CreationName="Microsoft.ExecutePackageTask"
+          DTS:Description="Execute Package Task"
+          DTS:DTSID="{f1daa524-4038-4cbd-9e69-a08303cc9b2d}"
+          DTS:ExecutableType="Microsoft.ExecutePackageTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="EPT ProcessStatus"
+          DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <ExecutePackageTask>
+              <UseProjectReference>True</UseProjectReference>
+              <PackageName>PckProcessStatus.dtsx</PackageName>
+              <ParameterAssignment>
+                <ParameterName>Message</ParameterName>
+                <BindedVariableOrParameterName>User::ProcessStatus</BindedVariableOrParameterName>
+              </ParameterAssignment>
+              <ParameterAssignment>
+                <ParameterName>BatchID</ParameterName>
+                <BindedVariableOrParameterName>User::BatchID</BindedVariableOrParameterName>
+              </ParameterAssignment>
+            </ExecutePackageTask>
           </DTS:ObjectData>
         </DTS:Executable>
       </DTS:Executables>
@@ -3068,6 +3148,22 @@ AND
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 1"
       DTS:To="Package\SEQ Finish Batch" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{19FD9C6C-C8B7-4577-ACD7-FC5C54E620A2}"
+      DTS:From="Package\SEQ Start Batch"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\SEQ Process Start" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 3]"
+      DTS:CreationName=""
+      DTS:DTSID="{3E6091A9-6232-42A8-9577-56E724B51F5B}"
+      DTS:From="Package\SEQ Finish Batch"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 3"
+      DTS:To="Package\SEQ Process Complete" />
   </DTS:PrecedenceConstraints>
   <DTS:EventHandlers>
     <DTS:EventHandler
@@ -3593,6 +3689,28 @@ AND
           Id="Package\SEQ Finish Batch"
           TopLeft="413,1191" />
         <NodeLayout
+          Size="165,42"
+          Id="Package\SEQ Process Complete\EPT ProcessStatus"
+          TopLeft="28,19" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="208,116"
+          Size="208,159"
+          Id="Package\SEQ Process Complete"
+          TopLeft="756,1194" />
+        <NodeLayout
+          Size="165,42"
+          Id="Package\SEQ Process Start\EPT ProcessStatus"
+          TopLeft="28,19" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="208,116"
+          Size="208,159"
+          Id="Package\SEQ Process Start"
+          TopLeft="725,142" />
+        <NodeLayout
           Size="176,42"
           Id="Package\SEQ Start Batch\SQL Get ETL Version"
           TopLeft="5.50000000000001,5.5" />
@@ -3677,6 +3795,50 @@ AND
                   Capacity="5">
                   <mssgle:LineSegment
                     End="0,24.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="563,218.75">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="162,0"
+              Start="0,0"
+              End="154.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="154.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 3]"
+          TopLeft="639,1273.25">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="117,0"
+              Start="0,0"
+              End="109.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="109.5,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>

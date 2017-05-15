@@ -1,8 +1,8 @@
 CREATE TABLE [ETL].[FactEquitySnapshotMerge]
 (
+[InstrumentGlobalID] [varchar] (30) COLLATE Latin1_General_CI_AS NULL,
 [ISIN] [varchar] (12) COLLATE Latin1_General_CI_AS NULL,
 [InstrumentID] [int] NOT NULL,
-[CurrentInstrumentID] [int] NOT NULL,
 [InstrumentStatusID] [smallint] NULL,
 [DateID] [int] NOT NULL,
 [LastExDivDateID] [int] NULL,

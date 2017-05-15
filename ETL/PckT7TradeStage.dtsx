@@ -11,8 +11,8 @@
   DTS:LocaleID="6153"
   DTS:ObjectName="PckT7TradeStage"
   DTS:PackageType="5"
-  DTS:VersionBuild="90"
-  DTS:VersionGUID="{887B25DB-8702-457F-BCFF-765FEFBAFFEC}">
+  DTS:VersionBuild="95"
+  DTS:VersionGUID="{21A6B282-EE3C-46FB-82D9-6B30C01B1909}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -516,6 +516,447 @@
         </DTS:Variable>
       </DTS:Variables>
       <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\FELC Stage TXSaft Files\DFT Expected File Tmes"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{CA948B65-FBA7-4DEE-B28D-9448FDA5ACAF}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="DFT Expected File Tmes"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\FELC Stage TXSaft Files\DFT Expected File Tmes\CMD DHW Update Expected Times"
+                  componentClassID="Microsoft.OLEDBCommand"
+                  contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+                  description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
+                  name="CMD DHW Update Expected Times"
+                  usesDispositions="true"
+                  version="2">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      expressionType="Notify"
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE
+	DWH.DimFile
+SET
+	ExpectedStartTime = ?
+WHERE
+	FileProcessedStatus = 'STAGE'
+AND
+	UPPER(SaftFileLetter) = ?
+</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\FELC Stage TXSaft Files\DFT Expected File Tmes\CMD DHW Update Expected Times.Connections[OleDbConnection]"
+                      connectionManagerID="{0CBC2C04-C137-495F-AF7C-FA5DE465FED0}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[DWH]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\FELC Stage TXSaft Files\DFT Expected File Tmes\CMD DHW Update Expected Times.Inputs[OLE DB Command Input]"
+                      errorOrTruncationOperation="Command Execution"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Command Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\FELC Stage TXSaft Files\DFT Expected File Tmes\CMD DHW Update Expected Times.Inputs[OLE DB Command Input].Columns[ExpectedStartTime]"
+                          cachedDataType="dbTime2"
+                          cachedName="ExpectedStartTime"
+                          cachedScale="7"
+                          externalMetadataColumnId="Package\FELC Stage TXSaft Files\DFT Expected File Tmes\CMD DHW Update Expected Times.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                          lineageId="Package\FELC Stage TXSaft Files\DFT Expected File Tmes\LKP PorcessControl T7 Times.Outputs[Lookup Match Output].Columns[ExpectedStartTime]" />
+                        <inputColumn
+                          refId="Package\FELC Stage TXSaft Files\DFT Expected File Tmes\CMD DHW Update Expected Times.Inputs[OLE DB Command Input].Columns[SaftFileLetter]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="2"
+                          cachedName="SaftFileLetter"
+                          externalMetadataColumnId="Package\FELC Stage TXSaft Files\DFT Expected File Tmes\CMD DHW Update Expected Times.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                          lineageId="Package\FELC Stage TXSaft Files\DFT Expected File Tmes\SRC DimFile Staging.Outputs[OLE DB Source Output].Columns[SaftFileLetter]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\FELC Stage TXSaft Files\DFT Expected File Tmes\CMD DHW Update Expected Times.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                          dataType="dbTime2"
+                          name="Param_0"
+                          scale="7">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                              name="DBParamInfoFlags">1073741889</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\FELC Stage TXSaft Files\DFT Expected File Tmes\CMD DHW Update Expected Times.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                          codePage="1252"
+                          dataType="str"
+                          length="2"
+                          name="Param_1">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                              name="DBParamInfoFlags">65</property>
+                          </properties>
+                        </externalMetadataColumn>
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\FELC Stage TXSaft Files\DFT Expected File Tmes\CMD DHW Update Expected Times.Outputs[OLE DB Command Output]"
+                      exclusionGroup="1"
+                      name="OLE DB Command Output"
+                      synchronousInputId="Package\FELC Stage TXSaft Files\DFT Expected File Tmes\CMD DHW Update Expected Times.Inputs[OLE DB Command Input]">
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\FELC Stage TXSaft Files\DFT Expected File Tmes\CMD DHW Update Expected Times.Outputs[OLE DB Command Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Command Error Output"
+                      synchronousInputId="Package\FELC Stage TXSaft Files\DFT Expected File Tmes\CMD DHW Update Expected Times.Inputs[OLE DB Command Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\FELC Stage TXSaft Files\DFT Expected File Tmes\CMD DHW Update Expected Times.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\FELC Stage TXSaft Files\DFT Expected File Tmes\CMD DHW Update Expected Times.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\FELC Stage TXSaft Files\DFT Expected File Tmes\CMD DHW Update Expected Times.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\FELC Stage TXSaft Files\DFT Expected File Tmes\CMD DHW Update Expected Times.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\FELC Stage TXSaft Files\DFT Expected File Tmes\LKP PorcessControl T7 Times"
+                  componentClassID="Microsoft.Lookup"
+                  contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+                  description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+                  name="LKP PorcessControl T7 Times"
+                  usesDispositions="true"
+                  version="6">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the SQL statement that generates the lookup table."
+                      expressionType="Notify"
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT
+	UPPER(FileLetter) AS FileLetter,
+	[ExpectedStartTime]
+FROM
+	FileControlT7</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                      expressionType="Notify"
+                      name="SqlCommandParam"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (SELECT
+	UPPER(FileLetter) AS FileLetter,
+	[ExpectedStartTime]
+FROM
+	FileControlT7) [refTable]
+where [refTable].[FileLetter] = ?</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the type of connection used to access the reference dataset."
+                      name="ConnectionType"
+                      typeConverter="LookupConnectionType">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the cache type of the lookup table."
+                      name="CacheType"
+                      typeConverter="CacheType">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                      name="NoMatchBehavior"
+                      typeConverter="LookupNoMatchBehavior">1</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                      name="NoMatchCachePercentage">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                      name="MaxMemoryUsage">25</property>
+                    <property
+                      dataType="System.Int64"
+                      description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                      name="MaxMemoryUsage64">25</property>
+                    <property
+                      dataType="System.String"
+                      description="Indicates whether to reference metadata in an XML format."
+                      name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="FileLetter" dataType="DT_STR" length="2" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="ExpectedStartTime" dataType="DT_DBTIME2" length="0" precision="0" scale="7" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                      name="ParameterMap">#{Package\FELC Stage TXSaft Files\DFT Expected File Tmes\SRC DimFile Staging.Outputs[OLE DB Source Output].Columns[SaftFileLetter]};</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                      name="TreatDuplicateKeysAsError">false</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\FELC Stage TXSaft Files\DFT Expected File Tmes\LKP PorcessControl T7 Times.Connections[OleDbConnection]"
+                      connectionManagerID="{88A180A2-BD32-40DF-AB41-4FDAC0D5C73C}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[ProcessControl]"
+                      description="Connection manager used to access lookup data."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\FELC Stage TXSaft Files\DFT Expected File Tmes\LKP PorcessControl T7 Times.Inputs[Lookup Input]"
+                      name="Lookup Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\FELC Stage TXSaft Files\DFT Expected File Tmes\LKP PorcessControl T7 Times.Inputs[Lookup Input].Columns[SaftFileLetter]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="2"
+                          cachedName="SaftFileLetter"
+                          lineageId="Package\FELC Stage TXSaft Files\DFT Expected File Tmes\SRC DimFile Staging.Outputs[OLE DB Source Output].Columns[SaftFileLetter]">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Specifies the column in the reference table that a column joins."
+                              name="JoinToReferenceColumn">FileLetter</property>
+                            <property
+                              dataType="System.Null"
+                              description="Specifies the column in the reference table from which a column is copied."
+                              name="CopyFromReferenceColumn" />
+                          </properties>
+                        </inputColumn>
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\FELC Stage TXSaft Files\DFT Expected File Tmes\LKP PorcessControl T7 Times.Outputs[Lookup Match Output]"
+                      errorOrTruncationOperation="Lookup"
+                      exclusionGroup="1"
+                      name="Lookup Match Output"
+                      synchronousInputId="Package\FELC Stage TXSaft Files\DFT Expected File Tmes\LKP PorcessControl T7 Times.Inputs[Lookup Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\FELC Stage TXSaft Files\DFT Expected File Tmes\LKP PorcessControl T7 Times.Outputs[Lookup Match Output].Columns[ExpectedStartTime]"
+                          dataType="dbTime2"
+                          errorOrTruncationOperation="Copy Column"
+                          lineageId="Package\FELC Stage TXSaft Files\DFT Expected File Tmes\LKP PorcessControl T7 Times.Outputs[Lookup Match Output].Columns[ExpectedStartTime]"
+                          name="ExpectedStartTime"
+                          scale="7"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Specifies the column in the reference table from which a column is copied."
+                              name="CopyFromReferenceColumn">ExpectedStartTime</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\FELC Stage TXSaft Files\DFT Expected File Tmes\LKP PorcessControl T7 Times.Outputs[Lookup No Match Output]"
+                      description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                      exclusionGroup="1"
+                      name="Lookup No Match Output"
+                      synchronousInputId="Package\FELC Stage TXSaft Files\DFT Expected File Tmes\LKP PorcessControl T7 Times.Inputs[Lookup Input]">
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\FELC Stage TXSaft Files\DFT Expected File Tmes\LKP PorcessControl T7 Times.Outputs[Lookup Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Lookup Error Output"
+                      synchronousInputId="Package\FELC Stage TXSaft Files\DFT Expected File Tmes\LKP PorcessControl T7 Times.Inputs[Lookup Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\FELC Stage TXSaft Files\DFT Expected File Tmes\LKP PorcessControl T7 Times.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\FELC Stage TXSaft Files\DFT Expected File Tmes\LKP PorcessControl T7 Times.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\FELC Stage TXSaft Files\DFT Expected File Tmes\LKP PorcessControl T7 Times.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\FELC Stage TXSaft Files\DFT Expected File Tmes\LKP PorcessControl T7 Times.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\FELC Stage TXSaft Files\DFT Expected File Tmes\SRC DimFile Staging"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="SRC DimFile Staging"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset"></property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT
+	UPPER(SaftFileLetter) AS SaftFileLetter
+FROM
+	DWH.DimFile
+WHERE
+	FileProcessedStatus = 'STAGE'</property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">2</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\FELC Stage TXSaft Files\DFT Expected File Tmes\SRC DimFile Staging.Connections[OleDbConnection]"
+                      connectionManagerID="{0CBC2C04-C137-495F-AF7C-FA5DE465FED0}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[DWH]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\FELC Stage TXSaft Files\DFT Expected File Tmes\SRC DimFile Staging.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\FELC Stage TXSaft Files\DFT Expected File Tmes\SRC DimFile Staging.Outputs[OLE DB Source Output].Columns[SaftFileLetter]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\FELC Stage TXSaft Files\DFT Expected File Tmes\SRC DimFile Staging.Outputs[OLE DB Source Output].ExternalColumns[SaftFileLetter]"
+                          length="2"
+                          lineageId="Package\FELC Stage TXSaft Files\DFT Expected File Tmes\SRC DimFile Staging.Outputs[OLE DB Source Output].Columns[SaftFileLetter]"
+                          name="SaftFileLetter"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\FELC Stage TXSaft Files\DFT Expected File Tmes\SRC DimFile Staging.Outputs[OLE DB Source Output].ExternalColumns[SaftFileLetter]"
+                          codePage="1252"
+                          dataType="str"
+                          length="2"
+                          name="SaftFileLetter" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\FELC Stage TXSaft Files\DFT Expected File Tmes\SRC DimFile Staging.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\FELC Stage TXSaft Files\DFT Expected File Tmes\SRC DimFile Staging.Outputs[OLE DB Source Error Output].Columns[SaftFileLetter]"
+                          codePage="1252"
+                          dataType="str"
+                          length="2"
+                          lineageId="Package\FELC Stage TXSaft Files\DFT Expected File Tmes\SRC DimFile Staging.Outputs[OLE DB Source Error Output].Columns[SaftFileLetter]"
+                          name="SaftFileLetter" />
+                        <outputColumn
+                          refId="Package\FELC Stage TXSaft Files\DFT Expected File Tmes\SRC DimFile Staging.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\FELC Stage TXSaft Files\DFT Expected File Tmes\SRC DimFile Staging.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\FELC Stage TXSaft Files\DFT Expected File Tmes\SRC DimFile Staging.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\FELC Stage TXSaft Files\DFT Expected File Tmes\SRC DimFile Staging.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\FELC Stage TXSaft Files\DFT Expected File Tmes.Paths[Lookup Match Output]"
+                  endId="Package\FELC Stage TXSaft Files\DFT Expected File Tmes\CMD DHW Update Expected Times.Inputs[OLE DB Command Input]"
+                  name="Lookup Match Output"
+                  startId="Package\FELC Stage TXSaft Files\DFT Expected File Tmes\LKP PorcessControl T7 Times.Outputs[Lookup Match Output]" />
+                <path
+                  refId="Package\FELC Stage TXSaft Files\DFT Expected File Tmes.Paths[OLE DB Source Output]"
+                  endId="Package\FELC Stage TXSaft Files\DFT Expected File Tmes\LKP PorcessControl T7 Times.Inputs[Lookup Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\FELC Stage TXSaft Files\DFT Expected File Tmes\SRC DimFile Staging.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
         <DTS:Executable
           DTS:refId="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle"
           DTS:CreationName="Microsoft.Pipeline"
@@ -2722,6 +3163,14 @@
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint 1"
           DTS:To="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\FELC Stage TXSaft Files.PrecedenceConstraints[Constraint 2]"
+          DTS:CreationName=""
+          DTS:DTSID="{13B4E3B1-EDB2-4F40-804C-1BB8DCD7BC5A}"
+          DTS:From="Package\FELC Stage TXSaft Files\SQL DHW File Stage"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 2"
+          DTS:To="Package\FELC Stage TXSaft Files\DFT Expected File Tmes" />
         <DTS:PrecedenceConstraint
           DTS:refId="Package\FELC Stage TXSaft Files.PrecedenceConstraints[Constraint 3]"
           DTS:CreationName=""
@@ -6084,6 +6533,49 @@ FROM
       </DTS:EventHandlers>
     </DTS:Executable>
     <DTS:Executable
+      DTS:refId="Package\SEQ Process Complete"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{20140b81-03e7-4c71-8775-5a46824355ab}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SEQ Process Complete">
+      <DTS:Variables>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{49df44a3-33bb-4db8-b087-611e3a30f9a6}"
+          DTS:IncludeInDebugDump="2345"
+          DTS:Namespace="User"
+          DTS:ObjectName="ProcessStatus">
+          <DTS:VariableValue
+            DTS:DataType="8">T7_SAFT_ODS</DTS:VariableValue>
+        </DTS:Variable>
+      </DTS:Variables>
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\SEQ Process Complete\EPT ProcessStatus"
+          DTS:CreationName="Microsoft.ExecutePackageTask"
+          DTS:Description="Execute Package Task"
+          DTS:DTSID="{b091b421-326d-4862-9f21-ff503dce31c7}"
+          DTS:ExecutableType="Microsoft.ExecutePackageTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="EPT ProcessStatus"
+          DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <ExecutePackageTask>
+              <UseProjectReference>True</UseProjectReference>
+              <PackageName>PckProcessStatus.dtsx</PackageName>
+              <ParameterAssignment>
+                <ParameterName>Message</ParameterName>
+                <BindedVariableOrParameterName>User::ProcessStatus</BindedVariableOrParameterName>
+              </ParameterAssignment>
+            </ExecutePackageTask>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+    </DTS:Executable>
+    <DTS:Executable
       DTS:refId="Package\SEQ TxSfat Stage Prep"
       DTS:CreationName="STOCK:SEQUENCE"
       DTS:Description="Sequence Container"
@@ -6208,6 +6700,22 @@ FROM
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 3"
       DTS:To="Package\SEQ Move Bad Files to Reject" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 4]"
+      DTS:CreationName=""
+      DTS:DTSID="{55EC8737-32C7-49E6-8CBD-4562A4211688}"
+      DTS:From="Package\SEQ Move Good Files to Archive"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 4"
+      DTS:To="Package\SEQ Process Complete" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 5]"
+      DTS:CreationName=""
+      DTS:DTSID="{A478FBB9-E85C-457B-92C2-8FD224266687}"
+      DTS:From="Package\SEQ Move Bad Files to Reject"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 5"
+      DTS:To="Package\SEQ Process Complete" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
@@ -6224,26 +6732,26 @@ FROM
         <NodeLayout
           Size="231,42"
           Id="Package\EPT Validate SAFT File Structure"
-          TopLeft="376,838" />
+          TopLeft="375,902" />
         <NodeLayout
-          Size="191,42"
+          Size="192,42"
           Id="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle"
           TopLeft="88,182" />
         <NodeLayout
-          Size="191,42"
+          Size="192,42"
           Id="Package\FELC Stage TXSaft Files\SQL DHW File Stage"
           TopLeft="88,265.5" />
         <NodeLayout
-          Size="191,42"
+          Size="192,42"
           Id="Package\FELC Stage TXSaft Files\SQL DWH File PreStage"
           TopLeft="88,31.5" />
         <NodeLayout
-          Size="191,42"
+          Size="192,42"
           Id="Package\FELC Stage TXSaft Files\SQL STG Update File ID"
           TopLeft="88,99" />
         <EdgeLayout
           Id="Package\FELC Stage TXSaft Files.PrecedenceConstraints[Constraint]"
-          TopLeft="183.5,73.5">
+          TopLeft="184,73.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -6265,7 +6773,7 @@ FROM
         </EdgeLayout>
         <EdgeLayout
           Id="Package\FELC Stage TXSaft Files.PrecedenceConstraints[Constraint 1]"
-          TopLeft="183.5,141">
+          TopLeft="184,141">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -6287,7 +6795,7 @@ FROM
         </EdgeLayout>
         <EdgeLayout
           Id="Package\FELC Stage TXSaft Files.PrecedenceConstraints[Constraint 3]"
-          TopLeft="183.5,224">
+          TopLeft="184,224">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -6307,11 +6815,37 @@ FROM
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <NodeLayout
+          Size="192,42"
+          Id="Package\FELC Stage TXSaft Files\DFT Expected File Tmes"
+          TopLeft="88,345" />
+        <EdgeLayout
+          Id="Package\FELC Stage TXSaft Files.PrecedenceConstraints[Constraint 2]"
+          TopLeft="184,307.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,37.5"
+              Start="0,0"
+              End="0,30">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,30" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="376,358"
-          Size="376,401"
+          PanelSize="376,442"
+          Size="376,485"
           Id="Package\FELC Stage TXSaft Files"
           TopLeft="300.5,392.5" />
         <NodeLayout
@@ -6361,7 +6895,7 @@ FROM
           PanelSize="407,363"
           Size="407,406"
           Id="Package\SEQ Move Bad Files to Reject"
-          TopLeft="489.83333333333,963.166666666667" />
+          TopLeft="506.83333333333,1033.16666666667" />
         <NodeLayout
           Size="183,42"
           Id="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table"
@@ -6451,7 +6985,18 @@ FROM
           PanelSize="295,502"
           Size="295,545"
           Id="Package\SEQ Move Good Files to Archive"
-          TopLeft="155.16666666667,960.166666666667" />
+          TopLeft="170.16666666667,1035.16666666667" />
+        <NodeLayout
+          Size="165,42"
+          Id="Package\SEQ Process Complete\EPT ProcessStatus"
+          TopLeft="28,19" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="208,116"
+          Size="208,159"
+          Id="Package\SEQ Process Complete"
+          TopLeft="516,1796" />
         <NodeLayout
           Size="238,42"
           Id="Package\SEQ TxSfat Stage Prep\SQL Get ETL Version"
@@ -6499,18 +7044,18 @@ FROM
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="490,793.5">
+          TopLeft="489.5,877.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,44.5"
+              EndConnector="0,24.5"
               Start="0,0"
-              End="0,37">
+              End="0,17">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,37" />
+                    End="0,17" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -6521,30 +7066,30 @@ FROM
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 2]"
-          TopLeft="454.333333333333,880">
+          TopLeft="453.333333333333,944">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-151.666666666663,80.166666666667"
+              EndConnector="-135.666666666663,91.166666666667"
               Start="0,0"
-              End="-151.666666666663,72.666666666667">
+              End="-135.666666666663,83.666666666667">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,28.3975351103469" />
+                    End="0,32.8429349383779" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,28.3975351103469"
-                    Point2="0,32.3975351103469"
-                    Point3="-4,32.3975351103469" />
+                    Point1="0,32.8429349383779"
+                    Point2="0,36.8429349383779"
+                    Point3="-4,36.8429349383779" />
                   <mssgle:LineSegment
-                    End="-147.666666666663,32.3975351103469" />
+                    End="-131.666666666663,36.8429349383779" />
                   <mssgle:CubicBezierSegment
-                    Point1="-147.666666666663,32.3975351103469"
-                    Point2="-151.666666666663,32.3975351103469"
-                    Point3="-151.666666666663,36.3975351103469" />
+                    Point1="-131.666666666663,36.8429349383779"
+                    Point2="-135.666666666663,36.8429349383779"
+                    Point3="-135.666666666663,40.8429349383779" />
                   <mssgle:LineSegment
-                    End="-151.666666666663,72.666666666667" />
+                    End="-135.666666666663,83.666666666667" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -6555,30 +7100,98 @@ FROM
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 3]"
-          TopLeft="528.666666666667,880">
+          TopLeft="527.666666666667,944">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="164.666666666663,83.166666666667"
+              EndConnector="182.666666666663,89.166666666667"
               Start="0,0"
-              End="164.666666666663,75.666666666667">
+              End="182.666666666663,81.666666666667">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,29.6099168816281" />
+                    End="0,32.0346804241904" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,29.6099168816281"
-                    Point2="0,33.6099168816281"
-                    Point3="4,33.6099168816281" />
+                    Point1="0,32.0346804241904"
+                    Point2="0,36.0346804241904"
+                    Point3="4,36.0346804241904" />
                   <mssgle:LineSegment
-                    End="160.666666666663,33.6099168816281" />
+                    End="178.666666666663,36.0346804241904" />
                   <mssgle:CubicBezierSegment
-                    Point1="160.666666666663,33.6099168816281"
-                    Point2="164.666666666663,33.6099168816281"
-                    Point3="164.666666666663,37.6099168816281" />
+                    Point1="178.666666666663,36.0346804241904"
+                    Point2="182.666666666663,36.0346804241904"
+                    Point3="182.666666666663,40.0346804241904" />
                   <mssgle:LineSegment
-                    End="164.666666666663,75.666666666667" />
+                    End="182.666666666663,81.666666666667" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 4]"
+          TopLeft="317.66666666667,1580.16666666667">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="268.999999999997,215.833333333333"
+              Start="0,0"
+              End="268.999999999997,208.333333333333">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,124.511450381679" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,124.511450381679"
+                    Point2="0,128.511450381679"
+                    Point3="4,128.511450381679" />
+                  <mssgle:LineSegment
+                    End="264.999999999997,128.511450381679" />
+                  <mssgle:CubicBezierSegment
+                    Point1="264.999999999997,128.511450381679"
+                    Point2="268.999999999997,128.511450381679"
+                    Point3="268.999999999997,132.511450381679" />
+                  <mssgle:LineSegment
+                    End="268.999999999997,208.333333333333" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 5]"
+          TopLeft="710.33333333333,1439.16666666667">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-56.9999999999968,356.833333333333"
+              Start="0,0"
+              End="-56.9999999999968,349.333333333333">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,208.465648854962" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,208.465648854962"
+                    Point2="0,212.465648854962"
+                    Point3="-4,212.465648854962" />
+                  <mssgle:LineSegment
+                    End="-52.9999999999968,212.465648854962" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-52.9999999999968,212.465648854962"
+                    Point2="-56.9999999999968,212.465648854962"
+                    Point3="-56.9999999999968,216.465648854962" />
+                  <mssgle:LineSegment
+                    End="-56.9999999999968,349.333333333333" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -6613,6 +7226,10 @@ FROM
           TopLeft="360,221" />
         <NodeLayout
           Size="213,42"
+          Id="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade"
+          TopLeft="76,29" />
+        <NodeLayout
+          Size="213,42"
           Id="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\CSPL Row Counter"
           TopLeft="76,221" />
         <NodeLayout
@@ -6641,6 +7258,28 @@ FROM
             <mssgm:EdgeLabel
               BoundingBox="7.05861328125,5,49.3827734375,9.5537109375"
               RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle.Paths[Flat File Source Output]"
+          TopLeft="182.5,71">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,55.5"
+              Start="0,0"
+              End="0,48">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,48" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -6731,32 +7370,6 @@ FROM
             <mssgm:EdgeLabel
               BoundingBox="-15.878671875,17.62548828125,31.75734375,9.7490234375"
               RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="213,42"
-          Id="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle\FF_SRC SAFT Trade"
-          TopLeft="76,29" />
-        <EdgeLayout
-          Id="Package\FELC Stage TXSaft Files\DFT Stage TxSaft FIle.Paths[Flat File Source Output]"
-          TopLeft="182.5,71">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,55.5"
-              Start="0,0"
-              End="0,48">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,48" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -7144,6 +7757,103 @@ FROM
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\FELC Stage TXSaft Files\DFT Expected File Tmes">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="243,42"
+          Id="Package\FELC Stage TXSaft Files\DFT Expected File Tmes\SRC DimFile Staging"
+          TopLeft="119,31" />
+        <NodeLayout
+          Size="243,42"
+          Id="Package\FELC Stage TXSaft Files\DFT Expected File Tmes\LKP PorcessControl T7 Times"
+          TopLeft="119,141" />
+        <EdgeLayout
+          Id="Package\FELC Stage TXSaft Files\DFT Expected File Tmes.Paths[OLE DB Source Output]"
+          TopLeft="240.5,73">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,68"
+              Start="0,0"
+              End="0,60.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,60.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="243,42"
+          Id="Package\FELC Stage TXSaft Files\DFT Expected File Tmes\CMD DHW Update Expected Times"
+          TopLeft="119,255" />
+        <EdgeLayout
+          Id="Package\FELC Stage TXSaft Files\DFT Expected File Tmes.Paths[Lookup Match Output]"
+          TopLeft="240.5,183">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,72"
+              Start="0,0"
+              End="0,64.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,64.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,26.4453125,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\FELC Stage TXSaft Files\DFT Expected File Tmes\SRC DimFile Staging">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\FELC Stage TXSaft Files\DFT Expected File Tmes\LKP PorcessControl T7 Times">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>

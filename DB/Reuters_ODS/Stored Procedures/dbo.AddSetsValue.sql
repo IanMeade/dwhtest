@@ -3,6 +3,7 @@ GO
 SET ANSI_NULLS ON
 GO
 
+
 -- =============================================
 -- Author:		Ian Meade
 -- Create date: 13/4/2017
@@ -11,7 +12,7 @@ GO
 CREATE PROCEDURE [dbo].[AddSetsValue]
 	@ISIN VARCHAR(12),
 	@TURNOVER NUMERIC(19,6),
-	@VOLUME NUMERIC(19,6),
+	@VOL NUMERIC(19,6),
 	@DEALS INT
 AS
 BEGIN
@@ -28,7 +29,7 @@ BEGIN
 			ValueInserted = GETDATE(),
 			ISIN = @ISIN,
 			TURNOVER = @TURNOVER,
-			VOLUME = @VOLUME,
+			VOLUME = @VOL,
 			DEALS = @DEALS
 		WHERE
 			SetsDate = @DATE 
@@ -52,11 +53,12 @@ BEGIN
 				@DATE,
 				@ISIN, 
 				@TURNOVER, 
-				@VOLUME, 
+				@VOL, 
 				@DEALS
 			)
 	END
 END
+
 
 
 GO

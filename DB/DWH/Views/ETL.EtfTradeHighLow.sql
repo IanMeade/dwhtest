@@ -3,16 +3,21 @@ GO
 SET ANSI_NULLS ON
 GO
 
+
+
  
 CREATE VIEW [ETL].[EtfTradeHighLow] AS  
 		SELECT  
-			I.ISIN,  
+			I.InstrumentGlobalID,  
 			T.TradeDateID,  
 			COUNT(*) CNT,  
 			MIN(T.TradePrice) AS LowPrice,  
 			MAX(T.TradePrice) AS HighPrice  
 		FROM  
+				ETL.AggregationDateList D
+			LEFT OUTER JOIN  
 				DWH.FactEtfTrade T  
+			ON D.AggregateDateID = T.TradeDateID
 			INNER JOIN  
 				DWH.DimInstrumentEtf I  
 			ON T.InstrumentID = I.InstrumentID  
@@ -23,10 +28,12 @@ CREATE VIEW [ETL].[EtfTradeHighLow] AS
 		WHERE  
 			TM.CancelTradeYN <> 'N'
 		GROUP BY  
-			I.ISIN,  
+			I.InstrumentGlobalID,  
 			T.TradeDateID  
   
   
  
+
+
 
 GO

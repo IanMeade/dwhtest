@@ -14,24 +14,33 @@ AS
 BEGIN  
 	SET NOCOUNT ON;  
   
+/*
 	DELETE
 		dbo.XtOdsInstrumentEquityEtfUpdate  
 	WHERE
 		ISIN IS NULL
+*/
 
 	DELETE
 		dbo.XtOdsInstrumentEquityEtfUpdate  
 	WHERE
 		IssuerGlobalID IS NULL
+
   
-	/* MAKE EVERYTHING THAT IS NOT AN ETF AN EQUITY */
+	/* SET INSTRUMENT TYPE BASED ON SECURITY TYPE - MAKE EVERYTHING THAT IS NOT AN ETF AN EQUITY */
 	/* COULD CAUSE ISSUES IF EquityStage IS POPULATED WITH NON-SHARE BASED INSTRUMENTS */
-	UPDATE
+	UPDATE 
 		dbo.XtOdsInstrumentEquityEtfUpdate  
 	SET
 		InstrumentType = 'Equity'
 	WHERE
-		InstrumentType NOT IN ( 'Equity', 'ETF' )
+		SecurityType <> 'ETF'
+	UPDATE 
+		dbo.XtOdsInstrumentEquityEtfUpdate  
+	SET
+		InstrumentType = 'ETF'
+	WHERE
+		SecurityType = 'ETF'
 
 	/* REPLACE NULLS WITH EMPTY STRINGS */
 	UPDATE  

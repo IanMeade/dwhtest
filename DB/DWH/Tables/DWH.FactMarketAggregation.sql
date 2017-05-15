@@ -5,7 +5,8 @@ CREATE TABLE [DWH].[FactMarketAggregation]
 [TurnoverEur] [numeric] (19, 6) NOT NULL,
 [Volume] [bigint] NOT NULL,
 [TurnoverEurConditional] [numeric] (19, 6) NOT NULL,
-[VolumeConditional] [bigint] NOT NULL
+[VolumeConditional] [bigint] NOT NULL,
+[BatchID] [int] NULL
 ) ON [PRIMARY]
 GO
 ALTER TABLE [DWH].[FactMarketAggregation] ADD CONSTRAINT [PK_FactMarketAggregation_1] PRIMARY KEY CLUSTERED  ([DateID], [MarketAggregationID]) ON [PRIMARY]

@@ -8,7 +8,8 @@ GO
 -- Description:	Apply market aggregations
 -- =============================================
 CREATE PROCEDURE [DWH].[ApplyFactMarketAggrgation]
-	@DateID INT
+	@DateID INT,
+	@BatchID INT
 AS
 BEGIN
 	SET NOCOUNT ON;
@@ -99,7 +100,8 @@ BEGIN
 		TurnoverEur = T.TurnoverEur, 
 		Volume = T.Volume, 
 		TurnoverEurConditional = T.TurnoverEurConditional, 
-		VolumeConditional = T.VolumeConditional
+		VolumeConditional = T.VolumeConditional,
+		BatchID = @BatchID
 	FROM
 			DWH.FactMarketAggregation F
 		INNER JOIN
@@ -120,7 +122,8 @@ BEGIN
 			TurnoverEur, 
 			Volume, 
 			TurnoverEurConditional, 
-			VolumeConditional
+			VolumeConditional,
+			BatchID
 		)
 		SELECT
 			DateID, 
@@ -128,7 +131,8 @@ BEGIN
 			TurnoverEur, 
 			Volume, 
 			TurnoverEurConditional, 
-			VolumeConditional
+			VolumeConditional,
+			@BatchID
 		FROM
 			#Aggregations T
 		WHERE

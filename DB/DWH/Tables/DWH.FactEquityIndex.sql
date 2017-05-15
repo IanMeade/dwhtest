@@ -51,7 +51,6 @@ CREATE TABLE [DWH].[FactEquityIndex]
 [ISEQ20LeveragedOpen] [numeric] (8, 3) NOT NULL,
 [ISEQ20LeveragedHigh] [numeric] (8, 3) NOT NULL,
 [ISEQ20LeveragedLow] [numeric] (8, 3) NOT NULL,
-[ISEQ20LeveragedReturn] [numeric] (8, 3) NOT NULL,
 [ISEQ20CappedLast] [numeric] (8, 3) NOT NULL,
 [ISEQ20CappedOpen] [numeric] (8, 3) NOT NULL,
 [ISEQ20CappedHigh] [numeric] (8, 3) NOT NULL,

@@ -2,13 +2,14 @@ SET QUOTED_IDENTIFIER ON
 GO
 SET ANSI_NULLS ON
 GO
- 
+
+
 CREATE VIEW [ETL].[EquityTradeLastTradeDateScoped] AS   
 	/* NO LOOCAL TIMES ETC.. */  
 	/* NO DELAYED TRADE ACCOMODATED */  
 		SELECT  
 			LastTrade.AggregateDateID,   
-			LastTrade.ISIN,  
+			LastTrade.InstrumentGlobalID,  
 			T.TradeDateID,  
 			T.TradeTimeID,  
 			T.TradeTimestamp,  
@@ -17,58 +18,54 @@ CREATE VIEW [ETL].[EquityTradeLastTradeDateScoped] AS
 		FROM  
 				DWH.FactEquityTrade T  
 			INNER JOIN  
-				DWH.DimInstrumentEquity EQUITY  
-			ON T.InstrumentID = EQUITY.InstrumentID  
+				DWH.DimInstrumentEquity Equity  
+			ON T.InstrumentID = Equity.InstrumentID  
 			INNER JOIN  
-				ETL.ActiveInstrumentsDates AID  
+				ETL.AggregationDateList D
 			ON   
-				EQUITY.ISIN = AID.ISIN  
-			AND  
-				T.TradeDateID = AID.AggregateDateID  
+				T.TradeDateID = D.AggregateDateID  
 			INNER JOIN  
 				DWH.DimTradeModificationType MOD  
 			ON T.TradeModificationTypeID = MOD.TradeModificationTypeID  
-			AND MOD.CancelTradeYN <> 'N' 
+			AND MOD.TradeModificationTypeName <> 'CANCEL'  
 			INNER JOIN  
 			(  
 				SELECT  
-					AID.AggregateDateID,   
-					AID.ISIN,   
+					D.AggregateDateID,   
+					Equity.InstrumentGlobalID,   
 					MAX(TradeTimestamp) AS TradeTimestamp,  
 					COUNT(*) CNT,  
 					MIN(TradeTimestamp) AS T1  
 				FROM  
 						DWH.FactEquityTrade T  
 					INNER JOIN  
-						DWH.DimInstrumentEquity EQUITY  
-					ON T.InstrumentID = EQUITY.InstrumentID  
+						DWH.DimInstrumentEquity Equity  
+					ON T.InstrumentID = Equity.InstrumentID  
 					INNER JOIN  
-						ETL.ActiveInstrumentsDates AID  
+						ETL.AggregationDateList D
 					ON   
-						EQUITY.ISIN = AID.ISIN  
-					AND  
-						T.TradeDateID = AID.AggregateDateID  
+						T.TradeDateID = D.AggregateDateID  
 					INNER JOIN  
 						DWH.DimTradeModificationType MOD  
 					ON T.TradeModificationTypeID = MOD.TradeModificationTypeID  
-					AND MOD.CancelTradeYN <> 'N'
+					AND MOD.TradeModificationTypeName <> 'CANCEL'  
 				WHERE  
 					T.DelayedTradeYN = 'N'  
 				GROUP BY  
-					AID.AggregateDateID,   
-					AID.ISIN  
+					D.AggregateDateID,   
+					Equity.InstrumentGlobalID
 			) AS LastTrade  
 			ON  
 				T.TradeDateID = LastTrade.AggregateDateID  
 			AND  
-				EQUITY.ISIN = LastTrade.ISIN  
+				Equity.InstrumentGlobalID = LastTrade.InstrumentGlobalID
 			AND  
 				T.TradeTimestamp = LastTrade.TradeTimestamp  
 		WHERE  
 			T.DelayedTradeYN = 'N'  
 		GROUP BY  
 			LastTrade.AggregateDateID,   
-			LastTrade.ISIN,  
+			LastTrade.InstrumentGlobalID,  
 			T.TradeDateID,  
 			T.TradeTimeID,  
 			T.TradeTimestamp,  
@@ -79,5 +76,7 @@ CREATE VIEW [ETL].[EquityTradeLastTradeDateScoped] AS
   
  
  
+ 
+
 
 GO

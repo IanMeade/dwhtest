@@ -3,6 +3,7 @@ GO
 SET ANSI_NULLS ON
 GO
 
+
  
  
  
@@ -14,7 +15,10 @@ CREATE VIEW [ETL].[EquityTradeHighLow] AS
 			MIN(T.TradePrice) AS LowPrice, 
 			MAX(T.TradePrice) AS HighPrice 
 		FROM 
+				ETL.AggregationDateList D
+			LEFT OUTER JOIN  
 				DWH.FactEquityTrade T 
+			ON D.AggregateDateID = T.TradeDateID
 			INNER JOIN 
 				DWH.DimInstrumentEquity I 
 			ON T.InstrumentID = I.InstrumentID 
@@ -29,5 +33,6 @@ CREATE VIEW [ETL].[EquityTradeHighLow] AS
 			T.TradeDateID 
  
  
+
 
 GO

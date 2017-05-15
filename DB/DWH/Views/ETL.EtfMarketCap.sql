@@ -3,35 +3,33 @@ GO
 SET ANSI_NULLS ON
 GO
 
-CREATE VIEW [ETL].[EtfMarketCap] AS 
-		SELECT 
-			AID.AggregateDate,  
-			AID.AggregateDateID,  
-			AID.InstrumentID,  
-			AID.ISIN,  
-			AID.CurrencyID,
-			E.TotalSharesInIssue,
-			ExRate.ExchangeRate 
-		FROM 
-				ETL.ActiveInstrumentsDates AID 			
-			INNER JOIN 
-				dwh.DimInstrumentEtf E
-			ON AID.InstrumentID = E.InstrumentID
-			CROSS APPLY  
-			( 
-				SELECT 
-					TOP 1 
-					ExchangeRate 
-				FROM 
-					DWH.FactExchangeRate EX 
-				WHERE 
-					AID.AggregateDateID >= EX.DateID  
-				AND 
-					AID.CurrencyID = EX.CurrencyID 
-				ORDER BY 
-					EX.DateID DESC 
-			) AS ExRate 
  
+CREATE VIEW [ETL].[EtfMarketCap] AS  
+		SELECT  
+			D.AggregateDateID,   
+			E.InstrumentID,   
+			E.TotalSharesInIssue, 
+			ExRate.ExchangeRate  
+		FROM
+				DWH.DimInstrumentEtf E 
+			CROSS JOIN			  
+				ETL.AggregationDateList D
+			CROSS APPLY   
+			(  
+				SELECT  
+					TOP 1  
+					ExchangeRate  
+				FROM  
+					DWH.FactExchangeRate EX  
+				WHERE  
+					D.AggregateDateID >= EX.DateID   
+				AND  
+					E.CurrencyID = EX.CurrencyID  
+				ORDER BY  
+					EX.DateID DESC  
+			) AS ExRate  
+  
+  
  
 
 GO

@@ -7,7 +7,7 @@ GO
 -- Create date: 21/2/2017  
 -- Description:	Get a list of updates tp apply to instrument dimension  
 -- =============================================  
-CREATE PROCEDURE [dbo].[GetXtInterfaceUpdatesToApply]  
+CREATE PROCEDURE [dbo].[XtGetInterfaceUpdatesToApply]  
 AS  
 BEGIN  
 	SET NOCOUNT ON;  

@@ -96,7 +96,7 @@ BEGIN
 		FROM 
 			T7TradeMainDataFlowOutput 
 		WHERE 
-			StatusName NOT IN ( 'Listed', 'Conditional Dealings' )
+			StatusName NOT IN ( 'Listed', 'ConditionalDealings' )
 		UNION
 		SELECT 
 			TradeDateID, 

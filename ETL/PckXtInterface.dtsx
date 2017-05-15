@@ -11,8 +11,8 @@
   DTS:LocaleID="6153"
   DTS:ObjectName="PckXtInterface"
   DTS:PackageType="5"
-  DTS:VersionBuild="171"
-  DTS:VersionGUID="{0669CD6C-2FA4-44E0-94D4-DD15ABE85C8A}">
+  DTS:VersionBuild="174"
+  DTS:VersionGUID="{A25C4CB9-3F67-4E39-9477-D6EF639AEA80}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -662,7 +662,7 @@ WHERE
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{7AE745A6-BA4C-482E-9695-63779ECE70D4}"
-              SQLTask:SqlStatementSource="EXECUTE dbo.AssembleXtInterfaceEquityEtfUpdate&#xA;&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+              SQLTask:SqlStatementSource="EXECUTE dbo.XtAssembleXtInterfaceEquityEtfUpdate&#xA;&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
           </DTS:ObjectData>
         </DTS:Executable>
         <DTS:Executable
@@ -679,7 +679,7 @@ WHERE
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{7AE745A6-BA4C-482E-9695-63779ECE70D4}"
-              SQLTask:SqlStatementSource="EXECUTE dbo.GetXtInterfaceUpdatesToApply&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+              SQLTask:SqlStatementSource="EXECUTE dbo.XtGetInterfaceUpdatesToApply&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
           </DTS:ObjectData>
         </DTS:Executable>
         <DTS:Executable
@@ -726,11 +726,13 @@ WHERE
         <DTS:PrecedenceConstraint
           DTS:refId="Package\SEQ Data Prep.PrecedenceConstraints[Constraint]"
           DTS:CreationName=""
-          DTS:DTSID="{F3ACA4D9-5DB4-4FE2-9AB0-27840ACB8129}"
-          DTS:From="Package\SEQ Data Prep\SQL Analysis XT Updates - 1"
+          DTS:DTSID="{278FA5F9-C90C-4261-A128-F102A907E62B}"
+          DTS:EvalOp="3"
+          DTS:Expression="@[User::ErrorFreeYN] == &quot;Y&quot;"
+          DTS:From="Package\SEQ Data Prep\SQL Batch Error Free 1"
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint"
-          DTS:To="Package\SEQ Data Prep\EPT Validate XT Interface" />
+          DTS:To="Package\SEQ Data Prep\SQL Analysis XT Updates - 2" />
         <DTS:PrecedenceConstraint
           DTS:refId="Package\SEQ Data Prep.PrecedenceConstraints[Constraint 1]"
           DTS:CreationName=""
@@ -742,21 +744,19 @@ WHERE
         <DTS:PrecedenceConstraint
           DTS:refId="Package\SEQ Data Prep.PrecedenceConstraints[Constraint 2]"
           DTS:CreationName=""
-          DTS:DTSID="{B789B4CF-A4D1-480F-9356-6E539DCE53D4}"
-          DTS:EvalOp="3"
-          DTS:Expression="@[User::ErrorFreeYN] == &quot;Y&quot;"
-          DTS:From="Package\SEQ Data Prep\SQL Batch Error Free 1"
+          DTS:DTSID="{1D2405DE-EB2C-46BD-9BAA-B64196F49AD8}"
+          DTS:From="Package\SEQ Data Prep\SQL Analysis XT Updates - 1"
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint 2"
           DTS:To="Package\SEQ Data Prep\SQL XT Emergency Fixes" />
         <DTS:PrecedenceConstraint
-          DTS:refId="Package\SEQ Data Prep.PrecedenceConstraints[Constraint 5]"
+          DTS:refId="Package\SEQ Data Prep.PrecedenceConstraints[Constraint 3]"
           DTS:CreationName=""
-          DTS:DTSID="{F50DBB6B-E17A-465E-B889-374264452B0E}"
+          DTS:DTSID="{6DFD7E9E-5B2F-4100-BE3E-F35101E3F5E5}"
           DTS:From="Package\SEQ Data Prep\SQL XT Emergency Fixes"
           DTS:LogicalAnd="True"
-          DTS:ObjectName="Constraint 5"
-          DTS:To="Package\SEQ Data Prep\SQL Analysis XT Updates - 2" />
+          DTS:ObjectName="Constraint 3"
+          DTS:To="Package\SEQ Data Prep\EPT Validate XT Interface" />
       </DTS:PrecedenceConstraints>
     </DTS:Executable>
     <DTS:Executable
@@ -3089,6 +3089,49 @@ where [refTable].[DateID] = ?</property>
                   startId="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\SRC STAGING Instrument Status Changes.Outputs[OLE DB Source Output]" />
               </paths>
             </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SEQ Process Complete"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{4cdfbf5b-66ea-4292-8891-0e17da65c3c0}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SEQ Process Complete">
+      <DTS:Variables>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{ca473804-add4-4dc4-b7f9-69fe66ed8914}"
+          DTS:IncludeInDebugDump="2345"
+          DTS:Namespace="User"
+          DTS:ObjectName="ProcessStatus">
+          <DTS:VariableValue
+            DTS:DataType="8">XT_INTERFACE_COMPLETE</DTS:VariableValue>
+        </DTS:Variable>
+      </DTS:Variables>
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\SEQ Process Complete\EPT ProcessStatus"
+          DTS:CreationName="Microsoft.ExecutePackageTask"
+          DTS:Description="Execute Package Task"
+          DTS:DTSID="{eb94bf40-ca3a-49f7-8535-2bb75a7cbd97}"
+          DTS:ExecutableType="Microsoft.ExecutePackageTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="EPT ProcessStatus"
+          DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <ExecutePackageTask>
+              <UseProjectReference>True</UseProjectReference>
+              <PackageName>PckProcessStatus.dtsx</PackageName>
+              <ParameterAssignment>
+                <ParameterName>Message</ParameterName>
+                <BindedVariableOrParameterName>User::ProcessStatus</BindedVariableOrParameterName>
+              </ParameterAssignment>
+            </ExecutePackageTask>
           </DTS:ObjectData>
         </DTS:Executable>
       </DTS:Executables>
@@ -13844,7 +13887,7 @@ where [refTable].[StatusID] = ?</property>
                       containsID="true"
                       dataType="System.String"
                       description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                      name="ParameterMap">#{Package\SEQ XT Inteface Staging Dataflow\DFT DWH Instrument Staging\1409:invalid};</property>
+                      name="ParameterMap">#{Package\SEQ XT Inteface Staging Dataflow\DFT DWH Instrument Staging\1421:invalid};</property>
                     <property
                       dataType="System.Int32"
                       description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -14324,7 +14367,7 @@ where [refTable].[MarketID] = ?</property>
                       containsID="true"
                       dataType="System.String"
                       description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                      name="ParameterMap">#{Package\SEQ XT Inteface Staging Dataflow\DFT DWH Instrument Staging\1410:invalid};</property>
+                      name="ParameterMap">#{Package\SEQ XT Inteface Staging Dataflow\DFT DWH Instrument Staging\1422:invalid};</property>
                     <property
                       dataType="System.Int32"
                       description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -14484,7 +14527,7 @@ where [refTable].[CurrencyID] = ?</property>
                       containsID="true"
                       dataType="System.String"
                       description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                      name="ParameterMap">#{Package\SEQ XT Inteface Staging Dataflow\DFT DWH Instrument Staging\1411:invalid};</property>
+                      name="ParameterMap">#{Package\SEQ XT Inteface Staging Dataflow\DFT DWH Instrument Staging\1423:invalid};</property>
                     <property
                       dataType="System.Int32"
                       description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -31216,6 +31259,49 @@ AND
           </DTS:ObjectData>
         </DTS:Executable>
         <DTS:Executable
+          DTS:refId="Package\SEQ XT Inteface Staging Dataflow\SEQ Process Start"
+          DTS:CreationName="STOCK:SEQUENCE"
+          DTS:Description="Sequence Container"
+          DTS:DTSID="{b9e99f75-c47f-44ff-b885-598848e22702}"
+          DTS:ExecutableType="STOCK:SEQUENCE"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SEQ Process Start">
+          <DTS:Variables>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{bbda9e29-22ca-4b8a-a1c3-a53bbb8b015e}"
+              DTS:IncludeInDebugDump="2345"
+              DTS:Namespace="User"
+              DTS:ObjectName="ProcessStatus">
+              <DTS:VariableValue
+                DTS:DataType="8">XT_INTERFACE_START</DTS:VariableValue>
+            </DTS:Variable>
+          </DTS:Variables>
+          <DTS:Executables>
+            <DTS:Executable
+              DTS:refId="Package\SEQ XT Inteface Staging Dataflow\SEQ Process Start\EPT ProcessStatus"
+              DTS:CreationName="Microsoft.ExecutePackageTask"
+              DTS:Description="Execute Package Task"
+              DTS:DTSID="{4d40d0a4-dd7a-43b4-b433-81d838242cca}"
+              DTS:ExecutableType="Microsoft.ExecutePackageTask"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="EPT ProcessStatus"
+              DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+              <DTS:Variables />
+              <DTS:ObjectData>
+                <ExecutePackageTask>
+                  <UseProjectReference>True</UseProjectReference>
+                  <PackageName>PckProcessStatus.dtsx</PackageName>
+                  <ParameterAssignment>
+                    <ParameterName>Message</ParameterName>
+                    <BindedVariableOrParameterName>User::ProcessStatus</BindedVariableOrParameterName>
+                  </ParameterAssignment>
+                </ExecutePackageTask>
+              </DTS:ObjectData>
+            </DTS:Executable>
+          </DTS:Executables>
+        </DTS:Executable>
+        <DTS:Executable
           DTS:refId="Package\SEQ XT Inteface Staging Dataflow\SQL Staging Clear XT Tables"
           DTS:CreationName="Microsoft.ExecuteSQLTask"
           DTS:Description="Execute SQL Task"
@@ -32032,6 +32118,14 @@ where [refTable].[TableName] = ?</property>
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 7"
       DTS:To="Package\SEQ Data Prep" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 8]"
+      DTS:CreationName=""
+      DTS:DTSID="{E34A255F-F5EF-43E4-AE7F-FD9D91B6F6BB}"
+      DTS:From="Package\DFT Update ProcessControl"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 8"
+      DTS:To="Package\SEQ Process Complete" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
@@ -32044,7 +32138,7 @@ where [refTable].[TableName] = ?</property>
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="64" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="64" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="210,42"
           Id="Package\CMD Update ProcessControl"
@@ -32056,11 +32150,11 @@ where [refTable].[TableName] = ?</property>
         <NodeLayout
           Size="208,42"
           Id="Package\DFT Update ProcessControl"
-          TopLeft="647,2233" />
+          TopLeft="646,2287" />
         <NodeLayout
           Size="275,42"
           Id="Package\SEQ Data Prep\EPT Validate XT Interface"
-          TopLeft="20,93" />
+          TopLeft="17,170" />
         <NodeLayout
           Size="275,42"
           Id="Package\SEQ Data Prep\SQL Analysis XT Updates - 1"
@@ -32072,47 +32166,25 @@ where [refTable].[TableName] = ?</property>
         <NodeLayout
           Size="275,42"
           Id="Package\SEQ Data Prep\SQL Batch Error Free 1"
-          TopLeft="20,175" />
+          TopLeft="16,261" />
         <NodeLayout
           Size="275,42"
           Id="Package\SEQ Data Prep\SQL XT Emergency Fixes"
-          TopLeft="20,265" />
-        <EdgeLayout
-          Id="Package\SEQ Data Prep.PrecedenceConstraints[Constraint]"
-          TopLeft="157.5,57">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,36"
-              Start="0,0"
-              End="0,28.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,28.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+          TopLeft="21,89" />
         <EdgeLayout
           Id="Package\SEQ Data Prep.PrecedenceConstraints[Constraint 1]"
-          TopLeft="157.5,135">
+          TopLeft="154,212">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,40"
+              StartConnector="{x:Null}"
+              EndConnector="0,49"
               Start="0,0"
-              End="0,32.5">
+              End="0,41.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,32.5" />
+                    End="0,41.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -32122,43 +32194,65 @@ where [refTable].[TableName] = ?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\SEQ Data Prep.PrecedenceConstraints[Constraint 2]"
-          TopLeft="157.5,217">
+          Id="Package\SEQ Data Prep.PrecedenceConstraints[Constraint]"
+          TopLeft="155.5,303">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,48"
+              StartConnector="{x:Null}"
+              EndConnector="0,35"
               Start="0,0"
-              End="0,40.5">
+              End="0,27.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,40.5" />
+                    End="0,27.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-8,12.25,16,16"
+              BoundingBox="-8,5.75,16,16"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\SEQ Data Prep.PrecedenceConstraints[Constraint 5]"
-          TopLeft="157.5,307">
+          Id="Package\SEQ Data Prep.PrecedenceConstraints[Constraint 2]"
+          TopLeft="158,57">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,31"
+              StartConnector="{x:Null}"
+              EndConnector="0,32"
               Start="0,0"
-              End="0,23.5">
+              End="0,24.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,23.5" />
+                    End="0,24.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ Data Prep.PrecedenceConstraints[Constraint 3]"
+          TopLeft="156.5,131">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="0,39"
+              Start="0,0"
+              End="0,31.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -32170,10 +32264,10 @@ where [refTable].[TableName] = ?</property>
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="397,411"
-          Size="397,454"
+          PanelSize="397,435"
+          Size="397,478"
           Id="Package\SEQ Data Prep"
-          TopLeft="550,1001" />
+          TopLeft="550,1098" />
         <NodeLayout
           Size="208,42"
           Id="Package\SEQ Early arriving facts\DFT XT Early Facts"
@@ -32187,7 +32281,7 @@ where [refTable].[TableName] = ?</property>
           TopLeft="170.5,78">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,34"
               Start="0,0"
               End="0,26.5">
@@ -32221,7 +32315,18 @@ where [refTable].[TableName] = ?</property>
           PanelSize="384,118"
           Size="384,161"
           Id="Package\SEQ FactInstrumentStatus"
-          TopLeft="562,2002" />
+          TopLeft="553,2078" />
+        <NodeLayout
+          Size="165,42"
+          Id="Package\SEQ Process Complete\EPT ProcessStatus"
+          TopLeft="28,19" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="208,116"
+          Size="208,159"
+          Id="Package\SEQ Process Complete"
+          TopLeft="644,2370" />
         <NodeLayout
           Size="275,42"
           Id="Package\SEQ Update DWH Dimensions\DFT Add Equity or Etf to new instruments"
@@ -32243,7 +32348,7 @@ where [refTable].[TableName] = ?</property>
           TopLeft="177,73">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,51"
               Start="0,0"
               End="0,43.5">
@@ -32265,7 +32370,7 @@ where [refTable].[TableName] = ?</property>
           TopLeft="177,166">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,39"
               Start="0,0"
               End="0,31.5">
@@ -32287,7 +32392,7 @@ where [refTable].[TableName] = ?</property>
           TopLeft="176.5,247">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,41"
               Start="0,0"
               End="0,33.5">
@@ -32310,29 +32415,40 @@ where [refTable].[TableName] = ?</property>
           PanelSize="386,385"
           Size="386,428"
           Id="Package\SEQ Update DWH Dimensions"
-          TopLeft="562,1500" />
+          TopLeft="551,1612" />
         <NodeLayout
           Size="275,42"
           Id="Package\SEQ XT Inteface Staging Dataflow\DFT DWH Instrument Staging"
-          TopLeft="61,126" />
+          TopLeft="41,259" />
         <NodeLayout
           Size="275,42"
           Id="Package\SEQ XT Inteface Staging Dataflow\DFT Dwh Minor"
-          TopLeft="61,202" />
+          TopLeft="41,335" />
         <NodeLayout
           Size="275,42"
           Id="Package\SEQ XT Inteface Staging Dataflow\DFT XT ODS Staging"
-          TopLeft="369,125" />
+          TopLeft="349,258" />
+        <NodeLayout
+          Size="165,42"
+          Id="Package\SEQ XT Inteface Staging Dataflow\SEQ Process Start\EPT ProcessStatus"
+          TopLeft="19,12" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="250,81"
+          Size="250,124"
+          Id="Package\SEQ XT Inteface Staging Dataflow\SEQ Process Start"
+          TopLeft="189,15" />
         <NodeLayout
           Size="275,42"
           Id="Package\SEQ XT Inteface Staging Dataflow\SQL Staging Clear XT Tables"
-          TopLeft="207,26" />
+          TopLeft="187,159" />
         <EdgeLayout
           Id="Package\SEQ XT Inteface Staging Dataflow.PrecedenceConstraints[Constraint]"
-          TopLeft="389,68">
+          TopLeft="369,201">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="117.5,57"
               Start="0,0"
               End="117.5,49.5">
@@ -32340,17 +32456,17 @@ where [refTable].[TableName] = ?</property>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,18.997830802603" />
+                    End="0,18.9978308026029" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,18.997830802603"
-                    Point2="0,22.997830802603"
-                    Point3="4,22.997830802603" />
+                    Point1="0,18.9978308026029"
+                    Point2="0,22.9978308026029"
+                    Point3="4,22.9978308026029" />
                   <mssgle:LineSegment
-                    End="113.5,22.997830802603" />
+                    End="113.5,22.9978308026029" />
                   <mssgle:CubicBezierSegment
-                    Point1="113.5,22.997830802603"
-                    Point2="117.5,22.997830802603"
-                    Point3="117.5,26.997830802603" />
+                    Point1="113.5,22.9978308026029"
+                    Point2="117.5,22.9978308026029"
+                    Point3="117.5,26.9978308026029" />
                   <mssgle:LineSegment
                     End="117.5,49.5" />
                 </mssgle:SegmentCollection>
@@ -32363,10 +32479,10 @@ where [refTable].[TableName] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\SEQ XT Inteface Staging Dataflow.PrecedenceConstraints[Constraint 1]"
-          TopLeft="300,68">
+          TopLeft="280,201">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="-101.5,58"
               Start="0,0"
               End="-101.5,50.5">
@@ -32397,10 +32513,10 @@ where [refTable].[TableName] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\SEQ XT Inteface Staging Dataflow.PrecedenceConstraints[Constraint 2]"
-          TopLeft="198.5,168">
+          TopLeft="178.5,301">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,34"
               Start="0,0"
               End="0,26.5">
@@ -32420,10 +32536,10 @@ where [refTable].[TableName] = ?</property>
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="684,276"
-          Size="684,319"
+          PanelSize="684,432"
+          Size="684,475"
           Id="Package\SEQ XT Inteface Staging Dataflow"
-          TopLeft="409.5,610" />
+          TopLeft="411.5,590" />
         <NodeLayout
           Size="266,42"
           Id="Package\SEQ XT Interface Batch Control\DFT XT Staging Get Sequence Numbers"
@@ -32445,7 +32561,7 @@ where [refTable].[TableName] = ?</property>
           TopLeft="175,57">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,39"
               Start="0,0"
               End="0,31.5">
@@ -32467,7 +32583,7 @@ where [refTable].[TableName] = ?</property>
           TopLeft="175,138">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,34"
               Start="0,0"
               End="0,26.5">
@@ -32489,7 +32605,7 @@ where [refTable].[TableName] = ?</property>
           TopLeft="175,214">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,36"
               Start="0,0"
               End="0,28.5">
@@ -32522,7 +32638,7 @@ where [refTable].[TableName] = ?</property>
           TopLeft="756.5,459">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,40"
               Start="0,0"
               End="0,32.5">
@@ -32541,18 +32657,18 @@ where [refTable].[TableName] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="751.75,1455">
+          TopLeft="746.25,1576">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,45"
+              StartConnector="{x:Null}"
+              EndConnector="0,36"
               Start="0,0"
-              End="0,37.5">
+              End="0,28.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,37.5" />
+                    End="0,28.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -32563,25 +32679,25 @@ where [refTable].[TableName] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 2]"
-          TopLeft="752.75,541">
+          TopLeft="753.75,541">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,69"
+              StartConnector="{x:Null}"
+              EndConnector="0,49"
               Start="0,0"
-              End="0,61.5">
+              End="0,41.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,61.5" />
+                    End="0,41.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-8,22.75,16,16"
+              BoundingBox="-8,12.75,16,16"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -32590,7 +32706,7 @@ where [refTable].[TableName] = ?</property>
           TopLeft="859,522.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="95,0"
               Start="0,0"
               End="87.5,0">
@@ -32611,18 +32727,18 @@ where [refTable].[TableName] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 4]"
-          TopLeft="754.5,1928">
+          TopLeft="744.5,2040">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,74"
+              StartConnector="{x:Null}"
+              EndConnector="0,38"
               Start="0,0"
-              End="0,66.5">
+              End="0,30.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,66.5" />
+                    End="0,30.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -32636,7 +32752,7 @@ where [refTable].[TableName] = ?</property>
           TopLeft="758.75,42">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,40"
               Start="0,0"
               End="0,32.5">
@@ -32655,42 +32771,64 @@ where [refTable].[TableName] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 6]"
-          TopLeft="752.5,2163">
+          TopLeft="747.5,2239">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,70"
+              StartConnector="{x:Null}"
+              EndConnector="0,48"
               Start="0,0"
-              End="0,62.5">
+              End="0,40.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,62.5" />
+                    End="0,40.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-8,23.25,16,16"
+              BoundingBox="-8,12.25,16,16"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 7]"
-          TopLeft="750,929">
+          TopLeft="751,1065">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,72"
+              StartConnector="{x:Null}"
+              EndConnector="0,33"
               Start="0,0"
-              End="0,64.5">
+              End="0,25.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,64.5" />
+                    End="0,25.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 8]"
+          TopLeft="749,2329">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="0,41"
+              Start="0,0"
+              End="0,33.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,33.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -32706,7 +32844,7 @@ where [refTable].[TableName] = ?</property>
     design-time-name="Package\DFT Update ProcessControl">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="260,42"
           Id="Package\DFT Update ProcessControl\DST ProcessControl XT_UpdateControl"
@@ -32724,7 +32862,7 @@ where [refTable].[TableName] = ?</property>
           TopLeft="190,67">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,43"
               Start="0,0"
               End="0,35.5">
@@ -32748,7 +32886,7 @@ where [refTable].[TableName] = ?</property>
           TopLeft="190,152">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,42"
               Start="0,0"
               End="0,34.5">
@@ -32787,7 +32925,7 @@ where [refTable].[TableName] = ?</property>
     design-time-name="Package\SEQ Early arriving facts\DFT XT Early Facts">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="236,42"
           Id="Package\SEQ Early arriving facts\DFT XT Early Facts\Multicast"
@@ -32809,7 +32947,7 @@ where [refTable].[TableName] = ?</property>
           TopLeft="367,155">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="117,56"
               Start="0,0"
               End="117,48.5">
@@ -32845,7 +32983,7 @@ where [refTable].[TableName] = ?</property>
           TopLeft="291,155">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="-123,56"
               Start="0,0"
               End="-123,48.5">
@@ -32881,7 +33019,7 @@ where [refTable].[TableName] = ?</property>
           TopLeft="329,62">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,51"
               Start="0,0"
               End="0,43.5">
@@ -32941,7 +33079,7 @@ where [refTable].[TableName] = ?</property>
     design-time-name="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory">
     <LayoutInfo>
       <GraphLayout
-        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="277,42"
           Id="Package\SEQ FactInstrumentStatus\DFT Load FactInstrumentStatusHistory\LKP DWH DimStatus Old"
@@ -32991,7 +33129,7 @@ where [refTable].[TableName] = ?</property>
           TopLeft="575,174.875">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="172,0"
               Start="0,0"
               End="164.5,0">
@@ -33015,7 +33153,7 @@ where [refTable].[TableName] = ?</property>
           TopLeft="575,717.625">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="162,0"
               Start="0,0"
               End="154.5,0">
@@ -33039,7 +33177,7 @@ where [refTable].[TableName] = ?</property>
           TopLeft="436.5,555.75">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,48.75"
               Start="0,0"
               End="0,41.25">
@@ -33063,7 +33201,7 @@ where [refTable].[TableName] = ?</property>
           TopLeft="436.5,374.25">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,48.75"
               Start="0,0"
               End="0,41.25">
@@ -33087,7 +33225,7 @@ where [refTable].[TableName] = ?</property>
           TopLeft="436.5,192.75">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,48.75"
               Start="0,0"
               End="0,41.25">
@@ -33111,7 +33249,7 @@ where [refTable].[TableName] = ?</property>
           TopLeft="436.5,283.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,48.75"
               Start="0,0"
               End="0,41.25">
@@ -33135,7 +33273,7 @@ where [refTable].[TableName] = ?</property>
           TopLeft="436.5,646.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,48.75"
               Start="0,0"
               End="0,41.25">
@@ -33159,7 +33297,7 @@ where [refTable].[TableName] = ?</property>
           TopLeft="436.5,465">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,48.75"
               Start="0,0"
               End="0,41.25">
@@ -33183,7 +33321,7 @@ where [refTable].[TableName] = ?</property>
           TopLeft="436.5,102">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,48.75"
               Start="0,0"
               End="0,41.25">
@@ -33207,7 +33345,7 @@ where [refTable].[TableName] = ?</property>
           TopLeft="436.5,737.25">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,48.75"
               Start="0,0"
               End="0,41.25">
@@ -33302,7 +33440,7 @@ where [refTable].[TableName] = ?</property>
     design-time-name="Package\SEQ Update DWH Dimensions\DFT Add Equity or Etf to new instruments">
     <LayoutInfo>
       <GraphLayout
-        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="237,42"
           Id="Package\SEQ Update DWH Dimensions\DFT Add Equity or Etf to new instruments\LKP DHW New Instrument"
@@ -33336,7 +33474,7 @@ where [refTable].[TableName] = ?</property>
           TopLeft="190.5,81">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,48.444444444444"
               Start="0,0"
               End="0,40.944444444444">
@@ -33360,7 +33498,7 @@ where [refTable].[TableName] = ?</property>
           TopLeft="190.5,259.222222222222">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,38.5555555555561"
               Start="0,0"
               End="0,31.0555555555561">
@@ -33384,7 +33522,7 @@ where [refTable].[TableName] = ?</property>
           TopLeft="190.5,171.444444444444">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,45.777777777778"
               Start="0,0"
               End="0,38.277777777778">
@@ -33408,7 +33546,7 @@ where [refTable].[TableName] = ?</property>
           TopLeft="152.333333333333,429">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="-22.8333333333333,60"
               Start="0,0"
               End="-22.8333333333333,52.5">
@@ -33444,7 +33582,7 @@ where [refTable].[TableName] = ?</property>
           TopLeft="228.666666666667,429">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="212.833333333333,60"
               Start="0,0"
               End="212.833333333333,52.5">
@@ -33480,7 +33618,7 @@ where [refTable].[TableName] = ?</property>
           TopLeft="190.5,339.777777777778">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,47.2222222222219"
               Start="0,0"
               End="0,39.7222222222219">
@@ -33586,7 +33724,7 @@ where [refTable].[TableName] = ?</property>
     design-time-name="Package\SEQ Update DWH Dimensions\DFT Add New Instruments to DWH">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="257,42"
           Id="Package\SEQ Update DWH Dimensions\DFT Add New Instruments to DWH\LKP New Instrument Details"
@@ -33608,7 +33746,7 @@ where [refTable].[TableName] = ?</property>
           TopLeft="185.5,71">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,33"
               Start="0,0"
               End="0,25.5">
@@ -33632,7 +33770,7 @@ where [refTable].[TableName] = ?</property>
           TopLeft="185.5,146">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,60.2"
               Start="0,0"
               End="0,52.7">
@@ -33656,7 +33794,7 @@ where [refTable].[TableName] = ?</property>
           TopLeft="185.5,248.2">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,49.8"
               Start="0,0"
               End="0,42.3">
@@ -33726,7 +33864,7 @@ where [refTable].[TableName] = ?</property>
     design-time-name="Package\SEQ Update DWH Dimensions\DFT Expire SCD-2 Entries">
     <LayoutInfo>
       <GraphLayout
-        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="236,42"
           Id="Package\SEQ Update DWH Dimensions\DFT Expire SCD-2 Entries\CMD Expire DimInstrumentEquity"
@@ -33752,7 +33890,7 @@ where [refTable].[TableName] = ?</property>
           TopLeft="274.5,226.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,65"
               Start="0,0"
               End="0,57.5">
@@ -33776,7 +33914,7 @@ where [refTable].[TableName] = ?</property>
           TopLeft="274.5,135">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,49.5"
               Start="0,0"
               End="0,42">
@@ -33800,7 +33938,7 @@ where [refTable].[TableName] = ?</property>
           TopLeft="274.5,47.4999999999999">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,45.5000000000001"
               Start="0,0"
               End="0,38.0000000000001">
@@ -33824,7 +33962,7 @@ where [refTable].[TableName] = ?</property>
           TopLeft="274.5,333.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,58"
               Start="0,0"
               End="0,50.5">
@@ -33881,7 +34019,7 @@ where [refTable].[TableName] = ?</property>
     design-time-name="Package\SEQ Update DWH Dimensions\DFT Update SCD 1 Changes">
     <LayoutInfo>
       <GraphLayout
-        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="120,42"
           Id="Package\SEQ Update DWH Dimensions\DFT Update SCD 1 Changes\Multicast"
@@ -33911,7 +34049,7 @@ where [refTable].[TableName] = ?</property>
           TopLeft="475,47.4999999999999">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,60.0000000000001"
               Start="0,0"
               End="0,52.5000000000001">
@@ -33935,7 +34073,7 @@ where [refTable].[TableName] = ?</property>
           TopLeft="500,237">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="302,85"
               Start="0,0"
               End="302,77.5">
@@ -33971,7 +34109,7 @@ where [refTable].[TableName] = ?</property>
           TopLeft="490.666666666667,237">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="-11.6666666666666,79"
               Start="0,0"
               End="-11.6666666666666,71.5">
@@ -34007,7 +34145,7 @@ where [refTable].[TableName] = ?</property>
           TopLeft="472,237">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="-325.5,76.5"
               Start="0,0"
               End="-325.5,69">
@@ -34043,7 +34181,7 @@ where [refTable].[TableName] = ?</property>
           TopLeft="473.5,149.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,45.5"
               Start="0,0"
               End="0,38">
@@ -34100,7 +34238,7 @@ where [refTable].[TableName] = ?</property>
     design-time-name="Package\SEQ XT Inteface Staging Dataflow\DFT DWH Instrument Staging">
     <LayoutInfo>
       <GraphLayout
-        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="238,42"
           Id="Package\SEQ XT Inteface Staging Dataflow\DFT DWH Instrument Staging\LKP XT Market Code"
@@ -34146,7 +34284,7 @@ where [refTable].[TableName] = ?</property>
           TopLeft="497.5,162.125">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="-124.166666666667,32.875"
               Start="0,0"
               End="-124.166666666667,25.375">
@@ -34172,7 +34310,9 @@ where [refTable].[TableName] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -34180,7 +34320,7 @@ where [refTable].[TableName] = ?</property>
           TopLeft="193.5,162.125">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="161,32.875"
               Start="0,0"
               End="161,25.375">
@@ -34206,7 +34346,9 @@ where [refTable].[TableName] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -34214,7 +34356,7 @@ where [refTable].[TableName] = ?</property>
           TopLeft="353,564">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,46.75"
               Start="0,0"
               End="0,39.25">
@@ -34238,7 +34380,7 @@ where [refTable].[TableName] = ?</property>
           TopLeft="313.5,479.625">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="39.5,42.375"
               Start="0,0"
               End="39.5,34.875">
@@ -34274,7 +34416,7 @@ where [refTable].[TableName] = ?</property>
           TopLeft="353,652.75">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,51.125"
               Start="0,0"
               End="0,43.625">
@@ -34298,7 +34440,7 @@ where [refTable].[TableName] = ?</property>
           TopLeft="353,745.875">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,45.125"
               Start="0,0"
               End="0,37.625">
@@ -34322,7 +34464,7 @@ where [refTable].[TableName] = ?</property>
           TopLeft="353,409.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="-39.5,28.125"
               Start="0,0"
               End="-39.5,20.625">
@@ -34358,7 +34500,7 @@ where [refTable].[TableName] = ?</property>
           TopLeft="353,323.375">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,44.125"
               Start="0,0"
               End="0,36.625">
@@ -34382,7 +34524,7 @@ where [refTable].[TableName] = ?</property>
           TopLeft="353.75,237">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,44.375"
               Start="0,0"
               End="0,36.875">
@@ -34396,7 +34538,9 @@ where [refTable].[TableName] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -34408,7 +34552,7 @@ where [refTable].[TableName] = ?</property>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -34418,7 +34562,7 @@ where [refTable].[TableName] = ?</property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -34468,7 +34612,7 @@ where [refTable].[TableName] = ?</property>
     design-time-name="Package\SEQ XT Inteface Staging Dataflow\DFT Dwh Minor">
     <LayoutInfo>
       <GraphLayout
-        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="206,42"
           Id="Package\SEQ XT Inteface Staging Dataflow\DFT Dwh Minor\DST STG Market"
@@ -34514,7 +34658,7 @@ where [refTable].[TableName] = ?</property>
           TopLeft="163,267">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,41"
               Start="0,0"
               End="0,33.5">
@@ -34538,7 +34682,7 @@ where [refTable].[TableName] = ?</property>
           TopLeft="418,267">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,41"
               Start="0,0"
               End="0,33.5">
@@ -34562,7 +34706,7 @@ where [refTable].[TableName] = ?</property>
           TopLeft="418,77">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,48"
               Start="0,0"
               End="0,40.5">
@@ -34586,7 +34730,7 @@ where [refTable].[TableName] = ?</property>
           TopLeft="687,77">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,48"
               Start="0,0"
               End="0,40.5">
@@ -34610,7 +34754,7 @@ where [refTable].[TableName] = ?</property>
           TopLeft="163,77">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,48"
               Start="0,0"
               End="0,40.5">
@@ -34766,7 +34910,7 @@ where [refTable].[TableName] = ?</property>
     design-time-name="Package\SEQ XT Inteface Staging Dataflow\DFT XT ODS Staging">
     <LayoutInfo>
       <GraphLayout
-        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="194,42"
           Id="Package\SEQ XT Inteface Staging Dataflow\DFT XT ODS Staging\SRC XT ODS Company 1"
@@ -34836,7 +34980,7 @@ where [refTable].[TableName] = ?</property>
           TopLeft="462,472">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="42.5,94"
               Start="0,0"
               End="42.5,86.5">
@@ -34872,7 +35016,7 @@ where [refTable].[TableName] = ?</property>
           TopLeft="771.75,75">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,61"
               Start="0,0"
               End="0,53.5">
@@ -34896,7 +35040,7 @@ where [refTable].[TableName] = ?</property>
           TopLeft="474,69">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,61"
               Start="0,0"
               End="0,53.5">
@@ -34920,7 +35064,7 @@ where [refTable].[TableName] = ?</property>
           TopLeft="167.75,788">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,74"
               Start="0,0"
               End="0,66.5">
@@ -34944,7 +35088,7 @@ where [refTable].[TableName] = ?</property>
           TopLeft="176,475">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,91"
               Start="0,0"
               End="0,83.5">
@@ -34968,7 +35112,7 @@ where [refTable].[TableName] = ?</property>
           TopLeft="162.5,66">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,66"
               Start="0,0"
               End="0,58.5">
@@ -34992,7 +35136,7 @@ where [refTable].[TableName] = ?</property>
           TopLeft="504.5,608">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="-9.5,76"
               Start="0,0"
               End="-9.5,68.5">
@@ -35028,7 +35172,7 @@ where [refTable].[TableName] = ?</property>
           TopLeft="772,273">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="-19,69"
               Start="0,0"
               End="-19,61.5">
@@ -35064,7 +35208,7 @@ where [refTable].[TableName] = ?</property>
           TopLeft="474.5,172">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,62"
               Start="0,0"
               End="0,54.5">
@@ -35088,7 +35232,7 @@ where [refTable].[TableName] = ?</property>
           TopLeft="771,178">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,53"
               Start="0,0"
               End="0,45.5">
@@ -35324,7 +35468,7 @@ where [refTable].[TableName] = ?</property>
     design-time-name="Package\SEQ XT Interface Batch Control\DFT XT Staging Get Sequence Numbers">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="257,42"
           Id="Package\SEQ XT Interface Batch Control\DFT XT Staging Get Sequence Numbers\LKP XT ODS Sequence Numbers"
@@ -35342,7 +35486,7 @@ where [refTable].[TableName] = ?</property>
           TopLeft="236.5,92">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,58"
               Start="0,0"
               End="0,50.5">
@@ -35366,7 +35510,7 @@ where [refTable].[TableName] = ?</property>
           TopLeft="236.5,192">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,55"
               Start="0,0"
               End="0,47.5">
