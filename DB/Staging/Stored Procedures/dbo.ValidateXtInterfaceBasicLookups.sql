@@ -211,6 +211,29 @@ BEGIN
 						FROM
 							dbo.MdmStatus
 					)
+		UNION
+		SELECT
+			568 As Code,  
+			'XT Instrument found with ISIN that has already been assigned to another Instrument in DWH. ISIN [' + XT.ISIN + '] - Instrument GID in XT [' + XT.InstrumentGlobalID + '] - Instrument GID in XT [' + I.InstrumentGlobalID + ']'  AS Message,
+			XT.InstrumentGlobalID
+		FROM
+				dbo.XtOdsInstrumentEquityEtfUpdate XT
+			INNER JOIN
+				dbo.DwhDimInstrumentEquityEtf I
+			ON XT.ISIN = I.ISIN
+		WHERE
+			XT.InstrumentGlobalID <> I.InstrumentGlobalID
+		UNION
+		SELECT  
+			569 As Code,  
+			'XT Instrument found with no Issuer GID. This could indicate an issue witht the Company assignment. Instrument has not been processed. GID: ' + InstrumentGlobalID AS Message,
+			InstrumentGlobalID
+		FROM  
+			dbo.XtOdsInstrumentEquityEtfUpdate   
+		WHERE  
+			ISNULL(IssuerGlobalID,'') = '' 
+
+
 
 	/*  Delete invalid instruments */
 	DELETE
@@ -232,5 +255,6 @@ BEGIN
   
     
 END  
+
 
 GO

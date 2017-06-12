@@ -26,15 +26,28 @@ BEGIN
 		SELECT 
 			TradeDateID, 
 			TradingSysTransNo, 
+			/* IMPORTANT - ENSURE CODE IS IN FILTER AT END OF SP */
+			-101 AS Code, 
+			'Trade [' + CAST(TradeDateID AS CHAR(8)) + '\' + RTRIM(CAST(TradingSysTransNo AS CHAR)) + '] moved to quarantine: Trade is NEGOTIATED DEAL but DEFERRED INDICATOR is not set.' AS Message 
+		FROM 
+			T7TradeMainDataFlowOutput 
+		WHERE 
+				TradeType ='ND'
+			AND 
+				DelayedTradeYN NOT IN ( 'N', 'Y' )
+		UNION
+		SELECT 
+			TradeDateID, 
+			TradingSysTransNo, 
+			/* IMPORTANT - ENSURE CODE IS IN FILTER AT END OF SP */
 			-99 AS Code, 
-			'Trade [' + CAST(TradeDateID AS CHAR(8)) + '\' + RTRIM(CAST(TradingSysTransNo AS CHAR)) + '] moved to quarantine: Trade is marked DELAYED but PUBLISH TIME is not set.' AS Message 
+			'Trade [' + CAST(TradeDateID AS CHAR(8)) + '\' + RTRIM(CAST(TradingSysTransNo AS CHAR)) + '] moved to quarantine: Trade is marked DEFERRED but PUBLISH TIME is not set.' AS Message 
 		FROM 
 			T7TradeMainDataFlowOutput 
 		WHERE 
 				DelayedTradeYN = 'Y'
 			AND
 				PublishDateTime IS NULL
-
 
 	/* Remove invalid rows from T7TradeMainDataFlowOutput */ 
  
@@ -60,7 +73,7 @@ BEGIN
 		dbo.T7QuarantineTrade 
 	WHERE
 		/* Only ones raised by this puppy */
-		Code = -99
+		Code IN ( -99, -101 )
 		 
 END 
 GO

@@ -13,8 +13,8 @@
   DTS:LocaleID="6153"
   DTS:ObjectName="PckValidate"
   DTS:PackageType="5"
-  DTS:VersionBuild="49"
-  DTS:VersionGUID="{5EE982D9-DADD-4FB3-8DDC-DB79C2F1F7A1}">
+  DTS:VersionBuild="50"
+  DTS:VersionGUID="{2D91BB93-816E-40A2-AC8C-15D0A1410898}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -301,7 +301,7 @@
               DTS:LocaleID="-1"
               DTS:ObjectName="Reset Error Counter"
               DTS:TaskContact="Expression Task;Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-              DTS:ThreadHint="0">
+              DTS:ThreadHint="1">
               <DTS:Variables />
               <DTS:ObjectData>
                 <ExpressionTask
@@ -318,7 +318,7 @@
               DTS:LocaleID="-1"
               DTS:ObjectName="Set database connection"
               DTS:TaskContact="Expression Task;Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-              DTS:ThreadHint="1">
+              DTS:ThreadHint="3">
               <DTS:Variables />
               <DTS:ObjectData>
                 <ExpressionTask
@@ -335,7 +335,7 @@
               DTS:LocaleID="-1"
               DTS:ObjectName="SQL Clear validation log"
               DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-              DTS:ThreadHint="3">
+              DTS:ThreadHint="0">
               <DTS:Variables />
               <DTS:ObjectData>
                 <SQLTask:SqlTaskData
@@ -1587,12 +1587,38 @@
           TopLeft="335,108" />
         <NodeLayout
           Size="217,42"
+          Id="Package\Foreach Loop Container\SEQ Run test\SQL Get Validation Message"
+          TopLeft="36,283" />
+        <NodeLayout
+          Size="217,42"
           Id="Package\Foreach Loop Container\SEQ Run test\SQL Run unit test"
           TopLeft="36,17" />
         <NodeLayout
           Size="217,42"
           Id="Package\Foreach Loop Container\SEQ Run test\SQL Save ValidationLog"
           TopLeft="36,108" />
+        <EdgeLayout
+          Id="Package\Foreach Loop Container\SEQ Run test.PrecedenceConstraints[Constraint]"
+          TopLeft="144.5,325">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,34"
+              Start="0,0"
+              End="0,26.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package\Foreach Loop Container\SEQ Run test.PrecedenceConstraints[Constraint 1]"
           TopLeft="253,129">
@@ -1640,56 +1666,6 @@
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Foreach Loop Container\SEQ Run test.PrecedenceConstraints[Constraint 4]"
-          TopLeft="144.5,59">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,49"
-              Start="0,0"
-              End="0,41.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,41.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-8,12.75,16,16"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="217,42"
-          Id="Package\Foreach Loop Container\SEQ Run test\SQL Get Validation Message"
-          TopLeft="36,283" />
-        <EdgeLayout
-          Id="Package\Foreach Loop Container\SEQ Run test.PrecedenceConstraints[Constraint]"
-          TopLeft="144.5,325">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,34"
-              Start="0,0"
-              End="0,26.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,26.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
           Id="Package\Foreach Loop Container\SEQ Run test.PrecedenceConstraints[Constraint 3]"
           TopLeft="144.5,233">
           <EdgeLayout.Curve>
@@ -1710,6 +1686,30 @@
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
               BoundingBox="-8,13.25,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Foreach Loop Container\SEQ Run test.PrecedenceConstraints[Constraint 4]"
+          TopLeft="144.5,59">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,49"
+              Start="0,0"
+              End="0,41.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,41.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-8,12.75,16,16"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -1776,39 +1776,27 @@
           Id="Package\Foreach Loop Container"
           TopLeft="84,165" />
         <NodeLayout
-          Size="261,42"
+          Size="186,42"
           Id="Package\SQL Get DHW BatchID"
-          TopLeft="632,47" />
+          TopLeft="542,44" />
         <NodeLayout
           Size="193,42"
           Id="Package\SQL Get list of unit tests"
-          TopLeft="348.5,47.5" />
+          TopLeft="263.5,44" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="445,89.5">
+          TopLeft="359.666666666667,86">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-85.6666666666667,75.5"
+              EndConnector="0,79"
               Start="0,0"
-              End="-85.6666666666667,68">
+              End="0,71.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,41.2119961146187" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,41.2119961146187"
-                    Point2="0,45.2119961146187"
-                    Point3="-4,45.2119961146187" />
-                  <mssgle:LineSegment
-                    End="-81.6666666666667,45.2119961146187" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-81.6666666666667,45.2119961146187"
-                    Point2="-85.6666666666667,45.2119961146187"
-                    Point3="-85.6666666666667,49.2119961146187" />
-                  <mssgle:LineSegment
-                    End="-85.6666666666667,68" />
+                    End="0,71.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1819,30 +1807,18 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="762.5,89">
+          TopLeft="632.833333333333,86">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-131.833333333333,76"
+              EndConnector="0,79"
               Start="0,0"
-              End="-131.833333333333,68.5">
+              End="0,71.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,41.5114133074308" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,41.5114133074308"
-                    Point2="0,45.5114133074308"
-                    Point3="-4,45.5114133074308" />
-                  <mssgle:LineSegment
-                    End="-127.833333333333,45.5114133074308" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-127.833333333333,45.5114133074308"
-                    Point2="-131.833333333333,45.5114133074308"
-                    Point3="-131.833333333333,49.5114133074308" />
-                  <mssgle:LineSegment
-                    End="-131.833333333333,68.5" />
+                    End="0,71.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1858,7 +1834,7 @@
     design-time-name="Package\Foreach Loop Container\SEQ Run test\DFT Save Validation Message">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="269,42"
           Id="Package\Foreach Loop Container\SEQ Run test\DFT Save Validation Message\DST ProcessControl Validation Messages"
@@ -1890,7 +1866,9 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -1912,7 +1890,9 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -2028,7 +2008,9 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -2062,7 +2044,9 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -2096,7 +2080,9 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout

@@ -4,6 +4,7 @@ CREATE TABLE [DWH].[DimDate]
 [DateText] [varchar] (20) COLLATE Latin1_General_CI_AS NOT NULL,
 [Day] [date] NOT NULL,
 [WorkingDayYN] [char] (1) COLLATE Latin1_General_CI_AS NOT NULL,
+[CurrentDateYN] [char] (1) COLLATE Latin1_General_CI_AS NOT NULL,
 [Year] [smallint] NOT NULL,
 [MonthNo] [smallint] NOT NULL,
 [MonthName] [varchar] (20) COLLATE Latin1_General_CI_AS NOT NULL,
@@ -16,7 +17,25 @@ CREATE TABLE [DWH].[DimDate]
 [MonthToDateYN] [char] (1) COLLATE Latin1_General_CI_AS NOT NULL,
 [YearToDateYN] [char] (1) COLLATE Latin1_General_CI_AS NOT NULL,
 [TradingStartTime] [time] NOT NULL,
-[TradingEndTime] [time] NOT NULL
+[TradingEndTime] [time] NOT NULL,
+[YearWeekNo] [int] NULL,
+[YearMonthNo] [int] NULL,
+[YearMonthText] [varchar] (8) COLLATE Latin1_General_CI_AS NULL,
+[YearStart] [int] NULL,
+[YearEnd] [int] NULL,
+[LastYearEnd] [int] NULL,
+[QuarterStart] [int] NULL,
+[QuarterEnd] [int] NULL,
+[LastQuarterEnd] [int] NULL,
+[MonthStart] [int] NULL,
+[MonthEnd] [int] NULL,
+[LastMonthEnd] [int] NULL,
+[WeekStart] [int] NULL,
+[WeekEnd] [int] NULL,
+[DaysYTD] [smallint] NULL,
+[DaysMTD] [smallint] NULL,
+[DaysQTD] [smallint] NULL,
+[PreviousDateID] [int] NULL
 ) ON [PRIMARY]
 GO
 ALTER TABLE [DWH].[DimDate] ADD CONSTRAINT [PK_DimDate] PRIMARY KEY CLUSTERED  ([DateID]) ON [PRIMARY]

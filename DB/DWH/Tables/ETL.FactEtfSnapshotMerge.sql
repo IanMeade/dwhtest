@@ -54,6 +54,8 @@ CREATE TABLE [ETL].[FactEtfSnapshotMerge]
 [ESMIndexYN] [varchar] (1) COLLATE Latin1_General_CI_AS NULL,
 [PrimaryMarket] [varchar] (50) COLLATE Latin1_General_CI_AS NULL,
 [InstrumentStatusID] [smallint] NULL,
-[LastEXDivDate] [date] NULL
+[LastEXDivDate] [date] NULL,
+[LtpDateTime] [datetime2] NULL,
+[OcpDateTime] [datetime] NULL
 ) ON [PRIMARY]
 GO

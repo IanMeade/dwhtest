@@ -14,17 +14,6 @@ AS
 BEGIN  
 	SET NOCOUNT ON;  
   
-/*
-	DELETE
-		dbo.XtOdsInstrumentEquityEtfUpdate  
-	WHERE
-		ISIN IS NULL
-*/
-
-	DELETE
-		dbo.XtOdsInstrumentEquityEtfUpdate  
-	WHERE
-		IssuerGlobalID IS NULL
 
   
 	/* SET INSTRUMENT TYPE BASED ON SECURITY TYPE - MAKE EVERYTHING THAT IS NOT AN ETF AN EQUITY */

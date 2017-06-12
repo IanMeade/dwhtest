@@ -39,6 +39,7 @@ CREATE TABLE [dbo].[T7TradeMainDataFlowOutput]
 [CurrencyID] [smallint] NULL,
 [TradeModificationTypeID] [smallint] NULL,
 [BatchID] [int] NULL,
-[CancelBatchID] [int] NULL
+[CancelBatchID] [int] NULL,
+[TradeCancelled] [char] (1) COLLATE Latin1_General_CI_AS NULL
 ) ON [PRIMARY]
 GO

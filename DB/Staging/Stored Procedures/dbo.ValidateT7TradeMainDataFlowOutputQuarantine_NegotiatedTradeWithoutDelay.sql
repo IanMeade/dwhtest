@@ -26,6 +26,7 @@ BEGIN
 		SELECT 
 			TradeDateID, 
 			TradingSysTransNo, 
+			/* IMPORTANT - ENSURE CODE IS IN FILTER AT END OF SP */
 			-199 AS Code, 
 			'Trade [' + CAST(TradeDateID AS CHAR(8)) + '\' + RTRIM(CAST(TradingSysTransNo AS CHAR)) + '] moved to quarantine: Trade is marked NEGOTIATED DEAL but DEFERRED FLAG is not set.' AS Message 
 		FROM 

@@ -14,7 +14,7 @@ AS
 BEGIN 
 	SET NOCOUNT ON; 
  
-	/* FIND FIRST AND LAST ROWS */ 
+	/* FIND LAST ROWS */ 
 	; 
 	WITH SamplesRequired AS ( 
 					SELECT 
@@ -28,8 +28,7 @@ BEGIN
 				) 
 		SELECT 
 			X.IndexDateID, 
-			FirstSample.EquityIndexID AS  FirstSampleEquityIndexID, 
-			LastSample.EquityIndexID AS  LastSampleEquityIndexID 
+			LastSample.EquityIndexID AS LastSampleEquityIndexID 
 		INTO 
 			#Samples 
 		FROM 
@@ -43,23 +42,16 @@ BEGIN
 					WHERE 
 						X.IndexDateID = I.IndexDateID 
 					ORDER BY 
-						I.IndexTimeID, 
-						I.EquityIndexID 
-				) AS FirstSample 
-			CROSS APPLY ( 
-					SELECT 
-						TOP 1 
-						EquityIndexID 
-					FROM 
-						DWH.FactEquityIndex I 
-					WHERE 
-						X.IndexDateID = I.IndexDateID 
-					ORDER BY 
 						I.IndexTimeID DESC, 
 						I.EquityIndexID DESC 
 				) AS LastSample 
  
+ /* Get Open values in #FIRST tmep table */
+ /* Get Last & Return in #LAST tnep table */
+ /* Gets gih and low in #AGG temp table */
+
 				; 
+
 	WITH RowBased AS ( 
 			SELECT 
 				I.IndexDateID, 
@@ -79,7 +71,7 @@ BEGIN
 				INNER JOIN 
 					#Samples S 
 				ON 
-					I.EquityIndexID = S.FirstSampleEquityIndexID 
+					I.EquityIndexID = S.LastSampleEquityIndexID
 			) 
 		SELECT 
 			IndexDateID, 
@@ -174,7 +166,7 @@ BEGIN
 					DWH.FactEquityIndex I 
 				INNER JOIN 
 					#Samples S 
-				ON I.EquityIndexID = S.FirstSampleEquityIndexID 
+				ON I.EquityIndexID = S.LastSampleEquityIndexID 
 			) 
 		SELECT 
 			IndexDateID, 

@@ -19,34 +19,29 @@ BEGIN
 	IF EXISTS( SELECT * FROM dbo.ExchangeRateValue WHERE ExchangeRateDate = @DATE AND CCY = @CCY )
 	BEGIN
 		/* UPDATE EXISTING RATE */
-		UPDATE
+		DELETE
 			dbo.ExchangeRateValue
-		SET
-			ValueInserted = GETDATE(),
-			ExchangeRateDate = GETDATE(),
-			VAL = @VAL
 		WHERE
 			ExchangeRateDate = @DATE 
 		AND 
 			CCY = @CCY 
 	END
-	ELSE
-	BEGIN
-		/* INSERT A NEW ROW */
-		INSERT INTO
-				dbo.ExchangeRateValue
-			(
-				ExchangeRateDate, 
-				CCY, 
-				VAL
-			)
-			VALUES
-			(
-				@DATE,
-				@CCY,
-				@VAL
-			)
-	END
+
+	/* INSERT A NEW ROW */
+	INSERT INTO
+			dbo.ExchangeRateValue
+		(
+			ExchangeRateDate, 
+			CCY, 
+			VAL
+		)
+		VALUES
+		(
+			@DATE,
+			@CCY,
+			@VAL
+		)
+
 END
 
 GO

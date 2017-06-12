@@ -5,6 +5,6 @@ CREATE TABLE [dbo].[AggregationRebuildManualList]
 [ProcessedSucceeded] [char] (1) COLLATE Latin1_General_CI_AS NULL,
 [AggregationLogged] [datetime2] NULL CONSTRAINT [DF_AggregationRebuildManualList_AggregationLogged] DEFAULT (getdate()),
 [AggregationProcessed] [datetime2] NULL,
-[BatchID] [int] NULL
+[ProcessedBatchID] [int] NULL
 ) ON [PRIMARY]
 GO

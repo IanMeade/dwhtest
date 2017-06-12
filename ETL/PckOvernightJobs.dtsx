@@ -11,28 +11,84 @@
   DTS:LocaleID="6153"
   DTS:ObjectName="PckOvernightJobs"
   DTS:PackageType="5"
-  DTS:VersionBuild="2"
-  DTS:VersionGUID="{01C18169-E7C5-4FF5-ABBA-DE0F89A537E9}">
+  DTS:VersionBuild="6"
+  DTS:VersionGUID="{91B44A32-144D-4819-A64F-B231EB9C2E75}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
-  <DTS:Variables />
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{0985C6EA-5B38-47D9-9507-FEB35AF4DFDF}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="ColumnStoreRebuildCommand">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
   <DTS:Executables>
     <DTS:Executable
-      DTS:refId="Package\SQL Rebuild ColumnStore Index"
-      DTS:CreationName="Microsoft.ExecuteSQLTask"
-      DTS:Description="Execute SQL Task"
-      DTS:DTSID="{46C1ABC3-FA61-4F79-9565-FB0C415EF8FC}"
-      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:refId="Package\SEQ Rebuild ColumnStore Index"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{0F689F3B-B35B-4121-AED3-E6EB9DEA11F6}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
       DTS:LocaleID="-1"
-      DTS:ObjectName="SQL Rebuild ColumnStore Index"
-      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="0">
+      DTS:ObjectName="SEQ Rebuild ColumnStore Index">
       <DTS:Variables />
-      <DTS:ObjectData>
-        <SQLTask:SqlTaskData
-          SQLTask:Connection="{0CBC2C04-C137-495F-AF7C-FA5DE465FED0}"
-          SQLTask:SqlStatementSource="ALTER INDEX FactEquityTradeNonClusteredColumnStoreIndex ON DWH.FactEquityTrade DISABLE&#xA;&#xA;UPDATE&#xA;&#x9;DWH.FactEquityTrade&#xA;SET&#xA;&#x9;InColumnStore = 1&#xA;&#x9;&#xA;ALTER INDEX FactEquityTradeNonClusteredColumnStoreIndex ON DWH.FactEquityTrade REBUILD&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
-      </DTS:ObjectData>
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\SEQ Rebuild ColumnStore Index\SQL ProcessCotrol Get Rebuild Command"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{2B2D781F-1FC6-4A3F-B325-6BB882D26C80}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SQL ProcessCotrol Get Rebuild Command"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{88A180A2-BD32-40DF-AB41-4FDAC0D5C73C}"
+              SQLTask:SqlStatementSource="SELECT dbo.GetFactEquityColumnStoreIndexRebuild()"
+              SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ResultBinding
+                SQLTask:ResultName="0"
+                SQLTask:DtsVariableName="User::ColumnStoreRebuildCommand" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\SEQ Rebuild ColumnStore Index\SQL Rebuild ColumnStore Index"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{46C1ABC3-FA61-4F79-9565-FB0C415EF8FC}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SQL Rebuild ColumnStore Index"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{0CBC2C04-C137-495F-AF7C-FA5DE465FED0}"
+              SQLTask:SqlStmtSourceType="Variable"
+              SQLTask:SqlStatementSource="User::ColumnStoreRebuildCommand" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\SEQ Rebuild ColumnStore Index.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{E10C41E4-71AC-44CC-9590-23A6C749C5F2}"
+          DTS:From="Package\SEQ Rebuild ColumnStore Index\SQL ProcessCotrol Get Rebuild Command"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\SEQ Rebuild ColumnStore Index\SQL Rebuild ColumnStore Index" />
+      </DTS:PrecedenceConstraints>
     </DTS:Executable>
   </DTS:Executables>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
@@ -46,11 +102,44 @@
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="230,42"
-          Id="Package\SQL Rebuild ColumnStore Index"
-          TopLeft="72,57" />
+          Size="273,42"
+          Id="Package\SEQ Rebuild ColumnStore Index\SQL Rebuild ColumnStore Index"
+          TopLeft="43,94" />
+        <EdgeLayout
+          Id="Package\SEQ Rebuild ColumnStore Index.PrecedenceConstraints[Constraint]"
+          TopLeft="179.5,60">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="0,34"
+              Start="0,0"
+              End="0,26.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="273,42"
+          Id="Package\SEQ Rebuild ColumnStore Index\SQL ProcessCotrol Get Rebuild Command"
+          TopLeft="43,18" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="367,189"
+          Size="367,232"
+          Id="Package\SEQ Rebuild ColumnStore Index"
+          TopLeft="72,39" />
       </GraphLayout>
     </LayoutInfo>
   </Package>

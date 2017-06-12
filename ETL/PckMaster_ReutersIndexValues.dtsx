@@ -11,8 +11,8 @@
   DTS:LocaleID="6153"
   DTS:ObjectName="PckMaster_ReutersIndexValues"
   DTS:PackageType="5"
-  DTS:VersionBuild="31"
-  DTS:VersionGUID="{726E1D0E-4CD1-427B-A6C4-22C011779EBC}">
+  DTS:VersionBuild="32"
+  DTS:VersionGUID="{11CE4738-E749-4658-82BE-FEE058AFB2AD}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -219,7 +219,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="EPT Break loop"
           DTS:TaskContact="Expression Task;Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="2">
+          DTS:ThreadHint="0">
           <DTS:Variables />
           <DTS:ObjectData>
             <ExpressionTask
@@ -2738,7 +2738,7 @@ AND
                   DTS:LocaleID="-1"
                   DTS:ObjectName="SQL Check IndexValue cut off"
                   DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-                  DTS:ThreadHint="0">
+                  DTS:ThreadHint="1">
                   <DTS:Variables />
                   <DTS:ObjectData>
                     <SQLTask:SqlTaskData
@@ -2760,7 +2760,7 @@ AND
                   DTS:LocaleID="-1"
                   DTS:ObjectName="SQL Get IndexValueID"
                   DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-                  DTS:ThreadHint="0">
+                  DTS:ThreadHint="1">
                   <DTS:Variables />
                   <DTS:ObjectData>
                     <SQLTask:SqlTaskData
@@ -2782,7 +2782,7 @@ AND
                   DTS:LocaleID="-1"
                   DTS:ObjectName="SQL Update Reuters ProcessControl"
                   DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-                  DTS:ThreadHint="0">
+                  DTS:ThreadHint="1">
                   <DTS:Variables />
                   <DTS:ObjectData>
                     <SQLTask:SqlTaskData
@@ -2806,7 +2806,7 @@ AND
                   DTS:LocaleID="-1"
                   DTS:ObjectName="SQL Update Reuters ProcessControl - no update"
                   DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-                  DTS:ThreadHint="0">
+                  DTS:ThreadHint="1">
                   <DTS:Variables />
                   <DTS:ObjectData>
                     <SQLTask:SqlTaskData
@@ -2863,7 +2863,7 @@ AND
               DTS:LocaleID="-1"
               DTS:ObjectName="SQL Reuters Poll Delay"
               DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-              DTS:ThreadHint="1">
+              DTS:ThreadHint="2">
               <DTS:Variables />
               <DTS:ObjectData>
                 <SQLTask:SqlTaskData
@@ -2887,7 +2887,7 @@ AND
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{88A180A2-BD32-40DF-AB41-4FDAC0D5C73C}"
-              SQLTask:SqlStatementSource="SELECT dbo.CheckTaskControl('REUTERS_INDEX_LOAD') AS YesWeCan"
+              SQLTask:SqlStatementSource="SELECT dbo.CheckTaskControl('REUTERS_INDEX_LOAD',-1) AS YesWeCan"
               SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ResultBinding
                 SQLTask:ResultName="YesWeCan"
@@ -3473,7 +3473,7 @@ AND
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="150,42"
           Id="Package\For Loop Container\EPT Break loop"
@@ -3503,7 +3503,7 @@ AND
           TopLeft="156.5,60">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,49"
               Start="0,0"
               End="0,41.5">
@@ -3525,7 +3525,7 @@ AND
           TopLeft="156.5,244">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,45"
               Start="0,0"
               End="0,37.5">
@@ -3547,7 +3547,7 @@ AND
           TopLeft="280,130">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="57,0"
               Start="0,0"
               End="49.5,0">
@@ -3571,7 +3571,7 @@ AND
           TopLeft="156.5,151">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,51"
               Start="0,0"
               End="0,43.5">
@@ -3617,7 +3617,7 @@ AND
           TopLeft="471,48.75">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="128,0"
               Start="0,0"
               End="120.5,0">
@@ -3639,7 +3639,7 @@ AND
           TopLeft="374.5,69">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="36.5,39"
               Start="0,0"
               End="36.5,31.5">
@@ -3723,7 +3723,7 @@ AND
           TopLeft="93.5,47.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,60"
               Start="0,0"
               End="0,52.5">
@@ -3752,7 +3752,7 @@ AND
           TopLeft="469.5,340">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="51.5,43"
               Start="0,0"
               End="51.5,35.5">
@@ -3786,7 +3786,7 @@ AND
           TopLeft="523.5,1159">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,32"
               Start="0,0"
               End="0,24.5">
@@ -3808,7 +3808,7 @@ AND
           TopLeft="563,218.75">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="162,0"
               Start="0,0"
               End="154.5,0">
@@ -3830,7 +3830,7 @@ AND
           TopLeft="639,1273.25">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="117,0"
               Start="0,0"
               End="109.5,0">
@@ -3854,7 +3854,7 @@ AND
     design-time-name="Package.EventHandlers[OnError]">
     <LayoutInfo>
       <GraphLayout
-        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph" xmlns:mssge="clr-namespace:Microsoft.SqlServer.Graph.Extended;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph" xmlns:mssge="clr-namespace:Microsoft.SqlServer.Graph.Extended;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <NodeLayout
           Size="218,42"
           Id="Package.EventHandlers[OnError]\SEQ Error handler\Expression Task"
@@ -3884,7 +3884,7 @@ AND
           TopLeft="354.5,146.1">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,47.6"
               Start="0,0"
               End="0,40.1">
@@ -3908,7 +3908,7 @@ AND
           TopLeft="354.5,235.7">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,47.6"
               Start="0,0"
               End="0,40.1">
@@ -3932,7 +3932,7 @@ AND
           TopLeft="354.5,414.9">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,47.6"
               Start="0,0"
               End="0,40.1">
@@ -3956,7 +3956,7 @@ AND
           TopLeft="354.5,325.3">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,47.6"
               Start="0,0"
               End="0,40.1">
@@ -3980,7 +3980,7 @@ AND
           TopLeft="354.5,56.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,47.6"
               Start="0,0"
               End="0,40.1">

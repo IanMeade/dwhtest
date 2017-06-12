@@ -1,5 +1,6 @@
 SET IDENTITY_INSERT [dbo].[ValidationTestSuite] ON
-INSERT INTO [dbo].[ValidationTestSuite] ([ValidationTestSuiteID], [ValidationTestSuiteName], [ValidationTestSuiteTag], [Enabled]) VALUES (14, 'XT - Early arriving facts check', 'XT_EARLY_ARRIVING_FACTS', 1)
+INSERT INTO [dbo].[ValidationTestSuite] ([ValidationTestSuiteID], [ValidationTestSuiteName], [ValidationTestSuiteTag], [Enabled]) VALUES (15, 'Coporate Actions', 'XT_COPORATE_ACTION', 1)
+INSERT INTO [dbo].[ValidationTestSuite] ([ValidationTestSuiteID], [ValidationTestSuiteName], [ValidationTestSuiteTag], [Enabled]) VALUES (16, 'Instrument Validity', 'DWH_INSTRUMENT_CHECK', 1)
 SET IDENTITY_INSERT [dbo].[ValidationTestSuite] OFF
 SET IDENTITY_INSERT [dbo].[ValidationTestSuite] ON
 INSERT INTO [dbo].[ValidationTestSuite] ([ValidationTestSuiteID], [ValidationTestSuiteName], [ValidationTestSuiteTag], [Enabled]) VALUES (1, 'Unit test', 'UNIT_TEST', 1)
@@ -11,4 +12,5 @@ INSERT INTO [dbo].[ValidationTestSuite] ([ValidationTestSuiteID], [ValidationTes
 INSERT INTO [dbo].[ValidationTestSuite] ([ValidationTestSuiteID], [ValidationTestSuiteName], [ValidationTestSuiteTag], [Enabled]) VALUES (10, 'T7 Main dataflow ', 'T7_MAIN_DATAFLOW', 1)
 INSERT INTO [dbo].[ValidationTestSuite] ([ValidationTestSuiteID], [ValidationTestSuiteName], [ValidationTestSuiteTag], [Enabled]) VALUES (11, 'T7 Staging / File correctness', 'T7_TXTSAFT_FILE_STAGING', 1)
 INSERT INTO [dbo].[ValidationTestSuite] ([ValidationTestSuiteID], [ValidationTestSuiteName], [ValidationTestSuiteTag], [Enabled]) VALUES (13, 'T7 Price validation', 'T7_Price_Validation', 1)
+INSERT INTO [dbo].[ValidationTestSuite] ([ValidationTestSuiteID], [ValidationTestSuiteName], [ValidationTestSuiteTag], [Enabled]) VALUES (14, 'XT - Early arriving facts check', 'XT_EARLY_ARRIVING_FACTS', 1)
 SET IDENTITY_INSERT [dbo].[ValidationTestSuite] OFF

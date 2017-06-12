@@ -1,0 +1,4 @@
+CREATE PARTITION FUNCTION [InColumnStore_PartitionFunction] ([bit]) 
+AS RANGE RIGHT 
+FOR VALUES (1)
+GO

@@ -68,6 +68,8 @@ CREATE TABLE [ETL].[FactEquitySnapshotMerge]
 [LseTurnover] [int] NULL,
 [LseVolume] [numeric] (19, 6) NULL,
 [ETFFMShares] [int] NULL,
-[BatchID] [int] NULL
+[BatchID] [int] NULL,
+[LtpDateTime] [datetime2] NULL,
+[OcpDateTime] [datetime] NULL
 ) ON [PRIMARY]
 GO

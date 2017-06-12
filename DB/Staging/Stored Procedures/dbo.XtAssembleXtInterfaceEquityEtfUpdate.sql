@@ -25,9 +25,9 @@ BEGIN
 				SELECT 
 					'EQUITY' AS SRC, 
 					SHARE.GID AS SHARE_GID, 
-					COMPANY.GID AS COMPANY_GID, 
+					SHARE.CompanyGID AS COMPANY_GID, 
 					ISSUER.GID AS ISSUER_GID, 
-					DwhShare.InstrumentID AS DwhInstrumentID 
+					DwhShare.InstrumentID AS DwhInstrumentID
 				FROM 
 						[dbo].[BestShare] SHARE  
 					LEFT OUTER JOIN  
@@ -116,7 +116,31 @@ BEGIN
 		DwhInstrumentID 
 	FROM 
 		IssuerSide 
- 
+
+	/* Use detials in the DWH as last resort */
+	/* Somewhat dodgy */
+	UPDATE
+		K
+	SET
+		DwhInstrumentID = (
+								SELECT
+									TOP 1
+									DwhShare.InstrumentID
+								FROM
+									dbo.DwhDimInstrumentEquityEtf DwhShare  
+								WHERE
+									DwhShare.CompanyGlobalID = K.COMPANY_GID
+								ORDER BY
+									DwhShare.InstrumentID DESC
+				)
+	FROM
+		#KEYS K
+	WHERE 
+		ISSUER_GID IS NULL
+
+
+
+
  
  
  

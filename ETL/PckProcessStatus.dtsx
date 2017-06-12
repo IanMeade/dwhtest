@@ -11,8 +11,8 @@
   DTS:LocaleID="6153"
   DTS:ObjectName="PckProcessStatus"
   DTS:PackageType="5"
-  DTS:VersionBuild="14"
-  DTS:VersionGUID="{83C7CE4E-514F-47D6-AF8B-0B0AEE3B10AE}">
+  DTS:VersionBuild="15"
+  DTS:VersionGUID="{182670F8-2D7D-4E39-9FE1-14A1F00038DD}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:PackageParameters>
@@ -242,7 +242,7 @@
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{88A180A2-BD32-40DF-AB41-4FDAC0D5C73C}"
-          SQLTask:SqlStatementSource="SELECT dbo.CheckTaskControl('PST_ORACLE') AS YesWeCan"
+          SQLTask:SqlStatementSource="SELECT dbo.CheckTaskControl('PST_ORACLE',-1) AS YesWeCan"
           SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
           <SQLTask:ResultBinding
             SQLTask:ResultName="YesWeCan"
@@ -356,7 +356,7 @@
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="138,42"
           Id="Package\EPT PckAlert"
@@ -385,7 +385,7 @@
           TopLeft="168.5,83">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,60"
               Start="0,0"
               End="0,52.5">
@@ -428,7 +428,7 @@
           TopLeft="490,189.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="124,0"
               Start="0,0"
               End="116.5,0">
@@ -450,7 +450,7 @@
           TopLeft="728,98">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,70"
               Start="0,0"
               End="0,62.5">
@@ -472,7 +472,7 @@
           TopLeft="725,303">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,63"
               Start="0,0"
               End="0,55.5">
@@ -496,7 +496,7 @@
           TopLeft="379.5,98">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,70"
               Start="0,0"
               End="0,62.5">
@@ -520,7 +520,7 @@
           TopLeft="497,76.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="117,0"
               Start="0,0"
               End="109.5,0">
@@ -544,7 +544,7 @@
           TopLeft="728,211">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,50"
               Start="0,0"
               End="0,42.5">
@@ -566,7 +566,7 @@
           TopLeft="842,191.25">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="89,0"
               Start="0,0"
               End="81.5,0">

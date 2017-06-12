@@ -11,8 +11,8 @@
   DTS:LocaleID="6153"
   DTS:ObjectName="PckT7PriceStage"
   DTS:PackageType="5"
-  DTS:VersionBuild="53"
-  DTS:VersionGUID="{A9F5B570-21D6-4736-83E8-A23D3FE127AB}">
+  DTS:VersionBuild="55"
+  DTS:VersionGUID="{D0A6361C-5A7E-4EF1-B956-FEDEE50E5C41}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -40,7 +40,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="MIXED"
-              DTS:DTSID="{6D4C9707-D587-4C63-9C22-DC017509A8D5}"
+              DTS:DTSID="{10CB89B7-9D84-4A74-B0C4-A8E382B134C2}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -49,7 +49,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="CURRENCY"
-              DTS:DTSID="{959383C1-FBAC-4FDC-ABAD-A96CCD64BCFB}"
+              DTS:DTSID="{EFAE3DFB-2808-475E-93E5-E9EDE283DC8A}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -58,15 +58,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="PRICE_TIMESTAMP"
-              DTS:DTSID="{C172A777-8070-41EC-9E43-84C798178D34}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnType="Delimited"
-              DTS:ColumnDelimiter="_x002C_"
-              DTS:DataType="3"
-              DTS:TextQualified="True"
-              DTS:ObjectName="PRICE_TIMESTAMP_NO"
-              DTS:DTSID="{6FA7AAD4-D152-4447-9770-839B4A575E73}"
+              DTS:DTSID="{0976B1FD-5E25-478C-9737-1C49F6EAA0D8}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -75,7 +67,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="MOD_TIMESTAMP"
-              DTS:DTSID="{4905F26A-1A80-435E-A4D2-C1B03177741D}"
+              DTS:DTSID="{2D3AE6EF-F931-4113-95D6-311B7B7C2AC0}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -84,16 +76,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="PRICE_DATE"
-              DTS:DTSID="{7A618A02-EB1F-4291-9AEB-7FB0A5792BE1}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnType="Delimited"
-              DTS:ColumnDelimiter="_x002C_"
-              DTS:MaximumWidth="1"
-              DTS:DataType="129"
-              DTS:TextQualified="True"
-              DTS:ObjectName="MARKET_PRICE_TYPE"
-              DTS:DTSID="{81A2F396-F7FB-4DF1-8D14-B731F543582A}"
+              DTS:DTSID="{85F439DE-7D0C-4483-BD3B-23111F0AD951}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -103,7 +86,7 @@
               DTS:DataScale="6"
               DTS:TextQualified="True"
               DTS:ObjectName="BEST_BID_PRICE"
-              DTS:DTSID="{DB93EAF4-8666-420F-AC20-2BA878DBAA9D}"
+              DTS:DTSID="{D15173B5-1980-458B-AB2B-7E0EDD24C6FF}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -113,7 +96,7 @@
               DTS:DataScale="6"
               DTS:TextQualified="True"
               DTS:ObjectName="BEST_ASK_PRICE"
-              DTS:DTSID="{C79EB3CD-3E3A-4090-A318-B28174411F6D}"
+              DTS:DTSID="{7F063F32-2B50-4217-AD68-72E252FBB4EA}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -123,26 +106,17 @@
               DTS:DataScale="6"
               DTS:TextQualified="True"
               DTS:ObjectName="CLOSING_AUCT_BID_PRICE"
-              DTS:DTSID="{7881AAD9-8030-4ABE-A0F4-C5EFD956EDFA}"
+              DTS:DTSID="{E3C97C9D-7892-48F5-A746-238BAEFD5D07}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
-              DTS:ColumnDelimiter="_x002C_"
+              DTS:ColumnDelimiter="_x000D__x000A_"
               DTS:DataType="131"
               DTS:DataPrecision="19"
               DTS:DataScale="6"
               DTS:TextQualified="True"
               DTS:ObjectName="CLOSING_AUCT_ASK_PRICE"
-              DTS:DTSID="{F8C9303B-469C-4EF8-A4EE-1CB7BE423E89}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnType="Delimited"
-              DTS:ColumnDelimiter="_x000D__x000A_"
-              DTS:MaximumWidth="50"
-              DTS:DataType="129"
-              DTS:TextQualified="True"
-              DTS:ObjectName="INSERT_DATE"
-              DTS:DTSID="{B32FE2AD-769C-4269-B068-93A71AB3533A}"
+              DTS:DTSID="{9A639A5D-DE69-4E89-9301-A8365073031F}"
               DTS:CreationName="" />
           </DTS:FlatFileColumns>
         </DTS:ConnectionManager>
@@ -291,13 +265,13 @@
       </DTS:Variables>
       <DTS:Executables>
         <DTS:Executable
-          DTS:refId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle"
+          DTS:refId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle"
           DTS:CreationName="Microsoft.Pipeline"
           DTS:Description="Data Flow Task"
           DTS:DTSID="{c9d0376a-286e-46ce-97aa-49378c7408c8}"
           DTS:ExecutableType="Microsoft.Pipeline"
           DTS:LocaleID="-1"
-          DTS:ObjectName="DFT Stage TxSaft FIle"
+          DTS:ObjectName="DFT Stage PriceFIle"
           DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
           <DTS:Variables />
           <DTS:ObjectData>
@@ -305,7 +279,7 @@
               version="1">
               <components>
                 <component
-                  refId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\CSPL Price File Row Counter"
+                  refId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\CSPL Price File Row Counter"
                   componentClassID="Microsoft.ConditionalSplit"
                   contactInfo="Conditional Split;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
                   description="Routes data rows to different outputs depending on the content of the data. Use conditions (SSIS expressions) to specify which rows are routed. For example, separate records that need to be cleaned from those that are ready to be loaded or route only a subset of records."
@@ -313,37 +287,37 @@
                   usesDispositions="true">
                   <inputs>
                     <input
-                      refId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\CSPL Price File Row Counter.Inputs[Conditional Split Input]"
+                      refId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\CSPL Price File Row Counter.Inputs[Conditional Split Input]"
                       description="Input to the Conditional Split Transformation"
                       name="Conditional Split Input">
                       <inputColumns>
                         <inputColumn
-                          refId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\CSPL Price File Row Counter.Inputs[Conditional Split Input].Columns[MIXED]"
+                          refId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\CSPL Price File Row Counter.Inputs[Conditional Split Input].Columns[MIXED]"
                           cachedCodepage="1252"
                           cachedDataType="str"
                           cachedLength="12"
                           cachedName="MIXED"
-                          lineageId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\FF_SRC Saft Price.Outputs[Flat File Source Output].Columns[MIXED]" />
+                          lineageId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\FF_SRC Saft Price.Outputs[Flat File Source Output].Columns[MIXED]" />
                       </inputColumns>
                       <externalMetadataColumns />
                     </input>
                   </inputs>
                   <outputs>
                     <output
-                      refId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\CSPL Price File Row Counter.Outputs[Row Count]"
+                      refId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\CSPL Price File Row Counter.Outputs[Row Count]"
                       description="Output 1 of the Conditional Split Transformation"
                       errorOrTruncationOperation="Computation"
                       errorRowDisposition="FailComponent"
                       exclusionGroup="1"
                       name="Row Count"
-                      synchronousInputId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\CSPL Price File Row Counter.Inputs[Conditional Split Input]"
+                      synchronousInputId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\CSPL Price File Row Counter.Inputs[Conditional Split Input]"
                       truncationRowDisposition="FailComponent">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.String"
                           description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
-                          name="Expression">[LEN](#{Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\FF_SRC Saft Price.Outputs[Flat File Source Output].Columns[MIXED]}) &lt; 10</property>
+                          name="Expression">[LEN](#{Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\FF_SRC Saft Price.Outputs[Flat File Source Output].Columns[MIXED]}) &lt; 10</property>
                         <property
                           containsID="true"
                           dataType="System.String"
@@ -358,11 +332,11 @@
                       <externalMetadataColumns />
                     </output>
                     <output
-                      refId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\CSPL Price File Row Counter.Outputs[Trades]"
+                      refId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\CSPL Price File Row Counter.Outputs[Trades]"
                       description="Default Output of the Conditional Split Transformation"
                       exclusionGroup="1"
                       name="Trades"
-                      synchronousInputId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\CSPL Price File Row Counter.Inputs[Conditional Split Input]">
+                      synchronousInputId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\CSPL Price File Row Counter.Inputs[Conditional Split Input]">
                       <properties>
                         <property
                           dataType="System.Boolean"
@@ -371,23 +345,23 @@
                       <externalMetadataColumns />
                     </output>
                     <output
-                      refId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\CSPL Price File Row Counter.Outputs[Conditional Split Error Output]"
+                      refId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\CSPL Price File Row Counter.Outputs[Conditional Split Error Output]"
                       description="Error Output of the Conditional Split Transformation"
                       exclusionGroup="1"
                       isErrorOut="true"
                       name="Conditional Split Error Output"
-                      synchronousInputId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\CSPL Price File Row Counter.Inputs[Conditional Split Input]">
+                      synchronousInputId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\CSPL Price File Row Counter.Inputs[Conditional Split Input]">
                       <outputColumns>
                         <outputColumn
-                          refId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\CSPL Price File Row Counter.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                          refId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\CSPL Price File Row Counter.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
                           dataType="i4"
-                          lineageId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\CSPL Price File Row Counter.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                          lineageId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\CSPL Price File Row Counter.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
                           name="ErrorCode"
                           specialFlags="1" />
                         <outputColumn
-                          refId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\CSPL Price File Row Counter.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                          refId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\CSPL Price File Row Counter.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
                           dataType="i4"
-                          lineageId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\CSPL Price File Row Counter.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                          lineageId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\CSPL Price File Row Counter.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
                           name="ErrorColumn"
                           specialFlags="2" />
                       </outputColumns>
@@ -396,7 +370,7 @@
                   </outputs>
                 </component>
                 <component
-                  refId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\DCNV Price File Row Count"
+                  refId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\DCNV Price File Row Count"
                   componentClassID="Microsoft.DataConvert"
                   contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
                   description="Data Conversion"
@@ -404,36 +378,36 @@
                   usesDispositions="true">
                   <inputs>
                     <input
-                      refId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\DCNV Price File Row Count.Inputs[Data Conversion Input]"
+                      refId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\DCNV Price File Row Count.Inputs[Data Conversion Input]"
                       name="Data Conversion Input">
                       <externalMetadataColumns />
                     </input>
                   </inputs>
                   <outputs>
                     <output
-                      refId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\DCNV Price File Row Count.Outputs[Data Conversion Output]"
+                      refId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\DCNV Price File Row Count.Outputs[Data Conversion Output]"
                       exclusionGroup="1"
                       name="Data Conversion Output"
-                      synchronousInputId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\DCNV Price File Row Count.Inputs[Data Conversion Input]">
+                      synchronousInputId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\DCNV Price File Row Count.Inputs[Data Conversion Input]">
                       <externalMetadataColumns />
                     </output>
                     <output
-                      refId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\DCNV Price File Row Count.Outputs[Data Conversion Error Output]"
+                      refId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\DCNV Price File Row Count.Outputs[Data Conversion Error Output]"
                       exclusionGroup="1"
                       isErrorOut="true"
                       name="Data Conversion Error Output"
-                      synchronousInputId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\DCNV Price File Row Count.Inputs[Data Conversion Input]">
+                      synchronousInputId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\DCNV Price File Row Count.Inputs[Data Conversion Input]">
                       <outputColumns>
                         <outputColumn
-                          refId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\DCNV Price File Row Count.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                          refId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\DCNV Price File Row Count.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
                           dataType="i4"
-                          lineageId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\DCNV Price File Row Count.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                          lineageId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\DCNV Price File Row Count.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
                           name="ErrorCode"
                           specialFlags="1" />
                         <outputColumn
-                          refId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\DCNV Price File Row Count.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                          refId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\DCNV Price File Row Count.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
                           dataType="i4"
-                          lineageId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\DCNV Price File Row Count.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                          lineageId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\DCNV Price File Row Count.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
                           name="ErrorColumn"
                           specialFlags="2" />
                       </outputColumns>
@@ -442,7 +416,7 @@
                   </outputs>
                 </component>
                 <component
-                  refId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\DER Price File Details"
+                  refId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\DER Price File Details"
                   componentClassID="Microsoft.DerivedColumn"
                   contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
                   description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
@@ -450,7 +424,7 @@
                   usesDispositions="true">
                   <inputs>
                     <input
-                      refId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\DER Price File Details.Inputs[Derived Column Input]"
+                      refId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\DER Price File Details.Inputs[Derived Column Input]"
                       description="Input to the Derived Column Transformation"
                       name="Derived Column Input">
                       <externalMetadataColumns />
@@ -458,20 +432,20 @@
                   </inputs>
                   <outputs>
                     <output
-                      refId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\DER Price File Details.Outputs[Derived Column Output]"
+                      refId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\DER Price File Details.Outputs[Derived Column Output]"
                       description="Default Output of the Derived Column Transformation"
                       exclusionGroup="1"
                       name="Derived Column Output"
-                      synchronousInputId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\DER Price File Details.Inputs[Derived Column Input]">
+                      synchronousInputId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\DER Price File Details.Inputs[Derived Column Input]">
                       <outputColumns>
                         <outputColumn
-                          refId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\DER Price File Details.Outputs[Derived Column Output].Columns[FileName]"
+                          refId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\DER Price File Details.Outputs[Derived Column Output].Columns[FileName]"
                           codePage="1252"
                           dataType="str"
                           errorOrTruncationOperation="Computation"
                           errorRowDisposition="FailComponent"
                           length="50"
-                          lineageId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\DER Price File Details.Outputs[Derived Column Output].Columns[FileName]"
+                          lineageId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\DER Price File Details.Outputs[Derived Column Output].Columns[FileName]"
                           name="FileName"
                           truncationRowDisposition="FailComponent">
                           <properties>
@@ -489,11 +463,11 @@
                           </properties>
                         </outputColumn>
                         <outputColumn
-                          refId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\DER Price File Details.Outputs[Derived Column Output].Columns[DwhFileID]"
+                          refId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\DER Price File Details.Outputs[Derived Column Output].Columns[DwhFileID]"
                           dataType="i4"
                           errorOrTruncationOperation="Computation"
                           errorRowDisposition="FailComponent"
-                          lineageId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\DER Price File Details.Outputs[Derived Column Output].Columns[DwhFileID]"
+                          lineageId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\DER Price File Details.Outputs[Derived Column Output].Columns[DwhFileID]"
                           name="DwhFileID"
                           truncationRowDisposition="FailComponent">
                           <properties>
@@ -514,23 +488,23 @@
                       <externalMetadataColumns />
                     </output>
                     <output
-                      refId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\DER Price File Details.Outputs[Derived Column Error Output]"
+                      refId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\DER Price File Details.Outputs[Derived Column Error Output]"
                       description="Error Output of the Derived Column Transformation"
                       exclusionGroup="1"
                       isErrorOut="true"
                       name="Derived Column Error Output"
-                      synchronousInputId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\DER Price File Details.Inputs[Derived Column Input]">
+                      synchronousInputId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\DER Price File Details.Inputs[Derived Column Input]">
                       <outputColumns>
                         <outputColumn
-                          refId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\DER Price File Details.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          refId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\DER Price File Details.Outputs[Derived Column Error Output].Columns[ErrorCode]"
                           dataType="i4"
-                          lineageId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\DER Price File Details.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          lineageId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\DER Price File Details.Outputs[Derived Column Error Output].Columns[ErrorCode]"
                           name="ErrorCode"
                           specialFlags="1" />
                         <outputColumn
-                          refId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\DER Price File Details.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          refId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\DER Price File Details.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
                           dataType="i4"
-                          lineageId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\DER Price File Details.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          lineageId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\DER Price File Details.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
                           name="ErrorColumn"
                           specialFlags="2" />
                       </outputColumns>
@@ -539,7 +513,7 @@
                   </outputs>
                 </component>
                 <component
-                  refId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\DST STG Price_FileRowCount"
+                  refId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\DST STG Price_FileRowCount"
                   componentClassID="Microsoft.OLEDBDestination"
                   contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
                   description="OLE DB Destination"
@@ -596,7 +570,7 @@
                   </properties>
                   <connections>
                     <connection
-                      refId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\DST STG Price_FileRowCount.Connections[OleDbConnection]"
+                      refId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\DST STG Price_FileRowCount.Connections[OleDbConnection]"
                       connectionManagerID="{7AE745A6-BA4C-482E-9695-63779ECE70D4}:external"
                       connectionManagerRefId="Project.ConnectionManagers[Staging]"
                       description="The OLE DB runtime connection used to access the database."
@@ -604,35 +578,35 @@
                   </connections>
                   <inputs>
                     <input
-                      refId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\DST STG Price_FileRowCount.Inputs[OLE DB Destination Input]"
+                      refId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\DST STG Price_FileRowCount.Inputs[OLE DB Destination Input]"
                       errorOrTruncationOperation="Insert"
                       errorRowDisposition="FailComponent"
                       hasSideEffects="true"
                       name="OLE DB Destination Input">
                       <inputColumns>
                         <inputColumn
-                          refId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\DST STG Price_FileRowCount.Inputs[OLE DB Destination Input].Columns[DwhFileID]"
+                          refId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\DST STG Price_FileRowCount.Inputs[OLE DB Destination Input].Columns[DwhFileID]"
                           cachedDataType="i4"
                           cachedName="DwhFileID"
-                          externalMetadataColumnId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\DST STG Price_FileRowCount.Inputs[OLE DB Destination Input].ExternalColumns[DwhFileID]"
-                          lineageId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\DER Price File Details.Outputs[Derived Column Output].Columns[DwhFileID]" />
+                          externalMetadataColumnId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\DST STG Price_FileRowCount.Inputs[OLE DB Destination Input].ExternalColumns[DwhFileID]"
+                          lineageId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\DER Price File Details.Outputs[Derived Column Output].Columns[DwhFileID]" />
                         <inputColumn
-                          refId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\DST STG Price_FileRowCount.Inputs[OLE DB Destination Input].Columns[MIXED]"
+                          refId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\DST STG Price_FileRowCount.Inputs[OLE DB Destination Input].Columns[MIXED]"
                           cachedCodepage="1252"
                           cachedDataType="str"
                           cachedLength="12"
                           cachedName="MIXED"
-                          externalMetadataColumnId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\DST STG Price_FileRowCount.Inputs[OLE DB Destination Input].ExternalColumns[RowCount]"
-                          lineageId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\FF_SRC Saft Price.Outputs[Flat File Source Output].Columns[MIXED]" />
+                          externalMetadataColumnId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\DST STG Price_FileRowCount.Inputs[OLE DB Destination Input].ExternalColumns[RowCount]"
+                          lineageId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\FF_SRC Saft Price.Outputs[Flat File Source Output].Columns[MIXED]" />
                       </inputColumns>
                       <externalMetadataColumns
                         isUsed="True">
                         <externalMetadataColumn
-                          refId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\DST STG Price_FileRowCount.Inputs[OLE DB Destination Input].ExternalColumns[DwhFileID]"
+                          refId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\DST STG Price_FileRowCount.Inputs[OLE DB Destination Input].ExternalColumns[DwhFileID]"
                           dataType="i4"
                           name="DwhFileID" />
                         <externalMetadataColumn
-                          refId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\DST STG Price_FileRowCount.Inputs[OLE DB Destination Input].ExternalColumns[RowCount]"
+                          refId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\DST STG Price_FileRowCount.Inputs[OLE DB Destination Input].ExternalColumns[RowCount]"
                           dataType="i4"
                           name="RowCount" />
                       </externalMetadataColumns>
@@ -640,22 +614,22 @@
                   </inputs>
                   <outputs>
                     <output
-                      refId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\DST STG Price_FileRowCount.Outputs[OLE DB Destination Error Output]"
+                      refId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\DST STG Price_FileRowCount.Outputs[OLE DB Destination Error Output]"
                       exclusionGroup="1"
                       isErrorOut="true"
                       name="OLE DB Destination Error Output"
-                      synchronousInputId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\DST STG Price_FileRowCount.Inputs[OLE DB Destination Input]">
+                      synchronousInputId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\DST STG Price_FileRowCount.Inputs[OLE DB Destination Input]">
                       <outputColumns>
                         <outputColumn
-                          refId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\DST STG Price_FileRowCount.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          refId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\DST STG Price_FileRowCount.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
                           dataType="i4"
-                          lineageId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\DST STG Price_FileRowCount.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          lineageId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\DST STG Price_FileRowCount.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
                           name="ErrorCode"
                           specialFlags="1" />
                         <outputColumn
-                          refId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\DST STG Price_FileRowCount.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          refId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\DST STG Price_FileRowCount.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                           dataType="i4"
-                          lineageId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\DST STG Price_FileRowCount.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          lineageId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\DST STG Price_FileRowCount.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                           name="ErrorColumn"
                           specialFlags="2" />
                       </outputColumns>
@@ -664,7 +638,7 @@
                   </outputs>
                 </component>
                 <component
-                  refId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\DST STG Saft Price File"
+                  refId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\DST STG Saft Price File"
                   componentClassID="Microsoft.OLEDBDestination"
                   contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
                   description="OLE DB Destination"
@@ -721,7 +695,7 @@
                   </properties>
                   <connections>
                     <connection
-                      refId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\DST STG Saft Price File.Connections[OleDbConnection]"
+                      refId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\DST STG Saft Price File.Connections[OleDbConnection]"
                       connectionManagerID="{7AE745A6-BA4C-482E-9695-63779ECE70D4}:external"
                       connectionManagerRefId="Project.ConnectionManagers[Staging]"
                       description="The OLE DB runtime connection used to access the database."
@@ -729,224 +703,186 @@
                   </connections>
                   <inputs>
                     <input
-                      refId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\DST STG Saft Price File.Inputs[OLE DB Destination Input]"
+                      refId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\DST STG Saft Price File.Inputs[OLE DB Destination Input]"
                       errorOrTruncationOperation="Insert"
                       errorRowDisposition="FailComponent"
                       hasSideEffects="true"
                       name="OLE DB Destination Input">
                       <inputColumns>
                         <inputColumn
-                          refId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\DST STG Saft Price File.Inputs[OLE DB Destination Input].Columns[CURRENCY]"
+                          refId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\DST STG Saft Price File.Inputs[OLE DB Destination Input].Columns[CURRENCY]"
                           cachedCodepage="1252"
                           cachedDataType="str"
                           cachedLength="3"
                           cachedName="CURRENCY"
-                          externalMetadataColumnId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\DST STG Saft Price File.Inputs[OLE DB Destination Input].ExternalColumns[CURRENCY]"
-                          lineageId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\FF_SRC Saft Price.Outputs[Flat File Source Output].Columns[CURRENCY]" />
+                          externalMetadataColumnId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\DST STG Saft Price File.Inputs[OLE DB Destination Input].ExternalColumns[CURRENCY]"
+                          lineageId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\FF_SRC Saft Price.Outputs[Flat File Source Output].Columns[CURRENCY]" />
                         <inputColumn
-                          refId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\DST STG Saft Price File.Inputs[OLE DB Destination Input].Columns[PRICE_TIMESTAMP_NO]"
-                          cachedDataType="i4"
-                          cachedName="PRICE_TIMESTAMP_NO"
-                          externalMetadataColumnId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\DST STG Saft Price File.Inputs[OLE DB Destination Input].ExternalColumns[PRICE_TIMESTAMP_NO]"
-                          lineageId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\FF_SRC Saft Price.Outputs[Flat File Source Output].Columns[PRICE_TIMESTAMP_NO]" />
-                        <inputColumn
-                          refId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\DST STG Saft Price File.Inputs[OLE DB Destination Input].Columns[MOD_TIMESTAMP]"
+                          refId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\DST STG Saft Price File.Inputs[OLE DB Destination Input].Columns[MOD_TIMESTAMP]"
                           cachedCodepage="1252"
                           cachedDataType="str"
                           cachedLength="50"
                           cachedName="MOD_TIMESTAMP"
-                          externalMetadataColumnId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\DST STG Saft Price File.Inputs[OLE DB Destination Input].ExternalColumns[MOD_TIMESTAMP]"
-                          lineageId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\FF_SRC Saft Price.Outputs[Flat File Source Output].Columns[MOD_TIMESTAMP]" />
+                          externalMetadataColumnId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\DST STG Saft Price File.Inputs[OLE DB Destination Input].ExternalColumns[MOD_TIMESTAMP]"
+                          lineageId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\FF_SRC Saft Price.Outputs[Flat File Source Output].Columns[MOD_TIMESTAMP]" />
                         <inputColumn
-                          refId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\DST STG Saft Price File.Inputs[OLE DB Destination Input].Columns[PRICE_DATE]"
+                          refId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\DST STG Saft Price File.Inputs[OLE DB Destination Input].Columns[PRICE_DATE]"
                           cachedCodepage="1252"
                           cachedDataType="str"
                           cachedLength="50"
                           cachedName="PRICE_DATE"
-                          externalMetadataColumnId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\DST STG Saft Price File.Inputs[OLE DB Destination Input].ExternalColumns[PRICE_DATE]"
-                          lineageId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\FF_SRC Saft Price.Outputs[Flat File Source Output].Columns[PRICE_DATE]" />
+                          externalMetadataColumnId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\DST STG Saft Price File.Inputs[OLE DB Destination Input].ExternalColumns[PRICE_DATE]"
+                          lineageId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\FF_SRC Saft Price.Outputs[Flat File Source Output].Columns[PRICE_DATE]" />
                         <inputColumn
-                          refId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\DST STG Saft Price File.Inputs[OLE DB Destination Input].Columns[MARKET_PRICE_TYPE]"
-                          cachedCodepage="1252"
-                          cachedDataType="str"
-                          cachedLength="1"
-                          cachedName="MARKET_PRICE_TYPE"
-                          externalMetadataColumnId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\DST STG Saft Price File.Inputs[OLE DB Destination Input].ExternalColumns[MARKET_PRICE_TYPE]"
-                          lineageId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\FF_SRC Saft Price.Outputs[Flat File Source Output].Columns[MARKET_PRICE_TYPE]" />
-                        <inputColumn
-                          refId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\DST STG Saft Price File.Inputs[OLE DB Destination Input].Columns[BEST_BID_PRICE]"
+                          refId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\DST STG Saft Price File.Inputs[OLE DB Destination Input].Columns[BEST_BID_PRICE]"
                           cachedDataType="numeric"
                           cachedName="BEST_BID_PRICE"
                           cachedPrecision="19"
                           cachedScale="6"
-                          externalMetadataColumnId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\DST STG Saft Price File.Inputs[OLE DB Destination Input].ExternalColumns[BEST_BID_PRICE]"
-                          lineageId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\FF_SRC Saft Price.Outputs[Flat File Source Output].Columns[BEST_BID_PRICE]" />
+                          externalMetadataColumnId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\DST STG Saft Price File.Inputs[OLE DB Destination Input].ExternalColumns[BEST_BID_PRICE]"
+                          lineageId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\FF_SRC Saft Price.Outputs[Flat File Source Output].Columns[BEST_BID_PRICE]" />
                         <inputColumn
-                          refId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\DST STG Saft Price File.Inputs[OLE DB Destination Input].Columns[BEST_ASK_PRICE]"
+                          refId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\DST STG Saft Price File.Inputs[OLE DB Destination Input].Columns[BEST_ASK_PRICE]"
                           cachedDataType="numeric"
                           cachedName="BEST_ASK_PRICE"
                           cachedPrecision="19"
                           cachedScale="6"
-                          externalMetadataColumnId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\DST STG Saft Price File.Inputs[OLE DB Destination Input].ExternalColumns[BEST_ASK_PRICE]"
-                          lineageId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\FF_SRC Saft Price.Outputs[Flat File Source Output].Columns[BEST_ASK_PRICE]" />
+                          externalMetadataColumnId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\DST STG Saft Price File.Inputs[OLE DB Destination Input].ExternalColumns[BEST_ASK_PRICE]"
+                          lineageId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\FF_SRC Saft Price.Outputs[Flat File Source Output].Columns[BEST_ASK_PRICE]" />
                         <inputColumn
-                          refId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\DST STG Saft Price File.Inputs[OLE DB Destination Input].Columns[CLOSING_AUCT_BID_PRICE]"
+                          refId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\DST STG Saft Price File.Inputs[OLE DB Destination Input].Columns[CLOSING_AUCT_BID_PRICE]"
                           cachedDataType="numeric"
                           cachedName="CLOSING_AUCT_BID_PRICE"
                           cachedPrecision="19"
                           cachedScale="6"
-                          externalMetadataColumnId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\DST STG Saft Price File.Inputs[OLE DB Destination Input].ExternalColumns[CLOSING_AUCT_BID_PRICE]"
-                          lineageId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\FF_SRC Saft Price.Outputs[Flat File Source Output].Columns[CLOSING_AUCT_BID_PRICE]" />
+                          externalMetadataColumnId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\DST STG Saft Price File.Inputs[OLE DB Destination Input].ExternalColumns[CLOSING_AUCT_BID_PRICE]"
+                          lineageId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\FF_SRC Saft Price.Outputs[Flat File Source Output].Columns[CLOSING_AUCT_BID_PRICE]" />
                         <inputColumn
-                          refId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\DST STG Saft Price File.Inputs[OLE DB Destination Input].Columns[CLOSING_AUCT_ASK_PRICE]"
+                          refId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\DST STG Saft Price File.Inputs[OLE DB Destination Input].Columns[CLOSING_AUCT_ASK_PRICE]"
                           cachedDataType="numeric"
                           cachedName="CLOSING_AUCT_ASK_PRICE"
                           cachedPrecision="19"
                           cachedScale="6"
-                          externalMetadataColumnId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\DST STG Saft Price File.Inputs[OLE DB Destination Input].ExternalColumns[CLOSING_AUCT_ASK_PRICE]"
-                          lineageId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\FF_SRC Saft Price.Outputs[Flat File Source Output].Columns[CLOSING_AUCT_ASK_PRICE]" />
+                          externalMetadataColumnId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\DST STG Saft Price File.Inputs[OLE DB Destination Input].ExternalColumns[CLOSING_AUCT_ASK_PRICE]"
+                          lineageId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\FF_SRC Saft Price.Outputs[Flat File Source Output].Columns[CLOSING_AUCT_ASK_PRICE]" />
                         <inputColumn
-                          refId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\DST STG Saft Price File.Inputs[OLE DB Destination Input].Columns[INSERT_DATE]"
-                          cachedCodepage="1252"
-                          cachedDataType="str"
-                          cachedLength="50"
-                          cachedName="INSERT_DATE"
-                          externalMetadataColumnId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\DST STG Saft Price File.Inputs[OLE DB Destination Input].ExternalColumns[INSERT_DATE]"
-                          lineageId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\FF_SRC Saft Price.Outputs[Flat File Source Output].Columns[INSERT_DATE]" />
-                        <inputColumn
-                          refId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\DST STG Saft Price File.Inputs[OLE DB Destination Input].Columns[PRICE_TIMESTAMP]"
+                          refId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\DST STG Saft Price File.Inputs[OLE DB Destination Input].Columns[PRICE_TIMESTAMP]"
                           cachedCodepage="1252"
                           cachedDataType="str"
                           cachedLength="50"
                           cachedName="PRICE_TIMESTAMP"
-                          externalMetadataColumnId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\DST STG Saft Price File.Inputs[OLE DB Destination Input].ExternalColumns[PRICE_TIMESTAMP]"
-                          lineageId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\FF_SRC Saft Price.Outputs[Flat File Source Output].Columns[PRICE_TIMESTAMP]" />
+                          externalMetadataColumnId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\DST STG Saft Price File.Inputs[OLE DB Destination Input].ExternalColumns[PRICE_TIMESTAMP]"
+                          lineageId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\FF_SRC Saft Price.Outputs[Flat File Source Output].Columns[PRICE_TIMESTAMP]" />
                         <inputColumn
-                          refId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\DST STG Saft Price File.Inputs[OLE DB Destination Input].Columns[FileName]"
+                          refId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\DST STG Saft Price File.Inputs[OLE DB Destination Input].Columns[FileName]"
                           cachedCodepage="1252"
                           cachedDataType="str"
                           cachedLength="50"
                           cachedName="FileName"
-                          externalMetadataColumnId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\DST STG Saft Price File.Inputs[OLE DB Destination Input].ExternalColumns[FileName]"
-                          lineageId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\DER Price File Details.Outputs[Derived Column Output].Columns[FileName]" />
+                          externalMetadataColumnId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\DST STG Saft Price File.Inputs[OLE DB Destination Input].ExternalColumns[FileName]"
+                          lineageId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\DER Price File Details.Outputs[Derived Column Output].Columns[FileName]" />
                         <inputColumn
-                          refId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\DST STG Saft Price File.Inputs[OLE DB Destination Input].Columns[DwhFileID]"
+                          refId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\DST STG Saft Price File.Inputs[OLE DB Destination Input].Columns[DwhFileID]"
                           cachedDataType="i4"
                           cachedName="DwhFileID"
-                          externalMetadataColumnId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\DST STG Saft Price File.Inputs[OLE DB Destination Input].ExternalColumns[DwhFileID]"
-                          lineageId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\DER Price File Details.Outputs[Derived Column Output].Columns[DwhFileID]" />
+                          externalMetadataColumnId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\DST STG Saft Price File.Inputs[OLE DB Destination Input].ExternalColumns[DwhFileID]"
+                          lineageId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\DER Price File Details.Outputs[Derived Column Output].Columns[DwhFileID]" />
                         <inputColumn
-                          refId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\DST STG Saft Price File.Inputs[OLE DB Destination Input].Columns[MIXED]"
+                          refId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\DST STG Saft Price File.Inputs[OLE DB Destination Input].Columns[MIXED]"
                           cachedCodepage="1252"
                           cachedDataType="str"
                           cachedLength="12"
                           cachedName="MIXED"
-                          externalMetadataColumnId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\DST STG Saft Price File.Inputs[OLE DB Destination Input].ExternalColumns[ISIN]"
-                          lineageId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\FF_SRC Saft Price.Outputs[Flat File Source Output].Columns[MIXED]" />
+                          externalMetadataColumnId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\DST STG Saft Price File.Inputs[OLE DB Destination Input].ExternalColumns[ISIN]"
+                          lineageId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\FF_SRC Saft Price.Outputs[Flat File Source Output].Columns[MIXED]" />
                       </inputColumns>
                       <externalMetadataColumns
                         isUsed="True">
                         <externalMetadataColumn
-                          refId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\DST STG Saft Price File.Inputs[OLE DB Destination Input].ExternalColumns[FileName]"
+                          refId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\DST STG Saft Price File.Inputs[OLE DB Destination Input].ExternalColumns[FileName]"
                           codePage="1252"
                           dataType="str"
                           length="50"
                           name="FileName" />
                         <externalMetadataColumn
-                          refId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\DST STG Saft Price File.Inputs[OLE DB Destination Input].ExternalColumns[DwhFileID]"
+                          refId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\DST STG Saft Price File.Inputs[OLE DB Destination Input].ExternalColumns[DwhFileID]"
                           dataType="i4"
                           name="DwhFileID" />
                         <externalMetadataColumn
-                          refId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\DST STG Saft Price File.Inputs[OLE DB Destination Input].ExternalColumns[ISIN]"
+                          refId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\DST STG Saft Price File.Inputs[OLE DB Destination Input].ExternalColumns[ISIN]"
                           codePage="1252"
                           dataType="str"
                           length="12"
                           name="ISIN" />
                         <externalMetadataColumn
-                          refId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\DST STG Saft Price File.Inputs[OLE DB Destination Input].ExternalColumns[CURRENCY]"
+                          refId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\DST STG Saft Price File.Inputs[OLE DB Destination Input].ExternalColumns[CURRENCY]"
                           codePage="1252"
                           dataType="str"
                           length="3"
                           name="CURRENCY" />
                         <externalMetadataColumn
-                          refId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\DST STG Saft Price File.Inputs[OLE DB Destination Input].ExternalColumns[PRICE_TIMESTAMP]"
+                          refId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\DST STG Saft Price File.Inputs[OLE DB Destination Input].ExternalColumns[PRICE_TIMESTAMP]"
                           codePage="1252"
                           dataType="str"
                           length="50"
                           name="PRICE_TIMESTAMP" />
                         <externalMetadataColumn
-                          refId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\DST STG Saft Price File.Inputs[OLE DB Destination Input].ExternalColumns[PRICE_TIMESTAMP_NO]"
-                          dataType="i4"
-                          name="PRICE_TIMESTAMP_NO" />
-                        <externalMetadataColumn
-                          refId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\DST STG Saft Price File.Inputs[OLE DB Destination Input].ExternalColumns[MOD_TIMESTAMP]"
+                          refId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\DST STG Saft Price File.Inputs[OLE DB Destination Input].ExternalColumns[MOD_TIMESTAMP]"
                           codePage="1252"
                           dataType="str"
                           length="50"
                           name="MOD_TIMESTAMP" />
                         <externalMetadataColumn
-                          refId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\DST STG Saft Price File.Inputs[OLE DB Destination Input].ExternalColumns[PRICE_DATE]"
+                          refId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\DST STG Saft Price File.Inputs[OLE DB Destination Input].ExternalColumns[PRICE_DATE]"
                           codePage="1252"
                           dataType="str"
                           length="50"
                           name="PRICE_DATE" />
                         <externalMetadataColumn
-                          refId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\DST STG Saft Price File.Inputs[OLE DB Destination Input].ExternalColumns[MARKET_PRICE_TYPE]"
-                          codePage="1252"
-                          dataType="str"
-                          length="1"
-                          name="MARKET_PRICE_TYPE" />
-                        <externalMetadataColumn
-                          refId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\DST STG Saft Price File.Inputs[OLE DB Destination Input].ExternalColumns[BEST_BID_PRICE]"
+                          refId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\DST STG Saft Price File.Inputs[OLE DB Destination Input].ExternalColumns[BEST_BID_PRICE]"
                           dataType="numeric"
                           name="BEST_BID_PRICE"
                           precision="19"
                           scale="6" />
                         <externalMetadataColumn
-                          refId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\DST STG Saft Price File.Inputs[OLE DB Destination Input].ExternalColumns[BEST_ASK_PRICE]"
+                          refId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\DST STG Saft Price File.Inputs[OLE DB Destination Input].ExternalColumns[BEST_ASK_PRICE]"
                           dataType="numeric"
                           name="BEST_ASK_PRICE"
                           precision="19"
                           scale="6" />
                         <externalMetadataColumn
-                          refId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\DST STG Saft Price File.Inputs[OLE DB Destination Input].ExternalColumns[CLOSING_AUCT_BID_PRICE]"
+                          refId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\DST STG Saft Price File.Inputs[OLE DB Destination Input].ExternalColumns[CLOSING_AUCT_BID_PRICE]"
                           dataType="numeric"
                           name="CLOSING_AUCT_BID_PRICE"
                           precision="19"
                           scale="6" />
                         <externalMetadataColumn
-                          refId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\DST STG Saft Price File.Inputs[OLE DB Destination Input].ExternalColumns[CLOSING_AUCT_ASK_PRICE]"
+                          refId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\DST STG Saft Price File.Inputs[OLE DB Destination Input].ExternalColumns[CLOSING_AUCT_ASK_PRICE]"
                           dataType="numeric"
                           name="CLOSING_AUCT_ASK_PRICE"
                           precision="19"
                           scale="6" />
-                        <externalMetadataColumn
-                          refId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\DST STG Saft Price File.Inputs[OLE DB Destination Input].ExternalColumns[INSERT_DATE]"
-                          codePage="1252"
-                          dataType="str"
-                          length="50"
-                          name="INSERT_DATE" />
                       </externalMetadataColumns>
                     </input>
                   </inputs>
                   <outputs>
                     <output
-                      refId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\DST STG Saft Price File.Outputs[OLE DB Destination Error Output]"
+                      refId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\DST STG Saft Price File.Outputs[OLE DB Destination Error Output]"
                       exclusionGroup="1"
                       isErrorOut="true"
                       name="OLE DB Destination Error Output"
-                      synchronousInputId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\DST STG Saft Price File.Inputs[OLE DB Destination Input]">
+                      synchronousInputId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\DST STG Saft Price File.Inputs[OLE DB Destination Input]">
                       <outputColumns>
                         <outputColumn
-                          refId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\DST STG Saft Price File.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          refId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\DST STG Saft Price File.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
                           dataType="i4"
-                          lineageId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\DST STG Saft Price File.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          lineageId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\DST STG Saft Price File.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
                           name="ErrorCode"
                           specialFlags="1" />
                         <outputColumn
-                          refId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\DST STG Saft Price File.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          refId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\DST STG Saft Price File.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                           dataType="i4"
-                          lineageId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\DST STG Saft Price File.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          lineageId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\DST STG Saft Price File.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                           name="ErrorColumn"
                           specialFlags="2" />
                       </outputColumns>
@@ -955,7 +891,7 @@
                   </outputs>
                 </component>
                 <component
-                  refId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\FF_SRC Saft Price"
+                  refId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\FF_SRC Saft Price"
                   componentClassID="Microsoft.FlatFileSource"
                   contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
                   description="Flat File Source"
@@ -975,25 +911,25 @@
                   </properties>
                   <connections>
                     <connection
-                      refId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\FF_SRC Saft Price.Connections[FlatFileConnection]"
+                      refId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\FF_SRC Saft Price.Connections[FlatFileConnection]"
                       connectionManagerID="Package.ConnectionManagers[Price file]"
                       connectionManagerRefId="Package.ConnectionManagers[Price file]"
                       name="FlatFileConnection" />
                   </connections>
                   <outputs>
                     <output
-                      refId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\FF_SRC Saft Price.Outputs[Flat File Source Output]"
+                      refId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\FF_SRC Saft Price.Outputs[Flat File Source Output]"
                       name="Flat File Source Output">
                       <outputColumns>
                         <outputColumn
-                          refId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\FF_SRC Saft Price.Outputs[Flat File Source Output].Columns[CURRENCY]"
+                          refId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\FF_SRC Saft Price.Outputs[Flat File Source Output].Columns[CURRENCY]"
                           codePage="1252"
                           dataType="str"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\FF_SRC Saft Price.Outputs[Flat File Source Output].ExternalColumns[CURRENCY]"
+                          externalMetadataColumnId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\FF_SRC Saft Price.Outputs[Flat File Source Output].ExternalColumns[CURRENCY]"
                           length="3"
-                          lineageId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\FF_SRC Saft Price.Outputs[Flat File Source Output].Columns[CURRENCY]"
+                          lineageId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\FF_SRC Saft Price.Outputs[Flat File Source Output].Columns[CURRENCY]"
                           name="CURRENCY"
                           truncationRowDisposition="FailComponent">
                           <properties>
@@ -1008,14 +944,14 @@
                           </properties>
                         </outputColumn>
                         <outputColumn
-                          refId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\FF_SRC Saft Price.Outputs[Flat File Source Output].Columns[PRICE_TIMESTAMP]"
+                          refId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\FF_SRC Saft Price.Outputs[Flat File Source Output].Columns[PRICE_TIMESTAMP]"
                           codePage="1252"
                           dataType="str"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\FF_SRC Saft Price.Outputs[Flat File Source Output].ExternalColumns[PRICE_TIMESTAMP]"
+                          externalMetadataColumnId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\FF_SRC Saft Price.Outputs[Flat File Source Output].ExternalColumns[PRICE_TIMESTAMP]"
                           length="50"
-                          lineageId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\FF_SRC Saft Price.Outputs[Flat File Source Output].Columns[PRICE_TIMESTAMP]"
+                          lineageId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\FF_SRC Saft Price.Outputs[Flat File Source Output].Columns[PRICE_TIMESTAMP]"
                           name="PRICE_TIMESTAMP"
                           truncationRowDisposition="FailComponent">
                           <properties>
@@ -1030,34 +966,14 @@
                           </properties>
                         </outputColumn>
                         <outputColumn
-                          refId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\FF_SRC Saft Price.Outputs[Flat File Source Output].Columns[PRICE_TIMESTAMP_NO]"
-                          dataType="i4"
-                          errorOrTruncationOperation="Conversion"
-                          errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\FF_SRC Saft Price.Outputs[Flat File Source Output].ExternalColumns[PRICE_TIMESTAMP_NO]"
-                          lineageId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\FF_SRC Saft Price.Outputs[Flat File Source Output].Columns[PRICE_TIMESTAMP_NO]"
-                          name="PRICE_TIMESTAMP_NO"
-                          truncationRowDisposition="FailComponent">
-                          <properties>
-                            <property
-                              dataType="System.Boolean"
-                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
-                              name="FastParse">false</property>
-                            <property
-                              dataType="System.Boolean"
-                              description="Indicates whether the data is in binary format."
-                              name="UseBinaryFormat">false</property>
-                          </properties>
-                        </outputColumn>
-                        <outputColumn
-                          refId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\FF_SRC Saft Price.Outputs[Flat File Source Output].Columns[MOD_TIMESTAMP]"
+                          refId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\FF_SRC Saft Price.Outputs[Flat File Source Output].Columns[MOD_TIMESTAMP]"
                           codePage="1252"
                           dataType="str"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\FF_SRC Saft Price.Outputs[Flat File Source Output].ExternalColumns[MOD_TIMESTAMP]"
+                          externalMetadataColumnId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\FF_SRC Saft Price.Outputs[Flat File Source Output].ExternalColumns[MOD_TIMESTAMP]"
                           length="50"
-                          lineageId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\FF_SRC Saft Price.Outputs[Flat File Source Output].Columns[MOD_TIMESTAMP]"
+                          lineageId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\FF_SRC Saft Price.Outputs[Flat File Source Output].Columns[MOD_TIMESTAMP]"
                           name="MOD_TIMESTAMP"
                           truncationRowDisposition="FailComponent">
                           <properties>
@@ -1072,14 +988,14 @@
                           </properties>
                         </outputColumn>
                         <outputColumn
-                          refId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\FF_SRC Saft Price.Outputs[Flat File Source Output].Columns[PRICE_DATE]"
+                          refId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\FF_SRC Saft Price.Outputs[Flat File Source Output].Columns[PRICE_DATE]"
                           codePage="1252"
                           dataType="str"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\FF_SRC Saft Price.Outputs[Flat File Source Output].ExternalColumns[PRICE_DATE]"
+                          externalMetadataColumnId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\FF_SRC Saft Price.Outputs[Flat File Source Output].ExternalColumns[PRICE_DATE]"
                           length="50"
-                          lineageId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\FF_SRC Saft Price.Outputs[Flat File Source Output].Columns[PRICE_DATE]"
+                          lineageId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\FF_SRC Saft Price.Outputs[Flat File Source Output].Columns[PRICE_DATE]"
                           name="PRICE_DATE"
                           truncationRowDisposition="FailComponent">
                           <properties>
@@ -1094,34 +1010,12 @@
                           </properties>
                         </outputColumn>
                         <outputColumn
-                          refId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\FF_SRC Saft Price.Outputs[Flat File Source Output].Columns[MARKET_PRICE_TYPE]"
-                          codePage="1252"
-                          dataType="str"
-                          errorOrTruncationOperation="Conversion"
-                          errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\FF_SRC Saft Price.Outputs[Flat File Source Output].ExternalColumns[MARKET_PRICE_TYPE]"
-                          length="1"
-                          lineageId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\FF_SRC Saft Price.Outputs[Flat File Source Output].Columns[MARKET_PRICE_TYPE]"
-                          name="MARKET_PRICE_TYPE"
-                          truncationRowDisposition="FailComponent">
-                          <properties>
-                            <property
-                              dataType="System.Boolean"
-                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
-                              name="FastParse">false</property>
-                            <property
-                              dataType="System.Boolean"
-                              description="Indicates whether the data is in binary format."
-                              name="UseBinaryFormat">false</property>
-                          </properties>
-                        </outputColumn>
-                        <outputColumn
-                          refId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\FF_SRC Saft Price.Outputs[Flat File Source Output].Columns[BEST_BID_PRICE]"
+                          refId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\FF_SRC Saft Price.Outputs[Flat File Source Output].Columns[BEST_BID_PRICE]"
                           dataType="numeric"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\FF_SRC Saft Price.Outputs[Flat File Source Output].ExternalColumns[BEST_BID_PRICE]"
-                          lineageId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\FF_SRC Saft Price.Outputs[Flat File Source Output].Columns[BEST_BID_PRICE]"
+                          externalMetadataColumnId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\FF_SRC Saft Price.Outputs[Flat File Source Output].ExternalColumns[BEST_BID_PRICE]"
+                          lineageId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\FF_SRC Saft Price.Outputs[Flat File Source Output].Columns[BEST_BID_PRICE]"
                           name="BEST_BID_PRICE"
                           precision="19"
                           scale="6"
@@ -1138,12 +1032,12 @@
                           </properties>
                         </outputColumn>
                         <outputColumn
-                          refId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\FF_SRC Saft Price.Outputs[Flat File Source Output].Columns[BEST_ASK_PRICE]"
+                          refId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\FF_SRC Saft Price.Outputs[Flat File Source Output].Columns[BEST_ASK_PRICE]"
                           dataType="numeric"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\FF_SRC Saft Price.Outputs[Flat File Source Output].ExternalColumns[BEST_ASK_PRICE]"
-                          lineageId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\FF_SRC Saft Price.Outputs[Flat File Source Output].Columns[BEST_ASK_PRICE]"
+                          externalMetadataColumnId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\FF_SRC Saft Price.Outputs[Flat File Source Output].ExternalColumns[BEST_ASK_PRICE]"
+                          lineageId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\FF_SRC Saft Price.Outputs[Flat File Source Output].Columns[BEST_ASK_PRICE]"
                           name="BEST_ASK_PRICE"
                           precision="19"
                           scale="6"
@@ -1160,12 +1054,12 @@
                           </properties>
                         </outputColumn>
                         <outputColumn
-                          refId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\FF_SRC Saft Price.Outputs[Flat File Source Output].Columns[CLOSING_AUCT_BID_PRICE]"
+                          refId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\FF_SRC Saft Price.Outputs[Flat File Source Output].Columns[CLOSING_AUCT_BID_PRICE]"
                           dataType="numeric"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\FF_SRC Saft Price.Outputs[Flat File Source Output].ExternalColumns[CLOSING_AUCT_BID_PRICE]"
-                          lineageId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\FF_SRC Saft Price.Outputs[Flat File Source Output].Columns[CLOSING_AUCT_BID_PRICE]"
+                          externalMetadataColumnId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\FF_SRC Saft Price.Outputs[Flat File Source Output].ExternalColumns[CLOSING_AUCT_BID_PRICE]"
+                          lineageId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\FF_SRC Saft Price.Outputs[Flat File Source Output].Columns[CLOSING_AUCT_BID_PRICE]"
                           name="CLOSING_AUCT_BID_PRICE"
                           precision="19"
                           scale="6"
@@ -1182,12 +1076,12 @@
                           </properties>
                         </outputColumn>
                         <outputColumn
-                          refId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\FF_SRC Saft Price.Outputs[Flat File Source Output].Columns[CLOSING_AUCT_ASK_PRICE]"
+                          refId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\FF_SRC Saft Price.Outputs[Flat File Source Output].Columns[CLOSING_AUCT_ASK_PRICE]"
                           dataType="numeric"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\FF_SRC Saft Price.Outputs[Flat File Source Output].ExternalColumns[CLOSING_AUCT_ASK_PRICE]"
-                          lineageId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\FF_SRC Saft Price.Outputs[Flat File Source Output].Columns[CLOSING_AUCT_ASK_PRICE]"
+                          externalMetadataColumnId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\FF_SRC Saft Price.Outputs[Flat File Source Output].ExternalColumns[CLOSING_AUCT_ASK_PRICE]"
+                          lineageId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\FF_SRC Saft Price.Outputs[Flat File Source Output].Columns[CLOSING_AUCT_ASK_PRICE]"
                           name="CLOSING_AUCT_ASK_PRICE"
                           precision="19"
                           scale="6"
@@ -1204,36 +1098,14 @@
                           </properties>
                         </outputColumn>
                         <outputColumn
-                          refId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\FF_SRC Saft Price.Outputs[Flat File Source Output].Columns[INSERT_DATE]"
+                          refId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\FF_SRC Saft Price.Outputs[Flat File Source Output].Columns[MIXED]"
                           codePage="1252"
                           dataType="str"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\FF_SRC Saft Price.Outputs[Flat File Source Output].ExternalColumns[INSERT_DATE]"
-                          length="50"
-                          lineageId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\FF_SRC Saft Price.Outputs[Flat File Source Output].Columns[INSERT_DATE]"
-                          name="INSERT_DATE"
-                          truncationRowDisposition="FailComponent">
-                          <properties>
-                            <property
-                              dataType="System.Boolean"
-                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
-                              name="FastParse">false</property>
-                            <property
-                              dataType="System.Boolean"
-                              description="Indicates whether the data is in binary format."
-                              name="UseBinaryFormat">false</property>
-                          </properties>
-                        </outputColumn>
-                        <outputColumn
-                          refId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\FF_SRC Saft Price.Outputs[Flat File Source Output].Columns[MIXED]"
-                          codePage="1252"
-                          dataType="str"
-                          errorOrTruncationOperation="Conversion"
-                          errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\FF_SRC Saft Price.Outputs[Flat File Source Output].ExternalColumns[MIXED]"
+                          externalMetadataColumnId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\FF_SRC Saft Price.Outputs[Flat File Source Output].ExternalColumns[MIXED]"
                           length="12"
-                          lineageId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\FF_SRC Saft Price.Outputs[Flat File Source Output].Columns[MIXED]"
+                          lineageId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\FF_SRC Saft Price.Outputs[Flat File Source Output].Columns[MIXED]"
                           name="MIXED"
                           truncationRowDisposition="FailComponent">
                           <properties>
@@ -1251,71 +1123,55 @@
                       <externalMetadataColumns
                         isUsed="True">
                         <externalMetadataColumn
-                          refId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\FF_SRC Saft Price.Outputs[Flat File Source Output].ExternalColumns[CURRENCY]"
+                          refId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\FF_SRC Saft Price.Outputs[Flat File Source Output].ExternalColumns[CURRENCY]"
                           codePage="1252"
                           dataType="str"
                           length="3"
                           name="CURRENCY" />
                         <externalMetadataColumn
-                          refId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\FF_SRC Saft Price.Outputs[Flat File Source Output].ExternalColumns[PRICE_TIMESTAMP]"
+                          refId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\FF_SRC Saft Price.Outputs[Flat File Source Output].ExternalColumns[PRICE_TIMESTAMP]"
                           codePage="1252"
                           dataType="str"
                           length="50"
                           name="PRICE_TIMESTAMP" />
                         <externalMetadataColumn
-                          refId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\FF_SRC Saft Price.Outputs[Flat File Source Output].ExternalColumns[PRICE_TIMESTAMP_NO]"
-                          dataType="i4"
-                          name="PRICE_TIMESTAMP_NO" />
-                        <externalMetadataColumn
-                          refId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\FF_SRC Saft Price.Outputs[Flat File Source Output].ExternalColumns[MOD_TIMESTAMP]"
+                          refId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\FF_SRC Saft Price.Outputs[Flat File Source Output].ExternalColumns[MOD_TIMESTAMP]"
                           codePage="1252"
                           dataType="str"
                           length="50"
                           name="MOD_TIMESTAMP" />
                         <externalMetadataColumn
-                          refId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\FF_SRC Saft Price.Outputs[Flat File Source Output].ExternalColumns[PRICE_DATE]"
+                          refId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\FF_SRC Saft Price.Outputs[Flat File Source Output].ExternalColumns[PRICE_DATE]"
                           codePage="1252"
                           dataType="str"
                           length="50"
                           name="PRICE_DATE" />
                         <externalMetadataColumn
-                          refId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\FF_SRC Saft Price.Outputs[Flat File Source Output].ExternalColumns[MARKET_PRICE_TYPE]"
-                          codePage="1252"
-                          dataType="str"
-                          length="1"
-                          name="MARKET_PRICE_TYPE" />
-                        <externalMetadataColumn
-                          refId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\FF_SRC Saft Price.Outputs[Flat File Source Output].ExternalColumns[BEST_BID_PRICE]"
+                          refId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\FF_SRC Saft Price.Outputs[Flat File Source Output].ExternalColumns[BEST_BID_PRICE]"
                           dataType="numeric"
                           name="BEST_BID_PRICE"
                           precision="19"
                           scale="6" />
                         <externalMetadataColumn
-                          refId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\FF_SRC Saft Price.Outputs[Flat File Source Output].ExternalColumns[BEST_ASK_PRICE]"
+                          refId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\FF_SRC Saft Price.Outputs[Flat File Source Output].ExternalColumns[BEST_ASK_PRICE]"
                           dataType="numeric"
                           name="BEST_ASK_PRICE"
                           precision="19"
                           scale="6" />
                         <externalMetadataColumn
-                          refId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\FF_SRC Saft Price.Outputs[Flat File Source Output].ExternalColumns[CLOSING_AUCT_BID_PRICE]"
+                          refId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\FF_SRC Saft Price.Outputs[Flat File Source Output].ExternalColumns[CLOSING_AUCT_BID_PRICE]"
                           dataType="numeric"
                           name="CLOSING_AUCT_BID_PRICE"
                           precision="19"
                           scale="6" />
                         <externalMetadataColumn
-                          refId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\FF_SRC Saft Price.Outputs[Flat File Source Output].ExternalColumns[CLOSING_AUCT_ASK_PRICE]"
+                          refId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\FF_SRC Saft Price.Outputs[Flat File Source Output].ExternalColumns[CLOSING_AUCT_ASK_PRICE]"
                           dataType="numeric"
                           name="CLOSING_AUCT_ASK_PRICE"
                           precision="19"
                           scale="6" />
                         <externalMetadataColumn
-                          refId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\FF_SRC Saft Price.Outputs[Flat File Source Output].ExternalColumns[INSERT_DATE]"
-                          codePage="1252"
-                          dataType="str"
-                          length="50"
-                          name="INSERT_DATE" />
-                        <externalMetadataColumn
-                          refId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\FF_SRC Saft Price.Outputs[Flat File Source Output].ExternalColumns[MIXED]"
+                          refId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\FF_SRC Saft Price.Outputs[Flat File Source Output].ExternalColumns[MIXED]"
                           codePage="1252"
                           dataType="str"
                           length="12"
@@ -1323,27 +1179,27 @@
                       </externalMetadataColumns>
                     </output>
                     <output
-                      refId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\FF_SRC Saft Price.Outputs[Flat File Source Error Output]"
+                      refId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\FF_SRC Saft Price.Outputs[Flat File Source Error Output]"
                       isErrorOut="true"
                       name="Flat File Source Error Output">
                       <outputColumns>
                         <outputColumn
-                          refId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\FF_SRC Saft Price.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                          refId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\FF_SRC Saft Price.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
                           codePage="1252"
                           dataType="text"
                           description="Flat File Source Error Output Column"
-                          lineageId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\FF_SRC Saft Price.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                          lineageId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\FF_SRC Saft Price.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
                           name="Flat File Source Error Output Column" />
                         <outputColumn
-                          refId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\FF_SRC Saft Price.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                          refId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\FF_SRC Saft Price.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
                           dataType="i4"
-                          lineageId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\FF_SRC Saft Price.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                          lineageId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\FF_SRC Saft Price.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
                           name="ErrorCode"
                           specialFlags="1" />
                         <outputColumn
-                          refId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\FF_SRC Saft Price.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                          refId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\FF_SRC Saft Price.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
                           dataType="i4"
-                          lineageId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\FF_SRC Saft Price.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                          lineageId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\FF_SRC Saft Price.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
                           name="ErrorColumn"
                           specialFlags="2" />
                       </outputColumns>
@@ -1354,30 +1210,30 @@
               </components>
               <paths>
                 <path
-                  refId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle.Paths[Data Conversion Output]"
-                  endId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\DST STG Price_FileRowCount.Inputs[OLE DB Destination Input]"
+                  refId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle.Paths[Data Conversion Output]"
+                  endId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\DST STG Price_FileRowCount.Inputs[OLE DB Destination Input]"
                   name="Data Conversion Output"
-                  startId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\DCNV Price File Row Count.Outputs[Data Conversion Output]" />
+                  startId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\DCNV Price File Row Count.Outputs[Data Conversion Output]" />
                 <path
-                  refId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle.Paths[Derived Column Output]"
-                  endId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\CSPL Price File Row Counter.Inputs[Conditional Split Input]"
+                  refId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle.Paths[Derived Column Output]"
+                  endId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\CSPL Price File Row Counter.Inputs[Conditional Split Input]"
                   name="Derived Column Output"
-                  startId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\DER Price File Details.Outputs[Derived Column Output]" />
+                  startId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\DER Price File Details.Outputs[Derived Column Output]" />
                 <path
-                  refId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle.Paths[Flat File Source Output]"
-                  endId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\DER Price File Details.Inputs[Derived Column Input]"
+                  refId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle.Paths[Flat File Source Output]"
+                  endId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\DER Price File Details.Inputs[Derived Column Input]"
                   name="Flat File Source Output"
-                  startId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\FF_SRC Saft Price.Outputs[Flat File Source Output]" />
+                  startId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\FF_SRC Saft Price.Outputs[Flat File Source Output]" />
                 <path
-                  refId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle.Paths[Row Count]"
-                  endId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\DCNV Price File Row Count.Inputs[Data Conversion Input]"
+                  refId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle.Paths[Row Count]"
+                  endId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\DCNV Price File Row Count.Inputs[Data Conversion Input]"
                   name="Row Count"
-                  startId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\CSPL Price File Row Counter.Outputs[Row Count]" />
+                  startId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\CSPL Price File Row Counter.Outputs[Row Count]" />
                 <path
-                  refId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle.Paths[Trades]"
-                  endId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\DST STG Saft Price File.Inputs[OLE DB Destination Input]"
+                  refId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle.Paths[Trades]"
+                  endId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\DST STG Saft Price File.Inputs[OLE DB Destination Input]"
                   name="Trades"
-                  startId="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\CSPL Price File Row Counter.Outputs[Trades]" />
+                  startId="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\CSPL Price File Row Counter.Outputs[Trades]" />
               </paths>
             </pipeline>
           </DTS:ObjectData>
@@ -1508,12 +1364,12 @@
           DTS:From="Package\FELC Stage Saft Price Files\SQL STG Update File ID"
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint 1"
-          DTS:To="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle" />
+          DTS:To="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle" />
         <DTS:PrecedenceConstraint
           DTS:refId="Package\FELC Stage Saft Price Files.PrecedenceConstraints[Constraint 3]"
           DTS:CreationName=""
           DTS:DTSID="{9e20664d-aa7d-4a75-9979-adb3d357e47c}"
-          DTS:From="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle"
+          DTS:From="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle"
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint 3"
           DTS:To="Package\FELC Stage Saft Price Files\SQL DHW File Stage" />
@@ -2130,13 +1986,27 @@
                       description="Specifies the SQL statement that generates the lookup table."
                       expressionType="Notify"
                       name="SqlCommand"
-                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[FileControlT7]</property>
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT
+	UPPER(FileLetter) AS FileLetter,
+	ExpectedStartTime,
+	ContainsEndOfDayDetailsYN
+FROM
+	dbo.FileControlTimeExpected
+WHERE
+	FileTag  ='PriceFile'</property>
                     <property
                       dataType="System.String"
                       description="Specifies a SQL statement that uses parameters to generate the lookup table."
                       expressionType="Notify"
                       name="SqlCommandParam"
-                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[FileControlT7]) [refTable]
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (SELECT
+	UPPER(FileLetter) AS FileLetter,
+	ExpectedStartTime,
+	ContainsEndOfDayDetailsYN
+FROM
+	dbo.FileControlTimeExpected
+WHERE
+	FileTag  ='PriceFile') [refTable]
 where [refTable].[FileLetter] = ?</property>
                     <property
                       dataType="System.Int32"
@@ -2168,7 +2038,7 @@ where [refTable].[FileLetter] = ?</property>
                     <property
                       dataType="System.String"
                       description="Indicates whether to reference metadata in an XML format."
-                      name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="FileLetter" dataType="DT_STR" length="2" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="ExpectedStartTime" dataType="DT_DBTIME2" length="0" precision="0" scale="7" codePage="0"/&gt;&lt;referenceColumn name="ExpectedFinishTime" dataType="DT_DBTIME2" length="0" precision="0" scale="7" codePage="0"/&gt;&lt;referenceColumn name="ProcessFileYN" dataType="DT_STR" length="1" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="ContainsEndOfDayDetailsYN" dataType="DT_STR" length="1" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="ReprocessDelayMinutes" dataType="DT_I2" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                      name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="FileLetter" dataType="DT_STR" length="2" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="ExpectedStartTime" dataType="DT_DBTIME2" length="0" precision="0" scale="7" codePage="0"/&gt;&lt;referenceColumn name="ContainsEndOfDayDetailsYN" dataType="DT_STR" length="1" precision="0" scale="0" codePage="1252"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
                     <property
                       containsID="true"
                       dataType="System.String"
@@ -3113,12 +2983,6 @@ AND
                           externalMetadataColumnId="Package\SEQ Move Good Files to Archive\DFT T7 ODS PriceFile\DST T7 ODS PriceFile.Inputs[OLE DB Destination Input].ExternalColumns[PRICE_TIMESTAMP]"
                           lineageId="Package\SEQ Move Good Files to Archive\DFT T7 ODS PriceFile\SRC STG PriceFile.Outputs[OLE DB Source Output].Columns[PRICE_TIMESTAMP]" />
                         <inputColumn
-                          refId="Package\SEQ Move Good Files to Archive\DFT T7 ODS PriceFile\DST T7 ODS PriceFile.Inputs[OLE DB Destination Input].Columns[PRICE_TIMESTAMP_NO]"
-                          cachedDataType="i4"
-                          cachedName="PRICE_TIMESTAMP_NO"
-                          externalMetadataColumnId="Package\SEQ Move Good Files to Archive\DFT T7 ODS PriceFile\DST T7 ODS PriceFile.Inputs[OLE DB Destination Input].ExternalColumns[PRICE_TIMESTAMP_NO]"
-                          lineageId="Package\SEQ Move Good Files to Archive\DFT T7 ODS PriceFile\SRC STG PriceFile.Outputs[OLE DB Source Output].Columns[PRICE_TIMESTAMP_NO]" />
-                        <inputColumn
                           refId="Package\SEQ Move Good Files to Archive\DFT T7 ODS PriceFile\DST T7 ODS PriceFile.Inputs[OLE DB Destination Input].Columns[MOD_TIMESTAMP]"
                           cachedDataType="dbTimeStamp2"
                           cachedName="MOD_TIMESTAMP"
@@ -3131,14 +2995,6 @@ AND
                           cachedName="PRICE_DATE"
                           externalMetadataColumnId="Package\SEQ Move Good Files to Archive\DFT T7 ODS PriceFile\DST T7 ODS PriceFile.Inputs[OLE DB Destination Input].ExternalColumns[PRICE_DATE]"
                           lineageId="Package\SEQ Move Good Files to Archive\DFT T7 ODS PriceFile\SRC STG PriceFile.Outputs[OLE DB Source Output].Columns[PRICE_DATE]" />
-                        <inputColumn
-                          refId="Package\SEQ Move Good Files to Archive\DFT T7 ODS PriceFile\DST T7 ODS PriceFile.Inputs[OLE DB Destination Input].Columns[MARKET_PRICE_TYPE]"
-                          cachedCodepage="1252"
-                          cachedDataType="str"
-                          cachedLength="1"
-                          cachedName="MARKET_PRICE_TYPE"
-                          externalMetadataColumnId="Package\SEQ Move Good Files to Archive\DFT T7 ODS PriceFile\DST T7 ODS PriceFile.Inputs[OLE DB Destination Input].ExternalColumns[MARKET_PRICE_TYPE]"
-                          lineageId="Package\SEQ Move Good Files to Archive\DFT T7 ODS PriceFile\SRC STG PriceFile.Outputs[OLE DB Source Output].Columns[MARKET_PRICE_TYPE]" />
                         <inputColumn
                           refId="Package\SEQ Move Good Files to Archive\DFT T7 ODS PriceFile\DST T7 ODS PriceFile.Inputs[OLE DB Destination Input].Columns[BEST_BID_PRICE]"
                           cachedDataType="numeric"
@@ -3171,12 +3027,6 @@ AND
                           cachedScale="6"
                           externalMetadataColumnId="Package\SEQ Move Good Files to Archive\DFT T7 ODS PriceFile\DST T7 ODS PriceFile.Inputs[OLE DB Destination Input].ExternalColumns[CLOSING_AUCT_ASK_PRICE]"
                           lineageId="Package\SEQ Move Good Files to Archive\DFT T7 ODS PriceFile\SRC STG PriceFile.Outputs[OLE DB Source Output].Columns[CLOSING_AUCT_ASK_PRICE]" />
-                        <inputColumn
-                          refId="Package\SEQ Move Good Files to Archive\DFT T7 ODS PriceFile\DST T7 ODS PriceFile.Inputs[OLE DB Destination Input].Columns[INSERT_DATE]"
-                          cachedDataType="dbDate"
-                          cachedName="INSERT_DATE"
-                          externalMetadataColumnId="Package\SEQ Move Good Files to Archive\DFT T7 ODS PriceFile\DST T7 ODS PriceFile.Inputs[OLE DB Destination Input].ExternalColumns[INSERT_DATE]"
-                          lineageId="Package\SEQ Move Good Files to Archive\DFT T7 ODS PriceFile\SRC STG PriceFile.Outputs[OLE DB Source Output].Columns[INSERT_DATE]" />
                         <inputColumn
                           refId="Package\SEQ Move Good Files to Archive\DFT T7 ODS PriceFile\DST T7 ODS PriceFile.Inputs[OLE DB Destination Input].Columns[DwhFileID]"
                           cachedDataType="i4"
@@ -3316,15 +3166,12 @@ AND
 	PR.ISIN, 
 	PR.CURRENCY, 
 	CAST(PR.PRICE_TIMESTAMP AS DATETIME2) AS PRICE_TIMESTAMP,
-	PR.PRICE_TIMESTAMP_NO, 
 	CAST(PR.MOD_TIMESTAMP AS DATETIME2) AS MOD_TIMESTAMP,
 	CAST(PR.PRICE_DATE AS DATE) AS PRICE_DATE, 
-	PR.MARKET_PRICE_TYPE, 
 	PR.BEST_BID_PRICE, 
 	PR.BEST_ASK_PRICE, 
 	PR.CLOSING_AUCT_BID_PRICE, 
-	PR.CLOSING_AUCT_ASK_PRICE, 
-	CAST(PR.INSERT_DATE AS DATE) AS INSERT_DATE
+	PR.CLOSING_AUCT_ASK_PRICE
 FROM
 		dbo.Saft_Price PR
 	INNER JOIN
@@ -3407,15 +3254,6 @@ FROM
                           scale="7"
                           truncationRowDisposition="FailComponent" />
                         <outputColumn
-                          refId="Package\SEQ Move Good Files to Archive\DFT T7 ODS PriceFile\SRC STG PriceFile.Outputs[OLE DB Source Output].Columns[PRICE_TIMESTAMP_NO]"
-                          dataType="i4"
-                          errorOrTruncationOperation="Conversion"
-                          errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\SEQ Move Good Files to Archive\DFT T7 ODS PriceFile\SRC STG PriceFile.Outputs[OLE DB Source Output].ExternalColumns[PRICE_TIMESTAMP_NO]"
-                          lineageId="Package\SEQ Move Good Files to Archive\DFT T7 ODS PriceFile\SRC STG PriceFile.Outputs[OLE DB Source Output].Columns[PRICE_TIMESTAMP_NO]"
-                          name="PRICE_TIMESTAMP_NO"
-                          truncationRowDisposition="FailComponent" />
-                        <outputColumn
                           refId="Package\SEQ Move Good Files to Archive\DFT T7 ODS PriceFile\SRC STG PriceFile.Outputs[OLE DB Source Output].Columns[MOD_TIMESTAMP]"
                           dataType="dbTimeStamp2"
                           errorOrTruncationOperation="Conversion"
@@ -3433,17 +3271,6 @@ FROM
                           externalMetadataColumnId="Package\SEQ Move Good Files to Archive\DFT T7 ODS PriceFile\SRC STG PriceFile.Outputs[OLE DB Source Output].ExternalColumns[PRICE_DATE]"
                           lineageId="Package\SEQ Move Good Files to Archive\DFT T7 ODS PriceFile\SRC STG PriceFile.Outputs[OLE DB Source Output].Columns[PRICE_DATE]"
                           name="PRICE_DATE"
-                          truncationRowDisposition="FailComponent" />
-                        <outputColumn
-                          refId="Package\SEQ Move Good Files to Archive\DFT T7 ODS PriceFile\SRC STG PriceFile.Outputs[OLE DB Source Output].Columns[MARKET_PRICE_TYPE]"
-                          codePage="1252"
-                          dataType="str"
-                          errorOrTruncationOperation="Conversion"
-                          errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\SEQ Move Good Files to Archive\DFT T7 ODS PriceFile\SRC STG PriceFile.Outputs[OLE DB Source Output].ExternalColumns[MARKET_PRICE_TYPE]"
-                          length="1"
-                          lineageId="Package\SEQ Move Good Files to Archive\DFT T7 ODS PriceFile\SRC STG PriceFile.Outputs[OLE DB Source Output].Columns[MARKET_PRICE_TYPE]"
-                          name="MARKET_PRICE_TYPE"
                           truncationRowDisposition="FailComponent" />
                         <outputColumn
                           refId="Package\SEQ Move Good Files to Archive\DFT T7 ODS PriceFile\SRC STG PriceFile.Outputs[OLE DB Source Output].Columns[BEST_BID_PRICE]"
@@ -3489,15 +3316,6 @@ FROM
                           precision="19"
                           scale="6"
                           truncationRowDisposition="FailComponent" />
-                        <outputColumn
-                          refId="Package\SEQ Move Good Files to Archive\DFT T7 ODS PriceFile\SRC STG PriceFile.Outputs[OLE DB Source Output].Columns[INSERT_DATE]"
-                          dataType="dbDate"
-                          errorOrTruncationOperation="Conversion"
-                          errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\SEQ Move Good Files to Archive\DFT T7 ODS PriceFile\SRC STG PriceFile.Outputs[OLE DB Source Output].ExternalColumns[INSERT_DATE]"
-                          lineageId="Package\SEQ Move Good Files to Archive\DFT T7 ODS PriceFile\SRC STG PriceFile.Outputs[OLE DB Source Output].Columns[INSERT_DATE]"
-                          name="INSERT_DATE"
-                          truncationRowDisposition="FailComponent" />
                       </outputColumns>
                       <externalMetadataColumns
                         isUsed="True">
@@ -3523,10 +3341,6 @@ FROM
                           name="PRICE_TIMESTAMP"
                           scale="7" />
                         <externalMetadataColumn
-                          refId="Package\SEQ Move Good Files to Archive\DFT T7 ODS PriceFile\SRC STG PriceFile.Outputs[OLE DB Source Output].ExternalColumns[PRICE_TIMESTAMP_NO]"
-                          dataType="i4"
-                          name="PRICE_TIMESTAMP_NO" />
-                        <externalMetadataColumn
                           refId="Package\SEQ Move Good Files to Archive\DFT T7 ODS PriceFile\SRC STG PriceFile.Outputs[OLE DB Source Output].ExternalColumns[MOD_TIMESTAMP]"
                           dataType="dbTimeStamp2"
                           name="MOD_TIMESTAMP"
@@ -3535,12 +3349,6 @@ FROM
                           refId="Package\SEQ Move Good Files to Archive\DFT T7 ODS PriceFile\SRC STG PriceFile.Outputs[OLE DB Source Output].ExternalColumns[PRICE_DATE]"
                           dataType="dbDate"
                           name="PRICE_DATE" />
-                        <externalMetadataColumn
-                          refId="Package\SEQ Move Good Files to Archive\DFT T7 ODS PriceFile\SRC STG PriceFile.Outputs[OLE DB Source Output].ExternalColumns[MARKET_PRICE_TYPE]"
-                          codePage="1252"
-                          dataType="str"
-                          length="1"
-                          name="MARKET_PRICE_TYPE" />
                         <externalMetadataColumn
                           refId="Package\SEQ Move Good Files to Archive\DFT T7 ODS PriceFile\SRC STG PriceFile.Outputs[OLE DB Source Output].ExternalColumns[BEST_BID_PRICE]"
                           dataType="numeric"
@@ -3565,10 +3373,6 @@ FROM
                           name="CLOSING_AUCT_ASK_PRICE"
                           precision="19"
                           scale="6" />
-                        <externalMetadataColumn
-                          refId="Package\SEQ Move Good Files to Archive\DFT T7 ODS PriceFile\SRC STG PriceFile.Outputs[OLE DB Source Output].ExternalColumns[INSERT_DATE]"
-                          dataType="dbDate"
-                          name="INSERT_DATE" />
                       </externalMetadataColumns>
                     </output>
                     <output
@@ -3602,11 +3406,6 @@ FROM
                           name="PRICE_TIMESTAMP"
                           scale="7" />
                         <outputColumn
-                          refId="Package\SEQ Move Good Files to Archive\DFT T7 ODS PriceFile\SRC STG PriceFile.Outputs[OLE DB Source Error Output].Columns[PRICE_TIMESTAMP_NO]"
-                          dataType="i4"
-                          lineageId="Package\SEQ Move Good Files to Archive\DFT T7 ODS PriceFile\SRC STG PriceFile.Outputs[OLE DB Source Error Output].Columns[PRICE_TIMESTAMP_NO]"
-                          name="PRICE_TIMESTAMP_NO" />
-                        <outputColumn
                           refId="Package\SEQ Move Good Files to Archive\DFT T7 ODS PriceFile\SRC STG PriceFile.Outputs[OLE DB Source Error Output].Columns[MOD_TIMESTAMP]"
                           dataType="dbTimeStamp2"
                           lineageId="Package\SEQ Move Good Files to Archive\DFT T7 ODS PriceFile\SRC STG PriceFile.Outputs[OLE DB Source Error Output].Columns[MOD_TIMESTAMP]"
@@ -3617,13 +3416,6 @@ FROM
                           dataType="dbDate"
                           lineageId="Package\SEQ Move Good Files to Archive\DFT T7 ODS PriceFile\SRC STG PriceFile.Outputs[OLE DB Source Error Output].Columns[PRICE_DATE]"
                           name="PRICE_DATE" />
-                        <outputColumn
-                          refId="Package\SEQ Move Good Files to Archive\DFT T7 ODS PriceFile\SRC STG PriceFile.Outputs[OLE DB Source Error Output].Columns[MARKET_PRICE_TYPE]"
-                          codePage="1252"
-                          dataType="str"
-                          length="1"
-                          lineageId="Package\SEQ Move Good Files to Archive\DFT T7 ODS PriceFile\SRC STG PriceFile.Outputs[OLE DB Source Error Output].Columns[MARKET_PRICE_TYPE]"
-                          name="MARKET_PRICE_TYPE" />
                         <outputColumn
                           refId="Package\SEQ Move Good Files to Archive\DFT T7 ODS PriceFile\SRC STG PriceFile.Outputs[OLE DB Source Error Output].Columns[BEST_BID_PRICE]"
                           dataType="numeric"
@@ -3652,11 +3444,6 @@ FROM
                           name="CLOSING_AUCT_ASK_PRICE"
                           precision="19"
                           scale="6" />
-                        <outputColumn
-                          refId="Package\SEQ Move Good Files to Archive\DFT T7 ODS PriceFile\SRC STG PriceFile.Outputs[OLE DB Source Error Output].Columns[INSERT_DATE]"
-                          dataType="dbDate"
-                          lineageId="Package\SEQ Move Good Files to Archive\DFT T7 ODS PriceFile\SRC STG PriceFile.Outputs[OLE DB Source Error Output].Columns[INSERT_DATE]"
-                          name="INSERT_DATE" />
                         <outputColumn
                           refId="Package\SEQ Move Good Files to Archive\DFT T7 ODS PriceFile\SRC STG PriceFile.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                           dataType="i4"
@@ -3734,7 +3521,7 @@ FROM
               DTS:LocaleID="-1"
               DTS:ObjectName="FSYS Move good files"
               DTS:TaskContact="File System Task;Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-              DTS:ThreadHint="0">
+              DTS:ThreadHint="1">
               <DTS:Variables />
               <DTS:EventHandlers>
                 <DTS:EventHandler
@@ -3778,7 +3565,7 @@ FROM
               DTS:LocaleID="-1"
               DTS:ObjectName="SQL T7 ODS PriceFIle"
               DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-              DTS:ThreadHint="1">
+              DTS:ThreadHint="0">
               <DTS:Variables />
               <DTS:ObjectData>
                 <SQLTask:SqlTaskData
@@ -3948,7 +3735,7 @@ FROM
           DTS:LocaleID="-1"
           DTS:ObjectName="SQL Get ETL Version"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -3970,7 +3757,7 @@ FROM
           DTS:LocaleID="-1"
           DTS:ObjectName="SQL Get Saft Files to Stage"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="1">
+          DTS:ThreadHint="2">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -3992,7 +3779,7 @@ FROM
           DTS:LocaleID="-1"
           DTS:ObjectName="SQL Staging Clear SAFT TradeFile"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="2">
+          DTS:ThreadHint="0">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -4081,10 +3868,10 @@ FROM
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="64" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="64" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="191,42"
-          Id="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle"
+          Size="172,42"
+          Id="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle"
           TopLeft="88,182" />
         <NodeLayout
           Size="191,42"
@@ -4103,7 +3890,7 @@ FROM
           TopLeft="183.5,73.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,25.5"
               Start="0,0"
               End="0,18">
@@ -4125,15 +3912,27 @@ FROM
           TopLeft="183.5,141">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,41"
+              StartConnector="{x:Null}"
+              EndConnector="-9.5,41"
               Start="0,0"
-              End="0,33.5">
+              End="-9.5,33.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,33.5" />
+                    End="0,16.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,16.5"
+                    Point2="0,20.5"
+                    Point3="-4,20.5" />
+                  <mssgle:LineSegment
+                    End="-5.5,20.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-5.5,20.5"
+                    Point2="-9.5,20.5"
+                    Point3="-9.5,24.5" />
+                  <mssgle:LineSegment
+                    End="-9.5,33.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -4144,18 +3943,30 @@ FROM
         </EdgeLayout>
         <EdgeLayout
           Id="Package\FELC Stage Saft Price Files.PrecedenceConstraints[Constraint 3]"
-          TopLeft="183.5,224">
+          TopLeft="174,224">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,41.5"
+              StartConnector="{x:Null}"
+              EndConnector="9.5,41.5"
               Start="0,0"
-              End="0,34">
+              End="9.5,34">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,34" />
+                    End="0,16.75" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,16.75"
+                    Point2="0,20.75"
+                    Point3="4,20.75" />
+                  <mssgle:LineSegment
+                    End="5.5,20.75" />
+                  <mssgle:CubicBezierSegment
+                    Point1="5.5,20.75"
+                    Point2="9.5,20.75"
+                    Point3="9.5,24.75" />
+                  <mssgle:LineSegment
+                    End="9.5,34" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -4195,7 +4006,7 @@ FROM
           TopLeft="190.5,47.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,62"
               Start="0,0"
               End="0,54.5">
@@ -4251,7 +4062,7 @@ FROM
           TopLeft="111,47.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,38"
               Start="0,0"
               End="0,30.5">
@@ -4273,7 +4084,7 @@ FROM
           TopLeft="112.75,399">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,39"
               Start="0,0"
               End="0,31.5">
@@ -4336,7 +4147,7 @@ FROM
           TopLeft="427.33333333333,360">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,32.5"
               Start="0,0"
               End="0,25">
@@ -4358,7 +4169,7 @@ FROM
           TopLeft="390,1295.66666666667">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="177,359.833333333333"
               Start="0,0"
               End="169.5,359.833333333333">
@@ -4392,7 +4203,7 @@ FROM
           TopLeft="428.33333333333,793.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="-18.4999999999999,56"
               Start="0,0"
               End="-18.4999999999999,48.5">
@@ -4426,7 +4237,7 @@ FROM
           TopLeft="378.166666666663,891.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="-135.666666666663,68.666666666667"
               Start="0,0"
               End="-135.666666666663,61.166666666667">
@@ -4460,7 +4271,7 @@ FROM
           TopLeft="441.499999999997,891.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="191.666666666663,71.666666666667"
               Start="0,0"
               End="191.666666666663,64.166666666667">
@@ -4494,7 +4305,7 @@ FROM
           TopLeft="633.16666666666,1369.16666666667">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="71.1666666666733,206.833333333333"
               Start="0,0"
               End="71.1666666666733,199.333333333333">
@@ -4527,40 +4338,40 @@ FROM
     </LayoutInfo>
   </Package>
   <TaskHost
-    design-time-name="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle">
+    design-time-name="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle">
     <LayoutInfo>
       <GraphLayout
-        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="217,42"
-          Id="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\DST STG Price_FileRowCount"
+          Id="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\DST STG Price_FileRowCount"
           TopLeft="625,221" />
         <NodeLayout
           Size="206,42"
-          Id="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\DCNV Price File Row Count"
+          Id="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\DCNV Price File Row Count"
           TopLeft="360,221" />
         <NodeLayout
           Size="212,42"
-          Id="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\CSPL Price File Row Counter"
+          Id="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\CSPL Price File Row Counter"
           TopLeft="76,221" />
         <NodeLayout
           Size="212,42"
-          Id="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\FF_SRC Saft Price"
+          Id="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\FF_SRC Saft Price"
           TopLeft="76,32" />
         <NodeLayout
           Size="212,42"
-          Id="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\DER Price File Details"
+          Id="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\DER Price File Details"
           TopLeft="76,126.5" />
         <NodeLayout
           Size="212,42"
-          Id="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\DST STG Saft Price File"
+          Id="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\DST STG Saft Price File"
           TopLeft="76,304" />
         <EdgeLayout
-          Id="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle.Paths[Trades]"
+          Id="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle.Paths[Trades]"
           TopLeft="182,263">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,41"
               Start="0,0"
               End="0,33.5">
@@ -4580,11 +4391,11 @@ FROM
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle.Paths[Row Count]"
+          Id="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle.Paths[Row Count]"
           TopLeft="288,242">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="72,0"
               Start="0,0"
               End="64.5,0">
@@ -4604,11 +4415,11 @@ FROM
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle.Paths[Flat File Source Output]"
+          Id="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle.Paths[Flat File Source Output]"
           TopLeft="182,74">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,52.5"
               Start="0,0"
               End="0,45">
@@ -4622,17 +4433,15 @@ FROM
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle.Paths[Derived Column Output]"
+          Id="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle.Paths[Derived Column Output]"
           TopLeft="182,168.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,52.5"
               Start="0,0"
               End="0,45">
@@ -4646,17 +4455,15 @@ FROM
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle.Paths[Data Conversion Output]"
+          Id="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle.Paths[Data Conversion Output]"
           TopLeft="566,242">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="59,0"
               Start="0,0"
               End="51.5,0">
@@ -4670,16 +4477,14 @@ FROM
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\DST STG Price_FileRowCount">
+    design-time-name="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\DST STG Price_FileRowCount">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -4692,7 +4497,7 @@ FROM
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\FELC Stage Saft Price Files\DFT Stage TxSaft FIle\DST STG Saft Price File">
+    design-time-name="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\DST STG Saft Price File">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -4708,7 +4513,7 @@ FROM
     design-time-name="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table">
     <LayoutInfo>
       <GraphLayout
-        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="204,42"
           Id="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\SCD T7 ODS File Table"
@@ -4738,7 +4543,7 @@ FROM
           TopLeft="312,149.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,60"
               Start="0,0"
               End="0,52.5">
@@ -4752,9 +4557,7 @@ FROM
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -4762,7 +4565,7 @@ FROM
           TopLeft="344.666666666667,353.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="-32.6666666666667,60"
               Start="0,0"
               End="-32.6666666666667,52.5">
@@ -4798,7 +4601,7 @@ FROM
           TopLeft="312,47.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,60"
               Start="0,0"
               End="0,52.5">
@@ -4812,9 +4615,7 @@ FROM
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -4822,7 +4623,7 @@ FROM
           TopLeft="279.333333333333,353.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="-192.333333333333,60"
               Start="0,0"
               End="-192.333333333333,52.5">
@@ -4858,7 +4659,7 @@ FROM
           TopLeft="312,251.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,60"
               Start="0,0"
               End="0,52.5">
@@ -4959,17 +4760,17 @@ FROM
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:string">false</Value>
+          type="q2:boolean">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
         <Value
-          type="q3:string">[dbo].[FileControlT7]</Value>
+          type="q3:string"></Value>
       </Property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:string">0</Value>
+          type="q4:int">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -4988,21 +4789,21 @@ FROM
     design-time-name="Package\SEQ Move Good Files to Archive\DFT T7 ODS PriceFile">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
-        <NodeLayout
-          Size="180,42"
-          Id="Package\SEQ Move Good Files to Archive\DFT T7 ODS PriceFile\SRC STG PriceFile"
-          TopLeft="83,43" />
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="180,42"
           Id="Package\SEQ Move Good Files to Archive\DFT T7 ODS PriceFile\DST T7 ODS PriceFile"
           TopLeft="83,129" />
+        <NodeLayout
+          Size="180,42"
+          Id="Package\SEQ Move Good Files to Archive\DFT T7 ODS PriceFile\SRC STG PriceFile"
+          TopLeft="83,43" />
         <EdgeLayout
           Id="Package\SEQ Move Good Files to Archive\DFT T7 ODS PriceFile.Paths[OLE DB Source Output]"
           TopLeft="173,85">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,44"
               Start="0,0"
               End="0,36.5">

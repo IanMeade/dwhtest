@@ -6,3 +6,5 @@ CREATE TABLE [dbo].[ProcessStatusControl]
 [SendToOracle] [bit] NOT NULL CONSTRAINT [DF_ProcessStatusControl_SendToOracle] DEFAULT ((0))
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
+ALTER TABLE [dbo].[ProcessStatusControl] ADD CONSTRAINT [PK_ProcessStatusControl] PRIMARY KEY CLUSTERED  ([ProcessStatusControlID]) ON [PRIMARY]
+GO
