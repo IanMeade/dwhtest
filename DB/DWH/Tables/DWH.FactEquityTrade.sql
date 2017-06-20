@@ -35,7 +35,7 @@ DATA_COMPRESSION = PAGE
 GO
 ALTER TABLE [DWH].[FactEquityTrade] ADD CONSTRAINT [PK_FactEquityTrade] PRIMARY KEY NONCLUSTERED  ([EquityTradeID]) ON [PRIMARY]
 GO
-CREATE NONCLUSTERED COLUMNSTORE INDEX [FactEquityTradeNonClusteredColumnStoreIndex] ON [DWH].[FactEquityTrade] ([EquityTradeID], [InstrumentID], [TradingSysTransNo], [TradeDateID], [TradeTimeID], [TradeTimestamp], [UTCTradeTimeStamp], [PublishDateID], [PublishTimeID], [PublishedDateTime], [UTCPublishedDateTime], [DelayedTradeYN], [EquityTradeJunkID], [BrokerID], [TraderID], [CurrencyID], [TradePrice], [BidPrice], [OfferPrice], [TradeVolume], [TradeTurnover], [TradeModificationTypeID], [TradeCancelled], [InColumnStore], [TradeFileID], [BatchID], [CancelBatchID]) WHERE ([TradeDateID]<=(20170515)) ON [PRIMARY]
+CREATE NONCLUSTERED COLUMNSTORE INDEX [FactEquityTradeNonClusteredColumnStoreIndex] ON [DWH].[FactEquityTrade] ([EquityTradeID], [InstrumentID], [TradingSysTransNo], [TradeDateID], [TradeTimeID], [TradeTimestamp], [UTCTradeTimeStamp], [PublishDateID], [PublishTimeID], [PublishedDateTime], [UTCPublishedDateTime], [DelayedTradeYN], [EquityTradeJunkID], [BrokerID], [TraderID], [CurrencyID], [TradePrice], [BidPrice], [OfferPrice], [TradeVolume], [TradeTurnover], [TradeModificationTypeID], [TradeCancelled], [InColumnStore], [TradeFileID], [BatchID], [CancelBatchID]) WHERE ([TradeDateID]<=(20170602)) ON [PRIMARY]
 GO
 CREATE NONCLUSTERED INDEX [FactEquityTradeLtpHelper] ON [DWH].[FactEquityTrade] ([InstrumentID], [PublishedDateTime], [TradeCancelled], [TradeDateID]) INCLUDE ([DelayedTradeYN], [EquityTradeID], [PublishDateID]) ON [PRIMARY]
 GO

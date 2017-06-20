@@ -58,10 +58,14 @@ CREATE TABLE [DWH].[FactEquityIndex]
 [ISEQ20CappedReturn] [numeric] (8, 3) NULL,
 [BatchID] [int] NULL
 ) ON [PRIMARY]
+WITH
+(
+DATA_COMPRESSION = PAGE
+)
 GO
-ALTER TABLE [DWH].[FactEquityIndex] ADD CONSTRAINT [PK_FactEquityIndex] PRIMARY KEY CLUSTERED  ([EquityIndexID]) ON [PRIMARY]
+ALTER TABLE [DWH].[FactEquityIndex] ADD CONSTRAINT [PK_FactEquityIndex] PRIMARY KEY NONCLUSTERED  ([EquityIndexID]) ON [PRIMARY]
 GO
-CREATE NONCLUSTERED INDEX [IX_FactEquityIndex] ON [DWH].[FactEquityIndex] ([IndexDateID], [IndexTimeID]) ON [PRIMARY]
+CREATE UNIQUE CLUSTERED INDEX [IX_FactEquityIndex_ClusterIndex] ON [DWH].[FactEquityIndex] ([IndexDateID], [IndexTimeID], [EquityIndexID]) WITH (DATA_COMPRESSION = PAGE) ON [PRIMARY]
 GO
 ALTER TABLE [DWH].[FactEquityIndex] ADD CONSTRAINT [FK_FactEquityIndex_DimDate] FOREIGN KEY ([IndexDateID]) REFERENCES [DWH].[DimDate] ([DateID])
 GO

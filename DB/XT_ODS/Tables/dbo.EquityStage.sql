@@ -42,14 +42,20 @@ CREATE TABLE [dbo].[EquityStage]
 [CfiCode] [varchar] (10) COLLATE Latin1_General_CI_AS NULL,
 [SmfName] [varchar] (40) COLLATE Latin1_General_CI_AS NULL,
 [TotalSharesInIssue] [varchar] (200) COLLATE Latin1_General_CI_AS NULL,
-[IssuedShares] [varchar] (200) COLLATE Latin1_General_CI_AS NULL,
 [InstrumentActualListedDate] [datetime] NULL,
 [TradingSysInstrumentName] [varchar] (200) COLLATE Latin1_General_CI_AS NULL,
 [CompanyGid] [varchar] (30) COLLATE Latin1_General_CI_AS NULL,
+[ExDividend] [bit] NULL,
+[ExCapitalisation] [bit] NULL,
+[ExRights] [bit] NULL,
+[ExSpecial] [bit] NULL,
+[ExEntitlement] [bit] NULL,
+[SecurityQualifier] [varchar] (10) COLLATE Latin1_General_CI_AS NULL,
+[ExDividendDate] [datetime] NULL,
 [ExtractSequenceId] [bigint] NOT NULL IDENTITY(1, 1),
-[ExtractDate] [datetime] NULL CONSTRAINT [DF__EquitySta__Extra__1B0907CE] DEFAULT (getdate()),
+[ExtractDate] [datetime] NULL CONSTRAINT [DF__EquitySta__Extra__267ABA7A] DEFAULT (getdate()),
 [MessageId] [varchar] (256) COLLATE Latin1_General_CI_AS NULL
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[EquityStage] ADD CONSTRAINT [PK__EquitySt__A1071C3D265415B4] PRIMARY KEY CLUSTERED  ([ExtractSequenceId]) WITH (FILLFACTOR=80) ON [PRIMARY]
+ALTER TABLE [dbo].[EquityStage] ADD CONSTRAINT [PK__EquitySt__A1071C3D03252DAE] PRIMARY KEY CLUSTERED  ([ExtractSequenceId]) ON [PRIMARY]
 GO

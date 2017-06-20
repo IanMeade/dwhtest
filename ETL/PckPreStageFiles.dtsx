@@ -11,8 +11,8 @@
   DTS:LocaleID="6153"
   DTS:ObjectName="PckPreStageFiles"
   DTS:PackageType="5"
-  DTS:VersionBuild="83"
-  DTS:VersionGUID="{90F5898B-B843-4589-BF9E-146042D038DB}">
+  DTS:VersionBuild="89"
+  DTS:VersionGUID="{CD5456F0-2F71-4729-802A-912508144E2F}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -708,7 +708,7 @@ FROM
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{7AE745A6-BA4C-482E-9695-63779ECE70D4}"
-              SQLTask:SqlStatementSource="UPDATE &#xA;&#x9;&#x9;dbo.FileList&#xA;&#x9;SET&#xA;&#x9;&#x9;ProcessFileYN = 'Y'&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+              SQLTask:SqlStatementSource="UPDATE &#xA;  dbo.FileList&#xA; SET&#xA;  ProcessFileYN = 'Y'&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
           </DTS:ObjectData>
         </DTS:Executable>
       </DTS:Executables>
@@ -854,7 +854,7 @@ FROM
                   <DTS:ObjectData>
                     <SQLTask:SqlTaskData
                       SQLTask:Connection="{7AE745A6-BA4C-482E-9695-63779ECE70D4}"
-                      SQLTask:SqlStatementSource="INSERT INTO &#xA;&#x9;&#x9;dbo.FileList&#xA;&#x9;(&#xA;&#x9;&#x9;FileName,&#xA;&#x9;&#x9;FileTag,&#xA;&#x9;&#x9;FilePrefix,&#xA;&#x9;&#x9;ProcessFileYN,&#xA;&#x9;&#x9;SourceFolder,&#xA;&#x9;&#x9;ProcessFolder,&#xA;&#x9;&#x9;ArchiveFolder,&#xA;&#x9;&#x9;RejectFolder&#xA;&#x9;)&#xA;     VALUES&#xA;&#x9; (&#xA;&#x9;&#x9;?,&#xA;&#x9;&#x9;?,&#xA;&#x9;&#x9;?,&#xA;&#x9;&#x9;'N',&#xA;&#x9;&#x9;?,&#xA;&#x9;&#x9;?,&#xA;&#x9;&#x9;?,&#xA;&#x9;&#x9;?&#xA;&#x9;)&#xA;&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+                      SQLTask:SqlStatementSource="INSERT INTO &#xA;  dbo.FileList&#xA; (&#xA;  FileName,&#xA;  FileTag,&#xA;  FilePrefix,&#xA;  ProcessFileYN,&#xA;  SourceFolder,&#xA;  ProcessFolder,&#xA;  ArchiveFolder,&#xA;  RejectFolder&#xA; )&#xA;     VALUES&#xA;  (&#xA;  ?,&#xA;  ?,&#xA;  ?,&#xA;  'N',&#xA;  ?,&#xA;  ?,&#xA;  ?,&#xA;  ?&#xA; )&#xA;&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
                       <SQLTask:ParameterBinding
                         SQLTask:ParameterName="0"
                         SQLTask:DtsVariableName="User::FileName"
@@ -1600,7 +1600,7 @@ FROM
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{0CBC2C04-C137-495F-AF7C-FA5DE465FED0}"
-              SQLTask:SqlStatementSource="SELECT&#xA;&#x9;ISNULL(MAX(SaftFileLetter),' ') AS SaftFileLetter&#xA;FROM&#xA;&#x9;[DWH].[DimFile]&#xA;WHERE&#xA;&#x9;FileTypeTag IN ( 'TxSaft', 'PriceFile' )&#xA;AND&#xA;&#x9;CAST([FileProcessedTime] AS DATE) = CAST(GETDATE() AS DATE)&#xA;"
+              SQLTask:SqlStatementSource="SELECT&#xA; ISNULL(MAX(SaftFileLetter),' ') AS SaftFileLetter&#xA;FROM&#xA; [DWH].[DimFile]&#xA;WHERE&#xA; FileTypeTag IN ( 'TxSaft', 'PriceFile' )&#xA;AND&#xA; CAST([FileProcessedTime] AS DATE) = CAST(GETDATE() AS DATE)&#xA;"
               SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ResultBinding
                 SQLTask:ResultName="SaftFileLetter"
@@ -1639,7 +1639,7 @@ FROM
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{7AE745A6-BA4C-482E-9695-63779ECE70D4}"
-              SQLTask:SqlStatementSource="INSERT INTO&#xA;&#x9;&#x9;dbo.SAFT_MaxFileLetter&#xA;&#x9;(&#xA;&#x9;&#x9;[SaftFileLetter]&#xA;&#x9;)&#xA;&#x9;VALUES &#xA;&#x9;(&#xA;&#x9;&#x9;?&#xA;&#x9;)" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              SQLTask:SqlStatementSource="INSERT INTO&#xA;  dbo.SAFT_MaxFileLetter&#xA; (&#xA;  [SaftFileLetter]&#xA; )&#xA; VALUES &#xA; (&#xA;  ?&#xA; )" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ParameterBinding
                 SQLTask:ParameterName="0"
                 SQLTask:DtsVariableName="User::SaftFileLetter"
@@ -1873,7 +1873,7 @@ FROM
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{7AE745A6-BA4C-482E-9695-63779ECE70D4}"
-              SQLTask:SqlStatementSource="SELECT&#xA;&#x9;FL.SourceFolder + FL.FileName AS SRC,&#xA;&#x9;FL.RejectFolder AS DST,&#xA;&#x9;FL.FileName,&#xA;&#x9;FVA.FileTag, &#xA;&#x9;FVA.AlertTag, &#xA;&#x9;FVA.Reason, &#xA;&#x9;FVA.Action&#xA;FROM&#xA;&#x9;&#x9;dbo.FileList FL&#xA;&#x9;INNER JOIN&#xA;&#x9;&#x9;dbo.FileValidationAlert FVA&#xA;&#x9;ON &#xA;&#x9;&#x9;FL.FileName = FVA.FileName&#xA;&#x9;AND &#xA;&#x9;&#x9;FL.FileTag = FVA.FileTag&#xA;&#xA;"
+              SQLTask:SqlStatementSource="SELECT&#xA; FL.SourceFolder + FL.FileName AS SRC,&#xA; FL.RejectFolder AS DST,&#xA; FL.FileName,&#xA; FVA.FileTag, &#xA; FVA.AlertTag, &#xA; FVA.Reason, &#xA; FVA.Action&#xA;FROM&#xA;  dbo.FileList FL&#xA; INNER JOIN&#xA;  dbo.FileValidationAlert FVA&#xA; ON &#xA;  FL.FileName = FVA.FileName&#xA; AND &#xA;  FL.FileTag = FVA.FileTag&#xA;&#xA;"
               SQLTask:ResultType="ResultSetType_Rowset" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ResultBinding
                 SQLTask:ResultName="0"
@@ -2114,7 +2114,7 @@ FROM
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{7AE745A6-BA4C-482E-9695-63779ECE70D4}"
-              SQLTask:SqlStatementSource="SELECT&#xA;&#x9;[SourceFolder] + [FileName] AS Src,&#xA;&#x9;[ProcessFolder] AS Prc&#xA;FROM&#xA;&#x9;dbo.FileList&#xA;WHERE&#xA;&#x9;ProcessFileYN = 'Y'&#xA;"
+              SQLTask:SqlStatementSource="SELECT&#xA; [SourceFolder] + [FileName] AS Src,&#xA; [ProcessFolder] AS Prc&#xA;FROM&#xA; dbo.FileList&#xA;WHERE&#xA; ProcessFileYN = 'Y'&#xA;"
               SQLTask:ResultType="ResultSetType_Rowset" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ResultBinding
                 SQLTask:ResultName="0"
@@ -2265,11 +2265,11 @@ FROM
                   </outputs>
                 </component>
                 <component
-                  refId="Package\SEQ Process Complete\DFT File Found\OLE DB Destination"
+                  refId="Package\SEQ Process Complete\DFT File Found\DST ProcessControl FileFounf Message"
                   componentClassID="Microsoft.OLEDBDestination"
                   contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
                   description="OLE DB Destination"
-                  name="OLE DB Destination"
+                  name="DST ProcessControl FileFounf Message"
                   usesDispositions="true"
                   version="4">
                   <properties>
@@ -2322,7 +2322,7 @@ FROM
                   </properties>
                   <connections>
                     <connection
-                      refId="Package\SEQ Process Complete\DFT File Found\OLE DB Destination.Connections[OleDbConnection]"
+                      refId="Package\SEQ Process Complete\DFT File Found\DST ProcessControl FileFounf Message.Connections[OleDbConnection]"
                       connectionManagerID="{88A180A2-BD32-40DF-AB41-4FDAC0D5C73C}:external"
                       connectionManagerRefId="Project.ConnectionManagers[ProcessControl]"
                       description="The OLE DB runtime connection used to access the database."
@@ -2330,65 +2330,65 @@ FROM
                   </connections>
                   <inputs>
                     <input
-                      refId="Package\SEQ Process Complete\DFT File Found\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                      refId="Package\SEQ Process Complete\DFT File Found\DST ProcessControl FileFounf Message.Inputs[OLE DB Destination Input]"
                       errorOrTruncationOperation="Insert"
                       errorRowDisposition="FailComponent"
                       hasSideEffects="true"
                       name="OLE DB Destination Input">
                       <inputColumns>
                         <inputColumn
-                          refId="Package\SEQ Process Complete\DFT File Found\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Message]"
+                          refId="Package\SEQ Process Complete\DFT File Found\DST ProcessControl FileFounf Message.Inputs[OLE DB Destination Input].Columns[Message]"
                           cachedCodepage="1252"
                           cachedDataType="str"
                           cachedLength="61"
                           cachedName="Message"
-                          externalMetadataColumnId="Package\SEQ Process Complete\DFT File Found\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Message]"
-                          lineageId="Package\SEQ Process Complete\DFT File Found\OLE DB Source.Outputs[OLE DB Source Output].Columns[Message]" />
+                          externalMetadataColumnId="Package\SEQ Process Complete\DFT File Found\DST ProcessControl FileFounf Message.Inputs[OLE DB Destination Input].ExternalColumns[Message]"
+                          lineageId="Package\SEQ Process Complete\DFT File Found\SRC STG FileList for messages.Outputs[OLE DB Source Output].Columns[Message]" />
                         <inputColumn
-                          refId="Package\SEQ Process Complete\DFT File Found\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Context]"
+                          refId="Package\SEQ Process Complete\DFT File Found\DST ProcessControl FileFounf Message.Inputs[OLE DB Destination Input].Columns[Context]"
                           cachedCodepage="1252"
                           cachedDataType="str"
                           cachedLength="50"
                           cachedName="Context"
-                          externalMetadataColumnId="Package\SEQ Process Complete\DFT File Found\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Context]"
-                          lineageId="Package\SEQ Process Complete\DFT File Found\OLE DB Source.Outputs[OLE DB Source Output].Columns[Context]" />
+                          externalMetadataColumnId="Package\SEQ Process Complete\DFT File Found\DST ProcessControl FileFounf Message.Inputs[OLE DB Destination Input].ExternalColumns[Context]"
+                          lineageId="Package\SEQ Process Complete\DFT File Found\SRC STG FileList for messages.Outputs[OLE DB Source Output].Columns[Context]" />
                         <inputColumn
-                          refId="Package\SEQ Process Complete\DFT File Found\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[BatchID]"
+                          refId="Package\SEQ Process Complete\DFT File Found\DST ProcessControl FileFounf Message.Inputs[OLE DB Destination Input].Columns[BatchID]"
                           cachedDataType="i4"
                           cachedName="BatchID"
-                          externalMetadataColumnId="Package\SEQ Process Complete\DFT File Found\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[BatchID]"
+                          externalMetadataColumnId="Package\SEQ Process Complete\DFT File Found\DST ProcessControl FileFounf Message.Inputs[OLE DB Destination Input].ExternalColumns[BatchID]"
                           lineageId="Package\SEQ Process Complete\DFT File Found\Derived Column.Outputs[Derived Column Output].Columns[BatchID]" />
                       </inputColumns>
                       <externalMetadataColumns
                         isUsed="True">
                         <externalMetadataColumn
-                          refId="Package\SEQ Process Complete\DFT File Found\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[MessageID]"
+                          refId="Package\SEQ Process Complete\DFT File Found\DST ProcessControl FileFounf Message.Inputs[OLE DB Destination Input].ExternalColumns[MessageID]"
                           dataType="i4"
                           name="MessageID" />
                         <externalMetadataColumn
-                          refId="Package\SEQ Process Complete\DFT File Found\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ProcessStatusID]"
+                          refId="Package\SEQ Process Complete\DFT File Found\DST ProcessControl FileFounf Message.Inputs[OLE DB Destination Input].ExternalColumns[ProcessStatusID]"
                           dataType="i4"
                           name="ProcessStatusID" />
                         <externalMetadataColumn
-                          refId="Package\SEQ Process Complete\DFT File Found\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[MessageDateTime]"
+                          refId="Package\SEQ Process Complete\DFT File Found\DST ProcessControl FileFounf Message.Inputs[OLE DB Destination Input].ExternalColumns[MessageDateTime]"
                           dataType="dbTimeStamp2"
                           name="MessageDateTime"
                           scale="7" />
                         <externalMetadataColumn
-                          refId="Package\SEQ Process Complete\DFT File Found\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[MessageDate]"
+                          refId="Package\SEQ Process Complete\DFT File Found\DST ProcessControl FileFounf Message.Inputs[OLE DB Destination Input].ExternalColumns[MessageDate]"
                           dataType="dbDate"
                           name="MessageDate" />
                         <externalMetadataColumn
-                          refId="Package\SEQ Process Complete\DFT File Found\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Message]"
+                          refId="Package\SEQ Process Complete\DFT File Found\DST ProcessControl FileFounf Message.Inputs[OLE DB Destination Input].ExternalColumns[Message]"
                           codePage="1252"
                           dataType="text"
                           name="Message" />
                         <externalMetadataColumn
-                          refId="Package\SEQ Process Complete\DFT File Found\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[BatchID]"
+                          refId="Package\SEQ Process Complete\DFT File Found\DST ProcessControl FileFounf Message.Inputs[OLE DB Destination Input].ExternalColumns[BatchID]"
                           dataType="i4"
                           name="BatchID" />
                         <externalMetadataColumn
-                          refId="Package\SEQ Process Complete\DFT File Found\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Context]"
+                          refId="Package\SEQ Process Complete\DFT File Found\DST ProcessControl FileFounf Message.Inputs[OLE DB Destination Input].ExternalColumns[Context]"
                           codePage="1252"
                           dataType="text"
                           name="Context" />
@@ -2397,22 +2397,22 @@ FROM
                   </inputs>
                   <outputs>
                     <output
-                      refId="Package\SEQ Process Complete\DFT File Found\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                      refId="Package\SEQ Process Complete\DFT File Found\DST ProcessControl FileFounf Message.Outputs[OLE DB Destination Error Output]"
                       exclusionGroup="1"
                       isErrorOut="true"
                       name="OLE DB Destination Error Output"
-                      synchronousInputId="Package\SEQ Process Complete\DFT File Found\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                      synchronousInputId="Package\SEQ Process Complete\DFT File Found\DST ProcessControl FileFounf Message.Inputs[OLE DB Destination Input]">
                       <outputColumns>
                         <outputColumn
-                          refId="Package\SEQ Process Complete\DFT File Found\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          refId="Package\SEQ Process Complete\DFT File Found\DST ProcessControl FileFounf Message.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
                           dataType="i4"
-                          lineageId="Package\SEQ Process Complete\DFT File Found\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          lineageId="Package\SEQ Process Complete\DFT File Found\DST ProcessControl FileFounf Message.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
                           name="ErrorCode"
                           specialFlags="1" />
                         <outputColumn
-                          refId="Package\SEQ Process Complete\DFT File Found\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          refId="Package\SEQ Process Complete\DFT File Found\DST ProcessControl FileFounf Message.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                           dataType="i4"
-                          lineageId="Package\SEQ Process Complete\DFT File Found\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          lineageId="Package\SEQ Process Complete\DFT File Found\DST ProcessControl FileFounf Message.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                           name="ErrorColumn"
                           specialFlags="2" />
                       </outputColumns>
@@ -2421,11 +2421,11 @@ FROM
                   </outputs>
                 </component>
                 <component
-                  refId="Package\SEQ Process Complete\DFT File Found\OLE DB Source"
+                  refId="Package\SEQ Process Complete\DFT File Found\SRC STG FileList for messages"
                   componentClassID="Microsoft.OLEDBSource"
                   contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
                   description="OLE DB Source"
-                  name="OLE DB Source"
+                  name="SRC STG FileList for messages"
                   usesDispositions="true"
                   version="7">
                   <properties>
@@ -2476,7 +2476,7 @@ WHERE
                   </properties>
                   <connections>
                     <connection
-                      refId="Package\SEQ Process Complete\DFT File Found\OLE DB Source.Connections[OleDbConnection]"
+                      refId="Package\SEQ Process Complete\DFT File Found\SRC STG FileList for messages.Connections[OleDbConnection]"
                       connectionManagerID="{7AE745A6-BA4C-482E-9695-63779ECE70D4}:external"
                       connectionManagerRefId="Project.ConnectionManagers[Staging]"
                       description="The OLE DB runtime connection used to access the database."
@@ -2484,42 +2484,42 @@ WHERE
                   </connections>
                   <outputs>
                     <output
-                      refId="Package\SEQ Process Complete\DFT File Found\OLE DB Source.Outputs[OLE DB Source Output]"
+                      refId="Package\SEQ Process Complete\DFT File Found\SRC STG FileList for messages.Outputs[OLE DB Source Output]"
                       name="OLE DB Source Output">
                       <outputColumns>
                         <outputColumn
-                          refId="Package\SEQ Process Complete\DFT File Found\OLE DB Source.Outputs[OLE DB Source Output].Columns[Message]"
+                          refId="Package\SEQ Process Complete\DFT File Found\SRC STG FileList for messages.Outputs[OLE DB Source Output].Columns[Message]"
                           codePage="1252"
                           dataType="str"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\SEQ Process Complete\DFT File Found\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Message]"
+                          externalMetadataColumnId="Package\SEQ Process Complete\DFT File Found\SRC STG FileList for messages.Outputs[OLE DB Source Output].ExternalColumns[Message]"
                           length="61"
-                          lineageId="Package\SEQ Process Complete\DFT File Found\OLE DB Source.Outputs[OLE DB Source Output].Columns[Message]"
+                          lineageId="Package\SEQ Process Complete\DFT File Found\SRC STG FileList for messages.Outputs[OLE DB Source Output].Columns[Message]"
                           name="Message"
                           truncationRowDisposition="FailComponent" />
                         <outputColumn
-                          refId="Package\SEQ Process Complete\DFT File Found\OLE DB Source.Outputs[OLE DB Source Output].Columns[Context]"
+                          refId="Package\SEQ Process Complete\DFT File Found\SRC STG FileList for messages.Outputs[OLE DB Source Output].Columns[Context]"
                           codePage="1252"
                           dataType="str"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\SEQ Process Complete\DFT File Found\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Context]"
+                          externalMetadataColumnId="Package\SEQ Process Complete\DFT File Found\SRC STG FileList for messages.Outputs[OLE DB Source Output].ExternalColumns[Context]"
                           length="50"
-                          lineageId="Package\SEQ Process Complete\DFT File Found\OLE DB Source.Outputs[OLE DB Source Output].Columns[Context]"
+                          lineageId="Package\SEQ Process Complete\DFT File Found\SRC STG FileList for messages.Outputs[OLE DB Source Output].Columns[Context]"
                           name="Context"
                           truncationRowDisposition="FailComponent" />
                       </outputColumns>
                       <externalMetadataColumns
                         isUsed="True">
                         <externalMetadataColumn
-                          refId="Package\SEQ Process Complete\DFT File Found\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Message]"
+                          refId="Package\SEQ Process Complete\DFT File Found\SRC STG FileList for messages.Outputs[OLE DB Source Output].ExternalColumns[Message]"
                           codePage="1252"
                           dataType="str"
                           length="61"
                           name="Message" />
                         <externalMetadataColumn
-                          refId="Package\SEQ Process Complete\DFT File Found\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Context]"
+                          refId="Package\SEQ Process Complete\DFT File Found\SRC STG FileList for messages.Outputs[OLE DB Source Output].ExternalColumns[Context]"
                           codePage="1252"
                           dataType="str"
                           length="50"
@@ -2527,34 +2527,34 @@ WHERE
                       </externalMetadataColumns>
                     </output>
                     <output
-                      refId="Package\SEQ Process Complete\DFT File Found\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                      refId="Package\SEQ Process Complete\DFT File Found\SRC STG FileList for messages.Outputs[OLE DB Source Error Output]"
                       isErrorOut="true"
                       name="OLE DB Source Error Output">
                       <outputColumns>
                         <outputColumn
-                          refId="Package\SEQ Process Complete\DFT File Found\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Message]"
+                          refId="Package\SEQ Process Complete\DFT File Found\SRC STG FileList for messages.Outputs[OLE DB Source Error Output].Columns[Message]"
                           codePage="1252"
                           dataType="str"
                           length="61"
-                          lineageId="Package\SEQ Process Complete\DFT File Found\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Message]"
+                          lineageId="Package\SEQ Process Complete\DFT File Found\SRC STG FileList for messages.Outputs[OLE DB Source Error Output].Columns[Message]"
                           name="Message" />
                         <outputColumn
-                          refId="Package\SEQ Process Complete\DFT File Found\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Context]"
+                          refId="Package\SEQ Process Complete\DFT File Found\SRC STG FileList for messages.Outputs[OLE DB Source Error Output].Columns[Context]"
                           codePage="1252"
                           dataType="str"
                           length="50"
-                          lineageId="Package\SEQ Process Complete\DFT File Found\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Context]"
+                          lineageId="Package\SEQ Process Complete\DFT File Found\SRC STG FileList for messages.Outputs[OLE DB Source Error Output].Columns[Context]"
                           name="Context" />
                         <outputColumn
-                          refId="Package\SEQ Process Complete\DFT File Found\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          refId="Package\SEQ Process Complete\DFT File Found\SRC STG FileList for messages.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                           dataType="i4"
-                          lineageId="Package\SEQ Process Complete\DFT File Found\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          lineageId="Package\SEQ Process Complete\DFT File Found\SRC STG FileList for messages.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                           name="ErrorCode"
                           specialFlags="1" />
                         <outputColumn
-                          refId="Package\SEQ Process Complete\DFT File Found\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          refId="Package\SEQ Process Complete\DFT File Found\SRC STG FileList for messages.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
                           dataType="i4"
-                          lineageId="Package\SEQ Process Complete\DFT File Found\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          lineageId="Package\SEQ Process Complete\DFT File Found\SRC STG FileList for messages.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
                           name="ErrorColumn"
                           specialFlags="2" />
                       </outputColumns>
@@ -2566,14 +2566,989 @@ WHERE
               <paths>
                 <path
                   refId="Package\SEQ Process Complete\DFT File Found.Paths[Derived Column Output]"
-                  endId="Package\SEQ Process Complete\DFT File Found\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  endId="Package\SEQ Process Complete\DFT File Found\DST ProcessControl FileFounf Message.Inputs[OLE DB Destination Input]"
                   name="Derived Column Output"
                   startId="Package\SEQ Process Complete\DFT File Found\Derived Column.Outputs[Derived Column Output]" />
                 <path
                   refId="Package\SEQ Process Complete\DFT File Found.Paths[OLE DB Source Output]"
                   endId="Package\SEQ Process Complete\DFT File Found\Derived Column.Inputs[Derived Column Input]"
                   name="OLE DB Source Output"
-                  startId="Package\SEQ Process Complete\DFT File Found\OLE DB Source.Outputs[OLE DB Source Output]" />
+                  startId="Package\SEQ Process Complete\DFT File Found\SRC STG FileList for messages.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\SEQ Process Complete\DFT ODS FileList tables"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{6860F066-3D58-4AF5-B55C-10F787EC3CD3}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="DFT ODS FileList tables"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\SEQ Process Complete\DFT ODS FileList tables\DST STG ODS File List 1"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="DST STG ODS File List 1"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[ODS_FileList]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\SEQ Process Complete\DFT ODS FileList tables\DST STG ODS File List 1.Connections[OleDbConnection]"
+                      connectionManagerID="{7AE745A6-BA4C-482E-9695-63779ECE70D4}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[Staging]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\SEQ Process Complete\DFT ODS FileList tables\DST STG ODS File List 1.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\SEQ Process Complete\DFT ODS FileList tables\DST STG ODS File List 1.Inputs[OLE DB Destination Input].Columns[FileName]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="FileName"
+                          externalMetadataColumnId="Package\SEQ Process Complete\DFT ODS FileList tables\DST STG ODS File List 1.Inputs[OLE DB Destination Input].ExternalColumns[FileName]"
+                          lineageId="Package\SEQ Process Complete\DFT ODS FileList tables\SRC StateStreet FileList.Outputs[OLE DB Source Output].Columns[FileName]" />
+                        <inputColumn
+                          refId="Package\SEQ Process Complete\DFT ODS FileList tables\DST STG ODS File List 1.Inputs[OLE DB Destination Input].Columns[Populated]"
+                          cachedDataType="dbTimeStamp2"
+                          cachedName="Populated"
+                          cachedScale="7"
+                          externalMetadataColumnId="Package\SEQ Process Complete\DFT ODS FileList tables\DST STG ODS File List 1.Inputs[OLE DB Destination Input].ExternalColumns[Populated]"
+                          lineageId="Package\SEQ Process Complete\DFT ODS FileList tables\SRC StateStreet FileList.Outputs[OLE DB Source Output].Columns[Populated]" />
+                        <inputColumn
+                          refId="Package\SEQ Process Complete\DFT ODS FileList tables\DST STG ODS File List 1.Inputs[OLE DB Destination Input].Columns[FileTag]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="FileTag"
+                          externalMetadataColumnId="Package\SEQ Process Complete\DFT ODS FileList tables\DST STG ODS File List 1.Inputs[OLE DB Destination Input].ExternalColumns[FileTag]"
+                          lineageId="Package\SEQ Process Complete\DFT ODS FileList tables\SRC StateStreet FileList.Outputs[OLE DB Source Output].Columns[FileTag]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\SEQ Process Complete\DFT ODS FileList tables\DST STG ODS File List 1.Inputs[OLE DB Destination Input].ExternalColumns[FileTag]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="FileTag" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ Process Complete\DFT ODS FileList tables\DST STG ODS File List 1.Inputs[OLE DB Destination Input].ExternalColumns[FileName]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="FileName" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ Process Complete\DFT ODS FileList tables\DST STG ODS File List 1.Inputs[OLE DB Destination Input].ExternalColumns[Populated]"
+                          dataType="dbTimeStamp2"
+                          name="Populated"
+                          scale="7" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\SEQ Process Complete\DFT ODS FileList tables\DST STG ODS File List 1.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\SEQ Process Complete\DFT ODS FileList tables\DST STG ODS File List 1.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\SEQ Process Complete\DFT ODS FileList tables\DST STG ODS File List 1.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\SEQ Process Complete\DFT ODS FileList tables\DST STG ODS File List 1.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\SEQ Process Complete\DFT ODS FileList tables\DST STG ODS File List 1.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\SEQ Process Complete\DFT ODS FileList tables\DST STG ODS File List 1.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\SEQ Process Complete\DFT ODS FileList tables\DST STG ODS File List 2"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="DST STG ODS File List 2"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[ODS_FileList]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\SEQ Process Complete\DFT ODS FileList tables\DST STG ODS File List 2.Connections[OleDbConnection]"
+                      connectionManagerID="{7AE745A6-BA4C-482E-9695-63779ECE70D4}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[Staging]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\SEQ Process Complete\DFT ODS FileList tables\DST STG ODS File List 2.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\SEQ Process Complete\DFT ODS FileList tables\DST STG ODS File List 2.Inputs[OLE DB Destination Input].Columns[FileName]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="FileName"
+                          externalMetadataColumnId="Package\SEQ Process Complete\DFT ODS FileList tables\DST STG ODS File List 2.Inputs[OLE DB Destination Input].ExternalColumns[FileName]"
+                          lineageId="Package\SEQ Process Complete\DFT ODS FileList tables\SRC Stoxx FileList.Outputs[OLE DB Source Output].Columns[FileName]" />
+                        <inputColumn
+                          refId="Package\SEQ Process Complete\DFT ODS FileList tables\DST STG ODS File List 2.Inputs[OLE DB Destination Input].Columns[FileTag]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="FileTag"
+                          externalMetadataColumnId="Package\SEQ Process Complete\DFT ODS FileList tables\DST STG ODS File List 2.Inputs[OLE DB Destination Input].ExternalColumns[FileTag]"
+                          lineageId="Package\SEQ Process Complete\DFT ODS FileList tables\SRC Stoxx FileList.Outputs[OLE DB Source Output].Columns[FileTag]" />
+                        <inputColumn
+                          refId="Package\SEQ Process Complete\DFT ODS FileList tables\DST STG ODS File List 2.Inputs[OLE DB Destination Input].Columns[Populated]"
+                          cachedDataType="dbTimeStamp2"
+                          cachedName="Populated"
+                          cachedScale="7"
+                          externalMetadataColumnId="Package\SEQ Process Complete\DFT ODS FileList tables\DST STG ODS File List 2.Inputs[OLE DB Destination Input].ExternalColumns[Populated]"
+                          lineageId="Package\SEQ Process Complete\DFT ODS FileList tables\SRC Stoxx FileList.Outputs[OLE DB Source Output].Columns[Populated]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\SEQ Process Complete\DFT ODS FileList tables\DST STG ODS File List 2.Inputs[OLE DB Destination Input].ExternalColumns[FileName]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="FileName" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ Process Complete\DFT ODS FileList tables\DST STG ODS File List 2.Inputs[OLE DB Destination Input].ExternalColumns[FileTag]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="FileTag" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ Process Complete\DFT ODS FileList tables\DST STG ODS File List 2.Inputs[OLE DB Destination Input].ExternalColumns[Populated]"
+                          dataType="dbTimeStamp2"
+                          name="Populated"
+                          scale="7" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\SEQ Process Complete\DFT ODS FileList tables\DST STG ODS File List 2.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\SEQ Process Complete\DFT ODS FileList tables\DST STG ODS File List 2.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\SEQ Process Complete\DFT ODS FileList tables\DST STG ODS File List 2.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\SEQ Process Complete\DFT ODS FileList tables\DST STG ODS File List 2.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\SEQ Process Complete\DFT ODS FileList tables\DST STG ODS File List 2.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\SEQ Process Complete\DFT ODS FileList tables\DST STG ODS File List 2.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\SEQ Process Complete\DFT ODS FileList tables\DST STG ODS File List 3"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="DST STG ODS File List 3"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[ODS_FileList]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\SEQ Process Complete\DFT ODS FileList tables\DST STG ODS File List 3.Connections[OleDbConnection]"
+                      connectionManagerID="{7AE745A6-BA4C-482E-9695-63779ECE70D4}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[Staging]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\SEQ Process Complete\DFT ODS FileList tables\DST STG ODS File List 3.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\SEQ Process Complete\DFT ODS FileList tables\DST STG ODS File List 3.Inputs[OLE DB Destination Input].Columns[FileName]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="FileName"
+                          externalMetadataColumnId="Package\SEQ Process Complete\DFT ODS FileList tables\DST STG ODS File List 3.Inputs[OLE DB Destination Input].ExternalColumns[FileName]"
+                          lineageId="Package\SEQ Process Complete\DFT ODS FileList tables\SRC T7_ODS FileList.Outputs[OLE DB Source Output].Columns[FileName]" />
+                        <inputColumn
+                          refId="Package\SEQ Process Complete\DFT ODS FileList tables\DST STG ODS File List 3.Inputs[OLE DB Destination Input].Columns[FileTag]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="FileTag"
+                          externalMetadataColumnId="Package\SEQ Process Complete\DFT ODS FileList tables\DST STG ODS File List 3.Inputs[OLE DB Destination Input].ExternalColumns[FileTag]"
+                          lineageId="Package\SEQ Process Complete\DFT ODS FileList tables\SRC T7_ODS FileList.Outputs[OLE DB Source Output].Columns[FileTag]" />
+                        <inputColumn
+                          refId="Package\SEQ Process Complete\DFT ODS FileList tables\DST STG ODS File List 3.Inputs[OLE DB Destination Input].Columns[Populated]"
+                          cachedDataType="dbTimeStamp2"
+                          cachedName="Populated"
+                          cachedScale="7"
+                          externalMetadataColumnId="Package\SEQ Process Complete\DFT ODS FileList tables\DST STG ODS File List 3.Inputs[OLE DB Destination Input].ExternalColumns[Populated]"
+                          lineageId="Package\SEQ Process Complete\DFT ODS FileList tables\SRC T7_ODS FileList.Outputs[OLE DB Source Output].Columns[Populated]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\SEQ Process Complete\DFT ODS FileList tables\DST STG ODS File List 3.Inputs[OLE DB Destination Input].ExternalColumns[FileTag]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="FileTag" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ Process Complete\DFT ODS FileList tables\DST STG ODS File List 3.Inputs[OLE DB Destination Input].ExternalColumns[FileName]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="FileName" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ Process Complete\DFT ODS FileList tables\DST STG ODS File List 3.Inputs[OLE DB Destination Input].ExternalColumns[Populated]"
+                          dataType="dbTimeStamp2"
+                          name="Populated"
+                          scale="7" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\SEQ Process Complete\DFT ODS FileList tables\DST STG ODS File List 3.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\SEQ Process Complete\DFT ODS FileList tables\DST STG ODS File List 3.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\SEQ Process Complete\DFT ODS FileList tables\DST STG ODS File List 3.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\SEQ Process Complete\DFT ODS FileList tables\DST STG ODS File List 3.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\SEQ Process Complete\DFT ODS FileList tables\DST STG ODS File List 3.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\SEQ Process Complete\DFT ODS FileList tables\DST STG ODS File List 3.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\SEQ Process Complete\DFT ODS FileList tables\SRC StateStreet FileList"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="SRC StateStreet FileList"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[FileList]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\SEQ Process Complete\DFT ODS FileList tables\SRC StateStreet FileList.Connections[OleDbConnection]"
+                      connectionManagerID="{097CA039-CA15-4BBA-A2BA-0B636ED18D4D}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[StateStreet_ODS]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\SEQ Process Complete\DFT ODS FileList tables\SRC StateStreet FileList.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\SEQ Process Complete\DFT ODS FileList tables\SRC StateStreet FileList.Outputs[OLE DB Source Output].Columns[FileName]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SEQ Process Complete\DFT ODS FileList tables\SRC StateStreet FileList.Outputs[OLE DB Source Output].ExternalColumns[FileName]"
+                          length="50"
+                          lineageId="Package\SEQ Process Complete\DFT ODS FileList tables\SRC StateStreet FileList.Outputs[OLE DB Source Output].Columns[FileName]"
+                          name="FileName"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SEQ Process Complete\DFT ODS FileList tables\SRC StateStreet FileList.Outputs[OLE DB Source Output].Columns[Populated]"
+                          dataType="dbTimeStamp2"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SEQ Process Complete\DFT ODS FileList tables\SRC StateStreet FileList.Outputs[OLE DB Source Output].ExternalColumns[Populated]"
+                          lineageId="Package\SEQ Process Complete\DFT ODS FileList tables\SRC StateStreet FileList.Outputs[OLE DB Source Output].Columns[Populated]"
+                          name="Populated"
+                          scale="7"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SEQ Process Complete\DFT ODS FileList tables\SRC StateStreet FileList.Outputs[OLE DB Source Output].Columns[FileTag]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SEQ Process Complete\DFT ODS FileList tables\SRC StateStreet FileList.Outputs[OLE DB Source Output].ExternalColumns[FileTag]"
+                          length="50"
+                          lineageId="Package\SEQ Process Complete\DFT ODS FileList tables\SRC StateStreet FileList.Outputs[OLE DB Source Output].Columns[FileTag]"
+                          name="FileTag"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\SEQ Process Complete\DFT ODS FileList tables\SRC StateStreet FileList.Outputs[OLE DB Source Output].ExternalColumns[FileID]"
+                          dataType="i4"
+                          name="FileID" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ Process Complete\DFT ODS FileList tables\SRC StateStreet FileList.Outputs[OLE DB Source Output].ExternalColumns[FileName]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="FileName" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ Process Complete\DFT ODS FileList tables\SRC StateStreet FileList.Outputs[OLE DB Source Output].ExternalColumns[EtlVersion]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="EtlVersion" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ Process Complete\DFT ODS FileList tables\SRC StateStreet FileList.Outputs[OLE DB Source Output].ExternalColumns[Populated]"
+                          dataType="dbTimeStamp2"
+                          name="Populated"
+                          scale="7" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ Process Complete\DFT ODS FileList tables\SRC StateStreet FileList.Outputs[OLE DB Source Output].ExternalColumns[DwhStatus]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="DwhStatus" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ Process Complete\DFT ODS FileList tables\SRC StateStreet FileList.Outputs[OLE DB Source Output].ExternalColumns[FileTag]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="FileTag" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\SEQ Process Complete\DFT ODS FileList tables\SRC StateStreet FileList.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\SEQ Process Complete\DFT ODS FileList tables\SRC StateStreet FileList.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\SEQ Process Complete\DFT ODS FileList tables\SRC StateStreet FileList.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\SEQ Process Complete\DFT ODS FileList tables\SRC StateStreet FileList.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\SEQ Process Complete\DFT ODS FileList tables\SRC StateStreet FileList.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                        <outputColumn
+                          refId="Package\SEQ Process Complete\DFT ODS FileList tables\SRC StateStreet FileList.Outputs[OLE DB Source Error Output].Columns[FileName]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          lineageId="Package\SEQ Process Complete\DFT ODS FileList tables\SRC StateStreet FileList.Outputs[OLE DB Source Error Output].Columns[FileName]"
+                          name="FileName" />
+                        <outputColumn
+                          refId="Package\SEQ Process Complete\DFT ODS FileList tables\SRC StateStreet FileList.Outputs[OLE DB Source Error Output].Columns[Populated]"
+                          dataType="dbTimeStamp2"
+                          lineageId="Package\SEQ Process Complete\DFT ODS FileList tables\SRC StateStreet FileList.Outputs[OLE DB Source Error Output].Columns[Populated]"
+                          name="Populated"
+                          scale="7" />
+                        <outputColumn
+                          refId="Package\SEQ Process Complete\DFT ODS FileList tables\SRC StateStreet FileList.Outputs[OLE DB Source Error Output].Columns[FileTag]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          lineageId="Package\SEQ Process Complete\DFT ODS FileList tables\SRC StateStreet FileList.Outputs[OLE DB Source Error Output].Columns[FileTag]"
+                          name="FileTag" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\SEQ Process Complete\DFT ODS FileList tables\SRC Stoxx FileList"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="SRC Stoxx FileList"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[FileList]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\SEQ Process Complete\DFT ODS FileList tables\SRC Stoxx FileList.Connections[OleDbConnection]"
+                      connectionManagerID="{1067BA9D-10C0-4550-891B-77F948260392}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[Stoxx_ODS]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\SEQ Process Complete\DFT ODS FileList tables\SRC Stoxx FileList.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\SEQ Process Complete\DFT ODS FileList tables\SRC Stoxx FileList.Outputs[OLE DB Source Output].Columns[FileName]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SEQ Process Complete\DFT ODS FileList tables\SRC Stoxx FileList.Outputs[OLE DB Source Output].ExternalColumns[FileName]"
+                          length="50"
+                          lineageId="Package\SEQ Process Complete\DFT ODS FileList tables\SRC Stoxx FileList.Outputs[OLE DB Source Output].Columns[FileName]"
+                          name="FileName"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SEQ Process Complete\DFT ODS FileList tables\SRC Stoxx FileList.Outputs[OLE DB Source Output].Columns[Populated]"
+                          dataType="dbTimeStamp2"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SEQ Process Complete\DFT ODS FileList tables\SRC Stoxx FileList.Outputs[OLE DB Source Output].ExternalColumns[Populated]"
+                          lineageId="Package\SEQ Process Complete\DFT ODS FileList tables\SRC Stoxx FileList.Outputs[OLE DB Source Output].Columns[Populated]"
+                          name="Populated"
+                          scale="7"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SEQ Process Complete\DFT ODS FileList tables\SRC Stoxx FileList.Outputs[OLE DB Source Output].Columns[FileTag]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SEQ Process Complete\DFT ODS FileList tables\SRC Stoxx FileList.Outputs[OLE DB Source Output].ExternalColumns[FileTag]"
+                          length="50"
+                          lineageId="Package\SEQ Process Complete\DFT ODS FileList tables\SRC Stoxx FileList.Outputs[OLE DB Source Output].Columns[FileTag]"
+                          name="FileTag"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\SEQ Process Complete\DFT ODS FileList tables\SRC Stoxx FileList.Outputs[OLE DB Source Output].ExternalColumns[FileID]"
+                          dataType="i4"
+                          name="FileID" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ Process Complete\DFT ODS FileList tables\SRC Stoxx FileList.Outputs[OLE DB Source Output].ExternalColumns[FileName]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="FileName" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ Process Complete\DFT ODS FileList tables\SRC Stoxx FileList.Outputs[OLE DB Source Output].ExternalColumns[FileDate]"
+                          dataType="dbDate"
+                          name="FileDate" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ Process Complete\DFT ODS FileList tables\SRC Stoxx FileList.Outputs[OLE DB Source Output].ExternalColumns[EtlVersion]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="EtlVersion" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ Process Complete\DFT ODS FileList tables\SRC Stoxx FileList.Outputs[OLE DB Source Output].ExternalColumns[Populated]"
+                          dataType="dbTimeStamp2"
+                          name="Populated"
+                          scale="7" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ Process Complete\DFT ODS FileList tables\SRC Stoxx FileList.Outputs[OLE DB Source Output].ExternalColumns[DwhStatus]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="DwhStatus" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ Process Complete\DFT ODS FileList tables\SRC Stoxx FileList.Outputs[OLE DB Source Output].ExternalColumns[FileTag]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="FileTag" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\SEQ Process Complete\DFT ODS FileList tables\SRC Stoxx FileList.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\SEQ Process Complete\DFT ODS FileList tables\SRC Stoxx FileList.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\SEQ Process Complete\DFT ODS FileList tables\SRC Stoxx FileList.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\SEQ Process Complete\DFT ODS FileList tables\SRC Stoxx FileList.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\SEQ Process Complete\DFT ODS FileList tables\SRC Stoxx FileList.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                        <outputColumn
+                          refId="Package\SEQ Process Complete\DFT ODS FileList tables\SRC Stoxx FileList.Outputs[OLE DB Source Error Output].Columns[FileName]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          lineageId="Package\SEQ Process Complete\DFT ODS FileList tables\SRC Stoxx FileList.Outputs[OLE DB Source Error Output].Columns[FileName]"
+                          name="FileName" />
+                        <outputColumn
+                          refId="Package\SEQ Process Complete\DFT ODS FileList tables\SRC Stoxx FileList.Outputs[OLE DB Source Error Output].Columns[Populated]"
+                          dataType="dbTimeStamp2"
+                          lineageId="Package\SEQ Process Complete\DFT ODS FileList tables\SRC Stoxx FileList.Outputs[OLE DB Source Error Output].Columns[Populated]"
+                          name="Populated"
+                          scale="7" />
+                        <outputColumn
+                          refId="Package\SEQ Process Complete\DFT ODS FileList tables\SRC Stoxx FileList.Outputs[OLE DB Source Error Output].Columns[FileTag]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          lineageId="Package\SEQ Process Complete\DFT ODS FileList tables\SRC Stoxx FileList.Outputs[OLE DB Source Error Output].Columns[FileTag]"
+                          name="FileTag" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\SEQ Process Complete\DFT ODS FileList tables\SRC T7_ODS FileList"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="SRC T7_ODS FileList"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[FileListRawTc]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\SEQ Process Complete\DFT ODS FileList tables\SRC T7_ODS FileList.Connections[OleDbConnection]"
+                      connectionManagerID="{F999064D-8B23-4E16-A7BA-3B7EFA1D9959}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[T7_ODS]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\SEQ Process Complete\DFT ODS FileList tables\SRC T7_ODS FileList.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\SEQ Process Complete\DFT ODS FileList tables\SRC T7_ODS FileList.Outputs[OLE DB Source Output].Columns[FileName]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SEQ Process Complete\DFT ODS FileList tables\SRC T7_ODS FileList.Outputs[OLE DB Source Output].ExternalColumns[FileName]"
+                          length="50"
+                          lineageId="Package\SEQ Process Complete\DFT ODS FileList tables\SRC T7_ODS FileList.Outputs[OLE DB Source Output].Columns[FileName]"
+                          name="FileName"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SEQ Process Complete\DFT ODS FileList tables\SRC T7_ODS FileList.Outputs[OLE DB Source Output].Columns[FileTag]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SEQ Process Complete\DFT ODS FileList tables\SRC T7_ODS FileList.Outputs[OLE DB Source Output].ExternalColumns[FileTag]"
+                          length="50"
+                          lineageId="Package\SEQ Process Complete\DFT ODS FileList tables\SRC T7_ODS FileList.Outputs[OLE DB Source Output].Columns[FileTag]"
+                          name="FileTag"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SEQ Process Complete\DFT ODS FileList tables\SRC T7_ODS FileList.Outputs[OLE DB Source Output].Columns[Populated]"
+                          dataType="dbTimeStamp2"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SEQ Process Complete\DFT ODS FileList tables\SRC T7_ODS FileList.Outputs[OLE DB Source Output].ExternalColumns[Populated]"
+                          lineageId="Package\SEQ Process Complete\DFT ODS FileList tables\SRC T7_ODS FileList.Outputs[OLE DB Source Output].Columns[Populated]"
+                          name="Populated"
+                          scale="7"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\SEQ Process Complete\DFT ODS FileList tables\SRC T7_ODS FileList.Outputs[OLE DB Source Output].ExternalColumns[FileID]"
+                          dataType="i4"
+                          name="FileID" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ Process Complete\DFT ODS FileList tables\SRC T7_ODS FileList.Outputs[OLE DB Source Output].ExternalColumns[FileName]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="FileName" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ Process Complete\DFT ODS FileList tables\SRC T7_ODS FileList.Outputs[OLE DB Source Output].ExternalColumns[FileTag]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="FileTag" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ Process Complete\DFT ODS FileList tables\SRC T7_ODS FileList.Outputs[OLE DB Source Output].ExternalColumns[Populated]"
+                          dataType="dbTimeStamp2"
+                          name="Populated"
+                          scale="7" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\SEQ Process Complete\DFT ODS FileList tables\SRC T7_ODS FileList.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\SEQ Process Complete\DFT ODS FileList tables\SRC T7_ODS FileList.Outputs[OLE DB Source Error Output].Columns[FileName]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          lineageId="Package\SEQ Process Complete\DFT ODS FileList tables\SRC T7_ODS FileList.Outputs[OLE DB Source Error Output].Columns[FileName]"
+                          name="FileName" />
+                        <outputColumn
+                          refId="Package\SEQ Process Complete\DFT ODS FileList tables\SRC T7_ODS FileList.Outputs[OLE DB Source Error Output].Columns[FileTag]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          lineageId="Package\SEQ Process Complete\DFT ODS FileList tables\SRC T7_ODS FileList.Outputs[OLE DB Source Error Output].Columns[FileTag]"
+                          name="FileTag" />
+                        <outputColumn
+                          refId="Package\SEQ Process Complete\DFT ODS FileList tables\SRC T7_ODS FileList.Outputs[OLE DB Source Error Output].Columns[Populated]"
+                          dataType="dbTimeStamp2"
+                          lineageId="Package\SEQ Process Complete\DFT ODS FileList tables\SRC T7_ODS FileList.Outputs[OLE DB Source Error Output].Columns[Populated]"
+                          name="Populated"
+                          scale="7" />
+                        <outputColumn
+                          refId="Package\SEQ Process Complete\DFT ODS FileList tables\SRC T7_ODS FileList.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\SEQ Process Complete\DFT ODS FileList tables\SRC T7_ODS FileList.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\SEQ Process Complete\DFT ODS FileList tables\SRC T7_ODS FileList.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\SEQ Process Complete\DFT ODS FileList tables\SRC T7_ODS FileList.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\SEQ Process Complete\DFT ODS FileList tables.Paths[OLE DB Source Output]"
+                  endId="Package\SEQ Process Complete\DFT ODS FileList tables\DST STG ODS File List 1.Inputs[OLE DB Destination Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\SEQ Process Complete\DFT ODS FileList tables\SRC StateStreet FileList.Outputs[OLE DB Source Output]" />
+                <path
+                  refId="Package\SEQ Process Complete\DFT ODS FileList tables.Paths[OLE DB Source Output1]"
+                  endId="Package\SEQ Process Complete\DFT ODS FileList tables\DST STG ODS File List 2.Inputs[OLE DB Destination Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\SEQ Process Complete\DFT ODS FileList tables\SRC Stoxx FileList.Outputs[OLE DB Source Output]" />
+                <path
+                  refId="Package\SEQ Process Complete\DFT ODS FileList tables.Paths[OLE DB Source Output2]"
+                  endId="Package\SEQ Process Complete\DFT ODS FileList tables\DST STG ODS File List 3.Inputs[OLE DB Destination Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\SEQ Process Complete\DFT ODS FileList tables\SRC T7_ODS FileList.Outputs[OLE DB Source Output]" />
               </paths>
             </pipeline>
           </DTS:ObjectData>
@@ -2600,13 +3575,13 @@ WHERE
           </DTS:ObjectData>
         </DTS:Executable>
         <DTS:Executable
-          DTS:refId="Package\SEQ Process Complete\Execute Package Task"
+          DTS:refId="Package\SEQ Process Complete\EPT Validate Required File"
           DTS:CreationName="Microsoft.ExecutePackageTask"
           DTS:Description="Execute Package Task"
           DTS:DTSID="{2787470B-0C5B-4F7C-A019-3233B176F083}"
           DTS:ExecutableType="Microsoft.ExecutePackageTask"
           DTS:LocaleID="-1"
-          DTS:ObjectName="Execute Package Task"
+          DTS:ObjectName="EPT Validate Required File"
           DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
           <DTS:Variables />
           <DTS:ObjectData>
@@ -2620,13 +3595,30 @@ WHERE
             </ExecutePackageTask>
           </DTS:ObjectData>
         </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\SEQ Process Complete\SQL STG Clear ODS FileList"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{AD3049E2-B7F7-447D-BE4F-9347CF2100E2}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SQL STG Clear ODS FileList"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{7AE745A6-BA4C-482E-9695-63779ECE70D4}"
+              SQLTask:SqlStatementSource="TRUNCATE TABLE dbo.ODS_FileList" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
       </DTS:Executables>
       <DTS:PrecedenceConstraints>
         <DTS:PrecedenceConstraint
           DTS:refId="Package\SEQ Process Complete.PrecedenceConstraints[Constraint]"
           DTS:CreationName=""
           DTS:DTSID="{D74C2A57-2C77-4391-BC6F-6316A36405AB}"
-          DTS:From="Package\SEQ Process Complete\Execute Package Task"
+          DTS:From="Package\SEQ Process Complete\EPT Validate Required File"
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint"
           DTS:To="Package\SEQ Process Complete\EPT ProcessStatus" />
@@ -2637,7 +3629,23 @@ WHERE
           DTS:From="Package\SEQ Process Complete\DFT File Found"
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint 1"
-          DTS:To="Package\SEQ Process Complete\Execute Package Task" />
+          DTS:To="Package\SEQ Process Complete\EPT Validate Required File" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\SEQ Process Complete.PrecedenceConstraints[Constraint 2]"
+          DTS:CreationName=""
+          DTS:DTSID="{0F2B3A41-22C4-4201-A396-85220DA03AF7}"
+          DTS:From="Package\SEQ Process Complete\SQL STG Clear ODS FileList"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 2"
+          DTS:To="Package\SEQ Process Complete\DFT ODS FileList tables" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\SEQ Process Complete.PrecedenceConstraints[Constraint 3]"
+          DTS:CreationName=""
+          DTS:DTSID="{E36791DE-F5FC-4E5F-8BFC-CD0471C47CD9}"
+          DTS:From="Package\SEQ Process Complete\DFT ODS FileList tables"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 3"
+          DTS:To="Package\SEQ Process Complete\DFT File Found" />
       </DTS:PrecedenceConstraints>
     </DTS:Executable>
     <DTS:Executable
@@ -2649,7 +3657,7 @@ WHERE
       DTS:LocaleID="-1"
       DTS:ObjectName="SQL Clear Staging Filelist"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="2">
+      DTS:ThreadHint="0">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -2666,7 +3674,7 @@ WHERE
       DTS:LocaleID="-1"
       DTS:ObjectName="SQL Clear Staging FileValidationAlert"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="1">
+      DTS:ThreadHint="2">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -2684,7 +3692,7 @@ WHERE
       DTS:LocaleID="-1"
       DTS:ObjectName="SQL Get DHW BatchID"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="0">
+      DTS:ThreadHint="1">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -3275,31 +4283,39 @@ WHERE
           Id="Package\SEQ Move Good Files to Process"
           TopLeft="251,1066.5" />
         <NodeLayout
-          Size="183,42"
+          Size="207,42"
           Id="Package\SEQ Process Complete\DFT File Found"
-          TopLeft="28,18" />
+          TopLeft="32,170" />
         <NodeLayout
-          Size="183,42"
+          Size="207,42"
+          Id="Package\SEQ Process Complete\DFT ODS FileList tables"
+          TopLeft="32,90" />
+        <NodeLayout
+          Size="207,42"
           Id="Package\SEQ Process Complete\EPT ProcessStatus"
-          TopLeft="28,179" />
+          TopLeft="32,332" />
         <NodeLayout
-          Size="183,42"
-          Id="Package\SEQ Process Complete\Execute Package Task"
-          TopLeft="28,97" />
+          Size="207,42"
+          Id="Package\SEQ Process Complete\EPT Validate Required File"
+          TopLeft="32,251" />
+        <NodeLayout
+          Size="207,42"
+          Id="Package\SEQ Process Complete\SQL STG Clear ODS FileList"
+          TopLeft="32,14" />
         <EdgeLayout
           Id="Package\SEQ Process Complete.PrecedenceConstraints[Constraint]"
-          TopLeft="119.5,139">
+          TopLeft="135.5,293">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{x:Null}"
-              EndConnector="0,40"
+              EndConnector="0,39"
               Start="0,0"
-              End="0,32.5">
+              End="0,31.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,32.5" />
+                    End="0,31.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -3310,18 +4326,62 @@ WHERE
         </EdgeLayout>
         <EdgeLayout
           Id="Package\SEQ Process Complete.PrecedenceConstraints[Constraint 1]"
-          TopLeft="119.5,60">
+          TopLeft="135.5,212">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{x:Null}"
-              EndConnector="0,37"
+              EndConnector="0,39"
               Start="0,0"
-              End="0,29.5">
+              End="0,31.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,29.5" />
+                    End="0,31.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ Process Complete.PrecedenceConstraints[Constraint 2]"
+          TopLeft="135.5,56">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="0,34"
+              Start="0,0"
+              End="0,26.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ Process Complete.PrecedenceConstraints[Constraint 3]"
+          TopLeft="135.5,132">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="0,38"
+              Start="0,0"
+              End="0,30.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,30.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -3333,8 +4393,8 @@ WHERE
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="255,273"
-          Size="255,316"
+          PanelSize="325,429"
+          Size="325,472"
           Id="Package\SEQ Process Complete"
           TopLeft="599,1558" />
         <NodeLayout
@@ -3355,26 +4415,26 @@ WHERE
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{x:Null}"
-              EndConnector="249.833333333333,37.5"
+              EndConnector="273.166666666667,37.5"
               Start="0,0"
-              End="249.833333333333,30">
+              End="273.166666666667,30">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,18.3597038191738" />
+                    End="0,18.3897734231476" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,18.3597038191738"
-                    Point2="0,22.3597038191738"
-                    Point3="4,22.3597038191738" />
+                    Point1="0,18.3897734231476"
+                    Point2="0,22.3897734231476"
+                    Point3="4,22.3897734231476" />
                   <mssgle:LineSegment
-                    End="245.833333333333,22.3597038191738" />
+                    End="269.166666666667,22.3897734231476" />
                   <mssgle:CubicBezierSegment
-                    Point1="245.833333333333,22.3597038191738"
-                    Point2="249.833333333333,22.3597038191738"
-                    Point3="249.833333333333,26.3597038191738" />
+                    Point1="269.166666666667,22.3897734231476"
+                    Point2="273.166666666667,22.3897734231476"
+                    Point3="273.166666666667,26.3897734231476" />
                   <mssgle:LineSegment
-                    End="249.833333333333,30" />
+                    End="273.166666666667,30" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -3559,26 +4619,26 @@ WHERE
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{x:Null}"
-              EndConnector="-176.333333333333,49.5"
+              EndConnector="-129.666666666667,49.5"
               Start="0,0"
-              End="-176.333333333333,42">
+              End="-129.666666666667,42">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,25.5148090413094" />
+                    End="0,25.5545009185548" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,25.5148090413094"
-                    Point2="0,29.5148090413094"
-                    Point3="-4,29.5148090413094" />
+                    Point1="0,25.5545009185548"
+                    Point2="0,29.5545009185548"
+                    Point3="-4,29.5545009185548" />
                   <mssgle:LineSegment
-                    End="-172.333333333333,29.5148090413094" />
+                    End="-125.666666666667,29.5545009185548" />
                   <mssgle:CubicBezierSegment
-                    Point1="-172.333333333333,29.5148090413094"
-                    Point2="-176.333333333333,29.5148090413094"
-                    Point3="-176.333333333333,33.5148090413094" />
+                    Point1="-125.666666666667,29.5545009185548"
+                    Point2="-129.666666666667,29.5545009185548"
+                    Point3="-129.666666666667,33.5545009185548" />
                   <mssgle:LineSegment
-                    End="-176.333333333333,42" />
+                    End="-129.666666666667,42" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -3701,9 +4761,9 @@ WHERE
           Text="Suppress known errors&#xA;"
           ParentId="Package.EventHandlers[OnError]"
           FontInfo="{x:Null}"
-          Size="150,NaN"
+          Size="150,56"
           Id="aca7a0d7-aaff-49bd-9c9b-0ea433f26cf2"
-          TopLeft="222,80" />
+          TopLeft="54,24" />
       </GraphLayout>
     </LayoutInfo>
   </DtsEventHandler>
@@ -3711,7 +4771,7 @@ WHERE
     design-time-name="Package\DFT Expected File">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="241,42"
           Id="Package\DFT Expected File\SRC ProcessControl Expected Files"
@@ -3720,28 +4780,6 @@ WHERE
           Size="241,42"
           Id="Package\DFT Expected File\DST Staging Expected Files"
           TopLeft="72,126" />
-        <EdgeLayout
-          Id="Package\DFT Expected File.Paths[OLE DB Source Output]"
-          TopLeft="192.5,65">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{x:Null}"
-              EndConnector="0,61"
-              Start="0,0"
-              End="0,53.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,53.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
@@ -3779,7 +4817,7 @@ WHERE
     design-time-name="Package\SEQ Get Saft Max Letter\DFT Copy file list">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="180,42"
           Id="Package\SEQ Get Saft Max Letter\DFT Copy file list\SRC DWH DimFile"
@@ -3788,28 +4826,6 @@ WHERE
           Size="180,42"
           Id="Package\SEQ Get Saft Max Letter\DFT Copy file list\DST STG DwhDimFile"
           TopLeft="84,195" />
-        <EdgeLayout
-          Id="Package\SEQ Get Saft Max Letter\DFT Copy file list.Paths[OLE DB Source Output]"
-          TopLeft="174,104">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{x:Null}"
-              EndConnector="0,91"
-              Start="0,0"
-              End="0,83.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,83.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
@@ -3843,80 +4859,24 @@ WHERE
     design-time-name="Package\SEQ Process Complete\DFT File Found">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="171,42"
-          Id="Package\SEQ Process Complete\DFT File Found\OLE DB Destination"
+          Size="261,42"
+          Id="Package\SEQ Process Complete\DFT File Found\DST ProcessControl FileFounf Message"
           TopLeft="73,254" />
         <NodeLayout
-          Size="150,42"
-          Id="Package\SEQ Process Complete\DFT File Found\OLE DB Source"
-          TopLeft="93,47" />
+          Size="261,42"
+          Id="Package\SEQ Process Complete\DFT File Found\SRC STG FileList for messages"
+          TopLeft="73,47" />
         <NodeLayout
-          Size="154,42"
+          Size="261,42"
           Id="Package\SEQ Process Complete\DFT File Found\Derived Column"
-          TopLeft="93,158" />
-        <EdgeLayout
-          Id="Package\SEQ Process Complete\DFT File Found.Paths[OLE DB Source Output]"
-          TopLeft="169,89">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{x:Null}"
-              EndConnector="0,69"
-              Start="0,0"
-              End="0,61.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,61.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\SEQ Process Complete\DFT File Found.Paths[Derived Column Output]"
-          TopLeft="170,200">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{x:Null}"
-              EndConnector="-11.5,54"
-              Start="0,0"
-              End="-11.5,46.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,23" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,23"
-                    Point2="0,27"
-                    Point3="-4,27" />
-                  <mssgle:LineSegment
-                    End="-7.5,27" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-7.5,27"
-                    Point2="-11.5,27"
-                    Point3="-11.5,31" />
-                  <mssgle:LineSegment
-                    End="-11.5,46.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+          TopLeft="73,158" />
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\SEQ Process Complete\DFT File Found\OLE DB Destination">
+    design-time-name="Package\SEQ Process Complete\DFT File Found\DST ProcessControl FileFounf Message">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -3929,10 +4889,120 @@ WHERE
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\SEQ Process Complete\DFT File Found\OLE DB Source">
+    design-time-name="Package\SEQ Process Complete\DFT File Found\SRC STG FileList for messages">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\SEQ Process Complete\DFT ODS FileList tables">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="193,42"
+          Id="Package\SEQ Process Complete\DFT ODS FileList tables\DST STG ODS File List 3"
+          TopLeft="536,155" />
+        <NodeLayout
+          Size="163,42"
+          Id="Package\SEQ Process Complete\DFT ODS FileList tables\SRC Stoxx FileList"
+          TopLeft="99,222" />
+        <NodeLayout
+          Size="193,42"
+          Id="Package\SEQ Process Complete\DFT ODS FileList tables\DST STG ODS File List 2"
+          TopLeft="115,295" />
+        <NodeLayout
+          Size="175,42"
+          Id="Package\SEQ Process Complete\DFT ODS FileList tables\SRC T7_ODS FileList"
+          TopLeft="469,68" />
+        <NodeLayout
+          Size="189,42"
+          Id="Package\SEQ Process Complete\DFT ODS FileList tables\SRC StateStreet FileList"
+          TopLeft="117,42" />
+        <NodeLayout
+          Size="193,42"
+          Id="Package\SEQ Process Complete\DFT ODS FileList tables\DST STG ODS File List 1"
+          TopLeft="162,134" />
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\SEQ Process Complete\DFT ODS FileList tables\DST STG ODS File List 3">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\SEQ Process Complete\DFT ODS FileList tables\SRC Stoxx FileList">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\SEQ Process Complete\DFT ODS FileList tables\DST STG ODS File List 2">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\SEQ Process Complete\DFT ODS FileList tables\SRC T7_ODS FileList">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\SEQ Process Complete\DFT ODS FileList tables\SRC StateStreet FileList">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\SEQ Process Complete\DFT ODS FileList tables\DST STG ODS File List 1">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>

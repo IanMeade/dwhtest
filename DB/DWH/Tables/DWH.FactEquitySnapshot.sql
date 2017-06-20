@@ -71,10 +71,16 @@ CREATE TABLE [DWH].[FactEquitySnapshot]
 [ETFFMShares] [int] NULL,
 [BatchID] [int] NULL
 ) ON [PRIMARY]
+WITH
+(
+DATA_COMPRESSION = PAGE
+)
 GO
-ALTER TABLE [DWH].[FactEquitySnapshot] ADD CONSTRAINT [PK_FactEquitySnapshot] PRIMARY KEY CLUSTERED  ([EquitySnapshotID]) ON [PRIMARY]
+ALTER TABLE [DWH].[FactEquitySnapshot] ADD CONSTRAINT [PK_FactEquitySnapshot] PRIMARY KEY NONCLUSTERED  ([EquitySnapshotID]) ON [PRIMARY]
 GO
 CREATE NONCLUSTERED INDEX [IX_FactEquitySnapshot] ON [DWH].[FactEquitySnapshot] ([DateID], [InstrumentID]) ON [PRIMARY]
+GO
+CREATE UNIQUE CLUSTERED INDEX [IX_FactEquitySnapshot_Clustered] ON [DWH].[FactEquitySnapshot] ([DateID], [InstrumentID], [EquitySnapshotID]) WITH (DATA_COMPRESSION = PAGE) ON [PRIMARY]
 GO
 CREATE NONCLUSTERED INDEX [IX_FactEquitySnapshot_1] ON [DWH].[FactEquitySnapshot] ([InstrumentID], [DateID]) ON [PRIMARY]
 GO

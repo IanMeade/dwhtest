@@ -1,0 +1,1751 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="6/12/2017 3:23:09 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="T7-DDT-01"
+  DTS:CreatorName="SYS-ISE\ianm"
+  DTS:DTSID="{74A5E4AA-0F02-48FE-9387-8F205E421147}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="13.0.4001.0"
+  DTS:LocaleID="6153"
+  DTS:ObjectName="PckIndexAggregation"
+  DTS:PackageType="5"
+  DTS:VersionBuild="24"
+  DTS:VersionGUID="{CF48AA69-F323-4FD0-AE74-346C953AA107}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{01F852F6-8633-4B45-B7D1-344490E4FD5E}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="AggregationDateID">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{26B27C20-286C-4663-8D82-87D51151FE6D}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="BatchID">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{63B0CE83-6F7E-4B9E-8FA0-1C742901C433}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="ExpectedTime">
+      <DTS:VariableValue
+        DTS:DataType="7">1/1/1990</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{738A082D-5320-4145-ACF1-D015C455D8E4}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="WorkToDo">
+      <DTS:VariableValue
+        DTS:DataType="11">0</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\SEQ Index Aggregation"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{DE2C2B54-D8AB-42FE-B5D5-B8B8E9700719}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SEQ Index Aggregation">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{118eca20-2e7c-4e0f-8393-71e5655a2f81}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="DFT EquityIndexSnapshot Stuff"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\DST DWH ETL FactEquityIndexMerge"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="DST DWH ETL FactEquityIndexMerge"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[ETL].[FactEquityIndexSnapshotMerge]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\DST DWH ETL FactEquityIndexMerge.Connections[OleDbConnection]"
+                      connectionManagerID="{0CBC2C04-C137-495F-AF7C-FA5DE465FED0}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[DWH]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\DST DWH ETL FactEquityIndexMerge.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\DST DWH ETL FactEquityIndexMerge.Inputs[OLE DB Destination Input].Columns[IndexDateID]"
+                          cachedDataType="i4"
+                          cachedName="IndexDateID"
+                          externalMetadataColumnId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\DST DWH ETL FactEquityIndexMerge.Inputs[OLE DB Destination Input].ExternalColumns[IndexDateID]"
+                          lineageId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\SRC DWH Index Market Caps.Outputs[OLE DB Source Output].Columns[IndexDateID]" />
+                        <inputColumn
+                          refId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\DST DWH ETL FactEquityIndexMerge.Inputs[OLE DB Destination Input].Columns[IndexCode]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="20"
+                          cachedName="IndexCode"
+                          externalMetadataColumnId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\DST DWH ETL FactEquityIndexMerge.Inputs[OLE DB Destination Input].ExternalColumns[IndexCode]"
+                          lineageId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\SRC DWH Index Market Caps.Outputs[OLE DB Source Output].Columns[IndexCode]" />
+                        <inputColumn
+                          refId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\DST DWH ETL FactEquityIndexMerge.Inputs[OLE DB Destination Input].Columns[OpenValue]"
+                          cachedDataType="numeric"
+                          cachedName="OpenValue"
+                          cachedPrecision="8"
+                          cachedScale="3"
+                          externalMetadataColumnId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\DST DWH ETL FactEquityIndexMerge.Inputs[OLE DB Destination Input].ExternalColumns[OpenValue]"
+                          lineageId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\LKP DWH Equity Details.Outputs[Lookup Match Output].Columns[OpenValue]" />
+                        <inputColumn
+                          refId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\DST DWH ETL FactEquityIndexMerge.Inputs[OLE DB Destination Input].Columns[LastValue]"
+                          cachedDataType="numeric"
+                          cachedName="LastValue"
+                          cachedPrecision="8"
+                          cachedScale="3"
+                          externalMetadataColumnId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\DST DWH ETL FactEquityIndexMerge.Inputs[OLE DB Destination Input].ExternalColumns[LastValue]"
+                          lineageId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\LKP DWH Equity Details.Outputs[Lookup Match Output].Columns[LastValue]" />
+                        <inputColumn
+                          refId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\DST DWH ETL FactEquityIndexMerge.Inputs[OLE DB Destination Input].Columns[ReturnValue]"
+                          cachedDataType="numeric"
+                          cachedName="ReturnValue"
+                          cachedPrecision="8"
+                          cachedScale="3"
+                          externalMetadataColumnId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\DST DWH ETL FactEquityIndexMerge.Inputs[OLE DB Destination Input].ExternalColumns[ReturnValue]"
+                          lineageId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\LKP DWH Equity Details.Outputs[Lookup Match Output].Columns[ReturnValue]" />
+                        <inputColumn
+                          refId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\DST DWH ETL FactEquityIndexMerge.Inputs[OLE DB Destination Input].Columns[DailyLowValue]"
+                          cachedDataType="numeric"
+                          cachedName="DailyLowValue"
+                          cachedPrecision="8"
+                          cachedScale="3"
+                          externalMetadataColumnId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\DST DWH ETL FactEquityIndexMerge.Inputs[OLE DB Destination Input].ExternalColumns[DailyLowValue]"
+                          lineageId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\LKP DWH Equity Details.Outputs[Lookup Match Output].Columns[DailyLowValue]" />
+                        <inputColumn
+                          refId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\DST DWH ETL FactEquityIndexMerge.Inputs[OLE DB Destination Input].Columns[DailyHighValue]"
+                          cachedDataType="numeric"
+                          cachedName="DailyHighValue"
+                          cachedPrecision="8"
+                          cachedScale="3"
+                          externalMetadataColumnId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\DST DWH ETL FactEquityIndexMerge.Inputs[OLE DB Destination Input].ExternalColumns[DailyHighValue]"
+                          lineageId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\LKP DWH Equity Details.Outputs[Lookup Match Output].Columns[DailyHighValue]" />
+                        <inputColumn
+                          refId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\DST DWH ETL FactEquityIndexMerge.Inputs[OLE DB Destination Input].Columns[InterestRate]"
+                          cachedDataType="numeric"
+                          cachedName="InterestRate"
+                          cachedPrecision="5"
+                          cachedScale="2"
+                          externalMetadataColumnId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\DST DWH ETL FactEquityIndexMerge.Inputs[OLE DB Destination Input].ExternalColumns[InterestRate]"
+                          lineageId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\LKP Stoxx Iseq20Leveraged.Outputs[Lookup Match Output].Columns[InterestRate]" />
+                        <inputColumn
+                          refId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\DST DWH ETL FactEquityIndexMerge.Inputs[OLE DB Destination Input].Columns[MarketCap]"
+                          cachedDataType="numeric"
+                          cachedName="MarketCap"
+                          cachedPrecision="38"
+                          cachedScale="6"
+                          externalMetadataColumnId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\DST DWH ETL FactEquityIndexMerge.Inputs[OLE DB Destination Input].ExternalColumns[MarketCap]"
+                          lineageId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\LKP DWH Equity Constituent mkt cap.Outputs[Lookup Match Output].Columns[MarketCap]" />
+                        <inputColumn
+                          refId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\DST DWH ETL FactEquityIndexMerge.Inputs[OLE DB Destination Input].Columns[IndexTypeID]"
+                          cachedDataType="i2"
+                          cachedName="IndexTypeID"
+                          externalMetadataColumnId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\DST DWH ETL FactEquityIndexMerge.Inputs[OLE DB Destination Input].ExternalColumns[IndexTypeID]"
+                          lineageId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\SRC DWH Index Market Caps.Outputs[OLE DB Source Output].Columns[IndexTypeID]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\DST DWH ETL FactEquityIndexMerge.Inputs[OLE DB Destination Input].ExternalColumns[IndexDateID]"
+                          dataType="i4"
+                          name="IndexDateID" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\DST DWH ETL FactEquityIndexMerge.Inputs[OLE DB Destination Input].ExternalColumns[IndexCode]"
+                          codePage="1252"
+                          dataType="str"
+                          length="15"
+                          name="IndexCode" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\DST DWH ETL FactEquityIndexMerge.Inputs[OLE DB Destination Input].ExternalColumns[OpenValue]"
+                          dataType="numeric"
+                          name="OpenValue"
+                          precision="8"
+                          scale="3" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\DST DWH ETL FactEquityIndexMerge.Inputs[OLE DB Destination Input].ExternalColumns[LastValue]"
+                          dataType="numeric"
+                          name="LastValue"
+                          precision="8"
+                          scale="3" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\DST DWH ETL FactEquityIndexMerge.Inputs[OLE DB Destination Input].ExternalColumns[ReturnValue]"
+                          dataType="numeric"
+                          name="ReturnValue"
+                          precision="8"
+                          scale="3" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\DST DWH ETL FactEquityIndexMerge.Inputs[OLE DB Destination Input].ExternalColumns[DailyLowValue]"
+                          dataType="numeric"
+                          name="DailyLowValue"
+                          precision="8"
+                          scale="3" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\DST DWH ETL FactEquityIndexMerge.Inputs[OLE DB Destination Input].ExternalColumns[DailyHighValue]"
+                          dataType="numeric"
+                          name="DailyHighValue"
+                          precision="8"
+                          scale="3" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\DST DWH ETL FactEquityIndexMerge.Inputs[OLE DB Destination Input].ExternalColumns[InterestRate]"
+                          dataType="numeric"
+                          name="InterestRate"
+                          precision="5"
+                          scale="2" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\DST DWH ETL FactEquityIndexMerge.Inputs[OLE DB Destination Input].ExternalColumns[MarketCap]"
+                          dataType="numeric"
+                          name="MarketCap"
+                          precision="38"
+                          scale="6" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\DST DWH ETL FactEquityIndexMerge.Inputs[OLE DB Destination Input].ExternalColumns[IndexTypeID]"
+                          dataType="i2"
+                          name="IndexTypeID" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\DST DWH ETL FactEquityIndexMerge.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\DST DWH ETL FactEquityIndexMerge.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\DST DWH ETL FactEquityIndexMerge.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\DST DWH ETL FactEquityIndexMerge.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\DST DWH ETL FactEquityIndexMerge.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\DST DWH ETL FactEquityIndexMerge.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\LKP DWH Equity Constituent mkt cap"
+                  componentClassID="Microsoft.Lookup"
+                  contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+                  description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+                  name="LKP DWH Equity Constituent mkt cap"
+                  usesDispositions="true"
+                  version="6">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the SQL statement that generates the lookup table."
+                      expressionType="Notify"
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT
+	DateID,
+	IndexCode,
+	MarketCap
+FROM
+	ETL.EquityIndexMarketCapHelper</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                      expressionType="Notify"
+                      name="SqlCommandParam"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (SELECT
+	DateID,
+	IndexCode,
+	MarketCap
+FROM
+	ETL.EquityIndexMarketCapHelper) [refTable]
+where [refTable].[IndexCode] = ? and [refTable].[DateID] = ?</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the type of connection used to access the reference dataset."
+                      name="ConnectionType"
+                      typeConverter="LookupConnectionType">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the cache type of the lookup table."
+                      name="CacheType"
+                      typeConverter="CacheType">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                      name="NoMatchBehavior"
+                      typeConverter="LookupNoMatchBehavior">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                      name="NoMatchCachePercentage">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                      name="MaxMemoryUsage">25</property>
+                    <property
+                      dataType="System.Int64"
+                      description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                      name="MaxMemoryUsage64">25</property>
+                    <property
+                      dataType="System.String"
+                      description="Indicates whether to reference metadata in an XML format."
+                      name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="DateID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="IndexCode" dataType="DT_STR" length="4" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="MarketCap" dataType="DT_NUMERIC" length="0" precision="38" scale="6" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                      name="ParameterMap">#{Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\SRC DWH Index Market Caps.Outputs[OLE DB Source Output].Columns[IndexCode]};#{Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\SRC DWH Index Market Caps.Outputs[OLE DB Source Output].Columns[IndexDateID]};</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                      name="TreatDuplicateKeysAsError">false</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\LKP DWH Equity Constituent mkt cap.Connections[OleDbConnection]"
+                      connectionManagerID="{0CBC2C04-C137-495F-AF7C-FA5DE465FED0}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[DWH]"
+                      description="Connection manager used to access lookup data."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\LKP DWH Equity Constituent mkt cap.Inputs[Lookup Input]"
+                      name="Lookup Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\LKP DWH Equity Constituent mkt cap.Inputs[Lookup Input].Columns[IndexDateID]"
+                          cachedDataType="i4"
+                          cachedName="IndexDateID"
+                          lineageId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\SRC DWH Index Market Caps.Outputs[OLE DB Source Output].Columns[IndexDateID]">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Specifies the column in the reference table that a column joins."
+                              name="JoinToReferenceColumn">DateID</property>
+                            <property
+                              dataType="System.Null"
+                              description="Specifies the column in the reference table from which a column is copied."
+                              name="CopyFromReferenceColumn" />
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\LKP DWH Equity Constituent mkt cap.Inputs[Lookup Input].Columns[IndexCode]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="20"
+                          cachedName="IndexCode"
+                          lineageId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\SRC DWH Index Market Caps.Outputs[OLE DB Source Output].Columns[IndexCode]">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Specifies the column in the reference table that a column joins."
+                              name="JoinToReferenceColumn">IndexCode</property>
+                            <property
+                              dataType="System.Null"
+                              description="Specifies the column in the reference table from which a column is copied."
+                              name="CopyFromReferenceColumn" />
+                          </properties>
+                        </inputColumn>
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\LKP DWH Equity Constituent mkt cap.Outputs[Lookup Match Output]"
+                      errorOrTruncationOperation="Lookup"
+                      errorRowDisposition="IgnoreFailure"
+                      exclusionGroup="1"
+                      name="Lookup Match Output"
+                      synchronousInputId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\LKP DWH Equity Constituent mkt cap.Inputs[Lookup Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\LKP DWH Equity Constituent mkt cap.Outputs[Lookup Match Output].Columns[MarketCap]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Copy Column"
+                          lineageId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\LKP DWH Equity Constituent mkt cap.Outputs[Lookup Match Output].Columns[MarketCap]"
+                          name="MarketCap"
+                          precision="38"
+                          scale="6"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Specifies the column in the reference table from which a column is copied."
+                              name="CopyFromReferenceColumn">MarketCap</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\LKP DWH Equity Constituent mkt cap.Outputs[Lookup No Match Output]"
+                      description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                      exclusionGroup="1"
+                      name="Lookup No Match Output"
+                      synchronousInputId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\LKP DWH Equity Constituent mkt cap.Inputs[Lookup Input]">
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\LKP DWH Equity Constituent mkt cap.Outputs[Lookup Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Lookup Error Output"
+                      synchronousInputId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\LKP DWH Equity Constituent mkt cap.Inputs[Lookup Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\LKP DWH Equity Constituent mkt cap.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\LKP DWH Equity Constituent mkt cap.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\LKP DWH Equity Constituent mkt cap.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\LKP DWH Equity Constituent mkt cap.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\LKP DWH Equity Details"
+                  componentClassID="Microsoft.Lookup"
+                  contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+                  description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+                  name="LKP DWH Equity Details"
+                  usesDispositions="true"
+                  version="6">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the SQL statement that generates the lookup table."
+                      expressionType="Notify"
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [ETL].[FactEquityIndexPrep]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                      expressionType="Notify"
+                      name="SqlCommandParam"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [ETL].[FactEquityIndexPrep]) [refTable]
+where [refTable].[IndexCode] = ? and [refTable].[IndexDateID] = ?</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the type of connection used to access the reference dataset."
+                      name="ConnectionType"
+                      typeConverter="LookupConnectionType">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the cache type of the lookup table."
+                      name="CacheType"
+                      typeConverter="CacheType">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                      name="NoMatchBehavior"
+                      typeConverter="LookupNoMatchBehavior">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                      name="NoMatchCachePercentage">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                      name="MaxMemoryUsage">25</property>
+                    <property
+                      dataType="System.Int64"
+                      description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                      name="MaxMemoryUsage64">25</property>
+                    <property
+                      dataType="System.String"
+                      description="Indicates whether to reference metadata in an XML format."
+                      name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="IndexDateID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="IndexCode" dataType="DT_STR" length="15" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="OpenValue" dataType="DT_NUMERIC" length="0" precision="8" scale="3" codePage="0"/&gt;&lt;referenceColumn name="LastValue" dataType="DT_NUMERIC" length="0" precision="8" scale="3" codePage="0"/&gt;&lt;referenceColumn name="ReturnValue" dataType="DT_NUMERIC" length="0" precision="8" scale="3" codePage="0"/&gt;&lt;referenceColumn name="DailyLowValue" dataType="DT_NUMERIC" length="0" precision="8" scale="3" codePage="0"/&gt;&lt;referenceColumn name="DailyHighValue" dataType="DT_NUMERIC" length="0" precision="8" scale="3" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                      name="ParameterMap">#{Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\SRC DWH Index Market Caps.Outputs[OLE DB Source Output].Columns[IndexCode]};#{Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\SRC DWH Index Market Caps.Outputs[OLE DB Source Output].Columns[IndexDateID]};</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                      name="TreatDuplicateKeysAsError">false</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\LKP DWH Equity Details.Connections[OleDbConnection]"
+                      connectionManagerID="{0CBC2C04-C137-495F-AF7C-FA5DE465FED0}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[DWH]"
+                      description="Connection manager used to access lookup data."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\LKP DWH Equity Details.Inputs[Lookup Input]"
+                      name="Lookup Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\LKP DWH Equity Details.Inputs[Lookup Input].Columns[IndexCode]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="20"
+                          cachedName="IndexCode"
+                          lineageId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\SRC DWH Index Market Caps.Outputs[OLE DB Source Output].Columns[IndexCode]">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Specifies the column in the reference table that a column joins."
+                              name="JoinToReferenceColumn">IndexCode</property>
+                            <property
+                              dataType="System.Null"
+                              description="Specifies the column in the reference table from which a column is copied."
+                              name="CopyFromReferenceColumn" />
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\LKP DWH Equity Details.Inputs[Lookup Input].Columns[IndexDateID]"
+                          cachedDataType="i4"
+                          cachedName="IndexDateID"
+                          lineageId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\SRC DWH Index Market Caps.Outputs[OLE DB Source Output].Columns[IndexDateID]">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Specifies the column in the reference table that a column joins."
+                              name="JoinToReferenceColumn">IndexDateID</property>
+                            <property
+                              dataType="System.Null"
+                              description="Specifies the column in the reference table from which a column is copied."
+                              name="CopyFromReferenceColumn" />
+                          </properties>
+                        </inputColumn>
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\LKP DWH Equity Details.Outputs[Lookup Match Output]"
+                      errorOrTruncationOperation="Lookup"
+                      errorRowDisposition="IgnoreFailure"
+                      exclusionGroup="1"
+                      name="Lookup Match Output"
+                      synchronousInputId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\LKP DWH Equity Details.Inputs[Lookup Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\LKP DWH Equity Details.Outputs[Lookup Match Output].Columns[OpenValue]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Copy Column"
+                          lineageId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\LKP DWH Equity Details.Outputs[Lookup Match Output].Columns[OpenValue]"
+                          name="OpenValue"
+                          precision="8"
+                          scale="3"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Specifies the column in the reference table from which a column is copied."
+                              name="CopyFromReferenceColumn">OpenValue</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\LKP DWH Equity Details.Outputs[Lookup Match Output].Columns[LastValue]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Copy Column"
+                          lineageId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\LKP DWH Equity Details.Outputs[Lookup Match Output].Columns[LastValue]"
+                          name="LastValue"
+                          precision="8"
+                          scale="3"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Specifies the column in the reference table from which a column is copied."
+                              name="CopyFromReferenceColumn">LastValue</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\LKP DWH Equity Details.Outputs[Lookup Match Output].Columns[ReturnValue]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Copy Column"
+                          lineageId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\LKP DWH Equity Details.Outputs[Lookup Match Output].Columns[ReturnValue]"
+                          name="ReturnValue"
+                          precision="8"
+                          scale="3"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Specifies the column in the reference table from which a column is copied."
+                              name="CopyFromReferenceColumn">ReturnValue</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\LKP DWH Equity Details.Outputs[Lookup Match Output].Columns[DailyLowValue]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Copy Column"
+                          lineageId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\LKP DWH Equity Details.Outputs[Lookup Match Output].Columns[DailyLowValue]"
+                          name="DailyLowValue"
+                          precision="8"
+                          scale="3"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Specifies the column in the reference table from which a column is copied."
+                              name="CopyFromReferenceColumn">DailyLowValue</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\LKP DWH Equity Details.Outputs[Lookup Match Output].Columns[DailyHighValue]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Copy Column"
+                          lineageId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\LKP DWH Equity Details.Outputs[Lookup Match Output].Columns[DailyHighValue]"
+                          name="DailyHighValue"
+                          precision="8"
+                          scale="3"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Specifies the column in the reference table from which a column is copied."
+                              name="CopyFromReferenceColumn">DailyHighValue</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\LKP DWH Equity Details.Outputs[Lookup No Match Output]"
+                      description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                      exclusionGroup="1"
+                      name="Lookup No Match Output"
+                      synchronousInputId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\LKP DWH Equity Details.Inputs[Lookup Input]">
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\LKP DWH Equity Details.Outputs[Lookup Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Lookup Error Output"
+                      synchronousInputId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\LKP DWH Equity Details.Inputs[Lookup Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\LKP DWH Equity Details.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\LKP DWH Equity Details.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\LKP DWH Equity Details.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\LKP DWH Equity Details.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\LKP Stoxx Iseq20Leveraged"
+                  componentClassID="Microsoft.Lookup"
+                  contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+                  description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+                  name="LKP Stoxx Iseq20Leveraged"
+                  usesDispositions="true"
+                  version="6">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the SQL statement that generates the lookup table."
+                      expressionType="Notify"
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT
+	CAST(CONVERT(CHAR,TRADE_DATE,112) AS int) AS TradeDateID,
+	'IEOC' AS IndexCode,
+	Eonia
+FROM
+	dbo.Iseq20Leveraged
+UNION ALL
+SELECT
+	CAST(CONVERT(CHAR,TRADE_DATE,112) AS int) AS TradeDateID,
+	'IEOD' AS IndexCode,
+	Eonia
+FROM
+	dbo.Iseq20Leveraged</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                      expressionType="Notify"
+                      name="SqlCommandParam"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (SELECT
+	CAST(CONVERT(CHAR,TRADE_DATE,112) AS int) AS TradeDateID,
+	'IEOC' AS IndexCode,
+	Eonia
+FROM
+	dbo.Iseq20Leveraged
+UNION ALL
+SELECT
+	CAST(CONVERT(CHAR,TRADE_DATE,112) AS int) AS TradeDateID,
+	'IEOD' AS IndexCode,
+	Eonia
+FROM
+	dbo.Iseq20Leveraged) [refTable]
+where [refTable].[IndexCode] = ? and [refTable].[TradeDateID] = ?</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the type of connection used to access the reference dataset."
+                      name="ConnectionType"
+                      typeConverter="LookupConnectionType">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the cache type of the lookup table."
+                      name="CacheType"
+                      typeConverter="CacheType">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                      name="NoMatchBehavior"
+                      typeConverter="LookupNoMatchBehavior">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                      name="NoMatchCachePercentage">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                      name="MaxMemoryUsage">25</property>
+                    <property
+                      dataType="System.Int64"
+                      description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                      name="MaxMemoryUsage64">25</property>
+                    <property
+                      dataType="System.String"
+                      description="Indicates whether to reference metadata in an XML format."
+                      name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="TradeDateID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="IndexCode" dataType="DT_STR" length="4" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="Eonia" dataType="DT_NUMERIC" length="0" precision="5" scale="2" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                      name="ParameterMap">#{Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\SRC DWH Index Market Caps.Outputs[OLE DB Source Output].Columns[IndexCode]};#{Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\SRC DWH Index Market Caps.Outputs[OLE DB Source Output].Columns[IndexDateID]};</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                      name="TreatDuplicateKeysAsError">false</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\LKP Stoxx Iseq20Leveraged.Connections[OleDbConnection]"
+                      connectionManagerID="{1067BA9D-10C0-4550-891B-77F948260392}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[Stoxx_ODS]"
+                      description="Connection manager used to access lookup data."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\LKP Stoxx Iseq20Leveraged.Inputs[Lookup Input]"
+                      name="Lookup Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\LKP Stoxx Iseq20Leveraged.Inputs[Lookup Input].Columns[IndexCode]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="20"
+                          cachedName="IndexCode"
+                          lineageId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\SRC DWH Index Market Caps.Outputs[OLE DB Source Output].Columns[IndexCode]">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Specifies the column in the reference table that a column joins."
+                              name="JoinToReferenceColumn">IndexCode</property>
+                            <property
+                              dataType="System.Null"
+                              description="Specifies the column in the reference table from which a column is copied."
+                              name="CopyFromReferenceColumn" />
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\LKP Stoxx Iseq20Leveraged.Inputs[Lookup Input].Columns[IndexDateID]"
+                          cachedDataType="i4"
+                          cachedName="IndexDateID"
+                          lineageId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\SRC DWH Index Market Caps.Outputs[OLE DB Source Output].Columns[IndexDateID]">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Specifies the column in the reference table that a column joins."
+                              name="JoinToReferenceColumn">TradeDateID</property>
+                            <property
+                              dataType="System.Null"
+                              description="Specifies the column in the reference table from which a column is copied."
+                              name="CopyFromReferenceColumn" />
+                          </properties>
+                        </inputColumn>
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\LKP Stoxx Iseq20Leveraged.Outputs[Lookup Match Output]"
+                      errorOrTruncationOperation="Lookup"
+                      errorRowDisposition="IgnoreFailure"
+                      exclusionGroup="1"
+                      name="Lookup Match Output"
+                      synchronousInputId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\LKP Stoxx Iseq20Leveraged.Inputs[Lookup Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\LKP Stoxx Iseq20Leveraged.Outputs[Lookup Match Output].Columns[InterestRate]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Copy Column"
+                          lineageId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\LKP Stoxx Iseq20Leveraged.Outputs[Lookup Match Output].Columns[InterestRate]"
+                          name="InterestRate"
+                          precision="5"
+                          scale="2"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Specifies the column in the reference table from which a column is copied."
+                              name="CopyFromReferenceColumn">Eonia</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\LKP Stoxx Iseq20Leveraged.Outputs[Lookup No Match Output]"
+                      description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                      exclusionGroup="1"
+                      name="Lookup No Match Output"
+                      synchronousInputId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\LKP Stoxx Iseq20Leveraged.Inputs[Lookup Input]">
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\LKP Stoxx Iseq20Leveraged.Outputs[Lookup Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Lookup Error Output"
+                      synchronousInputId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\LKP Stoxx Iseq20Leveraged.Inputs[Lookup Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\LKP Stoxx Iseq20Leveraged.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\LKP Stoxx Iseq20Leveraged.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\LKP Stoxx Iseq20Leveraged.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\LKP Stoxx Iseq20Leveraged.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\SRC DWH Index Market Caps"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="SRC DWH Index Market Caps"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset"></property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">DECLARE @D AS INT
+SELECT @D = ? 
+
+SELECT
+	IndexTypeID,
+	IndexCode, 
+	@D as IndexDateID
+FROM
+	DWH.DimIndexType</property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">2</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping">"Parameter0:Input",{01F852F6-8633-4B45-B7D1-344490E4FD5E};</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\SRC DWH Index Market Caps.Connections[OleDbConnection]"
+                      connectionManagerID="{0CBC2C04-C137-495F-AF7C-FA5DE465FED0}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[DWH]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\SRC DWH Index Market Caps.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\SRC DWH Index Market Caps.Outputs[OLE DB Source Output].Columns[IndexTypeID]"
+                          dataType="i2"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\SRC DWH Index Market Caps.Outputs[OLE DB Source Output].ExternalColumns[IndexTypeID]"
+                          lineageId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\SRC DWH Index Market Caps.Outputs[OLE DB Source Output].Columns[IndexTypeID]"
+                          name="IndexTypeID"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\SRC DWH Index Market Caps.Outputs[OLE DB Source Output].Columns[IndexCode]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\SRC DWH Index Market Caps.Outputs[OLE DB Source Output].ExternalColumns[IndexCode]"
+                          length="20"
+                          lineageId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\SRC DWH Index Market Caps.Outputs[OLE DB Source Output].Columns[IndexCode]"
+                          name="IndexCode"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\SRC DWH Index Market Caps.Outputs[OLE DB Source Output].Columns[IndexDateID]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\SRC DWH Index Market Caps.Outputs[OLE DB Source Output].ExternalColumns[IndexDateID]"
+                          lineageId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\SRC DWH Index Market Caps.Outputs[OLE DB Source Output].Columns[IndexDateID]"
+                          name="IndexDateID"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\SRC DWH Index Market Caps.Outputs[OLE DB Source Output].ExternalColumns[IndexTypeID]"
+                          dataType="i2"
+                          name="IndexTypeID" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\SRC DWH Index Market Caps.Outputs[OLE DB Source Output].ExternalColumns[IndexCode]"
+                          codePage="1252"
+                          dataType="str"
+                          length="20"
+                          name="IndexCode" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\SRC DWH Index Market Caps.Outputs[OLE DB Source Output].ExternalColumns[IndexDateID]"
+                          dataType="i4"
+                          name="IndexDateID" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\SRC DWH Index Market Caps.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\SRC DWH Index Market Caps.Outputs[OLE DB Source Error Output].Columns[IndexTypeID]"
+                          dataType="i2"
+                          lineageId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\SRC DWH Index Market Caps.Outputs[OLE DB Source Error Output].Columns[IndexTypeID]"
+                          name="IndexTypeID" />
+                        <outputColumn
+                          refId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\SRC DWH Index Market Caps.Outputs[OLE DB Source Error Output].Columns[IndexCode]"
+                          codePage="1252"
+                          dataType="str"
+                          length="20"
+                          lineageId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\SRC DWH Index Market Caps.Outputs[OLE DB Source Error Output].Columns[IndexCode]"
+                          name="IndexCode" />
+                        <outputColumn
+                          refId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\SRC DWH Index Market Caps.Outputs[OLE DB Source Error Output].Columns[IndexDateID]"
+                          dataType="i4"
+                          lineageId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\SRC DWH Index Market Caps.Outputs[OLE DB Source Error Output].Columns[IndexDateID]"
+                          name="IndexDateID" />
+                        <outputColumn
+                          refId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\SRC DWH Index Market Caps.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\SRC DWH Index Market Caps.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\SRC DWH Index Market Caps.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\SRC DWH Index Market Caps.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff.Paths[Lookup Match Output]"
+                  endId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\LKP DWH Equity Constituent mkt cap.Inputs[Lookup Input]"
+                  name="Lookup Match Output"
+                  startId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\LKP Stoxx Iseq20Leveraged.Outputs[Lookup Match Output]" />
+                <path
+                  refId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff.Paths[Lookup Match Output1]"
+                  endId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\DST DWH ETL FactEquityIndexMerge.Inputs[OLE DB Destination Input]"
+                  name="Lookup Match Output"
+                  startId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\LKP DWH Equity Constituent mkt cap.Outputs[Lookup Match Output]" />
+                <path
+                  refId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff.Paths[Lookup Match Output2]"
+                  endId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\LKP Stoxx Iseq20Leveraged.Inputs[Lookup Input]"
+                  name="Lookup Match Output"
+                  startId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\LKP DWH Equity Details.Outputs[Lookup Match Output]" />
+                <path
+                  refId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff.Paths[OLE DB Source Output]"
+                  endId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\LKP DWH Equity Details.Inputs[Lookup Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\SRC DWH Index Market Caps.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\SEQ Index Aggregation\SQL DWH Clear merge table"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{c0e71a20-47d9-405c-9793-9f0120277d33}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SQL DWH Clear merge table"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{0CBC2C04-C137-495F-AF7C-FA5DE465FED0}"
+              SQLTask:SqlStatementSource="TRUNCATE TABLE ETL.FactEquityIndexSnapshotMerge&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\SEQ Index Aggregation\SQL FactEquityIndexPrep"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{738fea26-541d-48fe-9b19-ee7b6c4ff30d}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SQL FactEquityIndexPrep"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{0CBC2C04-C137-495F-AF7C-FA5DE465FED0}"
+              SQLTask:SqlStatementSource="EXEC ETL.AggrgeateFactEquityIndex ?,?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::AggregationDateID"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="1"
+                SQLTask:DtsVariableName="User::ExpectedTime"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="7"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\SEQ Index Aggregation\SQL Get Today DateID"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{E30606B8-4D82-4620-AF70-D2B4806047F6}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SQL Get Today DateID"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{0CBC2C04-C137-495F-AF7C-FA5DE465FED0}"
+              SQLTask:SqlStatementSource="SELECT&#xA; DateID&#xA;FROM&#xA; DWH.DimDate&#xA;WHERE&#xA; CurrentDateYN = 'Y'&#xA;&#xA;"
+              SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ResultBinding
+                SQLTask:ResultName="0"
+                SQLTask:DtsVariableName="User::AggregationDateID" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\SEQ Index Aggregation\SQL Perform Index Aggregation Check"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{3ECD0B77-90C5-4539-B4C6-A34827CAABE3}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SQL Perform Index Aggregation Check"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{88A180A2-BD32-40DF-AB41-4FDAC0D5C73C}"
+              SQLTask:SqlStatementSource="SELECT &#xA; *&#xA;FROM &#xA; dbo.GetScheduledActivitiesTimeExpected('REFRESH_FactEquityIndexSnapshot')&#xA;"
+              SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ResultBinding
+                SQLTask:ResultName="ExpectedTime"
+                SQLTask:DtsVariableName="User::ExpectedTime" />
+              <SQLTask:ResultBinding
+                SQLTask:ResultName="WorkToDo"
+                SQLTask:DtsVariableName="User::WorkToDo" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\SEQ Index Aggregation\SQL ProcessMessage Index Aggregation"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{7C468414-9DF8-44C6-88BD-D78B44F90008}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SQL ProcessMessage Index Aggregation"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{88A180A2-BD32-40DF-AB41-4FDAC0D5C73C}"
+              SQLTask:SqlStatementSource="DECLARE @Message VARCHAR(1000)&#xA;SELECT&#xA; @Message = 'Index Aggregation - Expected Time - ' + CAST(CAST(? AS TIME) AS VARCHAR)&#xA;&#xA;EXEC dbo.InsertProcessMessage ?,@Message&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::ExpectedTime"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="7"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="1"
+                SQLTask:DtsVariableName="User::BatchID"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\SEQ Index Aggregation\SQL Update FactEquityInxexSnapshot"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{abc0e8bf-b26b-4fa1-9406-2d4ecfc5520e}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SQL Update FactEquityInxexSnapshot"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{0CBC2C04-C137-495F-AF7C-FA5DE465FED0}"
+              SQLTask:SqlStatementSource="EXEC ETL.UpdateFactEquityIndexSnapshot ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::BatchID"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\SEQ Index Aggregation\SQL Update ProcessControl"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{FEF491EE-05CE-4721-916D-25DB1175ECA8}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SQL Update ProcessControl"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{88A180A2-BD32-40DF-AB41-4FDAC0D5C73C}"
+              SQLTask:SqlStatementSource="EXEC UpdateScheduledActivitiesTimeExpected 'REFRESH_FactEquityIndexSnapshot', ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::ExpectedTime"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="7"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\SEQ Index Aggregation.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{75794738-4896-42D7-9E0C-ECF76782F238}"
+          DTS:From="Package\SEQ Index Aggregation\SQL Update ProcessControl"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\SEQ Index Aggregation\SQL ProcessMessage Index Aggregation" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\SEQ Index Aggregation.PrecedenceConstraints[Constraint 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{67065B17-A54C-47A1-BC07-9A2D7D312162}"
+          DTS:EvalOp="3"
+          DTS:Expression="@[User::WorkToDo]"
+          DTS:From="Package\SEQ Index Aggregation\SQL Perform Index Aggregation Check"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 1"
+          DTS:To="Package\SEQ Index Aggregation\SQL FactEquityIndexPrep" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\SEQ Index Aggregation.PrecedenceConstraints[Constraint 2]"
+          DTS:CreationName=""
+          DTS:DTSID="{3A73BB94-9139-480B-A8F0-FEC06CCA8271}"
+          DTS:From="Package\SEQ Index Aggregation\SQL Update FactEquityInxexSnapshot"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 2"
+          DTS:To="Package\SEQ Index Aggregation\SQL Update ProcessControl" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\SEQ Index Aggregation.PrecedenceConstraints[Constraint 21]"
+          DTS:CreationName=""
+          DTS:DTSID="{87c4394d-009d-4075-b5b0-b3555e925504}"
+          DTS:From="Package\SEQ Index Aggregation\SQL FactEquityIndexPrep"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 2"
+          DTS:To="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\SEQ Index Aggregation.PrecedenceConstraints[Constraint 3]"
+          DTS:CreationName=""
+          DTS:DTSID="{CA333288-E6F6-48B1-BB35-1FFA9794955D}"
+          DTS:From="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 3"
+          DTS:To="Package\SEQ Index Aggregation\SQL Update FactEquityInxexSnapshot" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\SEQ Index Aggregation.PrecedenceConstraints[Constraint 4]"
+          DTS:CreationName=""
+          DTS:DTSID="{C10FD593-AD73-4A04-BCAB-687AB974143C}"
+          DTS:From="Package\SEQ Index Aggregation\SQL Get Today DateID"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 4"
+          DTS:To="Package\SEQ Index Aggregation\SQL Perform Index Aggregation Check" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\SEQ Index Aggregation.PrecedenceConstraints[Constraint 5]"
+          DTS:CreationName=""
+          DTS:DTSID="{7F7263BF-EA96-43CC-B677-8D6FBB98619F}"
+          DTS:From="Package\SEQ Index Aggregation\SQL DWH Clear merge table"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 5"
+          DTS:To="Package\SEQ Index Aggregation\SQL Get Today DateID" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL Get DWH BatchID"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{aa6963e0-736b-4f60-ad03-71172090e070}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL Get DWH BatchID"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{0CBC2C04-C137-495F-AF7C-FA5DE465FED0}"
+          SQLTask:SqlStatementSource="SELECT DWH.GetBatchid() AS BatchID&#xA;"
+          SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="BatchID"
+            SQLTask:DtsVariableName="User::BatchID" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{F23D78B3-85EA-4384-BDD6-A3BE86479C7F}"
+      DTS:From="Package\SQL Get DWH BatchID"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\SEQ Index Aggregation" />
+  </DTS:PrecedenceConstraints>
+  <DTS:EventHandlers>
+    <DTS:EventHandler
+      DTS:refId="Package.EventHandlers[OnError]"
+      DTS:CreationName="OnError"
+      DTS:DTSID="{EDE73963-49B6-471B-BD6D-B5DD5646019D}"
+      DTS:EventID="0"
+      DTS:EventName="OnError"
+      DTS:LocaleID="-1">
+      <DTS:Variables>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:Description="The propagate property of the event"
+          DTS:DTSID="{E981D1F5-2B7A-4E50-A12D-044FCB3A2751}"
+          DTS:IncludeInDebugDump="6789"
+          DTS:Namespace="System"
+          DTS:ObjectName="Propagate">
+          <DTS:VariableValue
+            DTS:DataType="11">-1</DTS:VariableValue>
+        </DTS:Variable>
+      </DTS:Variables>
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package.EventHandlers[OnError]\EPT Error Handler"
+          DTS:CreationName="Microsoft.ExecutePackageTask"
+          DTS:Description="Execute Package Task"
+          DTS:DTSID="{782f49b9-90c7-4cdf-a6b1-7294f621b92b}"
+          DTS:ExecutableType="Microsoft.ExecutePackageTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="EPT Error Handler"
+          DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <ExecutePackageTask>
+              <UseProjectReference>True</UseProjectReference>
+              <PackageName>PckErrorHandler.dtsx</PackageName>
+              <ParameterAssignment>
+                <ParameterName>ErrorCode</ParameterName>
+                <BindedVariableOrParameterName>System::ErrorCode</BindedVariableOrParameterName>
+              </ParameterAssignment>
+              <ParameterAssignment>
+                <ParameterName>ErrorDescription</ParameterName>
+                <BindedVariableOrParameterName>System::ErrorDescription</BindedVariableOrParameterName>
+              </ParameterAssignment>
+              <ParameterAssignment>
+                <ParameterName>ErrorPackageName</ParameterName>
+                <BindedVariableOrParameterName>System::PackageName</BindedVariableOrParameterName>
+              </ParameterAssignment>
+              <ParameterAssignment>
+                <ParameterName>SourceDescription</ParameterName>
+                <BindedVariableOrParameterName>System::SourceDescription</BindedVariableOrParameterName>
+              </ParameterAssignment>
+              <ParameterAssignment>
+                <ParameterName>SourceID</ParameterName>
+                <BindedVariableOrParameterName>System::SourceID</BindedVariableOrParameterName>
+              </ParameterAssignment>
+              <ParameterAssignment>
+                <ParameterName>SourceName</ParameterName>
+                <BindedVariableOrParameterName>System::SourceName</BindedVariableOrParameterName>
+              </ParameterAssignment>
+              <ParameterAssignment>
+                <ParameterName>SourceParentGUID</ParameterName>
+                <BindedVariableOrParameterName>System::SourceParentGUID</BindedVariableOrParameterName>
+              </ParameterAssignment>
+            </ExecutePackageTask>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+    </DTS:EventHandler>
+  </DTS:EventHandlers>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="267,42"
+          Id="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff"
+          TopLeft="65,354.357142857143" />
+        <NodeLayout
+          Size="267,42"
+          Id="Package\SEQ Index Aggregation\SQL DWH Clear merge table"
+          TopLeft="65,29.5" />
+        <NodeLayout
+          Size="267,42"
+          Id="Package\SEQ Index Aggregation\SQL FactEquityIndexPrep"
+          TopLeft="65,273.142857142857" />
+        <NodeLayout
+          Size="267,42"
+          Id="Package\SEQ Index Aggregation\SQL Get Today DateID"
+          TopLeft="65,110.714285714286" />
+        <NodeLayout
+          Size="267,42"
+          Id="Package\SEQ Index Aggregation\SQL Perform Index Aggregation Check"
+          TopLeft="65,191.928571428571" />
+        <NodeLayout
+          Size="267,42"
+          Id="Package\SEQ Index Aggregation\SQL ProcessMessage Index Aggregation"
+          TopLeft="65,598" />
+        <NodeLayout
+          Size="267,42"
+          Id="Package\SEQ Index Aggregation\SQL Update FactEquityInxexSnapshot"
+          TopLeft="65,435.571428571429" />
+        <NodeLayout
+          Size="267,42"
+          Id="Package\SEQ Index Aggregation\SQL Update ProcessControl"
+          TopLeft="65,516.785714285714" />
+        <EdgeLayout
+          Id="Package\SEQ Index Aggregation.PrecedenceConstraints[Constraint]"
+          TopLeft="198.5,558.785714285714">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="0,39.2142857142857"
+              Start="0,0"
+              End="0,31.7142857142857">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.7142857142857" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ Index Aggregation.PrecedenceConstraints[Constraint 1]"
+          TopLeft="198.5,233.928571428571">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="0,39.2142857142857"
+              Start="0,0"
+              End="0,31.7142857142857">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.7142857142857" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-8,7.85714285714283,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ Index Aggregation.PrecedenceConstraints[Constraint 2]"
+          TopLeft="198.5,477.571428571429">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="0,39.2142857142857"
+              Start="0,0"
+              End="0,31.7142857142857">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.7142857142857" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ Index Aggregation.PrecedenceConstraints[Constraint 21]"
+          TopLeft="198.5,315.142857142857">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="0,39.2142857142858"
+              Start="0,0"
+              End="0,31.7142857142858">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.7142857142858" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ Index Aggregation.PrecedenceConstraints[Constraint 3]"
+          TopLeft="198.5,396.357142857143">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="0,39.2142857142858"
+              Start="0,0"
+              End="0,31.7142857142858">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.7142857142858" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ Index Aggregation.PrecedenceConstraints[Constraint 4]"
+          TopLeft="198.5,152.714285714286">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="0,39.2142857142858"
+              Start="0,0"
+              End="0,31.7142857142858">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.7142857142858" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ Index Aggregation.PrecedenceConstraints[Constraint 5]"
+          TopLeft="198.5,71.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="0,39.2142857142857"
+              Start="0,0"
+              End="0,31.7142857142857">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.7142857142857" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="574,690"
+          Size="574,733"
+          Id="Package\SEQ Index Aggregation"
+          TopLeft="62,147" />
+        <NodeLayout
+          Size="199,42"
+          Id="Package\SQL Get DWH BatchID"
+          TopLeft="248,20" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="348.25,62">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="0,85"
+              Start="0,0"
+              End="0,77.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,77.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <DtsEventHandler
+    design-time-name="Package.EventHandlers[OnError]">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="164,42"
+          Id="Package.EventHandlers[OnError]\EPT Error Handler"
+          TopLeft="56,20" />
+      </GraphLayout>
+    </LayoutInfo>
+  </DtsEventHandler>
+  <TaskHost
+    design-time-name="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="255,42"
+          Id="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\LKP DWH Equity Details"
+          TopLeft="67,138" />
+        <NodeLayout
+          Size="255,42"
+          Id="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\SRC DWH Index Market Caps"
+          TopLeft="67,38" />
+        <NodeLayout
+          Size="255,42"
+          Id="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\LKP DWH Equity Constituent mkt cap"
+          TopLeft="67,323" />
+        <NodeLayout
+          Size="255,42"
+          Id="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\DST DWH ETL FactEquityIndexMerge"
+          TopLeft="67,417" />
+        <NodeLayout
+          Size="255,42"
+          Id="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\LKP Stoxx Iseq20Leveraged"
+          TopLeft="67,227" />
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\SRC DWH Index Market Caps">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

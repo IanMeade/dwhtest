@@ -12,8 +12,8 @@
   DTS:MaxErrorCount="0"
   DTS:ObjectName="PckMaster_MasterLoop"
   DTS:PackageType="5"
-  DTS:VersionBuild="37"
-  DTS:VersionGUID="{393A9002-57D2-44C4-9ADD-E1DEED9BC16C}">
+  DTS:VersionBuild="38"
+  DTS:VersionGUID="{F66B1B34-9CE5-479F-A18B-F3E8AF16D85C}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -202,7 +202,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="EPT Break loop"
           DTS:TaskContact="Expression Task;Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:ObjectData>
             <ExpressionTask
@@ -247,7 +247,7 @@
               DTS:LocaleID="-1"
               DTS:ObjectName="SQL Main Loop Poll Delay"
               DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-              DTS:ThreadHint="1">
+              DTS:ThreadHint="0">
               <DTS:Variables />
               <DTS:ObjectData>
                 <SQLTask:SqlTaskData
@@ -766,7 +766,7 @@
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="150,42"
           Id="Package\For Loop Container\EPT Break loop"
@@ -795,7 +795,7 @@
           TopLeft="471,48.75">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="128,0"
               Start="0,0"
               End="120.5,0">
@@ -817,7 +817,7 @@
           TopLeft="372.25,69">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,47"
               Start="0,0"
               End="0,39.5">
@@ -842,7 +842,7 @@
           PanelSize="878,368"
           Size="878,411"
           Id="Package\For Loop Container"
-          TopLeft="82,383" />
+          TopLeft="82,223" />
         <NodeLayout
           Size="149,42"
           Id="Package\SEQ Finish Batch\SQL End Batch"
@@ -853,7 +853,7 @@
           PanelSize="226,121"
           Size="226,164"
           Id="Package\SEQ Finish Batch"
-          TopLeft="402,855" />
+          TopLeft="402,695" />
         <NodeLayout
           Size="165,42"
           Id="Package\SEQ Process Complete\EPT ProcessStatus"
@@ -864,7 +864,7 @@
           PanelSize="208,116"
           Size="208,159"
           Id="Package\SEQ Process Complete"
-          TopLeft="414,1060" />
+          TopLeft="414,900" />
         <NodeLayout
           Size="165,42"
           Id="Package\SEQ Process Start\EPT ProcessStatus"
@@ -875,13 +875,13 @@
           PanelSize="208,116"
           Size="208,159"
           Id="Package\SEQ Process Start"
-          TopLeft="419,186" />
+          TopLeft="419,26" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="522,345">
+          TopLeft="522,185">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,38"
               Start="0,0"
               End="0,30.5">
@@ -900,10 +900,10 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="518,794">
+          TopLeft="518,634">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,61"
               Start="0,0"
               End="0,53.5">
@@ -922,10 +922,10 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 3]"
-          TopLeft="516.5,1019">
+          TopLeft="516.5,859">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,41"
               Start="0,0"
               End="0,33.5">
@@ -949,7 +949,7 @@
     design-time-name="Package.EventHandlers[OnError]">
     <LayoutInfo>
       <GraphLayout
-        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph" xmlns:mssge="clr-namespace:Microsoft.SqlServer.Graph.Extended;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph" xmlns:mssge="clr-namespace:Microsoft.SqlServer.Graph.Extended;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <NodeLayout
           Size="218,42"
           Id="Package.EventHandlers[OnError]\SEQ Error handler\Expression Task"
@@ -979,7 +979,7 @@
           TopLeft="354.5,146.1">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,47.6"
               Start="0,0"
               End="0,40.1">
@@ -1003,7 +1003,7 @@
           TopLeft="354.5,235.7">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,47.6"
               Start="0,0"
               End="0,40.1">
@@ -1027,7 +1027,7 @@
           TopLeft="354.5,414.9">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,47.6"
               Start="0,0"
               End="0,40.1">
@@ -1051,7 +1051,7 @@
           TopLeft="354.5,325.3">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,47.6"
               Start="0,0"
               End="0,40.1">
@@ -1075,7 +1075,7 @@
           TopLeft="354.5,56.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,47.6"
               Start="0,0"
               End="0,40.1">

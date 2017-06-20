@@ -1,2 +1,2 @@
-INSERT INTO [dbo].[XT_UpdateControl] ([TableName], [ExtractSequenceId], [LastChecked], [LastUpdated], [LastUpdateBatchID]) VALUES ('EquityStage', 410, '2017-05-15 13:09:54.4866667', '2017-05-09 13:16:56.8666667', -1)
-INSERT INTO [dbo].[XT_UpdateControl] ([TableName], [ExtractSequenceId], [LastChecked], [LastUpdated], [LastUpdateBatchID]) VALUES ('IssuerStage', 31588, '2017-05-15 13:09:54.4866667', '2017-05-09 13:16:56.8700000', -1)
+INSERT INTO [dbo].[XT_UpdateControl] ([TableName], [ExtractSequenceId], [LastChecked], [LastUpdated], [LastUpdateBatchID]) VALUES ('EquityStage', 0, '2017-06-19 16:35:31.0800000', '2017-06-19 16:35:31.0800000', -1)
+INSERT INTO [dbo].[XT_UpdateControl] ([TableName], [ExtractSequenceId], [LastChecked], [LastUpdated], [LastUpdateBatchID]) VALUES ('IssuerStage', 0, '2017-06-19 16:35:31.0800000', '2017-06-19 16:35:31.0800000', -1)

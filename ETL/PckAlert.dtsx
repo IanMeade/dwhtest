@@ -12,8 +12,8 @@
   DTS:LocaleID="6153"
   DTS:ObjectName="PckAlert"
   DTS:PackageType="5"
-  DTS:VersionBuild="53"
-  DTS:VersionGUID="{74122BCF-97FB-41F2-889A-160556DA1872}">
+  DTS:VersionBuild="55"
+  DTS:VersionGUID="{6576C7F9-52DC-4003-B39A-8048075DD3A2}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -426,7 +426,7 @@
             <SQLTask:SqlTaskData
               SQLTask:Connection="{88A180A2-BD32-40DF-AB41-4FDAC0D5C73C}"
               SQLTask:BypassPrepare="False"
-              SQLTask:SqlStatementSource="SELECT&#x9;&#xA;&#x9;COUNT(*) AS CNT&#xA;FROM &#xA;&#x9;[dbo].[EmailMessageControl]&#xA;WHERE&#xA;&#x9;MessageTag = ?&#xA;"
+              SQLTask:SqlStatementSource="SELECT &#xA; COUNT(*) AS CNT&#xA;FROM &#xA; [dbo].[EmailMessageControl]&#xA;WHERE&#xA; MessageTag = ?&#xA;"
               SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ResultBinding
                 SQLTask:ResultName="CNT"
@@ -455,7 +455,7 @@
             <SQLTask:SqlTaskData
               SQLTask:Connection="{88A180A2-BD32-40DF-AB41-4FDAC0D5C73C}"
               SQLTask:BypassPrepare="False"
-              SQLTask:SqlStatementSource="SELECT&#xA;&#x9;MessageID,&#xA;&#x9;MessageTo,&#xA;&#x9;MessageCC,&#xA;&#x9;MessageSubject,&#xA;&#x9;MessageBody,&#xA;&#x9;MessagePriority,&#xA;&#x9;MessageEnabledYN&#xA;FROM&#xA;&#x9;dbo.GetMessageDetails( ? )&#xA;"
+              SQLTask:SqlStatementSource="SELECT&#xA; MessageID,&#xA; MessageTo,&#xA; MessageCC,&#xA; MessageSubject,&#xA; MessageBody,&#xA; MessagePriority,&#xA; MessageEnabledYN&#xA;FROM&#xA; dbo.GetMessageDetails( ? )&#xA;"
               SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ResultBinding
                 SQLTask:ResultName="MessageID"
@@ -501,7 +501,7 @@
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{88A180A2-BD32-40DF-AB41-4FDAC0D5C73C}"
-              SQLTask:SqlStatementSource="SELECT&#xA;&#x9;SmptServerAddress,&#xA;&#x9;SentFromMessageBox,&#xA;&#x9;EnabledYN&#xA;FROM &#xA;&#x9;dbo.EmailServer&#xA;&#xA;"
+              SQLTask:SqlStatementSource="SELECT&#xA; SmptServerAddress,&#xA; SentFromMessageBox,&#xA; EnabledYN&#xA;FROM &#xA; dbo.EmailServer&#xA;&#xA;"
               SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ResultBinding
                 SQLTask:ResultName="SmptServerAddress"
@@ -612,7 +612,7 @@
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
@@ -633,7 +633,7 @@
           TopLeft="130,60">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,60"
               Start="0,0"
               End="0,52.5">
@@ -678,7 +678,7 @@
           TopLeft="176,71.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,54"
               Start="0,0"
               End="0,46.5">
@@ -702,7 +702,7 @@
           TopLeft="177.5,254.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,56"
               Start="0,0"
               End="0,48.5">
@@ -726,7 +726,7 @@
           TopLeft="177.5,167.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,45"
               Start="0,0"
               End="0,37.5">
@@ -757,7 +757,7 @@
           TopLeft="410,263.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="130,0"
               Start="0,0"
               End="122.5,0">
@@ -781,7 +781,7 @@
           TopLeft="308.5,314">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,160.5"
               Start="0,0"
               End="0,153">
@@ -805,7 +805,7 @@
           TopLeft="669.5,392">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="-233,82.5"
               Start="0,0"
               End="-233,75">
@@ -841,124 +841,14 @@
     design-time-name="Package.EventHandlers[OnError]">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
-        <NodeLayout
-          Size="150,42"
-          Id="{12168F1F-964B-4761-B564-12B9193F38CD}"
-          TopLeft="290.5,209.5" />
-        <NodeLayout
-          Size="190,42"
-          Id="{EBF01E80-318F-4FDE-8A05-27CC07E9116E}"
-          TopLeft="5.50000000000006,107.5" />
-        <NodeLayout
-          Size="140,42"
-          Id="{E894A87D-DFBB-4FB3-8E1C-2EB836869D82}"
-          TopLeft="30.5,5.5" />
-        <NodeLayout
-          Size="218,42"
-          Id="{F078C5A3-13DE-40BF-9363-005DC9547C0D}"
-          TopLeft="256.5,107.5" />
-        <EdgeLayout
-          Id="{D2D0D48E-F82A-4320-9654-072C205C4641}"
-          TopLeft="100.5,47.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="{ED555B70-EF29-4AD1-8DDC-A9C0D97999C6}"
-          TopLeft="100.5,149.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="241.333333333333,60"
-              Start="0,0"
-              End="241.333333333333,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,31.6200527704486" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,31.6200527704486"
-                    Point2="0,35.6200527704486"
-                    Point3="4,35.6200527704486" />
-                  <mssgle:LineSegment
-                    End="237.333333333333,35.6200527704486" />
-                  <mssgle:CubicBezierSegment
-                    Point1="237.333333333333,35.6200527704486"
-                    Point2="241.333333333333,35.6200527704486"
-                    Point3="241.333333333333,39.6200527704486" />
-                  <mssgle:LineSegment
-                    End="241.333333333333,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="112.666666666667,40.6200527704486,16,16"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="{E56BF4C3-6ECA-48EF-970C-3F5208EBCB55}"
-          TopLeft="365.5,149.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="23.6666666666667,60"
-              Start="0,0"
-              End="23.6666666666667,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,31.6200527704486" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,31.6200527704486"
-                    Point2="0,35.6200527704486"
-                    Point3="4,35.6200527704486" />
-                  <mssgle:LineSegment
-                    End="19.6666666666667,35.6200527704486" />
-                  <mssgle:CubicBezierSegment
-                    Point1="19.6666666666667,35.6200527704486"
-                    Point2="23.6666666666667,35.6200527704486"
-                    Point3="23.6666666666667,39.6200527704486" />
-                  <mssgle:LineSegment
-                    End="23.6666666666667,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="3.83333333333334,40.6200527704486,16,16"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <ContainerLayout
-          HeaderHeight="43"
-          IsExpanded="True"
-          PanelSize="480,306"
-          Size="480,349"
-          Id="{D4F67D60-B2D7-426D-B378-1E2935EAFB77}"
-          TopLeft="5.50000000000006,5.5" />
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+        <AnnotationLayout
+          Text="No error handler here - could already be in an error handler so bit dangerous using generic handler"
+          ParentId="Package.EventHandlers[OnError]"
+          FontInfo="{x:Null}"
+          Size="555,60"
+          Id="c4624a1d-10ad-473e-a7c3-3d13d614d3d4"
+          TopLeft="88,44" />
       </GraphLayout>
     </LayoutInfo>
   </DtsEventHandler>

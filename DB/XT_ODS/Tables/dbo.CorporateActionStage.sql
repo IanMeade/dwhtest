@@ -5,12 +5,11 @@ CREATE TABLE [dbo].[CorporateActionStage]
 [IssuerGID] [varchar] (30) COLLATE Latin1_General_CI_AS NOT NULL,
 [CorpActionType] [varchar] (30) COLLATE Latin1_General_CI_AS NOT NULL,
 [CorpActionAssetType] [varchar] (30) COLLATE Latin1_General_CI_AS NOT NULL,
-[ActionType] [varchar] (30) COLLATE Latin1_General_CI_AS NULL,
+[SpecialActionHeadline] [varchar] (1000) COLLATE Latin1_General_CI_AS NULL,
 [AdditionalDescription] [varchar] (3000) COLLATE Latin1_General_CI_AS NULL,
 [Conditional] [bit] NULL,
 [CouponNumber] [decimal] (23, 10) NULL,
 [Currency] [varchar] (100) COLLATE Latin1_General_CI_AS NULL,
-[CurrentNumberOfSharesInIssue] [varchar] (200) COLLATE Latin1_General_CI_AS NULL,
 [Details] [varchar] (3000) COLLATE Latin1_General_CI_AS NULL,
 [DividendPerShare] [decimal] (23, 10) NULL,
 [DividendRatePercent] [decimal] (23, 10) NULL,
@@ -28,19 +27,16 @@ CREATE TABLE [dbo].[CorporateActionStage]
 [PaymentDate] [datetime] NULL,
 [Price] [decimal] (23, 10) NULL,
 [RecordDate] [datetime] NULL,
-[ReverseTakover] [bit] NULL,
-[RightsPrice] [decimal] (23, 10) NULL,
-[SharePrice] [decimal] (23, 10) NULL,
+[ReverseTakeover] [bit] NULL,
 [Status] [varchar] (30) COLLATE Latin1_General_CI_AS NULL,
 [StatusDate] [datetime] NULL,
 [TaxAmount] [decimal] (23, 10) NULL,
 [TaxDescription] [varchar] (100) COLLATE Latin1_General_CI_AS NULL,
 [TaxRatePercent] [decimal] (23, 10) NULL,
-[Unconditional] [bit] NULL,
 [ExtractSequenceId] [bigint] NOT NULL IDENTITY(1, 1),
-[ExtractDate] [datetime] NULL CONSTRAINT [DF__Corporate__Extra__4F7CD00D] DEFAULT (getdate()),
+[ExtractDate] [datetime] NULL CONSTRAINT [DF__Corporate__Extra__29572725] DEFAULT (getdate()),
 [MessageId] [varchar] (256) COLLATE Latin1_General_CI_AS NULL
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[CorporateActionStage] ADD CONSTRAINT [PK__Corporat__A1071C3D1FBFA895] PRIMARY KEY CLUSTERED  ([ExtractSequenceId]) ON [PRIMARY]
+ALTER TABLE [dbo].[CorporateActionStage] ADD CONSTRAINT [PK__Corporat__A1071C3DDEC58D27] PRIMARY KEY CLUSTERED  ([ExtractSequenceId]) ON [PRIMARY]
 GO

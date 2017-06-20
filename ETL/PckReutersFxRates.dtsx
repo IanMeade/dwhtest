@@ -11,8 +11,8 @@
   DTS:LocaleID="6153"
   DTS:ObjectName="PckReutersFxRates"
   DTS:PackageType="5"
-  DTS:VersionBuild="21"
-  DTS:VersionGUID="{F8F13919-7B14-4C34-AF7A-5003B204EBC4}">
+  DTS:VersionBuild="23"
+  DTS:VersionGUID="{199DE88F-FE12-493A-8D3A-E646D300F7D1}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -368,7 +368,7 @@ where [refTable].[CurrencyISOCode] = ?</property>
                       containsID="true"
                       dataType="System.String"
                       description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                      name="ParameterMap">#{Package\SEQ Index Values\DFT Load Exchange Rates\74:invalid};</property>
+                      name="ParameterMap">#{Package\SEQ Index Values\DFT Load Exchange Rates\1797:invalid};</property>
                     <property
                       dataType="System.Int32"
                       description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -1017,7 +1017,7 @@ AND
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{6003E35A-E6C7-4620-A7CB-3E3A41FB8106}"
-              SQLTask:SqlStatementSource="SELECT&#xA;&#x9;ISNULL(MAX(ExchangeRateID),0) AS ExchangeRateID&#xA;FROM&#xA;&#x9;ExchangeRateValue&#xA;"
+              SQLTask:SqlStatementSource="SELECT&#xA; ISNULL(MAX(ExchangeRateID),0) AS ExchangeRateID&#xA;FROM&#xA; ExchangeRateValue&#xA;"
               SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ResultBinding
                 SQLTask:ResultName="ExchangeRateID"
@@ -1039,7 +1039,7 @@ AND
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{88A180A2-BD32-40DF-AB41-4FDAC0D5C73C}"
-              SQLTask:SqlStatementSource="SELECT&#xA;&#x9;LastCutOffCounterUsed&#xA;FROM&#xA;&#x9;dbo.Reuters_UpdateControl&#xA;WHERE&#xA;&#x9;TableName = 'ExchangeRateValue'&#xA;"
+              SQLTask:SqlStatementSource="SELECT&#xA; LastCutOffCounterUsed&#xA;FROM&#xA; dbo.Reuters_UpdateControl&#xA;WHERE&#xA; TableName = 'ExchangeRateValue'&#xA;"
               SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ResultBinding
                 SQLTask:ResultName="LastCutOffCounterUsed"
@@ -1212,6 +1212,75 @@ AND
       DTS:ObjectName="Constraint 1"
       DTS:To="Package\SEQ Process Complete" />
   </DTS:PrecedenceConstraints>
+  <DTS:EventHandlers>
+    <DTS:EventHandler
+      DTS:refId="Package.EventHandlers[OnError]"
+      DTS:CreationName="OnError"
+      DTS:DTSID="{5B698F8C-C398-44C3-A54C-6B2AA38CC91C}"
+      DTS:EventID="0"
+      DTS:EventName="OnError"
+      DTS:LocaleID="-1">
+      <DTS:Variables>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:Description="The propagate property of the event"
+          DTS:DTSID="{622690A1-5AF7-4C62-BB7D-00284CF5EF5E}"
+          DTS:IncludeInDebugDump="6789"
+          DTS:Namespace="System"
+          DTS:ObjectName="Propagate">
+          <DTS:VariableValue
+            DTS:DataType="11">-1</DTS:VariableValue>
+        </DTS:Variable>
+      </DTS:Variables>
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package.EventHandlers[OnError]\EPT Error Handler"
+          DTS:CreationName="Microsoft.ExecutePackageTask"
+          DTS:Description="Execute Package Task"
+          DTS:DTSID="{161a866c-8501-41ba-a953-71a7b3b5278c}"
+          DTS:ExecutableType="Microsoft.ExecutePackageTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="EPT Error Handler"
+          DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <ExecutePackageTask>
+              <UseProjectReference>True</UseProjectReference>
+              <PackageName>PckErrorHandler.dtsx</PackageName>
+              <ParameterAssignment>
+                <ParameterName>ErrorCode</ParameterName>
+                <BindedVariableOrParameterName>System::ErrorCode</BindedVariableOrParameterName>
+              </ParameterAssignment>
+              <ParameterAssignment>
+                <ParameterName>ErrorDescription</ParameterName>
+                <BindedVariableOrParameterName>System::ErrorDescription</BindedVariableOrParameterName>
+              </ParameterAssignment>
+              <ParameterAssignment>
+                <ParameterName>ErrorPackageName</ParameterName>
+                <BindedVariableOrParameterName>System::PackageName</BindedVariableOrParameterName>
+              </ParameterAssignment>
+              <ParameterAssignment>
+                <ParameterName>SourceDescription</ParameterName>
+                <BindedVariableOrParameterName>System::SourceDescription</BindedVariableOrParameterName>
+              </ParameterAssignment>
+              <ParameterAssignment>
+                <ParameterName>SourceID</ParameterName>
+                <BindedVariableOrParameterName>System::SourceID</BindedVariableOrParameterName>
+              </ParameterAssignment>
+              <ParameterAssignment>
+                <ParameterName>SourceName</ParameterName>
+                <BindedVariableOrParameterName>System::SourceName</BindedVariableOrParameterName>
+              </ParameterAssignment>
+              <ParameterAssignment>
+                <ParameterName>SourceParentGUID</ParameterName>
+                <BindedVariableOrParameterName>System::SourceParentGUID</BindedVariableOrParameterName>
+              </ParameterAssignment>
+            </ExecutePackageTask>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+    </DTS:EventHandler>
+  </DTS:EventHandlers>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
 <!--If you manually edit this section and make a mistake, you can delete it. -->
@@ -1223,7 +1292,7 @@ AND
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="231,42"
           Id="Package\SEQ Index Values\DFT Load Exchange Rates"
@@ -1249,7 +1318,7 @@ AND
           TopLeft="164.5,197">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,53"
               Start="0,0"
               End="0,45.5">
@@ -1273,7 +1342,7 @@ AND
           TopLeft="164.5,292">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,50"
               Start="0,0"
               End="0,42.5">
@@ -1295,7 +1364,7 @@ AND
           TopLeft="164.5,91">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,64"
               Start="0,0"
               End="0,56.5">
@@ -1317,7 +1386,7 @@ AND
           TopLeft="280,176">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="71,0"
               Start="0,0"
               End="63.5,0">
@@ -1363,7 +1432,7 @@ AND
           TopLeft="388.25,77">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,46"
               Start="0,0"
               End="0,38.5">
@@ -1385,7 +1454,7 @@ AND
           TopLeft="390.75,605">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,65"
               Start="0,0"
               End="0,57.5">
@@ -1405,186 +1474,50 @@ AND
       </GraphLayout>
     </LayoutInfo>
   </Package>
+  <DtsEventHandler
+    design-time-name="Package.EventHandlers[OnError]">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="164,42"
+          Id="Package.EventHandlers[OnError]\EPT Error Handler"
+          TopLeft="53,25" />
+      </GraphLayout>
+    </LayoutInfo>
+  </DtsEventHandler>
   <TaskHost
     design-time-name="Package\SEQ Index Values\DFT Load Exchange Rates">
     <LayoutInfo>
       <GraphLayout
-        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="232,42"
+          Id="Package\SEQ Index Values\DFT Load Exchange Rates\SCD Exchange rate update"
+          TopLeft="196,311.5" />
         <NodeLayout
           Size="232,42"
           Id="Package\SEQ Index Values\DFT Load Exchange Rates\SRC Reuters_ODS ExchangeVale"
           TopLeft="196,5.5" />
         <NodeLayout
-          Size="232,42"
-          Id="Package\SEQ Index Values\DFT Load Exchange Rates\DER Exchange Rate BatchID"
-          TopLeft="196,209.5" />
+          Size="163,42"
+          Id="Package\SEQ Index Values\DFT Load Exchange Rates\Insert Destination"
+          TopLeft="5.50000000000006,413.5" />
         <NodeLayout
           Size="232,42"
           Id="Package\SEQ Index Values\DFT Load Exchange Rates\LKP Reuters Currency"
           TopLeft="196,107.5" />
-        <EdgeLayout
-          Id="Package\SEQ Index Values\DFT Load Exchange Rates.Paths[OLE DB Source Output]"
-          TopLeft="312,47.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\SEQ Index Values\DFT Load Exchange Rates.Paths[Lookup Match Output]"
-          TopLeft="312,149.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,20.4453125,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
         <NodeLayout
           Size="232,42"
-          Id="Package\SEQ Index Values\DFT Load Exchange Rates\SCD Exchange rate update"
-          TopLeft="196,311.5" />
-        <EdgeLayout
-          Id="Package\SEQ Index Values\DFT Load Exchange Rates.Paths[Derived Column Output]"
-          TopLeft="312,251.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="163,42"
-          Id="Package\SEQ Index Values\DFT Load Exchange Rates\Insert Destination"
-          TopLeft="5.50000000000006,413.5" />
-        <EdgeLayout
-          Id="Package\SEQ Index Values\DFT Load Exchange Rates.Paths[New Output]"
-          TopLeft="274.666666666667,353.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-187.666666666667,60"
-              Start="0,0"
-              End="-187.666666666667,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,20.2465753424658" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,20.2465753424658"
-                    Point2="0,24.2465753424658"
-                    Point3="-4,24.2465753424658" />
-                  <mssgle:LineSegment
-                    End="-183.666666666667,24.2465753424658" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-183.666666666667,24.2465753424658"
-                    Point2="-187.666666666667,24.2465753424658"
-                    Point3="-187.666666666667,28.2465753424658" />
-                  <mssgle:LineSegment
-                    End="-187.666666666667,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-120.924720052083,29.2465753424658,54.1827734375,11.43359375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+          Id="Package\SEQ Index Values\DFT Load Exchange Rates\DER Exchange Rate BatchID"
+          TopLeft="196,209.5" />
         <NodeLayout
           Size="166,42"
           Id="Package\SEQ Index Values\DFT Load Exchange Rates\OLE DB Command"
           TopLeft="229,413.5" />
-        <EdgeLayout
-          Id="Package\SEQ Index Values\DFT Load Exchange Rates.Paths[Changing Attribute Updates Output]"
-          TopLeft="349.333333333333,353.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-37.3333333333333,60"
-              Start="0,0"
-              End="-37.3333333333333,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,20.2465753424658" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,20.2465753424658"
-                    Point2="0,24.2465753424658"
-                    Point3="-4,24.2465753424658" />
-                  <mssgle:LineSegment
-                    End="-33.3333333333333,24.2465753424658" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-33.3333333333333,24.2465753424658"
-                    Point2="-37.3333333333333,24.2465753424658"
-                    Point3="-37.3333333333333,28.2465753424658" />
-                  <mssgle:LineSegment
-                    End="-37.3333333333333,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-97.2005729166667,29.2465753424658,157.0678125,11.6630859375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\SEQ Index Values\DFT Load Exchange Rates\SRC Reuters_ODS ExchangeVale">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\SEQ Index Values\DFT Load Exchange Rates\SCD Exchange rate update">
     <Properties>
@@ -1637,6 +1570,14 @@ AND
   &lt;DateVariable /&gt;
   &lt;EnableInferredSupport&gt;false&lt;/EnableInferredSupport&gt;
 &lt;/SCDWizardMetadata&gt;</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\SEQ Index Values\DFT Load Exchange Rates\SRC Reuters_ODS ExchangeVale">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>

@@ -11,10 +11,10 @@ CREATE TABLE [dbo].[Broker]
 [EBCFee] [numeric] (19, 6) NOT NULL,
 [Location] [varchar] (50) COLLATE Latin1_General_CI_AS NOT NULL,
 [MemberType] [char] (1) COLLATE Latin1_General_CI_AS NOT NULL,
-[Telephone] [varchar] (20) COLLATE Latin1_General_CI_AS NULL,
-[Fax] [varchar] (20) COLLATE Latin1_General_CI_AS NULL,
-[Address] [varchar] (100) COLLATE Latin1_General_CI_AS NULL,
-[Website] [varchar] (255) COLLATE Latin1_General_CI_AS NULL
+[Telephone] [varchar] (20) COLLATE Latin1_General_CI_AS NOT NULL,
+[Fax] [varchar] (20) COLLATE Latin1_General_CI_AS NOT NULL,
+[Address] [varchar] (100) COLLATE Latin1_General_CI_AS NOT NULL,
+[Website] [varchar] (255) COLLATE Latin1_General_CI_AS NOT NULL
 ) ON [PRIMARY]
 GO
 ALTER TABLE [dbo].[Broker] ADD CONSTRAINT [PK_Broker] PRIMARY KEY CLUSTERED  ([BrokerCode]) ON [PRIMARY]

@@ -2,248 +2,324 @@ SET QUOTED_IDENTIFIER ON
 GO
 SET ANSI_NULLS ON
 GO
--- =============================================  
--- Author:		Ian Meade  
--- Create date: 20/2/2017  
--- Description:	Get XT Interface changes  
--- =============================================  
-CREATE PROCEDURE [dbo].[XtAssembleXtInterfaceEquityEtfUpdate]  
-AS  
-BEGIN  
-	-- SET NOCOUNT ON added to prevent extra result sets from  
-	-- interfering with SELECT statements.  
-	SET NOCOUNT ON;  
-  
-	TRUNCATE TABLE dbo.XtOdsInstrumentEquityEtfUpdate  
-  
-	/* ASSEMBLE FULL INSTRUMENT EQUITY/ETF DETAILS FOR XT UPDATES IN CURRENT SET OF XT CHANGES */  
-  
- 
-	;WITH 
-		EquitySide AS ( 
-				/* Best copy of Equity side of things */ 
-				SELECT 
-					'EQUITY' AS SRC, 
-					SHARE.GID AS SHARE_GID, 
-					SHARE.CompanyGID AS COMPANY_GID, 
-					ISSUER.GID AS ISSUER_GID, 
-					DwhShare.InstrumentID AS DwhInstrumentID
-				FROM 
-						[dbo].[BestShare] SHARE  
-					LEFT OUTER JOIN  
-						[dbo].[BestCompany] COMPANY  
-					ON  
-						SHARE.CompanyGID = COMPANY.GID  
-					LEFT OUTER JOIN  
-						[dbo].[BestIssuer] ISSUER  
-					ON COMPANY.IssuerGid = ISSUER.Gid  
-					LEFT OUTER JOIN  
-						dbo.DwhDimInstrumentEquityEtf DwhShare  
-					ON   
-						SHARE.Gid = DwhShare.InstrumentGlobalID  
-					AND  
-						DwhShare.CurrentRowYN = 'Y'  
-			), 
-		CompanySide as ( 
-				SELECT 
-					'COMPANY' AS SRC, 
-					COMPANY.GID AS COMPANY_GID, 
-					ISSUER.GID AS ISSUER_GID, 
-					E.InstrumentID AS DwhInstrumentID	 
-				FROM 
-						[dbo].[BestCompany] COMPANY  
-					INNER JOIN 
-						dbo.DwhDimInstrumentEquityEtf E 
-					ON COMPANY.Gid = E.CompanyGlobalID 
-					AND  
-						E.CurrentRowYN = 'Y'  
-					LEFT OUTER JOIN  
-						[dbo].[BestIssuer] ISSUER  
-					ON COMPANY.IssuerGid = ISSUER.Gid  
-				WHERE 
-					E.InstrumentID NOT IN ( 
-							SELECT 
-								DwhInstrumentID 
-							FROM 
-								EquitySide 
-						) 
-			), 
-		IssuerSide as ( 
-				SELECT 
-					'ISSUER' AS SRC, 
-					ISSUER.GID AS ISSUER_GID, 
-					E.InstrumentID AS DwhInstrumentID	 
-				FROM 
-						dbo.BestIssuer ISSUER  
-					LEFT OUTER JOIN  
-						dbo.DwhDimInstrumentEquityEtf E 
-					ON ISSUER.Gid = E.IssuerGlobalID 
-					AND  
-						E.CurrentRowYN = 'Y'  
-				WHERE 
-					E.InstrumentID NOT IN ( 
-							SELECT 
-								DwhInstrumentID 
-							FROM 
-								EquitySide 
-						) 
-			) 
-	SELECT 
-		SRC, 
-		SHARE_GID, 
-		COMPANY_GID, 
-		ISSUER_GID, 
-		DwhInstrumentID 
-	INTO  
-		#KEYS 
-	FROM 
-		EquitySide 
-	UNION  
-	SELECT 
-		SRC, 
-		NULL AS SHARE_GID, 
-		COMPANY_GID, 
-		ISSUER_GID, 
-		DwhInstrumentID 
-	FROM 
-		CompanySide 
-	UNION 
-	SELECT 
-		SRC, 
-		NULL AS SHARE_GID, 
-		NULL AS COMPANY_GID, 
-		ISSUER_GID, 
-		DwhInstrumentID 
-	FROM 
-		IssuerSide 
 
-	/* Use detials in the DWH as last resort */
-	/* Somewhat dodgy */
+-- =============================================   
+-- Author:		Ian Meade   
+-- Create date: 20/2/2017   
+-- Description:	Get XT Interface changes   
+-- =============================================   
+CREATE PROCEDURE [dbo].[XtAssembleXtInterfaceEquityEtfUpdate]   
+	@SPECIAL_ISIN VARCHAR(12)
+AS   
+BEGIN   
+	-- SET NOCOUNT ON added to prevent extra result sets from   
+	-- interfering with SELECT statements.   
+	SET NOCOUNT ON;   
+   
+	TRUNCATE TABLE dbo.XtOdsInstrumentEquityEtfUpdate   
+    
+	/* EMERGENCY FIX - 12/6/2017 - MAKE INVALID TotalSharesInIssue 0 */
+	/* NOT NEEDED IN PRODUCTION */
+	/* START */
 	UPDATE
-		K
+		[dbo].[XtOdsShare]
 	SET
-		DwhInstrumentID = (
-								SELECT
-									TOP 1
-									DwhShare.InstrumentID
-								FROM
-									dbo.DwhDimInstrumentEquityEtf DwhShare  
-								WHERE
-									DwhShare.CompanyGlobalID = K.COMPANY_GID
-								ORDER BY
-									DwhShare.InstrumentID DESC
-				)
-	FROM
-		#KEYS K
-	WHERE 
-		ISSUER_GID IS NULL
-
-
-
-
- 
- 
- 
-	INSERT INTO  
-			dbo.XtOdsInstrumentEquityEtfUpdate  
-		SELECT 
-			/* This field should never be null */  
-			COALESCE( SHARE.GID, DwhShare.InstrumentGlobalID ) AS InstrumentGlobalID,  
-			COALESCE( SHARE.Name, DwhShare.InstrumentName ) AS InstrumentName,  
-			COALESCE( SHARE.Asset_Type, DwhShare.InstrumentType ) AS InstrumentType,  
-			COALESCE( SHARE.SecurityType, DwhShare.SecurityType, '' ) AS SecurityType,  
-			COALESCE( SHARE.ISIN, DwhShare.ISIN ) AS ISIN,  
-			/* DO IN PIPE / SOMEWHERE ELSE */  
-			/*			InstrumentDomesticYN	*/ 
-			COALESCE( SHARE.SEDOL, DwhShare.SEDOL ) AS SEDOL,  
-			COALESCE( SHARE.ListingStatus, DwhShare.InstrumentStatusName ) AS InstrumentStatusName,  
-			COALESCE( SHARE.InstrumentStatusDate, DwhShare.InstrumentStatusDate ) AS InstrumentStatusDate,  
-			COALESCE( SHARE.ListingDate, DwhShare.InstrumentListedDate ) AS InstrumentListedDate, 		 
-			COALESCE( SHARE.TradingSysInstrumentName, DwhShare.TradingSysInstrumentName ) AS TradingSysInstrumentName,  
-			COALESCE( SHARE.CompanyGID, DwhShare.CompanyGlobalID ) AS CompanyGlobalID,  
-			COALESCE( SHARE.MarketType, DwhShare.MarketName ) AS MarketName,  
-			COALESCE( SHARE.WKN, DwhShare.WKN ) AS	WKN,  
-			COALESCE( SHARE.MNEM, DwhShare.MNEM ) AS MNEM, 
-			COALESCE( SHARE.SmfName, DwhShare.InstrumentSedolMasterFileName ) AS InstrumentSedolMasterFileName,  
-			COALESCE( ISSUER.SmfName, DwhShare.IssuerSedolMasterFileName ) AS IssuerSedolMasterFileName,  
-			IIF(SHARE.IteqIndexFlag IS NOT NULL, IIF(SHARE.IteqIndexFlag = 1,'Y', 'N'), DwhShare.ITEQIndexYN ) AS ITEQIndexYN,  
-			IIF(SHARE.ISEQ20IndexFlag IS NOT NULL, IIF(SHARE.ISEQ20IndexFlag = 1,'Y', 'N'), DwhShare.ISEQ20IndexYN ) AS ISEQ20IndexYN,  
-			IIF(SHARE.ESMIndexFlag IS NOT NULL, IIF(SHARE.ESMIndexFlag = 1,'Y', 'N'), DwhShare.ESMIndexYN ) AS ESMIndexYN,  
-			/* WILL COME FROM COROPORATE ACTIONS */ 
-			DwhShare.LastEXDivDate, 
-			IIF(SHARE.GID IS NOT NULL, IIF(SHARE.GeneralFinancialFlag = 0, 'Y', 'N' ), DwhShare.GeneralIndexYN ) AS GeneralIndexYN, 
-			IIF(SHARE.GID IS NOT NULL, IIF(SHARE.GeneralFinancialFlag = 1, 'Y', 'N' ), DwhShare.FinancialIndexYN ) AS FinancialIndexYN, 
-			IIF(SHARE.GID IS NOT NULL, IIF(SHARE.GeneralFinancialFlag IS NOT NULL, 'Y', 'N' ), DwhShare.OverallIndexYN ) AS OverallIndexYN, 
-			IIF(SHARE.SmallCap IS NOT NULL,IIF(SHARE.SmallCap = 1, 'Y', 'N' ), DwhShare.SmallCapIndexYN ) AS SmallCapIndexYN,  
-			COALESCE( SHARE.PrimaryMarket, DwhShare.PrimaryMarket ) AS PrimaryMarket,  
-			COALESCE( SHARE.IssuedDate, DwhShare.IssuedDate ) AS IssuedDate,  
-			COALESCE( SHARE.DenominationCurrency, DwhShare.CurrencyISOCode ) AS CurrencyISOCode,  
-			COALESCE( SHARE.UnitOfQuotation, DwhShare.UnitOfQuotation ) AS UnitOfQuotation,  
-			COALESCE( SHARE.QuotationCurrency, DwhShare.QuotationCurrencyISOCode ) AS QuotationCurrencyISOCode,  
-			COALESCE( SHARE.ISEQOverallFreeFloat, DwhShare.ISEQ20Freefloat ) AS ISEQ20Freefloat,  
-			COALESCE( SHARE.ISEQOverallFreeFloat, DwhShare.ISEQOverallFreeFloat ) AS ISEQOverallFreeFloat,  
-			COALESCE( SHARE.CFIName, DwhShare.CFIName ) AS CFIName,  
-			COALESCE( SHARE.CFICode, DwhShare.CFICode ) AS CFICode, 
-			COALESCE( SHARE.TotalSharesInIssue, DwhShare.TotalSharesInIssue ) AS TotalSharesInIssue,   
-			COALESCE( COMPANY.ListingDate, DwhShare.CompanyListedDate ) AS CompanyListedDate,  
-			COALESCE( COMPANY.ApprovalDate, DwhShare.CompanyApprovalDate ) AS CompanyApprovalDate, 
-			COALESCE( COMPANY.ApprovalType, DwhShare.CompanyApprovalType ) AS CompanyApprovalType,  
-			COALESCE( COMPANY.ListingStatus, DwhShare.CompanyStatusName ) AS CompanyStatusName,  
-			COALESCE( SHARE.Note , DwhShare.Note ) AS Note,  
- 			IIF(COMPANY.TDFlag IS NOT NULL, IIF(COMPANY.TDFlag = 1, 'Y','N') , DwhShare.TransparencyDirectiveYN ) AS TransparencyDirectiveYN,  
-			IIF(COMPANY.MADFlag IS NOT NULL, IIF(COMPANY.MADFlag =1, 'Y','N'), DwhShare.MarketAbuseDirectiveYN ) AS MarketAbuseDirectiveYN,  
-			IIF(COMPANY.PDFlag IS NOT NULL, IIF(COMPANY.PDFlag = 1, 'Y','N'), DwhShare.ProspectusDirectiveYN ) AS ProspectusDirectiveYN,  
-			COALESCE( COMPANY.Sector, DwhShare.PrimaryBusinessSector ) AS PrimaryBusinessSector,  
-			COALESCE( COMPANY.SubFocus1, DwhShare.SubBusinessSector1 ) AS SubBusinessSector1,  
-			COALESCE( COMPANY.SubFocus2, DwhShare.SubBusinessSector2 ) AS SubBusinessSector2,  
-			COALESCE( COMPANY.SubFocus3, DwhShare.SubBusinessSector3 ) AS SubBusinessSector3,  
-			COALESCE( COMPANY.SubFocus4, DwhShare.SubBusinessSector4 ) AS SubBusinessSector4,  
-			COALESCE( COMPANY.SubFocus5, DwhShare.SubBusinessSector5 ) AS SubBusinessSector5,  
-			COALESCE( COMPANY.IssuerGid, ISSUER.Gid, DwhShare.IssuerGlobalID ) AS IssuerGlobalID,  
-			COALESCE( ISSUER.Name, DwhShare.IssuerName ) AS IssuerName,  
-			COALESCE( ISSUER.Domicile, DwhShare.IssuerDomicile ) AS IssuerDomicile,  
-			COALESCE( ISSUER.YearEnd, DwhShare.FinancialYearEndDate ) AS FinancialYearEndDate,  
-			COALESCE( ISSUER.DateofIncorporation, DwhShare.IncorporationDate ) AS IncorporationDate,  
-			COALESCE( ISSUER.LegalStructure, DwhShare.LegalStructure ) AS LegalStructure,  
-			COALESCE( ISSUER.AccountingStandard, DwhShare.AccountingStandard ) AS AccountingStandard,  
-			COALESCE( ISSUER.TD_home_member_country, DwhShare.TransparencyDirectiveHomeMemberCountry ) AS TransparencyDirectiveHomeMemberCountry,  
-			COALESCE( ISSUER.Pd_Home_Member_Country, DwhShare.ProspectusDirectiveHomeMemberCountry ) AS ProspectusDirectiveHomeMemberCountry,  
-			IIF( ISSUER.DomicileDomesticFlag IS NOT NULL, IIF(ISSUER.DomicileDomesticFlag = 1,'Y', 'N'), DwhShare.IssuerDomicileDomesticYN) AS IssuerDomicileDomesticYN,  
-			COALESCE( CAST(ISSUER.FeeCode AS CHAR(4)), DwhShare.FeeCodeName ) AS FeeCodeName  
-	FROM 
-			#Keys K 
-		LEFT OUTER JOIN 
-			[dbo].[BestShare] SHARE  
-		ON  
-			K.SHARE_GID = SHARE.GID 
-		LEFT OUTER JOIN 
-			[dbo].[BestCompany] COMPANY  
-		ON  
-			K.COMPANY_GID = COMPANY.GID  
-		LEFT OUTER JOIN 
-			[dbo].[BestIssuer] ISSUER  
-		ON  
-			K.ISSUER_GID = ISSUER.Gid  
-		LEFT OUTER JOIN 
-			dbo.DwhDimInstrumentEquityEtf DwhShare  
-		ON 
-			K.DwhInstrumentID  = DwhShare.InstrumentID 
-/* 
-	WHERE 
-		COALESCE( SHARE.GID, DwhShare.InstrumentGlobalID, DwhShare.InstrumentGlobalID, DwhShare.InstrumentGlobalID ) IS NOT NULL 
-*/ 
-	DROP TABLE #KEYS 
-
-  
-	/* MAKE EVERYTHING THAT IS NOT AN ETF AN EQUITY */
-	/* COULD CAUSE ISSUES IF EquityStage IS POPULATED WITH NON-SHARE BASED INSTRUMENTS */
-	UPDATE
-		dbo.XtOdsInstrumentEquityEtfUpdate  
-	SET
-		InstrumentType = 'Equity'
+		TotalSharesInIssue = 0
 	WHERE
-		InstrumentType NOT IN ( 'Equity', 'ETF' )
+		ISNUMERIC(TotalSharesInIssue) = 0
+	/*	END */
 
+	/* ASSEMBLE FULL INSTRUMENT EQUITY/ETF DETAILS FOR XT UPDATES IN CURRENT SET OF XT CHANGES */   
+   
+	;
+	WITH XtShare AS (
+			SELECT
+				BS.Gid AS InstrumentGlobalID,
+				DWH.InstrumentID DwhInstrumentID,
+				COALESCE(BS.CompanyGid, DWH.CompanyGlobalID) AS CompanyGID,
+				COALESCE(BC.IssuerGid, DWH.IssuerGlobalID) AS IssuerGID
+			FROM
+					BestShare BS
+				LEFT OUTER JOIN
+					DwhDimInstrumentEquityEtf DWH
+				ON BS.Gid = DWH.InstrumentGlobalID 
+				AND DWH.CurrentRowYN = 'Y'
+				LEFT OUTER JOIN
+					BestCompany BC 
+				ON BS.CompanyGid = BC.Gid
+				LEFT OUTER JOIN
+					BestIssuer BI
+				ON BC.IssuerGid = BI.Gid
+		),
+		XtCompany AS (
+			SELECT
+				DWH.InstrumentGlobalID,
+				DWH.InstrumentID AS DwhInstrumentID,
+				DWH.CompanyGlobalID AS CompanyGID,
+				COALESCE(BC.IssuerGid, DWH.IssuerGlobalID) AS IssuerGID
+			FROM
+					BestCompany BC 
+				INNER JOIN
+					DwhDimInstrumentEquityEtf DWH
+				ON BC.Gid = DWH.CompanyGlobalID
+				AND DWH.CurrentRowYN = 'Y'
+				LEFT OUTER JOIN
+					BestIssuer BI
+				ON BC.IssuerGid = BI.Gid
+			WHERE
+				DWH.InstrumentGlobalID NOT IN ( SELECT InstrumentGlobalID FROM XtShare )
+			),
+		XtIssuer AS (
+				SELECT
+					DWH.InstrumentGlobalID,
+					DWH.InstrumentID DwhInstrumentID,
+					DWH.CompanyGlobalID AS CompanyGID,
+					DWH.IssuerGlobalID AS IssuerGID
+				FROM
+						BestIssuer BI
+					INNER JOIN
+						DwhDimInstrumentEquityEtf DWH
+					ON BI.Gid = DWH.IssuerGlobalID
+					AND DWH.CurrentRowYN = 'Y'
+				WHERE
+					DWH.InstrumentGlobalID NOT IN ( SELECT InstrumentGlobalID FROM XtShare )
+				AND
+					DWH.InstrumentGlobalID NOT IN ( SELECT InstrumentGlobalID FROM XtCompany )
+			),
+		XtBased AS (
+				SELECT
+					InstrumentGlobalID,
+					DwhInstrumentID,
+					CompanyGID,
+					IssuerGID
+				FROM
+					XtShare 
+				UNION
+				SELECT
+					InstrumentGlobalID,
+					DwhInstrumentID,
+					CompanyGID,
+					IssuerGID
+				FROM
+					XtCompany
+				UNION
+				SELECT
+					InstrumentGlobalID,
+					DwhInstrumentID,
+					CompanyGID,
+					IssuerGID
+				FROM
+					XtIssuer 
+			)
+		SELECT
+			1 AS SRC,  
+			InstrumentGlobalID AS SHARE_GID,  
+			CompanyGID AS COMPANY_GID,  
+			IssuerGID AS ISSUER_GID,
+			DwhInstrumentID 
+		INTO
+			#KEYS
+		FROM
+			XtBased
+		UNION
+		/* IN DHW - NO EQUITY IN XT_ODS */
+		SELECT
+			2 AS SRC,
+			DWH.InstrumentGlobalID AS SHARE_GID,  
+			DWH.CompanyGlobalID,
+			COALESCE(DWH.IssuerGlobalID, DWH.IssuerGlobalID) AS IssuerGID,
+			DWH.InstrumentID DwhInstrumentID
+		FROM
+				DwhDimInstrumentEquityEtf DWH
+			LEFT OUTER JOIN
+				BestCompany BC 
+			ON DWH.CompanyGlobalID = BC.Gid
+			LEFT OUTER JOIN
+				BestIssuer BI
+			ON DWH.IssuerGlobalID = BI.Gid
+		WHERE
+			DWH.CurrentRowYN = 'Y'
+		AND
+			DWH.InstrumentGlobalID NOT IN (
+						SELECT 
+							InstrumentGlobalID
+						FROM
+							XtBased
+				)
+		AND
+			(
+				/* FREELOAT HAS CHANGED */
+				DWH.ISIN IN (
+						SELECT
+							E.ISIN
+						FROM
+								dbo.DwhDimInstrumentEquityEtfExtra E
+							INNER JOIN
+								dbo.MdmInstrumentFreeFloat F
+							ON E.ISIN = F.ISIN
+						WHERE
+								E.ISEQOverallFreeFloat != F.ISEQOverallFreeFloat
+							OR 
+								E.ISEQ20Freefloat != F.ISEQ20Freefloat
+						)
+			OR
+				/* PROCESS SPECIAL PASSED IN ISIN -> WISDOM TREE */
+				DWH.ISIN = @SPECIAL_ISIN 
+			)	
+
+
+
+	/* BEST VERSION OF NON-XT DETAILS */
+	SELECT
+		COMPANY_GID,
+		MAX(InstrumentID) AS InstrumentID
+	INTO
+		#DWH_COMPANIES
+	FROM
+			#KEYS K
+		INNER JOIN
+			DwhDimInstrumentEquityEtf DWH
+
+		ON K.COMPANY_GID = DWH.CompanyGlobalID 
+	WHERE
+		COMPANY_GID NOT IN ( SELECT GID FROM BestCompany )
+	AND
+		COMPANY_GID <> ''
+	GROUP BY
+		COMPANY_GID
+
+	SELECT
+		ISSUER_GID,
+		MAX(InstrumentID) AS InstrumentID
+	INTO
+		#DWH_ISSUERS
+	FROM
+			#KEYS K
+		INNER JOIN
+			DwhDimInstrumentEquityEtf DWH
+		ON K.ISSUER_GID = DWH.IssuerGlobalID
+	WHERE
+		ISSUER_GID NOT IN ( SELECT GID FROM BestIssuer )
+	AND
+		ISSUER_GID <> ''
+	GROUP BY
+		ISSUER_GID
+
+	INSERT INTO   
+			dbo.XtOdsInstrumentEquityEtfUpdate   
+		SELECT  
+			/* This field should never be null */   
+			COALESCE( SHARE.GID, D1.InstrumentGlobalID ) AS InstrumentGlobalID,   
+			COALESCE( SHARE.Name, D1.InstrumentName ) AS InstrumentName,   
+			COALESCE( SHARE.Asset_Type, D1.InstrumentType ) AS InstrumentType,   
+			COALESCE( SHARE.SecurityType, D1.SecurityType, '' ) AS SecurityType,   
+			COALESCE( SHARE.ISIN, D1.ISIN ) AS ISIN,   
+			/* DO IN PIPE / SOMEWHERE ELSE */   
+			/*			InstrumentDomesticYN	*/  
+			COALESCE( SHARE.SEDOL, D1.SEDOL ) AS SEDOL,   
+			COALESCE( SHARE.ListingStatus, D1.InstrumentStatusName ) AS InstrumentStatusName,   
+			COALESCE( SHARE.InstrumentStatusDate, D1.InstrumentStatusDate ) AS InstrumentStatusDate,   
+			COALESCE( SHARE.ListingDate, D1.InstrumentListedDate ) AS InstrumentListedDate, 		  
+			COALESCE( SHARE.TradingSysInstrumentName, D1.TradingSysInstrumentName ) AS TradingSysInstrumentName,   
+			COALESCE( SHARE.CompanyGID, D1.CompanyGlobalID ) AS CompanyGlobalID,   
+			SHARE.MarketType AS MarketName,   
+			D1.MarketCode, 
+			COALESCE( SHARE.WKN, D1.WKN ) AS	WKN,   
+			COALESCE( SHARE.MNEM, D1.MNEM ) AS MNEM,  
+			COALESCE( SHARE.SmfName, D1.InstrumentSedolMasterFileName ) AS InstrumentSedolMasterFileName,   
+			COALESCE( ISSUER.SmfName, D3.IssuerSedolMasterFileName, D1.IssuerSedolMasterFileName ) AS IssuerSedolMasterFileName,   
+			IIF(SHARE.IteqIndexFlag IS NOT NULL, IIF(SHARE.IteqIndexFlag = 1,'Y', 'N'), D1.ITEQIndexYN ) AS ITEQIndexYN,   
+			IIF(SHARE.ISEQ20IndexFlag IS NOT NULL, IIF(SHARE.ISEQ20IndexFlag = 1,'Y', 'N'), D1.ISEQ20IndexYN ) AS ISEQ20IndexYN,   
+			IIF(SHARE.ESMIndexFlag IS NOT NULL, IIF(SHARE.ESMIndexFlag = 1,'Y', 'N'), D1.ESMIndexYN ) AS ESMIndexYN,   
+			/* WILL COME FROM COROPORATE ACTIONS */  
+			D1.LastEXDivDate,  
+			IIF(SHARE.GID IS NOT NULL, IIF(SHARE.GeneralFinancialFlag = 0, 'Y', 'N' ), D1.GeneralIndexYN ) AS GeneralIndexYN,  
+			IIF(SHARE.GID IS NOT NULL, IIF(SHARE.GeneralFinancialFlag = 1, 'Y', 'N' ), D1.FinancialIndexYN ) AS FinancialIndexYN,  
+			IIF(SHARE.GID IS NOT NULL, IIF(SHARE.GeneralFinancialFlag IS NOT NULL, 'Y', 'N' ), D1.OverallIndexYN ) AS OverallIndexYN,  
+			IIF(SHARE.SmallCap IS NOT NULL,IIF(SHARE.SmallCap = 1, 'Y', 'N' ), D1.SmallCapIndexYN ) AS SmallCapIndexYN,   
+			COALESCE( SHARE.PrimaryMarket, D1.PrimaryMarket ) AS PrimaryMarket,   
+			COALESCE( SHARE.IssuedDate, D1.IssuedDate ) AS IssuedDate,   
+			COALESCE( SHARE.DenominationCurrency, D1.CurrencyISOCode ) AS CurrencyISOCode,   
+			COALESCE( SHARE.UnitOfQuotation, D1.UnitOfQuotation ) AS UnitOfQuotation,   
+			COALESCE( SHARE.QuotationCurrency, D1.QuotationCurrencyISOCode ) AS QuotationCurrencyISOCode,   
+			COALESCE( SHARE.ISEQOverallFreeFloat, D1.ISEQ20Freefloat ) AS ISEQ20Freefloat,   
+			COALESCE( SHARE.ISEQOverallFreeFloat, D1.ISEQOverallFreeFloat ) AS ISEQOverallFreeFloat,   
+			COALESCE( SHARE.CFIName, D1.CFIName ) AS CFIName,   
+			COALESCE( SHARE.CFICode, D1.CFICode ) AS CFICode,  
+			COALESCE( SHARE.TotalSharesInIssue, D1.TotalSharesInIssue ) AS TotalSharesInIssue,    
+			COALESCE( COMPANY.ListingDate, D2.CompanyListedDate, D1.CompanyListedDate ) AS CompanyListedDate,   
+			COALESCE( COMPANY.ApprovalDate, D2.CompanyApprovalDate, D1.CompanyApprovalDate ) AS CompanyApprovalDate,  
+			COALESCE( COMPANY.ApprovalType, D2.CompanyApprovalType, D1.CompanyApprovalType ) AS CompanyApprovalType,   
+			COALESCE( COMPANY.ListingStatus, D1.CompanyStatusName ) AS CompanyStatusName,   
+			COALESCE( SHARE.Note , D1.Note ) AS Note,   
+ 			IIF(COMPANY.TDFlag IS NOT NULL, IIF(COMPANY.TDFlag = 1, 'Y','N') , COALESCE(D2.TransparencyDirectiveYN, D1.TransparencyDirectiveYN) ) AS TransparencyDirectiveYN,   
+			IIF(COMPANY.MADFlag IS NOT NULL, IIF(COMPANY.MADFlag =1, 'Y','N'), COALESCE(D2.MarketAbuseDirectiveYN, D1.MarketAbuseDirectiveYN) ) AS MarketAbuseDirectiveYN,   
+			IIF(COMPANY.PDFlag IS NOT NULL, IIF(COMPANY.PDFlag = 1, 'Y','N'), COALESCE(D2.ProspectusDirectiveYN, D1.ProspectusDirectiveYN) ) AS ProspectusDirectiveYN,   
+			COALESCE( COMPANY.Sector, D2.PrimaryBusinessSector, D1.PrimaryBusinessSector  ) AS PrimaryBusinessSector,   
+			COALESCE( COMPANY.SubFocus1, D2.SubBusinessSector1, D1.SubBusinessSector1 ) AS SubBusinessSector1,   
+			COALESCE( COMPANY.SubFocus2, D2.SubBusinessSector2, D1.SubBusinessSector2 ) AS SubBusinessSector2,   
+			COALESCE( COMPANY.SubFocus3, D2.SubBusinessSector3, D1.SubBusinessSector3 ) AS SubBusinessSector3,   
+			COALESCE( COMPANY.SubFocus4, D2.SubBusinessSector4, D1.SubBusinessSector4 ) AS SubBusinessSector4,   
+			COALESCE( COMPANY.SubFocus5, D2.SubBusinessSector5, D1.SubBusinessSector5 ) AS SubBusinessSector5,   
+			COALESCE( COMPANY.IssuerGid, ISSUER.Gid, D2.IssuerGlobalID , D1.IssuerGlobalID ) AS IssuerGlobalID,   
+			COALESCE( ISSUER.Name, D3.IssuerName, D1.IssuerName ) AS IssuerName,   
+			COALESCE( ISSUER.Domicile, D3.IssuerDomicile, D1.IssuerDomicile ) AS IssuerDomicile,   
+			COALESCE( ISSUER.YearEnd, D3.FinancialYearEndDate, D1.FinancialYearEndDate ) AS FinancialYearEndDate,   
+			COALESCE( ISSUER.DateofIncorporation, D3.IncorporationDate, D1.IncorporationDate ) AS IncorporationDate,   
+			COALESCE( ISSUER.LegalStructure, D3.LegalStructure, D1.LegalStructure ) AS LegalStructure,   
+			COALESCE( ISSUER.AccountingStandard, D3.AccountingStandard, D1.AccountingStandard ) AS AccountingStandard,   
+			COALESCE( ISSUER.TD_home_member_country, D3.TransparencyDirectiveHomeMemberCountry, D1.TransparencyDirectiveHomeMemberCountry ) AS TransparencyDirectiveHomeMemberCountry,   
+			COALESCE( ISSUER.Pd_Home_Member_Country, D3.ProspectusDirectiveHomeMemberCountry, D1.ProspectusDirectiveHomeMemberCountry ) AS ProspectusDirectiveHomeMemberCountry,   
+			IIF( ISSUER.DomicileDomesticFlag IS NOT NULL, IIF(ISSUER.DomicileDomesticFlag = 1,'Y', 'N'), COALESCE(D3.IssuerDomicileDomesticYN, D1.IssuerDomicileDomesticYN ) ) AS IssuerDomicileDomesticYN,   
+			COALESCE( CAST(ISSUER.FeeCode AS CHAR(4)), D3.FeeCodeName, D1.FeeCodeName ) AS FeeCodeName   
+	FROM  
+			#Keys K  
+		LEFT OUTER JOIN  
+			[dbo].[BestShare] SHARE   
+		ON   
+			K.SHARE_GID = SHARE.GID  
+		LEFT OUTER JOIN  
+			[dbo].[BestCompany] COMPANY   
+		ON   
+			K.COMPANY_GID = COMPANY.GID   
+		LEFT OUTER JOIN  
+			[dbo].[BestIssuer] ISSUER   
+		ON   
+			K.ISSUER_GID = ISSUER.Gid   
+		LEFT OUTER JOIN  
+			dbo.DwhDimInstrumentEquityEtf D1   
+		ON  
+			K.DwhInstrumentID  = D1.InstrumentID  
+
+		LEFT OUTER JOIN
+			#DWH_COMPANIES J2
+		ON K.COMPANY_GID = J2.COMPANY_GID
+
+		LEFT OUTER JOIN
+			DwhDimInstrumentEquityEtf D2
+		ON J2.InstrumentID = D2.InstrumentID
+		LEFT OUTER JOIN
+			#DWH_ISSUERS J3
+		ON K.ISSUER_GID = J3.ISSUER_GID
+		LEFT OUTER JOIN
+			DwhDimInstrumentEquityEtf D3
+		ON J3.InstrumentID = D3.InstrumentID
+
+
+	DROP TABLE #KEYS  
+	DROP TABLE #DWH_COMPANIES
+	DROP TABLE #DWH_ISSUERS
  
-END  
+   
+	/* MAKE EVERYTHING THAT IS NOT AN ETF AN EQUITY */ 
+	/* COULD CAUSE ISSUES IF EquityStage IS POPULATED WITH NON-SHARE BASED INSTRUMENTS */ 
+	UPDATE 
+		dbo.XtOdsInstrumentEquityEtfUpdate   
+	SET 
+		InstrumentType = 'Equity' 
+	WHERE 
+		InstrumentType NOT IN ( 'Equity', 'ETF' ) 
+ 
+  
+END   
 GO

@@ -1,6 +1,6 @@
 CREATE TABLE [dbo].[DwhDimInstrumentEquityEtf]
 (
-[InstrumentID] [int] NULL,
+[InstrumentID] [int] NOT NULL,
 [InstrumentGlobalID] [varchar] (30) COLLATE Latin1_General_CI_AS NULL,
 [InstrumentName] [varchar] (256) COLLATE Latin1_General_CI_AS NULL,
 [InstrumentType] [varchar] (50) COLLATE Latin1_General_CI_AS NULL,
@@ -74,4 +74,6 @@ CREATE TABLE [dbo].[DwhDimInstrumentEquityEtf]
 [CurrencyISOCode] [varchar] (3) COLLATE Latin1_General_CI_AS NULL,
 [QuotationCurrencyISOCode] [varchar] (3) COLLATE Latin1_General_CI_AS NULL
 ) ON [PRIMARY]
+GO
+ALTER TABLE [dbo].[DwhDimInstrumentEquityEtf] ADD CONSTRAINT [PK_DwhDimInstrumentEquityEtf] PRIMARY KEY CLUSTERED  ([InstrumentID]) ON [PRIMARY]
 GO

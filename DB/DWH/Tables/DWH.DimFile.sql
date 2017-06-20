@@ -9,7 +9,6 @@ CREATE TABLE [DWH].[DimFile]
 [FileProcessedTime] [datetime2] NOT NULL,
 [FileProcessedStatus] [varchar] (50) COLLATE Latin1_General_CI_AS NOT NULL,
 [ExpectedStartTime] [time] NULL,
-[ExpectedFinishTime] [time] NULL,
 [ContainsEndOfDayDetails] [char] (1) COLLATE Latin1_General_CI_AS NULL
 ) ON [PRIMARY]
 GO

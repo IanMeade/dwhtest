@@ -13,7 +13,7 @@ CREATE TABLE [dbo].[ValidationUnitTest]
 [SilentChanges] [bit] NOT NULL
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[ValidationUnitTest] ADD CONSTRAINT [PK_ValidationTest] PRIMARY KEY CLUSTERED  ([ValidationUnitTestID]) ON [PRIMARY]
+ALTER TABLE [dbo].[ValidationUnitTest] ADD CONSTRAINT [PK_ValidationUnitTest] PRIMARY KEY CLUSTERED  ([ValidationTestSuiteID], [RunOrder], [ValidationUnitTestID]) ON [PRIMARY]
 GO
 CREATE UNIQUE NONCLUSTERED INDEX [IX_ValidationUnitTest] ON [dbo].[ValidationUnitTest] ([ValidationUnitTestTag]) ON [PRIMARY]
 GO

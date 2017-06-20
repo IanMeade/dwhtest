@@ -1,5 +1,6 @@
 CREATE TABLE [dbo].[XtOdsShare]
 (
+[ID] [int] NOT NULL IDENTITY(1, 1),
 [Asset_Type] [varchar] (100) COLLATE Latin1_General_CI_AS NULL,
 [Name] [varchar] (450) COLLATE Latin1_General_CI_AS NULL,
 [DelistedDefunct] [bit] NULL,

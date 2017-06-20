@@ -12,8 +12,8 @@
   DTS:LocaleID="6153"
   DTS:ObjectName="PckStoxxFiles"
   DTS:PackageType="5"
-  DTS:VersionBuild="76"
-  DTS:VersionGUID="{1D696DA9-AE0F-4280-A186-BFF355CD7779}">
+  DTS:VersionBuild="80"
+  DTS:VersionGUID="{868AAA0E-CCBA-4ED3-8DBE-684B96409036}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -625,7 +625,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="FSYS Move bads files"
           DTS:TaskContact="File System Task;Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:EventHandlers>
             <DTS:EventHandler
@@ -670,7 +670,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="FSYS Move good files"
           DTS:TaskContact="File System Task;Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="1">
+          DTS:ThreadHint="0">
           <DTS:Variables />
           <DTS:EventHandlers>
             <DTS:EventHandler
@@ -4808,7 +4808,7 @@ AND
               <DTS:ObjectData>
                 <SQLTask:SqlTaskData
                   SQLTask:Connection="{1067BA9D-10C0-4550-891B-77F948260392}"
-                  SQLTask:SqlStatementSource="INSERT INTO dbo.FileList&#xA;&#x9;(&#xA;&#x9;&#x9;FileName, &#xA;&#x9;&#x9;EtlVersion, &#xA;&#x9;&#x9;DwhStatus, &#xA;&#x9;&#x9;FileTag&#xA;&#x9;)&#xA;&#x9;OUTPUT&#xA;&#x9;&#x9;INSERTED.FileID&#xA;&#x9;VALUES&#xA;&#x9;(&#xA;&#x9;&#x9;?,&#xA;&#x9;&#x9;?,&#xA;&#x9;&#x9;'NA',&#xA;&#x9;&#x9;?&#xA;&#x9;)&#xA;"
+                  SQLTask:SqlStatementSource="INSERT INTO dbo.FileList&#xA; (&#xA;  FileName, &#xA;  EtlVersion, &#xA;  DwhStatus, &#xA;  FileTag&#xA; )&#xA; OUTPUT&#xA;  INSERTED.FileID&#xA; VALUES&#xA; (&#xA;  ?,&#xA;  ?,&#xA;  'NA',&#xA;  ?&#xA; )&#xA;"
                   SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
                   <SQLTask:ResultBinding
                     SQLTask:ResultName="FileID"
@@ -5075,7 +5075,7 @@ AND
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{7AE745A6-BA4C-482E-9695-63779ECE70D4}"
-              SQLTask:SqlStatementSource="SELECT&#xA;&#x9;FileName,&#xA;&#x9;FileTag AS FileType,&#xA;&#x9;FileTag,&#xA;&#x9;ProcessFolder, &#xA;&#x9;ArchiveFolder, &#xA;&#x9;RejectFolder, &#xA;&#x9;[ProcessFolder] + [FileName] AS FullFilePath&#xA;FROM&#xA;&#x9;FileList&#xA;WHERE&#xA;&#x9;FileTag IN ( 'STATS', 'ISEQ20_STATS', 'ISEQ20_LEVERAGED' )&#xA;AND&#xA;&#x9;ProcessFileYN = 'Y'&#xA;"
+              SQLTask:SqlStatementSource="SELECT&#xA; FileName,&#xA; FileTag AS FileType,&#xA; FileTag,&#xA; ProcessFolder, &#xA; ArchiveFolder, &#xA; RejectFolder, &#xA; [ProcessFolder] + [FileName] AS FullFilePath&#xA;FROM&#xA; FileList&#xA;WHERE&#xA; FileTag IN ( 'STATS', 'ISEQ20_STATS', 'ISEQ20_LEVERAGED' )&#xA;AND&#xA; ProcessFileYN = 'Y'&#xA;"
               SQLTask:ResultType="ResultSetType_Rowset" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ResultBinding
                 SQLTask:ResultName="0"
@@ -5104,6 +5104,75 @@ AND
       DTS:ObjectName="Constraint 1"
       DTS:To="Package\SEQ Process Complete" />
   </DTS:PrecedenceConstraints>
+  <DTS:EventHandlers>
+    <DTS:EventHandler
+      DTS:refId="Package.EventHandlers[OnError]"
+      DTS:CreationName="OnError"
+      DTS:DTSID="{6661028B-4CD9-42AE-BC27-66ED4DDAD2DB}"
+      DTS:EventID="0"
+      DTS:EventName="OnError"
+      DTS:LocaleID="-1">
+      <DTS:Variables>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:Description="The propagate property of the event"
+          DTS:DTSID="{94B5C014-00D6-4447-AF56-4D5E3973F06B}"
+          DTS:IncludeInDebugDump="6789"
+          DTS:Namespace="System"
+          DTS:ObjectName="Propagate">
+          <DTS:VariableValue
+            DTS:DataType="11">-1</DTS:VariableValue>
+        </DTS:Variable>
+      </DTS:Variables>
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package.EventHandlers[OnError]\EPT Error Handler"
+          DTS:CreationName="Microsoft.ExecutePackageTask"
+          DTS:Description="Execute Package Task"
+          DTS:DTSID="{f3b72552-6b11-479f-a34d-1a9e37736340}"
+          DTS:ExecutableType="Microsoft.ExecutePackageTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="EPT Error Handler"
+          DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <ExecutePackageTask>
+              <UseProjectReference>True</UseProjectReference>
+              <PackageName>PckErrorHandler.dtsx</PackageName>
+              <ParameterAssignment>
+                <ParameterName>ErrorCode</ParameterName>
+                <BindedVariableOrParameterName>System::ErrorCode</BindedVariableOrParameterName>
+              </ParameterAssignment>
+              <ParameterAssignment>
+                <ParameterName>ErrorDescription</ParameterName>
+                <BindedVariableOrParameterName>System::ErrorDescription</BindedVariableOrParameterName>
+              </ParameterAssignment>
+              <ParameterAssignment>
+                <ParameterName>ErrorPackageName</ParameterName>
+                <BindedVariableOrParameterName>System::PackageName</BindedVariableOrParameterName>
+              </ParameterAssignment>
+              <ParameterAssignment>
+                <ParameterName>SourceDescription</ParameterName>
+                <BindedVariableOrParameterName>System::SourceDescription</BindedVariableOrParameterName>
+              </ParameterAssignment>
+              <ParameterAssignment>
+                <ParameterName>SourceID</ParameterName>
+                <BindedVariableOrParameterName>System::SourceID</BindedVariableOrParameterName>
+              </ParameterAssignment>
+              <ParameterAssignment>
+                <ParameterName>SourceName</ParameterName>
+                <BindedVariableOrParameterName>System::SourceName</BindedVariableOrParameterName>
+              </ParameterAssignment>
+              <ParameterAssignment>
+                <ParameterName>SourceParentGUID</ParameterName>
+                <BindedVariableOrParameterName>System::SourceParentGUID</BindedVariableOrParameterName>
+              </ParameterAssignment>
+            </ExecutePackageTask>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+    </DTS:EventHandler>
+  </DTS:EventHandlers>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
 <!--If you manually edit this section and make a mistake, you can delete it. -->
@@ -5495,6 +5564,17 @@ AND
           Id="Package\FELC Stage Stoxx Files"
           TopLeft="54.33333333333,336.5" />
         <NodeLayout
+          Size="165,42"
+          Id="Package\SEQ Process Complete\EPT ProcessStatus"
+          TopLeft="28,19" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="208,116"
+          Size="208,159"
+          Id="Package\SEQ Process Complete"
+          TopLeft="455,1125" />
+        <NodeLayout
           Size="238,42"
           Id="Package\SEQ Saft Price Stage Prep\SQL Get ETL Version"
           TopLeft="52,97" />
@@ -5531,17 +5611,6 @@ AND
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="165,42"
-          Id="Package\SEQ Process Complete\EPT ProcessStatus"
-          TopLeft="28,19" />
-        <ContainerLayout
-          HeaderHeight="43"
-          IsExpanded="True"
-          PanelSize="208,116"
-          Size="208,159"
-          Id="Package\SEQ Process Complete"
-          TopLeft="455,1125" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
           TopLeft="560.416666666665,1061.5">
@@ -5567,11 +5636,23 @@ AND
       </GraphLayout>
     </LayoutInfo>
   </Package>
+  <DtsEventHandler
+    design-time-name="Package.EventHandlers[OnError]">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="164,42"
+          Id="Package.EventHandlers[OnError]\EPT Error Handler"
+          TopLeft="52,37" />
+      </GraphLayout>
+    </LayoutInfo>
+  </DtsEventHandler>
   <TaskHost
     design-time-name="Package\FELC Stage Stoxx Files\SEQ Process Stoxx File to ODS\DFT ODS ISEQ20_LEVERAGED">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="150,42"
           Id="Package\FELC Stage Stoxx Files\SEQ Process Stoxx File to ODS\DFT ODS ISEQ20_LEVERAGED\OLE DB Source"
@@ -5584,78 +5665,6 @@ AND
           Size="154,42"
           Id="Package\FELC Stage Stoxx Files\SEQ Process Stoxx File to ODS\DFT ODS ISEQ20_LEVERAGED\Derived Column"
           TopLeft="68,138" />
-        <EdgeLayout
-          Id="Package\FELC Stage Stoxx Files\SEQ Process Stoxx File to ODS\DFT ODS ISEQ20_LEVERAGED.Paths[OLE DB Source Output]"
-          TopLeft="127,88">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{x:Null}"
-              EndConnector="18,50"
-              Start="0,0"
-              End="18,42.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,21" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,21"
-                    Point2="0,25"
-                    Point3="4,25" />
-                  <mssgle:LineSegment
-                    End="14,25" />
-                  <mssgle:CubicBezierSegment
-                    Point1="14,25"
-                    Point2="18,25"
-                    Point3="18,29" />
-                  <mssgle:LineSegment
-                    End="18,42.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\FELC Stage Stoxx Files\SEQ Process Stoxx File to ODS\DFT ODS ISEQ20_LEVERAGED.Paths[Derived Column Output]"
-          TopLeft="145,180">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{x:Null}"
-              EndConnector="54.5,50"
-              Start="0,0"
-              End="54.5,42.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,21" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,21"
-                    Point2="0,25"
-                    Point3="4,25" />
-                  <mssgle:LineSegment
-                    End="50.5,25" />
-                  <mssgle:CubicBezierSegment
-                    Point1="50.5,25"
-                    Point2="54.5,25"
-                    Point3="54.5,29" />
-                  <mssgle:LineSegment
-                    End="54.5,42.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
@@ -5684,7 +5693,7 @@ AND
     design-time-name="Package\FELC Stage Stoxx Files\SEQ Process Stoxx File to ODS\DFT ODS STATS">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="171,42"
           Id="Package\FELC Stage Stoxx Files\SEQ Process Stoxx File to ODS\DFT ODS STATS\OLE DB Destination"
@@ -5697,66 +5706,6 @@ AND
           Size="150,42"
           Id="Package\FELC Stage Stoxx Files\SEQ Process Stoxx File to ODS\DFT ODS STATS\OLE DB Source"
           TopLeft="48,26" />
-        <EdgeLayout
-          Id="Package\FELC Stage Stoxx Files\SEQ Process Stoxx File to ODS\DFT ODS STATS.Paths[OLE DB Source Output]"
-          TopLeft="123,68">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{x:Null}"
-              EndConnector="48,62"
-              Start="0,0"
-              End="48,54.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,27" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,27"
-                    Point2="0,31"
-                    Point3="4,31" />
-                  <mssgle:LineSegment
-                    End="44,31" />
-                  <mssgle:CubicBezierSegment
-                    Point1="44,31"
-                    Point2="48,31"
-                    Point3="48,35" />
-                  <mssgle:LineSegment
-                    End="48,54.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\FELC Stage Stoxx Files\SEQ Process Stoxx File to ODS\DFT ODS STATS.Paths[Derived Column Output]"
-          TopLeft="169.75,172">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{x:Null}"
-              EndConnector="0,57"
-              Start="0,0"
-              End="0,49.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,49.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
@@ -5785,7 +5734,7 @@ AND
     design-time-name="Package\FELC Stage Stoxx Files\SEQ Process Stoxx File to ODS\DFT Stage  ISEQ20 STATS">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="151,42"
           Id="Package\FELC Stage Stoxx Files\SEQ Process Stoxx File to ODS\DFT Stage  ISEQ20 STATS\Flat File Source"
@@ -5798,78 +5747,6 @@ AND
           Size="171,42"
           Id="Package\FELC Stage Stoxx Files\SEQ Process Stoxx File to ODS\DFT Stage  ISEQ20 STATS\OLE DB Destination"
           TopLeft="269,247" />
-        <EdgeLayout
-          Id="Package\FELC Stage Stoxx Files\SEQ Process Stoxx File to ODS\DFT Stage  ISEQ20 STATS.Paths[Flat File Source Output]"
-          TopLeft="412.5,90">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{x:Null}"
-              EndConnector="32.5,59"
-              Start="0,0"
-              End="32.5,51.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,25.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,25.5"
-                    Point2="0,29.5"
-                    Point3="4,29.5" />
-                  <mssgle:LineSegment
-                    End="28.5,29.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="28.5,29.5"
-                    Point2="32.5,29.5"
-                    Point3="32.5,33.5" />
-                  <mssgle:LineSegment
-                    End="32.5,51.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\FELC Stage Stoxx Files\SEQ Process Stoxx File to ODS\DFT Stage  ISEQ20 STATS.Paths[Derived Column Output]"
-          TopLeft="445,191">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{x:Null}"
-              EndConnector="-90.5,56"
-              Start="0,0"
-              End="-90.5,48.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,24" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,24"
-                    Point2="0,28"
-                    Point3="-4,28" />
-                  <mssgle:LineSegment
-                    End="-86.5,28" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-86.5,28"
-                    Point2="-90.5,28"
-                    Point3="-90.5,32" />
-                  <mssgle:LineSegment
-                    End="-90.5,48.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
@@ -5890,7 +5767,7 @@ AND
     design-time-name="Package\FELC Stage Stoxx Files\SEQ Process Stoxx File to ODS\DFT Stage  ISEQ20_LEVERAGED">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="171,42"
           Id="Package\FELC Stage Stoxx Files\SEQ Process Stoxx File to ODS\DFT Stage  ISEQ20_LEVERAGED\OLE DB Destination"
@@ -5903,78 +5780,6 @@ AND
           Size="154,42"
           Id="Package\FELC Stage Stoxx Files\SEQ Process Stoxx File to ODS\DFT Stage  ISEQ20_LEVERAGED\Derived Column"
           TopLeft="181,155" />
-        <EdgeLayout
-          Id="Package\FELC Stage Stoxx Files\SEQ Process Stoxx File to ODS\DFT Stage  ISEQ20_LEVERAGED.Paths[Derived Column Output]"
-          TopLeft="258,197">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{x:Null}"
-              EndConnector="8.5,68"
-              Start="0,0"
-              End="8.5,60.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,30" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,30"
-                    Point2="0,34"
-                    Point3="4,34" />
-                  <mssgle:LineSegment
-                    End="4.5,34" />
-                  <mssgle:CubicBezierSegment
-                    Point1="4.5,34"
-                    Point2="8.5,34"
-                    Point3="8.5,38" />
-                  <mssgle:LineSegment
-                    End="8.5,60.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\FELC Stage Stoxx Files\SEQ Process Stoxx File to ODS\DFT Stage  ISEQ20_LEVERAGED.Paths[Flat File Source Output]"
-          TopLeft="234.5,80">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{x:Null}"
-              EndConnector="23.5,75"
-              Start="0,0"
-              End="23.5,67.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,33.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,33.5"
-                    Point2="0,37.5"
-                    Point3="4,37.5" />
-                  <mssgle:LineSegment
-                    End="19.5,37.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="19.5,37.5"
-                    Point2="23.5,37.5"
-                    Point3="23.5,41.5" />
-                  <mssgle:LineSegment
-                    End="23.5,67.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
@@ -5982,7 +5787,7 @@ AND
     design-time-name="Package\FELC Stage Stoxx Files\SEQ Process Stoxx File to ODS\DFT Stage STATS">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="151,42"
           Id="Package\FELC Stage Stoxx Files\SEQ Process Stoxx File to ODS\DFT Stage STATS\Flat File Source"
@@ -5995,78 +5800,6 @@ AND
           Size="154,42"
           Id="Package\FELC Stage Stoxx Files\SEQ Process Stoxx File to ODS\DFT Stage STATS\Derived Column"
           TopLeft="221,185" />
-        <EdgeLayout
-          Id="Package\FELC Stage Stoxx Files\SEQ Process Stoxx File to ODS\DFT Stage STATS.Paths[Flat File Source Output]"
-          TopLeft="258.5,128">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{x:Null}"
-              EndConnector="39.5,57"
-              Start="0,0"
-              End="39.5,49.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,24.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,24.5"
-                    Point2="0,28.5"
-                    Point3="4,28.5" />
-                  <mssgle:LineSegment
-                    End="35.5,28.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="35.5,28.5"
-                    Point2="39.5,28.5"
-                    Point3="39.5,32.5" />
-                  <mssgle:LineSegment
-                    End="39.5,49.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\FELC Stage Stoxx Files\SEQ Process Stoxx File to ODS\DFT Stage STATS.Paths[Derived Column Output]"
-          TopLeft="298,227">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{x:Null}"
-              EndConnector="35.5,91"
-              Start="0,0"
-              End="35.5,83.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,41.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,41.5"
-                    Point2="0,45.5"
-                    Point3="4,45.5" />
-                  <mssgle:LineSegment
-                    End="31.5,45.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="31.5,45.5"
-                    Point2="35.5,45.5"
-                    Point3="35.5,49.5" />
-                  <mssgle:LineSegment
-                    End="35.5,83.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
@@ -6074,7 +5807,7 @@ AND
     design-time-name="Package\FELC Stage Stoxx Files\SEQ Process Stoxx File to ODS\DST ODS ISEQ20 STATS">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="150,42"
           Id="Package\FELC Stage Stoxx Files\SEQ Process Stoxx File to ODS\DST ODS ISEQ20 STATS\OLE DB Source"
@@ -6087,78 +5820,6 @@ AND
           Size="154,42"
           Id="Package\FELC Stage Stoxx Files\SEQ Process Stoxx File to ODS\DST ODS ISEQ20 STATS\Derived Column"
           TopLeft="166,163" />
-        <EdgeLayout
-          Id="Package\FELC Stage Stoxx Files\SEQ Process Stoxx File to ODS\DST ODS ISEQ20 STATS.Paths[OLE DB Source Output]"
-          TopLeft="209,92">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{x:Null}"
-              EndConnector="34,71"
-              Start="0,0"
-              End="34,63.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,31.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,31.5"
-                    Point2="0,35.5"
-                    Point3="4,35.5" />
-                  <mssgle:LineSegment
-                    End="30,35.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="30,35.5"
-                    Point2="34,35.5"
-                    Point3="34,39.5" />
-                  <mssgle:LineSegment
-                    End="34,63.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\FELC Stage Stoxx Files\SEQ Process Stoxx File to ODS\DST ODS ISEQ20 STATS.Paths[Derived Column Output]"
-          TopLeft="243,205">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{x:Null}"
-              EndConnector="23.5,78"
-              Start="0,0"
-              End="23.5,70.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,35" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,35"
-                    Point2="0,39"
-                    Point3="4,39" />
-                  <mssgle:LineSegment
-                    End="19.5,39" />
-                  <mssgle:CubicBezierSegment
-                    Point1="19.5,39"
-                    Point2="23.5,39"
-                    Point3="23.5,43" />
-                  <mssgle:LineSegment
-                    End="23.5,70.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>

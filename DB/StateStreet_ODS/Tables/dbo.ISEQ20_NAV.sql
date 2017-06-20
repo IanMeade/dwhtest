@@ -4,6 +4,7 @@ CREATE TABLE [dbo].[ISEQ20_NAV]
 [Umbrella_Name] [varchar] (25) COLLATE Latin1_General_CI_AS NULL,
 [Fund_Class] [varchar] (4) COLLATE Latin1_General_CI_AS NULL,
 [Valuation_Date] [datetime] NULL,
+[RealDate] AS (CONVERT([date],[Valuation_Date],(0))) PERSISTED,
 [BASECurrency] [varchar] (3) COLLATE Latin1_General_CI_AS NULL,
 [QUOTCurrency] [varchar] (3) COLLATE Latin1_General_CI_AS NULL,
 [NAV_per_unit] [numeric] (19, 4) NULL,

@@ -8,7 +8,8 @@ CREATE TABLE [dbo].[ErrorLog]
 [SourceDescription] [varchar] (max) COLLATE Latin1_General_CI_AS NULL,
 [SourceID] [varchar] (max) COLLATE Latin1_General_CI_AS NOT NULL,
 [SourceName] [varchar] (max) COLLATE Latin1_General_CI_AS NOT NULL,
-[SourceParentGUID] [varchar] (max) COLLATE Latin1_General_CI_AS NOT NULL
+[SourceParentGUID] [varchar] (max) COLLATE Latin1_General_CI_AS NOT NULL,
+[SourcePackage] [varchar] (max) COLLATE Latin1_General_CI_AS NULL
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
 ALTER TABLE [dbo].[ErrorLog] ADD CONSTRAINT [PK_ErrorLog] PRIMARY KEY CLUSTERED  ([ErrorID]) ON [PRIMARY]

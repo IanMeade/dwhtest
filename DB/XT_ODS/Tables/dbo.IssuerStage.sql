@@ -19,9 +19,9 @@ CREATE TABLE [dbo].[IssuerStage]
 [IsoCode] [varchar] (2) COLLATE Latin1_General_CI_AS NULL,
 [Gid] [varchar] (30) COLLATE Latin1_General_CI_AS NOT NULL,
 [ExtractSequenceId] [bigint] NOT NULL IDENTITY(1, 1),
-[ExtractDate] [datetime] NULL CONSTRAINT [DF__IssuerSta__Extra__182C9B23] DEFAULT (getdate()),
+[ExtractDate] [datetime] NULL CONSTRAINT [DF__IssuerSta__Extra__239E4DCF] DEFAULT (getdate()),
 [MessageId] [varchar] (256) COLLATE Latin1_General_CI_AS NULL
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[IssuerStage] ADD CONSTRAINT [PK__IssuerSt__A1071C3D4A988E36] PRIMARY KEY CLUSTERED  ([ExtractSequenceId]) WITH (FILLFACTOR=80) ON [PRIMARY]
+ALTER TABLE [dbo].[IssuerStage] ADD CONSTRAINT [PK__IssuerSt__A1071C3DD5A6A91E] PRIMARY KEY CLUSTERED  ([ExtractSequenceId]) ON [PRIMARY]
 GO

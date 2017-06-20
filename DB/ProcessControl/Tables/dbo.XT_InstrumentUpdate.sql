@@ -31,8 +31,6 @@ CREATE TABLE [dbo].[XT_InstrumentUpdate]
 [CurrencyISOCode] [varchar] (100) COLLATE Latin1_General_CI_AS NULL,
 [UnitOfQuotation] [numeric] (23, 10) NULL,
 [QuotationCurrencyISOCode] [varchar] (100) COLLATE Latin1_General_CI_AS NULL,
-[ISEQ20Freefloat] [numeric] (23, 10) NULL,
-[ISEQOverallFreeFloat] [numeric] (23, 10) NULL,
 [CFIName] [varchar] (200) COLLATE Latin1_General_CI_AS NULL,
 [CFICode] [varchar] (10) COLLATE Latin1_General_CI_AS NULL,
 [TotalSharesInIssue] [numeric] (28, 6) NULL,

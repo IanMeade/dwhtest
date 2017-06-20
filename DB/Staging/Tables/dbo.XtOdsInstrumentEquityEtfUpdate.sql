@@ -12,6 +12,7 @@ CREATE TABLE [dbo].[XtOdsInstrumentEquityEtfUpdate]
 [TradingSysInstrumentName] [varchar] (200) COLLATE Latin1_General_CI_AS NULL,
 [CompanyGlobalID] [varchar] (30) COLLATE Latin1_General_CI_AS NULL,
 [MarketName] [varchar] (100) COLLATE Latin1_General_CI_AS NULL,
+[MarketCode] [char] (3) COLLATE Latin1_General_CI_AS NULL,
 [WKN] [varchar] (6) COLLATE Latin1_General_CI_AS NULL,
 [MNEM] [varchar] (4) COLLATE Latin1_General_CI_AS NULL,
 [InstrumentSedolMasterFileName] [varchar] (40) COLLATE Latin1_General_CI_AS NULL,

@@ -11,8 +11,8 @@
   DTS:LocaleID="6153"
   DTS:ObjectName="PckT7PriceStage"
   DTS:PackageType="5"
-  DTS:VersionBuild="55"
-  DTS:VersionGUID="{D0A6361C-5A7E-4EF1-B956-FEDEE50E5C41}">
+  DTS:VersionBuild="59"
+  DTS:VersionGUID="{D2D1E582-09F7-4DCB-850E-1B73D75BAAA4}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -1554,7 +1554,7 @@
               DTS:LocaleID="-1"
               DTS:ObjectName="FSYS Move bad files"
               DTS:TaskContact="File System Task;Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-              DTS:ThreadHint="2">
+              DTS:ThreadHint="0">
               <DTS:Variables />
               <DTS:ObjectData>
                 <FileSystemData
@@ -1609,12 +1609,12 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="SQL Bad file names"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="2">
+          DTS:ThreadHint="0">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{7AE745A6-BA4C-482E-9695-63779ECE70D4}"
-              SQLTask:SqlStatementSource="SELECT&#xA;&#x9;FL.SourceFolder + FL.FileName AS SRC,&#xA;&#x9;FL.RejectFolder + FL.FileName AS DST,&#xA;&#x9;FL.FileName,&#xA;&#x9;FVA.FileTag, &#xA;&#x9;FVA.AlertTag, &#xA;&#x9;FVA.Reason, &#xA;&#x9;FVA.Action&#xA;FROM&#xA;&#x9;dbo.FileList FL&#xA;INNER JOIN&#xA;&#x9;dbo.PriceFileRowCountValidationAlert FVA&#xA;ON &#xA;&#x9;FL.FileName = FVA.FileName&#xA;AND &#xA;&#x9; FL.FileTag = FVA.FileTag&#xA;"
+              SQLTask:SqlStatementSource="SELECT&#xA; FL.SourceFolder + FL.FileName AS SRC,&#xA; FL.RejectFolder + FL.FileName AS DST,&#xA; FL.FileName,&#xA; FVA.FileTag, &#xA; FVA.AlertTag, &#xA; FVA.Reason, &#xA; FVA.Action&#xA;FROM&#xA; dbo.FileList FL&#xA;INNER JOIN&#xA; dbo.PriceFileRowCountValidationAlert FVA&#xA;ON &#xA; FL.FileName = FVA.FileName&#xA;AND &#xA;  FL.FileTag = FVA.FileTag&#xA;"
               SQLTask:ResultType="ResultSetType_Rowset" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ResultBinding
                 SQLTask:ResultName="0"
@@ -3565,7 +3565,7 @@ FROM
               DTS:LocaleID="-1"
               DTS:ObjectName="SQL T7 ODS PriceFIle"
               DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-              DTS:ThreadHint="0">
+              DTS:ThreadHint="2">
               <DTS:Variables />
               <DTS:ObjectData>
                 <SQLTask:SqlTaskData
@@ -3617,7 +3617,7 @@ FROM
           DTS:LocaleID="-1"
           DTS:ObjectName="SQL Good file name"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -3735,7 +3735,7 @@ FROM
           DTS:LocaleID="-1"
           DTS:ObjectName="SQL Get ETL Version"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="1">
+          DTS:ThreadHint="0">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -3757,7 +3757,7 @@ FROM
           DTS:LocaleID="-1"
           DTS:ObjectName="SQL Get Saft Files to Stage"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="2">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -3779,7 +3779,7 @@ FROM
           DTS:LocaleID="-1"
           DTS:ObjectName="SQL Staging Clear SAFT TradeFile"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="2">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -3857,6 +3857,75 @@ FROM
       DTS:ObjectName="Constraint 5"
       DTS:To="Package\SEQ Process Complete" />
   </DTS:PrecedenceConstraints>
+  <DTS:EventHandlers>
+    <DTS:EventHandler
+      DTS:refId="Package.EventHandlers[OnError]"
+      DTS:CreationName="OnError"
+      DTS:DTSID="{8C449821-3332-4C0C-857E-2127ADBEB5BE}"
+      DTS:EventID="0"
+      DTS:EventName="OnError"
+      DTS:LocaleID="-1">
+      <DTS:Variables>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:Description="The propagate property of the event"
+          DTS:DTSID="{2A6A8642-579B-4BE9-8B8D-E63CCEAFCC65}"
+          DTS:IncludeInDebugDump="6789"
+          DTS:Namespace="System"
+          DTS:ObjectName="Propagate">
+          <DTS:VariableValue
+            DTS:DataType="11">-1</DTS:VariableValue>
+        </DTS:Variable>
+      </DTS:Variables>
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package.EventHandlers[OnError]\EPT Error Handler"
+          DTS:CreationName="Microsoft.ExecutePackageTask"
+          DTS:Description="Execute Package Task"
+          DTS:DTSID="{1718e33a-4f03-4d79-b599-a374ceb3849f}"
+          DTS:ExecutableType="Microsoft.ExecutePackageTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="EPT Error Handler"
+          DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <ExecutePackageTask>
+              <UseProjectReference>True</UseProjectReference>
+              <PackageName>PckErrorHandler.dtsx</PackageName>
+              <ParameterAssignment>
+                <ParameterName>ErrorCode</ParameterName>
+                <BindedVariableOrParameterName>System::ErrorCode</BindedVariableOrParameterName>
+              </ParameterAssignment>
+              <ParameterAssignment>
+                <ParameterName>ErrorDescription</ParameterName>
+                <BindedVariableOrParameterName>System::ErrorDescription</BindedVariableOrParameterName>
+              </ParameterAssignment>
+              <ParameterAssignment>
+                <ParameterName>ErrorPackageName</ParameterName>
+                <BindedVariableOrParameterName>System::PackageName</BindedVariableOrParameterName>
+              </ParameterAssignment>
+              <ParameterAssignment>
+                <ParameterName>SourceDescription</ParameterName>
+                <BindedVariableOrParameterName>System::SourceDescription</BindedVariableOrParameterName>
+              </ParameterAssignment>
+              <ParameterAssignment>
+                <ParameterName>SourceID</ParameterName>
+                <BindedVariableOrParameterName>System::SourceID</BindedVariableOrParameterName>
+              </ParameterAssignment>
+              <ParameterAssignment>
+                <ParameterName>SourceName</ParameterName>
+                <BindedVariableOrParameterName>System::SourceName</BindedVariableOrParameterName>
+              </ParameterAssignment>
+              <ParameterAssignment>
+                <ParameterName>SourceParentGUID</ParameterName>
+                <BindedVariableOrParameterName>System::SourceParentGUID</BindedVariableOrParameterName>
+              </ParameterAssignment>
+            </ExecutePackageTask>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+    </DTS:EventHandler>
+  </DTS:EventHandlers>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
 <!--If you manually edit this section and make a mistake, you can delete it. -->
@@ -3870,7 +3939,7 @@ FROM
       <GraphLayout
         Capacity="64" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="172,42"
+          Size="191,42"
           Id="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle"
           TopLeft="88,182" />
         <NodeLayout
@@ -3913,26 +3982,14 @@ FROM
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{x:Null}"
-              EndConnector="-9.5,41"
+              EndConnector="0,41"
               Start="0,0"
-              End="-9.5,33.5">
+              End="0,33.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,16.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,16.5"
-                    Point2="0,20.5"
-                    Point3="-4,20.5" />
-                  <mssgle:LineSegment
-                    End="-5.5,20.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-5.5,20.5"
-                    Point2="-9.5,20.5"
-                    Point3="-9.5,24.5" />
-                  <mssgle:LineSegment
-                    End="-9.5,33.5" />
+                    End="0,33.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -3943,30 +4000,18 @@ FROM
         </EdgeLayout>
         <EdgeLayout
           Id="Package\FELC Stage Saft Price Files.PrecedenceConstraints[Constraint 3]"
-          TopLeft="174,224">
+          TopLeft="183.5,224">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{x:Null}"
-              EndConnector="9.5,41.5"
+              EndConnector="0,41.5"
               Start="0,0"
-              End="9.5,34">
+              End="0,34">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,16.75" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,16.75"
-                    Point2="0,20.75"
-                    Point3="4,20.75" />
-                  <mssgle:LineSegment
-                    End="5.5,20.75" />
-                  <mssgle:CubicBezierSegment
-                    Point1="5.5,20.75"
-                    Point2="9.5,20.75"
-                    Point3="9.5,24.75" />
-                  <mssgle:LineSegment
-                    End="9.5,34" />
+                    End="0,34" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -4029,7 +4074,7 @@ FROM
           PanelSize="407,363"
           Size="407,406"
           Id="Package\SEQ Move Bad Files to Reject"
-          TopLeft="429.66666666666,963.166666666667" />
+          TopLeft="463.66666666666,966.166666666667" />
         <NodeLayout
           Size="183,42"
           Id="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table"
@@ -4104,10 +4149,10 @@ FROM
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="295,628"
-          Size="295,671"
+          PanelSize="295,500"
+          Size="295,543"
           Id="Package\SEQ Move Good Files to Archive"
-          TopLeft="95,960.166666666667" />
+          TopLeft="97,966.166666666667" />
         <NodeLayout
           Size="165,42"
           Id="Package\SEQ Process Complete\EPT ProcessStatus"
@@ -4141,7 +4186,7 @@ FROM
         <NodeLayout
           Size="198,42"
           Id="Package\SQL Validate Row Counts"
-          TopLeft="310.83333333333,849.5" />
+          TopLeft="328.83333333333,839.5" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
           TopLeft="427.33333333333,360">
@@ -4166,30 +4211,30 @@ FROM
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="390,1295.66666666667">
+          TopLeft="244.5,1509.16666666667">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{x:Null}"
-              EndConnector="177,359.833333333333"
+              EndConnector="393.166666666667,66.833333333333"
               Start="0,0"
-              End="169.5,359.833333333333">
+              End="393.166666666667,59.333333333333">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="84.5,0" />
+                    End="0,35.7938931297708" />
                   <mssgle:CubicBezierSegment
-                    Point1="84.5,0"
-                    Point2="88.5,0"
-                    Point3="88.5,4" />
+                    Point1="0,35.7938931297708"
+                    Point2="0,39.7938931297708"
+                    Point3="4,39.7938931297708" />
                   <mssgle:LineSegment
-                    End="88.5,355.833333333333" />
+                    End="389.166666666667,39.7938931297708" />
                   <mssgle:CubicBezierSegment
-                    Point1="88.5,355.833333333333"
-                    Point2="88.5,359.833333333333"
-                    Point3="92.5,359.833333333333" />
+                    Point1="389.166666666667,39.7938931297708"
+                    Point2="393.166666666667,39.7938931297708"
+                    Point3="393.166666666667,43.7938931297708" />
                   <mssgle:LineSegment
-                    End="169.5,359.833333333333" />
+                    End="393.166666666667,59.333333333333" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -4200,30 +4245,18 @@ FROM
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 2]"
-          TopLeft="428.33333333333,793.5">
+          TopLeft="428.08333333333,793.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{x:Null}"
-              EndConnector="-18.4999999999999,56"
+              EndConnector="0,46"
               Start="0,0"
-              End="-18.4999999999999,48.5">
+              End="0,38.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,24" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,24"
-                    Point2="0,28"
-                    Point3="-4,28" />
-                  <mssgle:LineSegment
-                    End="-14.4999999999999,28" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-14.4999999999999,28"
-                    Point2="-18.4999999999999,28"
-                    Point3="-18.4999999999999,32" />
-                  <mssgle:LineSegment
-                    End="-18.4999999999999,48.5" />
+                    End="0,38.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -4234,30 +4267,30 @@ FROM
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 3]"
-          TopLeft="378.166666666663,891.5">
+          TopLeft="396.166666666663,881.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{x:Null}"
-              EndConnector="-135.666666666663,68.666666666667"
+              EndConnector="-151.666666666663,84.666666666667"
               Start="0,0"
-              End="-135.666666666663,61.166666666667">
+              End="-151.666666666663,77.166666666667">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,23.7969271877089" />
+                    End="0,30.2738810955245" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,23.7969271877089"
-                    Point2="0,27.7969271877089"
-                    Point3="-4,27.7969271877089" />
+                    Point1="0,30.2738810955245"
+                    Point2="0,34.2738810955245"
+                    Point3="-4,34.2738810955245" />
                   <mssgle:LineSegment
-                    End="-131.666666666663,27.7969271877089" />
+                    End="-147.666666666663,34.2738810955245" />
                   <mssgle:CubicBezierSegment
-                    Point1="-131.666666666663,27.7969271877089"
-                    Point2="-135.666666666663,27.7969271877089"
-                    Point3="-135.666666666663,31.7969271877089" />
+                    Point1="-147.666666666663,34.2738810955245"
+                    Point2="-151.666666666663,34.2738810955245"
+                    Point3="-151.666666666663,38.2738810955245" />
                   <mssgle:LineSegment
-                    End="-135.666666666663,61.166666666667" />
+                    End="-151.666666666663,77.166666666667" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -4268,30 +4301,30 @@ FROM
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 4]"
-          TopLeft="441.499999999997,891.5">
+          TopLeft="459.499999999997,881.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{x:Null}"
-              EndConnector="191.666666666663,71.666666666667"
+              EndConnector="207.666666666663,84.666666666667"
               Start="0,0"
-              End="191.666666666663,64.166666666667">
+              End="207.666666666663,77.166666666667">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,25.0113560454243" />
+                    End="0,30.2738810955245" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,25.0113560454243"
-                    Point2="0,29.0113560454243"
-                    Point3="4,29.0113560454243" />
+                    Point1="0,30.2738810955245"
+                    Point2="0,34.2738810955245"
+                    Point3="4,34.2738810955245" />
                   <mssgle:LineSegment
-                    End="187.666666666663,29.0113560454243" />
+                    End="203.666666666663,34.2738810955245" />
                   <mssgle:CubicBezierSegment
-                    Point1="187.666666666663,29.0113560454243"
-                    Point2="191.666666666663,29.0113560454243"
-                    Point3="191.666666666663,33.0113560454243" />
+                    Point1="203.666666666663,34.2738810955245"
+                    Point2="207.666666666663,34.2738810955245"
+                    Point3="207.666666666663,38.2738810955245" />
                   <mssgle:LineSegment
-                    End="191.666666666663,64.166666666667" />
+                    End="207.666666666663,77.166666666667" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -4302,30 +4335,30 @@ FROM
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 5]"
-          TopLeft="633.16666666666,1369.16666666667">
+          TopLeft="667.16666666666,1372.16666666667">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{x:Null}"
-              EndConnector="71.1666666666733,206.833333333333"
+              EndConnector="37.1666666666733,203.833333333333"
               Start="0,0"
-              End="71.1666666666733,199.333333333333">
+              End="37.1666666666733,196.333333333333">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,119.152671755725" />
+                    End="0,117.36641221374" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,119.152671755725"
-                    Point2="0,123.152671755725"
-                    Point3="4,123.152671755725" />
+                    Point1="0,117.36641221374"
+                    Point2="0,121.36641221374"
+                    Point3="4,121.36641221374" />
                   <mssgle:LineSegment
-                    End="67.1666666666733,123.152671755725" />
+                    End="33.1666666666733,121.36641221374" />
                   <mssgle:CubicBezierSegment
-                    Point1="67.1666666666733,123.152671755725"
-                    Point2="71.1666666666733,123.152671755725"
-                    Point3="71.1666666666733,127.152671755725" />
+                    Point1="33.1666666666733,121.36641221374"
+                    Point2="37.1666666666733,121.36641221374"
+                    Point3="37.1666666666733,125.36641221374" />
                   <mssgle:LineSegment
-                    End="71.1666666666733,199.333333333333" />
+                    End="37.1666666666733,196.333333333333" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -4337,11 +4370,23 @@ FROM
       </GraphLayout>
     </LayoutInfo>
   </Package>
+  <DtsEventHandler
+    design-time-name="Package.EventHandlers[OnError]">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="164,42"
+          Id="Package.EventHandlers[OnError]\EPT Error Handler"
+          TopLeft="33,20" />
+      </GraphLayout>
+    </LayoutInfo>
+  </DtsEventHandler>
   <TaskHost
     design-time-name="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle">
     <LayoutInfo>
       <GraphLayout
-        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="217,42"
           Id="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\DST STG Price_FileRowCount"
@@ -4366,120 +4411,6 @@ FROM
           Size="212,42"
           Id="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle\DST STG Saft Price File"
           TopLeft="76,304" />
-        <EdgeLayout
-          Id="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle.Paths[Trades]"
-          TopLeft="182,263">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{x:Null}"
-              EndConnector="0,41"
-              Start="0,0"
-              End="0,33.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,33.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-15.878671875,11.87548828125,31.75734375,9.7490234375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle.Paths[Row Count]"
-          TopLeft="288,242">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{x:Null}"
-              EndConnector="72,0"
-              Start="0,0"
-              End="64.5,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="64.5,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="7.55861328125,5,49.3827734375,9.5537109375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle.Paths[Flat File Source Output]"
-          TopLeft="182,74">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{x:Null}"
-              EndConnector="0,52.5"
-              Start="0,0"
-              End="0,45">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,45" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle.Paths[Derived Column Output]"
-          TopLeft="182,168.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{x:Null}"
-              EndConnector="0,52.5"
-              Start="0,0"
-              End="0,45">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,45" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\FELC Stage Saft Price Files\DFT Stage PriceFIle.Paths[Data Conversion Output]"
-          TopLeft="566,242">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{x:Null}"
-              EndConnector="59,0"
-              Start="0,0"
-              End="51.5,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="51.5,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
@@ -4513,7 +4444,7 @@ FROM
     design-time-name="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table">
     <LayoutInfo>
       <GraphLayout
-        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="204,42"
           Id="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\SCD T7 ODS File Table"
@@ -4538,146 +4469,6 @@ FROM
           Size="166,42"
           Id="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table\OLE DB Command"
           TopLeft="229,413.5" />
-        <EdgeLayout
-          Id="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table.Paths[Derived Column Output]"
-          TopLeft="312,149.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{x:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table.Paths[Changing Attribute Updates Output]"
-          TopLeft="344.666666666667,353.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{x:Null}"
-              EndConnector="-32.6666666666667,60"
-              Start="0,0"
-              End="-32.6666666666667,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,20.2801556420233" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,20.2801556420233"
-                    Point2="0,24.2801556420233"
-                    Point3="-4,24.2801556420233" />
-                  <mssgle:LineSegment
-                    End="-28.6666666666667,24.2801556420233" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-28.6666666666667,24.2801556420233"
-                    Point2="-32.6666666666667,24.2801556420233"
-                    Point3="-32.6666666666667,28.2801556420233" />
-                  <mssgle:LineSegment
-                    End="-32.6666666666667,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-94.8672395833334,29.2801556420233,157.0678125,11.6630859375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table.Paths[OLE DB Source Output]"
-          TopLeft="312,47.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{x:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table.Paths[New Output]"
-          TopLeft="279.333333333333,353.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{x:Null}"
-              EndConnector="-192.333333333333,60"
-              Start="0,0"
-              End="-192.333333333333,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,20.2801556420233" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,20.2801556420233"
-                    Point2="0,24.2801556420233"
-                    Point3="-4,24.2801556420233" />
-                  <mssgle:LineSegment
-                    End="-188.333333333333,24.2801556420233" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-188.333333333333,24.2801556420233"
-                    Point2="-192.333333333333,24.2801556420233"
-                    Point3="-192.333333333333,28.2801556420233" />
-                  <mssgle:LineSegment
-                    End="-192.333333333333,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-123.258053385417,29.2801556420233,54.1827734375,11.43359375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\SEQ Move Good Files to Archive\DFT T7 ODS File table.Paths[Lookup Match Output]"
-          TopLeft="312,251.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{x:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,20.4453125,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
@@ -4760,7 +4551,7 @@ FROM
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -4770,7 +4561,7 @@ FROM
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -4789,7 +4580,7 @@ FROM
     design-time-name="Package\SEQ Move Good Files to Archive\DFT T7 ODS PriceFile">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="180,42"
           Id="Package\SEQ Move Good Files to Archive\DFT T7 ODS PriceFile\DST T7 ODS PriceFile"
@@ -4798,30 +4589,6 @@ FROM
           Size="180,42"
           Id="Package\SEQ Move Good Files to Archive\DFT T7 ODS PriceFile\SRC STG PriceFile"
           TopLeft="83,43" />
-        <EdgeLayout
-          Id="Package\SEQ Move Good Files to Archive\DFT T7 ODS PriceFile.Paths[OLE DB Source Output]"
-          TopLeft="173,85">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{x:Null}"
-              EndConnector="0,44"
-              Start="0,0"
-              End="0,36.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,36.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>

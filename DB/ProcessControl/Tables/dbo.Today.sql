@@ -1,0 +1,7 @@
+CREATE TABLE [dbo].[Today]
+(
+[WorkingDayYN] [char] (1) COLLATE Latin1_General_CI_AS NOT NULL
+) ON [PRIMARY]
+GO
+ALTER TABLE [dbo].[Today] ADD CONSTRAINT [PK_Today] PRIMARY KEY CLUSTERED  ([WorkingDayYN]) ON [PRIMARY]
+GO

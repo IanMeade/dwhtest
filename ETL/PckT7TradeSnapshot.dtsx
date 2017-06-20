@@ -11,8 +11,8 @@
   DTS:LocaleID="6153"
   DTS:ObjectName="PckT7TradeSnapshot"
   DTS:PackageType="5"
-  DTS:VersionBuild="169"
-  DTS:VersionGUID="{EE83E093-78E3-4CF4-A302-46CF7B3B5C85}">
+  DTS:VersionBuild="174"
+  DTS:VersionGUID="{3A5A593F-2ACC-43F5-A35B-C1EE99266FB8}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -2612,7 +2612,7 @@ FROM
               DTS:LocaleID="-1"
               DTS:ObjectName="SQL Clear T7 ODS Tables"
               DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-              DTS:ThreadHint="2">
+              DTS:ThreadHint="3">
               <DTS:Variables />
               <DTS:ObjectData>
                 <SQLTask:SqlTaskData
@@ -2629,7 +2629,7 @@ FROM
               DTS:LocaleID="-1"
               DTS:ObjectName="SQL DWH Clear ETL tables"
               DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-              DTS:ThreadHint="3">
+              DTS:ThreadHint="2">
               <DTS:Variables />
               <DTS:ObjectData>
                 <SQLTask:SqlTaskData
@@ -10524,1093 +10524,6 @@ where [refTable].[InstrumentID] = ? and [refTable].[AggregateDateID] = ?</proper
               <DTS:Variables />
               <DTS:Executables>
                 <DTS:Executable
-                  DTS:refId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff"
-                  DTS:CreationName="Microsoft.Pipeline"
-                  DTS:Description="Data Flow Task"
-                  DTS:DTSID="{583CC21C-59B2-4D44-B835-97B3F863C07D}"
-                  DTS:ExecutableType="Microsoft.Pipeline"
-                  DTS:LocaleID="-1"
-                  DTS:ObjectName="DFT EquityIndexSnapshot Stuff"
-                  DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
-                  <DTS:Variables />
-                  <DTS:ObjectData>
-                    <pipeline
-                      version="1">
-                      <components>
-                        <component
-                          refId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\DST DWH ETL FactEquityIndexMerge"
-                          componentClassID="Microsoft.OLEDBDestination"
-                          contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
-                          description="OLE DB Destination"
-                          name="DST DWH ETL FactEquityIndexMerge"
-                          usesDispositions="true"
-                          version="4">
-                          <properties>
-                            <property
-                              dataType="System.Int32"
-                              description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
-                              name="CommandTimeout">0</property>
-                            <property
-                              dataType="System.String"
-                              description="Specifies the name of the database object used to open a rowset."
-                              name="OpenRowset">[ETL].[FactEquityIndexSnapshotMerge]</property>
-                            <property
-                              dataType="System.String"
-                              description="Specifies the variable that contains the name of the database object used to open a rowset."
-                              name="OpenRowsetVariable"></property>
-                            <property
-                              dataType="System.String"
-                              description="The SQL command to be executed."
-                              name="SqlCommand"
-                              UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
-                            <property
-                              dataType="System.Int32"
-                              description="Specifies the column code page to use when code page information is unavailable from the data source."
-                              name="DefaultCodePage">1252</property>
-                            <property
-                              dataType="System.Boolean"
-                              description="Forces the use of the DefaultCodePage property value when describing character data."
-                              name="AlwaysUseDefaultCodePage">false</property>
-                            <property
-                              dataType="System.Int32"
-                              description="Specifies the mode used to access the database."
-                              name="AccessMode"
-                              typeConverter="AccessMode">3</property>
-                            <property
-                              dataType="System.Boolean"
-                              description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
-                              name="FastLoadKeepIdentity">false</property>
-                            <property
-                              dataType="System.Boolean"
-                              description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
-                              name="FastLoadKeepNulls">false</property>
-                            <property
-                              dataType="System.String"
-                              description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
-                              name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
-                            <property
-                              dataType="System.Int32"
-                              description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
-                              name="FastLoadMaxInsertCommitSize">2147483647</property>
-                          </properties>
-                          <connections>
-                            <connection
-                              refId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\DST DWH ETL FactEquityIndexMerge.Connections[OleDbConnection]"
-                              connectionManagerID="{0CBC2C04-C137-495F-AF7C-FA5DE465FED0}:external"
-                              connectionManagerRefId="Project.ConnectionManagers[DWH]"
-                              description="The OLE DB runtime connection used to access the database."
-                              name="OleDbConnection" />
-                          </connections>
-                          <inputs>
-                            <input
-                              refId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\DST DWH ETL FactEquityIndexMerge.Inputs[OLE DB Destination Input]"
-                              errorOrTruncationOperation="Insert"
-                              errorRowDisposition="FailComponent"
-                              hasSideEffects="true"
-                              name="OLE DB Destination Input">
-                              <inputColumns>
-                                <inputColumn
-                                  refId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\DST DWH ETL FactEquityIndexMerge.Inputs[OLE DB Destination Input].Columns[IndexDateID]"
-                                  cachedDataType="i4"
-                                  cachedName="IndexDateID"
-                                  externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\DST DWH ETL FactEquityIndexMerge.Inputs[OLE DB Destination Input].ExternalColumns[IndexDateID]"
-                                  lineageId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\SRC DWH Index Market Caps.Outputs[OLE DB Source Output].Columns[IndexDateID]" />
-                                <inputColumn
-                                  refId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\DST DWH ETL FactEquityIndexMerge.Inputs[OLE DB Destination Input].Columns[IndexCode]"
-                                  cachedCodepage="1252"
-                                  cachedDataType="str"
-                                  cachedLength="20"
-                                  cachedName="IndexCode"
-                                  externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\DST DWH ETL FactEquityIndexMerge.Inputs[OLE DB Destination Input].ExternalColumns[IndexCode]"
-                                  lineageId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\SRC DWH Index Market Caps.Outputs[OLE DB Source Output].Columns[IndexCode]" />
-                                <inputColumn
-                                  refId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\DST DWH ETL FactEquityIndexMerge.Inputs[OLE DB Destination Input].Columns[OpenValue]"
-                                  cachedDataType="numeric"
-                                  cachedName="OpenValue"
-                                  cachedPrecision="8"
-                                  cachedScale="3"
-                                  externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\DST DWH ETL FactEquityIndexMerge.Inputs[OLE DB Destination Input].ExternalColumns[OpenValue]"
-                                  lineageId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\LKP DWH Equity Details.Outputs[Lookup Match Output].Columns[OpenValue]" />
-                                <inputColumn
-                                  refId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\DST DWH ETL FactEquityIndexMerge.Inputs[OLE DB Destination Input].Columns[LastValue]"
-                                  cachedDataType="numeric"
-                                  cachedName="LastValue"
-                                  cachedPrecision="8"
-                                  cachedScale="3"
-                                  externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\DST DWH ETL FactEquityIndexMerge.Inputs[OLE DB Destination Input].ExternalColumns[LastValue]"
-                                  lineageId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\LKP DWH Equity Details.Outputs[Lookup Match Output].Columns[LastValue]" />
-                                <inputColumn
-                                  refId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\DST DWH ETL FactEquityIndexMerge.Inputs[OLE DB Destination Input].Columns[ReturnValue]"
-                                  cachedDataType="numeric"
-                                  cachedName="ReturnValue"
-                                  cachedPrecision="8"
-                                  cachedScale="3"
-                                  externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\DST DWH ETL FactEquityIndexMerge.Inputs[OLE DB Destination Input].ExternalColumns[ReturnValue]"
-                                  lineageId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\LKP DWH Equity Details.Outputs[Lookup Match Output].Columns[ReturnValue]" />
-                                <inputColumn
-                                  refId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\DST DWH ETL FactEquityIndexMerge.Inputs[OLE DB Destination Input].Columns[DailyLowValue]"
-                                  cachedDataType="numeric"
-                                  cachedName="DailyLowValue"
-                                  cachedPrecision="8"
-                                  cachedScale="3"
-                                  externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\DST DWH ETL FactEquityIndexMerge.Inputs[OLE DB Destination Input].ExternalColumns[DailyLowValue]"
-                                  lineageId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\LKP DWH Equity Details.Outputs[Lookup Match Output].Columns[DailyLowValue]" />
-                                <inputColumn
-                                  refId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\DST DWH ETL FactEquityIndexMerge.Inputs[OLE DB Destination Input].Columns[DailyHighValue]"
-                                  cachedDataType="numeric"
-                                  cachedName="DailyHighValue"
-                                  cachedPrecision="8"
-                                  cachedScale="3"
-                                  externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\DST DWH ETL FactEquityIndexMerge.Inputs[OLE DB Destination Input].ExternalColumns[DailyHighValue]"
-                                  lineageId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\LKP DWH Equity Details.Outputs[Lookup Match Output].Columns[DailyHighValue]" />
-                                <inputColumn
-                                  refId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\DST DWH ETL FactEquityIndexMerge.Inputs[OLE DB Destination Input].Columns[InterestRate]"
-                                  cachedDataType="numeric"
-                                  cachedName="InterestRate"
-                                  cachedPrecision="5"
-                                  cachedScale="2"
-                                  externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\DST DWH ETL FactEquityIndexMerge.Inputs[OLE DB Destination Input].ExternalColumns[InterestRate]"
-                                  lineageId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\LKP Stoxx Iseq20Leveraged.Outputs[Lookup Match Output].Columns[InterestRate]" />
-                                <inputColumn
-                                  refId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\DST DWH ETL FactEquityIndexMerge.Inputs[OLE DB Destination Input].Columns[MarketCap]"
-                                  cachedDataType="numeric"
-                                  cachedName="MarketCap"
-                                  cachedPrecision="38"
-                                  cachedScale="6"
-                                  externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\DST DWH ETL FactEquityIndexMerge.Inputs[OLE DB Destination Input].ExternalColumns[MarketCap]"
-                                  lineageId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\LKP DWH Equity Constituent mkt cap.Outputs[Lookup Match Output].Columns[MarketCap]" />
-                                <inputColumn
-                                  refId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\DST DWH ETL FactEquityIndexMerge.Inputs[OLE DB Destination Input].Columns[IndexTypeID]"
-                                  cachedDataType="i2"
-                                  cachedName="IndexTypeID"
-                                  externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\DST DWH ETL FactEquityIndexMerge.Inputs[OLE DB Destination Input].ExternalColumns[IndexTypeID]"
-                                  lineageId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\SRC DWH Index Market Caps.Outputs[OLE DB Source Output].Columns[IndexTypeID]" />
-                              </inputColumns>
-                              <externalMetadataColumns
-                                isUsed="True">
-                                <externalMetadataColumn
-                                  refId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\DST DWH ETL FactEquityIndexMerge.Inputs[OLE DB Destination Input].ExternalColumns[IndexDateID]"
-                                  dataType="i4"
-                                  name="IndexDateID" />
-                                <externalMetadataColumn
-                                  refId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\DST DWH ETL FactEquityIndexMerge.Inputs[OLE DB Destination Input].ExternalColumns[IndexCode]"
-                                  codePage="1252"
-                                  dataType="str"
-                                  length="15"
-                                  name="IndexCode" />
-                                <externalMetadataColumn
-                                  refId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\DST DWH ETL FactEquityIndexMerge.Inputs[OLE DB Destination Input].ExternalColumns[OpenValue]"
-                                  dataType="numeric"
-                                  name="OpenValue"
-                                  precision="8"
-                                  scale="3" />
-                                <externalMetadataColumn
-                                  refId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\DST DWH ETL FactEquityIndexMerge.Inputs[OLE DB Destination Input].ExternalColumns[LastValue]"
-                                  dataType="numeric"
-                                  name="LastValue"
-                                  precision="8"
-                                  scale="3" />
-                                <externalMetadataColumn
-                                  refId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\DST DWH ETL FactEquityIndexMerge.Inputs[OLE DB Destination Input].ExternalColumns[ReturnValue]"
-                                  dataType="numeric"
-                                  name="ReturnValue"
-                                  precision="8"
-                                  scale="3" />
-                                <externalMetadataColumn
-                                  refId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\DST DWH ETL FactEquityIndexMerge.Inputs[OLE DB Destination Input].ExternalColumns[DailyLowValue]"
-                                  dataType="numeric"
-                                  name="DailyLowValue"
-                                  precision="8"
-                                  scale="3" />
-                                <externalMetadataColumn
-                                  refId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\DST DWH ETL FactEquityIndexMerge.Inputs[OLE DB Destination Input].ExternalColumns[DailyHighValue]"
-                                  dataType="numeric"
-                                  name="DailyHighValue"
-                                  precision="8"
-                                  scale="3" />
-                                <externalMetadataColumn
-                                  refId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\DST DWH ETL FactEquityIndexMerge.Inputs[OLE DB Destination Input].ExternalColumns[InterestRate]"
-                                  dataType="numeric"
-                                  name="InterestRate"
-                                  precision="5"
-                                  scale="2" />
-                                <externalMetadataColumn
-                                  refId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\DST DWH ETL FactEquityIndexMerge.Inputs[OLE DB Destination Input].ExternalColumns[MarketCap]"
-                                  dataType="numeric"
-                                  name="MarketCap"
-                                  precision="38"
-                                  scale="6" />
-                                <externalMetadataColumn
-                                  refId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\DST DWH ETL FactEquityIndexMerge.Inputs[OLE DB Destination Input].ExternalColumns[IndexTypeID]"
-                                  dataType="i2"
-                                  name="IndexTypeID" />
-                              </externalMetadataColumns>
-                            </input>
-                          </inputs>
-                          <outputs>
-                            <output
-                              refId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\DST DWH ETL FactEquityIndexMerge.Outputs[OLE DB Destination Error Output]"
-                              exclusionGroup="1"
-                              isErrorOut="true"
-                              name="OLE DB Destination Error Output"
-                              synchronousInputId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\DST DWH ETL FactEquityIndexMerge.Inputs[OLE DB Destination Input]">
-                              <outputColumns>
-                                <outputColumn
-                                  refId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\DST DWH ETL FactEquityIndexMerge.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
-                                  dataType="i4"
-                                  lineageId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\DST DWH ETL FactEquityIndexMerge.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
-                                  name="ErrorCode"
-                                  specialFlags="1" />
-                                <outputColumn
-                                  refId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\DST DWH ETL FactEquityIndexMerge.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
-                                  dataType="i4"
-                                  lineageId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\DST DWH ETL FactEquityIndexMerge.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
-                                  name="ErrorColumn"
-                                  specialFlags="2" />
-                              </outputColumns>
-                              <externalMetadataColumns />
-                            </output>
-                          </outputs>
-                        </component>
-                        <component
-                          refId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\LKP DWH Equity Constituent mkt cap"
-                          componentClassID="Microsoft.Lookup"
-                          contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
-                          description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
-                          name="LKP DWH Equity Constituent mkt cap"
-                          usesDispositions="true"
-                          version="6">
-                          <properties>
-                            <property
-                              dataType="System.String"
-                              description="Specifies the SQL statement that generates the lookup table."
-                              expressionType="Notify"
-                              name="SqlCommand"
-                              UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT
-	DateID,
-	IndexCode,
-	MarketCap
-FROM
-	ETL.EquityIndexMarketCapHelper</property>
-                            <property
-                              dataType="System.String"
-                              description="Specifies a SQL statement that uses parameters to generate the lookup table."
-                              expressionType="Notify"
-                              name="SqlCommandParam"
-                              UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (SELECT
-	DateID,
-	IndexCode,
-	MarketCap
-FROM
-	ETL.EquityIndexMarketCapHelper) [refTable]
-where [refTable].[IndexCode] = ? and [refTable].[DateID] = ?</property>
-                            <property
-                              dataType="System.Int32"
-                              description="Specifies the type of connection used to access the reference dataset."
-                              name="ConnectionType"
-                              typeConverter="LookupConnectionType">0</property>
-                            <property
-                              dataType="System.Int32"
-                              description="Specifies the cache type of the lookup table."
-                              name="CacheType"
-                              typeConverter="CacheType">0</property>
-                            <property
-                              dataType="System.Int32"
-                              description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
-                              name="NoMatchBehavior"
-                              typeConverter="LookupNoMatchBehavior">0</property>
-                            <property
-                              dataType="System.Int32"
-                              description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
-                              name="NoMatchCachePercentage">0</property>
-                            <property
-                              dataType="System.Int32"
-                              description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
-                              name="MaxMemoryUsage">25</property>
-                            <property
-                              dataType="System.Int64"
-                              description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
-                              name="MaxMemoryUsage64">25</property>
-                            <property
-                              dataType="System.String"
-                              description="Indicates whether to reference metadata in an XML format."
-                              name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="DateID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="IndexCode" dataType="DT_STR" length="4" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="MarketCap" dataType="DT_NUMERIC" length="0" precision="38" scale="6" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
-                            <property
-                              containsID="true"
-                              dataType="System.String"
-                              description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                              name="ParameterMap">#{Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\SRC DWH Index Market Caps.Outputs[OLE DB Source Output].Columns[IndexCode]};#{Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\SRC DWH Index Market Caps.Outputs[OLE DB Source Output].Columns[IndexDateID]};</property>
-                            <property
-                              dataType="System.Int32"
-                              description="Specifies the column code page to use when code page information is unavailable from the data source."
-                              name="DefaultCodePage">1252</property>
-                            <property
-                              dataType="System.Boolean"
-                              description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
-                              name="TreatDuplicateKeysAsError">false</property>
-                          </properties>
-                          <connections>
-                            <connection
-                              refId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\LKP DWH Equity Constituent mkt cap.Connections[OleDbConnection]"
-                              connectionManagerID="{0CBC2C04-C137-495F-AF7C-FA5DE465FED0}:external"
-                              connectionManagerRefId="Project.ConnectionManagers[DWH]"
-                              description="Connection manager used to access lookup data."
-                              name="OleDbConnection" />
-                          </connections>
-                          <inputs>
-                            <input
-                              refId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\LKP DWH Equity Constituent mkt cap.Inputs[Lookup Input]"
-                              name="Lookup Input">
-                              <inputColumns>
-                                <inputColumn
-                                  refId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\LKP DWH Equity Constituent mkt cap.Inputs[Lookup Input].Columns[IndexDateID]"
-                                  cachedDataType="i4"
-                                  cachedName="IndexDateID"
-                                  lineageId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\SRC DWH Index Market Caps.Outputs[OLE DB Source Output].Columns[IndexDateID]">
-                                  <properties>
-                                    <property
-                                      dataType="System.String"
-                                      description="Specifies the column in the reference table that a column joins."
-                                      name="JoinToReferenceColumn">DateID</property>
-                                    <property
-                                      dataType="System.Null"
-                                      description="Specifies the column in the reference table from which a column is copied."
-                                      name="CopyFromReferenceColumn" />
-                                  </properties>
-                                </inputColumn>
-                                <inputColumn
-                                  refId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\LKP DWH Equity Constituent mkt cap.Inputs[Lookup Input].Columns[IndexCode]"
-                                  cachedCodepage="1252"
-                                  cachedDataType="str"
-                                  cachedLength="20"
-                                  cachedName="IndexCode"
-                                  lineageId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\SRC DWH Index Market Caps.Outputs[OLE DB Source Output].Columns[IndexCode]">
-                                  <properties>
-                                    <property
-                                      dataType="System.String"
-                                      description="Specifies the column in the reference table that a column joins."
-                                      name="JoinToReferenceColumn">IndexCode</property>
-                                    <property
-                                      dataType="System.Null"
-                                      description="Specifies the column in the reference table from which a column is copied."
-                                      name="CopyFromReferenceColumn" />
-                                  </properties>
-                                </inputColumn>
-                              </inputColumns>
-                              <externalMetadataColumns />
-                            </input>
-                          </inputs>
-                          <outputs>
-                            <output
-                              refId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\LKP DWH Equity Constituent mkt cap.Outputs[Lookup Match Output]"
-                              errorOrTruncationOperation="Lookup"
-                              errorRowDisposition="IgnoreFailure"
-                              exclusionGroup="1"
-                              name="Lookup Match Output"
-                              synchronousInputId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\LKP DWH Equity Constituent mkt cap.Inputs[Lookup Input]">
-                              <outputColumns>
-                                <outputColumn
-                                  refId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\LKP DWH Equity Constituent mkt cap.Outputs[Lookup Match Output].Columns[MarketCap]"
-                                  dataType="numeric"
-                                  errorOrTruncationOperation="Copy Column"
-                                  lineageId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\LKP DWH Equity Constituent mkt cap.Outputs[Lookup Match Output].Columns[MarketCap]"
-                                  name="MarketCap"
-                                  precision="38"
-                                  scale="6"
-                                  truncationRowDisposition="FailComponent">
-                                  <properties>
-                                    <property
-                                      dataType="System.String"
-                                      description="Specifies the column in the reference table from which a column is copied."
-                                      name="CopyFromReferenceColumn">MarketCap</property>
-                                  </properties>
-                                </outputColumn>
-                              </outputColumns>
-                              <externalMetadataColumns />
-                            </output>
-                            <output
-                              refId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\LKP DWH Equity Constituent mkt cap.Outputs[Lookup No Match Output]"
-                              description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
-                              exclusionGroup="1"
-                              name="Lookup No Match Output"
-                              synchronousInputId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\LKP DWH Equity Constituent mkt cap.Inputs[Lookup Input]">
-                              <externalMetadataColumns />
-                            </output>
-                            <output
-                              refId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\LKP DWH Equity Constituent mkt cap.Outputs[Lookup Error Output]"
-                              exclusionGroup="1"
-                              isErrorOut="true"
-                              name="Lookup Error Output"
-                              synchronousInputId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\LKP DWH Equity Constituent mkt cap.Inputs[Lookup Input]">
-                              <outputColumns>
-                                <outputColumn
-                                  refId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\LKP DWH Equity Constituent mkt cap.Outputs[Lookup Error Output].Columns[ErrorCode]"
-                                  dataType="i4"
-                                  lineageId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\LKP DWH Equity Constituent mkt cap.Outputs[Lookup Error Output].Columns[ErrorCode]"
-                                  name="ErrorCode"
-                                  specialFlags="1" />
-                                <outputColumn
-                                  refId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\LKP DWH Equity Constituent mkt cap.Outputs[Lookup Error Output].Columns[ErrorColumn]"
-                                  dataType="i4"
-                                  lineageId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\LKP DWH Equity Constituent mkt cap.Outputs[Lookup Error Output].Columns[ErrorColumn]"
-                                  name="ErrorColumn"
-                                  specialFlags="2" />
-                              </outputColumns>
-                              <externalMetadataColumns />
-                            </output>
-                          </outputs>
-                        </component>
-                        <component
-                          refId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\LKP DWH Equity Details"
-                          componentClassID="Microsoft.Lookup"
-                          contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
-                          description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
-                          name="LKP DWH Equity Details"
-                          usesDispositions="true"
-                          version="6">
-                          <properties>
-                            <property
-                              dataType="System.String"
-                              description="Specifies the SQL statement that generates the lookup table."
-                              expressionType="Notify"
-                              name="SqlCommand"
-                              UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [ETL].[FactEquityIndexPrep]</property>
-                            <property
-                              dataType="System.String"
-                              description="Specifies a SQL statement that uses parameters to generate the lookup table."
-                              expressionType="Notify"
-                              name="SqlCommandParam"
-                              UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [ETL].[FactEquityIndexPrep]) [refTable]
-where [refTable].[IndexCode] = ? and [refTable].[IndexDateID] = ?</property>
-                            <property
-                              dataType="System.Int32"
-                              description="Specifies the type of connection used to access the reference dataset."
-                              name="ConnectionType"
-                              typeConverter="LookupConnectionType">0</property>
-                            <property
-                              dataType="System.Int32"
-                              description="Specifies the cache type of the lookup table."
-                              name="CacheType"
-                              typeConverter="CacheType">0</property>
-                            <property
-                              dataType="System.Int32"
-                              description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
-                              name="NoMatchBehavior"
-                              typeConverter="LookupNoMatchBehavior">0</property>
-                            <property
-                              dataType="System.Int32"
-                              description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
-                              name="NoMatchCachePercentage">0</property>
-                            <property
-                              dataType="System.Int32"
-                              description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
-                              name="MaxMemoryUsage">25</property>
-                            <property
-                              dataType="System.Int64"
-                              description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
-                              name="MaxMemoryUsage64">25</property>
-                            <property
-                              dataType="System.String"
-                              description="Indicates whether to reference metadata in an XML format."
-                              name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="IndexDateID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="IndexCode" dataType="DT_STR" length="15" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="OpenValue" dataType="DT_NUMERIC" length="0" precision="8" scale="3" codePage="0"/&gt;&lt;referenceColumn name="LastValue" dataType="DT_NUMERIC" length="0" precision="8" scale="3" codePage="0"/&gt;&lt;referenceColumn name="ReturnValue" dataType="DT_NUMERIC" length="0" precision="8" scale="3" codePage="0"/&gt;&lt;referenceColumn name="DailyLowValue" dataType="DT_NUMERIC" length="0" precision="8" scale="3" codePage="0"/&gt;&lt;referenceColumn name="DailyHighValue" dataType="DT_NUMERIC" length="0" precision="8" scale="3" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
-                            <property
-                              containsID="true"
-                              dataType="System.String"
-                              description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                              name="ParameterMap">#{Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\SRC DWH Index Market Caps.Outputs[OLE DB Source Output].Columns[IndexCode]};#{Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\SRC DWH Index Market Caps.Outputs[OLE DB Source Output].Columns[IndexDateID]};</property>
-                            <property
-                              dataType="System.Int32"
-                              description="Specifies the column code page to use when code page information is unavailable from the data source."
-                              name="DefaultCodePage">1252</property>
-                            <property
-                              dataType="System.Boolean"
-                              description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
-                              name="TreatDuplicateKeysAsError">false</property>
-                          </properties>
-                          <connections>
-                            <connection
-                              refId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\LKP DWH Equity Details.Connections[OleDbConnection]"
-                              connectionManagerID="{0CBC2C04-C137-495F-AF7C-FA5DE465FED0}:external"
-                              connectionManagerRefId="Project.ConnectionManagers[DWH]"
-                              description="Connection manager used to access lookup data."
-                              name="OleDbConnection" />
-                          </connections>
-                          <inputs>
-                            <input
-                              refId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\LKP DWH Equity Details.Inputs[Lookup Input]"
-                              name="Lookup Input">
-                              <inputColumns>
-                                <inputColumn
-                                  refId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\LKP DWH Equity Details.Inputs[Lookup Input].Columns[IndexCode]"
-                                  cachedCodepage="1252"
-                                  cachedDataType="str"
-                                  cachedLength="20"
-                                  cachedName="IndexCode"
-                                  lineageId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\SRC DWH Index Market Caps.Outputs[OLE DB Source Output].Columns[IndexCode]">
-                                  <properties>
-                                    <property
-                                      dataType="System.String"
-                                      description="Specifies the column in the reference table that a column joins."
-                                      name="JoinToReferenceColumn">IndexCode</property>
-                                    <property
-                                      dataType="System.Null"
-                                      description="Specifies the column in the reference table from which a column is copied."
-                                      name="CopyFromReferenceColumn" />
-                                  </properties>
-                                </inputColumn>
-                                <inputColumn
-                                  refId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\LKP DWH Equity Details.Inputs[Lookup Input].Columns[IndexDateID]"
-                                  cachedDataType="i4"
-                                  cachedName="IndexDateID"
-                                  lineageId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\SRC DWH Index Market Caps.Outputs[OLE DB Source Output].Columns[IndexDateID]">
-                                  <properties>
-                                    <property
-                                      dataType="System.String"
-                                      description="Specifies the column in the reference table that a column joins."
-                                      name="JoinToReferenceColumn">IndexDateID</property>
-                                    <property
-                                      dataType="System.Null"
-                                      description="Specifies the column in the reference table from which a column is copied."
-                                      name="CopyFromReferenceColumn" />
-                                  </properties>
-                                </inputColumn>
-                              </inputColumns>
-                              <externalMetadataColumns />
-                            </input>
-                          </inputs>
-                          <outputs>
-                            <output
-                              refId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\LKP DWH Equity Details.Outputs[Lookup Match Output]"
-                              errorOrTruncationOperation="Lookup"
-                              errorRowDisposition="IgnoreFailure"
-                              exclusionGroup="1"
-                              name="Lookup Match Output"
-                              synchronousInputId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\LKP DWH Equity Details.Inputs[Lookup Input]">
-                              <outputColumns>
-                                <outputColumn
-                                  refId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\LKP DWH Equity Details.Outputs[Lookup Match Output].Columns[OpenValue]"
-                                  dataType="numeric"
-                                  errorOrTruncationOperation="Copy Column"
-                                  lineageId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\LKP DWH Equity Details.Outputs[Lookup Match Output].Columns[OpenValue]"
-                                  name="OpenValue"
-                                  precision="8"
-                                  scale="3"
-                                  truncationRowDisposition="FailComponent">
-                                  <properties>
-                                    <property
-                                      dataType="System.String"
-                                      description="Specifies the column in the reference table from which a column is copied."
-                                      name="CopyFromReferenceColumn">OpenValue</property>
-                                  </properties>
-                                </outputColumn>
-                                <outputColumn
-                                  refId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\LKP DWH Equity Details.Outputs[Lookup Match Output].Columns[LastValue]"
-                                  dataType="numeric"
-                                  errorOrTruncationOperation="Copy Column"
-                                  lineageId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\LKP DWH Equity Details.Outputs[Lookup Match Output].Columns[LastValue]"
-                                  name="LastValue"
-                                  precision="8"
-                                  scale="3"
-                                  truncationRowDisposition="FailComponent">
-                                  <properties>
-                                    <property
-                                      dataType="System.String"
-                                      description="Specifies the column in the reference table from which a column is copied."
-                                      name="CopyFromReferenceColumn">LastValue</property>
-                                  </properties>
-                                </outputColumn>
-                                <outputColumn
-                                  refId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\LKP DWH Equity Details.Outputs[Lookup Match Output].Columns[ReturnValue]"
-                                  dataType="numeric"
-                                  errorOrTruncationOperation="Copy Column"
-                                  lineageId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\LKP DWH Equity Details.Outputs[Lookup Match Output].Columns[ReturnValue]"
-                                  name="ReturnValue"
-                                  precision="8"
-                                  scale="3"
-                                  truncationRowDisposition="FailComponent">
-                                  <properties>
-                                    <property
-                                      dataType="System.String"
-                                      description="Specifies the column in the reference table from which a column is copied."
-                                      name="CopyFromReferenceColumn">ReturnValue</property>
-                                  </properties>
-                                </outputColumn>
-                                <outputColumn
-                                  refId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\LKP DWH Equity Details.Outputs[Lookup Match Output].Columns[DailyLowValue]"
-                                  dataType="numeric"
-                                  errorOrTruncationOperation="Copy Column"
-                                  lineageId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\LKP DWH Equity Details.Outputs[Lookup Match Output].Columns[DailyLowValue]"
-                                  name="DailyLowValue"
-                                  precision="8"
-                                  scale="3"
-                                  truncationRowDisposition="FailComponent">
-                                  <properties>
-                                    <property
-                                      dataType="System.String"
-                                      description="Specifies the column in the reference table from which a column is copied."
-                                      name="CopyFromReferenceColumn">DailyLowValue</property>
-                                  </properties>
-                                </outputColumn>
-                                <outputColumn
-                                  refId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\LKP DWH Equity Details.Outputs[Lookup Match Output].Columns[DailyHighValue]"
-                                  dataType="numeric"
-                                  errorOrTruncationOperation="Copy Column"
-                                  lineageId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\LKP DWH Equity Details.Outputs[Lookup Match Output].Columns[DailyHighValue]"
-                                  name="DailyHighValue"
-                                  precision="8"
-                                  scale="3"
-                                  truncationRowDisposition="FailComponent">
-                                  <properties>
-                                    <property
-                                      dataType="System.String"
-                                      description="Specifies the column in the reference table from which a column is copied."
-                                      name="CopyFromReferenceColumn">DailyHighValue</property>
-                                  </properties>
-                                </outputColumn>
-                              </outputColumns>
-                              <externalMetadataColumns />
-                            </output>
-                            <output
-                              refId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\LKP DWH Equity Details.Outputs[Lookup No Match Output]"
-                              description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
-                              exclusionGroup="1"
-                              name="Lookup No Match Output"
-                              synchronousInputId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\LKP DWH Equity Details.Inputs[Lookup Input]">
-                              <externalMetadataColumns />
-                            </output>
-                            <output
-                              refId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\LKP DWH Equity Details.Outputs[Lookup Error Output]"
-                              exclusionGroup="1"
-                              isErrorOut="true"
-                              name="Lookup Error Output"
-                              synchronousInputId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\LKP DWH Equity Details.Inputs[Lookup Input]">
-                              <outputColumns>
-                                <outputColumn
-                                  refId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\LKP DWH Equity Details.Outputs[Lookup Error Output].Columns[ErrorCode]"
-                                  dataType="i4"
-                                  lineageId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\LKP DWH Equity Details.Outputs[Lookup Error Output].Columns[ErrorCode]"
-                                  name="ErrorCode"
-                                  specialFlags="1" />
-                                <outputColumn
-                                  refId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\LKP DWH Equity Details.Outputs[Lookup Error Output].Columns[ErrorColumn]"
-                                  dataType="i4"
-                                  lineageId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\LKP DWH Equity Details.Outputs[Lookup Error Output].Columns[ErrorColumn]"
-                                  name="ErrorColumn"
-                                  specialFlags="2" />
-                              </outputColumns>
-                              <externalMetadataColumns />
-                            </output>
-                          </outputs>
-                        </component>
-                        <component
-                          refId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\LKP Stoxx Iseq20Leveraged"
-                          componentClassID="Microsoft.Lookup"
-                          contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
-                          description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
-                          name="LKP Stoxx Iseq20Leveraged"
-                          usesDispositions="true"
-                          version="6">
-                          <properties>
-                            <property
-                              dataType="System.String"
-                              description="Specifies the SQL statement that generates the lookup table."
-                              expressionType="Notify"
-                              name="SqlCommand"
-                              UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT
-	CAST(CONVERT(CHAR,TRADE_DATE,112) AS int) AS TradeDateID,
-	'IEOC' AS IndexCode,
-	Eonia
-FROM
-	dbo.Iseq20Leveraged
-UNION ALL
-SELECT
-	CAST(CONVERT(CHAR,TRADE_DATE,112) AS int) AS TradeDateID,
-	'IEOD' AS IndexCode,
-	Eonia
-FROM
-	dbo.Iseq20Leveraged</property>
-                            <property
-                              dataType="System.String"
-                              description="Specifies a SQL statement that uses parameters to generate the lookup table."
-                              expressionType="Notify"
-                              name="SqlCommandParam"
-                              UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (SELECT
-	CAST(CONVERT(CHAR,TRADE_DATE,112) AS int) AS TradeDateID,
-	'IEOC' AS IndexCode,
-	Eonia
-FROM
-	dbo.Iseq20Leveraged
-UNION ALL
-SELECT
-	CAST(CONVERT(CHAR,TRADE_DATE,112) AS int) AS TradeDateID,
-	'IEOD' AS IndexCode,
-	Eonia
-FROM
-	dbo.Iseq20Leveraged) [refTable]
-where [refTable].[IndexCode] = ? and [refTable].[TradeDateID] = ?</property>
-                            <property
-                              dataType="System.Int32"
-                              description="Specifies the type of connection used to access the reference dataset."
-                              name="ConnectionType"
-                              typeConverter="LookupConnectionType">0</property>
-                            <property
-                              dataType="System.Int32"
-                              description="Specifies the cache type of the lookup table."
-                              name="CacheType"
-                              typeConverter="CacheType">0</property>
-                            <property
-                              dataType="System.Int32"
-                              description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
-                              name="NoMatchBehavior"
-                              typeConverter="LookupNoMatchBehavior">0</property>
-                            <property
-                              dataType="System.Int32"
-                              description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
-                              name="NoMatchCachePercentage">0</property>
-                            <property
-                              dataType="System.Int32"
-                              description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
-                              name="MaxMemoryUsage">25</property>
-                            <property
-                              dataType="System.Int64"
-                              description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
-                              name="MaxMemoryUsage64">25</property>
-                            <property
-                              dataType="System.String"
-                              description="Indicates whether to reference metadata in an XML format."
-                              name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="TradeDateID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="IndexCode" dataType="DT_STR" length="4" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="Eonia" dataType="DT_NUMERIC" length="0" precision="5" scale="2" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
-                            <property
-                              containsID="true"
-                              dataType="System.String"
-                              description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                              name="ParameterMap">#{Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\SRC DWH Index Market Caps.Outputs[OLE DB Source Output].Columns[IndexCode]};#{Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\SRC DWH Index Market Caps.Outputs[OLE DB Source Output].Columns[IndexDateID]};</property>
-                            <property
-                              dataType="System.Int32"
-                              description="Specifies the column code page to use when code page information is unavailable from the data source."
-                              name="DefaultCodePage">1252</property>
-                            <property
-                              dataType="System.Boolean"
-                              description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
-                              name="TreatDuplicateKeysAsError">false</property>
-                          </properties>
-                          <connections>
-                            <connection
-                              refId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\LKP Stoxx Iseq20Leveraged.Connections[OleDbConnection]"
-                              connectionManagerID="{1067BA9D-10C0-4550-891B-77F948260392}:external"
-                              connectionManagerRefId="Project.ConnectionManagers[Stoxx_ODS]"
-                              description="Connection manager used to access lookup data."
-                              name="OleDbConnection" />
-                          </connections>
-                          <inputs>
-                            <input
-                              refId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\LKP Stoxx Iseq20Leveraged.Inputs[Lookup Input]"
-                              name="Lookup Input">
-                              <inputColumns>
-                                <inputColumn
-                                  refId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\LKP Stoxx Iseq20Leveraged.Inputs[Lookup Input].Columns[IndexCode]"
-                                  cachedCodepage="1252"
-                                  cachedDataType="str"
-                                  cachedLength="20"
-                                  cachedName="IndexCode"
-                                  lineageId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\SRC DWH Index Market Caps.Outputs[OLE DB Source Output].Columns[IndexCode]">
-                                  <properties>
-                                    <property
-                                      dataType="System.String"
-                                      description="Specifies the column in the reference table that a column joins."
-                                      name="JoinToReferenceColumn">IndexCode</property>
-                                    <property
-                                      dataType="System.Null"
-                                      description="Specifies the column in the reference table from which a column is copied."
-                                      name="CopyFromReferenceColumn" />
-                                  </properties>
-                                </inputColumn>
-                                <inputColumn
-                                  refId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\LKP Stoxx Iseq20Leveraged.Inputs[Lookup Input].Columns[IndexDateID]"
-                                  cachedDataType="i4"
-                                  cachedName="IndexDateID"
-                                  lineageId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\SRC DWH Index Market Caps.Outputs[OLE DB Source Output].Columns[IndexDateID]">
-                                  <properties>
-                                    <property
-                                      dataType="System.String"
-                                      description="Specifies the column in the reference table that a column joins."
-                                      name="JoinToReferenceColumn">TradeDateID</property>
-                                    <property
-                                      dataType="System.Null"
-                                      description="Specifies the column in the reference table from which a column is copied."
-                                      name="CopyFromReferenceColumn" />
-                                  </properties>
-                                </inputColumn>
-                              </inputColumns>
-                              <externalMetadataColumns />
-                            </input>
-                          </inputs>
-                          <outputs>
-                            <output
-                              refId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\LKP Stoxx Iseq20Leveraged.Outputs[Lookup Match Output]"
-                              errorOrTruncationOperation="Lookup"
-                              errorRowDisposition="IgnoreFailure"
-                              exclusionGroup="1"
-                              name="Lookup Match Output"
-                              synchronousInputId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\LKP Stoxx Iseq20Leveraged.Inputs[Lookup Input]">
-                              <outputColumns>
-                                <outputColumn
-                                  refId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\LKP Stoxx Iseq20Leveraged.Outputs[Lookup Match Output].Columns[InterestRate]"
-                                  dataType="numeric"
-                                  errorOrTruncationOperation="Copy Column"
-                                  lineageId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\LKP Stoxx Iseq20Leveraged.Outputs[Lookup Match Output].Columns[InterestRate]"
-                                  name="InterestRate"
-                                  precision="5"
-                                  scale="2"
-                                  truncationRowDisposition="FailComponent">
-                                  <properties>
-                                    <property
-                                      dataType="System.String"
-                                      description="Specifies the column in the reference table from which a column is copied."
-                                      name="CopyFromReferenceColumn">Eonia</property>
-                                  </properties>
-                                </outputColumn>
-                              </outputColumns>
-                              <externalMetadataColumns />
-                            </output>
-                            <output
-                              refId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\LKP Stoxx Iseq20Leveraged.Outputs[Lookup No Match Output]"
-                              description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
-                              exclusionGroup="1"
-                              name="Lookup No Match Output"
-                              synchronousInputId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\LKP Stoxx Iseq20Leveraged.Inputs[Lookup Input]">
-                              <externalMetadataColumns />
-                            </output>
-                            <output
-                              refId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\LKP Stoxx Iseq20Leveraged.Outputs[Lookup Error Output]"
-                              exclusionGroup="1"
-                              isErrorOut="true"
-                              name="Lookup Error Output"
-                              synchronousInputId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\LKP Stoxx Iseq20Leveraged.Inputs[Lookup Input]">
-                              <outputColumns>
-                                <outputColumn
-                                  refId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\LKP Stoxx Iseq20Leveraged.Outputs[Lookup Error Output].Columns[ErrorCode]"
-                                  dataType="i4"
-                                  lineageId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\LKP Stoxx Iseq20Leveraged.Outputs[Lookup Error Output].Columns[ErrorCode]"
-                                  name="ErrorCode"
-                                  specialFlags="1" />
-                                <outputColumn
-                                  refId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\LKP Stoxx Iseq20Leveraged.Outputs[Lookup Error Output].Columns[ErrorColumn]"
-                                  dataType="i4"
-                                  lineageId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\LKP Stoxx Iseq20Leveraged.Outputs[Lookup Error Output].Columns[ErrorColumn]"
-                                  name="ErrorColumn"
-                                  specialFlags="2" />
-                              </outputColumns>
-                              <externalMetadataColumns />
-                            </output>
-                          </outputs>
-                        </component>
-                        <component
-                          refId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\SRC DWH Index Market Caps"
-                          componentClassID="Microsoft.OLEDBSource"
-                          contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
-                          description="OLE DB Source"
-                          name="SRC DWH Index Market Caps"
-                          usesDispositions="true"
-                          version="7">
-                          <properties>
-                            <property
-                              dataType="System.Int32"
-                              description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
-                              name="CommandTimeout">0</property>
-                            <property
-                              dataType="System.String"
-                              description="Specifies the name of the database object used to open a rowset."
-                              name="OpenRowset"></property>
-                            <property
-                              dataType="System.String"
-                              description="Specifies the variable that contains the name of the database object used to open a rowset."
-                              name="OpenRowsetVariable"></property>
-                            <property
-                              dataType="System.String"
-                              description="The SQL command to be executed."
-                              name="SqlCommand"
-                              UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">DECLARE @D AS INT
-SELECT @D = ? 
-
-SELECT
-	IndexTypeID,
-	IndexCode, 
-	@D as IndexDateID
-FROM
-	DWH.DimIndexType</property>
-                            <property
-                              dataType="System.String"
-                              description="The variable that contains the SQL command to be executed."
-                              name="SqlCommandVariable"></property>
-                            <property
-                              dataType="System.Int32"
-                              description="Specifies the column code page to use when code page information is unavailable from the data source."
-                              name="DefaultCodePage">1252</property>
-                            <property
-                              dataType="System.Boolean"
-                              description="Forces the use of the DefaultCodePage property value when describing character data."
-                              name="AlwaysUseDefaultCodePage">false</property>
-                            <property
-                              dataType="System.Int32"
-                              description="Specifies the mode used to access the database."
-                              name="AccessMode"
-                              typeConverter="AccessMode">2</property>
-                            <property
-                              dataType="System.String"
-                              description="The mappings between the parameters in the SQL command and variables."
-                              name="ParameterMapping">"Parameter0:Input",{014448EE-AC8B-4ACA-8A62-65BB7EA1B62A};</property>
-                          </properties>
-                          <connections>
-                            <connection
-                              refId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\SRC DWH Index Market Caps.Connections[OleDbConnection]"
-                              connectionManagerID="{0CBC2C04-C137-495F-AF7C-FA5DE465FED0}:external"
-                              connectionManagerRefId="Project.ConnectionManagers[DWH]"
-                              description="The OLE DB runtime connection used to access the database."
-                              name="OleDbConnection" />
-                          </connections>
-                          <outputs>
-                            <output
-                              refId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\SRC DWH Index Market Caps.Outputs[OLE DB Source Output]"
-                              name="OLE DB Source Output">
-                              <outputColumns>
-                                <outputColumn
-                                  refId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\SRC DWH Index Market Caps.Outputs[OLE DB Source Output].Columns[IndexTypeID]"
-                                  dataType="i2"
-                                  errorOrTruncationOperation="Conversion"
-                                  errorRowDisposition="FailComponent"
-                                  externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\SRC DWH Index Market Caps.Outputs[OLE DB Source Output].ExternalColumns[IndexTypeID]"
-                                  lineageId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\SRC DWH Index Market Caps.Outputs[OLE DB Source Output].Columns[IndexTypeID]"
-                                  name="IndexTypeID"
-                                  truncationRowDisposition="FailComponent" />
-                                <outputColumn
-                                  refId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\SRC DWH Index Market Caps.Outputs[OLE DB Source Output].Columns[IndexCode]"
-                                  codePage="1252"
-                                  dataType="str"
-                                  errorOrTruncationOperation="Conversion"
-                                  errorRowDisposition="FailComponent"
-                                  externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\SRC DWH Index Market Caps.Outputs[OLE DB Source Output].ExternalColumns[IndexCode]"
-                                  length="20"
-                                  lineageId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\SRC DWH Index Market Caps.Outputs[OLE DB Source Output].Columns[IndexCode]"
-                                  name="IndexCode"
-                                  truncationRowDisposition="FailComponent" />
-                                <outputColumn
-                                  refId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\SRC DWH Index Market Caps.Outputs[OLE DB Source Output].Columns[IndexDateID]"
-                                  dataType="i4"
-                                  errorOrTruncationOperation="Conversion"
-                                  errorRowDisposition="FailComponent"
-                                  externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\SRC DWH Index Market Caps.Outputs[OLE DB Source Output].ExternalColumns[IndexDateID]"
-                                  lineageId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\SRC DWH Index Market Caps.Outputs[OLE DB Source Output].Columns[IndexDateID]"
-                                  name="IndexDateID"
-                                  truncationRowDisposition="FailComponent" />
-                              </outputColumns>
-                              <externalMetadataColumns
-                                isUsed="True">
-                                <externalMetadataColumn
-                                  refId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\SRC DWH Index Market Caps.Outputs[OLE DB Source Output].ExternalColumns[IndexTypeID]"
-                                  dataType="i2"
-                                  name="IndexTypeID" />
-                                <externalMetadataColumn
-                                  refId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\SRC DWH Index Market Caps.Outputs[OLE DB Source Output].ExternalColumns[IndexCode]"
-                                  codePage="1252"
-                                  dataType="str"
-                                  length="20"
-                                  name="IndexCode" />
-                                <externalMetadataColumn
-                                  refId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\SRC DWH Index Market Caps.Outputs[OLE DB Source Output].ExternalColumns[IndexDateID]"
-                                  dataType="i4"
-                                  name="IndexDateID" />
-                              </externalMetadataColumns>
-                            </output>
-                            <output
-                              refId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\SRC DWH Index Market Caps.Outputs[OLE DB Source Error Output]"
-                              isErrorOut="true"
-                              name="OLE DB Source Error Output">
-                              <outputColumns>
-                                <outputColumn
-                                  refId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\SRC DWH Index Market Caps.Outputs[OLE DB Source Error Output].Columns[IndexTypeID]"
-                                  dataType="i2"
-                                  lineageId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\SRC DWH Index Market Caps.Outputs[OLE DB Source Error Output].Columns[IndexTypeID]"
-                                  name="IndexTypeID" />
-                                <outputColumn
-                                  refId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\SRC DWH Index Market Caps.Outputs[OLE DB Source Error Output].Columns[IndexCode]"
-                                  codePage="1252"
-                                  dataType="str"
-                                  length="20"
-                                  lineageId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\SRC DWH Index Market Caps.Outputs[OLE DB Source Error Output].Columns[IndexCode]"
-                                  name="IndexCode" />
-                                <outputColumn
-                                  refId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\SRC DWH Index Market Caps.Outputs[OLE DB Source Error Output].Columns[IndexDateID]"
-                                  dataType="i4"
-                                  lineageId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\SRC DWH Index Market Caps.Outputs[OLE DB Source Error Output].Columns[IndexDateID]"
-                                  name="IndexDateID" />
-                                <outputColumn
-                                  refId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\SRC DWH Index Market Caps.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
-                                  dataType="i4"
-                                  lineageId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\SRC DWH Index Market Caps.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
-                                  name="ErrorCode"
-                                  specialFlags="1" />
-                                <outputColumn
-                                  refId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\SRC DWH Index Market Caps.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
-                                  dataType="i4"
-                                  lineageId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\SRC DWH Index Market Caps.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
-                                  name="ErrorColumn"
-                                  specialFlags="2" />
-                              </outputColumns>
-                              <externalMetadataColumns />
-                            </output>
-                          </outputs>
-                        </component>
-                      </components>
-                      <paths>
-                        <path
-                          refId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff.Paths[Lookup Match Output]"
-                          endId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\LKP DWH Equity Constituent mkt cap.Inputs[Lookup Input]"
-                          name="Lookup Match Output"
-                          startId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\LKP Stoxx Iseq20Leveraged.Outputs[Lookup Match Output]" />
-                        <path
-                          refId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff.Paths[Lookup Match Output1]"
-                          endId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\DST DWH ETL FactEquityIndexMerge.Inputs[OLE DB Destination Input]"
-                          name="Lookup Match Output"
-                          startId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\LKP DWH Equity Constituent mkt cap.Outputs[Lookup Match Output]" />
-                        <path
-                          refId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff.Paths[Lookup Match Output2]"
-                          endId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\LKP Stoxx Iseq20Leveraged.Inputs[Lookup Input]"
-                          name="Lookup Match Output"
-                          startId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\LKP DWH Equity Details.Outputs[Lookup Match Output]" />
-                        <path
-                          refId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff.Paths[OLE DB Source Output]"
-                          endId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\LKP DWH Equity Details.Inputs[Lookup Input]"
-                          name="OLE DB Source Output"
-                          startId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\SRC DWH Index Market Caps.Outputs[OLE DB Source Output]" />
-                      </paths>
-                    </pipeline>
-                  </DTS:ObjectData>
-                </DTS:Executable>
-                <DTS:Executable
-                  DTS:refId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\SQL FactEquityIndexPrep"
-                  DTS:CreationName="Microsoft.ExecuteSQLTask"
-                  DTS:Description="Execute SQL Task"
-                  DTS:DTSID="{ED58DC18-C157-4684-B521-F5EF876BA4AD}"
-                  DTS:ExecutableType="Microsoft.ExecuteSQLTask"
-                  DTS:LocaleID="-1"
-                  DTS:ObjectName="SQL FactEquityIndexPrep"
-                  DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-                  DTS:ThreadHint="0">
-                  <DTS:Variables />
-                  <DTS:ObjectData>
-                    <SQLTask:SqlTaskData
-                      SQLTask:Connection="{0CBC2C04-C137-495F-AF7C-FA5DE465FED0}"
-                      SQLTask:SqlStatementSource="EXEC ETL.AggrgeateFactEquityIndex ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
-                      <SQLTask:ParameterBinding
-                        SQLTask:ParameterName="0"
-                        SQLTask:DtsVariableName="User::AggregationDateID"
-                        SQLTask:ParameterDirection="Input"
-                        SQLTask:DataType="3"
-                        SQLTask:ParameterSize="-1" />
-                    </SQLTask:SqlTaskData>
-                  </DTS:ObjectData>
-                </DTS:Executable>
-                <DTS:Executable
                   DTS:refId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\SQL FactEquityPriceSnapshot"
                   DTS:CreationName="Microsoft.ExecuteSQLTask"
                   DTS:Description="Execute SQL Task"
@@ -11619,7 +10532,7 @@ FROM
                   DTS:LocaleID="-1"
                   DTS:ObjectName="SQL FactEquityPriceSnapshot"
                   DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-                  DTS:ThreadHint="1">
+                  DTS:ThreadHint="0">
                   <DTS:Variables />
                   <DTS:ObjectData>
                     <SQLTask:SqlTaskData
@@ -11649,7 +10562,7 @@ FROM
                   DTS:LocaleID="-1"
                   DTS:ObjectName="SQL FactMarketAggregation"
                   DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-                  DTS:ThreadHint="2">
+                  DTS:ThreadHint="1">
                   <DTS:Variables />
                   <DTS:ObjectData>
                     <SQLTask:SqlTaskData
@@ -11670,49 +10583,7 @@ FROM
                     </SQLTask:SqlTaskData>
                   </DTS:ObjectData>
                 </DTS:Executable>
-                <DTS:Executable
-                  DTS:refId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\SQL Update FactEquityInxexSnapshot"
-                  DTS:CreationName="Microsoft.ExecuteSQLTask"
-                  DTS:Description="Execute SQL Task"
-                  DTS:DTSID="{F400EDFB-5949-49BD-933B-3C1EF32FCE3A}"
-                  DTS:ExecutableType="Microsoft.ExecuteSQLTask"
-                  DTS:LocaleID="-1"
-                  DTS:ObjectName="SQL Update FactEquityInxexSnapshot"
-                  DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-                  DTS:ThreadHint="0">
-                  <DTS:Variables />
-                  <DTS:ObjectData>
-                    <SQLTask:SqlTaskData
-                      SQLTask:Connection="{0CBC2C04-C137-495F-AF7C-FA5DE465FED0}"
-                      SQLTask:SqlStatementSource="EXEC ETL.UpdateFactEquityIndexSnapshot ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
-                      <SQLTask:ParameterBinding
-                        SQLTask:ParameterName="0"
-                        SQLTask:DtsVariableName="User::BatchID"
-                        SQLTask:ParameterDirection="Input"
-                        SQLTask:DataType="3"
-                        SQLTask:ParameterSize="-1" />
-                    </SQLTask:SqlTaskData>
-                  </DTS:ObjectData>
-                </DTS:Executable>
               </DTS:Executables>
-              <DTS:PrecedenceConstraints>
-                <DTS:PrecedenceConstraint
-                  DTS:refId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations.PrecedenceConstraints[Constraint 2]"
-                  DTS:CreationName=""
-                  DTS:DTSID="{96F085F9-7B48-4C45-BC7F-AB2A211FD332}"
-                  DTS:From="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\SQL FactEquityIndexPrep"
-                  DTS:LogicalAnd="True"
-                  DTS:ObjectName="Constraint 2"
-                  DTS:To="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff" />
-                <DTS:PrecedenceConstraint
-                  DTS:refId="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations.PrecedenceConstraints[Constraint 3]"
-                  DTS:CreationName=""
-                  DTS:DTSID="{3821004E-D78D-41D6-9973-C0A32F11F52A}"
-                  DTS:From="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff"
-                  DTS:LogicalAnd="True"
-                  DTS:ObjectName="Constraint 3"
-                  DTS:To="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\SQL Update FactEquityInxexSnapshot" />
-              </DTS:PrecedenceConstraints>
             </DTS:Executable>
             <DTS:Executable
               DTS:refId="Package\Sequence Container\Foreach Loop Container\SQL Build EquityTradeLtpHelper"
@@ -11739,20 +10610,20 @@ FROM
               </DTS:ObjectData>
             </DTS:Executable>
             <DTS:Executable
-              DTS:refId="Package\Sequence Container\Foreach Loop Container\SQL DWH Clear merge table"
+              DTS:refId="Package\Sequence Container\Foreach Loop Container\SQL DWH Clear merge tables"
               DTS:CreationName="Microsoft.ExecuteSQLTask"
               DTS:Description="Execute SQL Task"
               DTS:DTSID="{220B1A9E-6DBA-4AA6-B25B-565DF3F3F7AB}"
               DTS:ExecutableType="Microsoft.ExecuteSQLTask"
               DTS:LocaleID="-1"
-              DTS:ObjectName="SQL DWH Clear merge table"
+              DTS:ObjectName="SQL DWH Clear merge tables"
               DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
               DTS:ThreadHint="0">
               <DTS:Variables />
               <DTS:ObjectData>
                 <SQLTask:SqlTaskData
                   SQLTask:Connection="{0CBC2C04-C137-495F-AF7C-FA5DE465FED0}"
-                  SQLTask:SqlStatementSource="TRUNCATE TABLE ETL.FactEquitySnapshotMerge&#xA;TRUNCATE TABLE ETL.FactEtfSnapshotMerge&#xA;TRUNCATE TABLE ETL.FactEquityIndexSnapshotMerge&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+                  SQLTask:SqlStatementSource="TRUNCATE TABLE ETL.FactEquitySnapshotMerge&#xA;TRUNCATE TABLE ETL.FactEtfSnapshotMerge&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
               </DTS:ObjectData>
             </DTS:Executable>
             <DTS:Executable
@@ -11799,7 +10670,7 @@ FROM
               DTS:refId="Package\Sequence Container\Foreach Loop Container.PrecedenceConstraints[Constraint 1]"
               DTS:CreationName=""
               DTS:DTSID="{0B54070F-6B3A-4E6A-B3EF-B789FB3E2E36}"
-              DTS:From="Package\Sequence Container\Foreach Loop Container\SQL DWH Clear merge table"
+              DTS:From="Package\Sequence Container\Foreach Loop Container\SQL DWH Clear merge tables"
               DTS:LogicalAnd="True"
               DTS:ObjectName="Constraint 1"
               DTS:To="Package\Sequence Container\Foreach Loop Container\SQL Build EquityTradeLtpHelper" />
@@ -11878,7 +10749,7 @@ FROM
       DTS:LocaleID="-1"
       DTS:ObjectName="SQL Get DHW BatchID"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="1">
+      DTS:ThreadHint="0">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -11900,7 +10771,7 @@ FROM
       DTS:LocaleID="-1"
       DTS:ObjectName="SQL Get WISDOM ISIN"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="0">
+      DTS:ThreadHint="1">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -11949,6 +10820,75 @@ FROM
       DTS:ObjectName="Constraint 3"
       DTS:To="Package\SEQ Aggregaton Prep" />
   </DTS:PrecedenceConstraints>
+  <DTS:EventHandlers>
+    <DTS:EventHandler
+      DTS:refId="Package.EventHandlers[OnError]"
+      DTS:CreationName="OnError"
+      DTS:DTSID="{5EBD5D13-76A3-44C5-A30A-C0F9553909EC}"
+      DTS:EventID="0"
+      DTS:EventName="OnError"
+      DTS:LocaleID="-1">
+      <DTS:Variables>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:Description="The propagate property of the event"
+          DTS:DTSID="{E396D48C-4E33-440A-965D-98170B2EB7D0}"
+          DTS:IncludeInDebugDump="6789"
+          DTS:Namespace="System"
+          DTS:ObjectName="Propagate">
+          <DTS:VariableValue
+            DTS:DataType="11">-1</DTS:VariableValue>
+        </DTS:Variable>
+      </DTS:Variables>
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package.EventHandlers[OnError]\EPT Error Handler"
+          DTS:CreationName="Microsoft.ExecutePackageTask"
+          DTS:Description="Execute Package Task"
+          DTS:DTSID="{9d4a0e76-307e-4a0c-aaaa-b3153b5f4211}"
+          DTS:ExecutableType="Microsoft.ExecutePackageTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="EPT Error Handler"
+          DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <ExecutePackageTask>
+              <UseProjectReference>True</UseProjectReference>
+              <PackageName>PckErrorHandler.dtsx</PackageName>
+              <ParameterAssignment>
+                <ParameterName>ErrorCode</ParameterName>
+                <BindedVariableOrParameterName>System::ErrorCode</BindedVariableOrParameterName>
+              </ParameterAssignment>
+              <ParameterAssignment>
+                <ParameterName>ErrorDescription</ParameterName>
+                <BindedVariableOrParameterName>System::ErrorDescription</BindedVariableOrParameterName>
+              </ParameterAssignment>
+              <ParameterAssignment>
+                <ParameterName>ErrorPackageName</ParameterName>
+                <BindedVariableOrParameterName>System::PackageName</BindedVariableOrParameterName>
+              </ParameterAssignment>
+              <ParameterAssignment>
+                <ParameterName>SourceDescription</ParameterName>
+                <BindedVariableOrParameterName>System::SourceDescription</BindedVariableOrParameterName>
+              </ParameterAssignment>
+              <ParameterAssignment>
+                <ParameterName>SourceID</ParameterName>
+                <BindedVariableOrParameterName>System::SourceID</BindedVariableOrParameterName>
+              </ParameterAssignment>
+              <ParameterAssignment>
+                <ParameterName>SourceName</ParameterName>
+                <BindedVariableOrParameterName>System::SourceName</BindedVariableOrParameterName>
+              </ParameterAssignment>
+              <ParameterAssignment>
+                <ParameterName>SourceParentGUID</ParameterName>
+                <BindedVariableOrParameterName>System::SourceParentGUID</BindedVariableOrParameterName>
+              </ParameterAssignment>
+            </ExecutePackageTask>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+    </DTS:EventHandler>
+  </DTS:EventHandlers>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
 <!--If you manually edit this section and make a mistake, you can delete it. -->
@@ -11960,7 +10900,7 @@ FROM
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="64" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="64" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="260,42"
           Id="Package\SEQ Aggregaton Prep\DFT Aggregation Day List"
@@ -12005,7 +10945,7 @@ FROM
           TopLeft="203,459">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,28"
               Start="0,0"
               End="0,20.5">
@@ -12027,7 +10967,7 @@ FROM
           TopLeft="200.75,376">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,41"
               Start="0,0"
               End="0,33.5">
@@ -12049,7 +10989,7 @@ FROM
           TopLeft="203,529">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,44"
               Start="0,0"
               End="0,36.5">
@@ -12071,7 +11011,7 @@ FROM
           TopLeft="203,615">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,35"
               Start="0,0"
               End="0,27.5">
@@ -12127,7 +11067,7 @@ FROM
           TopLeft="140,63">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="18,43"
               Start="0,0"
               End="18,35.5">
@@ -12161,7 +11101,7 @@ FROM
           TopLeft="158,231">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="-8,38"
               Start="0,0"
               End="-8,30.5">
@@ -12195,7 +11135,7 @@ FROM
           TopLeft="158,148">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,41"
               Start="0,0"
               End="0,33.5">
@@ -12221,68 +11161,12 @@ FROM
           TopLeft="43,204" />
         <NodeLayout
           Size="256,42"
-          Id="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff"
-          TopLeft="23,98" />
-        <NodeLayout
-          Size="256,42"
-          Id="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\SQL FactEquityIndexPrep"
-          TopLeft="23,19" />
-        <NodeLayout
-          Size="256,42"
           Id="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\SQL FactEquityPriceSnapshot"
           TopLeft="23,324" />
         <NodeLayout
           Size="256,42"
           Id="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\SQL FactMarketAggregation"
           TopLeft="23,249" />
-        <NodeLayout
-          Size="256,42"
-          Id="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\SQL Update FactEquityInxexSnapshot"
-          TopLeft="23,172" />
-        <EdgeLayout
-          Id="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations.PrecedenceConstraints[Constraint 2]"
-          TopLeft="151,61">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,37"
-              Start="0,0"
-              End="0,29.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,29.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations.PrecedenceConstraints[Constraint 3]"
-          TopLeft="151,140">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,32"
-              Start="0,0"
-              End="0,24.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,24.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
@@ -12295,8 +11179,8 @@ FROM
           Id="Package\Sequence Container\Foreach Loop Container\SQL Build EquityTradeLtpHelper"
           TopLeft="80,117" />
         <NodeLayout
-          Size="252,42"
-          Id="Package\Sequence Container\Foreach Loop Container\SQL DWH Clear merge table"
+          Size="217,42"
+          Id="Package\Sequence Container\Foreach Loop Container\SQL DWH Clear merge tables"
           TopLeft="82,29" />
         <NodeLayout
           Size="225,42"
@@ -12307,7 +11191,7 @@ FROM
           TopLeft="198,613">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,26"
               Start="0,0"
               End="0,18.5">
@@ -12326,18 +11210,30 @@ FROM
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Sequence Container\Foreach Loop Container.PrecedenceConstraints[Constraint 1]"
-          TopLeft="207,71">
+          TopLeft="190.5,71">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,46"
+              StartConnector="{x:Null}"
+              EndConnector="15.5,46"
               Start="0,0"
-              End="0,38.5">
+              End="15.5,38.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,38.5" />
+                    End="0,19" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,19"
+                    Point2="0,23"
+                    Point3="4,23" />
+                  <mssgle:LineSegment
+                    End="11.5,23" />
+                  <mssgle:CubicBezierSegment
+                    Point1="11.5,23"
+                    Point2="15.5,23"
+                    Point3="15.5,27" />
+                  <mssgle:LineSegment
+                    End="15.5,38.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -12351,7 +11247,7 @@ FROM
           TopLeft="203.75,159">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,45"
               Start="0,0"
               End="0,37.5">
@@ -12373,7 +11269,7 @@ FROM
           TopLeft="197.5,1081">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,40"
               Start="0,0"
               End="0,32.5">
@@ -12406,7 +11302,7 @@ FROM
           TopLeft="235.5,71">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,48"
               Start="0,0"
               End="0,40.5">
@@ -12443,7 +11339,7 @@ FROM
           TopLeft="319.25,2457">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,92"
               Start="0,0"
               End="0,84.5">
@@ -12465,7 +11361,7 @@ FROM
           TopLeft="280,930">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="39.5,41"
               Start="0,0"
               End="39.5,33.5">
@@ -12499,7 +11395,7 @@ FROM
           TopLeft="164,92">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="47.3333333333333,52"
               Start="0,0"
               End="47.3333333333333,44.5">
@@ -12533,7 +11429,7 @@ FROM
           TopLeft="394,92">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="-45.3333333333334,52"
               Start="0,0"
               End="-45.3333333333334,44.5">
@@ -12565,11 +11461,23 @@ FROM
       </GraphLayout>
     </LayoutInfo>
   </Package>
+  <DtsEventHandler
+    design-time-name="Package.EventHandlers[OnError]">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="164,42"
+          Id="Package.EventHandlers[OnError]\EPT Error Handler"
+          TopLeft="72,30" />
+      </GraphLayout>
+    </LayoutInfo>
+  </DtsEventHandler>
   <TaskHost
     design-time-name="Package\SEQ Aggregaton Prep\DFT Aggregation Day List">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="266,42"
           Id="Package\SEQ Aggregaton Prep\DFT Aggregation Day List\SRC ProcessControl Aggregation Days 1"
@@ -12586,66 +11494,6 @@ FROM
           Size="216,42"
           Id="Package\SEQ Aggregaton Prep\DFT Aggregation Day List\DST DWH Aggregration Days"
           TopLeft="86,164" />
-        <EdgeLayout
-          Id="Package\SEQ Aggregaton Prep\DFT Aggregation Day List.Paths[OLE DB Source Output1]"
-          TopLeft="491,181">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="13.5,55"
-              Start="0,0"
-              End="13.5,47.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,23.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,23.5"
-                    Point2="0,27.5"
-                    Point3="4,27.5" />
-                  <mssgle:LineSegment
-                    End="9.5,27.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="9.5,27.5"
-                    Point2="13.5,27.5"
-                    Point3="13.5,31.5" />
-                  <mssgle:LineSegment
-                    End="13.5,47.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\SEQ Aggregaton Prep\DFT Aggregation Day List.Paths[OLE DB Source Output]"
-          TopLeft="190.25,105">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,59"
-              Start="0,0"
-              End="0,51.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,51.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
@@ -12695,7 +11543,7 @@ FROM
     design-time-name="Package\SEQ Aggregaton Prep\DFT Get Details from StateStreet_ODS">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="244,42"
           Id="Package\SEQ Aggregaton Prep\DFT Get Details from StateStreet_ODS\SRC StateStreet_ODS ISEQ20_NAV"
@@ -12704,42 +11552,6 @@ FROM
           Size="210,42"
           Id="Package\SEQ Aggregaton Prep\DFT Get Details from StateStreet_ODS\DST STAGING ISEQ20_NAV"
           TopLeft="87,144" />
-        <EdgeLayout
-          Id="Package\SEQ Aggregaton Prep\DFT Get Details from StateStreet_ODS.Paths[OLE DB Source Output]"
-          TopLeft="209,73">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-17,71"
-              Start="0,0"
-              End="-17,63.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,31.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,31.5"
-                    Point2="0,35.5"
-                    Point3="-4,35.5" />
-                  <mssgle:LineSegment
-                    End="-13,35.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-13,35.5"
-                    Point2="-17,35.5"
-                    Point3="-17,39.5" />
-                  <mssgle:LineSegment
-                    End="-17,63.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
@@ -12768,7 +11580,7 @@ FROM
     design-time-name="Package\SEQ Aggregaton Prep\DFT Get Details from T7_ODS">
     <LayoutInfo>
       <GraphLayout
-        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="244,42"
           Id="Package\SEQ Aggregaton Prep\DFT Get Details from T7_ODS\DST DWH ETL Closing Price"
@@ -12801,94 +11613,6 @@ FROM
           Size="244,42"
           Id="Package\SEQ Aggregaton Prep\DFT Get Details from T7_ODS\DST DWH ETL BidOfferPrice"
           TopLeft="318,271" />
-        <EdgeLayout
-          Id="Package\SEQ Aggregaton Prep\DFT Get Details from T7_ODS.Paths[OLE DB Source Output3]"
-          TopLeft="440,230">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,41"
-              Start="0,0"
-              End="0,33.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,33.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\SEQ Aggregaton Prep\DFT Get Details from T7_ODS.Paths[OLE DB Source Output2]"
-          TopLeft="440,77">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,34"
-              Start="0,0"
-              End="0,26.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,26.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\SEQ Aggregaton Prep\DFT Get Details from T7_ODS.Paths[OLE DB Source Output1]"
-          TopLeft="172,230">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,41"
-              Start="0,0"
-              End="0,33.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,33.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\SEQ Aggregaton Prep\DFT Get Details from T7_ODS.Paths[OLE DB Source Output]"
-          TopLeft="172,76">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,35"
-              Start="0,0"
-              End="0,27.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,27.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
@@ -12980,7 +11704,7 @@ FROM
     design-time-name="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation">
     <LayoutInfo>
       <GraphLayout
-        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="279,44"
           Id="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation\LKP High-Low Prices"
@@ -13045,365 +11769,11 @@ FROM
           Size="279,44"
           Id="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation\DER BatchID"
           TopLeft="138,1176" />
-        <EdgeLayout
-          Id="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation.Paths[OLE DB Source Output]"
-          TopLeft="277.5,121">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,55"
-              Start="0,0"
-              End="0,47.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,47.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation.Paths[Lookup Match Output11]"
-          TopLeft="277.5,801">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,45"
-              Start="0,0"
-              End="0,37.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,37.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,12.9453125,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation.Paths[Lookup Match Output10]"
-          TopLeft="277.5,714">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,43"
-              Start="0,0"
-              End="0,35.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,35.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,11.9453125,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation.Paths[Lookup Match Output9]"
-          TopLeft="274.5,1307">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,46"
-              Start="0,0"
-              End="0,38.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,38.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,13.4453125,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation.Paths[Lookup Match Output8]"
-          TopLeft="277.5,1146">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,30"
-              Start="0,0"
-              End="0,22.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,22.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,5.4453125,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation.Paths[Lookup Match Output7]"
-          TopLeft="277.5,1066">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,36"
-              Start="0,0"
-              End="0,28.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,28.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,8.4453125,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation.Paths[Lookup Match Output6]"
-          TopLeft="277.5,975">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,47"
-              Start="0,0"
-              End="0,39.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,39.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,13.9453125,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation.Paths[Lookup Match Output5]"
-          TopLeft="277.5,890">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,41"
-              Start="0,0"
-              End="0,33.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,33.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,10.9453125,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation.Paths[Lookup Match Output4]"
-          TopLeft="277.5,616">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,54"
-              Start="0,0"
-              End="0,46.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,46.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,17.4453125,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation.Paths[Lookup Match Output3]"
-          TopLeft="277.5,529">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,43"
-              Start="0,0"
-              End="0,35.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,35.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,11.9453125,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation.Paths[Lookup Match Output2]"
-          TopLeft="277.5,426">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,59"
-              Start="0,0"
-              End="0,51.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,51.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,19.9453125,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation.Paths[Lookup Match Output1]"
-          TopLeft="277.5,321">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,61"
-              Start="0,0"
-              End="0,53.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,53.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,20.9453125,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation.Paths[Lookup Match Output]"
-          TopLeft="277.5,220">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,57"
-              Start="0,0"
-              End="0,49.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,49.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,18.9453125,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation.Paths[Derived Column Output1]"
-          TopLeft="273.5,1397">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,50"
-              Start="0,0"
-              End="0,42.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,42.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation.Paths[Derived Column Output]"
-          TopLeft="276.5,1220">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,43"
-              Start="0,0"
-              End="0,35.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,35.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
         <AnnotationLayout
           Text="Pulling full table!!!!!!!"
           ParentId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation"
-          FontInfo="{assembly:Null}"
-          Size="279,40"
+          FontInfo="{x:Null}"
+          Size="279,NaN"
           Id="df739fe3-0dd1-443f-83f2-6e3715ae91ff"
           TopLeft="535,847" />
       </GraphLayout>
@@ -13710,7 +12080,7 @@ FROM
     design-time-name="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Etf Aggregation">
     <LayoutInfo>
       <GraphLayout
-        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="263,44"
           Id="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Etf Aggregation\LKP Closing Auction Prices"
@@ -13759,270 +12129,6 @@ FROM
           Size="263,44"
           Id="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Etf Aggregation\Equity Instruments to Aggregate"
           TopLeft="158,77" />
-        <EdgeLayout
-          Id="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Etf Aggregation.Paths[Lookup Match Output6]"
-          TopLeft="289.5,801">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,45"
-              Start="0,0"
-              End="0,37.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,37.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,12.9453125,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Etf Aggregation.Paths[Lookup Match Output5]"
-          TopLeft="289.5,714">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,43"
-              Start="0,0"
-              End="0,35.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,35.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,11.9453125,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Etf Aggregation.Paths[Lookup Match Output4]"
-          TopLeft="289.5,616">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,54"
-              Start="0,0"
-              End="0,46.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,46.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,17.4453125,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Etf Aggregation.Paths[Lookup Match Output3]"
-          TopLeft="289.5,529">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,43"
-              Start="0,0"
-              End="0,35.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,35.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,11.9453125,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Etf Aggregation.Paths[Lookup Match Output2]"
-          TopLeft="289.5,426">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,59"
-              Start="0,0"
-              End="0,51.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,51.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,19.9453125,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Etf Aggregation.Paths[Lookup Match Output1]"
-          TopLeft="289.5,321">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,61"
-              Start="0,0"
-              End="0,53.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,53.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,20.9453125,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Etf Aggregation.Paths[Lookup Match Output]"
-          TopLeft="289.5,220">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,57"
-              Start="0,0"
-              End="0,49.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,49.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,18.9453125,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Etf Aggregation.Paths[Derived Column Output1]"
-          TopLeft="289.5,977">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,47"
-              Start="0,0"
-              End="0,39.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,39.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Etf Aggregation.Paths[Derived Column Output]"
-          TopLeft="289.5,890">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,43"
-              Start="0,0"
-              End="0,35.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,35.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Etf Aggregation.Paths[OLE DB Source Output]"
-          TopLeft="289.5,121">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,55"
-              Start="0,0"
-              End="0,47.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,47.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Etf Aggregation.Paths[Lookup Match Output7]"
-          TopLeft="289.5,1068">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,63"
-              Start="0,0"
-              End="0,55.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,55.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,21.9453125,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
@@ -14226,220 +12332,6 @@ FROM
         <Value
           type="q4:string">0</Value>
       </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <TaskHost
-    design-time-name="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
-        <NodeLayout
-          Size="255,42"
-          Id="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\LKP DWH Equity Details"
-          TopLeft="67,138" />
-        <NodeLayout
-          Size="255,42"
-          Id="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\SRC DWH Index Market Caps"
-          TopLeft="67,38" />
-        <NodeLayout
-          Size="255,42"
-          Id="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\LKP DWH Equity Constituent mkt cap"
-          TopLeft="67,323" />
-        <NodeLayout
-          Size="255,42"
-          Id="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\DST DWH ETL FactEquityIndexMerge"
-          TopLeft="67,417" />
-        <NodeLayout
-          Size="255,42"
-          Id="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\LKP Stoxx Iseq20Leveraged"
-          TopLeft="67,227" />
-        <EdgeLayout
-          Id="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff.Paths[OLE DB Source Output]"
-          TopLeft="194.5,80">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,58"
-              Start="0,0"
-              End="0,50.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,50.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff.Paths[Lookup Match Output2]"
-          TopLeft="194.5,180">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,47"
-              Start="0,0"
-              End="0,39.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,39.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,13.9453125,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff.Paths[Lookup Match Output1]"
-          TopLeft="194.5,365">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,52"
-              Start="0,0"
-              End="0,44.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,44.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,16.4453125,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff.Paths[Lookup Match Output]"
-          TopLeft="194.5,269">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,54"
-              Start="0,0"
-              End="0,46.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,46.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,17.4453125,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\LKP Stoxx Iseq20Leveraged">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:string">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string"></Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:string">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\LKP DWH Equity Constituent mkt cap">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:string">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string"></Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:string">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\LKP DWH Equity Details">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:string">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[ETL].[FactEquityIndexPrep]</Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:string">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\DST DWH ETL FactEquityIndexMerge">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\DFT EquityIndexSnapshot Stuff\SRC DWH Index Market Caps">
-    <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
       </Property>

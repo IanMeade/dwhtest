@@ -1,5 +1,6 @@
 CREATE TABLE [dbo].[XtOdsIssuer]
 (
+[ID] [int] NOT NULL IDENTITY(1, 1),
 [Name] [varchar] (300) COLLATE Latin1_General_CI_AS NULL,
 [Gid] [varchar] (30) COLLATE Latin1_General_CI_AS NULL,
 [SmfName] [varchar] (300) COLLATE Latin1_General_CI_AS NULL,
