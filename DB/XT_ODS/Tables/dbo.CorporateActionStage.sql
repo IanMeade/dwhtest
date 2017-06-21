@@ -35,7 +35,8 @@ CREATE TABLE [dbo].[CorporateActionStage]
 [TaxRatePercent] [decimal] (23, 10) NULL,
 [ExtractSequenceId] [bigint] NOT NULL IDENTITY(1, 1),
 [ExtractDate] [datetime] NULL CONSTRAINT [DF__Corporate__Extra__29572725] DEFAULT (getdate()),
-[MessageId] [varchar] (256) COLLATE Latin1_General_CI_AS NULL
+[MessageId] [varchar] (256) COLLATE Latin1_General_CI_AS NULL,
+[CurrentNumberOfSharesInIssue] [varchar] (200) COLLATE Latin1_General_CI_AS NULL
 ) ON [PRIMARY]
 GO
 ALTER TABLE [dbo].[CorporateActionStage] ADD CONSTRAINT [PK__Corporat__A1071C3DDEC58D27] PRIMARY KEY CLUSTERED  ([ExtractSequenceId]) ON [PRIMARY]

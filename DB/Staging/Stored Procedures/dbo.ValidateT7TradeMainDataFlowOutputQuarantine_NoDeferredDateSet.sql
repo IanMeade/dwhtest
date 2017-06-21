@@ -54,6 +54,22 @@ BEGIN
 				DelayedTradeYN = 'Y' 
 			AND 
 				PublishDateTime IS NULL 
+		UNION 
+		SELECT  
+			TradeDateID, 
+			TradingSysTransNo, 
+			A_ISIN, 
+			TradeTypeCategory,  
+			/* IMPORTANT - ENSURE CODE IS IN FILTER AT END OF SP */ 
+			-99 AS Code,  
+			'Trade [' + UniqueKey + '] moved to quarantine: Trade is marked DEFERRED but PUBLISH TIME is not set.' AS Message  
+		FROM  
+			T7TradeMainDataFlowOutput  
+		WHERE  
+				DelayedTradeYN = 'Y' 
+			AND 
+				/* DB is using AS SPECIAL / NULL VALUE - APPLY SAME CHECK AS BEFORE */
+				CAST(PublishDateTime AS date) = '18581117'
  
 	/* Remove invalid rows from T7TradeMainDataFlowOutput */  
   

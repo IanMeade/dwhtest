@@ -11,8 +11,8 @@
   DTS:LocaleID="6153"
   DTS:ObjectName="PckXtInterface"
   DTS:PackageType="5"
-  DTS:VersionBuild="233"
-  DTS:VersionGUID="{B769D317-065F-4076-9B26-4DC4D9395ED4}">
+  DTS:VersionBuild="235"
+  DTS:VersionGUID="{EAE306DD-427A-46EC-A022-1FFD1913FFA6}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -181,7 +181,7 @@
       DTS:LocaleID="-1"
       DTS:ObjectName="CMD Update ProcessControl"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="2">
+      DTS:ThreadHint="0">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -198,7 +198,7 @@
       DTS:LocaleID="-1"
       DTS:ObjectName="CMD XT Updates to process"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="2">
+      DTS:ThreadHint="0">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -737,7 +737,7 @@ WHERE
               DTS:LocaleID="-1"
               DTS:ObjectName="SQL Update ETF TotalShares in Staging"
               DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-              DTS:ThreadHint="3">
+              DTS:ThreadHint="4">
               <DTS:Variables />
               <DTS:ObjectData>
                 <SQLTask:SqlTaskData
@@ -767,7 +767,7 @@ WHERE
               DTS:LocaleID="-1"
               DTS:ObjectName="SQL Update FreeFloats"
               DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-              DTS:ThreadHint="4">
+              DTS:ThreadHint="3">
               <DTS:Variables />
               <DTS:ObjectData>
                 <SQLTask:SqlTaskData
@@ -781,8 +781,6 @@ WHERE
               DTS:refId="Package\SEQ Data Prep\SEQ Prepare expected dataset.PrecedenceConstraints[Constraint 2]"
               DTS:CreationName=""
               DTS:DTSID="{CDE331FC-F26C-4194-A9FC-9702A7FD4689}"
-              DTS:EvalOp="3"
-              DTS:Expression="@[User::FreeFloatChanges] != 0"
               DTS:From="Package\SEQ Data Prep\SEQ Prepare expected dataset\SQL Analysis XT Updates - 1"
               DTS:LogicalAnd="True"
               DTS:ObjectName="Constraint 2"
@@ -791,8 +789,6 @@ WHERE
               DTS:refId="Package\SEQ Data Prep\SEQ Prepare expected dataset.PrecedenceConstraints[Constraint 5]"
               DTS:CreationName=""
               DTS:DTSID="{D41EA8BD-CC54-4824-8FAC-E96F265DAA39}"
-              DTS:EvalOp="3"
-              DTS:Expression="@[User::ISEQ20_NAV_Units_in_Issue] != 0 &amp;&amp; ( @[User::ISEQ20_NAV_Units_in_Issue] != @[User::EFT_TotalSharesInIssue] )"
               DTS:From="Package\SEQ Data Prep\SEQ Prepare expected dataset\SQL Analysis XT Updates - 1"
               DTS:LogicalAnd="True"
               DTS:ObjectName="Constraint 5"
@@ -880,7 +876,7 @@ WHERE
           DTS:LocaleID="-1"
           DTS:ObjectName="SQL DWH ETF Current Shares"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="1">
+          DTS:ThreadHint="2">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -908,7 +904,7 @@ WHERE
           DTS:LocaleID="-1"
           DTS:ObjectName="SQL Get ISEQ20 NAV"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="1">
+          DTS:ThreadHint="2">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -930,7 +926,7 @@ WHERE
           DTS:LocaleID="-1"
           DTS:ObjectName="SQL ProcessControl ETF ISIN"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="1">
+          DTS:ThreadHint="2">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -3325,7 +3321,7 @@ WHERE
           DTS:LocaleID="-1"
           DTS:ObjectName="SQL STAGING Check FreeFloats Changed"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -3347,7 +3343,7 @@ WHERE
           DTS:LocaleID="-1"
           DTS:ObjectName="SQL Staging Clear FreeFLoat"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -25601,7 +25597,7 @@ where [refTable].[TableName] = ?</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="SQL Staging Clear XT Update Control"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="2">
+          DTS:ThreadHint="0">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -25618,7 +25614,7 @@ where [refTable].[TableName] = ?</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="SQL Staging Equity Sequence Numbers"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="2">
+          DTS:ThreadHint="0">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -25643,7 +25639,7 @@ where [refTable].[TableName] = ?</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="SQL Staging Issuer Sequence Numbers"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="2">
+          DTS:ThreadHint="0">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -32167,7 +32163,7 @@ where [refTable].[ISIN] = ?</property>
       DTS:LocaleID="-1"
       DTS:ObjectName="SQL Get DHW BatchID"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="2">
+      DTS:ThreadHint="0">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -32379,6 +32375,93 @@ where [refTable].[ISIN] = ?</property>
           TopLeft="194,446.444444444444" />
         <NodeLayout
           Size="275,42"
+          Id="Package\SEQ Data Prep\SEQ Prepare expected dataset\SQL Analysis XT Updates - 1"
+          TopLeft="171,21" />
+        <NodeLayout
+          Size="275,42"
+          Id="Package\SEQ Data Prep\SEQ Prepare expected dataset\SQL Update ETF TotalShares in Staging"
+          TopLeft="312,132" />
+        <NodeLayout
+          Size="275,42"
+          Id="Package\SEQ Data Prep\SEQ Prepare expected dataset\SQL Update FreeFloats"
+          TopLeft="18,132" />
+        <EdgeLayout
+          Id="Package\SEQ Data Prep\SEQ Prepare expected dataset.PrecedenceConstraints[Constraint 2]"
+          TopLeft="264,63">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-108.5,69"
+              Start="0,0"
+              End="-108.5,61.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,23.8394793926247" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,23.8394793926247"
+                    Point2="0,27.8394793926247"
+                    Point3="-4,27.8394793926247" />
+                  <mssgle:LineSegment
+                    End="-104.5,27.8394793926247" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-104.5,27.8394793926247"
+                    Point2="-108.5,27.8394793926247"
+                    Point3="-108.5,31.8394793926247" />
+                  <mssgle:LineSegment
+                    End="-108.5,61.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ Data Prep\SEQ Prepare expected dataset.PrecedenceConstraints[Constraint 5]"
+          TopLeft="353,63">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="96.5,68.9999999999998"
+              Start="0,0"
+              End="96.5,61.4999999999998">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,23.8394793926246" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,23.8394793926246"
+                    Point2="0,27.8394793926246"
+                    Point3="4,27.8394793926246" />
+                  <mssgle:LineSegment
+                    End="92.5,27.8394793926246" />
+                  <mssgle:CubicBezierSegment
+                    Point1="92.5,27.8394793926246"
+                    Point2="96.5,27.8394793926246"
+                    Point3="96.5,31.8394793926246" />
+                  <mssgle:LineSegment
+                    End="96.5,61.4999999999998" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="598,211"
+          Size="598,254"
+          Id="Package\SEQ Data Prep\SEQ Prepare expected dataset"
+          TopLeft="33,9" />
+        <NodeLayout
+          Size="275,42"
           Id="Package\SEQ Data Prep\SQL Analysis XT Updates - 2"
           TopLeft="195,373.555555555555" />
         <NodeLayout
@@ -32429,97 +32512,6 @@ where [refTable].[ISIN] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="275,42"
-          Id="Package\SEQ Data Prep\SEQ Prepare expected dataset\SQL Analysis XT Updates - 1"
-          TopLeft="171,21" />
-        <EdgeLayout
-          Id="Package\SEQ Data Prep\SEQ Prepare expected dataset.PrecedenceConstraints[Constraint 2]"
-          TopLeft="264,63">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-108.5,69"
-              Start="0,0"
-              End="-108.5,61.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,23.8394793926247" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,23.8394793926247"
-                    Point2="0,27.8394793926247"
-                    Point3="-4,27.8394793926247" />
-                  <mssgle:LineSegment
-                    End="-104.5,27.8394793926247" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-104.5,27.8394793926247"
-                    Point2="-108.5,27.8394793926247"
-                    Point3="-108.5,31.8394793926247" />
-                  <mssgle:LineSegment
-                    End="-108.5,61.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-62.25,32.8394793926247,16,16"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\SEQ Data Prep\SEQ Prepare expected dataset.PrecedenceConstraints[Constraint 5]"
-          TopLeft="353,63">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="96.5,68.9999999999998"
-              Start="0,0"
-              End="96.5,61.4999999999998">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,23.8394793926246" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,23.8394793926246"
-                    Point2="0,27.8394793926246"
-                    Point3="4,27.8394793926246" />
-                  <mssgle:LineSegment
-                    End="92.5,27.8394793926246" />
-                  <mssgle:CubicBezierSegment
-                    Point1="92.5,27.8394793926246"
-                    Point2="96.5,27.8394793926246"
-                    Point3="96.5,31.8394793926246" />
-                  <mssgle:LineSegment
-                    End="96.5,61.4999999999998" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="40.25,32.8394793926246,16,16"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="275,42"
-          Id="Package\SEQ Data Prep\SEQ Prepare expected dataset\SQL Update ETF TotalShares in Staging"
-          TopLeft="312,132" />
-        <NodeLayout
-          Size="275,42"
-          Id="Package\SEQ Data Prep\SEQ Prepare expected dataset\SQL Update FreeFloats"
-          TopLeft="18,132" />
-        <ContainerLayout
-          HeaderHeight="43"
-          IsExpanded="True"
-          PanelSize="598,211"
-          Size="598,254"
-          Id="Package\SEQ Data Prep\SEQ Prepare expected dataset"
-          TopLeft="33,9" />
         <EdgeLayout
           Id="Package\SEQ Data Prep.PrecedenceConstraints[Constraint 2]"
           TopLeft="332.25,263">
@@ -32608,8 +32600,8 @@ where [refTable].[ISIN] = ?</property>
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="315,262"
-          Size="315,305"
+          PanelSize="315,270"
+          Size="315,313"
           Id="Package\SEQ ETF Shares In Issue"
           TopLeft="641.444444444444,97.5555555555557" />
         <NodeLayout
@@ -33187,37 +33179,37 @@ where [refTable].[ISIN] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 4]"
-          TopLeft="798.944444444444,402.555555555556">
+          TopLeft="798.944444444444,410.555555555556">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="191.555555555556,199.666666666666"
+              EndConnector="191.555555555556,191.666666666666"
               Start="0,0"
-              End="191.555555555556,192.166666666666">
+              End="191.555555555556,184.166666666666">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,95.8333333333331" />
+                    End="0,91.8333333333331" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,95.8333333333331"
-                    Point2="0,99.8333333333331"
-                    Point3="4,99.8333333333331" />
+                    Point1="0,91.8333333333331"
+                    Point2="0,95.8333333333331"
+                    Point3="4,95.8333333333331" />
                   <mssgle:LineSegment
-                    End="187.555555555556,99.8333333333331" />
+                    End="187.555555555556,95.8333333333331" />
                   <mssgle:CubicBezierSegment
-                    Point1="187.555555555556,99.8333333333331"
-                    Point2="191.555555555556,99.8333333333331"
-                    Point3="191.555555555556,103.833333333333" />
+                    Point1="187.555555555556,95.8333333333331"
+                    Point2="191.555555555556,95.8333333333331"
+                    Point3="191.555555555556,99.8333333333331" />
                   <mssgle:LineSegment
-                    End="191.555555555556,192.166666666666" />
+                    End="191.555555555556,184.166666666666" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="87.777777777778,104.833333333333,16,16"
+              BoundingBox="87.777777777778,100.833333333333,16,16"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -34531,7 +34523,7 @@ where [refTable].[ISIN] = ?</property>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
+              BoundingBox="0,0,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -34551,7 +34543,7 @@ where [refTable].[ISIN] = ?</property>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
+              BoundingBox="0,0,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -34570,9 +34562,7 @@ where [refTable].[ISIN] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -34590,9 +34580,7 @@ where [refTable].[ISIN] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -34610,9 +34598,7 @@ where [refTable].[ISIN] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -34630,9 +34616,7 @@ where [refTable].[ISIN] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -34650,9 +34634,7 @@ where [refTable].[ISIN] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -34670,9 +34652,7 @@ where [refTable].[ISIN] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -34691,7 +34671,7 @@ where [refTable].[ISIN] = ?</property>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
+              BoundingBox="0,0,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -34711,7 +34691,7 @@ where [refTable].[ISIN] = ?</property>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
+              BoundingBox="0,0,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -35297,7 +35277,7 @@ where [refTable].[ISIN] = ?</property>
     design-time-name="Package\Sequence Container\DFT ProcessControlXt Updates">
     <LayoutInfo>
       <GraphLayout
-        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="180,42"
           Id="Package\Sequence Container\DFT ProcessControlXt Updates\OLE DB Source"
@@ -35349,7 +35329,9 @@ where [refTable].[ISIN] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -35367,7 +35349,9 @@ where [refTable].[ISIN] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -35385,7 +35369,9 @@ where [refTable].[ISIN] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -35403,7 +35389,9 @@ where [refTable].[ISIN] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -35421,7 +35409,9 @@ where [refTable].[ISIN] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -35439,14 +35429,16 @@ where [refTable].[ISIN] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <AnnotationLayout
           Text="Various XT Updates - written to ProcessControl DB&#xA;"
           ParentId="Package\Sequence Container\DFT ProcessControlXt Updates"
           FontInfo="{assembly:Null}"
-          Size="296,56"
+          Size="296,NaN"
           Id="4f7a51af-1756-479b-bda0-6d8df2f3db82"
           TopLeft="19,12" />
       </GraphLayout>

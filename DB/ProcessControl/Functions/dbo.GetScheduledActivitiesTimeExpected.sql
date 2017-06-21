@@ -5,7 +5,7 @@ GO
 -- =============================================
 -- Author:		Ian Meade
 -- Create date: 16/6/2017
--- Description:	Determine if an axctivity should be run and what the expected time is
+-- Description:	Determine if an activity should be run and what the expected time is
 -- =============================================
 CREATE FUNCTION [dbo].[GetScheduledActivitiesTimeExpected]
 (	

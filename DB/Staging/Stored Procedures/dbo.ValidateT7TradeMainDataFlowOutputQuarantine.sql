@@ -142,7 +142,7 @@ BEGIN
 			A_ISIN, 
 			TradeTypeCategory,  
 			101 as Code, 
-			'Trade [' + CAST(TradeDateID AS CHAR(8)) + '\' + RTRIM(CAST(TradingSysTransNo AS CHAR)) + '] moved to quarantine. [' + STR(COUNT(*)) + '] rows in trade - expcected 2 (Buy and Sell).' AS Message  
+			'Trade [' + MAX(UniqueKey) + '] moved to quarantine. [' + STR(COUNT(*)) + '] rows in trade - exected 2 (Buy and Sell).' AS Message  
 		FROM  
 			T7TradeMainDataFlowOutput  
 		WHERE 

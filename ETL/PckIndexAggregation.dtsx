@@ -11,8 +11,8 @@
   DTS:LocaleID="6153"
   DTS:ObjectName="PckIndexAggregation"
   DTS:PackageType="5"
-  DTS:VersionBuild="24"
-  DTS:VersionGUID="{CF48AA69-F323-4FD0-AE74-346C953AA107}">
+  DTS:VersionBuild="27"
+  DTS:VersionGUID="{1817F273-6A82-4116-9DF7-475CA42C2A34}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -537,7 +537,7 @@ where [refTable].[IndexCode] = ? and [refTable].[IndexDateID] = ?</property>
                       dataType="System.Int32"
                       description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
                       name="NoMatchBehavior"
-                      typeConverter="LookupNoMatchBehavior">0</property>
+                      typeConverter="LookupNoMatchBehavior">1</property>
                     <property
                       dataType="System.Int32"
                       description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
@@ -623,7 +623,6 @@ where [refTable].[IndexCode] = ? and [refTable].[IndexDateID] = ?</property>
                     <output
                       refId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\LKP DWH Equity Details.Outputs[Lookup Match Output]"
                       errorOrTruncationOperation="Lookup"
-                      errorRowDisposition="IgnoreFailure"
                       exclusionGroup="1"
                       name="Lookup Match Output"
                       synchronousInputId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\LKP DWH Equity Details.Inputs[Lookup Input]">
@@ -1474,7 +1473,7 @@ FROM
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="267,42"
           Id="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff"
@@ -1512,7 +1511,7 @@ FROM
           TopLeft="198.5,558.785714285714">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="0,39.2142857142857"
               Start="0,0"
               End="0,31.7142857142857">
@@ -1534,7 +1533,7 @@ FROM
           TopLeft="198.5,233.928571428571">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="0,39.2142857142857"
               Start="0,0"
               End="0,31.7142857142857">
@@ -1558,7 +1557,7 @@ FROM
           TopLeft="198.5,477.571428571429">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="0,39.2142857142857"
               Start="0,0"
               End="0,31.7142857142857">
@@ -1580,7 +1579,7 @@ FROM
           TopLeft="198.5,315.142857142857">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="0,39.2142857142858"
               Start="0,0"
               End="0,31.7142857142858">
@@ -1602,7 +1601,7 @@ FROM
           TopLeft="198.5,396.357142857143">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="0,39.2142857142858"
               Start="0,0"
               End="0,31.7142857142858">
@@ -1624,7 +1623,7 @@ FROM
           TopLeft="198.5,152.714285714286">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="0,39.2142857142858"
               Start="0,0"
               End="0,31.7142857142858">
@@ -1646,7 +1645,7 @@ FROM
           TopLeft="198.5,71.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="0,39.2142857142857"
               Start="0,0"
               End="0,31.7142857142857">
@@ -1679,7 +1678,7 @@ FROM
           TopLeft="348.25,62">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="0,85"
               Start="0,0"
               End="0,77.5">
@@ -1715,30 +1714,147 @@ FROM
     design-time-name="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff">
     <LayoutInfo>
       <GraphLayout
-        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="255,42"
           Id="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\LKP DWH Equity Details"
-          TopLeft="67,138" />
+          TopLeft="5.5,107.5" />
         <NodeLayout
           Size="255,42"
           Id="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\SRC DWH Index Market Caps"
-          TopLeft="67,38" />
+          TopLeft="5.5,5.5" />
         <NodeLayout
           Size="255,42"
           Id="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\LKP DWH Equity Constituent mkt cap"
-          TopLeft="67,323" />
+          TopLeft="5.50000000000003,311.5" />
         <NodeLayout
           Size="255,42"
           Id="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\DST DWH ETL FactEquityIndexMerge"
-          TopLeft="67,417" />
+          TopLeft="5.50000000000006,413.5" />
         <NodeLayout
           Size="255,42"
           Id="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\LKP Stoxx Iseq20Leveraged"
-          TopLeft="67,227" />
+          TopLeft="5.50000000000003,209.5" />
+        <EdgeLayout
+          Id="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff.Paths[OLE DB Source Output]"
+          TopLeft="133,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff.Paths[Lookup Match Output2]"
+          TopLeft="133,149.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,20.4453125,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff.Paths[Lookup Match Output1]"
+          TopLeft="133,353.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,20.4453125,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff.Paths[Lookup Match Output]"
+          TopLeft="133,251.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,20.4453125,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\LKP DWH Equity Details">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[ETL].[FactEquityIndexPrep]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\SRC DWH Index Market Caps">
     <Properties>

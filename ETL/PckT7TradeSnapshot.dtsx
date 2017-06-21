@@ -11,8 +11,8 @@
   DTS:LocaleID="6153"
   DTS:ObjectName="PckT7TradeSnapshot"
   DTS:PackageType="5"
-  DTS:VersionBuild="174"
-  DTS:VersionGUID="{3A5A593F-2ACC-43F5-A35B-C1EE99266FB8}">
+  DTS:VersionBuild="180"
+  DTS:VersionGUID="{4B1950EE-B194-40A2-B600-02066D6D2C08}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -32,7 +32,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="AggregationDateID">
       <DTS:VariableValue
-        DTS:DataType="3">20170509</DTS:VariableValue>
+        DTS:DataType="3">20170619</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -2578,7 +2578,7 @@ FROM
               DTS:LocaleID="-1"
               DTS:ObjectName="SQL Clear ETL Offical Prices"
               DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-              DTS:ThreadHint="0">
+              DTS:ThreadHint="2">
               <DTS:Variables />
               <DTS:ObjectData>
                 <SQLTask:SqlTaskData
@@ -2595,7 +2595,7 @@ FROM
               DTS:LocaleID="-1"
               DTS:ObjectName="SQL Clear Staging Tables"
               DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-              DTS:ThreadHint="1">
+              DTS:ThreadHint="3">
               <DTS:Variables />
               <DTS:ObjectData>
                 <SQLTask:SqlTaskData
@@ -2612,7 +2612,7 @@ FROM
               DTS:LocaleID="-1"
               DTS:ObjectName="SQL Clear T7 ODS Tables"
               DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-              DTS:ThreadHint="3">
+              DTS:ThreadHint="0">
               <DTS:Variables />
               <DTS:ObjectData>
                 <SQLTask:SqlTaskData
@@ -2629,7 +2629,7 @@ FROM
               DTS:LocaleID="-1"
               DTS:ObjectName="SQL DWH Clear ETL tables"
               DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-              DTS:ThreadHint="2">
+              DTS:ThreadHint="1">
               <DTS:Variables />
               <DTS:ObjectData>
                 <SQLTask:SqlTaskData
@@ -4757,23 +4757,25 @@ where [refTable].[InstrumentID] = ? and [refTable].[AggregateDateID] = ?</proper
                               expressionType="Notify"
                               name="SqlCommand"
                               UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT
-	*
+	D.AggregateDateID,
+	x.*
 FROM
-	DWH.DimInstrumentEquity
-WHERE
-	CurrentRowYN = 'Y'</property>
+	ETL.AggregationDateList D
+CROSS APPLY 
+	ETL.GetInstrumentEquityAtDate(D.AggregateDate) AS x</property>
                             <property
                               dataType="System.String"
                               description="Specifies a SQL statement that uses parameters to generate the lookup table."
                               expressionType="Notify"
                               name="SqlCommandParam"
                               UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (SELECT
-	*
+	D.AggregateDateID,
+	x.*
 FROM
-	DWH.DimInstrumentEquity
-WHERE
-	CurrentRowYN = 'Y') [refTable]
-where [refTable].[InstrumentID] = ?</property>
+	ETL.AggregationDateList D
+CROSS APPLY 
+	ETL.GetInstrumentEquityAtDate(D.AggregateDate) AS x) [refTable]
+where [refTable].[AggregateDateID] = ? and [refTable].[InstrumentGlobalID] = ?</property>
                             <property
                               dataType="System.Int32"
                               description="Specifies the type of connection used to access the reference dataset."
@@ -4804,12 +4806,12 @@ where [refTable].[InstrumentID] = ?</property>
                             <property
                               dataType="System.String"
                               description="Indicates whether to reference metadata in an XML format."
-                              name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="InstrumentID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="InstrumentGlobalID" dataType="DT_STR" length="30" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="InstrumentName" dataType="DT_STR" length="256" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="InstrumentType" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="SecurityType" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="ISIN" dataType="DT_STR" length="12" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="SEDOL" dataType="DT_STR" length="7" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="InstrumentStatusID" dataType="DT_I2" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="InstrumentStatusDate" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="InstrumentListedDate" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="TradingSysInstrumentName" dataType="DT_STR" length="200" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="IssuerName" dataType="DT_STR" length="200" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="IssuerGlobalID" dataType="DT_STR" length="30" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="CompanyGlobalID" dataType="DT_STR" length="30" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="CompanyListedDate" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="CompanyApprovalType" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="CompanyApprovalDate" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="TransparencyDirectiveYN" dataType="DT_STR" length="1" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="MarketAbuseDirectiveYN" dataType="DT_STR" length="1" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="ProspectusDirectiveYN" dataType="DT_STR" length="1" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="MarketID" dataType="DT_I2" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="IssuerDomicile" dataType="DT_STR" length="200" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="WKN" dataType="DT_STR" length="6" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="MNEM" dataType="DT_STR" length="4" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="PrimaryBusinessSector" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="SubBusinessSector1" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="SubBusinessSector2" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="SubBusinessSector3" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="SubBusinessSector4" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="SubBusinessSector5" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="OverallIndexYN" dataType="DT_STR" length="1" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="GeneralIndexYN" dataType="DT_STR" length="1" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="FinancialIndexYN" dataType="DT_STR" length="1" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="SmallCapIndexYN" dataType="DT_STR" length="1" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="ITEQIndexYN" dataType="DT_STR" length="1" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="ISEQ20IndexYN" dataType="DT_STR" length="1" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="ESMIndexYN" dataType="DT_STR" length="1" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="PrimaryMarket" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="FinancialYearEndDate" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="IncorporationDate" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="LegalStructure" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="AccountingStandard" dataType="DT_STR" length="200" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="TransparencyDirectiveHomeMemberCountry" dataType="DT_STR" length="200" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="ProspectusDirectiveHomeMemberCountry" dataType="DT_STR" length="200" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="IssuerDomicileDomesticYN" dataType="DT_STR" length="1" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="FeeCodeName" dataType="DT_STR" length="200" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="IssuedDate" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="CurrencyID" dataType="DT_I2" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="UnitOfQuotation" dataType="DT_NUMERIC" length="0" precision="19" scale="9" codePage="0"/&gt;&lt;referenceColumn name="QuotationCurrencyID" dataType="DT_I2" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="ISEQ20Freefloat" dataType="DT_NUMERIC" length="0" precision="19" scale="6" codePage="0"/&gt;&lt;referenceColumn name="ISEQOverallFreeFloat" dataType="DT_NUMERIC" length="0" precision="19" scale="6" codePage="0"/&gt;&lt;referenceColumn name="IssuerSedolMasterFileName" dataType="DT_STR" length="35" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="InstrumentDomesticYN" dataType="DT_STR" length="1" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="CFIName" dataType="DT_STR" length="200" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="CFICode" dataType="DT_STR" length="6" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="InstrumentSedolMasterFileName" dataType="DT_STR" length="40" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="TotalSharesInIssue" dataType="DT_NUMERIC" length="0" precision="28" scale="6" codePage="0"/&gt;&lt;referenceColumn name="LastEXDivDate" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="CompanyStatusID" dataType="DT_I2" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Note" dataType="DT_STR" length="1000" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="StartDate" dataType="DT_DBTIMESTAMP2" length="0" precision="0" scale="7" codePage="0"/&gt;&lt;referenceColumn name="EndDate" dataType="DT_DBTIMESTAMP2" length="0" precision="0" scale="7" codePage="0"/&gt;&lt;referenceColumn name="CurrentRowYN" dataType="DT_STR" length="1" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="BatchID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                              name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="AggregateDateID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="InstrumentID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="InstrumentGlobalID" dataType="DT_STR" length="30" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="InstrumentName" dataType="DT_STR" length="256" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="InstrumentType" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="SecurityType" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="ISIN" dataType="DT_STR" length="12" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="SEDOL" dataType="DT_STR" length="7" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="InstrumentStatusID" dataType="DT_I2" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="InstrumentStatusDate" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="InstrumentListedDate" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="TradingSysInstrumentName" dataType="DT_STR" length="200" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="IssuerName" dataType="DT_STR" length="200" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="IssuerGlobalID" dataType="DT_STR" length="30" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="CompanyGlobalID" dataType="DT_STR" length="30" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="CompanyListedDate" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="CompanyApprovalType" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="CompanyApprovalDate" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="TransparencyDirectiveYN" dataType="DT_STR" length="1" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="MarketAbuseDirectiveYN" dataType="DT_STR" length="1" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="ProspectusDirectiveYN" dataType="DT_STR" length="1" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="MarketID" dataType="DT_I2" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="IssuerDomicile" dataType="DT_STR" length="200" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="WKN" dataType="DT_STR" length="6" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="MNEM" dataType="DT_STR" length="4" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="PrimaryBusinessSector" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="SubBusinessSector1" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="SubBusinessSector2" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="SubBusinessSector3" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="SubBusinessSector4" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="SubBusinessSector5" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="OverallIndexYN" dataType="DT_STR" length="1" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="GeneralIndexYN" dataType="DT_STR" length="1" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="FinancialIndexYN" dataType="DT_STR" length="1" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="SmallCapIndexYN" dataType="DT_STR" length="1" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="ITEQIndexYN" dataType="DT_STR" length="1" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="ISEQ20IndexYN" dataType="DT_STR" length="1" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="ESMIndexYN" dataType="DT_STR" length="1" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="PrimaryMarket" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="FinancialYearEndDate" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="IncorporationDate" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="LegalStructure" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="AccountingStandard" dataType="DT_STR" length="200" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="TransparencyDirectiveHomeMemberCountry" dataType="DT_STR" length="200" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="ProspectusDirectiveHomeMemberCountry" dataType="DT_STR" length="200" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="IssuerDomicileDomesticYN" dataType="DT_STR" length="1" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="FeeCodeName" dataType="DT_STR" length="200" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="IssuedDate" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="CurrencyID" dataType="DT_I2" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="UnitOfQuotation" dataType="DT_NUMERIC" length="0" precision="19" scale="9" codePage="0"/&gt;&lt;referenceColumn name="QuotationCurrencyID" dataType="DT_I2" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="ISEQ20Freefloat" dataType="DT_NUMERIC" length="0" precision="19" scale="6" codePage="0"/&gt;&lt;referenceColumn name="ISEQOverallFreeFloat" dataType="DT_NUMERIC" length="0" precision="19" scale="6" codePage="0"/&gt;&lt;referenceColumn name="IssuerSedolMasterFileName" dataType="DT_STR" length="35" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="InstrumentDomesticYN" dataType="DT_STR" length="1" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="CFIName" dataType="DT_STR" length="200" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="CFICode" dataType="DT_STR" length="6" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="InstrumentSedolMasterFileName" dataType="DT_STR" length="40" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="TotalSharesInIssue" dataType="DT_NUMERIC" length="0" precision="28" scale="6" codePage="0"/&gt;&lt;referenceColumn name="LastEXDivDate" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="CompanyStatusID" dataType="DT_I2" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Note" dataType="DT_STR" length="1000" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="StartDate" dataType="DT_DBTIMESTAMP2" length="0" precision="0" scale="7" codePage="0"/&gt;&lt;referenceColumn name="EndDate" dataType="DT_DBTIMESTAMP2" length="0" precision="0" scale="7" codePage="0"/&gt;&lt;referenceColumn name="CurrentRowYN" dataType="DT_STR" length="1" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="BatchID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
                             <property
                               containsID="true"
                               dataType="System.String"
                               description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                              name="ParameterMap">#{Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation\Equity Instruments to Aggregate.Outputs[OLE DB Source Output].Columns[InstrumentID]};</property>
+                              name="ParameterMap">#{Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation\Equity Instruments to Aggregate.Outputs[OLE DB Source Output].Columns[AggregationDateID]};#{Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation\Equity Instruments to Aggregate.Outputs[OLE DB Source Output].Columns[InstrumentGlobalID]};</property>
                             <property
                               dataType="System.Int32"
                               description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -4833,15 +4835,33 @@ where [refTable].[InstrumentID] = ?</property>
                               name="Lookup Input">
                               <inputColumns>
                                 <inputColumn
-                                  refId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation\LKP Equity Instrument Details.Inputs[Lookup Input].Columns[InstrumentID]"
+                                  refId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation\LKP Equity Instrument Details.Inputs[Lookup Input].Columns[AggregationDateID]"
                                   cachedDataType="i4"
-                                  cachedName="InstrumentID"
-                                  lineageId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation\Equity Instruments to Aggregate.Outputs[OLE DB Source Output].Columns[InstrumentID]">
+                                  cachedName="AggregationDateID"
+                                  lineageId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation\Equity Instruments to Aggregate.Outputs[OLE DB Source Output].Columns[AggregationDateID]">
                                   <properties>
                                     <property
                                       dataType="System.String"
                                       description="Specifies the column in the reference table that a column joins."
-                                      name="JoinToReferenceColumn">InstrumentID</property>
+                                      name="JoinToReferenceColumn">AggregateDateID</property>
+                                    <property
+                                      dataType="System.Null"
+                                      description="Specifies the column in the reference table from which a column is copied."
+                                      name="CopyFromReferenceColumn" />
+                                  </properties>
+                                </inputColumn>
+                                <inputColumn
+                                  refId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation\LKP Equity Instrument Details.Inputs[Lookup Input].Columns[InstrumentGlobalID]"
+                                  cachedCodepage="1252"
+                                  cachedDataType="str"
+                                  cachedLength="30"
+                                  cachedName="InstrumentGlobalID"
+                                  lineageId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation\Equity Instruments to Aggregate.Outputs[OLE DB Source Output].Columns[InstrumentGlobalID]">
+                                  <properties>
+                                    <property
+                                      dataType="System.String"
+                                      description="Specifies the column in the reference table that a column joins."
+                                      name="JoinToReferenceColumn">InstrumentGlobalID</property>
                                     <property
                                       dataType="System.Null"
                                       description="Specifies the column in the reference table from which a column is copied."
@@ -7795,6 +7815,72 @@ where [refTable].[ISIN] = ? and [refTable].[FileDate] = ?</property>
                                   cachedScale="7"
                                   externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Etf Aggregation\DST DWH ETL EtfTradeSnapshotMerge.Inputs[OLE DB Destination Input].ExternalColumns[OcpDateTime]"
                                   lineageId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Etf Aggregation\LKP Offical Prices.Outputs[Lookup Match Output].Columns[OCP_DATETIME]" />
+                                <inputColumn
+                                  refId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Etf Aggregation\DST DWH ETL EtfTradeSnapshotMerge.Inputs[OLE DB Destination Input].Columns[Volume]"
+                                  cachedDataType="i4"
+                                  cachedName="Volume"
+                                  externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Etf Aggregation\DST DWH ETL EtfTradeSnapshotMerge.Inputs[OLE DB Destination Input].ExternalColumns[Volume]"
+                                  lineageId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Etf Aggregation\LKP Equity Volume Plus.Outputs[Lookup Match Output].Columns[Volume]" />
+                                <inputColumn
+                                  refId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Etf Aggregation\DST DWH ETL EtfTradeSnapshotMerge.Inputs[OLE DB Destination Input].Columns[VolumeOB]"
+                                  cachedDataType="i4"
+                                  cachedName="VolumeOB"
+                                  externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Etf Aggregation\DST DWH ETL EtfTradeSnapshotMerge.Inputs[OLE DB Destination Input].ExternalColumns[VolumeOB]"
+                                  lineageId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Etf Aggregation\LKP Equity Volume Plus.Outputs[Lookup Match Output].Columns[VolumeOB]" />
+                                <inputColumn
+                                  refId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Etf Aggregation\DST DWH ETL EtfTradeSnapshotMerge.Inputs[OLE DB Destination Input].Columns[VolumeND]"
+                                  cachedDataType="i4"
+                                  cachedName="VolumeND"
+                                  externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Etf Aggregation\DST DWH ETL EtfTradeSnapshotMerge.Inputs[OLE DB Destination Input].ExternalColumns[VolumeND]"
+                                  lineageId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Etf Aggregation\LKP Equity Volume Plus.Outputs[Lookup Match Output].Columns[VolumeND]" />
+                                <inputColumn
+                                  refId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Etf Aggregation\DST DWH ETL EtfTradeSnapshotMerge.Inputs[OLE DB Destination Input].Columns[TurnoverObEur]"
+                                  cachedDataType="numeric"
+                                  cachedName="TurnoverObEur"
+                                  cachedPrecision="38"
+                                  cachedScale="19"
+                                  externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Etf Aggregation\DST DWH ETL EtfTradeSnapshotMerge.Inputs[OLE DB Destination Input].ExternalColumns[TurnoverObEur]"
+                                  lineageId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Etf Aggregation\LKP Equity Volume Plus.Outputs[Lookup Match Output].Columns[TurnoverObEur]" />
+                                <inputColumn
+                                  refId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Etf Aggregation\DST DWH ETL EtfTradeSnapshotMerge.Inputs[OLE DB Destination Input].Columns[TurnoverNdEur]"
+                                  cachedDataType="numeric"
+                                  cachedName="TurnoverNdEur"
+                                  cachedPrecision="38"
+                                  cachedScale="19"
+                                  externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Etf Aggregation\DST DWH ETL EtfTradeSnapshotMerge.Inputs[OLE DB Destination Input].ExternalColumns[TurnoverNdEur]"
+                                  lineageId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Etf Aggregation\LKP Equity Volume Plus.Outputs[Lookup Match Output].Columns[TurnoverNdEur]" />
+                                <inputColumn
+                                  refId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Etf Aggregation\DST DWH ETL EtfTradeSnapshotMerge.Inputs[OLE DB Destination Input].Columns[BidPrice]"
+                                  cachedDataType="numeric"
+                                  cachedName="BidPrice"
+                                  cachedPrecision="19"
+                                  cachedScale="6"
+                                  externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Etf Aggregation\DST DWH ETL EtfTradeSnapshotMerge.Inputs[OLE DB Destination Input].ExternalColumns[BidPrice]"
+                                  lineageId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Etf Aggregation\LKP Bid Offerr Prices.Outputs[Lookup Match Output].Columns[BidPrice]" />
+                                <inputColumn
+                                  refId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Etf Aggregation\DST DWH ETL EtfTradeSnapshotMerge.Inputs[OLE DB Destination Input].Columns[OfferPrice]"
+                                  cachedDataType="numeric"
+                                  cachedName="OfferPrice"
+                                  cachedPrecision="19"
+                                  cachedScale="6"
+                                  externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Etf Aggregation\DST DWH ETL EtfTradeSnapshotMerge.Inputs[OLE DB Destination Input].ExternalColumns[OfferPrice]"
+                                  lineageId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Etf Aggregation\LKP Bid Offerr Prices.Outputs[Lookup Match Output].Columns[OfferPrice]" />
+                                <inputColumn
+                                  refId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Etf Aggregation\DST DWH ETL EtfTradeSnapshotMerge.Inputs[OLE DB Destination Input].Columns[ClosingAuctionBidPrice]"
+                                  cachedDataType="numeric"
+                                  cachedName="ClosingAuctionBidPrice"
+                                  cachedPrecision="19"
+                                  cachedScale="6"
+                                  externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Etf Aggregation\DST DWH ETL EtfTradeSnapshotMerge.Inputs[OLE DB Destination Input].ExternalColumns[ClosingAuctionBidPrice]"
+                                  lineageId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Etf Aggregation\LKP Closing Auction Prices.Outputs[Lookup Match Output].Columns[ClosingAuctionBidPrice]" />
+                                <inputColumn
+                                  refId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Etf Aggregation\DST DWH ETL EtfTradeSnapshotMerge.Inputs[OLE DB Destination Input].Columns[ClosingAuctionOfferPrice]"
+                                  cachedDataType="numeric"
+                                  cachedName="ClosingAuctionOfferPrice"
+                                  cachedPrecision="19"
+                                  cachedScale="6"
+                                  externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Etf Aggregation\DST DWH ETL EtfTradeSnapshotMerge.Inputs[OLE DB Destination Input].ExternalColumns[ClosingAuctionOfferPrice]"
+                                  lineageId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Etf Aggregation\LKP Closing Auction Prices.Outputs[Lookup Match Output].Columns[ClosingAuctionOfferPrice]" />
                               </inputColumns>
                               <externalMetadataColumns
                                 isUsed="True">
@@ -9138,23 +9224,25 @@ where [refTable].[AggregateDateID] = ? and [refTable].[InstrumentGlobalID] = ?</
                               expressionType="Notify"
                               name="SqlCommand"
                               UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT
-	*
+	D.AggregateDateID,
+	x.*
 FROM
-	DWH.DimInstrumentEtf 
-WHERE
-	CurrentRowYN = 'Y'</property>
+	ETL.AggregationDateList D
+CROSS APPLY 
+	ETL.GetInstrumentEtfAtDate(D.AggregateDate) AS x</property>
                             <property
                               dataType="System.String"
                               description="Specifies a SQL statement that uses parameters to generate the lookup table."
                               expressionType="Notify"
                               name="SqlCommandParam"
                               UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (SELECT
-	*
+	D.AggregateDateID,
+	x.*
 FROM
-	DWH.DimInstrumentEtf 
-WHERE
-	CurrentRowYN = 'Y') [refTable]
-where [refTable].[InstrumentID] = ?</property>
+	ETL.AggregationDateList D
+CROSS APPLY 
+	ETL.GetInstrumentEtfAtDate(D.AggregateDate) AS x) [refTable]
+where [refTable].[AggregateDateID] = ? and [refTable].[InstrumentGlobalID] = ?</property>
                             <property
                               dataType="System.Int32"
                               description="Specifies the type of connection used to access the reference dataset."
@@ -9185,12 +9273,12 @@ where [refTable].[InstrumentID] = ?</property>
                             <property
                               dataType="System.String"
                               description="Indicates whether to reference metadata in an XML format."
-                              name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="InstrumentID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="InstrumentGlobalID" dataType="DT_STR" length="30" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="InstrumentName" dataType="DT_STR" length="256" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="InstrumentType" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="SecurityType" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="ISIN" dataType="DT_STR" length="12" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="SEDOL" dataType="DT_STR" length="7" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="InstrumentStatusID" dataType="DT_I2" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="InstrumentStatusDate" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="InstrumentListedDate" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="TradingSysInstrumentName" dataType="DT_STR" length="200" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="IssuerName" dataType="DT_STR" length="200" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="IssuerGlobalID" dataType="DT_STR" length="30" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="CompanyGlobalID" dataType="DT_STR" length="30" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="CompanyListedDate" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="CompanyApprovalType" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="CompanyApprovalDate" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="TransparencyDirectiveYN" dataType="DT_STR" length="1" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="MarketAbuseDirectiveYN" dataType="DT_STR" length="1" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="ProspectusDirectiveYN" dataType="DT_STR" length="1" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="MarketID" dataType="DT_I2" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="IssuerDomicile" dataType="DT_STR" length="200" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="WKN" dataType="DT_STR" length="6" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="MNEM" dataType="DT_STR" length="4" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="PrimaryBusinessSector" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="SubBusinessSector1" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="SubBusinessSector2" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="SubBusinessSector3" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="SubBusinessSector4" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="SubBusinessSector5" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="OverallIndexYN" dataType="DT_STR" length="1" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="GeneralIndexYN" dataType="DT_STR" length="1" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="FinancialIndexYN" dataType="DT_STR" length="1" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="SmallCapIndexYN" dataType="DT_STR" length="1" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="ITEQIndexYN" dataType="DT_STR" length="1" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="ISEQ20IndexYN" dataType="DT_STR" length="1" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="ESMIndexYN" dataType="DT_STR" length="1" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="PrimaryMarket" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="FinancialYearEndDate" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="IncorporationDate" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="LegalStructure" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="AccountingStandard" dataType="DT_STR" length="200" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="TransparencyDirectiveHomeMemberCountry" dataType="DT_STR" length="200" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="ProspectusDirectiveHomeMemberCountry" dataType="DT_STR" length="200" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="IssuerDomicileDomesticYN" dataType="DT_STR" length="1" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="FeeCodeName" dataType="DT_STR" length="200" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="IssuedDate" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="CurrencyID" dataType="DT_I2" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="UnitOfQuotation" dataType="DT_NUMERIC" length="0" precision="19" scale="9" codePage="0"/&gt;&lt;referenceColumn name="QuotationCurrencyID" dataType="DT_I2" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="ISEQ20Freefloat" dataType="DT_NUMERIC" length="0" precision="19" scale="6" codePage="0"/&gt;&lt;referenceColumn name="ISEQOverallFreeFloat" dataType="DT_NUMERIC" length="0" precision="19" scale="6" codePage="0"/&gt;&lt;referenceColumn name="IssuerSedolMasterFileName" dataType="DT_STR" length="35" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="InstrumentDomesticYN" dataType="DT_STR" length="1" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="CFIName" dataType="DT_STR" length="200" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="CFICode" dataType="DT_STR" length="6" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="InstrumentSedolMasterFileName" dataType="DT_STR" length="40" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="TotalSharesInIssue" dataType="DT_NUMERIC" length="0" precision="28" scale="6" codePage="0"/&gt;&lt;referenceColumn name="LastEXDivDate" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="CompanyStatusID" dataType="DT_I2" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Note" dataType="DT_STR" length="1000" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="StartDate" dataType="DT_DBTIMESTAMP2" length="0" precision="0" scale="7" codePage="0"/&gt;&lt;referenceColumn name="EndDate" dataType="DT_DBTIMESTAMP2" length="0" precision="0" scale="7" codePage="0"/&gt;&lt;referenceColumn name="CurrentRowYN" dataType="DT_STR" length="1" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="BatchID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                              name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="AggregateDateID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="InstrumentID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="InstrumentGlobalID" dataType="DT_STR" length="30" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="InstrumentName" dataType="DT_STR" length="256" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="InstrumentType" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="SecurityType" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="ISIN" dataType="DT_STR" length="12" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="SEDOL" dataType="DT_STR" length="7" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="InstrumentStatusID" dataType="DT_I2" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="InstrumentStatusDate" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="InstrumentListedDate" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="TradingSysInstrumentName" dataType="DT_STR" length="200" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="IssuerName" dataType="DT_STR" length="200" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="IssuerGlobalID" dataType="DT_STR" length="30" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="CompanyGlobalID" dataType="DT_STR" length="30" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="CompanyListedDate" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="CompanyApprovalType" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="CompanyApprovalDate" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="TransparencyDirectiveYN" dataType="DT_STR" length="1" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="MarketAbuseDirectiveYN" dataType="DT_STR" length="1" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="ProspectusDirectiveYN" dataType="DT_STR" length="1" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="MarketID" dataType="DT_I2" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="IssuerDomicile" dataType="DT_STR" length="200" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="WKN" dataType="DT_STR" length="6" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="MNEM" dataType="DT_STR" length="4" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="PrimaryBusinessSector" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="SubBusinessSector1" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="SubBusinessSector2" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="SubBusinessSector3" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="SubBusinessSector4" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="SubBusinessSector5" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="OverallIndexYN" dataType="DT_STR" length="1" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="GeneralIndexYN" dataType="DT_STR" length="1" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="FinancialIndexYN" dataType="DT_STR" length="1" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="SmallCapIndexYN" dataType="DT_STR" length="1" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="ITEQIndexYN" dataType="DT_STR" length="1" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="ISEQ20IndexYN" dataType="DT_STR" length="1" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="ESMIndexYN" dataType="DT_STR" length="1" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="PrimaryMarket" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="FinancialYearEndDate" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="IncorporationDate" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="LegalStructure" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="AccountingStandard" dataType="DT_STR" length="200" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="TransparencyDirectiveHomeMemberCountry" dataType="DT_STR" length="200" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="ProspectusDirectiveHomeMemberCountry" dataType="DT_STR" length="200" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="IssuerDomicileDomesticYN" dataType="DT_STR" length="1" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="FeeCodeName" dataType="DT_STR" length="200" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="IssuedDate" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="CurrencyID" dataType="DT_I2" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="UnitOfQuotation" dataType="DT_NUMERIC" length="0" precision="19" scale="9" codePage="0"/&gt;&lt;referenceColumn name="QuotationCurrencyID" dataType="DT_I2" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="ISEQ20Freefloat" dataType="DT_NUMERIC" length="0" precision="19" scale="6" codePage="0"/&gt;&lt;referenceColumn name="ISEQOverallFreeFloat" dataType="DT_NUMERIC" length="0" precision="19" scale="6" codePage="0"/&gt;&lt;referenceColumn name="IssuerSedolMasterFileName" dataType="DT_STR" length="35" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="InstrumentDomesticYN" dataType="DT_STR" length="1" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="CFIName" dataType="DT_STR" length="200" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="CFICode" dataType="DT_STR" length="6" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="InstrumentSedolMasterFileName" dataType="DT_STR" length="40" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="TotalSharesInIssue" dataType="DT_NUMERIC" length="0" precision="28" scale="6" codePage="0"/&gt;&lt;referenceColumn name="LastEXDivDate" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="CompanyStatusID" dataType="DT_I2" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Note" dataType="DT_STR" length="1000" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="StartDate" dataType="DT_DBTIMESTAMP2" length="0" precision="0" scale="7" codePage="0"/&gt;&lt;referenceColumn name="EndDate" dataType="DT_DBTIMESTAMP2" length="0" precision="0" scale="7" codePage="0"/&gt;&lt;referenceColumn name="CurrentRowYN" dataType="DT_STR" length="1" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="BatchID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
                             <property
                               containsID="true"
                               dataType="System.String"
                               description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                              name="ParameterMap">#{Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Etf Aggregation\Equity Instruments to Aggregate.Outputs[OLE DB Source Output].Columns[InstrumentID]};</property>
+                              name="ParameterMap">#{Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Etf Aggregation\Equity Instruments to Aggregate.Outputs[OLE DB Source Output].Columns[AggregationDateID]};#{Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Etf Aggregation\Equity Instruments to Aggregate.Outputs[OLE DB Source Output].Columns[InstrumentGlobalID]};</property>
                             <property
                               dataType="System.Int32"
                               description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -9214,15 +9302,33 @@ where [refTable].[InstrumentID] = ?</property>
                               name="Lookup Input">
                               <inputColumns>
                                 <inputColumn
-                                  refId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Etf Aggregation\LKP ETF Instrument Details.Inputs[Lookup Input].Columns[InstrumentID]"
+                                  refId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Etf Aggregation\LKP ETF Instrument Details.Inputs[Lookup Input].Columns[AggregationDateID]"
                                   cachedDataType="i4"
-                                  cachedName="InstrumentID"
-                                  lineageId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Etf Aggregation\Equity Instruments to Aggregate.Outputs[OLE DB Source Output].Columns[InstrumentID]">
+                                  cachedName="AggregationDateID"
+                                  lineageId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Etf Aggregation\Equity Instruments to Aggregate.Outputs[OLE DB Source Output].Columns[AggregationDateID]">
                                   <properties>
                                     <property
                                       dataType="System.String"
                                       description="Specifies the column in the reference table that a column joins."
-                                      name="JoinToReferenceColumn">InstrumentID</property>
+                                      name="JoinToReferenceColumn">AggregateDateID</property>
+                                    <property
+                                      dataType="System.Null"
+                                      description="Specifies the column in the reference table from which a column is copied."
+                                      name="CopyFromReferenceColumn" />
+                                  </properties>
+                                </inputColumn>
+                                <inputColumn
+                                  refId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Etf Aggregation\LKP ETF Instrument Details.Inputs[Lookup Input].Columns[InstrumentGlobalID]"
+                                  cachedCodepage="1252"
+                                  cachedDataType="str"
+                                  cachedLength="30"
+                                  cachedName="InstrumentGlobalID"
+                                  lineageId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Etf Aggregation\Equity Instruments to Aggregate.Outputs[OLE DB Source Output].Columns[InstrumentGlobalID]">
+                                  <properties>
+                                    <property
+                                      dataType="System.String"
+                                      description="Specifies the column in the reference table that a column joins."
+                                      name="JoinToReferenceColumn">InstrumentGlobalID</property>
                                     <property
                                       dataType="System.Null"
                                       description="Specifies the column in the reference table from which a column is copied."
@@ -11045,7 +11151,7 @@ where [refTable].[InstrumentID] = ? and [refTable].[AggregateDateID] = ?</proper
           PanelSize="208,116"
           Size="208,159"
           Id="Package\SEQ Process Complete"
-          TopLeft="215,2549" />
+          TopLeft="217,2213" />
         <NodeLayout
           Size="216,42"
           Id="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation"
@@ -11162,16 +11268,16 @@ where [refTable].[InstrumentID] = ? and [refTable].[AggregateDateID] = ?</proper
         <NodeLayout
           Size="256,42"
           Id="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\SQL FactEquityPriceSnapshot"
-          TopLeft="23,324" />
+          TopLeft="26,95" />
         <NodeLayout
           Size="256,42"
           Id="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations\SQL FactMarketAggregation"
-          TopLeft="23,249" />
+          TopLeft="25,19" />
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="317,399"
-          Size="317,442"
+          PanelSize="317,175"
+          Size="317,218"
           Id="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations"
           TopLeft="36,639" />
         <NodeLayout
@@ -11185,7 +11291,7 @@ where [refTable].[InstrumentID] = ? and [refTable].[AggregateDateID] = ?</proper
         <NodeLayout
           Size="225,42"
           Id="Package\Sequence Container\Foreach Loop Container\SQL Update Aggregation Request List"
-          TopLeft="88,1121" />
+          TopLeft="84,899" />
         <EdgeLayout
           Id="Package\Sequence Container\Foreach Loop Container.PrecedenceConstraints[Constraint]"
           TopLeft="198,613">
@@ -11266,18 +11372,18 @@ where [refTable].[InstrumentID] = ? and [refTable].[AggregateDateID] = ?</proper
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Sequence Container\Foreach Loop Container.PrecedenceConstraints[Constraint 3]"
-          TopLeft="197.5,1081">
+          TopLeft="195.5,857">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{x:Null}"
-              EndConnector="0,40"
+              EndConnector="0,42"
               Start="0,0"
-              End="0,32.5">
+              End="0,34.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,32.5" />
+                    End="0,34.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -11289,8 +11395,8 @@ where [refTable].[InstrumentID] = ? and [refTable].[AggregateDateID] = ?</proper
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="410,1226"
-          Size="410,1269"
+          PanelSize="410,970"
+          Size="410,1013"
           Id="Package\Sequence Container\Foreach Loop Container"
           TopLeft="32,119" />
         <NodeLayout
@@ -11322,8 +11428,8 @@ where [refTable].[InstrumentID] = ? and [refTable].[AggregateDateID] = ?</proper
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="491,1443"
-          Size="491,1486"
+          PanelSize="491,1161"
+          Size="491,1204"
           Id="Package\Sequence Container"
           TopLeft="74,971" />
         <NodeLayout
@@ -11336,18 +11442,18 @@ where [refTable].[InstrumentID] = ? and [refTable].[AggregateDateID] = ?</proper
           TopLeft="300,50" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="319.25,2457">
+          TopLeft="320.25,2175">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{x:Null}"
-              EndConnector="0,92"
+              EndConnector="0,38"
               Start="0,0"
-              End="0,84.5">
+              End="0,30.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,84.5" />
+                    End="0,30.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -11477,7 +11583,7 @@ where [refTable].[InstrumentID] = ? and [refTable].[AggregateDateID] = ?</proper
     design-time-name="Package\SEQ Aggregaton Prep\DFT Aggregation Day List">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="266,42"
           Id="Package\SEQ Aggregaton Prep\DFT Aggregation Day List\SRC ProcessControl Aggregation Days 1"
@@ -11494,6 +11600,46 @@ where [refTable].[InstrumentID] = ? and [refTable].[AggregateDateID] = ?</proper
           Size="216,42"
           Id="Package\SEQ Aggregaton Prep\DFT Aggregation Day List\DST DWH Aggregration Days"
           TopLeft="86,164" />
+        <EdgeLayout
+          Id="Package\SEQ Aggregaton Prep\DFT Aggregation Day List.Paths[OLE DB Source Output1]"
+          TopLeft="NaN,NaN">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="{x:Null}"
+              Start="0,0"
+              End="0,0">
+              <mssgle:Curve.Segments>
+                <x:Null />
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ Aggregaton Prep\DFT Aggregation Day List.Paths[OLE DB Source Output]"
+          TopLeft="NaN,NaN">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="{x:Null}"
+              Start="0,0"
+              End="0,0">
+              <mssgle:Curve.Segments>
+                <x:Null />
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
@@ -11543,7 +11689,7 @@ where [refTable].[InstrumentID] = ? and [refTable].[AggregateDateID] = ?</proper
     design-time-name="Package\SEQ Aggregaton Prep\DFT Get Details from StateStreet_ODS">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="244,42"
           Id="Package\SEQ Aggregaton Prep\DFT Get Details from StateStreet_ODS\SRC StateStreet_ODS ISEQ20_NAV"
@@ -11552,6 +11698,26 @@ where [refTable].[InstrumentID] = ? and [refTable].[AggregateDateID] = ?</proper
           Size="210,42"
           Id="Package\SEQ Aggregaton Prep\DFT Get Details from StateStreet_ODS\DST STAGING ISEQ20_NAV"
           TopLeft="87,144" />
+        <EdgeLayout
+          Id="Package\SEQ Aggregaton Prep\DFT Get Details from StateStreet_ODS.Paths[OLE DB Source Output]"
+          TopLeft="NaN,NaN">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="{x:Null}"
+              Start="0,0"
+              End="0,0">
+              <mssgle:Curve.Segments>
+                <x:Null />
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
@@ -11580,7 +11746,7 @@ where [refTable].[InstrumentID] = ? and [refTable].[AggregateDateID] = ?</proper
     design-time-name="Package\SEQ Aggregaton Prep\DFT Get Details from T7_ODS">
     <LayoutInfo>
       <GraphLayout
-        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="244,42"
           Id="Package\SEQ Aggregaton Prep\DFT Get Details from T7_ODS\DST DWH ETL Closing Price"
@@ -11613,6 +11779,86 @@ where [refTable].[InstrumentID] = ? and [refTable].[AggregateDateID] = ?</proper
           Size="244,42"
           Id="Package\SEQ Aggregaton Prep\DFT Get Details from T7_ODS\DST DWH ETL BidOfferPrice"
           TopLeft="318,271" />
+        <EdgeLayout
+          Id="Package\SEQ Aggregaton Prep\DFT Get Details from T7_ODS.Paths[OLE DB Source Output3]"
+          TopLeft="NaN,NaN">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="{x:Null}"
+              Start="0,0"
+              End="0,0">
+              <mssgle:Curve.Segments>
+                <x:Null />
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ Aggregaton Prep\DFT Get Details from T7_ODS.Paths[OLE DB Source Output2]"
+          TopLeft="NaN,NaN">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="{x:Null}"
+              Start="0,0"
+              End="0,0">
+              <mssgle:Curve.Segments>
+                <x:Null />
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ Aggregaton Prep\DFT Get Details from T7_ODS.Paths[OLE DB Source Output1]"
+          TopLeft="NaN,NaN">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="{x:Null}"
+              Start="0,0"
+              End="0,0">
+              <mssgle:Curve.Segments>
+                <x:Null />
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ Aggregaton Prep\DFT Get Details from T7_ODS.Paths[OLE DB Source Output]"
+          TopLeft="NaN,NaN">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="{x:Null}"
+              Start="0,0"
+              End="0,0">
+              <mssgle:Curve.Segments>
+                <x:Null />
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
@@ -11704,78 +11950,432 @@ where [refTable].[InstrumentID] = ? and [refTable].[AggregateDateID] = ?</proper
     design-time-name="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation">
     <LayoutInfo>
       <GraphLayout
-        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="279,44"
           Id="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation\LKP High-Low Prices"
-          TopLeft="138,382" />
-        <NodeLayout
-          Size="279,44"
-          Id="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation\LKP Bid Offerr Prices"
-          TopLeft="138,572" />
+          TopLeft="5.50000000000006,317.5" />
         <NodeLayout
           Size="279,44"
           Id="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation\LKP Reuters SetValue"
-          TopLeft="138,1022" />
+          TopLeft="5.50000000000017,1045.5" />
         <NodeLayout
           Size="279,44"
-          Id="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation\Equity Instruments to Aggregate"
-          TopLeft="138,77" />
+          Id="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation\LKP Bid Offerr Prices"
+          TopLeft="5.50000000000011,525.5" />
         <NodeLayout
           Size="279,44"
           Id="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation\LKP Offical Prices"
-          TopLeft="138,176" />
+          TopLeft="5.50000000000006,109.5" />
         <NodeLayout
           Size="279,44"
-          Id="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation\LKP LastTrade"
-          TopLeft="138,277" />
+          Id="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation\Equity Instruments to Aggregate"
+          TopLeft="5.50000000000006,5.5" />
         <NodeLayout
           Size="279,44"
           Id="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation\DST DWH ETL EquityTradeSnapshotMerge"
-          TopLeft="134,1447" />
-        <NodeLayout
-          Size="279,44"
-          Id="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation\LKP Closing Auction Prices"
-          TopLeft="138,670" />
+          TopLeft="5.50000000000023,1565.5" />
         <NodeLayout
           Size="279,44"
           Id="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation\LKP StateStreet Daily Holdings"
-          TopLeft="138,1102" />
+          TopLeft="5.50000000000017,1149.5" />
+        <NodeLayout
+          Size="279,44"
+          Id="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation\LKP Closing Auction Prices"
+          TopLeft="5.50000000000011,629.5" />
         <NodeLayout
           Size="279,44"
           Id="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation\LKP Equity Volume Plus"
-          TopLeft="138,485" />
+          TopLeft="5.50000000000006,421.5" />
         <NodeLayout
           Size="279,44"
           Id="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation\LKP Equity Exchange Rate"
-          TopLeft="138,757" />
-        <NodeLayout
-          Size="279,44"
-          Id="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation\LKP Stoxx ISQE20Stats"
-          TopLeft="138,931" />
-        <NodeLayout
-          Size="279,44"
-          Id="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation\DER Market Cap"
-          TopLeft="134,1353" />
-        <NodeLayout
-          Size="279,44"
-          Id="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation\LKP Stoxx STATS"
-          TopLeft="138,846" />
+          TopLeft="5.50000000000011,733.5" />
         <NodeLayout
           Size="279,44"
           Id="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation\LKP Equity Instrument Details"
-          TopLeft="136,1263" />
+          TopLeft="5.50000000000017,1357.5" />
+        <NodeLayout
+          Size="279,44"
+          Id="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation\LKP Stoxx ISQE20Stats"
+          TopLeft="5.50000000000017,941.5" />
+        <NodeLayout
+          Size="279,44"
+          Id="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation\LKP Stoxx STATS"
+          TopLeft="5.50000000000011,837.5" />
+        <NodeLayout
+          Size="279,44"
+          Id="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation\DER Market Cap"
+          TopLeft="5.50000000000023,1461.5" />
+        <NodeLayout
+          Size="279,44"
+          Id="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation\LKP LastTrade"
+          TopLeft="5.50000000000006,213.5" />
         <NodeLayout
           Size="279,44"
           Id="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation\DER BatchID"
-          TopLeft="138,1176" />
+          TopLeft="5.50000000000017,1253.5" />
+        <EdgeLayout
+          Id="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation.Paths[OLE DB Source Output]"
+          TopLeft="145,49.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation.Paths[Lookup Match Output11]"
+          TopLeft="145,777.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,20.4453125,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation.Paths[Lookup Match Output10]"
+          TopLeft="145,673.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,20.4453125,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation.Paths[Lookup Match Output9]"
+          TopLeft="145,1401.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,20.4453125,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation.Paths[Lookup Match Output8]"
+          TopLeft="145,1193.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,20.4453125,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation.Paths[Lookup Match Output7]"
+          TopLeft="145,1089.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,20.4453125,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation.Paths[Lookup Match Output6]"
+          TopLeft="145,985.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,20.4453125,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation.Paths[Lookup Match Output5]"
+          TopLeft="145,881.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,20.4453125,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation.Paths[Lookup Match Output4]"
+          TopLeft="145,569.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,20.4453125,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation.Paths[Lookup Match Output3]"
+          TopLeft="145,465.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,20.4453125,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation.Paths[Lookup Match Output2]"
+          TopLeft="145,361.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,20.4453125,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation.Paths[Lookup Match Output1]"
+          TopLeft="145,257.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,20.4453125,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation.Paths[Lookup Match Output]"
+          TopLeft="145,153.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,20.4453125,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation.Paths[Derived Column Output1]"
+          TopLeft="145,1505.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation.Paths[Derived Column Output]"
+          TopLeft="145,1297.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <AnnotationLayout
           Text="Pulling full table!!!!!!!"
           ParentId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation"
           FontInfo="{x:Null}"
-          Size="279,NaN"
+          Size="279,40"
           Id="df739fe3-0dd1-443f-83f2-6e3715ae91ff"
-          TopLeft="535,847" />
+          TopLeft="345.5,1567.5" />
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
@@ -11791,29 +12391,6 @@ where [refTable].[InstrumentID] = ? and [refTable].[AggregateDateID] = ?</proper
         <Name>UsedTableName</Name>
         <Value
           type="q3:string">[ETL].[EquityTradeHighLow]</Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:string">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation\LKP Bid Offerr Prices">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:string">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[ETL].[BidOfferPrice]</Value>
       </Property>
       <Property>
         <Name>TableInfoObjectType</Name>
@@ -11849,8 +12426,23 @@ where [refTable].[InstrumentID] = ? and [refTable].[AggregateDateID] = ?</proper
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation\Equity Instruments to Aggregate">
+    design-time-name="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation\LKP Bid Offerr Prices">
     <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[ETL].[BidOfferPrice]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
       <Property>
         <Name>DataSourceViewID</Name>
       </Property>
@@ -11880,23 +12472,8 @@ where [refTable].[InstrumentID] = ? and [refTable].[AggregateDateID] = ?</proper
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation\LKP LastTrade">
+    design-time-name="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation\Equity Instruments to Aggregate">
     <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:string">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[ETL].[FactEquityEtfLtpHelper]</Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:string">0</Value>
-      </Property>
       <Property>
         <Name>DataSourceViewID</Name>
       </Property>
@@ -11916,7 +12493,7 @@ where [refTable].[InstrumentID] = ? and [refTable].[AggregateDateID] = ?</proper
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation\LKP Closing Auction Prices">
+    design-time-name="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation\LKP StateStreet Daily Holdings">
     <Properties>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
@@ -11926,7 +12503,7 @@ where [refTable].[InstrumentID] = ? and [refTable].[AggregateDateID] = ?</proper
       <Property>
         <Name>UsedTableName</Name>
         <Value
-          type="q3:string">[ETL].[ClosingPrice]</Value>
+          type="q3:string"></Value>
       </Property>
       <Property>
         <Name>TableInfoObjectType</Name>
@@ -11939,7 +12516,7 @@ where [refTable].[InstrumentID] = ? and [refTable].[AggregateDateID] = ?</proper
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation\LKP StateStreet Daily Holdings">
+    design-time-name="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation\LKP Closing Auction Prices">
     <Properties>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
@@ -11949,7 +12526,7 @@ where [refTable].[InstrumentID] = ? and [refTable].[AggregateDateID] = ?</proper
       <Property>
         <Name>UsedTableName</Name>
         <Value
-          type="q3:string"></Value>
+          type="q3:string">[ETL].[ClosingPrice]</Value>
       </Property>
       <Property>
         <Name>TableInfoObjectType</Name>
@@ -12008,6 +12585,29 @@ where [refTable].[InstrumentID] = ? and [refTable].[AggregateDateID] = ?</proper
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
+    design-time-name="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation\LKP Equity Instrument Details">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
     design-time-name="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation\LKP Stoxx ISQE20Stats">
     <Properties>
       <Property>
@@ -12054,7 +12654,7 @@ where [refTable].[InstrumentID] = ? and [refTable].[AggregateDateID] = ?</proper
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation\LKP Equity Instrument Details">
+    design-time-name="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation\LKP LastTrade">
     <Properties>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
@@ -12064,7 +12664,7 @@ where [refTable].[InstrumentID] = ? and [refTable].[AggregateDateID] = ?</proper
       <Property>
         <Name>UsedTableName</Name>
         <Value
-          type="q3:string"></Value>
+          type="q3:string">[ETL].[FactEquityEtfLtpHelper]</Value>
       </Property>
       <Property>
         <Name>TableInfoObjectType</Name>
@@ -12080,58 +12680,427 @@ where [refTable].[InstrumentID] = ? and [refTable].[AggregateDateID] = ?</proper
     design-time-name="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Etf Aggregation">
     <LayoutInfo>
       <GraphLayout
-        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
-        <NodeLayout
-          Size="263,44"
-          Id="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Etf Aggregation\LKP Closing Auction Prices"
-          TopLeft="158,670" />
-        <NodeLayout
-          Size="263,44"
-          Id="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Etf Aggregation\DST DWH ETL EtfTradeSnapshotMerge"
-          TopLeft="158,1131" />
-        <NodeLayout
-          Size="263,44"
-          Id="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Etf Aggregation\DER BatchID"
-          TopLeft="158,933" />
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="263,44"
           Id="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Etf Aggregation\LKP Equity Volume Plus"
-          TopLeft="158,485" />
+          TopLeft="5.50000000000006,421.5" />
+        <NodeLayout
+          Size="263,44"
+          Id="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Etf Aggregation\DST DWH ETL EtfTradeSnapshotMerge"
+          TopLeft="5.50000000000014,1149.5" />
         <NodeLayout
           Size="263,44"
           Id="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Etf Aggregation\LKP High-Low Prices"
-          TopLeft="158,382" />
-        <NodeLayout
-          Size="263,44"
-          Id="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Etf Aggregation\DER Market Cap"
-          TopLeft="158,846" />
+          TopLeft="5.50000000000003,317.5" />
         <NodeLayout
           Size="263,44"
           Id="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Etf Aggregation\LKP Total Shares In Issue"
-          TopLeft="158,757" />
+          TopLeft="5.50000000000009,733.5" />
         <NodeLayout
           Size="263,44"
           Id="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Etf Aggregation\LKP Offical Prices"
-          TopLeft="158,176" />
+          TopLeft="5.5,109.5" />
         <NodeLayout
           Size="263,44"
           Id="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Etf Aggregation\LKP LastTrade"
-          TopLeft="158,277" />
+          TopLeft="5.50000000000003,213.5" />
         <NodeLayout
           Size="263,44"
           Id="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Etf Aggregation\LKP Bid Offerr Prices"
-          TopLeft="158,572" />
+          TopLeft="5.50000000000006,525.5" />
         <NodeLayout
           Size="263,44"
           Id="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Etf Aggregation\LKP ETF Instrument Details"
-          TopLeft="158,1024" />
+          TopLeft="5.50000000000011,1045.5" />
         <NodeLayout
           Size="263,44"
           Id="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Etf Aggregation\Equity Instruments to Aggregate"
-          TopLeft="158,77" />
+          TopLeft="5.5,5.5" />
+        <NodeLayout
+          Size="263,44"
+          Id="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Etf Aggregation\DER Market Cap"
+          TopLeft="5.50000000000009,837.5" />
+        <NodeLayout
+          Size="263,44"
+          Id="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Etf Aggregation\LKP Closing Auction Prices"
+          TopLeft="5.50000000000006,629.5" />
+        <NodeLayout
+          Size="263,44"
+          Id="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Etf Aggregation\DER BatchID"
+          TopLeft="5.50000000000011,941.5" />
+        <EdgeLayout
+          Id="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Etf Aggregation.Paths[OLE DB Source Output]"
+          TopLeft="137,49.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Etf Aggregation.Paths[Lookup Match Output7]"
+          TopLeft="137,1089.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,20.4453125,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Etf Aggregation.Paths[Lookup Match Output6]"
+          TopLeft="137,777.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,20.4453125,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Etf Aggregation.Paths[Lookup Match Output5]"
+          TopLeft="137,673.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,20.4453125,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Etf Aggregation.Paths[Lookup Match Output4]"
+          TopLeft="137,569.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,20.4453125,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Etf Aggregation.Paths[Lookup Match Output3]"
+          TopLeft="137,465.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,20.4453125,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Etf Aggregation.Paths[Lookup Match Output2]"
+          TopLeft="137,361.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,20.4453125,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Etf Aggregation.Paths[Lookup Match Output1]"
+          TopLeft="137,257.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,20.4453125,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Etf Aggregation.Paths[Lookup Match Output]"
+          TopLeft="137,153.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,20.4453125,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Etf Aggregation.Paths[Derived Column Output1]"
+          TopLeft="137,985.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Etf Aggregation.Paths[Derived Column Output]"
+          TopLeft="137,881.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Etf Aggregation\LKP High-Low Prices">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[ETL].[EtfTradeHighLow]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">1</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Etf Aggregation\LKP LastTrade">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[ETL].[FactEquityEtfLtpHelper]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Etf Aggregation\DST DWH ETL EtfTradeSnapshotMerge">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Etf Aggregation\LKP Bid Offerr Prices">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[ETL].[BidOfferPrice]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Etf Aggregation\LKP Offical Prices">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[ETL].[EtfOfficalPrices]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">1</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Etf Aggregation\LKP Total Shares In Issue">
     <Properties>
@@ -12187,88 +13156,6 @@ where [refTable].[InstrumentID] = ? and [refTable].[AggregateDateID] = ?</proper
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Etf Aggregation\LKP Offical Prices">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:string">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[ETL].[EtfOfficalPrices]</Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:string">1</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Etf Aggregation\DST DWH ETL EtfTradeSnapshotMerge">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Etf Aggregation\LKP ETF Instrument Details">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:string">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string"></Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:string">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Etf Aggregation\LKP High-Low Prices">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:string">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[ETL].[EtfTradeHighLow]</Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:string">1</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
     design-time-name="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Etf Aggregation\LKP Equity Volume Plus">
     <Properties>
       <Property>
@@ -12292,7 +13179,7 @@ where [refTable].[InstrumentID] = ? and [refTable].[AggregateDateID] = ?</proper
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Etf Aggregation\LKP LastTrade">
+    design-time-name="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Etf Aggregation\LKP ETF Instrument Details">
     <Properties>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
@@ -12302,30 +13189,7 @@ where [refTable].[InstrumentID] = ? and [refTable].[AggregateDateID] = ?</proper
       <Property>
         <Name>UsedTableName</Name>
         <Value
-          type="q3:string">[ETL].[FactEquityEtfLtpHelper]</Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:string">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Etf Aggregation\LKP Bid Offerr Prices">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:string">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[ETL].[BidOfferPrice]</Value>
+          type="q3:string"></Value>
       </Property>
       <Property>
         <Name>TableInfoObjectType</Name>
