@@ -32,7 +32,7 @@ BEGIN
 			InstrumentID = E.InstrumentID,     
 			InstrumentStatusID = E.InstrumentStatusID,     
 			DateID = E.AggregationDateID,     
-	--		LastExDivDateID = E.LastExDivDateID,     
+			LastExDivDateID = E.LastExDivDateID,     
 			OCPDateID = E.OCPDateID,     
 			OCPTimeID = E.OCPTimeID,     
 			OCPTime = E.OCPTime,     
@@ -48,7 +48,6 @@ BEGIN
 			*/    
 	--		TotalSharesInIssue = E.TotalSharesInIssue,     
 			--IssuedSharesToday = E.IssuedSharesToday,     
-			--ExDivYN = E.ExDivYN,     
 			OpenPrice = E.OpenPrice,     
 			LowPrice = E.LowPrice,     
 			HighPrice = E.HighPrice,     
@@ -56,7 +55,7 @@ BEGIN
 			OfferPrice = E.OfferPrice,     
 			ClosingAuctionBidPrice = E.ClosingAuctionBidPrice,     
 			ClosingAuctionOfferPrice = E.ClosingAuctionOfferPrice,     
-			OCP = E.OpenPrice,     
+			OCP = E.OCP,     
 			LTP = E.LastPrice,     
 			MarketCap = E.MarketCap,     
 			MarketCapEur = E.MarketCapEur,     
@@ -94,10 +93,11 @@ BEGIN
 			ITEQIndexYN = E.ITEQIndexYN,     
 			ISEQ20IndexYN = E.ISEQ20IndexYN,     
 			ESMIndexYN = E.ESMIndexYN,     
-			--ExCapYN = E.ExCapYN,     
-			--ExEntitlementYN = E.ExEntitlementYN,     
-			--ExRightsYN = E.ExRightsYN,     
-			--ExSpecialYN = E.ExSpecialYN,     
+			ExDivYN = E.ExDivYN,     
+			ExCapYN = E.ExCapYN,     
+			ExEntitlementYN = E.ExEntitlementYN,     
+			ExRightsYN = E.ExRightsYN,     
+			ExSpecialYN = E.ExSpecialYN,     
 			PrimaryMarket = E.PrimaryMarket,     
 			BatchID = E.BatchID     
 		FROM     
@@ -142,7 +142,7 @@ BEGIN
 			OfferPrice = E.OfferPrice,     
 			ClosingAuctionBidPrice = E.ClosingAuctionBidPrice,     
 			ClosingAuctionOfferPrice = E.ClosingAuctionOfferPrice,     
-			OCP = E.OpenPrice,     
+			OCP = E.OCP,     
 			LTP = E.LastPrice,     
 			MarketCap = E.MarketCap,     
 			MarketCapEur = E.MarketCapEur,     
@@ -158,21 +158,7 @@ BEGIN
 			Deals = E.Deals,     
 			DealsOB = E.DealsOB,     
 			DealsND = E.DealsND,     
-			/* NOT NEEDED FOR ETF */    
-			/*    
-			ISEQ20Shares = E.ISEQ20Shares,     
-			ISEQ20Price = E.ISEQ20Price,     
-			ISEQ20Weighting = E.ISEQ20Weighting,     
-			ISEQ20MarketCap = E.ISEQ20MarketCap,     
-			ISEQ20FreeFloat = E.ISEQ20FreeFloat,     
-			ISEQOverallWeighting = E.ISEQOverallWeighting,     
-			ISEQOverallMarketCap = E.ISEQOverallMarketCap,     
-			ISEQOverallBeta30 = E.ISEQOverallBeta30,     
-			ISEQOverallBeta250 = E.ISEQOverallBeta250,     
-			ISEQOverallFreefloat = E.ISEQOverallFreefloat,     
-			ISEQOverallPrice = E.ISEQOverallPrice,     
-			ISEQOverallShares = E.ISEQOverallShares,     
-			*/    
+
 	/*    
     
 			OverallIndexYN = E.OverallIndexYN,     
@@ -181,13 +167,12 @@ BEGIN
 			SmallCapIndexYN = E.SmallCapIndexYN,     
 			ITEQIndexYN = E.ITEQIndexYN,     
 			ISEQ20IndexYN = E.ISEQ20IndexYN,     
-			ESMIndexYN = E.ESMIndexYN,     
-	
+			ESMIndexYN = E.ESMIndexYN,     	
+		*/
 			--ExCapYN = E.ExCapYN,     
 			--ExEntitlementYN = E.ExEntitlementYN,     
 			--ExRightsYN = E.ExRightsYN,     
 			--ExSpecialYN = E.ExSpecialYN,     
-		*/
 			PrimaryMarket = E.PrimaryMarket,     
 			BatchID = E.BatchID     
 		FROM     
@@ -211,7 +196,7 @@ BEGIN
 			InstrumentID,     
 			InstrumentStatusID,     
 			DateID,     
---			LastExDivDateID,     
+			LastExDivDateID,     
 			OCPDateID,     
 			OCPTimeID,     
 			OCPTime,     
@@ -225,7 +210,7 @@ BEGIN
 			MarketID,     
 --			TotalSharesInIssue,     
 --			IssuedSharesToday,     
---			ExDivYN,     
+			ExDivYN,     
 			OpenPrice,     
 			LowPrice,     
 			HighPrice,     
@@ -248,24 +233,7 @@ BEGIN
 			VolumeOB,     
 			Deals,     
 			DealsOB,     
-			DealsND,     
-    
-/*    
-			ISEQ20Shares,     
-			ISEQ20Price,     
-			ISEQ20Weighting,     
-			ISEQ20MarketCap,     
-			ISEQ20FreeFloat,     
-*/    
-/*    
-			ISEQOverallWeighting,     
-			ISEQOverallMarketCap,     
-			ISEQOverallBeta30,     
-			ISEQOverallBeta250,     
-			ISEQOverallFreefloat,     
-			ISEQOverallPrice,     
-			ISEQOverallShares,     
-*/    
+			DealsND,       
 			OverallIndexYN,     
 			GeneralIndexYN,     
 			FinancialIndexYN,     
@@ -273,18 +241,20 @@ BEGIN
 			ITEQIndexYN,     
 			ISEQ20IndexYN,     
 			ESMIndexYN,     
---			ExCapYN,     
---			ExEntitlementYN,     
---			ExRightsYN,     
---			ExSpecialYN,     
+			ExCapYN,     
+			ExEntitlementYN,     
+			ExRightsYN,     
+			ExSpecialYN,     
 			PrimaryMarket,     
+			NAV,
+			NAVCalcDateID,
 			BatchID     
 		)     
 		SELECT     
 			InstrumentID,     
 			InstrumentStatusID,     
 			AggregationDateID,     
---			LastExDivDateID,     
+			LastExDivDateID,     
 			OCPDateID,     
 			OCPTimeID,     
 			OCPTime,     
@@ -298,7 +268,7 @@ BEGIN
 			MarketID,     
 --			TotalSharesInIssue,     
 --			IssuedSharesToday,     
---			ExDivYN,     
+			ExDivYN,     
 			OpenPrice,     
 			LowPrice,     
 			HighPrice,     
@@ -306,7 +276,7 @@ BEGIN
 			OfferPrice,     
 			ClosingAuctionBidPrice,     
 			ClosingAuctionOfferPrice,     
-			OpenPrice,    
+			OCP,    
 			LastPrice,    
 			MarketCap,     
 			MarketCapEur,     
@@ -321,24 +291,7 @@ BEGIN
 			ISNULL(VolumeOB, 0),     
 			ISNULL(Deals, 0),     
 			ISNULL(DealsOB, 0),     
-			ISNULL(DealsND, 0),     
-    
-/*    
-			ISEQ20Shares,     
-			ISEQ20Price,     
-			ISEQ20Weighting,     
-			ISEQ20MarketCap,     
-			ISEQ20FreeFloat,     
-*/    
-/*    
-			ISEQOverallWeighting,     
-			ISEQOverallMarketCap,     
-			ISEQOverallBeta30,     
-			ISEQOverallBeta250,     
-			ISEQOverallFreefloat,     
-			ISEQOverallPrice,     
-			ISEQOverallShares,     
-*/    
+			ISNULL(DealsND, 0),         
 			OverallIndexYN,     
 			GeneralIndexYN,     
 			FinancialIndexYN,     
@@ -346,11 +299,13 @@ BEGIN
 			ITEQIndexYN,     
 			ISEQ20IndexYN,     
 			ESMIndexYN,     
---			ExCapYN,     
---			ExEntitlementYN,     
---			ExRightsYN,     
---			ExSpecialYN,     
+			ExCapYN,     
+			ExEntitlementYN,     
+			ExRightsYN,     
+			ExSpecialYN,     
 			PrimaryMarket,     
+			NAV,
+			NAVCalcDateID,
 			BatchID     
 		FROM     
 			ETL.FactEtfSnapshotMerge E     
@@ -476,8 +431,54 @@ BEGIN
 	AND
 		DWH.DateID = @DateID
 			    
+
+	/* MANUAL FIXES */
+	UPDATE
+		DWH.FactEtfSnapshot
+	SET
+		IssuedSharesToday = ISNULL(IssuedSharesToday ,0)
+	WHERE
+		DateID = @DateID
+
+	UPDATE
+		DWH
+	SET
+		OCPDateTime = CAST(D.Day AS datetime) + CAST(DWH.OCPTime AS datetime)
+	FROM
+			DWH.FactEtfSnapshot DWH
+		INNER JOIN
+			DWH.DimDate D
+		ON DWH.OCPDateID = D.DateID
+	WHERE
+		DWH.DateID = @DateID
+	AND
+		DWH.OCPDateID IS NOT NULL
+	AND
+		DWH.OCPDateID <> -1
+	AND
+		DWH.OCPTime IS NOT NULL
+			
+	UPDATE
+		DWH
+	SET
+		LtpDateTime = CAST(D.Day AS datetime) + CAST(DWH.LTPTime AS datetime)
+	FROM
+			DWH.FactEtfSnapshot DWH
+		INNER JOIN
+			DWH.DimDate D
+		ON DWH.LTPDateID = D.DateID
+	WHERE
+		DWH.DateID = @DateID
+	AND
+		DWH.LTPDateID IS NOT NULL
+	AND
+		DWH.LTPDateID <> -1
+	AND
+		DWH.LtpTime IS NOT NULL
+			
+
+
+
     
 END     
-
-
 GO

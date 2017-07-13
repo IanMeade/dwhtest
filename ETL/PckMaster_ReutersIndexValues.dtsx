@@ -11,8 +11,8 @@
   DTS:LocaleID="6153"
   DTS:ObjectName="PckMaster_ReutersIndexValues"
   DTS:PackageType="5"
-  DTS:VersionBuild="33"
-  DTS:VersionGUID="{39F66A60-8C48-411B-A80D-C0B38664AF12}">
+  DTS:VersionBuild="39"
+  DTS:VersionGUID="{1670B008-85B0-4284-8EAA-D7DB39A29D0F}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -186,6 +186,15 @@
         DTS:DataType="8"
         xml:space="preserve"></DTS:VariableValue>
     </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{A4D514FD-2B20-4ADE-8A27-344301AB6879}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="YesWeCanIndexAggregation">
+      <DTS:VariableValue
+        DTS:DataType="11">0</DTS:VariableValue>
+    </DTS:Variable>
   </DTS:Variables>
   <DTS:Executables>
     <DTS:Executable
@@ -236,6 +245,23 @@
           DTS:ObjectName="SEQ Load Reuters Index Values">
           <DTS:Variables />
           <DTS:Executables>
+            <DTS:Executable
+              DTS:refId="Package\For Loop Container\SEQ Load Reuters Index Values\PCK Index Aggregation"
+              DTS:CreationName="Microsoft.ExecutePackageTask"
+              DTS:Description="Execute Package Task"
+              DTS:DTSID="{d1c6fe12-48c5-4fd6-a725-f1294de50301}"
+              DTS:ExecutableType="Microsoft.ExecutePackageTask"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="PCK Index Aggregation"
+              DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+              <DTS:Variables />
+              <DTS:ObjectData>
+                <ExecutePackageTask>
+                  <UseProjectReference>True</UseProjectReference>
+                  <PackageName>PckIndexAggregation.dtsx</PackageName>
+                </ExecutePackageTask>
+              </DTS:ObjectData>
+            </DTS:Executable>
             <DTS:Executable
               DTS:refId="Package\For Loop Container\SEQ Load Reuters Index Values\SEQ Index Values"
               DTS:CreationName="STOCK:SEQUENCE"
@@ -2855,6 +2881,34 @@ AND
               </DTS:PrecedenceConstraints>
             </DTS:Executable>
             <DTS:Executable
+              DTS:refId="Package\For Loop Container\SEQ Load Reuters Index Values\SQL Index Aggreggation"
+              DTS:CreationName="Microsoft.ExecuteSQLTask"
+              DTS:Description="Execute SQL Task"
+              DTS:DTSID="{cb6effdd-ee6f-47be-b481-257c67618c64}"
+              DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="SQL Index Aggreggation"
+              DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+              DTS:ThreadHint="1">
+              <DTS:Variables />
+              <DTS:ObjectData>
+                <SQLTask:SqlTaskData
+                  SQLTask:Connection="{88A180A2-BD32-40DF-AB41-4FDAC0D5C73C}"
+                  SQLTask:SqlStatementSource="SELECT dbo.CheckTaskControl('INDEX_AGGREGATION',-1) AS YesWeCan"
+                  SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+                  <SQLTask:ResultBinding
+                    SQLTask:ResultName="YesWeCan"
+                    SQLTask:DtsVariableName="User::YesWeCanIndexAggregation" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="0"
+                    SQLTask:DtsVariableName="User::BatchID"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="3"
+                    SQLTask:ParameterSize="-1" />
+                </SQLTask:SqlTaskData>
+              </DTS:ObjectData>
+            </DTS:Executable>
+            <DTS:Executable
               DTS:refId="Package\For Loop Container\SEQ Load Reuters Index Values\SQL Reuters Poll Delay"
               DTS:CreationName="Microsoft.ExecuteSQLTask"
               DTS:Description="Execute SQL Task"
@@ -2872,6 +2926,26 @@ AND
               </DTS:ObjectData>
             </DTS:Executable>
           </DTS:Executables>
+          <DTS:PrecedenceConstraints>
+            <DTS:PrecedenceConstraint
+              DTS:refId="Package\For Loop Container\SEQ Load Reuters Index Values.PrecedenceConstraints[Constraint]"
+              DTS:CreationName=""
+              DTS:DTSID="{A88123DF-98A6-4386-969B-343FCB90B4D1}"
+              DTS:EvalOp="3"
+              DTS:Expression="@[User::YesWeCanIndexAggregation]"
+              DTS:From="Package\For Loop Container\SEQ Load Reuters Index Values\SQL Index Aggreggation"
+              DTS:LogicalAnd="True"
+              DTS:ObjectName="Constraint"
+              DTS:To="Package\For Loop Container\SEQ Load Reuters Index Values\PCK Index Aggregation" />
+            <DTS:PrecedenceConstraint
+              DTS:refId="Package\For Loop Container\SEQ Load Reuters Index Values.PrecedenceConstraints[Constraint 1]"
+              DTS:CreationName=""
+              DTS:DTSID="{4EC98B80-91DF-46BB-805A-ED6AAC9E67B2}"
+              DTS:From="Package\For Loop Container\SEQ Load Reuters Index Values\SEQ Index Values"
+              DTS:LogicalAnd="True"
+              DTS:ObjectName="Constraint 1"
+              DTS:To="Package\For Loop Container\SEQ Load Reuters Index Values\SQL Index Aggreggation" />
+          </DTS:PrecedenceConstraints>
         </DTS:Executable>
         <DTS:Executable
           DTS:refId="Package\For Loop Container\SQL Run Index Values Load"
@@ -2901,6 +2975,8 @@ AND
           DTS:refId="Package\For Loop Container.PrecedenceConstraints[Constraint]"
           DTS:CreationName=""
           DTS:DTSID="{C57680EB-602F-409B-B3D9-A9EAE1B45F41}"
+          DTS:EvalOp="3"
+          DTS:Expression="!@[User::YesWeCan]"
           DTS:From="Package\For Loop Container\SQL Run Index Values Load"
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint"
@@ -3473,7 +3549,7 @@ AND
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="64" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="150,42"
           Id="Package\For Loop Container\EPT Break loop"
@@ -3503,7 +3579,7 @@ AND
           TopLeft="156.5,60">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,49"
               Start="0,0"
               End="0,41.5">
@@ -3525,7 +3601,7 @@ AND
           TopLeft="156.5,244">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,45"
               Start="0,0"
               End="0,37.5">
@@ -3547,7 +3623,7 @@ AND
           TopLeft="280,130">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="57,0"
               Start="0,0"
               End="49.5,0">
@@ -3571,7 +3647,7 @@ AND
           TopLeft="156.5,151">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,51"
               Start="0,0"
               End="0,43.5">
@@ -3596,16 +3672,82 @@ AND
           PanelSize="647,386"
           Size="647,429"
           Id="Package\For Loop Container\SEQ Load Reuters Index Values\SEQ Index Values"
-          TopLeft="24,93" />
+          TopLeft="24,108" />
         <NodeLayout
           Size="193,42"
           Id="Package\For Loop Container\SEQ Load Reuters Index Values\SQL Reuters Poll Delay"
           TopLeft="32.5,17" />
+        <NodeLayout
+          Size="194,42"
+          Id="Package\For Loop Container\SEQ Load Reuters Index Values\SQL Index Aggreggation"
+          TopLeft="88,590" />
+        <NodeLayout
+          Size="197,42"
+          Id="Package\For Loop Container\SEQ Load Reuters Index Values\PCK Index Aggregation"
+          TopLeft="324,590" />
+        <EdgeLayout
+          Id="Package\For Loop Container\SEQ Load Reuters Index Values.PrecedenceConstraints[Constraint]"
+          TopLeft="282,611">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="42,0"
+              Start="0,0"
+              End="34.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="34.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="9.25,5,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\For Loop Container\SEQ Load Reuters Index Values.PrecedenceConstraints[Constraint 1]"
+          TopLeft="347.5,537">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="-162.5,53"
+              Start="0,0"
+              End="-162.5,45.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,22.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,22.5"
+                    Point2="0,26.5"
+                    Point3="-4,26.5" />
+                  <mssgle:LineSegment
+                    End="-158.5,26.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-158.5,26.5"
+                    Point2="-162.5,26.5"
+                    Point3="-162.5,30.5" />
+                  <mssgle:LineSegment
+                    End="-162.5,45.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="674,545"
-          Size="674,588"
+          PanelSize="729,709"
+          Size="729,752"
           Id="Package\For Loop Container\SEQ Load Reuters Index Values"
           TopLeft="74,108" />
         <NodeLayout
@@ -3617,7 +3759,7 @@ AND
           TopLeft="471,48.75">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="128,0"
               Start="0,0"
               End="120.5,0">
@@ -3631,7 +3773,9 @@ AND
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="52.25,5,16,16"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -3639,10 +3783,10 @@ AND
           TopLeft="374.5,69">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="36.5,39"
+              StartConnector="{x:Null}"
+              EndConnector="64,39"
               Start="0,0"
-              End="36.5,31.5">
+              End="64,31.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
@@ -3653,28 +3797,28 @@ AND
                     Point2="0,19.5"
                     Point3="4,19.5" />
                   <mssgle:LineSegment
-                    End="32.5,19.5" />
+                    End="60,19.5" />
                   <mssgle:CubicBezierSegment
-                    Point1="32.5,19.5"
-                    Point2="36.5,19.5"
-                    Point3="36.5,23.5" />
+                    Point1="60,19.5"
+                    Point2="64,19.5"
+                    Point3="64,23.5" />
                   <mssgle:LineSegment
-                    End="36.5,31.5" />
+                    End="64,31.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="10.25,24.5,16,16"
+              BoundingBox="24,24.5,16,16"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="878,733"
-          Size="878,776"
+          PanelSize="878,915"
+          Size="878,958"
           Id="Package\For Loop Container"
           TopLeft="82,383" />
         <NodeLayout
@@ -3687,7 +3831,7 @@ AND
           PanelSize="226,121"
           Size="226,164"
           Id="Package\SEQ Finish Batch"
-          TopLeft="413,1191" />
+          TopLeft="403,1405" />
         <NodeLayout
           Size="165,42"
           Id="Package\SEQ Process Complete\EPT ProcessStatus"
@@ -3698,7 +3842,7 @@ AND
           PanelSize="208,116"
           Size="208,159"
           Id="Package\SEQ Process Complete"
-          TopLeft="756,1194" />
+          TopLeft="853,1394" />
         <NodeLayout
           Size="165,42"
           Id="Package\SEQ Process Start\EPT ProcessStatus"
@@ -3723,7 +3867,7 @@ AND
           TopLeft="93.5,47.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,60"
               Start="0,0"
               End="0,52.5">
@@ -3752,7 +3896,7 @@ AND
           TopLeft="523.75,342">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,41"
               Start="0,0"
               End="0,33.5">
@@ -3771,18 +3915,18 @@ AND
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="523.5,1159">
+          TopLeft="518.5,1341">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,32"
+              StartConnector="{x:Null}"
+              EndConnector="0,64"
               Start="0,0"
-              End="0,24.5">
+              End="0,56.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,24.5" />
+                    End="0,56.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -3796,7 +3940,7 @@ AND
           TopLeft="620,219.75">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="105,0"
               Start="0,0"
               End="97.5,0">
@@ -3815,18 +3959,30 @@ AND
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 3]"
-          TopLeft="639,1273.25">
+          TopLeft="629,1487">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="117,0"
+              StartConnector="{x:Null}"
+              EndConnector="224,-13.5"
               Start="0,0"
-              End="109.5,0">
+              End="216.5,-13.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="109.5,0" />
+                    End="108,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="108,0"
+                    Point2="112,0"
+                    Point3="112,-4" />
+                  <mssgle:LineSegment
+                    End="112,-9.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="112,-9.5"
+                    Point2="112,-13.5"
+                    Point3="116,-13.5" />
+                  <mssgle:LineSegment
+                    End="216.5,-13.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -3842,7 +3998,7 @@ AND
     design-time-name="Package.EventHandlers[OnError]">
     <LayoutInfo>
       <GraphLayout
-        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph" xmlns:mssge="clr-namespace:Microsoft.SqlServer.Graph.Extended;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph" xmlns:mssge="clr-namespace:Microsoft.SqlServer.Graph.Extended;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <NodeLayout
           Size="218,42"
           Id="Package.EventHandlers[OnError]\SEQ Error handler\Expression Task"
@@ -3872,7 +4028,7 @@ AND
           TopLeft="354.5,146.1">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,47.6"
               Start="0,0"
               End="0,40.1">
@@ -3896,7 +4052,7 @@ AND
           TopLeft="354.5,235.7">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,47.6"
               Start="0,0"
               End="0,40.1">
@@ -3920,7 +4076,7 @@ AND
           TopLeft="354.5,414.9">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,47.6"
               Start="0,0"
               End="0,40.1">
@@ -3944,7 +4100,7 @@ AND
           TopLeft="354.5,325.3">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,47.6"
               Start="0,0"
               End="0,40.1">
@@ -3968,7 +4124,7 @@ AND
           TopLeft="354.5,56.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,47.6"
               Start="0,0"
               End="0,40.1">

@@ -13,8 +13,6 @@ BEGIN
 	-- interfering with SELECT statements.  
 	SET NOCOUNT ON;  
   
-	TRUNCATE TABLE dbo.T7QuarantineTrade  
-  
 	INSERT INTO  
 			dbo.T7QuarantineTrade  
 		(  
@@ -34,9 +32,9 @@ BEGIN
 			-101 AS Code,  
 			'Trade [' + UniqueKey + '] moved to quarantine: Trade is NEGOTIATED DEAL but DEFERRED INDICATOR is not set.' AS Message  
 		FROM  
-			T7TradeMainDataFlowOutput  
+			dbo.T7TradeMainDataFlowOutput  
 		WHERE  
-				TradeType ='ND' 
+				TradeTypeCategory = 'ND' 
 			AND  
 				DelayedTradeYN NOT IN ( 'N', 'Y' ) 
 		UNION 
@@ -49,7 +47,7 @@ BEGIN
 			-99 AS Code,  
 			'Trade [' + UniqueKey + '] moved to quarantine: Trade is marked DEFERRED but PUBLISH TIME is not set.' AS Message  
 		FROM  
-			T7TradeMainDataFlowOutput  
+			dbo.T7TradeMainDataFlowOutput  
 		WHERE  
 				DelayedTradeYN = 'Y' 
 			AND 
@@ -64,19 +62,19 @@ BEGIN
 			-99 AS Code,  
 			'Trade [' + UniqueKey + '] moved to quarantine: Trade is marked DEFERRED but PUBLISH TIME is not set.' AS Message  
 		FROM  
-			T7TradeMainDataFlowOutput  
+			dbo.T7TradeMainDataFlowOutput  
 		WHERE  
 				DelayedTradeYN = 'Y' 
 			AND 
 				/* DB is using AS SPECIAL / NULL VALUE - APPLY SAME CHECK AS BEFORE */
 				CAST(PublishDateTime AS date) = '18581117'
- 
+
 	/* Remove invalid rows from T7TradeMainDataFlowOutput */  
   
 	DELETE  
 		STG
 	FROM
-			T7TradeMainDataFlowOutput STG
+			dbo.T7TradeMainDataFlowOutput STG
 		INNER JOIN
 			dbo.T7QuarantineTrade BAD
 		ON STG.TradeDateID = BAD.TradeDateID 

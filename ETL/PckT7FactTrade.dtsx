@@ -11,8 +11,8 @@
   DTS:LocaleID="6153"
   DTS:ObjectName="PckT7FactTrade"
   DTS:PackageType="5"
-  DTS:VersionBuild="143"
-  DTS:VersionGUID="{3014179B-3F92-4C8A-9F47-FA0C0D8481A3}">
+  DTS:VersionBuild="152"
+  DTS:VersionGUID="{2778ED80-763F-4CE7-AD13-A24BA2D13ED0}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -24,6 +24,15 @@
       DTS:ObjectName="BatchID1">
       <DTS:VariableValue
         DTS:DataType="3">3</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{E683615B-9F24-4915-A5C9-ADCAAA6CDE63}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="CancellationAlert">
+      <DTS:VariableValue
+        DTS:DataType="8">PENDING_CANCELATIONS</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -1973,6 +1982,15 @@
                       refId="Package\SEQ Main data flow\DFT Main trade data flow\DER Add BatchID.Inputs[Derived Column Input]"
                       description="Input to the Derived Column Transformation"
                       name="Derived Column Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\SEQ Main data flow\DFT Main trade data flow\DER Add BatchID.Inputs[Derived Column Input].Columns[CancelTradeYN]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="1"
+                          cachedName="CancelTradeYN"
+                          lineageId="Package\SEQ Main data flow\DFT Main trade data flow\LKP DimTradeModification.Outputs[Lookup Match Output].Columns[CancelTradeYN]" />
+                      </inputColumns>
                       <externalMetadataColumns />
                     </input>
                   </inputs>
@@ -2019,13 +2037,13 @@
                               containsID="true"
                               dataType="System.String"
                               description="Derived Column Expression"
-                              name="Expression">-1</property>
+                              name="Expression">#{Package\SEQ Main data flow\DFT Main trade data flow\LKP DimTradeModification.Outputs[Lookup Match Output].Columns[CancelTradeYN]} == "Y" ? @[User::BatchID1] : -1</property>
                             <property
                               containsID="true"
                               dataType="System.String"
                               description="Derived Column Friendly Expression"
                               expressionType="Notify"
-                              name="FriendlyExpression">-1</property>
+                              name="FriendlyExpression">CancelTradeYN == "Y" ? @[User::BatchID1] : -1</property>
                           </properties>
                         </outputColumn>
                       </outputColumns>
@@ -4168,9 +4186,12 @@ where [refTable].[ISIN] = ? and [refTable].[TradeDateID] = ? and [refTable].[Tra
 	DelayedTradeYN
 FROM 
 	dbo.TxSaft_Open
+/* INCLUDE CANCELLATIONS - CAN BE CANCELATION WITHOUT EARLIER ENTRY */
+/*
 WHERE
 /* Normal / uncancelled trades */
-	A_MOD_REASON_CODE = '001'</property>
+	A_MOD_REASON_CODE = '001'
+*/</property>
                     <property
                       dataType="System.String"
                       description="The variable that contains the SQL command to be executed."
@@ -5269,6 +5290,23 @@ GROUP BY
           </DTS:ObjectData>
         </DTS:Executable>
         <DTS:Executable
+          DTS:refId="Package\SEQ Main data flow\SQL Clear Quaratine"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{8A4BBBB4-6DE2-4091-AA67-8F53A898B75C}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SQL Clear Quaratine"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{7AE745A6-BA4C-482E-9695-63779ECE70D4}"
+              SQLTask:SqlStatementSource="TRUNCATE TABLE dbo.T7QuarantineTrade  &#xA;  " xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
           DTS:refId="Package\SEQ Main data flow\SQL DWH Clear list of tradings days"
           DTS:CreationName="Microsoft.ExecuteSQLTask"
           DTS:Description="Execute SQL Task"
@@ -5367,6 +5405,22 @@ GROUP BY
           DTS:ObjectName="Constraint 2"
           DTS:To="Package\SEQ Main data flow\SQL Batch Error Free - still" />
         <DTS:PrecedenceConstraint
+          DTS:refId="Package\SEQ Main data flow.PrecedenceConstraints[Constraint 3]"
+          DTS:CreationName=""
+          DTS:DTSID="{723DDF2F-BFFA-454F-9D4A-31244192A99D}"
+          DTS:From="Package\SEQ Main data flow\SQL Staging Clear Main Data Flow"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 3"
+          DTS:To="Package\SEQ Main data flow\SQL Clear Quaratine" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\SEQ Main data flow.PrecedenceConstraints[Constraint 4]"
+          DTS:CreationName=""
+          DTS:DTSID="{E30DCDB9-5E67-428B-B65C-E911CA6ACA31}"
+          DTS:From="Package\SEQ Main data flow\SQL Clear Quaratine"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 4"
+          DTS:To="Package\SEQ Main data flow\DFT Main trade data flow" />
+        <DTS:PrecedenceConstraint
           DTS:refId="Package\SEQ Main data flow.PrecedenceConstraints[Constraint 5]"
           DTS:CreationName=""
           DTS:DTSID="{3FC8FB54-7190-4F26-8A49-CC8413E32042}"
@@ -5376,14 +5430,6 @@ GROUP BY
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint 5"
           DTS:To="Package\SEQ Main data flow\DFT Load Trades to DWH" />
-        <DTS:PrecedenceConstraint
-          DTS:refId="Package\SEQ Main data flow.PrecedenceConstraints[Constraint 6]"
-          DTS:CreationName=""
-          DTS:DTSID="{F97850F8-B605-47A6-A4BF-15CFD80BB0BE}"
-          DTS:From="Package\SEQ Main data flow\SQL Staging Clear Main Data Flow"
-          DTS:LogicalAnd="True"
-          DTS:ObjectName="Constraint 6"
-          DTS:To="Package\SEQ Main data flow\DFT Main trade data flow" />
         <DTS:PrecedenceConstraint
           DTS:refId="Package\SEQ Main data flow.PrecedenceConstraints[Constraint 7]"
           DTS:CreationName=""
@@ -6243,6 +6289,27 @@ FROM
           </DTS:ObjectData>
         </DTS:Executable>
         <DTS:Executable
+          DTS:refId="Package\SEQ Mark files complete\EPT Cancellation Alert"
+          DTS:CreationName="Microsoft.ExecutePackageTask"
+          DTS:Description="Execute Package Task"
+          DTS:DTSID="{DF1B67A4-9757-4E72-BB79-28E9646F600F}"
+          DTS:ExecutableType="Microsoft.ExecutePackageTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="EPT Cancellation Alert"
+          DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <ExecutePackageTask>
+              <UseProjectReference>True</UseProjectReference>
+              <PackageName>PckAlert.dtsx</PackageName>
+              <ParameterAssignment>
+                <ParameterName>MessageTag</ParameterName>
+                <BindedVariableOrParameterName>User::CancellationAlert</BindedVariableOrParameterName>
+              </ParameterAssignment>
+            </ExecutePackageTask>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
           DTS:refId="Package\SEQ Mark files complete\SQL Check for pending cancelations"
           DTS:CreationName="Microsoft.ExecuteSQLTask"
           DTS:Description="Execute SQL Task"
@@ -6315,6 +6382,16 @@ FROM
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint"
           DTS:To="Package\SEQ Mark files complete\SQL T7_ODS Complete files" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\SEQ Mark files complete.PrecedenceConstraints[Constraint 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{72636DD7-5682-442B-AEA9-307CC2ABFFE5}"
+          DTS:EvalOp="3"
+          DTS:Expression="@[User::CancelationCount] != 0"
+          DTS:From="Package\SEQ Mark files complete\SQL Check for pending cancelations"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 1"
+          DTS:To="Package\SEQ Mark files complete\EPT Cancellation Alert" />
         <DTS:PrecedenceConstraint
           DTS:refId="Package\SEQ Mark files complete.PrecedenceConstraints[Constraint 2]"
           DTS:CreationName=""
@@ -15818,9 +15895,9 @@ GROUP BY
                   startId="Package\SEQ Trade load preparation\DFT Equity Trade Junk Dim\LKP PrincipalAgent.Outputs[Lookup Match Output]" />
                 <path
                   refId="Package\SEQ Trade load preparation\DFT Equity Trade Junk Dim.Paths[Lookup Match Output4]"
-                  endId="Package\SEQ Trade load preparation\DFT Equity Trade Junk Dim\LKP PrincipalAgent.Inputs[Lookup Input]"
+                  endId="Package\SEQ Trade load preparation\DFT Equity Trade Junk Dim\LKP TradeOrderType.Inputs[Lookup Input]"
                   name="Lookup Match Output"
-                  startId="Package\SEQ Trade load preparation\DFT Equity Trade Junk Dim\LKP TradeOrderType.Outputs[Lookup Match Output]" />
+                  startId="Package\SEQ Trade load preparation\DFT Equity Trade Junk Dim\LKP TradeSide.Outputs[Lookup Match Output]" />
                 <path
                   refId="Package\SEQ Trade load preparation\DFT Equity Trade Junk Dim.Paths[Lookup Match Output3]"
                   endId="Package\SEQ Trade load preparation\DFT Equity Trade Junk Dim\LKP TradeFlag 3.Inputs[Lookup Input]"
@@ -15833,9 +15910,9 @@ GROUP BY
                   startId="Package\SEQ Trade load preparation\DFT Equity Trade Junk Dim\LKP TradeFlag 1.Outputs[Lookup Match Output]" />
                 <path
                   refId="Package\SEQ Trade load preparation\DFT Equity Trade Junk Dim.Paths[Lookup Match Output1]"
-                  endId="Package\SEQ Trade load preparation\DFT Equity Trade Junk Dim\LKP TradeOrderType.Inputs[Lookup Input]"
+                  endId="Package\SEQ Trade load preparation\DFT Equity Trade Junk Dim\LKP PrincipalAgent.Inputs[Lookup Input]"
                   name="Lookup Match Output"
-                  startId="Package\SEQ Trade load preparation\DFT Equity Trade Junk Dim\LKP TradeSide.Outputs[Lookup Match Output]" />
+                  startId="Package\SEQ Trade load preparation\DFT Equity Trade Junk Dim\LKP TradeOrderType.Outputs[Lookup Match Output]" />
                 <path
                   refId="Package\SEQ Trade load preparation\DFT Equity Trade Junk Dim.Paths[Lookup Match Output]"
                   endId="Package\SEQ Trade load preparation\DFT Equity Trade Junk Dim\LKP TradeFlag 1.Inputs[Lookup Input]"
@@ -18385,7 +18462,7 @@ FROM
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="64" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="64" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="240,42"
           Id="Package\SEQ Main data flow\DFT Load Trades to DWH"
@@ -18402,6 +18479,10 @@ FROM
           Size="240,42"
           Id="Package\SEQ Main data flow\SQL Batch Error Free - still"
           TopLeft="196.5,493" />
+        <NodeLayout
+          Size="240,42"
+          Id="Package\SEQ Main data flow\SQL Clear Quaratine"
+          TopLeft="34.5,119" />
         <NodeLayout
           Size="248,42"
           Id="Package\SEQ Main data flow\SQL DWH Clear list of tradings days"
@@ -18423,7 +18504,7 @@ FROM
           TopLeft="316.5,290">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="0,39"
               Start="0,0"
               End="0,31.5">
@@ -18445,7 +18526,7 @@ FROM
           TopLeft="316.5,371">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="0,37"
               Start="0,0"
               End="0,29.5">
@@ -18467,7 +18548,7 @@ FROM
           TopLeft="316.5,450">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="0,43"
               Start="0,0"
               End="0,35.5">
@@ -18485,11 +18566,67 @@ FROM
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
+          Id="Package\SEQ Main data flow.PrecedenceConstraints[Constraint 3]"
+          TopLeft="154.5,75">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,44"
+              Start="0,0"
+              End="0,36.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,36.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ Main data flow.PrecedenceConstraints[Constraint 4]"
+          TopLeft="154.5,161">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="123.333333333333,87"
+              Start="0,0"
+              End="123.333333333333,79.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,47.8543046357616" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,47.8543046357616"
+                    Point2="0,51.8543046357616"
+                    Point3="4,51.8543046357616" />
+                  <mssgle:LineSegment
+                    End="119.333333333333,51.8543046357616" />
+                  <mssgle:CubicBezierSegment
+                    Point1="119.333333333333,51.8543046357616"
+                    Point2="123.333333333333,51.8543046357616"
+                    Point3="123.333333333333,55.8543046357616" />
+                  <mssgle:LineSegment
+                    End="123.333333333333,79.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
           Id="Package\SEQ Main data flow.PrecedenceConstraints[Constraint 5]"
           TopLeft="316.5,535">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="0,43"
               Start="0,0"
               End="0,35.5">
@@ -18509,45 +18646,11 @@ FROM
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\SEQ Main data flow.PrecedenceConstraints[Constraint 6]"
-          TopLeft="154.5,75">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{x:Null}"
-              EndConnector="123.333333333333,173"
-              Start="0,0"
-              End="123.333333333333,165.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,99.112582781457" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,99.112582781457"
-                    Point2="0,103.112582781457"
-                    Point3="4,103.112582781457" />
-                  <mssgle:LineSegment
-                    End="119.333333333333,103.112582781457" />
-                  <mssgle:CubicBezierSegment
-                    Point1="119.333333333333,103.112582781457"
-                    Point2="123.333333333333,103.112582781457"
-                    Point3="123.333333333333,107.112582781457" />
-                  <mssgle:LineSegment
-                    End="123.333333333333,165.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
           Id="Package\SEQ Main data flow.PrecedenceConstraints[Constraint 7]"
           TopLeft="465.5,75">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="0,77"
               Start="0,0"
               End="0,69.5">
@@ -18569,7 +18672,7 @@ FROM
           TopLeft="463.5,194">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="-108.333333333333,54"
               Start="0,0"
               End="-108.333333333333,46.5">
@@ -18601,14 +18704,18 @@ FROM
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="666,675"
-          Size="666,718"
+          PanelSize="686,675"
+          Size="686,718"
           Id="Package\SEQ Main data flow"
           TopLeft="102,911" />
         <NodeLayout
           Size="248,42"
           Id="Package\SEQ Mark files complete\DFT Update DWH File Dimension"
           TopLeft="180,246" />
+        <NodeLayout
+          Size="182,42"
+          Id="Package\SEQ Mark files complete\EPT Cancellation Alert"
+          TopLeft="464,147" />
         <NodeLayout
           Size="248,42"
           Id="Package\SEQ Mark files complete\SQL Check for pending cancelations"
@@ -18626,7 +18733,7 @@ FROM
           TopLeft="170,70">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="93,79"
               Start="0,0"
               End="93,71.5">
@@ -18658,11 +18765,47 @@ FROM
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
+          Id="Package\SEQ Mark files complete.PrecedenceConstraints[Constraint 1]"
+          TopLeft="493,69">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="62,78"
+              Start="0,0"
+              End="62,70.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,27.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,27.5"
+                    Point2="0,31.5"
+                    Point3="4,31.5" />
+                  <mssgle:LineSegment
+                    End="58,31.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="58,31.5"
+                    Point2="62,31.5"
+                    Point3="62,35.5" />
+                  <mssgle:LineSegment
+                    End="62,70.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="23,36.5,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
           Id="Package\SEQ Mark files complete.PrecedenceConstraints[Constraint 2]"
           TopLeft="453,69">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="-110,80"
               Start="0,0"
               End="-110,72.5">
@@ -18716,7 +18859,7 @@ FROM
           Id="Package\SEQ Trade Cancelations\SEQ Cancelations\DFT Apply Manual Cancelations"
           TopLeft="24,156" />
         <NodeLayout
-          Size="227,42"
+          Size="217,42"
           Id="Package\SEQ Trade Cancelations\SEQ Cancelations\DFT Apply SAFT Cancelations"
           TopLeft="24,13" />
         <NodeLayout
@@ -18728,7 +18871,7 @@ FROM
           TopLeft="137.5,130">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="0,26"
               Start="0,0"
               End="0,18.5">
@@ -18761,7 +18904,7 @@ FROM
           TopLeft="320,169">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="43,-63"
               Start="0,0"
               End="35.5,-63">
@@ -18830,7 +18973,7 @@ FROM
           TopLeft="163,171.1">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="0,56.1"
               Start="0,0"
               End="0,48.6">
@@ -18852,7 +18995,7 @@ FROM
           TopLeft="163,269.2">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="0,56.1"
               Start="0,0"
               End="0,48.6">
@@ -18874,7 +19017,7 @@ FROM
           TopLeft="163,367.3">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="0,56.1000000000001"
               Start="0,0"
               End="0,48.6000000000001">
@@ -18896,7 +19039,7 @@ FROM
           TopLeft="163,465.4">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="0,56.1"
               Start="0,0"
               End="0,48.6">
@@ -18918,7 +19061,7 @@ FROM
           TopLeft="163,73">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="0,56.1"
               Start="0,0"
               End="0,48.6">
@@ -18951,7 +19094,7 @@ FROM
           TopLeft="143,75">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="293,101"
               Start="0,0"
               End="293,93.5">
@@ -18982,18 +19125,30 @@ FROM
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="435.5,854">
+          TopLeft="436,854">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
-              EndConnector="0,57"
+              StartConnector="{assembly:Null}"
+              EndConnector="9,57"
               Start="0,0"
-              End="0,49.5">
+              End="9,49.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,49.5" />
+                    End="0,24.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,24.5"
+                    Point2="0,28.5"
+                    Point3="4,28.5" />
+                  <mssgle:LineSegment
+                    End="5,28.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="5,28.5"
+                    Point2="9,28.5"
+                    Point3="9,32.5" />
+                  <mssgle:LineSegment
+                    End="9,49.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -19004,18 +19159,30 @@ FROM
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 2]"
-          TopLeft="435,1629">
+          TopLeft="445,1629">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
-              EndConnector="0,37"
+              StartConnector="{assembly:Null}"
+              EndConnector="-10,37"
               Start="0,0"
-              End="0,29.5">
+              End="-10,29.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,29.5" />
+                    End="0,14.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,14.5"
+                    Point2="0,18.5"
+                    Point3="-4,18.5" />
+                  <mssgle:LineSegment
+                    End="-6,18.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-6,18.5"
+                    Point2="-10,18.5"
+                    Point3="-10,22.5" />
+                  <mssgle:LineSegment
+                    End="-10,29.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -19029,7 +19196,7 @@ FROM
           TopLeft="439.5,2579">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="0,66"
               Start="0,0"
               End="0,58.5">
@@ -19051,7 +19218,7 @@ FROM
           TopLeft="435.75,2081">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="0,64"
               Start="0,0"
               End="0,56.5">
@@ -19160,7 +19327,7 @@ FROM
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-120.566959635417,29.2647058823529,17.8005859375,9.2705078125"
+              BoundingBox="-120.566959635416,29.2647058823529,17.8005859375,9.2705078125"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -19196,7 +19363,7 @@ FROM
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-35.2872786458333,29.2647058823529,35.907890625,11.3359375"
+              BoundingBox="-35.2872786458334,29.2647058823529,35.907890625,11.3359375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -19246,11 +19413,7 @@ FROM
     design-time-name="Package\SEQ Main data flow\DFT Main trade data flow">
     <LayoutInfo>
       <GraphLayout
-        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
-        <NodeLayout
-          Size="220,42"
-          Id="Package\SEQ Main data flow\DFT Main trade data flow\LKP DimTrader"
-          TopLeft="5.50000000000006,617.5" />
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="213,42"
           Id="Package\SEQ Main data flow\DFT Main trade data flow\DST Staging Main Data Flow"
@@ -19273,8 +19436,8 @@ FROM
           TopLeft="5.50000000000006,413.5" />
         <NodeLayout
           Size="220,42"
-          Id="Package\SEQ Main data flow\DFT Main trade data flow\LKP Previously Loaded Trades"
-          TopLeft="241.5,107.5" />
+          Id="Package\SEQ Main data flow\DFT Main trade data flow\LKP DimTrader"
+          TopLeft="5.50000000000006,617.5" />
         <NodeLayout
           Size="130,42"
           Id="Package\SEQ Main data flow\DFT Main trade data flow\Row Count"
@@ -19291,12 +19454,16 @@ FROM
           Size="220,42"
           Id="Package\SEQ Main data flow\DFT Main trade data flow\DER Add BatchID"
           TopLeft="5.50000000000009,821.5" />
+        <NodeLayout
+          Size="220,42"
+          Id="Package\SEQ Main data flow\DFT Main trade data flow\LKP Previously Loaded Trades"
+          TopLeft="241.5,107.5" />
         <EdgeLayout
           Id="Package\SEQ Main data flow\DFT Main trade data flow.Paths[OLE DB Source Output]"
           TopLeft="351.5,47.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="0,60"
               Start="0,0"
               End="0,52.5">
@@ -19310,7 +19477,9 @@ FROM
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -19318,7 +19487,7 @@ FROM
           TopLeft="316.166666666667,149.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="-200.666666666667,60"
               Start="0,0"
               End="-200.666666666667,52.5">
@@ -19345,7 +19514,7 @@ FROM
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-156.139720052084,29.2599277978339,111.6127734375,11.609375"
+              BoundingBox="-156.139720052083,29.2599277978339,111.6127734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -19354,7 +19523,7 @@ FROM
           TopLeft="115.5,251.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="0,60"
               Start="0,0"
               End="0,52.5">
@@ -19378,7 +19547,7 @@ FROM
           TopLeft="115.5,761.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="0,60"
               Start="0,0"
               End="0,52.5">
@@ -19402,7 +19571,7 @@ FROM
           TopLeft="386.833333333333,149.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="-35.3333333333333,60"
               Start="0,0"
               End="-35.3333333333333,52.5">
@@ -19438,7 +19607,7 @@ FROM
           TopLeft="115.5,659.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="0,60"
               Start="0,0"
               End="0,52.5">
@@ -19462,7 +19631,7 @@ FROM
           TopLeft="115.5,557.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="0,60"
               Start="0,0"
               End="0,52.5">
@@ -19486,7 +19655,7 @@ FROM
           TopLeft="115.5,455.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="0,60"
               Start="0,0"
               End="0,52.5">
@@ -19510,7 +19679,7 @@ FROM
           TopLeft="115.5,353.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="0,60"
               Start="0,0"
               End="0,52.5">
@@ -19534,7 +19703,7 @@ FROM
           TopLeft="115.5,863.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="0,60"
               Start="0,0"
               End="0,52.5">
@@ -19548,35 +19717,14 @@ FROM
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\SEQ Main data flow\DFT Main trade data flow\LKP DimTrader">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:string">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string"></Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:string">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\SEQ Main data flow\DFT Main trade data flow\DST Staging Main Data Flow">
     <Properties>
@@ -19673,7 +19821,7 @@ FROM
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\SEQ Main data flow\DFT Main trade data flow\LKP Previously Loaded Trades">
+    design-time-name="Package\SEQ Main data flow\DFT Main trade data flow\LKP DimTrader">
     <Properties>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
@@ -19683,12 +19831,12 @@ FROM
       <Property>
         <Name>UsedTableName</Name>
         <Value
-          type="q3:string">[ETL].[PossibleDuplicates]</Value>
+          type="q3:string"></Value>
       </Property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:string">1</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -19735,6 +19883,29 @@ FROM
         <Name>TableInfoObjectType</Name>
         <Value
           type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\SEQ Main data flow\DFT Main trade data flow\LKP Previously Loaded Trades">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[ETL].[PossibleDuplicates]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">1</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -19843,7 +20014,7 @@ FROM
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
+              BoundingBox="0,0,65.2440234375,11.6630859375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -19883,7 +20054,7 @@ FROM
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
+              BoundingBox="0,0,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -19903,7 +20074,7 @@ FROM
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
+              BoundingBox="0,0,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -20231,7 +20402,7 @@ FROM
     design-time-name="Package\SEQ Trade Cancelations\SEQ Cancelations\DFT Apply SAFT Cancelations">
     <LayoutInfo>
       <GraphLayout
-        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="218,42"
           Id="Package\SEQ Trade Cancelations\SEQ Cancelations\DFT Apply SAFT Cancelations\LKP Trade is for Today"
@@ -20301,7 +20472,7 @@ FROM
           TopLeft="553.5,761.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="0,60"
               Start="0,0"
               End="0,52.5">
@@ -20315,7 +20486,9 @@ FROM
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -20323,7 +20496,7 @@ FROM
           TopLeft="553.5,47.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="0,60"
               Start="0,0"
               End="0,52.5">
@@ -20337,7 +20510,9 @@ FROM
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -20345,7 +20520,7 @@ FROM
           TopLeft="553.5,965.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="0,60"
               Start="0,0"
               End="0,52.5">
@@ -20359,7 +20534,9 @@ FROM
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -20367,7 +20544,7 @@ FROM
           TopLeft="553.5,863.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="0,60"
               Start="0,0"
               End="0,52.5">
@@ -20381,7 +20558,9 @@ FROM
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -20389,7 +20568,7 @@ FROM
           TopLeft="355.166666666667,659.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="-36.6666666666666,60"
               Start="0,0"
               End="-36.6666666666666,52.5">
@@ -20425,7 +20604,7 @@ FROM
           TopLeft="518.5,1169.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="-190,60"
               Start="0,0"
               End="-190,52.5">
@@ -20461,7 +20640,7 @@ FROM
           TopLeft="518.5,455.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="-135,60"
               Start="0,0"
               End="-135,52.5">
@@ -20497,7 +20676,7 @@ FROM
           TopLeft="348.5,557.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="-234,60"
               Start="0,0"
               End="-234,52.5">
@@ -20533,7 +20712,7 @@ FROM
           TopLeft="588.5,455.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="0,264"
               Start="0,0"
               End="0,256.5">
@@ -20557,7 +20736,7 @@ FROM
           TopLeft="418.5,557.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="-30,60"
               Start="0,0"
               End="-30,52.5">
@@ -20593,7 +20772,7 @@ FROM
           TopLeft="553.5,251.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="0,60"
               Start="0,0"
               End="0,52.5">
@@ -20617,7 +20796,7 @@ FROM
           TopLeft="553.5,149.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="0,60"
               Start="0,0"
               End="0,52.5">
@@ -20641,7 +20820,7 @@ FROM
           TopLeft="553.5,1067.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="0,60"
               Start="0,0"
               End="0,52.5">
@@ -20655,7 +20834,9 @@ FROM
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -20663,7 +20844,7 @@ FROM
           TopLeft="553.5,353.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="0,60"
               Start="0,0"
               End="0,52.5">
@@ -20677,7 +20858,9 @@ FROM
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -20685,7 +20868,7 @@ FROM
           TopLeft="588.5,1169.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="-35,60"
               Start="0,0"
               End="-35,52.5">
@@ -20721,7 +20904,7 @@ FROM
           TopLeft="421.833333333333,659.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="96.6666666666667,60"
               Start="0,0"
               End="96.6666666666667,52.5">
@@ -21232,9 +21415,7 @@ FROM
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -21269,7 +21450,7 @@ FROM
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-120.924720052083,29.2465753424658,54.1827734375,11.43359375"
+              BoundingBox="-120.924720052084,29.2465753424658,54.1827734375,11.43359375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -21305,7 +21486,7 @@ FROM
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-160.139720052083,29.2465753424658,111.6127734375,11.609375"
+              BoundingBox="-160.139720052084,29.2465753424658,111.6127734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -21341,7 +21522,7 @@ FROM
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-160.139720052083,29.2465753424658,111.6127734375,11.609375"
+              BoundingBox="-160.139720052084,29.2465753424658,111.6127734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -21377,7 +21558,7 @@ FROM
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-158.139720052083,29.2465753424658,111.6127734375,11.609375"
+              BoundingBox="-158.139720052084,29.2465753424658,111.6127734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -21413,7 +21594,7 @@ FROM
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-160.139720052083,29.2465753424658,111.6127734375,11.609375"
+              BoundingBox="-160.139720052084,29.2465753424658,111.6127734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -21449,7 +21630,7 @@ FROM
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-160.139720052083,29.2465753424658,111.6127734375,11.609375"
+              BoundingBox="-160.139720052084,29.2465753424658,111.6127734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -21485,13 +21666,85 @@ FROM
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-160.139720052083,29.2465753424658,111.6127734375,11.609375"
+              BoundingBox="-160.139720052084,29.2465753424658,111.6127734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\SEQ Trade load preparation\DFT Equity Trade Junk Dim.Paths[Lookup Match Output]"
-          TopLeft="358.333333333333,455.5">
+          Id="Package\SEQ Trade load preparation\DFT Equity Trade Junk Dim.Paths[Lookup Match Output6]"
+          TopLeft="358.333333333333,353.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-37.3333333333333,60"
+              Start="0,0"
+              End="-37.3333333333333,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.2465753424658" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.2465753424658"
+                    Point2="0,24.2465753424658"
+                    Point3="-4,24.2465753424658" />
+                  <mssgle:LineSegment
+                    End="-33.3333333333333,24.2465753424658" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-33.3333333333333,24.2465753424658"
+                    Point2="-37.3333333333333,24.2465753424658"
+                    Point3="-37.3333333333333,28.2465753424658" />
+                  <mssgle:LineSegment
+                    End="-37.3333333333333,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-66.8580533854167,29.2465753424658,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ Trade load preparation\DFT Equity Trade Junk Dim.Paths[Lookup Match Output5]"
+          TopLeft="358.333333333333,557.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-37.3333333333333,60"
+              Start="0,0"
+              End="-37.3333333333333,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.2465753424658" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.2465753424658"
+                    Point2="0,24.2465753424658"
+                    Point3="-4,24.2465753424658" />
+                  <mssgle:LineSegment
+                    End="-33.3333333333333,24.2465753424658" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-33.3333333333333,24.2465753424658"
+                    Point2="-37.3333333333333,24.2465753424658"
+                    Point3="-37.3333333333333,28.2465753424658" />
+                  <mssgle:LineSegment
+                    End="-37.3333333333333,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-66.8580533854167,29.2465753424658,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ Trade load preparation\DFT Equity Trade Junk Dim.Paths[Lookup Match Output4]"
+          TopLeft="358.333333333333,149.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -21562,42 +21815,6 @@ FROM
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\SEQ Trade load preparation\DFT Equity Trade Junk Dim.Paths[Lookup Match Output1]"
-          TopLeft="358.333333333333,149.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-37.3333333333333,60"
-              Start="0,0"
-              End="-37.3333333333333,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,20.2465753424658" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,20.2465753424658"
-                    Point2="0,24.2465753424658"
-                    Point3="-4,24.2465753424658" />
-                  <mssgle:LineSegment
-                    End="-33.3333333333333,24.2465753424658" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-33.3333333333333,24.2465753424658"
-                    Point2="-37.3333333333333,24.2465753424658"
-                    Point3="-37.3333333333333,28.2465753424658" />
-                  <mssgle:LineSegment
-                    End="-37.3333333333333,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-66.8580533854166,29.2465753424658,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
           Id="Package\SEQ Trade load preparation\DFT Equity Trade Junk Dim.Paths[Lookup Match Output2]"
           TopLeft="358.333333333333,761.5">
           <EdgeLayout.Curve>
@@ -21634,8 +21851,32 @@ FROM
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\SEQ Trade load preparation\DFT Equity Trade Junk Dim.Paths[Lookup Match Output6]"
-          TopLeft="358.333333333333,353.5">
+          Id="Package\SEQ Trade load preparation\DFT Equity Trade Junk Dim.Paths[Lookup Match Output1]"
+          TopLeft="321,251.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,20.4453125,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ Trade load preparation\DFT Equity Trade Junk Dim.Paths[Lookup Match Output]"
+          TopLeft="358.333333333333,455.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -21670,66 +21911,6 @@ FROM
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\SEQ Trade load preparation\DFT Equity Trade Junk Dim.Paths[Lookup Match Output4]"
-          TopLeft="321,251.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,20.4453125,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\SEQ Trade load preparation\DFT Equity Trade Junk Dim.Paths[Lookup Match Output5]"
-          TopLeft="358.333333333333,557.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-37.3333333333333,60"
-              Start="0,0"
-              End="-37.3333333333333,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,20.2465753424658" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,20.2465753424658"
-                    Point2="0,24.2465753424658"
-                    Point3="-4,24.2465753424658" />
-                  <mssgle:LineSegment
-                    End="-33.3333333333333,24.2465753424658" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-33.3333333333333,24.2465753424658"
-                    Point2="-37.3333333333333,24.2465753424658"
-                    Point3="-37.3333333333333,28.2465753424658" />
-                  <mssgle:LineSegment
-                    End="-37.3333333333333,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-66.8580533854166,29.2465753424658,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
           Id="Package\SEQ Trade load preparation\DFT Equity Trade Junk Dim.Paths[Derived Column Output2]"
           TopLeft="321,863.5">
           <EdgeLayout.Curve>
@@ -21748,9 +21929,7 @@ FROM
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -21772,9 +21951,7 @@ FROM
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -21796,9 +21973,7 @@ FROM
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -21857,6 +22032,29 @@ FROM
         <Name>TableInfoObjectType</Name>
         <Value
           type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\SEQ Trade load preparation\DFT Equity Trade Junk Dim\LKP TradeSide">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[TradeSide]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>

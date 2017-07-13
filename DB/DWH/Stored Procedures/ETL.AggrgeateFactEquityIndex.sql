@@ -2,6 +2,7 @@ SET QUOTED_IDENTIFIER ON
 GO
 SET ANSI_NULLS ON
 GO
+
 -- =============================================    
 -- Author:		Ian Meade    
 -- Create date: 25/4/2017    
@@ -40,7 +41,7 @@ BEGIN
 					WHERE 
 						IndexDateID = @IndexDateID 
 					AND 
-						IndexTimeID < @TimeID 
+						IndexTimeID <= @TimeID 
 				); 
  
 	 /* Get Open values in #FIRST tmep table */   
@@ -114,13 +115,6 @@ BEGIN
 		UNION ALL    
 		SELECT    
 			IndexDateID,    
-			'IEOD' AS IndexCode,    
-			ISEQ20InverseOpen AS OpenValue    
-		FROM    
-			RowBased    
-		UNION ALL    
-		SELECT    
-			IndexDateID,    
 			'IEOC' AS IndexCode,    
 			ISEQ20LeveragedOpen AS OpenValue    
 		FROM    
@@ -128,7 +122,7 @@ BEGIN
 		UNION ALL    
 		SELECT    
 			IndexDateID,    
-			'IE0E' AS IndexCode,    
+			'IEOE' AS IndexCode,    
 			ISEQ20CappedOpen AS OpenValue    
 		FROM    
 			RowBased;    
@@ -214,14 +208,6 @@ BEGIN
 		UNION ALL    
 		SELECT    
 			IndexDateID,    
-			'IEOD' AS IndexCode,    
-			ISEQ20InverseLast AS LastValue,    
-			ISEQ20InverseReturn AS ReturnValue    
-		FROM    
-			RowBased    
-		UNION ALL    
-		SELECT    
-			IndexDateID,    
 			'IEOC' AS IndexCode,    
 			ISEQ20LeveragedLast AS LastValue,    
 			NULL AS ReturnValue    
@@ -241,29 +227,29 @@ BEGIN
 	WITH RowBased AS (    
 			SELECT    
 				IndexDateID,    
-				(OverallLast) OverallDailyLow,    
-				(FinancialLast) FinancialDailyLow,    
-				(GeneralLast) GeneralDailyLow,    
-				(SmallCapLast) SamllCapDailyLow,    
-				(ITEQLast) ITEQDailyLow,    
-				(ISEQ20Last) ISEQ20DailyLow,    
-				(ISEQ20INAVLast) ISEQ20INAVDailyLow,    
-				(ESMLast) ESMDailyLow,    
-				(ISEQ20InverseLast) ISEQ20InverseDailyLow,    
-				(ISEQ20LeveragedLast) ISEQ20LeveragedDailyLow,    
-				(ISEQ20CappedLast) ISEQ20CappedDailyLow,    
+				(OverallLow) OverallDailyLow,    
+				(FinancialLow) FinancialDailyLow,    
+				(GeneralLow) GeneralDailyLow,    
+				(SmallCapLow) SamllCapDailyLow,    
+				(ITEQLow) ITEQDailyLow,    
+				(ISEQ20Low) ISEQ20DailyLow,    
+				(ISEQ20INAVLow) ISEQ20INAVDailyLow,    
+				(ESMLow) ESMDailyLow,    
+				(ISEQ20InverseLow) ISEQ20InverseDailyLow,    
+				(ISEQ20LeveragedLow) ISEQ20LeveragedDailyLow,    
+				(ISEQ20CappedLow) ISEQ20CappedDailyLow,    
     
-				(OverallLast) OverallDailyHigh,    
-				(FinancialLast) FinancialDailyHigh,    
-				(GeneralLast) GeneralDailyHigh,    
-				(SmallCapLast) SamllCapDailyHigh,    
-				(ITEQLast) ITEQDailyHigh,    
-				(ISEQ20Last) ISEQ20DailyHigh,    
-				(ISEQ20INAVLast) ISEQ20INAVDailyHigh,    
-				(ESMLast) ESMDailyHigh,    
-				(ISEQ20InverseLast) ISEQ20InverseDailyHigh,    
-				(ISEQ20LeveragedLast) ISEQ20LeveragedDailyHigh,    
-				(ISEQ20CappedLast) ISEQ20CappedDailyHigh    
+				(OverallHigh) OverallDailyHigh,    
+				(FinancialHigh) FinancialDailyHigh,    
+				(GeneralHigh) GeneralDailyHigh,    
+				(SmallCapHigh) SamllCapDailyHigh,    
+				(ITEQHigh) ITEQDailyHigh,    
+				(ISEQ20High) ISEQ20DailyHigh,    
+				(ISEQ20INAVHigh) ISEQ20INAVDailyHigh,    
+				(ESMHigh) ESMDailyHigh,    
+				(ISEQ20InverseHigh) ISEQ20InverseDailyHigh,    
+				(ISEQ20LeveragedHigh) ISEQ20LeveragedDailyHigh,    
+				(ISEQ20CappedHigh) ISEQ20CappedDailyHigh    
 			FROM    
 					DWH.FactEquityIndex I    
 				INNER JOIN    
@@ -321,14 +307,6 @@ BEGIN
 		UNION ALL    
 		SELECT    
 			IndexDateID,    
-			'IEOD' AS IndexCode,    
-			ISEQ20InverseDailyLow AS DailyLowValue,    
-			ISEQ20InverseDailyHigh AS DailyHighValue    
-		FROM    
-			RowBased    
-		UNION ALL    
-		SELECT    
-			IndexDateID,    
 			'IEOC' AS IndexCode,    
 			ISEQ20LeveragedDailyLow AS DailyLowValue,    
 			ISEQ20LeveragedDailyHigh AS DailyHighValue    
@@ -375,9 +353,7 @@ BEGIN
 			ON F.IndexDateID = A.IndexDateID    
 			AND F.IndexCode = A.IndexCode    
 
-SELECT * 		from	ETL.FactEquityIndexPrep    
-
-  
+ 
 
 	DROP TABLE #Samples    
 	DROP TABLE #FIRST    
@@ -386,4 +362,5 @@ SELECT * 		from	ETL.FactEquityIndexPrep
     
 END    
     
+
 GO

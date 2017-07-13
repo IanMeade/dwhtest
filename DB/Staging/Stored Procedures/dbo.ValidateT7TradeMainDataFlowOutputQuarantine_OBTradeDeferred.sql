@@ -14,8 +14,6 @@ BEGIN
 	-- interfering with SELECT statements.  
 	SET NOCOUNT ON;  
   
-	TRUNCATE TABLE dbo.T7QuarantineTrade  
-  
 	INSERT INTO  
 			dbo.T7QuarantineTrade  
 		(  

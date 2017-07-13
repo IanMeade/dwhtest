@@ -25,7 +25,11 @@ BEGIN
 				FROM
 					FileList
 				WHERE
+					FileTag = 'TxSaft'
+				AND
 					DwhStatus NOT IN ( 'COMPLETE', 'REJECT' )
+				AND
+					ProcessFileYN = 'Y'
 		) AS X
 
 	RETURN @ResultVar

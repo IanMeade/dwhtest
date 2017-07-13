@@ -7,6 +7,7 @@ CREATE TABLE [dbo].[FileList]
 [DwhStatus] [varchar] (50) COLLATE Latin1_General_CI_AS NULL,
 [FileLetter] [char] (2) COLLATE Latin1_General_CI_AS NULL,
 [FileTag] [varchar] (50) COLLATE Latin1_General_CI_AS NULL,
+[ProcessFileYN] [char] (1) COLLATE Latin1_General_CI_AS NULL,
 [ContainsEndOfDayDetailsYN] [char] (1) COLLATE Latin1_General_CI_AS NULL
 ) ON [PRIMARY]
 GO

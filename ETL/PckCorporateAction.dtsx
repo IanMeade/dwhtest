@@ -11,8 +11,8 @@
   DTS:LocaleID="6153"
   DTS:ObjectName="PckCorporateAction"
   DTS:PackageType="5"
-  DTS:VersionBuild="53"
-  DTS:VersionGUID="{B281CB07-2BE8-467B-8957-4396D8928CE3}">
+  DTS:VersionBuild="62"
+  DTS:VersionGUID="{C79FCCD3-9B6A-4FAF-BA70-EA0472EC2752}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -375,7 +375,7 @@ where [refTable].[CorporateActionCode] = ?</property>
                       containsID="true"
                       dataType="System.String"
                       description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                      name="ParameterMap">#{Package\SEQ Push to DWH\DFT Corporate action type\1787:invalid};</property>
+                      name="ParameterMap">#{Package\SEQ Push to DWH\DFT Corporate action type\1798:invalid};</property>
                     <property
                       dataType="System.Int32"
                       description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -545,7 +545,7 @@ where [refTable].[CorporateActionCode] = ?</property>
                       containsID="true"
                       dataType="System.String"
                       description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                      name="ParameterMap">#{Package\SEQ Push to DWH\DFT Corporate action type\1788:invalid};</property>
+                      name="ParameterMap">#{Package\SEQ Push to DWH\DFT Corporate action type\1799:invalid};</property>
                     <property
                       dataType="System.Int32"
                       description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -2033,12 +2033,6 @@ FROM
                           cachedName="Details"
                           externalMetadataColumnId="Package\SEQ Push to DWH\DFT Corporate Actions facts\Insert Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[Details]"
                           lineageId="Package\SEQ Push to DWH\DFT Corporate Actions facts\SRC STG CorporateAction Process.Outputs[OLE DB Source Output].Columns[Details]" />
-                        <inputColumn
-                          refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\Insert Destination 1.Inputs[OLE DB Destination Input].Columns[BatchID]"
-                          cachedDataType="i4"
-                          cachedName="BatchID"
-                          externalMetadataColumnId="Package\SEQ Push to DWH\DFT Corporate Actions facts\Insert Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[BatchID]"
-                          lineageId="Package\SEQ Push to DWH\DFT Corporate Actions facts\DER BatchID.Outputs[Derived Column Output].Columns[BatchID]" />
                       </inputColumns>
                       <externalMetadataColumns
                         isUsed="True">
@@ -2271,7 +2265,7 @@ where [refTable].[CorporateActionCode] = ? and [refTable].[CorporateActionSubTyp
                       containsID="true"
                       dataType="System.String"
                       description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                      name="ParameterMap">#{Package\SEQ Push to DWH\DFT Corporate Actions facts\1789:invalid};#{Package\SEQ Push to DWH\DFT Corporate Actions facts\1790:invalid};#{Package\SEQ Push to DWH\DFT Corporate Actions facts\1791:invalid};</property>
+                      name="ParameterMap">#{Package\SEQ Push to DWH\DFT Corporate Actions facts\1800:invalid};#{Package\SEQ Push to DWH\DFT Corporate Actions facts\1801:invalid};#{Package\SEQ Push to DWH\DFT Corporate Actions facts\1802:invalid};</property>
                     <property
                       dataType="System.Int32"
                       description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -2475,7 +2469,7 @@ where [refTable].[CurrencyISOCode] = ?</property>
                       containsID="true"
                       dataType="System.String"
                       description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                      name="ParameterMap">#{Package\SEQ Push to DWH\DFT Corporate Actions facts\1792:invalid};</property>
+                      name="ParameterMap">#{Package\SEQ Push to DWH\DFT Corporate Actions facts\1803:invalid};</property>
                     <property
                       dataType="System.Int32"
                       description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -2643,7 +2637,7 @@ where [refTable].[CorportateActionCode] = ?</property>
                       containsID="true"
                       dataType="System.String"
                       description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                      name="ParameterMap">#{Package\SEQ Push to DWH\DFT Corporate Actions facts\1789:invalid};</property>
+                      name="ParameterMap">#{Package\SEQ Push to DWH\DFT Corporate Actions facts\1800:invalid};</property>
                     <property
                       dataType="System.Int32"
                       description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -2817,7 +2811,7 @@ where [refTable].[InstrumentGlobalID] = ?</property>
                       containsID="true"
                       dataType="System.String"
                       description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                      name="ParameterMap">#{Package\SEQ Push to DWH\DFT Corporate Actions facts\1793:invalid};</property>
+                      name="ParameterMap">#{Package\SEQ Push to DWH\DFT Corporate Actions facts\1804:invalid};</property>
                     <property
                       dataType="System.Int32"
                       description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -2921,6 +2915,292 @@ where [refTable].[InstrumentGlobalID] = ?</property>
                   </outputs>
                 </component>
                 <component
+                  refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\Lookup"
+                  componentClassID="Microsoft.Lookup"
+                  contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+                  description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+                  name="Lookup"
+                  usesDispositions="true"
+                  version="6">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the SQL statement that generates the lookup table."
+                      expressionType="Notify"
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [DWH].[FactCorporateAction]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                      expressionType="Notify"
+                      name="SqlCommandParam"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [DWH].[FactCorporateAction]) [refTable]
+where [refTable].[CorporateActionGID] = ?</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the type of connection used to access the reference dataset."
+                      name="ConnectionType"
+                      typeConverter="LookupConnectionType">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the cache type of the lookup table."
+                      name="CacheType"
+                      typeConverter="CacheType">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                      name="NoMatchBehavior"
+                      typeConverter="LookupNoMatchBehavior">1</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                      name="NoMatchCachePercentage">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                      name="MaxMemoryUsage">25</property>
+                    <property
+                      dataType="System.Int64"
+                      description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                      name="MaxMemoryUsage64">25</property>
+                    <property
+                      dataType="System.String"
+                      description="Indicates whether to reference metadata in an XML format."
+                      name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="CorporateActionId" dataType="DT_I2" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="CorporateActionGID" dataType="DT_STR" length="30" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="CorporateActionTypeID" dataType="DT_I2" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="InstrumentID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="EffectiveDateID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="RecordDateID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="ExDateID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="LatestDateForApplicationNilPaidID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="LatestDateForFinalApplicationID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="CorporateActionStatusDateID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="LatestSplittingDateNote" dataType="DT_STR" length="200" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="Conditional" dataType="DT_STR" length="2" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="ReverseTakeover" dataType="DT_STR" length="1" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="NumberOfNewShares" dataType="DT_NUMERIC" length="0" precision="23" scale="10" codePage="0"/&gt;&lt;referenceColumn name="ExPrice" dataType="DT_NUMERIC" length="0" precision="23" scale="10" codePage="0"/&gt;&lt;referenceColumn name="Price" dataType="DT_NUMERIC" length="0" precision="23" scale="10" codePage="0"/&gt;&lt;referenceColumn name="Details" dataType="DT_STR" length="3000" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="AdditionalDescription" dataType="DT_STR" length="3000" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="DSSPublishDate" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="DSSCreatedBy" dataType="DT_STR" length="30" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="DSSCreatedDate" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="BatchID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                      name="ParameterMap">#{Package\SEQ Push to DWH\DFT Corporate Actions facts\SRC STG CorporateAction Process.Outputs[OLE DB Source Output].Columns[Gid]};</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                      name="TreatDuplicateKeysAsError">false</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\Lookup.Connections[OleDbConnection]"
+                      connectionManagerID="{0CBC2C04-C137-495F-AF7C-FA5DE465FED0}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[DWH]"
+                      description="Connection manager used to access lookup data."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\Lookup.Inputs[Lookup Input]"
+                      name="Lookup Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\Lookup.Inputs[Lookup Input].Columns[Gid]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="30"
+                          cachedName="Gid"
+                          lineageId="Package\SEQ Push to DWH\DFT Corporate Actions facts\SRC STG CorporateAction Process.Outputs[OLE DB Source Output].Columns[Gid]">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Specifies the column in the reference table that a column joins."
+                              name="JoinToReferenceColumn">CorporateActionGID</property>
+                            <property
+                              dataType="System.Null"
+                              description="Specifies the column in the reference table from which a column is copied."
+                              name="CopyFromReferenceColumn" />
+                          </properties>
+                        </inputColumn>
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\Lookup.Outputs[Lookup Match Output]"
+                      errorOrTruncationOperation="Lookup"
+                      exclusionGroup="1"
+                      name="Lookup Match Output"
+                      synchronousInputId="Package\SEQ Push to DWH\DFT Corporate Actions facts\Lookup.Inputs[Lookup Input]">
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\Lookup.Outputs[Lookup No Match Output]"
+                      description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                      exclusionGroup="1"
+                      name="Lookup No Match Output"
+                      synchronousInputId="Package\SEQ Push to DWH\DFT Corporate Actions facts\Lookup.Inputs[Lookup Input]">
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\Lookup.Outputs[Lookup Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Lookup Error Output"
+                      synchronousInputId="Package\SEQ Push to DWH\DFT Corporate Actions facts\Lookup.Inputs[Lookup Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\SEQ Push to DWH\DFT Corporate Actions facts\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\SEQ Push to DWH\DFT Corporate Actions facts\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\Lookup 2"
+                  componentClassID="Microsoft.Lookup"
+                  contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+                  description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+                  name="Lookup 2"
+                  usesDispositions="true"
+                  version="6">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the SQL statement that generates the lookup table."
+                      expressionType="Notify"
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [DWH].[FactDividend]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                      expressionType="Notify"
+                      name="SqlCommandParam"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [DWH].[FactDividend]) [refTable]
+where [refTable].[CoporateActionGID] = ?</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the type of connection used to access the reference dataset."
+                      name="ConnectionType"
+                      typeConverter="LookupConnectionType">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the cache type of the lookup table."
+                      name="CacheType"
+                      typeConverter="CacheType">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                      name="NoMatchBehavior"
+                      typeConverter="LookupNoMatchBehavior">1</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                      name="NoMatchCachePercentage">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                      name="MaxMemoryUsage">25</property>
+                    <property
+                      dataType="System.Int64"
+                      description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                      name="MaxMemoryUsage64">25</property>
+                    <property
+                      dataType="System.String"
+                      description="Indicates whether to reference metadata in an XML format."
+                      name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="DividendID" dataType="DT_I2" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="CoporateActionGID" dataType="DT_STR" length="30" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="CorporateActionTypeID" dataType="DT_I2" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="InstrumentID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="NextMeetingDateID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="ExDateID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="PaymentDateID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="RecordDateID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="CurrencyID" dataType="DT_I2" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="CorporateActionStatusDateID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Coupon" dataType="DT_NUMERIC" length="0" precision="23" scale="10" codePage="0"/&gt;&lt;referenceColumn name="DividendPerShare" dataType="DT_NUMERIC" length="0" precision="23" scale="10" codePage="0"/&gt;&lt;referenceColumn name="DividendRatePercent" dataType="DT_NUMERIC" length="0" precision="23" scale="10" codePage="0"/&gt;&lt;referenceColumn name="FXRate" dataType="DT_NUMERIC" length="0" precision="23" scale="10" codePage="0"/&gt;&lt;referenceColumn name="GrossDivEuro" dataType="DT_NUMERIC" length="0" precision="23" scale="10" codePage="0"/&gt;&lt;referenceColumn name="GrossDividend" dataType="DT_NUMERIC" length="0" precision="23" scale="10" codePage="0"/&gt;&lt;referenceColumn name="TaxAmount" dataType="DT_NUMERIC" length="0" precision="23" scale="10" codePage="0"/&gt;&lt;referenceColumn name="TaxDescription" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="TaxRatePercent" dataType="DT_NUMERIC" length="0" precision="23" scale="10" codePage="0"/&gt;&lt;referenceColumn name="AdditionalDescription" dataType="DT_STR" length="3000" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="Details" dataType="DT_STR" length="3000" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="DSSPublishDate" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="DSSCreatedBy" dataType="DT_STR" length="30" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="DSSCreatedDate" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="DSSNote" dataType="DT_STR" length="255" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="BatchID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                      name="ParameterMap">#{Package\SEQ Push to DWH\DFT Corporate Actions facts\SRC STG CorporateAction Process.Outputs[OLE DB Source Output].Columns[Gid]};</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                      name="TreatDuplicateKeysAsError">false</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\Lookup 2.Connections[OleDbConnection]"
+                      connectionManagerID="{0CBC2C04-C137-495F-AF7C-FA5DE465FED0}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[DWH]"
+                      description="Connection manager used to access lookup data."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\Lookup 2.Inputs[Lookup Input]"
+                      name="Lookup Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\Lookup 2.Inputs[Lookup Input].Columns[Gid]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="30"
+                          cachedName="Gid"
+                          lineageId="Package\SEQ Push to DWH\DFT Corporate Actions facts\SRC STG CorporateAction Process.Outputs[OLE DB Source Output].Columns[Gid]">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Specifies the column in the reference table that a column joins."
+                              name="JoinToReferenceColumn">CoporateActionGID</property>
+                            <property
+                              dataType="System.Null"
+                              description="Specifies the column in the reference table from which a column is copied."
+                              name="CopyFromReferenceColumn" />
+                          </properties>
+                        </inputColumn>
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\Lookup 2.Outputs[Lookup Match Output]"
+                      errorOrTruncationOperation="Lookup"
+                      exclusionGroup="1"
+                      name="Lookup Match Output"
+                      synchronousInputId="Package\SEQ Push to DWH\DFT Corporate Actions facts\Lookup 2.Inputs[Lookup Input]">
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\Lookup 2.Outputs[Lookup No Match Output]"
+                      description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                      exclusionGroup="1"
+                      name="Lookup No Match Output"
+                      synchronousInputId="Package\SEQ Push to DWH\DFT Corporate Actions facts\Lookup 2.Inputs[Lookup Input]">
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\Lookup 2.Outputs[Lookup Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Lookup Error Output"
+                      synchronousInputId="Package\SEQ Push to DWH\DFT Corporate Actions facts\Lookup 2.Inputs[Lookup Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\Lookup 2.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\SEQ Push to DWH\DFT Corporate Actions facts\Lookup 2.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\Lookup 2.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\SEQ Push to DWH\DFT Corporate Actions facts\Lookup 2.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
                   refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Command"
                   componentClassID="Microsoft.OLEDBCommand"
                   contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
@@ -2938,7 +3218,7 @@ where [refTable].[InstrumentGlobalID] = ?</property>
                       description="The SQL command to be executed."
                       expressionType="Notify"
                       name="SqlCommand"
-                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE [DWH].[FactCorporateAction] SET [AdditionalDescription] = ?,[BatchID] = ?,[Conditional] = ?,[CorporateActionStatusDateID] = ?,[CorporateActionTypeID] = ?,[Details] = ?,[EffectiveDateID] = ?,[ExDateID] = ?,[ExPrice] = ?,[LatestDateForApplicationNilPaidID] = ?,[LatestDateForFinalApplicationID] = ?,[LatestSplittingDateNote] = ?,[NumberOfNewShares] = ?,[Price] = ?,[RecordDateID] = ?,[ReverseTakeover] = ? WHERE [CorporateActionGID] = ?</property>
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE [DWH].[FactCorporateAction] SET [AdditionalDescription] = ?,[Conditional] = ?,[CorporateActionStatusDateID] = ?,[CorporateActionTypeID] = ?,[Details] = ?,[EffectiveDateID] = ?,[ExDateID] = ?,[ExPrice] = ?,[InstrumentID] = ?,[LatestDateForApplicationNilPaidID] = ?,[LatestDateForFinalApplicationID] = ?,[LatestSplittingDateNote] = ?,[NumberOfNewShares] = ?,[Price] = ?,[RecordDateID] = ?,[ReverseTakeover] = ? WHERE [CorporateActionGID] = ?</property>
                     <property
                       dataType="System.Int32"
                       description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -2969,18 +3249,12 @@ where [refTable].[InstrumentGlobalID] = ?</property>
                           externalMetadataColumnId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
                           lineageId="Package\SEQ Push to DWH\DFT Corporate Actions facts\SRC STG CorporateAction Process.Outputs[OLE DB Source Output].Columns[AdditionalDescription]" />
                         <inputColumn
-                          refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Command.Inputs[OLE DB Command Input].Columns[BatchID]"
-                          cachedDataType="i4"
-                          cachedName="BatchID"
-                          externalMetadataColumnId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
-                          lineageId="Package\SEQ Push to DWH\DFT Corporate Actions facts\DER BatchID.Outputs[Derived Column Output].Columns[BatchID]" />
-                        <inputColumn
                           refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Command.Inputs[OLE DB Command Input].Columns[Conditional]"
                           cachedCodepage="1252"
                           cachedDataType="str"
                           cachedLength="2"
                           cachedName="Conditional"
-                          externalMetadataColumnId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                          externalMetadataColumnId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
                           lineageId="Package\SEQ Push to DWH\DFT Corporate Actions facts\SRC STG CorporateAction Process.Outputs[OLE DB Source Output].Columns[Conditional]" />
                         <inputColumn
                           refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Command.Inputs[OLE DB Command Input].Columns[Gid]"
@@ -2994,13 +3268,13 @@ where [refTable].[InstrumentGlobalID] = ?</property>
                           refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Command.Inputs[OLE DB Command Input].Columns[StatusDateID]"
                           cachedDataType="i4"
                           cachedName="StatusDateID"
-                          externalMetadataColumnId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
+                          externalMetadataColumnId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
                           lineageId="Package\SEQ Push to DWH\DFT Corporate Actions facts\SRC STG CorporateAction Process.Outputs[OLE DB Source Output].Columns[StatusDateID]" />
                         <inputColumn
                           refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Command.Inputs[OLE DB Command Input].Columns[CorporateActionTypeID]"
                           cachedDataType="i2"
                           cachedName="CorporateActionTypeID"
-                          externalMetadataColumnId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_4]"
+                          externalMetadataColumnId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
                           lineageId="Package\SEQ Push to DWH\DFT Corporate Actions facts\LKP CorporateActionType.Outputs[Lookup Match Output].Columns[CorporateActionTypeID]" />
                         <inputColumn
                           refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Command.Inputs[OLE DB Command Input].Columns[Details]"
@@ -3008,19 +3282,19 @@ where [refTable].[InstrumentGlobalID] = ?</property>
                           cachedDataType="str"
                           cachedLength="3000"
                           cachedName="Details"
-                          externalMetadataColumnId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_5]"
+                          externalMetadataColumnId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_4]"
                           lineageId="Package\SEQ Push to DWH\DFT Corporate Actions facts\SRC STG CorporateAction Process.Outputs[OLE DB Source Output].Columns[Details]" />
                         <inputColumn
                           refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Command.Inputs[OLE DB Command Input].Columns[EffectiveDateID]"
                           cachedDataType="i4"
                           cachedName="EffectiveDateID"
-                          externalMetadataColumnId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_6]"
+                          externalMetadataColumnId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_5]"
                           lineageId="Package\SEQ Push to DWH\DFT Corporate Actions facts\SRC STG CorporateAction Process.Outputs[OLE DB Source Output].Columns[EffectiveDateID]" />
                         <inputColumn
                           refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Command.Inputs[OLE DB Command Input].Columns[ExDateID]"
                           cachedDataType="i4"
                           cachedName="ExDateID"
-                          externalMetadataColumnId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_7]"
+                          externalMetadataColumnId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_6]"
                           lineageId="Package\SEQ Push to DWH\DFT Corporate Actions facts\SRC STG CorporateAction Process.Outputs[OLE DB Source Output].Columns[ExDateID]" />
                         <inputColumn
                           refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Command.Inputs[OLE DB Command Input].Columns[ExPrice]"
@@ -3028,8 +3302,14 @@ where [refTable].[InstrumentGlobalID] = ?</property>
                           cachedName="ExPrice"
                           cachedPrecision="23"
                           cachedScale="10"
-                          externalMetadataColumnId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_8]"
+                          externalMetadataColumnId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_7]"
                           lineageId="Package\SEQ Push to DWH\DFT Corporate Actions facts\SRC STG CorporateAction Process.Outputs[OLE DB Source Output].Columns[ExPrice]" />
+                        <inputColumn
+                          refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Command.Inputs[OLE DB Command Input].Columns[InstrumentID]"
+                          cachedDataType="i4"
+                          cachedName="InstrumentID"
+                          externalMetadataColumnId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_8]"
+                          lineageId="Package\SEQ Push to DWH\DFT Corporate Actions facts\LKP InstrumentID.Outputs[Lookup Match Output].Columns[InstrumentID]" />
                         <inputColumn
                           refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Command.Inputs[OLE DB Command Input].Columns[LatestDateForApplicationNilPaidID]"
                           cachedDataType="i4"
@@ -3098,21 +3378,10 @@ where [refTable].[InstrumentGlobalID] = ?</property>
                         </externalMetadataColumn>
                         <externalMetadataColumn
                           refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
-                          dataType="i4"
-                          name="Param_1">
-                          <properties>
-                            <property
-                              dataType="System.Int32"
-                              description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
-                              name="DBParamInfoFlags">81</property>
-                          </properties>
-                        </externalMetadataColumn>
-                        <externalMetadataColumn
-                          refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
                           codePage="1252"
                           dataType="str"
                           length="2"
-                          name="Param_2">
+                          name="Param_1">
                           <properties>
                             <property
                               dataType="System.Int32"
@@ -3121,8 +3390,19 @@ where [refTable].[InstrumentGlobalID] = ?</property>
                           </properties>
                         </externalMetadataColumn>
                         <externalMetadataColumn
-                          refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
+                          refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
                           dataType="i4"
+                          name="Param_2">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                              name="DBParamInfoFlags">81</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
+                          dataType="i2"
                           name="Param_3">
                           <properties>
                             <property
@@ -3133,26 +3413,26 @@ where [refTable].[InstrumentGlobalID] = ?</property>
                         </externalMetadataColumn>
                         <externalMetadataColumn
                           refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_4]"
-                          dataType="i2"
+                          codePage="1252"
+                          dataType="str"
+                          length="3000"
                           name="Param_4">
                           <properties>
                             <property
                               dataType="System.Int32"
                               description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
-                              name="DBParamInfoFlags">81</property>
+                              name="DBParamInfoFlags">65</property>
                           </properties>
                         </externalMetadataColumn>
                         <externalMetadataColumn
                           refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_5]"
-                          codePage="1252"
-                          dataType="str"
-                          length="3000"
+                          dataType="i4"
                           name="Param_5">
                           <properties>
                             <property
                               dataType="System.Int32"
                               description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
-                              name="DBParamInfoFlags">65</property>
+                              name="DBParamInfoFlags">81</property>
                           </properties>
                         </externalMetadataColumn>
                         <externalMetadataColumn
@@ -3168,8 +3448,10 @@ where [refTable].[InstrumentGlobalID] = ?</property>
                         </externalMetadataColumn>
                         <externalMetadataColumn
                           refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_7]"
-                          dataType="i4"
-                          name="Param_7">
+                          dataType="numeric"
+                          name="Param_7"
+                          precision="23"
+                          scale="10">
                           <properties>
                             <property
                               dataType="System.Int32"
@@ -3179,10 +3461,8 @@ where [refTable].[InstrumentGlobalID] = ?</property>
                         </externalMetadataColumn>
                         <externalMetadataColumn
                           refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_8]"
-                          dataType="numeric"
-                          name="Param_8"
-                          precision="23"
-                          scale="10">
+                          dataType="i4"
+                          name="Param_8">
                           <properties>
                             <property
                               dataType="System.Int32"
@@ -3341,7 +3621,7 @@ where [refTable].[InstrumentGlobalID] = ?</property>
                       description="The SQL command to be executed."
                       expressionType="Notify"
                       name="SqlCommand"
-                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE [DWH].[FactDividend] SET [AdditionalDescription] = ?,[BatchID] = ?,[CorporateActionTypeID] = ?,[Coupon] = ?,[CurrencyID] = ?,[Details] = ?,[DividendPerShare] = ?,[DividendRatePercent] = ?,[ExDateID] = ?,[FXRate] = ?,[GrossDivEuro] = ?,[GrossDividend] = ?,[InstrumentID] = ?,[NextMeetingDateID] = ?,[PaymentDateID] = ?,[RecordDateID] = ?,[TaxAmount] = ?,[TaxDescription] = ?,[TaxRatePercent] = ? WHERE [CoporateActionGID] = ?</property>
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE [DWH].[FactDividend] SET [AdditionalDescription] = ?,[CorporateActionTypeID] = ?,[Coupon] = ?,[CurrencyID] = ?,[Details] = ?,[DividendPerShare] = ?,[DividendRatePercent] = ?,[ExDateID] = ?,[FXRate] = ?,[GrossDivEuro] = ?,[GrossDividend] = ?,[InstrumentID] = ?,[NextMeetingDateID] = ?,[PaymentDateID] = ?,[RecordDateID] = ?,[TaxAmount] = ?,[TaxDescription] = ?,[TaxRatePercent] = ? WHERE [CoporateActionGID] = ?</property>
                     <property
                       dataType="System.Int32"
                       description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -3372,24 +3652,18 @@ where [refTable].[InstrumentGlobalID] = ?</property>
                           externalMetadataColumnId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
                           lineageId="Package\SEQ Push to DWH\DFT Corporate Actions facts\SRC STG CorporateAction Process.Outputs[OLE DB Source Output].Columns[AdditionalDescription]" />
                         <inputColumn
-                          refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Command 1.Inputs[OLE DB Command Input].Columns[BatchID]"
-                          cachedDataType="i4"
-                          cachedName="BatchID"
-                          externalMetadataColumnId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
-                          lineageId="Package\SEQ Push to DWH\DFT Corporate Actions facts\DER BatchID.Outputs[Derived Column Output].Columns[BatchID]" />
-                        <inputColumn
                           refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Command 1.Inputs[OLE DB Command Input].Columns[Gid]"
                           cachedCodepage="1252"
                           cachedDataType="str"
                           cachedLength="30"
                           cachedName="Gid"
-                          externalMetadataColumnId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_19]"
+                          externalMetadataColumnId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_18]"
                           lineageId="Package\SEQ Push to DWH\DFT Corporate Actions facts\SRC STG CorporateAction Process.Outputs[OLE DB Source Output].Columns[Gid]" />
                         <inputColumn
                           refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Command 1.Inputs[OLE DB Command Input].Columns[CorporateActionTypeID]"
                           cachedDataType="i2"
                           cachedName="CorporateActionTypeID"
-                          externalMetadataColumnId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                          externalMetadataColumnId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
                           lineageId="Package\SEQ Push to DWH\DFT Corporate Actions facts\LKP CorporateActionType.Outputs[Lookup Match Output].Columns[CorporateActionTypeID]" />
                         <inputColumn
                           refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Command 1.Inputs[OLE DB Command Input].Columns[CouponNumber]"
@@ -3397,13 +3671,13 @@ where [refTable].[InstrumentGlobalID] = ?</property>
                           cachedName="CouponNumber"
                           cachedPrecision="23"
                           cachedScale="10"
-                          externalMetadataColumnId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
+                          externalMetadataColumnId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
                           lineageId="Package\SEQ Push to DWH\DFT Corporate Actions facts\SRC STG CorporateAction Process.Outputs[OLE DB Source Output].Columns[CouponNumber]" />
                         <inputColumn
                           refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Command 1.Inputs[OLE DB Command Input].Columns[CurrencyID]"
                           cachedDataType="i2"
                           cachedName="CurrencyID"
-                          externalMetadataColumnId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_4]"
+                          externalMetadataColumnId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
                           lineageId="Package\SEQ Push to DWH\DFT Corporate Actions facts\LKP CurrencyID.Outputs[Lookup Match Output].Columns[CurrencyID]" />
                         <inputColumn
                           refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Command 1.Inputs[OLE DB Command Input].Columns[Details]"
@@ -3411,7 +3685,7 @@ where [refTable].[InstrumentGlobalID] = ?</property>
                           cachedDataType="str"
                           cachedLength="3000"
                           cachedName="Details"
-                          externalMetadataColumnId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_5]"
+                          externalMetadataColumnId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_4]"
                           lineageId="Package\SEQ Push to DWH\DFT Corporate Actions facts\SRC STG CorporateAction Process.Outputs[OLE DB Source Output].Columns[Details]" />
                         <inputColumn
                           refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Command 1.Inputs[OLE DB Command Input].Columns[DividendPerShare]"
@@ -3419,7 +3693,7 @@ where [refTable].[InstrumentGlobalID] = ?</property>
                           cachedName="DividendPerShare"
                           cachedPrecision="23"
                           cachedScale="10"
-                          externalMetadataColumnId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_6]"
+                          externalMetadataColumnId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_5]"
                           lineageId="Package\SEQ Push to DWH\DFT Corporate Actions facts\SRC STG CorporateAction Process.Outputs[OLE DB Source Output].Columns[DividendPerShare]" />
                         <inputColumn
                           refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Command 1.Inputs[OLE DB Command Input].Columns[DividendRatePercent]"
@@ -3427,13 +3701,13 @@ where [refTable].[InstrumentGlobalID] = ?</property>
                           cachedName="DividendRatePercent"
                           cachedPrecision="23"
                           cachedScale="10"
-                          externalMetadataColumnId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_7]"
+                          externalMetadataColumnId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_6]"
                           lineageId="Package\SEQ Push to DWH\DFT Corporate Actions facts\SRC STG CorporateAction Process.Outputs[OLE DB Source Output].Columns[DividendRatePercent]" />
                         <inputColumn
                           refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Command 1.Inputs[OLE DB Command Input].Columns[ExDateID]"
                           cachedDataType="i4"
                           cachedName="ExDateID"
-                          externalMetadataColumnId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_8]"
+                          externalMetadataColumnId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_7]"
                           lineageId="Package\SEQ Push to DWH\DFT Corporate Actions facts\SRC STG CorporateAction Process.Outputs[OLE DB Source Output].Columns[ExDateID]" />
                         <inputColumn
                           refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Command 1.Inputs[OLE DB Command Input].Columns[FXRate]"
@@ -3441,7 +3715,7 @@ where [refTable].[InstrumentGlobalID] = ?</property>
                           cachedName="FXRate"
                           cachedPrecision="23"
                           cachedScale="10"
-                          externalMetadataColumnId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_9]"
+                          externalMetadataColumnId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_8]"
                           lineageId="Package\SEQ Push to DWH\DFT Corporate Actions facts\SRC STG CorporateAction Process.Outputs[OLE DB Source Output].Columns[FXRate]" />
                         <inputColumn
                           refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Command 1.Inputs[OLE DB Command Input].Columns[GrossDividendEuro]"
@@ -3449,7 +3723,7 @@ where [refTable].[InstrumentGlobalID] = ?</property>
                           cachedName="GrossDividendEuro"
                           cachedPrecision="23"
                           cachedScale="10"
-                          externalMetadataColumnId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_10]"
+                          externalMetadataColumnId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_9]"
                           lineageId="Package\SEQ Push to DWH\DFT Corporate Actions facts\SRC STG CorporateAction Process.Outputs[OLE DB Source Output].Columns[GrossDividendEuro]" />
                         <inputColumn
                           refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Command 1.Inputs[OLE DB Command Input].Columns[GrossDividend]"
@@ -3457,31 +3731,31 @@ where [refTable].[InstrumentGlobalID] = ?</property>
                           cachedName="GrossDividend"
                           cachedPrecision="23"
                           cachedScale="10"
-                          externalMetadataColumnId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_11]"
+                          externalMetadataColumnId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_10]"
                           lineageId="Package\SEQ Push to DWH\DFT Corporate Actions facts\SRC STG CorporateAction Process.Outputs[OLE DB Source Output].Columns[GrossDividend]" />
                         <inputColumn
                           refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Command 1.Inputs[OLE DB Command Input].Columns[InstrumentID]"
                           cachedDataType="i4"
                           cachedName="InstrumentID"
-                          externalMetadataColumnId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_12]"
+                          externalMetadataColumnId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_11]"
                           lineageId="Package\SEQ Push to DWH\DFT Corporate Actions facts\LKP InstrumentID.Outputs[Lookup Match Output].Columns[InstrumentID]" />
                         <inputColumn
                           refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Command 1.Inputs[OLE DB Command Input].Columns[NextMeetingDateID]"
                           cachedDataType="i4"
                           cachedName="NextMeetingDateID"
-                          externalMetadataColumnId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_13]"
+                          externalMetadataColumnId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_12]"
                           lineageId="Package\SEQ Push to DWH\DFT Corporate Actions facts\SRC STG CorporateAction Process.Outputs[OLE DB Source Output].Columns[NextMeetingDateID]" />
                         <inputColumn
                           refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Command 1.Inputs[OLE DB Command Input].Columns[PaymentDateID]"
                           cachedDataType="i4"
                           cachedName="PaymentDateID"
-                          externalMetadataColumnId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_14]"
+                          externalMetadataColumnId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_13]"
                           lineageId="Package\SEQ Push to DWH\DFT Corporate Actions facts\SRC STG CorporateAction Process.Outputs[OLE DB Source Output].Columns[PaymentDateID]" />
                         <inputColumn
                           refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Command 1.Inputs[OLE DB Command Input].Columns[RecordDateID]"
                           cachedDataType="i4"
                           cachedName="RecordDateID"
-                          externalMetadataColumnId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_15]"
+                          externalMetadataColumnId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_14]"
                           lineageId="Package\SEQ Push to DWH\DFT Corporate Actions facts\SRC STG CorporateAction Process.Outputs[OLE DB Source Output].Columns[RecordDateID]" />
                         <inputColumn
                           refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Command 1.Inputs[OLE DB Command Input].Columns[TaxAmount]"
@@ -3489,7 +3763,7 @@ where [refTable].[InstrumentGlobalID] = ?</property>
                           cachedName="TaxAmount"
                           cachedPrecision="23"
                           cachedScale="10"
-                          externalMetadataColumnId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_16]"
+                          externalMetadataColumnId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_15]"
                           lineageId="Package\SEQ Push to DWH\DFT Corporate Actions facts\SRC STG CorporateAction Process.Outputs[OLE DB Source Output].Columns[TaxAmount]" />
                         <inputColumn
                           refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Command 1.Inputs[OLE DB Command Input].Columns[TaxDescription]"
@@ -3497,7 +3771,7 @@ where [refTable].[InstrumentGlobalID] = ?</property>
                           cachedDataType="str"
                           cachedLength="100"
                           cachedName="TaxDescription"
-                          externalMetadataColumnId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_17]"
+                          externalMetadataColumnId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_16]"
                           lineageId="Package\SEQ Push to DWH\DFT Corporate Actions facts\SRC STG CorporateAction Process.Outputs[OLE DB Source Output].Columns[TaxDescription]" />
                         <inputColumn
                           refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Command 1.Inputs[OLE DB Command Input].Columns[TaxRatePercent]"
@@ -3505,7 +3779,7 @@ where [refTable].[InstrumentGlobalID] = ?</property>
                           cachedName="TaxRatePercent"
                           cachedPrecision="23"
                           cachedScale="10"
-                          externalMetadataColumnId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_18]"
+                          externalMetadataColumnId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_17]"
                           lineageId="Package\SEQ Push to DWH\DFT Corporate Actions facts\SRC STG CorporateAction Process.Outputs[OLE DB Source Output].Columns[TaxRatePercent]" />
                       </inputColumns>
                       <externalMetadataColumns
@@ -3525,7 +3799,7 @@ where [refTable].[InstrumentGlobalID] = ?</property>
                         </externalMetadataColumn>
                         <externalMetadataColumn
                           refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
-                          dataType="i4"
+                          dataType="i2"
                           name="Param_1">
                           <properties>
                             <property
@@ -3536,19 +3810,8 @@ where [refTable].[InstrumentGlobalID] = ?</property>
                         </externalMetadataColumn>
                         <externalMetadataColumn
                           refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
-                          dataType="i2"
-                          name="Param_2">
-                          <properties>
-                            <property
-                              dataType="System.Int32"
-                              description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
-                              name="DBParamInfoFlags">81</property>
-                          </properties>
-                        </externalMetadataColumn>
-                        <externalMetadataColumn
-                          refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
                           dataType="numeric"
-                          name="Param_3"
+                          name="Param_2"
                           precision="23"
                           scale="10">
                           <properties>
@@ -3559,9 +3822,9 @@ where [refTable].[InstrumentGlobalID] = ?</property>
                           </properties>
                         </externalMetadataColumn>
                         <externalMetadataColumn
-                          refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_4]"
+                          refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
                           dataType="i2"
-                          name="Param_4">
+                          name="Param_3">
                           <properties>
                             <property
                               dataType="System.Int32"
@@ -3570,16 +3833,29 @@ where [refTable].[InstrumentGlobalID] = ?</property>
                           </properties>
                         </externalMetadataColumn>
                         <externalMetadataColumn
-                          refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_5]"
+                          refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_4]"
                           codePage="1252"
                           dataType="str"
                           length="3000"
-                          name="Param_5">
+                          name="Param_4">
                           <properties>
                             <property
                               dataType="System.Int32"
                               description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
                               name="DBParamInfoFlags">65</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_5]"
+                          dataType="numeric"
+                          name="Param_5"
+                          precision="23"
+                          scale="10">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                              name="DBParamInfoFlags">81</property>
                           </properties>
                         </externalMetadataColumn>
                         <externalMetadataColumn
@@ -3597,10 +3873,8 @@ where [refTable].[InstrumentGlobalID] = ?</property>
                         </externalMetadataColumn>
                         <externalMetadataColumn
                           refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_7]"
-                          dataType="numeric"
-                          name="Param_7"
-                          precision="23"
-                          scale="10">
+                          dataType="i4"
+                          name="Param_7">
                           <properties>
                             <property
                               dataType="System.Int32"
@@ -3610,8 +3884,10 @@ where [refTable].[InstrumentGlobalID] = ?</property>
                         </externalMetadataColumn>
                         <externalMetadataColumn
                           refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_8]"
-                          dataType="i4"
-                          name="Param_8">
+                          dataType="numeric"
+                          name="Param_8"
+                          precision="23"
+                          scale="10">
                           <properties>
                             <property
                               dataType="System.Int32"
@@ -3647,10 +3923,8 @@ where [refTable].[InstrumentGlobalID] = ?</property>
                         </externalMetadataColumn>
                         <externalMetadataColumn
                           refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_11]"
-                          dataType="numeric"
-                          name="Param_11"
-                          precision="23"
-                          scale="10">
+                          dataType="i4"
+                          name="Param_11">
                           <properties>
                             <property
                               dataType="System.Int32"
@@ -3693,8 +3967,10 @@ where [refTable].[InstrumentGlobalID] = ?</property>
                         </externalMetadataColumn>
                         <externalMetadataColumn
                           refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_15]"
-                          dataType="i4"
-                          name="Param_15">
+                          dataType="numeric"
+                          name="Param_15"
+                          precision="23"
+                          scale="10">
                           <properties>
                             <property
                               dataType="System.Int32"
@@ -3704,23 +3980,10 @@ where [refTable].[InstrumentGlobalID] = ?</property>
                         </externalMetadataColumn>
                         <externalMetadataColumn
                           refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_16]"
-                          dataType="numeric"
-                          name="Param_16"
-                          precision="23"
-                          scale="10">
-                          <properties>
-                            <property
-                              dataType="System.Int32"
-                              description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
-                              name="DBParamInfoFlags">81</property>
-                          </properties>
-                        </externalMetadataColumn>
-                        <externalMetadataColumn
-                          refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_17]"
                           codePage="1252"
                           dataType="str"
                           length="100"
-                          name="Param_17">
+                          name="Param_16">
                           <properties>
                             <property
                               dataType="System.Int32"
@@ -3729,9 +3992,9 @@ where [refTable].[InstrumentGlobalID] = ?</property>
                           </properties>
                         </externalMetadataColumn>
                         <externalMetadataColumn
-                          refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_18]"
+                          refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_17]"
                           dataType="numeric"
-                          name="Param_18"
+                          name="Param_17"
                           precision="23"
                           scale="10">
                           <properties>
@@ -3742,11 +4005,11 @@ where [refTable].[InstrumentGlobalID] = ?</property>
                           </properties>
                         </externalMetadataColumn>
                         <externalMetadataColumn
-                          refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_19]"
+                          refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_18]"
                           codePage="1252"
                           dataType="str"
                           length="30"
-                          name="Param_19">
+                          name="Param_18">
                           <properties>
                             <property
                               dataType="System.Int32"
@@ -3790,6 +4053,728 @@ where [refTable].[InstrumentGlobalID] = ?</property>
                   </outputs>
                 </component>
                 <component
+                  refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="OLE DB Destination"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[DWH].[FactCorporateAction]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination.Connections[OleDbConnection]"
+                      connectionManagerID="{0CBC2C04-C137-495F-AF7C-FA5DE465FED0}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[DWH]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[AdditionalDescription]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="3000"
+                          cachedName="AdditionalDescription"
+                          externalMetadataColumnId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[AdditionalDescription]"
+                          lineageId="Package\SEQ Push to DWH\DFT Corporate Actions facts\SRC STG CorporateAction Process.Outputs[OLE DB Source Output].Columns[AdditionalDescription]" />
+                        <inputColumn
+                          refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Conditional]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="2"
+                          cachedName="Conditional"
+                          externalMetadataColumnId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Conditional]"
+                          lineageId="Package\SEQ Push to DWH\DFT Corporate Actions facts\SRC STG CorporateAction Process.Outputs[OLE DB Source Output].Columns[Conditional]" />
+                        <inputColumn
+                          refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Details]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="3000"
+                          cachedName="Details"
+                          externalMetadataColumnId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Details]"
+                          lineageId="Package\SEQ Push to DWH\DFT Corporate Actions facts\SRC STG CorporateAction Process.Outputs[OLE DB Source Output].Columns[Details]" />
+                        <inputColumn
+                          refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[NumberOfNewShares]"
+                          cachedDataType="numeric"
+                          cachedName="NumberOfNewShares"
+                          cachedPrecision="23"
+                          cachedScale="10"
+                          externalMetadataColumnId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[NumberOfNewShares]"
+                          lineageId="Package\SEQ Push to DWH\DFT Corporate Actions facts\SRC STG CorporateAction Process.Outputs[OLE DB Source Output].Columns[NumberOfNewShares]" />
+                        <inputColumn
+                          refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Price]"
+                          cachedDataType="numeric"
+                          cachedName="Price"
+                          cachedPrecision="23"
+                          cachedScale="10"
+                          externalMetadataColumnId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Price]"
+                          lineageId="Package\SEQ Push to DWH\DFT Corporate Actions facts\SRC STG CorporateAction Process.Outputs[OLE DB Source Output].Columns[Price]" />
+                        <inputColumn
+                          refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[EffectiveDateID]"
+                          cachedDataType="i4"
+                          cachedName="EffectiveDateID"
+                          externalMetadataColumnId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[EffectiveDateID]"
+                          lineageId="Package\SEQ Push to DWH\DFT Corporate Actions facts\SRC STG CorporateAction Process.Outputs[OLE DB Source Output].Columns[EffectiveDateID]" />
+                        <inputColumn
+                          refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ExDateID]"
+                          cachedDataType="i4"
+                          cachedName="ExDateID"
+                          externalMetadataColumnId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ExDateID]"
+                          lineageId="Package\SEQ Push to DWH\DFT Corporate Actions facts\SRC STG CorporateAction Process.Outputs[OLE DB Source Output].Columns[ExDateID]" />
+                        <inputColumn
+                          refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[LatestDateForApplicationNilPaidID]"
+                          cachedDataType="i4"
+                          cachedName="LatestDateForApplicationNilPaidID"
+                          externalMetadataColumnId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[LatestDateForApplicationNilPaidID]"
+                          lineageId="Package\SEQ Push to DWH\DFT Corporate Actions facts\SRC STG CorporateAction Process.Outputs[OLE DB Source Output].Columns[LatestDateForApplicationNilPaidID]" />
+                        <inputColumn
+                          refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[LatestDateForFinalApplicationID]"
+                          cachedDataType="i4"
+                          cachedName="LatestDateForFinalApplicationID"
+                          externalMetadataColumnId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[LatestDateForFinalApplicationID]"
+                          lineageId="Package\SEQ Push to DWH\DFT Corporate Actions facts\SRC STG CorporateAction Process.Outputs[OLE DB Source Output].Columns[LatestDateForFinalApplicationID]" />
+                        <inputColumn
+                          refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[RecordDateID]"
+                          cachedDataType="i4"
+                          cachedName="RecordDateID"
+                          externalMetadataColumnId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[RecordDateID]"
+                          lineageId="Package\SEQ Push to DWH\DFT Corporate Actions facts\SRC STG CorporateAction Process.Outputs[OLE DB Source Output].Columns[RecordDateID]" />
+                        <inputColumn
+                          refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ReverseTakeover]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="1"
+                          cachedName="ReverseTakeover"
+                          externalMetadataColumnId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ReverseTakeover]"
+                          lineageId="Package\SEQ Push to DWH\DFT Corporate Actions facts\SRC STG CorporateAction Process.Outputs[OLE DB Source Output].Columns[ReverseTakeover]" />
+                        <inputColumn
+                          refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ExPrice]"
+                          cachedDataType="numeric"
+                          cachedName="ExPrice"
+                          cachedPrecision="23"
+                          cachedScale="10"
+                          externalMetadataColumnId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ExPrice]"
+                          lineageId="Package\SEQ Push to DWH\DFT Corporate Actions facts\SRC STG CorporateAction Process.Outputs[OLE DB Source Output].Columns[ExPrice]" />
+                        <inputColumn
+                          refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[LatestSplittingDateNote]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="200"
+                          cachedName="LatestSplittingDateNote"
+                          externalMetadataColumnId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[LatestSplittingDateNote]"
+                          lineageId="Package\SEQ Push to DWH\DFT Corporate Actions facts\SRC STG CorporateAction Process.Outputs[OLE DB Source Output].Columns[LatestSplittingDateNote]" />
+                        <inputColumn
+                          refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[CorporateActionTypeID]"
+                          cachedDataType="i2"
+                          cachedName="CorporateActionTypeID"
+                          externalMetadataColumnId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CorporateActionTypeID]"
+                          lineageId="Package\SEQ Push to DWH\DFT Corporate Actions facts\LKP CorporateActionType.Outputs[Lookup Match Output].Columns[CorporateActionTypeID]" />
+                        <inputColumn
+                          refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[InstrumentID]"
+                          cachedDataType="i4"
+                          cachedName="InstrumentID"
+                          externalMetadataColumnId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[InstrumentID]"
+                          lineageId="Package\SEQ Push to DWH\DFT Corporate Actions facts\LKP InstrumentID.Outputs[Lookup Match Output].Columns[InstrumentID]" />
+                        <inputColumn
+                          refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[BatchID]"
+                          cachedDataType="i4"
+                          cachedName="BatchID"
+                          externalMetadataColumnId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[BatchID]"
+                          lineageId="Package\SEQ Push to DWH\DFT Corporate Actions facts\DER BatchID.Outputs[Derived Column Output].Columns[BatchID]" />
+                        <inputColumn
+                          refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Gid]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="30"
+                          cachedName="Gid"
+                          externalMetadataColumnId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CorporateActionGID]"
+                          lineageId="Package\SEQ Push to DWH\DFT Corporate Actions facts\SRC STG CorporateAction Process.Outputs[OLE DB Source Output].Columns[Gid]" />
+                        <inputColumn
+                          refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[StatusDateID]"
+                          cachedDataType="i4"
+                          cachedName="StatusDateID"
+                          externalMetadataColumnId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CorporateActionStatusDateID]"
+                          lineageId="Package\SEQ Push to DWH\DFT Corporate Actions facts\SRC STG CorporateAction Process.Outputs[OLE DB Source Output].Columns[StatusDateID]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CorporateActionId]"
+                          dataType="i2"
+                          name="CorporateActionId" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CorporateActionGID]"
+                          codePage="1252"
+                          dataType="str"
+                          length="30"
+                          name="CorporateActionGID" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CorporateActionTypeID]"
+                          dataType="i2"
+                          name="CorporateActionTypeID" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[InstrumentID]"
+                          dataType="i4"
+                          name="InstrumentID" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[EffectiveDateID]"
+                          dataType="i4"
+                          name="EffectiveDateID" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[RecordDateID]"
+                          dataType="i4"
+                          name="RecordDateID" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ExDateID]"
+                          dataType="i4"
+                          name="ExDateID" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[LatestDateForApplicationNilPaidID]"
+                          dataType="i4"
+                          name="LatestDateForApplicationNilPaidID" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[LatestDateForFinalApplicationID]"
+                          dataType="i4"
+                          name="LatestDateForFinalApplicationID" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CorporateActionStatusDateID]"
+                          dataType="i4"
+                          name="CorporateActionStatusDateID" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[LatestSplittingDateNote]"
+                          codePage="1252"
+                          dataType="str"
+                          length="200"
+                          name="LatestSplittingDateNote" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Conditional]"
+                          codePage="1252"
+                          dataType="str"
+                          length="2"
+                          name="Conditional" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ReverseTakeover]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          name="ReverseTakeover" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[NumberOfNewShares]"
+                          dataType="numeric"
+                          name="NumberOfNewShares"
+                          precision="23"
+                          scale="10" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ExPrice]"
+                          dataType="numeric"
+                          name="ExPrice"
+                          precision="23"
+                          scale="10" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Price]"
+                          dataType="numeric"
+                          name="Price"
+                          precision="23"
+                          scale="10" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Details]"
+                          codePage="1252"
+                          dataType="str"
+                          length="3000"
+                          name="Details" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[AdditionalDescription]"
+                          codePage="1252"
+                          dataType="str"
+                          length="3000"
+                          name="AdditionalDescription" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DSSPublishDate]"
+                          dataType="dbDate"
+                          name="DSSPublishDate" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DSSCreatedBy]"
+                          codePage="1252"
+                          dataType="str"
+                          length="30"
+                          name="DSSCreatedBy" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DSSCreatedDate]"
+                          dataType="dbTimeStamp"
+                          name="DSSCreatedDate" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[BatchID]"
+                          dataType="i4"
+                          name="BatchID" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination 1"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="OLE DB Destination 1"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[DWH].[FactDividend]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination 1.Connections[OleDbConnection]"
+                      connectionManagerID="{0CBC2C04-C137-495F-AF7C-FA5DE465FED0}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[DWH]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination 1.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination 1.Inputs[OLE DB Destination Input].Columns[AdditionalDescription]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="3000"
+                          cachedName="AdditionalDescription"
+                          externalMetadataColumnId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[AdditionalDescription]"
+                          lineageId="Package\SEQ Push to DWH\DFT Corporate Actions facts\SRC STG CorporateAction Process.Outputs[OLE DB Source Output].Columns[AdditionalDescription]" />
+                        <inputColumn
+                          refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination 1.Inputs[OLE DB Destination Input].Columns[Details]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="3000"
+                          cachedName="Details"
+                          externalMetadataColumnId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[Details]"
+                          lineageId="Package\SEQ Push to DWH\DFT Corporate Actions facts\SRC STG CorporateAction Process.Outputs[OLE DB Source Output].Columns[Details]" />
+                        <inputColumn
+                          refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination 1.Inputs[OLE DB Destination Input].Columns[DividendPerShare]"
+                          cachedDataType="numeric"
+                          cachedName="DividendPerShare"
+                          cachedPrecision="23"
+                          cachedScale="10"
+                          externalMetadataColumnId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[DividendPerShare]"
+                          lineageId="Package\SEQ Push to DWH\DFT Corporate Actions facts\SRC STG CorporateAction Process.Outputs[OLE DB Source Output].Columns[DividendPerShare]" />
+                        <inputColumn
+                          refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination 1.Inputs[OLE DB Destination Input].Columns[DividendRatePercent]"
+                          cachedDataType="numeric"
+                          cachedName="DividendRatePercent"
+                          cachedPrecision="23"
+                          cachedScale="10"
+                          externalMetadataColumnId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[DividendRatePercent]"
+                          lineageId="Package\SEQ Push to DWH\DFT Corporate Actions facts\SRC STG CorporateAction Process.Outputs[OLE DB Source Output].Columns[DividendRatePercent]" />
+                        <inputColumn
+                          refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination 1.Inputs[OLE DB Destination Input].Columns[FXRate]"
+                          cachedDataType="numeric"
+                          cachedName="FXRate"
+                          cachedPrecision="23"
+                          cachedScale="10"
+                          externalMetadataColumnId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[FXRate]"
+                          lineageId="Package\SEQ Push to DWH\DFT Corporate Actions facts\SRC STG CorporateAction Process.Outputs[OLE DB Source Output].Columns[FXRate]" />
+                        <inputColumn
+                          refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination 1.Inputs[OLE DB Destination Input].Columns[GrossDividend]"
+                          cachedDataType="numeric"
+                          cachedName="GrossDividend"
+                          cachedPrecision="23"
+                          cachedScale="10"
+                          externalMetadataColumnId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[GrossDividend]"
+                          lineageId="Package\SEQ Push to DWH\DFT Corporate Actions facts\SRC STG CorporateAction Process.Outputs[OLE DB Source Output].Columns[GrossDividend]" />
+                        <inputColumn
+                          refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination 1.Inputs[OLE DB Destination Input].Columns[TaxAmount]"
+                          cachedDataType="numeric"
+                          cachedName="TaxAmount"
+                          cachedPrecision="23"
+                          cachedScale="10"
+                          externalMetadataColumnId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[TaxAmount]"
+                          lineageId="Package\SEQ Push to DWH\DFT Corporate Actions facts\SRC STG CorporateAction Process.Outputs[OLE DB Source Output].Columns[TaxAmount]" />
+                        <inputColumn
+                          refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination 1.Inputs[OLE DB Destination Input].Columns[TaxDescription]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="100"
+                          cachedName="TaxDescription"
+                          externalMetadataColumnId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[TaxDescription]"
+                          lineageId="Package\SEQ Push to DWH\DFT Corporate Actions facts\SRC STG CorporateAction Process.Outputs[OLE DB Source Output].Columns[TaxDescription]" />
+                        <inputColumn
+                          refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination 1.Inputs[OLE DB Destination Input].Columns[TaxRatePercent]"
+                          cachedDataType="numeric"
+                          cachedName="TaxRatePercent"
+                          cachedPrecision="23"
+                          cachedScale="10"
+                          externalMetadataColumnId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[TaxRatePercent]"
+                          lineageId="Package\SEQ Push to DWH\DFT Corporate Actions facts\SRC STG CorporateAction Process.Outputs[OLE DB Source Output].Columns[TaxRatePercent]" />
+                        <inputColumn
+                          refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination 1.Inputs[OLE DB Destination Input].Columns[ExDateID]"
+                          cachedDataType="i4"
+                          cachedName="ExDateID"
+                          externalMetadataColumnId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[ExDateID]"
+                          lineageId="Package\SEQ Push to DWH\DFT Corporate Actions facts\SRC STG CorporateAction Process.Outputs[OLE DB Source Output].Columns[ExDateID]" />
+                        <inputColumn
+                          refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination 1.Inputs[OLE DB Destination Input].Columns[NextMeetingDateID]"
+                          cachedDataType="i4"
+                          cachedName="NextMeetingDateID"
+                          externalMetadataColumnId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[NextMeetingDateID]"
+                          lineageId="Package\SEQ Push to DWH\DFT Corporate Actions facts\SRC STG CorporateAction Process.Outputs[OLE DB Source Output].Columns[NextMeetingDateID]" />
+                        <inputColumn
+                          refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination 1.Inputs[OLE DB Destination Input].Columns[RecordDateID]"
+                          cachedDataType="i4"
+                          cachedName="RecordDateID"
+                          externalMetadataColumnId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[RecordDateID]"
+                          lineageId="Package\SEQ Push to DWH\DFT Corporate Actions facts\SRC STG CorporateAction Process.Outputs[OLE DB Source Output].Columns[RecordDateID]" />
+                        <inputColumn
+                          refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination 1.Inputs[OLE DB Destination Input].Columns[PaymentDateID]"
+                          cachedDataType="i4"
+                          cachedName="PaymentDateID"
+                          externalMetadataColumnId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[PaymentDateID]"
+                          lineageId="Package\SEQ Push to DWH\DFT Corporate Actions facts\SRC STG CorporateAction Process.Outputs[OLE DB Source Output].Columns[PaymentDateID]" />
+                        <inputColumn
+                          refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination 1.Inputs[OLE DB Destination Input].Columns[CorporateActionTypeID]"
+                          cachedDataType="i2"
+                          cachedName="CorporateActionTypeID"
+                          externalMetadataColumnId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[CorporateActionTypeID]"
+                          lineageId="Package\SEQ Push to DWH\DFT Corporate Actions facts\LKP CorporateActionType.Outputs[Lookup Match Output].Columns[CorporateActionTypeID]" />
+                        <inputColumn
+                          refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination 1.Inputs[OLE DB Destination Input].Columns[InstrumentID]"
+                          cachedDataType="i4"
+                          cachedName="InstrumentID"
+                          externalMetadataColumnId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[InstrumentID]"
+                          lineageId="Package\SEQ Push to DWH\DFT Corporate Actions facts\LKP InstrumentID.Outputs[Lookup Match Output].Columns[InstrumentID]" />
+                        <inputColumn
+                          refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination 1.Inputs[OLE DB Destination Input].Columns[BatchID]"
+                          cachedDataType="i4"
+                          cachedName="BatchID"
+                          externalMetadataColumnId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[BatchID]"
+                          lineageId="Package\SEQ Push to DWH\DFT Corporate Actions facts\DER BatchID.Outputs[Derived Column Output].Columns[BatchID]" />
+                        <inputColumn
+                          refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination 1.Inputs[OLE DB Destination Input].Columns[CurrencyID]"
+                          cachedDataType="i2"
+                          cachedName="CurrencyID"
+                          externalMetadataColumnId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[CurrencyID]"
+                          lineageId="Package\SEQ Push to DWH\DFT Corporate Actions facts\LKP CurrencyID.Outputs[Lookup Match Output].Columns[CurrencyID]" />
+                        <inputColumn
+                          refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination 1.Inputs[OLE DB Destination Input].Columns[Gid]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="30"
+                          cachedName="Gid"
+                          externalMetadataColumnId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[CoporateActionGID]"
+                          lineageId="Package\SEQ Push to DWH\DFT Corporate Actions facts\SRC STG CorporateAction Process.Outputs[OLE DB Source Output].Columns[Gid]" />
+                        <inputColumn
+                          refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination 1.Inputs[OLE DB Destination Input].Columns[StatusDateID]"
+                          cachedDataType="i4"
+                          cachedName="StatusDateID"
+                          externalMetadataColumnId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[CorporateActionStatusDateID]"
+                          lineageId="Package\SEQ Push to DWH\DFT Corporate Actions facts\SRC STG CorporateAction Process.Outputs[OLE DB Source Output].Columns[StatusDateID]" />
+                        <inputColumn
+                          refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination 1.Inputs[OLE DB Destination Input].Columns[CouponNumber]"
+                          cachedDataType="numeric"
+                          cachedName="CouponNumber"
+                          cachedPrecision="23"
+                          cachedScale="10"
+                          externalMetadataColumnId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[Coupon]"
+                          lineageId="Package\SEQ Push to DWH\DFT Corporate Actions facts\SRC STG CorporateAction Process.Outputs[OLE DB Source Output].Columns[CouponNumber]" />
+                        <inputColumn
+                          refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination 1.Inputs[OLE DB Destination Input].Columns[GrossDividendEuro]"
+                          cachedDataType="numeric"
+                          cachedName="GrossDividendEuro"
+                          cachedPrecision="23"
+                          cachedScale="10"
+                          externalMetadataColumnId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[GrossDivEuro]"
+                          lineageId="Package\SEQ Push to DWH\DFT Corporate Actions facts\SRC STG CorporateAction Process.Outputs[OLE DB Source Output].Columns[GrossDividendEuro]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[DividendID]"
+                          dataType="i2"
+                          name="DividendID" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[CoporateActionGID]"
+                          codePage="1252"
+                          dataType="str"
+                          length="30"
+                          name="CoporateActionGID" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[CorporateActionTypeID]"
+                          dataType="i2"
+                          name="CorporateActionTypeID" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[InstrumentID]"
+                          dataType="i4"
+                          name="InstrumentID" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[NextMeetingDateID]"
+                          dataType="i4"
+                          name="NextMeetingDateID" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[ExDateID]"
+                          dataType="i4"
+                          name="ExDateID" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[PaymentDateID]"
+                          dataType="i4"
+                          name="PaymentDateID" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[RecordDateID]"
+                          dataType="i4"
+                          name="RecordDateID" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[CurrencyID]"
+                          dataType="i2"
+                          name="CurrencyID" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[CorporateActionStatusDateID]"
+                          dataType="i4"
+                          name="CorporateActionStatusDateID" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[Coupon]"
+                          dataType="numeric"
+                          name="Coupon"
+                          precision="23"
+                          scale="10" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[DividendPerShare]"
+                          dataType="numeric"
+                          name="DividendPerShare"
+                          precision="23"
+                          scale="10" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[DividendRatePercent]"
+                          dataType="numeric"
+                          name="DividendRatePercent"
+                          precision="23"
+                          scale="10" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[FXRate]"
+                          dataType="numeric"
+                          name="FXRate"
+                          precision="23"
+                          scale="10" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[GrossDivEuro]"
+                          dataType="numeric"
+                          name="GrossDivEuro"
+                          precision="23"
+                          scale="10" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[GrossDividend]"
+                          dataType="numeric"
+                          name="GrossDividend"
+                          precision="23"
+                          scale="10" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[TaxAmount]"
+                          dataType="numeric"
+                          name="TaxAmount"
+                          precision="23"
+                          scale="10" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[TaxDescription]"
+                          codePage="1252"
+                          dataType="str"
+                          length="100"
+                          name="TaxDescription" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[TaxRatePercent]"
+                          dataType="numeric"
+                          name="TaxRatePercent"
+                          precision="23"
+                          scale="10" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[AdditionalDescription]"
+                          codePage="1252"
+                          dataType="str"
+                          length="3000"
+                          name="AdditionalDescription" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[Details]"
+                          codePage="1252"
+                          dataType="str"
+                          length="3000"
+                          name="Details" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[DSSPublishDate]"
+                          dataType="dbDate"
+                          name="DSSPublishDate" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[DSSCreatedBy]"
+                          codePage="1252"
+                          dataType="str"
+                          length="30"
+                          name="DSSCreatedBy" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[DSSCreatedDate]"
+                          dataType="dbTimeStamp"
+                          name="DSSCreatedDate" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[DSSNote]"
+                          codePage="1252"
+                          dataType="str"
+                          length="255"
+                          name="DSSNote" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[BatchID]"
+                          dataType="i4"
+                          name="BatchID" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination 1.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination 1.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination 1.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination 1.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination 1.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination 1.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
                   refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\SCD FactCorportateAction"
                   componentClassID="Microsoft.SCD"
                   contactInfo="Slowly Changing Dimension;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;3"
@@ -3801,7 +4786,7 @@ where [refTable].[InstrumentGlobalID] = ?</property>
                       dataType="System.String"
                       description="Specifies the SELECT statement used to create a schema rowset."
                       name="SqlCommand"
-                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT [AdditionalDescription], [BatchID], [Conditional], [CorporateActionGID], [CorporateActionStatusDateID], [CorporateActionTypeID], [Details], [EffectiveDateID], [ExDateID], [ExPrice], [InstrumentID], [LatestDateForApplicationNilPaidID], [LatestDateForFinalApplicationID], [LatestSplittingDateNote], [NumberOfNewShares], [Price], [RecordDateID], [ReverseTakeover] FROM [DWH].[FactCorporateAction]</property>
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT [AdditionalDescription], [Conditional], [CorporateActionGID], [CorporateActionStatusDateID], [CorporateActionTypeID], [Details], [EffectiveDateID], [ExDateID], [ExPrice], [InstrumentID], [LatestDateForApplicationNilPaidID], [LatestDateForFinalApplicationID], [LatestSplittingDateNote], [NumberOfNewShares], [Price], [RecordDateID], [ReverseTakeover] FROM [DWH].[FactCorporateAction]</property>
                     <property
                       dataType="System.String"
                       description="Specifies the WHERE clause in the SELECT statement that selects the current row among rows with identical business keys."
@@ -3857,19 +4842,6 @@ where [refTable].[InstrumentGlobalID] = ?</property>
                           cachedName="AdditionalDescription"
                           externalMetadataColumnId="Package\SEQ Push to DWH\DFT Corporate Actions facts\SCD FactCorportateAction.Inputs[Slowly Changing Dimension Input].ExternalColumns[AdditionalDescription]"
                           lineageId="Package\SEQ Push to DWH\DFT Corporate Actions facts\SRC STG CorporateAction Process.Outputs[OLE DB Source Output].Columns[AdditionalDescription]">
-                          <properties>
-                            <property
-                              dataType="System.Int32"
-                              name="ColumnType"
-                              typeConverter="ColumnType">2</property>
-                          </properties>
-                        </inputColumn>
-                        <inputColumn
-                          refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\SCD FactCorportateAction.Inputs[Slowly Changing Dimension Input].Columns[BatchID]"
-                          cachedDataType="i4"
-                          cachedName="BatchID"
-                          externalMetadataColumnId="Package\SEQ Push to DWH\DFT Corporate Actions facts\SCD FactCorportateAction.Inputs[Slowly Changing Dimension Input].ExternalColumns[BatchID]"
-                          lineageId="Package\SEQ Push to DWH\DFT Corporate Actions facts\DER BatchID.Outputs[Derived Column Output].Columns[BatchID]">
                           <properties>
                             <property
                               dataType="System.Int32"
@@ -3999,7 +4971,7 @@ where [refTable].[InstrumentGlobalID] = ?</property>
                             <property
                               dataType="System.Int32"
                               name="ColumnType"
-                              typeConverter="ColumnType">4</property>
+                              typeConverter="ColumnType">2</property>
                           </properties>
                         </inputColumn>
                         <inputColumn
@@ -4110,10 +5082,6 @@ where [refTable].[InstrumentGlobalID] = ?</property>
                           dataType="str"
                           length="3000"
                           name="AdditionalDescription" />
-                        <externalMetadataColumn
-                          refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\SCD FactCorportateAction.Inputs[Slowly Changing Dimension Input].ExternalColumns[BatchID]"
-                          dataType="i4"
-                          name="BatchID" />
                         <externalMetadataColumn
                           refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\SCD FactCorportateAction.Inputs[Slowly Changing Dimension Input].ExternalColumns[Conditional]"
                           codePage="1252"
@@ -4260,7 +5228,7 @@ where [refTable].[InstrumentGlobalID] = ?</property>
                       dataType="System.String"
                       description="Specifies the SELECT statement used to create a schema rowset."
                       name="SqlCommand"
-                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT [AdditionalDescription], [BatchID], [CoporateActionGID], [CorporateActionTypeID], [Coupon], [CurrencyID], [Details], [DividendPerShare], [DividendRatePercent], [ExDateID], [FXRate], [GrossDivEuro], [GrossDividend], [InstrumentID], [NextMeetingDateID], [PaymentDateID], [RecordDateID], [TaxAmount], [TaxDescription], [TaxRatePercent] FROM [DWH].[FactDividend]</property>
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT [AdditionalDescription], [CoporateActionGID], [CorporateActionTypeID], [Coupon], [CurrencyID], [Details], [DividendPerShare], [DividendRatePercent], [ExDateID], [FXRate], [GrossDivEuro], [GrossDividend], [InstrumentID], [NextMeetingDateID], [PaymentDateID], [RecordDateID], [TaxAmount], [TaxDescription], [TaxRatePercent] FROM [DWH].[FactDividend]</property>
                     <property
                       dataType="System.String"
                       description="Specifies the WHERE clause in the SELECT statement that selects the current row among rows with identical business keys."
@@ -4316,19 +5284,6 @@ where [refTable].[InstrumentGlobalID] = ?</property>
                           cachedName="AdditionalDescription"
                           externalMetadataColumnId="Package\SEQ Push to DWH\DFT Corporate Actions facts\SCD FactDividend.Inputs[Slowly Changing Dimension Input].ExternalColumns[AdditionalDescription]"
                           lineageId="Package\SEQ Push to DWH\DFT Corporate Actions facts\SRC STG CorporateAction Process.Outputs[OLE DB Source Output].Columns[AdditionalDescription]">
-                          <properties>
-                            <property
-                              dataType="System.Int32"
-                              name="ColumnType"
-                              typeConverter="ColumnType">2</property>
-                          </properties>
-                        </inputColumn>
-                        <inputColumn
-                          refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\SCD FactDividend.Inputs[Slowly Changing Dimension Input].Columns[BatchID]"
-                          cachedDataType="i4"
-                          cachedName="BatchID"
-                          externalMetadataColumnId="Package\SEQ Push to DWH\DFT Corporate Actions facts\SCD FactDividend.Inputs[Slowly Changing Dimension Input].ExternalColumns[BatchID]"
-                          lineageId="Package\SEQ Push to DWH\DFT Corporate Actions facts\DER BatchID.Outputs[Derived Column Output].Columns[BatchID]">
                           <properties>
                             <property
                               dataType="System.Int32"
@@ -4601,10 +5556,6 @@ where [refTable].[InstrumentGlobalID] = ?</property>
                           dataType="str"
                           length="3000"
                           name="AdditionalDescription" />
-                        <externalMetadataColumn
-                          refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\SCD FactDividend.Inputs[Slowly Changing Dimension Input].ExternalColumns[BatchID]"
-                          dataType="i4"
-                          name="BatchID" />
                         <externalMetadataColumn
                           refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\SCD FactDividend.Inputs[Slowly Changing Dimension Input].ExternalColumns[CoporateActionGID]"
                           codePage="1252"
@@ -5736,7 +6687,7 @@ WHERE
                   startId="Package\SEQ Push to DWH\DFT Corporate Actions facts\CSPL CorporateAction Type.Outputs[Dividend]" />
                 <path
                   refId="Package\SEQ Push to DWH\DFT Corporate Actions facts.Paths[Generic]"
-                  endId="Package\SEQ Push to DWH\DFT Corporate Actions facts\SCD FactCorportateAction.Inputs[Slowly Changing Dimension Input]"
+                  endId="Package\SEQ Push to DWH\DFT Corporate Actions facts\Lookup.Inputs[Lookup Input]"
                   name="Generic"
                   startId="Package\SEQ Push to DWH\DFT Corporate Actions facts\CSPL CorporateAction Type.Outputs[Generic]" />
                 <path
@@ -5756,9 +6707,29 @@ WHERE
                   startId="Package\SEQ Push to DWH\DFT Corporate Actions facts\LKP InstrumentID.Outputs[Lookup Match Output]" />
                 <path
                   refId="Package\SEQ Push to DWH\DFT Corporate Actions facts.Paths[Lookup Match Output3]"
-                  endId="Package\SEQ Push to DWH\DFT Corporate Actions facts\SCD FactDividend.Inputs[Slowly Changing Dimension Input]"
+                  endId="Package\SEQ Push to DWH\DFT Corporate Actions facts\Lookup 2.Inputs[Lookup Input]"
                   name="Lookup Match Output"
                   startId="Package\SEQ Push to DWH\DFT Corporate Actions facts\LKP CurrencyID.Outputs[Lookup Match Output]" />
+                <path
+                  refId="Package\SEQ Push to DWH\DFT Corporate Actions facts.Paths[Lookup Match Output4]"
+                  endId="Package\SEQ Push to DWH\DFT Corporate Actions facts\SCD FactCorportateAction.Inputs[Slowly Changing Dimension Input]"
+                  name="Lookup Match Output"
+                  startId="Package\SEQ Push to DWH\DFT Corporate Actions facts\Lookup.Outputs[Lookup Match Output]" />
+                <path
+                  refId="Package\SEQ Push to DWH\DFT Corporate Actions facts.Paths[Lookup Match Output5]"
+                  endId="Package\SEQ Push to DWH\DFT Corporate Actions facts\SCD FactDividend.Inputs[Slowly Changing Dimension Input]"
+                  name="Lookup Match Output"
+                  startId="Package\SEQ Push to DWH\DFT Corporate Actions facts\Lookup 2.Outputs[Lookup Match Output]" />
+                <path
+                  refId="Package\SEQ Push to DWH\DFT Corporate Actions facts.Paths[Lookup No Match Output]"
+                  endId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  name="Lookup No Match Output"
+                  startId="Package\SEQ Push to DWH\DFT Corporate Actions facts\Lookup.Outputs[Lookup No Match Output]" />
+                <path
+                  refId="Package\SEQ Push to DWH\DFT Corporate Actions facts.Paths[Lookup No Match Output1]"
+                  endId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination 1.Inputs[OLE DB Destination Input]"
+                  name="Lookup No Match Output"
+                  startId="Package\SEQ Push to DWH\DFT Corporate Actions facts\Lookup 2.Outputs[Lookup No Match Output]" />
                 <path
                   refId="Package\SEQ Push to DWH\DFT Corporate Actions facts.Paths[New Output]"
                   endId="Package\SEQ Push to DWH\DFT Corporate Actions facts\Insert Destination 1.Inputs[OLE DB Destination Input]"
@@ -9114,136 +10085,70 @@ WHERE
     design-time-name="Package\SEQ Push to DWH\DFT Corporate Actions facts">
     <LayoutInfo>
       <GraphLayout
-        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="64" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="171,42"
+          Id="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination"
+          TopLeft="5.50000000000011,719.5" />
         <NodeLayout
           Size="238,42"
           Id="Package\SEQ Push to DWH\DFT Corporate Actions facts\LKP CorporateActionType"
-          TopLeft="456,107.5" />
+          TopLeft="453,107.5" />
+        <NodeLayout
+          Size="162,42"
+          Id="Package\SEQ Push to DWH\DFT Corporate Actions facts\SCD FactDividend"
+          TopLeft="723,821.5" />
+        <NodeLayout
+          Size="113,42"
+          Id="Package\SEQ Push to DWH\DFT Corporate Actions facts\Lookup"
+          TopLeft="279.5,617.5" />
         <NodeLayout
           Size="238,42"
           Id="Package\SEQ Push to DWH\DFT Corporate Actions facts\LKP CurrencyID"
-          TopLeft="456,617.5" />
-        <NodeLayout
-          Size="238,42"
-          Id="Package\SEQ Push to DWH\DFT Corporate Actions facts\SRC STG CorporateAction Process"
-          TopLeft="456,5.5" />
+          TopLeft="453,617.5" />
         <NodeLayout
           Size="175,42"
           Id="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Command 1"
-          TopLeft="487.5,821.5" />
+          TopLeft="482.5,923.5" />
         <NodeLayout
-          Size="238,42"
-          Id="Package\SEQ Push to DWH\DFT Corporate Actions facts\SCD FactDividend"
-          TopLeft="456,719.5" />
-        <NodeLayout
-          Size="238,42"
-          Id="Package\SEQ Push to DWH\DFT Corporate Actions facts\SCD FactCorportateAction"
-          TopLeft="157,617.5" />
-        <NodeLayout
-          Size="238,42"
-          Id="Package\SEQ Push to DWH\DFT Corporate Actions facts\LKP Diviidend Type"
-          TopLeft="456,311.5" />
+          Size="180,42"
+          Id="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination 1"
+          TopLeft="482,821.5" />
         <NodeLayout
           Size="238,42"
           Id="Package\SEQ Push to DWH\DFT Corporate Actions facts\DER BatchID"
-          TopLeft="456,413.5" />
+          TopLeft="453,413.5" />
+        <NodeLayout
+          Size="238,42"
+          Id="Package\SEQ Push to DWH\DFT Corporate Actions facts\LKP Diviidend Type"
+          TopLeft="453,311.5" />
+        <NodeLayout
+          Size="122,42"
+          Id="Package\SEQ Push to DWH\DFT Corporate Actions facts\Lookup 2"
+          TopLeft="511,719.5" />
+        <NodeLayout
+          Size="201,42"
+          Id="Package\SEQ Push to DWH\DFT Corporate Actions facts\SCD FactCorportateAction"
+          TopLeft="237.5,719.5" />
+        <NodeLayout
+          Size="238,42"
+          Id="Package\SEQ Push to DWH\DFT Corporate Actions facts\SRC STG CorporateAction Process"
+          TopLeft="453,5.5" />
         <NodeLayout
           Size="172,42"
           Id="Package\SEQ Push to DWH\DFT Corporate Actions facts\Insert Destination 1"
-          TopLeft="255,821.5" />
-        <NodeLayout
-          Size="238,42"
-          Id="Package\SEQ Push to DWH\DFT Corporate Actions facts\LKP InstrumentID"
-          TopLeft="456,209.5" />
+          TopLeft="718,923.5" />
         <NodeLayout
           Size="238,42"
           Id="Package\SEQ Push to DWH\DFT Corporate Actions facts\CSPL CorporateAction Type"
-          TopLeft="456,515.5" />
-        <EdgeLayout
-          Id="Package\SEQ Push to DWH\DFT Corporate Actions facts.Paths[OLE DB Source Output]"
-          TopLeft="575,47.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\SEQ Push to DWH\DFT Corporate Actions facts.Paths[New Output]"
-          TopLeft="536.666666666667,761.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-195.666666666667,60"
-              Start="0,0"
-              End="-195.666666666667,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,20.2404006677796" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,20.2404006677796"
-                    Point2="0,24.2404006677796"
-                    Point3="-4,24.2404006677796" />
-                  <mssgle:LineSegment
-                    End="-191.666666666667,24.2404006677796" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-191.666666666667,24.2404006677796"
-                    Point2="-195.666666666667,24.2404006677796"
-                    Point3="-195.666666666667,28.2404006677796" />
-                  <mssgle:LineSegment
-                    End="-195.666666666667,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-124.924720052083,29.2404006677796,54.1827734375,11.43359375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\SEQ Push to DWH\DFT Corporate Actions facts.Paths[Lookup Match Output3]"
-          TopLeft="575,659.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,20.4453125,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+          TopLeft="453,515.5" />
+        <NodeLayout
+          Size="238,42"
+          Id="Package\SEQ Push to DWH\DFT Corporate Actions facts\LKP InstrumentID"
+          TopLeft="453,209.5" />
         <EdgeLayout
           Id="Package\SEQ Push to DWH\DFT Corporate Actions facts.Paths[Lookup Match Output2]"
-          TopLeft="575,251.5">
+          TopLeft="572,251.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -9267,7 +10172,7 @@ WHERE
         </EdgeLayout>
         <EdgeLayout
           Id="Package\SEQ Push to DWH\DFT Corporate Actions facts.Paths[Lookup Match Output1]"
-          TopLeft="575,353.5">
+          TopLeft="572,353.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -9291,7 +10196,7 @@ WHERE
         </EdgeLayout>
         <EdgeLayout
           Id="Package\SEQ Push to DWH\DFT Corporate Actions facts.Paths[Lookup Match Output]"
-          TopLeft="575,149.5">
+          TopLeft="572,149.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -9315,49 +10220,49 @@ WHERE
         </EdgeLayout>
         <EdgeLayout
           Id="Package\SEQ Push to DWH\DFT Corporate Actions facts.Paths[Generic]"
-          TopLeft="536.666666666667,557.5">
+          TopLeft="533.666666666667,557.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-260.666666666667,60"
+              EndConnector="-197.666666666667,60.0000000000001"
               Start="0,0"
-              End="-260.666666666667,52.5">
+              End="-197.666666666667,52.5000000000001">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,20.2404006677796" />
+                    End="0,20.2404006677797" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,20.2404006677796"
-                    Point2="0,24.2404006677796"
-                    Point3="-4,24.2404006677796" />
+                    Point1="0,20.2404006677797"
+                    Point2="0,24.2404006677797"
+                    Point3="-4,24.2404006677797" />
                   <mssgle:LineSegment
-                    End="-256.666666666667,24.2404006677796" />
+                    End="-193.666666666667,24.2404006677797" />
                   <mssgle:CubicBezierSegment
-                    Point1="-256.666666666667,24.2404006677796"
-                    Point2="-260.666666666667,24.2404006677796"
-                    Point3="-260.666666666667,28.2404006677796" />
+                    Point1="-193.666666666667,24.2404006677797"
+                    Point2="-197.666666666667,24.2404006677797"
+                    Point3="-197.666666666667,28.2404006677797" />
                   <mssgle:LineSegment
-                    End="-260.666666666667,52.5" />
+                    End="-197.666666666667,52.5000000000001" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-147.723880208333,29.2404006677796,34.78109375,9.5439453125"
+              BoundingBox="-116.223880208333,29.2404006677797,34.78109375,9.5439453125"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\SEQ Push to DWH\DFT Corporate Actions facts.Paths[Dividend]"
-          TopLeft="613.333333333333,557.5">
+          TopLeft="610.333333333333,557.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-38.3333333333333,60"
+              EndConnector="-38.3333333333334,60"
               Start="0,0"
-              End="-38.3333333333333,52.5">
+              End="-38.3333333333334,52.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
@@ -9368,26 +10273,26 @@ WHERE
                     Point2="0,24.2404006677796"
                     Point3="-4,24.2404006677796" />
                   <mssgle:LineSegment
-                    End="-34.3333333333333,24.2404006677796" />
+                    End="-34.3333333333334,24.2404006677796" />
                   <mssgle:CubicBezierSegment
-                    Point1="-34.3333333333333,24.2404006677796"
-                    Point2="-38.3333333333333,24.2404006677796"
-                    Point3="-38.3333333333333,28.2404006677796" />
+                    Point1="-34.3333333333334,24.2404006677796"
+                    Point2="-38.3333333333334,24.2404006677796"
+                    Point3="-38.3333333333334,28.2404006677796" />
                   <mssgle:LineSegment
-                    End="-38.3333333333333,52.5" />
+                    End="-38.3333333333334,52.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-38.5846549479166,29.2404006677796,38.8359765625,9.7490234375"
+              BoundingBox="-38.5846549479167,29.2404006677796,38.8359765625,9.7490234375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\SEQ Push to DWH\DFT Corporate Actions facts.Paths[Derived Column Output]"
-          TopLeft="575,455.5">
+          TopLeft="572,455.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -9409,87 +10314,245 @@ WHERE
         </EdgeLayout>
         <EdgeLayout
           Id="Package\SEQ Push to DWH\DFT Corporate Actions facts.Paths[Changing Attribute Updates Output]"
-          TopLeft="613.333333333333,761.5">
+          TopLeft="778.333333333333,863.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-38.3333333333333,60"
+              EndConnector="-208.333333333333,60"
               Start="0,0"
-              End="-38.3333333333333,52.5">
+              End="-208.333333333333,52.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,20.2404006677796" />
+                    End="0,20.3520782396088" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,20.2404006677796"
-                    Point2="0,24.2404006677796"
-                    Point3="-4,24.2404006677796" />
+                    Point1="0,20.3520782396088"
+                    Point2="0,24.3520782396088"
+                    Point3="-4,24.3520782396088" />
                   <mssgle:LineSegment
-                    End="-34.3333333333333,24.2404006677796" />
+                    End="-204.333333333333,24.3520782396088" />
                   <mssgle:CubicBezierSegment
-                    Point1="-34.3333333333333,24.2404006677796"
-                    Point2="-38.3333333333333,24.2404006677796"
-                    Point3="-38.3333333333333,28.2404006677796" />
+                    Point1="-204.333333333333,24.3520782396088"
+                    Point2="-208.333333333333,24.3520782396088"
+                    Point3="-208.333333333333,28.3520782396088" />
                   <mssgle:LineSegment
-                    End="-38.3333333333333,52.5" />
+                    End="-208.333333333333,52.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-97.7005729166667,29.2404006677796,157.0678125,11.6630859375"
+              BoundingBox="-182.700572916667,29.3520782396088,157.0678125,11.6630859375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="163,42"
-          Id="Package\SEQ Push to DWH\DFT Corporate Actions facts\Insert Destination"
-          TopLeft="5.50000000000006,719.5" />
         <EdgeLayout
-          Id="Package\SEQ Push to DWH\DFT Corporate Actions facts.Paths[New Output1]"
-          TopLeft="237.666666666667,659.5">
+          Id="Package\SEQ Push to DWH\DFT Corporate Actions facts.Paths[OLE DB Source Output]"
+          TopLeft="572,47.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-150.666666666667,60.0000000000001"
+              EndConnector="0,60"
               Start="0,0"
-              End="-150.666666666667,52.5000000000001">
+              End="0,52.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,20.2404006677797" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,20.2404006677797"
-                    Point2="0,24.2404006677797"
-                    Point3="-4,24.2404006677797" />
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ Push to DWH\DFT Corporate Actions facts.Paths[New Output]"
+          TopLeft="829.666666666667,863.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-25.6666666666666,60"
+              Start="0,0"
+              End="-25.6666666666666,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
                   <mssgle:LineSegment
-                    End="-146.666666666667,24.2404006677797" />
+                    End="0,20.3520782396088" />
                   <mssgle:CubicBezierSegment
-                    Point1="-146.666666666667,24.2404006677797"
-                    Point2="-150.666666666667,24.2404006677797"
-                    Point3="-150.666666666667,28.2404006677797" />
+                    Point1="0,20.3520782396088"
+                    Point2="0,24.3520782396088"
+                    Point3="-4,24.3520782396088" />
                   <mssgle:LineSegment
-                    End="-150.666666666667,52.5000000000001" />
+                    End="-21.6666666666666,24.3520782396088" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-21.6666666666666,24.3520782396088"
+                    Point2="-25.6666666666666,24.3520782396088"
+                    Point3="-25.6666666666666,28.3520782396088" />
+                  <mssgle:LineSegment
+                    End="-25.6666666666666,52.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-102.424720052083,29.2404006677797,54.1827734375,11.43359375"
+              BoundingBox="-39.9247200520833,29.3520782396088,54.1827734375,11.43359375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="166,42"
-          Id="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Command"
-          TopLeft="229,719.5" />
         <EdgeLayout
-          Id="Package\SEQ Push to DWH\DFT Corporate Actions facts.Paths[Changing Attribute Updates Output1]"
-          TopLeft="313.166666666667,659.5">
+          Id="Package\SEQ Push to DWH\DFT Corporate Actions facts.Paths[Lookup No Match Output1]"
+          TopLeft="553,761.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="19,60"
+              Start="0,0"
+              End="19,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.4660194174757" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.4660194174757"
+                    Point2="0,24.4660194174757"
+                    Point3="4,24.4660194174757" />
+                  <mssgle:LineSegment
+                    End="15,24.4660194174757" />
+                  <mssgle:CubicBezierSegment
+                    Point1="15,24.4660194174757"
+                    Point2="19,24.4660194174757"
+                    Point3="19,28.4660194174757" />
+                  <mssgle:LineSegment
+                    End="19,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-46.30638671875,29.4660194174757,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ Push to DWH\DFT Corporate Actions facts.Paths[Lookup No Match Output]"
+          TopLeft="318.5,659.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-227.5,60"
+              Start="0,0"
+              End="-227.5,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.5026178010471" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.5026178010471"
+                    Point2="0,24.5026178010471"
+                    Point3="-4,24.5026178010471" />
+                  <mssgle:LineSegment
+                    End="-223.5,24.5026178010471" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-223.5,24.5026178010471"
+                    Point2="-227.5,24.5026178010471"
+                    Point3="-227.5,28.5026178010471" />
+                  <mssgle:LineSegment
+                    End="-227.5,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-169.55638671875,29.5026178010471,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ Push to DWH\DFT Corporate Actions facts.Paths[Lookup Match Output5]"
+          TopLeft="591,761.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="213,60"
+              Start="0,0"
+              End="213,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.4660194174757" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.4660194174757"
+                    Point2="0,24.4660194174757"
+                    Point3="4,24.4660194174757" />
+                  <mssgle:LineSegment
+                    End="209,24.4660194174757" />
+                  <mssgle:CubicBezierSegment
+                    Point1="209,24.4660194174757"
+                    Point2="213,24.4660194174757"
+                    Point3="213,28.4660194174757" />
+                  <mssgle:LineSegment
+                    End="213,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="58.30861328125,29.4660194174757,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ Push to DWH\DFT Corporate Actions facts.Paths[Lookup Match Output4]"
+          TopLeft="353.5,659.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-15.5,60"
+              Start="0,0"
+              End="-15.5,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.5026178010471" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.5026178010471"
+                    Point2="0,24.5026178010471"
+                    Point3="-4,24.5026178010471" />
+                  <mssgle:LineSegment
+                    End="-11.5,24.5026178010471" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-11.5,24.5026178010471"
+                    Point2="-15.5,24.5026178010471"
+                    Point3="-15.5,28.5026178010471" />
+                  <mssgle:LineSegment
+                    End="-15.5,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-55.94138671875,29.5026178010471,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ Push to DWH\DFT Corporate Actions facts.Paths[Lookup Match Output3]"
+          TopLeft="572,659.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -9507,13 +10570,106 @@ WHERE
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-78.53390625,20.41845703125,157.0678125,11.6630859375"
+              BoundingBox="-48.19138671875,20.4453125,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="163,42"
+          Id="Package\SEQ Push to DWH\DFT Corporate Actions facts\Insert Destination"
+          TopLeft="31.5000000000001,821.5" />
+        <EdgeLayout
+          Id="Package\SEQ Push to DWH\DFT Corporate Actions facts.Paths[New Output1]"
+          TopLeft="305.833333333333,761.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-192.833333333333,60"
+              Start="0,0"
+              End="-192.833333333333,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.284304047384" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.284304047384"
+                    Point2="0,24.284304047384"
+                    Point3="-4,24.284304047384" />
+                  <mssgle:LineSegment
+                    End="-188.833333333333,24.284304047384" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-188.833333333333,24.284304047384"
+                    Point2="-192.833333333333,24.284304047384"
+                    Point3="-192.833333333333,28.284304047384" />
+                  <mssgle:LineSegment
+                    End="-192.833333333333,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-123.508053385417,29.284304047384,54.1827734375,11.43359375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="166,42"
+          Id="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Command"
+          TopLeft="255,821.5" />
+        <EdgeLayout
+          Id="Package\SEQ Push to DWH\DFT Corporate Actions facts.Paths[Changing Attribute Updates Output1]"
+          TopLeft="370.166666666667,761.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-32.1666666666666,60"
+              Start="0,0"
+              End="-32.1666666666666,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.284304047384" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.284304047384"
+                    Point2="0,24.284304047384"
+                    Point3="-4,24.284304047384" />
+                  <mssgle:LineSegment
+                    End="-28.1666666666666,24.284304047384" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-28.1666666666666,24.284304047384"
+                    Point2="-32.1666666666666,24.284304047384"
+                    Point3="-32.1666666666666,28.284304047384" />
+                  <mssgle:LineSegment
+                    End="-32.1666666666666,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-94.6172395833333,29.284304047384,157.0678125,11.6630859375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\SEQ Push to DWH\DFT Corporate Actions facts\LKP CorporateActionType">
     <Properties>
@@ -9538,42 +10694,6 @@ WHERE
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\SEQ Push to DWH\DFT Corporate Actions facts\LKP CurrencyID">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:string">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string"></Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:string">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\SEQ Push to DWH\DFT Corporate Actions facts\SRC STG CorporateAction Process">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
     design-time-name="Package\SEQ Push to DWH\DFT Corporate Actions facts\SCD FactDividend">
     <Properties>
       <Property>
@@ -9587,12 +10707,6 @@ WHERE
     &lt;InputColumnToDBColumn&gt;
       &lt;IdentificationString&gt;SRC STG CorporateAction Process.Outputs[OLE DB Source Output].Columns[AdditionalDescription]&lt;/IdentificationString&gt;
       &lt;ColumnName&gt;AdditionalDescription&lt;/ColumnName&gt;
-      &lt;KeyType&gt;None&lt;/KeyType&gt;
-      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
-    &lt;/InputColumnToDBColumn&gt;
-    &lt;InputColumnToDBColumn&gt;
-      &lt;IdentificationString&gt;DER BatchID.Outputs[Derived Column Output].Columns[BatchID]&lt;/IdentificationString&gt;
-      &lt;ColumnName&gt;BatchID&lt;/ColumnName&gt;
       &lt;KeyType&gt;None&lt;/KeyType&gt;
       &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
     &lt;/InputColumnToDBColumn&gt;
@@ -9731,6 +10845,111 @@ WHERE
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
+    design-time-name="Package\SEQ Push to DWH\DFT Corporate Actions facts\Lookup">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[DWH].[FactCorporateAction]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\SEQ Push to DWH\DFT Corporate Actions facts\LKP CurrencyID">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination 1">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\SEQ Push to DWH\DFT Corporate Actions facts\LKP Diviidend Type">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\SEQ Push to DWH\DFT Corporate Actions facts\Lookup 2">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[DWH].[FactDividend]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
     design-time-name="Package\SEQ Push to DWH\DFT Corporate Actions facts\SCD FactCorportateAction">
     <Properties>
       <Property>
@@ -9751,7 +10970,7 @@ WHERE
       &lt;IdentificationString&gt;DER BatchID.Outputs[Derived Column Output].Columns[BatchID]&lt;/IdentificationString&gt;
       &lt;ColumnName&gt;BatchID&lt;/ColumnName&gt;
       &lt;KeyType&gt;None&lt;/KeyType&gt;
-      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
+      &lt;ChangeType&gt;None&lt;/ChangeType&gt;
     &lt;/InputColumnToDBColumn&gt;
     &lt;InputColumnToDBColumn&gt;
       &lt;IdentificationString&gt;SRC STG CorporateAction Process.Outputs[OLE DB Source Output].Columns[Conditional]&lt;/IdentificationString&gt;
@@ -9805,7 +11024,7 @@ WHERE
       &lt;IdentificationString&gt;LKP InstrumentID.Outputs[Lookup Match Output].Columns[InstrumentID]&lt;/IdentificationString&gt;
       &lt;ColumnName&gt;InstrumentID&lt;/ColumnName&gt;
       &lt;KeyType&gt;None&lt;/KeyType&gt;
-      &lt;ChangeType&gt;FixedAttribute&lt;/ChangeType&gt;
+      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
     &lt;/InputColumnToDBColumn&gt;
     &lt;InputColumnToDBColumn&gt;
       &lt;IdentificationString&gt;SRC STG CorporateAction Process.Outputs[OLE DB Source Output].Columns[LatestDateForApplicationNilPaidID]&lt;/IdentificationString&gt;
@@ -9870,25 +11089,15 @@ WHERE
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\SEQ Push to DWH\DFT Corporate Actions facts\LKP Diviidend Type">
+    design-time-name="Package\SEQ Push to DWH\DFT Corporate Actions facts\SRC STG CorporateAction Process">
     <Properties>
       <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:string">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string"></Value>
+        <Name>DataSourceViewID</Name>
       </Property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:string">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
+          type="q2:string">Table</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
@@ -10146,7 +11355,7 @@ WHERE
     design-time-name="Package\SEQ Staging Corporate Action\DFT XT Corporate Action">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="213,42"
           Id="Package\SEQ Staging Corporate Action\DFT XT Corporate Action\DST STG XtCorportateAction"
@@ -10170,7 +11379,9 @@ WHERE
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>

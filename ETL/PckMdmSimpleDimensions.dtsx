@@ -11,8 +11,8 @@
   DTS:LocaleID="6153"
   DTS:ObjectName="PckMdmSimpleDimensions"
   DTS:PackageType="5"
-  DTS:VersionBuild="92"
-  DTS:VersionGUID="{64BA48C2-9528-4DA9-B224-EE52C00665D9}">
+  DTS:VersionBuild="96"
+  DTS:VersionGUID="{99C810B5-1854-431A-BC22-478DC230936E}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -11121,6 +11121,10 @@ where [refTable].[TraderCode] = ? and [refTable].[BrokerCode] = ?</property>
                 <ParameterName>Message</ParameterName>
                 <BindedVariableOrParameterName>User::ProcessMessageDateUpdate</BindedVariableOrParameterName>
               </ParameterAssignment>
+              <ParameterAssignment>
+                <ParameterName>BatchID</ParameterName>
+                <BindedVariableOrParameterName>User::BatchID1</BindedVariableOrParameterName>
+              </ParameterAssignment>
             </ExecutePackageTask>
           </DTS:ObjectData>
         </DTS:Executable>
@@ -11368,7 +11372,7 @@ where [refTable].[TraderCode] = ? and [refTable].[BrokerCode] = ?</property>
                           refId="Package\SEQ Simple Dimensions\DFT IndexType\Insert Destination.Inputs[OLE DB Destination Input].Columns[ISIN]"
                           cachedCodepage="1252"
                           cachedDataType="str"
-                          cachedLength="7"
+                          cachedLength="12"
                           cachedName="ISIN"
                           externalMetadataColumnId="Package\SEQ Simple Dimensions\DFT IndexType\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[ISIN]"
                           lineageId="Package\SEQ Simple Dimensions\DFT IndexType\SRC MDM IndexType.Outputs[OLE DB Source Output].Columns[ISIN]" />
@@ -11376,7 +11380,7 @@ where [refTable].[TraderCode] = ? and [refTable].[BrokerCode] = ?</property>
                           refId="Package\SEQ Simple Dimensions\DFT IndexType\Insert Destination.Inputs[OLE DB Destination Input].Columns[SEDOL]"
                           cachedCodepage="1252"
                           cachedDataType="str"
-                          cachedLength="12"
+                          cachedLength="7"
                           cachedName="SEDOL"
                           externalMetadataColumnId="Package\SEQ Simple Dimensions\DFT IndexType\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[SEDOL]"
                           lineageId="Package\SEQ Simple Dimensions\DFT IndexType\SRC MDM IndexType.Outputs[OLE DB Source Output].Columns[SEDOL]" />
@@ -11384,7 +11388,7 @@ where [refTable].[TraderCode] = ? and [refTable].[BrokerCode] = ?</property>
                           refId="Package\SEQ Simple Dimensions\DFT IndexType\Insert Destination.Inputs[OLE DB Destination Input].Columns[ReturnISIN]"
                           cachedCodepage="1252"
                           cachedDataType="str"
-                          cachedLength="7"
+                          cachedLength="12"
                           cachedName="ReturnISIN"
                           externalMetadataColumnId="Package\SEQ Simple Dimensions\DFT IndexType\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[ReturnISIN]"
                           lineageId="Package\SEQ Simple Dimensions\DFT IndexType\SRC MDM IndexType.Outputs[OLE DB Source Output].Columns[ReturnISIN]" />
@@ -11392,7 +11396,7 @@ where [refTable].[TraderCode] = ? and [refTable].[BrokerCode] = ?</property>
                           refId="Package\SEQ Simple Dimensions\DFT IndexType\Insert Destination.Inputs[OLE DB Destination Input].Columns[ReturnSEDOL]"
                           cachedCodepage="1252"
                           cachedDataType="str"
-                          cachedLength="12"
+                          cachedLength="7"
                           cachedName="ReturnSEDOL"
                           externalMetadataColumnId="Package\SEQ Simple Dimensions\DFT IndexType\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[ReturnSEDOL]"
                           lineageId="Package\SEQ Simple Dimensions\DFT IndexType\SRC MDM IndexType.Outputs[OLE DB Source Output].Columns[ReturnSEDOL]" />
@@ -11419,25 +11423,25 @@ where [refTable].[TraderCode] = ? and [refTable].[BrokerCode] = ?</property>
                           refId="Package\SEQ Simple Dimensions\DFT IndexType\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[ISIN]"
                           codePage="1252"
                           dataType="str"
-                          length="7"
+                          length="12"
                           name="ISIN" />
                         <externalMetadataColumn
                           refId="Package\SEQ Simple Dimensions\DFT IndexType\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[SEDOL]"
                           codePage="1252"
                           dataType="str"
-                          length="12"
+                          length="7"
                           name="SEDOL" />
                         <externalMetadataColumn
                           refId="Package\SEQ Simple Dimensions\DFT IndexType\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[ReturnISIN]"
                           codePage="1252"
                           dataType="str"
-                          length="7"
+                          length="12"
                           name="ReturnISIN" />
                         <externalMetadataColumn
                           refId="Package\SEQ Simple Dimensions\DFT IndexType\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[ReturnSEDOL]"
                           codePage="1252"
                           dataType="str"
-                          length="12"
+                          length="7"
                           name="ReturnSEDOL" />
                       </externalMetadataColumns>
                     </input>
@@ -11527,7 +11531,7 @@ where [refTable].[TraderCode] = ? and [refTable].[BrokerCode] = ?</property>
                           refId="Package\SEQ Simple Dimensions\DFT IndexType\OLE DB Command.Inputs[OLE DB Command Input].Columns[ISIN]"
                           cachedCodepage="1252"
                           cachedDataType="str"
-                          cachedLength="7"
+                          cachedLength="12"
                           cachedName="ISIN"
                           externalMetadataColumnId="Package\SEQ Simple Dimensions\DFT IndexType\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
                           lineageId="Package\SEQ Simple Dimensions\DFT IndexType\SRC MDM IndexType.Outputs[OLE DB Source Output].Columns[ISIN]" />
@@ -11535,7 +11539,7 @@ where [refTable].[TraderCode] = ? and [refTable].[BrokerCode] = ?</property>
                           refId="Package\SEQ Simple Dimensions\DFT IndexType\OLE DB Command.Inputs[OLE DB Command Input].Columns[ReturnISIN]"
                           cachedCodepage="1252"
                           cachedDataType="str"
-                          cachedLength="7"
+                          cachedLength="12"
                           cachedName="ReturnISIN"
                           externalMetadataColumnId="Package\SEQ Simple Dimensions\DFT IndexType\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
                           lineageId="Package\SEQ Simple Dimensions\DFT IndexType\SRC MDM IndexType.Outputs[OLE DB Source Output].Columns[ReturnISIN]" />
@@ -11543,7 +11547,7 @@ where [refTable].[TraderCode] = ? and [refTable].[BrokerCode] = ?</property>
                           refId="Package\SEQ Simple Dimensions\DFT IndexType\OLE DB Command.Inputs[OLE DB Command Input].Columns[ReturnSEDOL]"
                           cachedCodepage="1252"
                           cachedDataType="str"
-                          cachedLength="12"
+                          cachedLength="7"
                           cachedName="ReturnSEDOL"
                           externalMetadataColumnId="Package\SEQ Simple Dimensions\DFT IndexType\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
                           lineageId="Package\SEQ Simple Dimensions\DFT IndexType\SRC MDM IndexType.Outputs[OLE DB Source Output].Columns[ReturnSEDOL]" />
@@ -11551,7 +11555,7 @@ where [refTable].[TraderCode] = ? and [refTable].[BrokerCode] = ?</property>
                           refId="Package\SEQ Simple Dimensions\DFT IndexType\OLE DB Command.Inputs[OLE DB Command Input].Columns[SEDOL]"
                           cachedCodepage="1252"
                           cachedDataType="str"
-                          cachedLength="12"
+                          cachedLength="7"
                           cachedName="SEDOL"
                           externalMetadataColumnId="Package\SEQ Simple Dimensions\DFT IndexType\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_4]"
                           lineageId="Package\SEQ Simple Dimensions\DFT IndexType\SRC MDM IndexType.Outputs[OLE DB Source Output].Columns[SEDOL]" />
@@ -11575,7 +11579,7 @@ where [refTable].[TraderCode] = ? and [refTable].[BrokerCode] = ?</property>
                           refId="Package\SEQ Simple Dimensions\DFT IndexType\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
                           codePage="1252"
                           dataType="str"
-                          length="7"
+                          length="12"
                           name="Param_1">
                           <properties>
                             <property
@@ -11588,7 +11592,7 @@ where [refTable].[TraderCode] = ? and [refTable].[BrokerCode] = ?</property>
                           refId="Package\SEQ Simple Dimensions\DFT IndexType\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
                           codePage="1252"
                           dataType="str"
-                          length="7"
+                          length="12"
                           name="Param_2">
                           <properties>
                             <property
@@ -11601,7 +11605,7 @@ where [refTable].[TraderCode] = ? and [refTable].[BrokerCode] = ?</property>
                           refId="Package\SEQ Simple Dimensions\DFT IndexType\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
                           codePage="1252"
                           dataType="str"
-                          length="12"
+                          length="7"
                           name="Param_3">
                           <properties>
                             <property
@@ -11614,7 +11618,7 @@ where [refTable].[TraderCode] = ? and [refTable].[BrokerCode] = ?</property>
                           refId="Package\SEQ Simple Dimensions\DFT IndexType\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_4]"
                           codePage="1252"
                           dataType="str"
-                          length="12"
+                          length="7"
                           name="Param_4">
                           <properties>
                             <property
@@ -11765,7 +11769,7 @@ where [refTable].[TraderCode] = ? and [refTable].[BrokerCode] = ?</property>
                           refId="Package\SEQ Simple Dimensions\DFT IndexType\SCD Dim IndexType.Inputs[Slowly Changing Dimension Input].Columns[ISIN]"
                           cachedCodepage="1252"
                           cachedDataType="str"
-                          cachedLength="7"
+                          cachedLength="12"
                           cachedName="ISIN"
                           externalMetadataColumnId="Package\SEQ Simple Dimensions\DFT IndexType\SCD Dim IndexType.Inputs[Slowly Changing Dimension Input].ExternalColumns[ISIN]"
                           lineageId="Package\SEQ Simple Dimensions\DFT IndexType\SRC MDM IndexType.Outputs[OLE DB Source Output].Columns[ISIN]">
@@ -11780,7 +11784,7 @@ where [refTable].[TraderCode] = ? and [refTable].[BrokerCode] = ?</property>
                           refId="Package\SEQ Simple Dimensions\DFT IndexType\SCD Dim IndexType.Inputs[Slowly Changing Dimension Input].Columns[ReturnISIN]"
                           cachedCodepage="1252"
                           cachedDataType="str"
-                          cachedLength="7"
+                          cachedLength="12"
                           cachedName="ReturnISIN"
                           externalMetadataColumnId="Package\SEQ Simple Dimensions\DFT IndexType\SCD Dim IndexType.Inputs[Slowly Changing Dimension Input].ExternalColumns[ReturnISIN]"
                           lineageId="Package\SEQ Simple Dimensions\DFT IndexType\SRC MDM IndexType.Outputs[OLE DB Source Output].Columns[ReturnISIN]">
@@ -11795,7 +11799,7 @@ where [refTable].[TraderCode] = ? and [refTable].[BrokerCode] = ?</property>
                           refId="Package\SEQ Simple Dimensions\DFT IndexType\SCD Dim IndexType.Inputs[Slowly Changing Dimension Input].Columns[ReturnSEDOL]"
                           cachedCodepage="1252"
                           cachedDataType="str"
-                          cachedLength="12"
+                          cachedLength="7"
                           cachedName="ReturnSEDOL"
                           externalMetadataColumnId="Package\SEQ Simple Dimensions\DFT IndexType\SCD Dim IndexType.Inputs[Slowly Changing Dimension Input].ExternalColumns[ReturnSEDOL]"
                           lineageId="Package\SEQ Simple Dimensions\DFT IndexType\SRC MDM IndexType.Outputs[OLE DB Source Output].Columns[ReturnSEDOL]">
@@ -11810,7 +11814,7 @@ where [refTable].[TraderCode] = ? and [refTable].[BrokerCode] = ?</property>
                           refId="Package\SEQ Simple Dimensions\DFT IndexType\SCD Dim IndexType.Inputs[Slowly Changing Dimension Input].Columns[SEDOL]"
                           cachedCodepage="1252"
                           cachedDataType="str"
-                          cachedLength="12"
+                          cachedLength="7"
                           cachedName="SEDOL"
                           externalMetadataColumnId="Package\SEQ Simple Dimensions\DFT IndexType\SCD Dim IndexType.Inputs[Slowly Changing Dimension Input].ExternalColumns[SEDOL]"
                           lineageId="Package\SEQ Simple Dimensions\DFT IndexType\SRC MDM IndexType.Outputs[OLE DB Source Output].Columns[SEDOL]">
@@ -11840,25 +11844,25 @@ where [refTable].[TraderCode] = ? and [refTable].[BrokerCode] = ?</property>
                           refId="Package\SEQ Simple Dimensions\DFT IndexType\SCD Dim IndexType.Inputs[Slowly Changing Dimension Input].ExternalColumns[ISIN]"
                           codePage="1252"
                           dataType="str"
-                          length="7"
+                          length="12"
                           name="ISIN" />
                         <externalMetadataColumn
                           refId="Package\SEQ Simple Dimensions\DFT IndexType\SCD Dim IndexType.Inputs[Slowly Changing Dimension Input].ExternalColumns[ReturnISIN]"
                           codePage="1252"
                           dataType="str"
-                          length="7"
+                          length="12"
                           name="ReturnISIN" />
                         <externalMetadataColumn
                           refId="Package\SEQ Simple Dimensions\DFT IndexType\SCD Dim IndexType.Inputs[Slowly Changing Dimension Input].ExternalColumns[ReturnSEDOL]"
                           codePage="1252"
                           dataType="str"
-                          length="12"
+                          length="7"
                           name="ReturnSEDOL" />
                         <externalMetadataColumn
                           refId="Package\SEQ Simple Dimensions\DFT IndexType\SCD Dim IndexType.Inputs[Slowly Changing Dimension Input].ExternalColumns[SEDOL]"
                           codePage="1252"
                           dataType="str"
-                          length="12"
+                          length="7"
                           name="SEDOL" />
                       </externalMetadataColumns>
                     </input>
@@ -12004,7 +12008,7 @@ where [refTable].[TraderCode] = ? and [refTable].[BrokerCode] = ?</property>
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
                           externalMetadataColumnId="Package\SEQ Simple Dimensions\DFT IndexType\SRC MDM IndexType.Outputs[OLE DB Source Output].ExternalColumns[ISIN]"
-                          length="7"
+                          length="12"
                           lineageId="Package\SEQ Simple Dimensions\DFT IndexType\SRC MDM IndexType.Outputs[OLE DB Source Output].Columns[ISIN]"
                           name="ISIN"
                           truncationRowDisposition="FailComponent" />
@@ -12015,7 +12019,7 @@ where [refTable].[TraderCode] = ? and [refTable].[BrokerCode] = ?</property>
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
                           externalMetadataColumnId="Package\SEQ Simple Dimensions\DFT IndexType\SRC MDM IndexType.Outputs[OLE DB Source Output].ExternalColumns[SEDOL]"
-                          length="12"
+                          length="7"
                           lineageId="Package\SEQ Simple Dimensions\DFT IndexType\SRC MDM IndexType.Outputs[OLE DB Source Output].Columns[SEDOL]"
                           name="SEDOL"
                           truncationRowDisposition="FailComponent" />
@@ -12026,7 +12030,7 @@ where [refTable].[TraderCode] = ? and [refTable].[BrokerCode] = ?</property>
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
                           externalMetadataColumnId="Package\SEQ Simple Dimensions\DFT IndexType\SRC MDM IndexType.Outputs[OLE DB Source Output].ExternalColumns[ReturnISIN]"
-                          length="7"
+                          length="12"
                           lineageId="Package\SEQ Simple Dimensions\DFT IndexType\SRC MDM IndexType.Outputs[OLE DB Source Output].Columns[ReturnISIN]"
                           name="ReturnISIN"
                           truncationRowDisposition="FailComponent" />
@@ -12037,7 +12041,7 @@ where [refTable].[TraderCode] = ? and [refTable].[BrokerCode] = ?</property>
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
                           externalMetadataColumnId="Package\SEQ Simple Dimensions\DFT IndexType\SRC MDM IndexType.Outputs[OLE DB Source Output].ExternalColumns[ReturnSEDOL]"
-                          length="12"
+                          length="7"
                           lineageId="Package\SEQ Simple Dimensions\DFT IndexType\SRC MDM IndexType.Outputs[OLE DB Source Output].Columns[ReturnSEDOL]"
                           name="ReturnSEDOL"
                           truncationRowDisposition="FailComponent" />
@@ -12060,25 +12064,25 @@ where [refTable].[TraderCode] = ? and [refTable].[BrokerCode] = ?</property>
                           refId="Package\SEQ Simple Dimensions\DFT IndexType\SRC MDM IndexType.Outputs[OLE DB Source Output].ExternalColumns[ISIN]"
                           codePage="1252"
                           dataType="str"
-                          length="7"
+                          length="12"
                           name="ISIN" />
                         <externalMetadataColumn
                           refId="Package\SEQ Simple Dimensions\DFT IndexType\SRC MDM IndexType.Outputs[OLE DB Source Output].ExternalColumns[SEDOL]"
                           codePage="1252"
                           dataType="str"
-                          length="12"
+                          length="7"
                           name="SEDOL" />
                         <externalMetadataColumn
                           refId="Package\SEQ Simple Dimensions\DFT IndexType\SRC MDM IndexType.Outputs[OLE DB Source Output].ExternalColumns[ReturnISIN]"
                           codePage="1252"
                           dataType="str"
-                          length="7"
+                          length="12"
                           name="ReturnISIN" />
                         <externalMetadataColumn
                           refId="Package\SEQ Simple Dimensions\DFT IndexType\SRC MDM IndexType.Outputs[OLE DB Source Output].ExternalColumns[ReturnSEDOL]"
                           codePage="1252"
                           dataType="str"
-                          length="12"
+                          length="7"
                           name="ReturnSEDOL" />
                       </externalMetadataColumns>
                     </output>
@@ -12087,6 +12091,18 @@ where [refTable].[TraderCode] = ? and [refTable].[BrokerCode] = ?</property>
                       isErrorOut="true"
                       name="OLE DB Source Error Output">
                       <outputColumns>
+                        <outputColumn
+                          refId="Package\SEQ Simple Dimensions\DFT IndexType\SRC MDM IndexType.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\SEQ Simple Dimensions\DFT IndexType\SRC MDM IndexType.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\SEQ Simple Dimensions\DFT IndexType\SRC MDM IndexType.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\SEQ Simple Dimensions\DFT IndexType\SRC MDM IndexType.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
                         <outputColumn
                           refId="Package\SEQ Simple Dimensions\DFT IndexType\SRC MDM IndexType.Outputs[OLE DB Source Error Output].Columns[IndexCode]"
                           codePage="1252"
@@ -12105,42 +12121,30 @@ where [refTable].[TraderCode] = ? and [refTable].[BrokerCode] = ?</property>
                           refId="Package\SEQ Simple Dimensions\DFT IndexType\SRC MDM IndexType.Outputs[OLE DB Source Error Output].Columns[ISIN]"
                           codePage="1252"
                           dataType="str"
-                          length="7"
+                          length="12"
                           lineageId="Package\SEQ Simple Dimensions\DFT IndexType\SRC MDM IndexType.Outputs[OLE DB Source Error Output].Columns[ISIN]"
                           name="ISIN" />
                         <outputColumn
                           refId="Package\SEQ Simple Dimensions\DFT IndexType\SRC MDM IndexType.Outputs[OLE DB Source Error Output].Columns[SEDOL]"
                           codePage="1252"
                           dataType="str"
-                          length="12"
+                          length="7"
                           lineageId="Package\SEQ Simple Dimensions\DFT IndexType\SRC MDM IndexType.Outputs[OLE DB Source Error Output].Columns[SEDOL]"
                           name="SEDOL" />
                         <outputColumn
                           refId="Package\SEQ Simple Dimensions\DFT IndexType\SRC MDM IndexType.Outputs[OLE DB Source Error Output].Columns[ReturnISIN]"
                           codePage="1252"
                           dataType="str"
-                          length="7"
+                          length="12"
                           lineageId="Package\SEQ Simple Dimensions\DFT IndexType\SRC MDM IndexType.Outputs[OLE DB Source Error Output].Columns[ReturnISIN]"
                           name="ReturnISIN" />
                         <outputColumn
                           refId="Package\SEQ Simple Dimensions\DFT IndexType\SRC MDM IndexType.Outputs[OLE DB Source Error Output].Columns[ReturnSEDOL]"
                           codePage="1252"
                           dataType="str"
-                          length="12"
+                          length="7"
                           lineageId="Package\SEQ Simple Dimensions\DFT IndexType\SRC MDM IndexType.Outputs[OLE DB Source Error Output].Columns[ReturnSEDOL]"
                           name="ReturnSEDOL" />
-                        <outputColumn
-                          refId="Package\SEQ Simple Dimensions\DFT IndexType\SRC MDM IndexType.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
-                          dataType="i4"
-                          lineageId="Package\SEQ Simple Dimensions\DFT IndexType\SRC MDM IndexType.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
-                          name="ErrorCode"
-                          specialFlags="1" />
-                        <outputColumn
-                          refId="Package\SEQ Simple Dimensions\DFT IndexType\SRC MDM IndexType.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
-                          dataType="i4"
-                          lineageId="Package\SEQ Simple Dimensions\DFT IndexType\SRC MDM IndexType.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
-                          name="ErrorColumn"
-                          specialFlags="2" />
                       </outputColumns>
                       <externalMetadataColumns />
                     </output>
@@ -15322,7 +15326,7 @@ SELECT
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="64" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="64" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="216,42"
           Id="Package\SEQ Complex dimensions\DFT Currency"
@@ -15348,7 +15352,7 @@ SELECT
           TopLeft="125.5,61.8333333333333">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="0,53.9999999999997"
               Start="0,0"
               End="0,46.4999999999997">
@@ -15401,7 +15405,7 @@ SELECT
           TopLeft="225.666666666667,161.6">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="0,52.6"
               Start="0,0"
               End="0,45.1">
@@ -15423,7 +15427,7 @@ SELECT
           TopLeft="225.666666666667,256.2">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="0,52.6"
               Start="0,0"
               End="0,45.1">
@@ -15445,7 +15449,7 @@ SELECT
           TopLeft="225.666666666667,67">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="0,52.6"
               Start="0,0"
               End="0,45.1">
@@ -15469,7 +15473,7 @@ SELECT
           TopLeft="225.666666666667,350.8">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="0,52.6"
               Start="0,0"
               End="0,45.1">
@@ -15491,7 +15495,7 @@ SELECT
           TopLeft="225.666666666667,445.4">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="0,52.6"
               Start="0,0"
               End="0,45.1">
@@ -15562,7 +15566,7 @@ SELECT
           TopLeft="199,44">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="84,0"
               Start="0,0"
               End="76.5,0">
@@ -15595,7 +15599,7 @@ SELECT
           TopLeft="572.916666666665,462.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="0,45.5"
               Start="0,0"
               End="0,38">
@@ -15617,7 +15621,7 @@ SELECT
           TopLeft="574.722222222223,1131">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="0,48.5"
               Start="0,0"
               End="0,41">
@@ -15639,7 +15643,7 @@ SELECT
           TopLeft="582.361111111112,67.2777777777777">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="0,58.2222222222223"
               Start="0,0"
               End="0,50.7222222222223">
@@ -15661,7 +15665,7 @@ SELECT
           TopLeft="580.972222222223,1528.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="0,73.5"
               Start="0,0"
               End="0,66">
@@ -15683,7 +15687,7 @@ SELECT
           TopLeft="577.527777777776,263.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="0,36"
               Start="0,0"
               End="0,28.5">
@@ -15719,7 +15723,7 @@ SELECT
     design-time-name="Package\SEQ Complex dimensions\DFT Currency">
     <LayoutInfo>
       <GraphLayout
-        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="163,42"
           Id="Package\SEQ Complex dimensions\DFT Currency\Insert Destination"
@@ -15740,6 +15744,86 @@ SELECT
           Size="185,42"
           Id="Package\SEQ Complex dimensions\DFT Currency\DER Currency Inferred"
           TopLeft="219.5,107.5" />
+        <EdgeLayout
+          Id="Package\SEQ Complex dimensions\DFT Currency.Paths[New Output]"
+          TopLeft="NaN,NaN">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="{assembly:Null}"
+              Start="0,0"
+              End="0,0">
+              <mssgle:Curve.Segments>
+                <assembly:Null />
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ Complex dimensions\DFT Currency.Paths[Derived Column Output]"
+          TopLeft="NaN,NaN">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="{assembly:Null}"
+              Start="0,0"
+              End="0,0">
+              <mssgle:Curve.Segments>
+                <assembly:Null />
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ Complex dimensions\DFT Currency.Paths[Changing Attribute Updates Output]"
+          TopLeft="NaN,NaN">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="{assembly:Null}"
+              Start="0,0"
+              End="0,0">
+              <mssgle:Curve.Segments>
+                <assembly:Null />
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ Complex dimensions\DFT Currency.Paths[OLE DB Source Output]"
+          TopLeft="NaN,NaN">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="{assembly:Null}"
+              Start="0,0"
+              End="0,0">
+              <mssgle:Curve.Segments>
+                <assembly:Null />
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
@@ -15815,7 +15899,7 @@ SELECT
     design-time-name="Package\SEQ Complex dimensions\DFT Dim Broker">
     <LayoutInfo>
       <GraphLayout
-        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="196,42"
           Id="Package\SEQ Complex dimensions\DFT Dim Broker\Row Count"
@@ -15848,6 +15932,146 @@ SELECT
           Size="196,42"
           Id="Package\SEQ Complex dimensions\DFT Dim Broker\CSPL Broker Changes"
           TopLeft="451.5,316.5" />
+        <EdgeLayout
+          Id="Package\SEQ Complex dimensions\DFT Dim Broker.Paths[Lookup No Match Output]"
+          TopLeft="NaN,NaN">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="{assembly:Null}"
+              Start="0,0"
+              End="0,0">
+              <mssgle:Curve.Segments>
+                <assembly:Null />
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ Complex dimensions\DFT Dim Broker.Paths[Lookup Match Output]"
+          TopLeft="NaN,NaN">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="{assembly:Null}"
+              Start="0,0"
+              End="0,0">
+              <mssgle:Curve.Segments>
+                <assembly:Null />
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ Complex dimensions\DFT Dim Broker.Paths[DetailsSame]"
+          TopLeft="NaN,NaN">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="{assembly:Null}"
+              Start="0,0"
+              End="0,0">
+              <mssgle:Curve.Segments>
+                <assembly:Null />
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ Complex dimensions\DFT Dim Broker.Paths[DetailsDifferent]"
+          TopLeft="NaN,NaN">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="{assembly:Null}"
+              Start="0,0"
+              End="0,0">
+              <mssgle:Curve.Segments>
+                <assembly:Null />
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ Complex dimensions\DFT Dim Broker.Paths[Derived Column Output]"
+          TopLeft="NaN,NaN">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="{assembly:Null}"
+              Start="0,0"
+              End="0,0">
+              <mssgle:Curve.Segments>
+                <assembly:Null />
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ Complex dimensions\DFT Dim Broker.Paths[OLE DB Source Output]"
+          TopLeft="NaN,NaN">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="{assembly:Null}"
+              Start="0,0"
+              End="0,0">
+              <mssgle:Curve.Segments>
+                <assembly:Null />
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ Complex dimensions\DFT Dim Broker.Paths[OLE DB Command Output]"
+          TopLeft="NaN,NaN">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="{assembly:Null}"
+              Start="0,0"
+              End="0,0">
+              <mssgle:Curve.Segments>
+                <assembly:Null />
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
@@ -15917,7 +16141,7 @@ SELECT
     design-time-name="Package\SEQ Complex dimensions\DFT Tme">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="166,42"
           Id="Package\SEQ Complex dimensions\DFT Tme\OLE DB Command"
@@ -15934,6 +16158,66 @@ SELECT
           Size="144,42"
           Id="Package\SEQ Complex dimensions\DFT Tme\SCD DimTime"
           TopLeft="240,107.5" />
+        <EdgeLayout
+          Id="Package\SEQ Complex dimensions\DFT Tme.Paths[OLE DB Source Output]"
+          TopLeft="NaN,NaN">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="{assembly:Null}"
+              Start="0,0"
+              End="0,0">
+              <mssgle:Curve.Segments>
+                <assembly:Null />
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ Complex dimensions\DFT Tme.Paths[New Output]"
+          TopLeft="NaN,NaN">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="{assembly:Null}"
+              Start="0,0"
+              End="0,0">
+              <mssgle:Curve.Segments>
+                <assembly:Null />
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ Complex dimensions\DFT Tme.Paths[Changing Attribute Updates Output]"
+          TopLeft="NaN,NaN">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="{assembly:Null}"
+              Start="0,0"
+              End="0,0">
+              <mssgle:Curve.Segments>
+                <assembly:Null />
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
@@ -16017,7 +16301,7 @@ SELECT
     design-time-name="Package\SEQ Complex dimensions\DFT Trader">
     <LayoutInfo>
       <GraphLayout
-        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="228,42"
           Id="Package\SEQ Complex dimensions\DFT Trader\DST DWH DimTrader"
@@ -16054,6 +16338,166 @@ SELECT
           Size="228,42"
           Id="Package\SEQ Complex dimensions\DFT Trader\CSPL DimTrader new"
           TopLeft="261,180" />
+        <EdgeLayout
+          Id="Package\SEQ Complex dimensions\DFT Trader.Paths[Trader type changed]"
+          TopLeft="NaN,NaN">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="{assembly:Null}"
+              Start="0,0"
+              End="0,0">
+              <mssgle:Curve.Segments>
+                <assembly:Null />
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ Complex dimensions\DFT Trader.Paths[OLE DB Source Output]"
+          TopLeft="NaN,NaN">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="{assembly:Null}"
+              Start="0,0"
+              End="0,0">
+              <mssgle:Curve.Segments>
+                <assembly:Null />
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ Complex dimensions\DFT Trader.Paths[New Trader]"
+          TopLeft="NaN,NaN">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="{assembly:Null}"
+              Start="0,0"
+              End="0,0">
+              <mssgle:Curve.Segments>
+                <assembly:Null />
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ Complex dimensions\DFT Trader.Paths[Lookup Match Output]"
+          TopLeft="NaN,NaN">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="{assembly:Null}"
+              Start="0,0"
+              End="0,0">
+              <mssgle:Curve.Segments>
+                <assembly:Null />
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ Complex dimensions\DFT Trader.Paths[Existing with no change]"
+          TopLeft="NaN,NaN">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="{assembly:Null}"
+              Start="0,0"
+              End="0,0">
+              <mssgle:Curve.Segments>
+                <assembly:Null />
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ Complex dimensions\DFT Trader.Paths[Existing inferred]"
+          TopLeft="NaN,NaN">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="{assembly:Null}"
+              Start="0,0"
+              End="0,0">
+              <mssgle:Curve.Segments>
+                <assembly:Null />
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ Complex dimensions\DFT Trader.Paths[Existing]"
+          TopLeft="NaN,NaN">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="{assembly:Null}"
+              Start="0,0"
+              End="0,0">
+              <mssgle:Curve.Segments>
+                <assembly:Null />
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ Complex dimensions\DFT Trader.Paths[Derived Column Output]"
+          TopLeft="NaN,NaN">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="{assembly:Null}"
+              Start="0,0"
+              End="0,0">
+              <mssgle:Curve.Segments>
+                <assembly:Null />
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
@@ -16110,7 +16554,7 @@ SELECT
     design-time-name="Package\SEQ Date update\DFT Date">
     <LayoutInfo>
       <GraphLayout
-        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="166,42"
           Id="Package\SEQ Date update\DFT Date\OLE DB Command"
@@ -16135,6 +16579,106 @@ SELECT
           Size="209,42"
           Id="Package\SEQ Date update\DFT Date\Data Conversion"
           TopLeft="207.5,107.5" />
+        <EdgeLayout
+          Id="Package\SEQ Date update\DFT Date.Paths[OLE DB Source Output]"
+          TopLeft="NaN,NaN">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="{assembly:Null}"
+              Start="0,0"
+              End="0,0">
+              <mssgle:Curve.Segments>
+                <assembly:Null />
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ Date update\DFT Date.Paths[New Output]"
+          TopLeft="NaN,NaN">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="{assembly:Null}"
+              Start="0,0"
+              End="0,0">
+              <mssgle:Curve.Segments>
+                <assembly:Null />
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ Date update\DFT Date.Paths[Derived Column Output]"
+          TopLeft="NaN,NaN">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="{assembly:Null}"
+              Start="0,0"
+              End="0,0">
+              <mssgle:Curve.Segments>
+                <assembly:Null />
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ Date update\DFT Date.Paths[Data Conversion Output]"
+          TopLeft="NaN,NaN">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="{assembly:Null}"
+              Start="0,0"
+              End="0,0">
+              <mssgle:Curve.Segments>
+                <assembly:Null />
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ Date update\DFT Date.Paths[Changing Attribute Updates Output]"
+          TopLeft="NaN,NaN">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="{assembly:Null}"
+              Start="0,0"
+              End="0,0">
+              <mssgle:Curve.Segments>
+                <assembly:Null />
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
@@ -16397,7 +16941,7 @@ SELECT
     design-time-name="Package\SEQ Date update\DFT Date Extras">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="166,42"
           Id="Package\SEQ Date update\DFT Date Extras\OLE DB Command"
@@ -16414,6 +16958,66 @@ SELECT
           Size="183,42"
           Id="Package\SEQ Date update\DFT Date Extras\SRC MDM Extra Dates"
           TopLeft="220.5,5.5" />
+        <EdgeLayout
+          Id="Package\SEQ Date update\DFT Date Extras.Paths[OLE DB Source Output]"
+          TopLeft="NaN,NaN">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="{assembly:Null}"
+              Start="0,0"
+              End="0,0">
+              <mssgle:Curve.Segments>
+                <assembly:Null />
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ Date update\DFT Date Extras.Paths[New Output]"
+          TopLeft="NaN,NaN">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="{assembly:Null}"
+              Start="0,0"
+              End="0,0">
+              <mssgle:Curve.Segments>
+                <assembly:Null />
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ Date update\DFT Date Extras.Paths[Changing Attribute Updates Output]"
+          TopLeft="NaN,NaN">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="{assembly:Null}"
+              Start="0,0"
+              End="0,0">
+              <mssgle:Curve.Segments>
+                <assembly:Null />
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
@@ -16554,7 +17158,7 @@ SELECT
     design-time-name="Package\SEQ Date update\DFT Refresh Date Controls">
     <LayoutInfo>
       <GraphLayout
-        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="188,42"
           Id="Package\SEQ Date update\DFT Refresh Date Controls\SRC MDM SpecialDates"
@@ -16579,6 +17183,66 @@ SELECT
           Size="188,42"
           Id="Package\SEQ Date update\DFT Refresh Date Controls\SRC MDM DateControl"
           TopLeft="5.49999999999997,5.5" />
+        <EdgeLayout
+          Id="Package\SEQ Date update\DFT Refresh Date Controls.Paths[OLE DB Source Output]"
+          TopLeft="NaN,NaN">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="{assembly:Null}"
+              Start="0,0"
+              End="0,0">
+              <mssgle:Curve.Segments>
+                <assembly:Null />
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ Date update\DFT Refresh Date Controls.Paths[OLE DB Source Output2]"
+          TopLeft="NaN,NaN">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="{assembly:Null}"
+              Start="0,0"
+              End="0,0">
+              <mssgle:Curve.Segments>
+                <assembly:Null />
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ Date update\DFT Refresh Date Controls.Paths[OLE DB Source Output1]"
+          TopLeft="NaN,NaN">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="{assembly:Null}"
+              Start="0,0"
+              End="0,0">
+              <mssgle:Curve.Segments>
+                <assembly:Null />
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
@@ -16664,7 +17328,7 @@ SELECT
     design-time-name="Package\SEQ Simple Dimensions\DFT IndexType">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="178,42"
           Id="Package\SEQ Simple Dimensions\DFT IndexType\SRC MDM IndexType"
@@ -16673,14 +17337,108 @@ SELECT
           Size="178,42"
           Id="Package\SEQ Simple Dimensions\DFT IndexType\SCD Dim IndexType"
           TopLeft="223,107.5" />
-        <NodeLayout
-          Size="166,42"
-          Id="Package\SEQ Simple Dimensions\DFT IndexType\OLE DB Command"
-          TopLeft="229,209.5" />
+        <EdgeLayout
+          Id="Package\SEQ Simple Dimensions\DFT IndexType.Paths[OLE DB Source Output]"
+          TopLeft="312,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <NodeLayout
           Size="163,42"
           Id="Package\SEQ Simple Dimensions\DFT IndexType\Insert Destination"
           TopLeft="5.50000000000006,209.5" />
+        <EdgeLayout
+          Id="Package\SEQ Simple Dimensions\DFT IndexType.Paths[New Output]"
+          TopLeft="283.666666666667,149.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-196.666666666667,60"
+              Start="0,0"
+              End="-196.666666666667,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.3207126948775" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.3207126948775"
+                    Point2="0,24.3207126948775"
+                    Point3="-4,24.3207126948775" />
+                  <mssgle:LineSegment
+                    End="-192.666666666667,24.3207126948775" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-192.666666666667,24.3207126948775"
+                    Point2="-196.666666666667,24.3207126948775"
+                    Point3="-196.666666666667,28.3207126948775" />
+                  <mssgle:LineSegment
+                    End="-196.666666666667,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-125.424720052083,29.3207126948775,54.1827734375,11.43359375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="166,42"
+          Id="Package\SEQ Simple Dimensions\DFT IndexType\OLE DB Command"
+          TopLeft="229,209.5" />
+        <EdgeLayout
+          Id="Package\SEQ Simple Dimensions\DFT IndexType.Paths[Changing Attribute Updates Output]"
+          TopLeft="340.333333333333,149.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-28.3333333333333,60"
+              Start="0,0"
+              End="-28.3333333333333,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.3207126948775" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.3207126948775"
+                    Point2="0,24.3207126948775"
+                    Point3="-4,24.3207126948775" />
+                  <mssgle:LineSegment
+                    End="-24.3333333333333,24.3207126948775" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-24.3333333333333,24.3207126948775"
+                    Point2="-28.3333333333333,24.3207126948775"
+                    Point3="-28.3333333333333,28.3207126948775" />
+                  <mssgle:LineSegment
+                    End="-28.3333333333333,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-92.7005729166667,29.3207126948775,157.0678125,11.6630859375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
@@ -16768,7 +17526,7 @@ SELECT
     design-time-name="Package\SEQ Simple Dimensions\DFT Market">
     <LayoutInfo>
       <GraphLayout
-        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="166,42"
           Id="Package\SEQ Simple Dimensions\DFT Market\OLE DB Command"
@@ -16801,6 +17559,126 @@ SELECT
           Size="175,42"
           Id="Package\SEQ Simple Dimensions\DFT Market\OLE DB Command 1"
           TopLeft="688.5,209.5" />
+        <EdgeLayout
+          Id="Package\SEQ Simple Dimensions\DFT Market.Paths[OLE DB Source Output1]"
+          TopLeft="NaN,NaN">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="{assembly:Null}"
+              Start="0,0"
+              End="0,0">
+              <mssgle:Curve.Segments>
+                <assembly:Null />
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ Simple Dimensions\DFT Market.Paths[OLE DB Source Output]"
+          TopLeft="NaN,NaN">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="{assembly:Null}"
+              Start="0,0"
+              End="0,0">
+              <mssgle:Curve.Segments>
+                <assembly:Null />
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ Simple Dimensions\DFT Market.Paths[New Output1]"
+          TopLeft="NaN,NaN">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="{assembly:Null}"
+              Start="0,0"
+              End="0,0">
+              <mssgle:Curve.Segments>
+                <assembly:Null />
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ Simple Dimensions\DFT Market.Paths[New Output]"
+          TopLeft="NaN,NaN">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="{assembly:Null}"
+              Start="0,0"
+              End="0,0">
+              <mssgle:Curve.Segments>
+                <assembly:Null />
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ Simple Dimensions\DFT Market.Paths[Changing Attribute Updates Output1]"
+          TopLeft="NaN,NaN">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="{assembly:Null}"
+              Start="0,0"
+              End="0,0">
+              <mssgle:Curve.Segments>
+                <assembly:Null />
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ Simple Dimensions\DFT Market.Paths[Changing Attribute Updates Output]"
+          TopLeft="NaN,NaN">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="{assembly:Null}"
+              Start="0,0"
+              End="0,0">
+              <mssgle:Curve.Segments>
+                <assembly:Null />
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
@@ -16927,7 +17805,7 @@ SELECT
     design-time-name="Package\SEQ Simple Dimensions\DFT Status">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="158,42"
           Id="Package\SEQ Simple Dimensions\DFT Status\SCD DimStatus"
@@ -16944,10 +17822,70 @@ SELECT
           Size="158,42"
           Id="Package\SEQ Simple Dimensions\DFT Status\SRC MDM Status"
           TopLeft="207.5,5.49999999999989" />
+        <EdgeLayout
+          Id="Package\SEQ Simple Dimensions\DFT Status.Paths[OLE DB Source Output]"
+          TopLeft="NaN,NaN">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="{assembly:Null}"
+              Start="0,0"
+              End="0,0">
+              <mssgle:Curve.Segments>
+                <assembly:Null />
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ Simple Dimensions\DFT Status.Paths[New Output]"
+          TopLeft="NaN,NaN">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="{assembly:Null}"
+              Start="0,0"
+              End="0,0">
+              <mssgle:Curve.Segments>
+                <assembly:Null />
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ Simple Dimensions\DFT Status.Paths[Changing Attribute Updates Output]"
+          TopLeft="NaN,NaN">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="{assembly:Null}"
+              Start="0,0"
+              End="0,0">
+              <mssgle:Curve.Segments>
+                <assembly:Null />
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <AnnotationLayout
           Text="Only a status name =&gt; can't use SCD wizard"
           ParentId="Package\SEQ Simple Dimensions\DFT Status"
-          FontInfo="{x:Null}"
+          FontInfo="{assembly:Null}"
           Size="273,NaN"
           Id="1aae7ff4-55e4-4ab8-898c-e978c770a0ce"
           TopLeft="455.5,210.5" />
@@ -17014,7 +17952,7 @@ SELECT
     design-time-name="Package\SEQ Simple Dimensions\DFT Trade Modification Type">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="166,42"
           Id="Package\SEQ Simple Dimensions\DFT Trade Modification Type\OLE DB Command"
@@ -17031,6 +17969,66 @@ SELECT
           Size="163,42"
           Id="Package\SEQ Simple Dimensions\DFT Trade Modification Type\Insert Destination"
           TopLeft="5.50000000000006,209.5" />
+        <EdgeLayout
+          Id="Package\SEQ Simple Dimensions\DFT Trade Modification Type.Paths[New Output]"
+          TopLeft="NaN,NaN">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="{assembly:Null}"
+              Start="0,0"
+              End="0,0">
+              <mssgle:Curve.Segments>
+                <assembly:Null />
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ Simple Dimensions\DFT Trade Modification Type.Paths[Changing Attribute Updates Output]"
+          TopLeft="NaN,NaN">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="{assembly:Null}"
+              Start="0,0"
+              End="0,0">
+              <mssgle:Curve.Segments>
+                <assembly:Null />
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ Simple Dimensions\DFT Trade Modification Type.Paths[OLE DB Source Output]"
+          TopLeft="NaN,NaN">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="{assembly:Null}"
+              Start="0,0"
+              End="0,0">
+              <mssgle:Curve.Segments>
+                <assembly:Null />
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
@@ -17100,7 +18098,7 @@ SELECT
     design-time-name="Package\SEQ Simple Report Helpers\DFT Equity Feee Band">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="205,42"
           Id="Package\SEQ Simple Report Helpers\DFT Equity Feee Band\SRC MDM Equity Fee Band"
@@ -17109,6 +18107,26 @@ SELECT
           Size="205,42"
           Id="Package\SEQ Simple Report Helpers\DFT Equity Feee Band\DST DWH Equity Fee Band"
           TopLeft="211,94" />
+        <EdgeLayout
+          Id="Package\SEQ Simple Report Helpers\DFT Equity Feee Band.Paths[OLE DB Source Output]"
+          TopLeft="NaN,NaN">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="{assembly:Null}"
+              Start="0,0"
+              End="0,0">
+              <mssgle:Curve.Segments>
+                <assembly:Null />
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>

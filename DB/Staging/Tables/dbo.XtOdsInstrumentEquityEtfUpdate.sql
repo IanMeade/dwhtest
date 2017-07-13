@@ -26,7 +26,6 @@ CREATE TABLE [dbo].[XtOdsInstrumentEquityEtfUpdate]
 [OverallIndexYN] [varchar] (1) COLLATE Latin1_General_CI_AS NULL,
 [SmallCapIndexYN] [char] (1) COLLATE Latin1_General_CI_AS NULL,
 [PrimaryMarket] [varchar] (50) COLLATE Latin1_General_CI_AS NULL,
-[IssuedDate] [datetime] NULL,
 [CurrencyISOCode] [varchar] (100) COLLATE Latin1_General_CI_AS NULL,
 [UnitOfQuotation] [numeric] (23, 10) NULL,
 [QuotationCurrencyISOCode] [varchar] (100) COLLATE Latin1_General_CI_AS NULL,
@@ -59,6 +58,12 @@ CREATE TABLE [dbo].[XtOdsInstrumentEquityEtfUpdate]
 [TransparencyDirectiveHomeMemberCountry] [varchar] (200) COLLATE Latin1_General_CI_AS NULL,
 [ProspectusDirectiveHomeMemberCountry] [varchar] (200) COLLATE Latin1_General_CI_AS NULL,
 [IssuerDomicileDomesticYN] [varchar] (1) COLLATE Latin1_General_CI_AS NULL,
-[FeeCodeName] [varchar] (200) COLLATE Latin1_General_CI_AS NULL
+[FeeCodeName] [varchar] (200) COLLATE Latin1_General_CI_AS NULL,
+[ExSpecial] [char] (1) COLLATE Latin1_General_CI_AS NULL,
+[ExCapitalisation] [char] (1) COLLATE Latin1_General_CI_AS NULL,
+[ExRights] [char] (1) COLLATE Latin1_General_CI_AS NULL,
+[ExEntitlement] [char] (1) COLLATE Latin1_General_CI_AS NULL,
+[ExDividend] [char] (1) COLLATE Latin1_General_CI_AS NULL,
+[SecurityQualifier] [varchar] (10) COLLATE Latin1_General_CI_AS NULL
 ) ON [PRIMARY]
 GO

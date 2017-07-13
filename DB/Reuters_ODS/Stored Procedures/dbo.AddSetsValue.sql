@@ -31,46 +31,56 @@ BEGIN
 		@VOL_NUMBER	= CAST(CAST(@VOL AS real) AS NUMERIC(19,6)),
 		@DEALS_NUMBER = CAST(CAST(@DEALS AS REAL) AS INT)
 		
+	/* VALIDATE VOLUME */
+	IF @TURNOVER_NUMBER > 2000000
+	BEGIN
+		DECLARE @MESSAGE VARCHAR(200) = 'Invalid Turnover passed. Maximium supported value is 2000000, ' + @TURNOVER + ' was passed'
+		RAISERROR( @MESSAGE, 16, 1 )
+	END
+	ELSE
+	BEGIN
+		/* TRY TO PROCESS THE MESSAGE */
 
-	IF EXISTS( SELECT * FROM dbo.SetsValue WHERE SetsDate = @DATE AND ISIN = @ISIN )  
-	BEGIN  
-		/* UPDATE EXISTING RATE */  
-		UPDATE  
-			dbo.SetsValue  
-		SET  
-			ValueInserted = GETDATE(),  
-			ISIN = @ISIN,  
-			TURNOVER = @TURNOVER_NUMBER,  
-			VOLUME = @VOL_NUMBER,  
-			DEALS = @DEALS_NUMBER  
-		WHERE  
-			SetsDate = @DATE   
-		AND   
-			ISIN = @ISIN  
-	END  
-	ELSE  
-	BEGIN  
-		/* INSERT A NEW ROW */  
-		INSERT INTO  
+		IF EXISTS( SELECT * FROM dbo.SetsValue WHERE SetsDate = @DATE AND ISIN = @ISIN )  
+		BEGIN  
+			/* UPDATE EXISTING RATE */  
+			UPDATE  
 				dbo.SetsValue  
-			(  
-				SetsDate,   
-				ISIN,   
-				TURNOVER,   
-				VOLUME,   
-				DEALS  
-			)  
-			VALUES  
-			(  
-				@DATE,  
-				@ISIN,   
-				@TURNOVER_NUMBER,   
-				@VOL_NUMBER,   
-				@DEALS_NUMBER
-			)  
+			SET  
+				ValueInserted = GETDATE(),  
+				ISIN = @ISIN,  
+				TURNOVER = @TURNOVER_NUMBER,  
+				VOLUME = @VOL_NUMBER,  
+				DEALS = @DEALS_NUMBER  
+			WHERE  
+				SetsDate = @DATE   
+			AND   
+				ISIN = @ISIN  
+		END  
+		ELSE  
+		BEGIN  
+			/* INSERT A NEW ROW */  
+			INSERT INTO  
+					dbo.SetsValue  
+				(  
+					SetsDate,   
+					ISIN,   
+					TURNOVER,   
+					VOLUME,   
+					DEALS  
+				)  
+				VALUES  
+				(  
+					@DATE,  
+					@ISIN,   
+					@TURNOVER_NUMBER,   
+					@VOL_NUMBER,   
+					@DEALS_NUMBER
+				)  
+		END  
 	END  
-END  
-  
-  
-  
+END
+
+
+
 GO

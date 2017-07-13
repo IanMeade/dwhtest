@@ -11,8 +11,8 @@
   DTS:LocaleID="6153"
   DTS:ObjectName="PckSetsCheck"
   DTS:PackageType="5"
-  DTS:VersionBuild="16"
-  DTS:VersionGUID="{4479A95B-9715-434E-B279-0DE3A927DB3D}">
+  DTS:VersionBuild="19"
+  DTS:VersionGUID="{65CF26EE-B31F-4342-A5AD-657EAB079F2D}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -24,6 +24,15 @@
       DTS:ObjectName="BatchID">
       <DTS:VariableValue
         DTS:DataType="3">-1</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{E5ACC8C9-5EDE-4973-BC00-7A0550AEC598}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="OracleMessage">
+      <DTS:VariableValue
+        DTS:DataType="8">statsload</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -64,6 +73,31 @@
     </DTS:Variable>
   </DTS:Variables>
   <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\PCK Send Oracle Message"
+      DTS:CreationName="Microsoft.ExecutePackageTask"
+      DTS:Description="Execute Package Task"
+      DTS:DTSID="{7bfe3374-5777-47ac-b9f6-dd44e7d2b0bc}"
+      DTS:ExecutableType="Microsoft.ExecutePackageTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="PCK Send Oracle Message"
+      DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <ExecutePackageTask>
+          <UseProjectReference>True</UseProjectReference>
+          <PackageName>PckProcessStatusOracle.dtsx</PackageName>
+          <ParameterAssignment>
+            <ParameterName>BatchID</ParameterName>
+            <BindedVariableOrParameterName>User::BatchID</BindedVariableOrParameterName>
+          </ParameterAssignment>
+          <ParameterAssignment>
+            <ParameterName>Message</ParameterName>
+            <BindedVariableOrParameterName>User::OracleMessage</BindedVariableOrParameterName>
+          </ParameterAssignment>
+        </ExecutePackageTask>
+      </DTS:ObjectData>
+    </DTS:Executable>
     <DTS:Executable
       DTS:refId="Package\SQL Get DWH BatchID"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
@@ -257,6 +291,14 @@
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 4"
       DTS:To="Package\SQL Reuters_ODS Check Sets" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 5]"
+      DTS:CreationName=""
+      DTS:DTSID="{F0A8314D-DDE1-469F-8776-707E4E5C464A}"
+      DTS:From="Package\SQL ProcessControl Record Message"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 5"
+      DTS:To="Package\PCK Send Oracle Message" />
   </DTS:PrecedenceConstraints>
   <DTS:EventHandlers>
     <DTS:EventHandler
@@ -346,15 +388,15 @@
         <NodeLayout
           Size="250,42"
           Id="Package\SQL ProcessControl Record Message"
-          TopLeft="358,444" />
+          TopLeft="351,444" />
         <NodeLayout
           Size="247,42"
           Id="Package\SQL ProcessControl Update Refresh"
           TopLeft="68,358" />
         <NodeLayout
-          Size="245,42"
+          Size="250,42"
           Id="Package\SQL ProcessControl Updates Found"
-          TopLeft="358,361" />
+          TopLeft="351,361" />
         <NodeLayout
           Size="238,43"
           Id="Package\SQL Reuters_ODS Check Sets"
@@ -427,9 +469,9 @@
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{x:Null}"
-              EndConnector="113.166666666667,82"
+              EndConnector="108.666666666667,82"
               Start="0,0"
-              End="113.166666666667,74.5">
+              End="108.666666666667,74.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
@@ -440,26 +482,26 @@
                     Point2="0,33.1285475792988"
                     Point3="4,33.1285475792988" />
                   <mssgle:LineSegment
-                    End="109.166666666667,33.1285475792988" />
+                    End="104.666666666667,33.1285475792988" />
                   <mssgle:CubicBezierSegment
-                    Point1="109.166666666667,33.1285475792988"
-                    Point2="113.166666666667,33.1285475792988"
-                    Point3="113.166666666667,37.1285475792988" />
+                    Point1="104.666666666667,33.1285475792988"
+                    Point2="108.666666666667,33.1285475792988"
+                    Point3="108.666666666667,37.1285475792988" />
                   <mssgle:LineSegment
-                    End="113.166666666667,74.5" />
+                    End="108.666666666667,74.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="48.5833333333333,38.1285475792988,16,16"
+              BoundingBox="46.3333333333333,38.1285475792988,16,16"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 3]"
-          TopLeft="481.75,403">
+          TopLeft="476,403">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{x:Null}"
@@ -508,6 +550,32 @@
           Size="231,40"
           Id="26fe5435-543e-41fd-8882-e7f37425fcac"
           TopLeft="44,9" />
+        <NodeLayout
+          Size="250,42"
+          Id="Package\PCK Send Oracle Message"
+          TopLeft="351,531" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 5]"
+          TopLeft="476,486">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="0,45"
+              Start="0,0"
+              End="0,37.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,37.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </Package>

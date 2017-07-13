@@ -54,6 +54,8 @@ CREATE TABLE [DWH].[FactEquitySnapshot]
 [ISEQOverallFreefloat] [numeric] (19, 6) NULL,
 [ISEQOverallPrice] [numeric] (19, 6) NULL,
 [ISEQOverallShares] [numeric] (28, 6) NULL,
+[ISEQ20CappedShares] [numeric] (28, 6) NULL,
+[ISEQ20CappedMarketCap] [numeric] (28, 6) NULL,
 [OverallIndexYN] [char] (1) COLLATE Latin1_General_CI_AS NULL,
 [GeneralIndexYN] [char] (1) COLLATE Latin1_General_CI_AS NULL,
 [FinancialIndexYN] [char] (1) COLLATE Latin1_General_CI_AS NULL,
@@ -71,16 +73,12 @@ CREATE TABLE [DWH].[FactEquitySnapshot]
 [ETFFMShares] [int] NULL,
 [BatchID] [int] NULL
 ) ON [PRIMARY]
-WITH
-(
-DATA_COMPRESSION = PAGE
-)
 GO
 ALTER TABLE [DWH].[FactEquitySnapshot] ADD CONSTRAINT [PK_FactEquitySnapshot] PRIMARY KEY NONCLUSTERED  ([EquitySnapshotID]) ON [PRIMARY]
 GO
 CREATE NONCLUSTERED INDEX [IX_FactEquitySnapshot] ON [DWH].[FactEquitySnapshot] ([DateID], [InstrumentID]) ON [PRIMARY]
 GO
-CREATE UNIQUE CLUSTERED INDEX [IX_FactEquitySnapshot_Clustered] ON [DWH].[FactEquitySnapshot] ([DateID], [InstrumentID], [EquitySnapshotID]) WITH (DATA_COMPRESSION = PAGE) ON [PRIMARY]
+CREATE UNIQUE CLUSTERED INDEX [IX_FactEquitySnapshot_Clustered] ON [DWH].[FactEquitySnapshot] ([DateID], [InstrumentID], [EquitySnapshotID]) ON [PRIMARY]
 GO
 CREATE NONCLUSTERED INDEX [IX_FactEquitySnapshot_1] ON [DWH].[FactEquitySnapshot] ([InstrumentID], [DateID]) ON [PRIMARY]
 GO

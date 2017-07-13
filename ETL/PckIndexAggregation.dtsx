@@ -11,8 +11,8 @@
   DTS:LocaleID="6153"
   DTS:ObjectName="PckIndexAggregation"
   DTS:PackageType="5"
-  DTS:VersionBuild="27"
-  DTS:VersionGUID="{1817F273-6A82-4116-9DF7-475CA42C2A34}">
+  DTS:VersionBuild="34"
+  DTS:VersionGUID="{65E7967A-B721-4CE8-888E-6345691713B9}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -62,7 +62,18 @@
       DTS:ExecutableType="STOCK:SEQUENCE"
       DTS:LocaleID="-1"
       DTS:ObjectName="SEQ Index Aggregation">
-      <DTS:Variables />
+      <DTS:Variables>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{24C393D8-150B-43B4-AFB6-E29A8525C30C}"
+          DTS:IncludeInDebugDump="2345"
+          DTS:Namespace="User"
+          DTS:ObjectName="OracleMessage">
+          <DTS:VariableValue
+            DTS:DataType="8"
+            xml:space="preserve"></DTS:VariableValue>
+        </DTS:Variable>
+      </DTS:Variables>
       <DTS:Executables>
         <DTS:Executable
           DTS:refId="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff"
@@ -1127,6 +1138,31 @@ FROM
           </DTS:ObjectData>
         </DTS:Executable>
         <DTS:Executable
+          DTS:refId="Package\SEQ Index Aggregation\PCK Send Oracle Message"
+          DTS:CreationName="Microsoft.ExecutePackageTask"
+          DTS:Description="Execute Package Task"
+          DTS:DTSID="{C60FB288-29DA-44C4-BF81-603B38A25688}"
+          DTS:ExecutableType="Microsoft.ExecutePackageTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="PCK Send Oracle Message"
+          DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <ExecutePackageTask>
+              <UseProjectReference>True</UseProjectReference>
+              <PackageName>PckProcessStatusOracle.dtsx</PackageName>
+              <ParameterAssignment>
+                <ParameterName>BatchID</ParameterName>
+                <BindedVariableOrParameterName>User::BatchID</BindedVariableOrParameterName>
+              </ParameterAssignment>
+              <ParameterAssignment>
+                <ParameterName>Message</ParameterName>
+                <BindedVariableOrParameterName>User::OracleMessage</BindedVariableOrParameterName>
+              </ParameterAssignment>
+            </ExecutePackageTask>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
           DTS:refId="Package\SEQ Index Aggregation\SQL DWH Clear merge table"
           DTS:CreationName="Microsoft.ExecuteSQLTask"
           DTS:Description="Execute SQL Task"
@@ -1209,7 +1245,7 @@ FROM
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{88A180A2-BD32-40DF-AB41-4FDAC0D5C73C}"
-              SQLTask:SqlStatementSource="SELECT &#xA; *&#xA;FROM &#xA; dbo.GetScheduledActivitiesTimeExpected('REFRESH_FactEquityIndexSnapshot')&#xA;"
+              SQLTask:SqlStatementSource="SELECT&#xA;&#x9;ExpectedTIme,&#xA;&#x9;WorkToDo,&#xA;&#x9;OracleProcessStatusTable&#xA;FROM&#xA;&#x9;dbo.GetScheduledActivitiesTimeExpected('REFRESH_FactEquityIndexSnapshot')&#xA;"
               SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ResultBinding
                 SQLTask:ResultName="ExpectedTime"
@@ -1217,6 +1253,9 @@ FROM
               <SQLTask:ResultBinding
                 SQLTask:ResultName="WorkToDo"
                 SQLTask:DtsVariableName="User::WorkToDo" />
+              <SQLTask:ResultBinding
+                SQLTask:ResultName="OracleProcessStatusTable"
+                SQLTask:DtsVariableName="User::OracleMessage" />
             </SQLTask:SqlTaskData>
           </DTS:ObjectData>
         </DTS:Executable>
@@ -1358,6 +1397,16 @@ FROM
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint 5"
           DTS:To="Package\SEQ Index Aggregation\SQL Get Today DateID" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\SEQ Index Aggregation.PrecedenceConstraints[Constraint 6]"
+          DTS:CreationName=""
+          DTS:DTSID="{84A0DEAE-1A27-4C33-8498-44E76C62CED5}"
+          DTS:EvalOp="3"
+          DTS:Expression="! ISNULL( @[User::OracleMessage] )"
+          DTS:From="Package\SEQ Index Aggregation\SQL ProcessMessage Index Aggregation"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 6"
+          DTS:To="Package\SEQ Index Aggregation\PCK Send Oracle Message" />
       </DTS:PrecedenceConstraints>
     </DTS:Executable>
     <DTS:Executable
@@ -1473,11 +1522,15 @@ FROM
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="267,42"
           Id="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff"
           TopLeft="65,354.357142857143" />
+        <NodeLayout
+          Size="267,42"
+          Id="Package\SEQ Index Aggregation\PCK Send Oracle Message"
+          TopLeft="65,676" />
         <NodeLayout
           Size="267,42"
           Id="Package\SEQ Index Aggregation\SQL DWH Clear merge table"
@@ -1511,15 +1564,15 @@ FROM
           TopLeft="198.5,558.785714285714">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,39.2142857142857"
+              StartConnector="{x:Null}"
+              EndConnector="0,39.214285714286"
               Start="0,0"
-              End="0,31.7142857142857">
+              End="0,31.714285714286">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,31.7142857142857" />
+                    End="0,31.714285714286" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1533,7 +1586,7 @@ FROM
           TopLeft="198.5,233.928571428571">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,39.2142857142857"
               Start="0,0"
               End="0,31.7142857142857">
@@ -1557,7 +1610,7 @@ FROM
           TopLeft="198.5,477.571428571429">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,39.2142857142857"
               Start="0,0"
               End="0,31.7142857142857">
@@ -1579,7 +1632,7 @@ FROM
           TopLeft="198.5,315.142857142857">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,39.2142857142858"
               Start="0,0"
               End="0,31.7142857142858">
@@ -1601,7 +1654,7 @@ FROM
           TopLeft="198.5,396.357142857143">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,39.2142857142858"
               Start="0,0"
               End="0,31.7142857142858">
@@ -1623,7 +1676,7 @@ FROM
           TopLeft="198.5,152.714285714286">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,39.2142857142858"
               Start="0,0"
               End="0,31.7142857142858">
@@ -1645,7 +1698,7 @@ FROM
           TopLeft="198.5,71.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,39.2142857142857"
               Start="0,0"
               End="0,31.7142857142857">
@@ -1662,31 +1715,55 @@ FROM
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ Index Aggregation.PrecedenceConstraints[Constraint 6]"
+          TopLeft="198.5,640">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="0,36"
+              Start="0,0"
+              End="0,28.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,28.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-8,6.25,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="574,690"
-          Size="574,733"
+          PanelSize="608,770"
+          Size="608,813"
           Id="Package\SEQ Index Aggregation"
           TopLeft="62,147" />
         <NodeLayout
           Size="199,42"
           Id="Package\SQL Get DWH BatchID"
-          TopLeft="248,20" />
+          TopLeft="269,49" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="348.25,62">
+          TopLeft="367.25,91">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,85"
+              StartConnector="{x:Null}"
+              EndConnector="0,56"
               Start="0,0"
-              End="0,77.5">
+              End="0,48.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,77.5" />
+                    End="0,48.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1825,7 +1902,7 @@ FROM
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,20.4453125,96.3827734375,11.609375"
+              BoundingBox="-68.07673828125,20.4453125,136.1534765625,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -1833,12 +1910,58 @@ FROM
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
+    design-time-name="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\LKP Stoxx Iseq20Leveraged">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\LKP DWH Equity Constituent mkt cap">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
     design-time-name="Package\SEQ Index Aggregation\DFT EquityIndexSnapshot Stuff\LKP DWH Equity Details">
     <Properties>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -1848,7 +1971,7 @@ FROM
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>

@@ -13,8 +13,6 @@ BEGIN
 	-- interfering with SELECT statements.  
 	SET NOCOUNT ON;  
   
-	TRUNCATE TABLE dbo.T7QuarantineTrade  
-  
 	INSERT INTO  
 			dbo.T7QuarantineTrade  
 		(  
@@ -142,7 +140,7 @@ BEGIN
 			A_ISIN, 
 			TradeTypeCategory,  
 			101 as Code, 
-			'Trade [' + MAX(UniqueKey) + '] moved to quarantine. [' + STR(COUNT(*)) + '] rows in trade - exected 2 (Buy and Sell).' AS Message  
+			'Trade [' + MAX(UniqueKey) + '] moved to quarantine. [' + STR(COUNT(*)) + '] rows in trade - expected 2 (Buy and Sell).' AS Message  
 		FROM  
 			T7TradeMainDataFlowOutput  
 		WHERE 
@@ -179,7 +177,4 @@ BEGIN
   
 END  
  
-
-SELECT * FROM T7TradeMainDataFlowOutput  
-SELECT * FROM dbo.T7QuarantineTrade BAD
 GO

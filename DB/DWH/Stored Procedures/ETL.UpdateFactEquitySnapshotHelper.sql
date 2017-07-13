@@ -24,7 +24,8 @@ BEGIN
 	/* GET PREVIOUS ROWS - FOR DEFAULT VALUES USED IN FIRST ROW PER DAY */     
 	SELECT
 		DWH.EquitySnapshotID,
-		I.InstrumentGlobalID
+		I.InstrumentGlobalID,
+		DWH.DateID
 	INTO
 		#PreviousRows
 	FROM
@@ -38,17 +39,18 @@ BEGIN
 					DWH.DimInstrumentEquity I     
 				ON DWH.InstrumentID = I.InstrumentID     
 			WHERE
-				DWH.DateID < 20170621
+				DWH.DateID < @DateID
 			GROUP BY
 				InstrumentGlobalID
 		) AS Prev
-		INNER JOIN
-			DWH.FactEquitySnapshot DWH     
-		ON DWH.DateID = Prev.DateID
 		INNER JOIN     
 			DWH.DimInstrumentEquity I 
 		ON Prev.InstrumentGlobalID = I.InstrumentGlobalID
+		INNER JOIN
+			DWH.FactEquitySnapshot DWH     
+		ON DWH.DateID = Prev.DateID
 		AND DWH.InstrumentID = I.InstrumentID     
+
 
 	UPDATE
 		ETL
@@ -56,16 +58,31 @@ BEGIN
 		/* FROM YESTERDAY */
 		OCPDateID = COALESCE( ETL.OCPDateID, SN.OCPDateID),
 		OCPTimeID = COALESCE( ETL.OCPTimeID, SN.OCPTimeID),
+		OCPDateTime = COALESCE( ETL.OCPDateTime, SN.OCPDateTime),
 		OCPTime = COALESCE( ETL.OCPTime, SN.OCPTime),
+		OCP = COALESCE( ETL.OCP, SN.OCP),
 		UtcOCPTime = COALESCE( ETL.UtcOCPTime, SN.UtcOCPTime),
 		LTPDateID = COALESCE( ETL.LTPDateID, SN.LTPDateID),
 		LTPTimeID = COALESCE( ETL.LTPTimeID, SN.LTPTimeID),
+		LtpDateTime = COALESCE( ETL.LtpDateTime, SN.LtpDateTime),
 		LTPTime = COALESCE( ETL.LTPTime, SN.LTPTime),
 		UtcLTPTime = COALESCE( ETL.UtcLTPTime, SN.UtcLTPTime),
-		OpenPrice = COALESCE( ETL.OpenPrice, SN.OpenPrice),
-		LowPrice = COALESCE( ETL.LowPrice, SN.LowPrice),
-		HighPrice = COALESCE( ETL.HighPrice, SN.HighPrice),
 		LTP = COALESCE( ETL.LTP, SN.LTP),
+		ISEQ20Shares = COALESCE( ETL.ISEQ20Shares, SN.ISEQ20Shares),
+		ISEQ20Price = COALESCE( ETL.ISEQ20Price, SN.ISEQ20Price),
+		ISEQ20Weighting = COALESCE( ETL.ISEQ20Weighting, SN.ISEQ20Weighting),
+		ISEQOverallWeighting = COALESCE( ETL.ISEQOverallWeighting, SN.ISEQOverallWeighting),
+		ISEQOverallBeta30 = COALESCE( ETL.ISEQOverallBeta30, SN.ISEQOverallBeta30),
+		ISEQOverallBeta250 = COALESCE( ETL.ISEQOverallBeta250, SN.ISEQOverallBeta250),
+		ISEQOverallPrice = COALESCE( ETL.ISEQOverallPrice, SN.ISEQOverallPrice),
+		ISEQOverallShares = COALESCE( ETL.ISEQOverallShares, SN.ISEQOverallShares),
+		ISEQ20CappedShares = COALESCE( ETL.ISEQ20CappedShares, SN.ISEQ20CappedShares),
+		ETFFMShares = COALESCE( ETL.ETFFMShares, SN.ETFFMShares),
+
+		/* SHOULD BE SOMETHING ELSE */
+		OpenPrice = COALESCE( ETL.OpenPrice, SN.OCP),
+		LowPrice = COALESCE( ETL.LowPrice, ETL.OpenPrice, SN.OCP),
+		HighPrice = COALESCE( ETL.HighPrice, ETL.OpenPrice, SN.OCP),
 
 		/* MAKE NULLABLE FIELD 0 */ 
 		Turnover = ISNULL( ETL.Turnover, 0),    
@@ -79,17 +96,40 @@ BEGIN
 		VolumeOB = ISNULL( ETL.VolumeOB, 0),     
 		Deals = ISNULL( ETL.Deals, 0),     
 		DealsOB = ISNULL( ETL.DealsOB, 0),     
-		DealsND = ISNULL( ETL.DealsND, 0)   
+		DealsND = ISNULL( ETL.DealsND, 0),
+		LseTurnover = ISNULL( ETL.LseTurnover, 0),
+		LseVolume  = ISNULL( ETL.LseVolume, 0),
+
+		/* NO LAST EX FIV DATE */
+		LastExDivDateID = ISNULL( ETL.LastExDivDateID, -1) 
 
 	FROM
 			ETL.FactEquitySnapshotMerge ETL
-		LEFT OUTER JOIN
+		INNER JOIN
 			#PreviousRows PR
-		ON ETL.InstrumentGlobalID = ETL.InstrumentGlobalID
-		LEFT OUTER JOIN
+		ON ETL.InstrumentGlobalID = PR.InstrumentGlobalID
+		INNER JOIN
 			DWH.FactEquitySnapshot SN
 		ON PR.EquitySnapshotID = SN.EquitySnapshotID  
 
+
+	/* SPEICAL CASE FOR NEW SHARES */
+	
+	/* IssuedSharesToday IS TotalSharesInIssue */ 
+	UPDATE
+		ETL.FactEquitySnapshotMerge
+	SET
+		IssuedSharesToday = TotalSharesInIssue		
+	WHERE
+		InstrumentGlobalID NOT IN (
+			SELECT
+				InstrumentGlobalID
+			FROM
+				#PreviousRows 
+			)
+
+
 	DROP TABLE #PreviousRows
 END
+
 GO

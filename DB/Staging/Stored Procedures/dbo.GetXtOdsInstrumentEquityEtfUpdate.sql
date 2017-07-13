@@ -5,7 +5,7 @@ GO
 -- =============================================   
 -- Author:		Ian Meade   
 -- Create date: 23/2/2017   
--- Description:	Get XT details prepared for DWH / ETL pipelins   
+-- Description:	Get XT details prepared for DWH / ETL pipeline   
 -- =============================================   
 CREATE PROCEDURE [dbo].[GetXtOdsInstrumentEquityEtfUpdate] AS   
 BEGIN   
@@ -35,7 +35,6 @@ BEGIN
 		FinancialIndexYN,    
 		SmallCapIndexYN,    
 		PrimaryMarket,    
-		IssuedDate,    
 		UnitOfQuotation,    
 		ISEQ20Freefloat,    
 		ISEQOverallFreeFloat,    
@@ -72,7 +71,13 @@ BEGIN
 		CS.StatusID AS CompanyStatusID, 
 		CC.CurrencyID AS CurrencyID, 
 		QC.CurrencyID AS QuotationCurrencyID, 
-		DM.MarketID 
+		DM.MarketID,
+		ExSpecial,
+		ExCapitalisation,
+		ExRights,
+		ExEntitlement,
+		ExDividend,
+		SecurityQualifier
 	FROM   
 			dbo.XtOdsInstrumentEquityEtfUpdate I 
 		INNER JOIN 

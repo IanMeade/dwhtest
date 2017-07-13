@@ -7,6 +7,6 @@
     DTS:Name="ConnectionString">@[$Project::Reuters_ODS_ConnectionString]</DTS:PropertyExpression>
   <DTS:ObjectData>
     <DTS:ConnectionManager
-      DTS:ConnectionString="Data Source=T7-DDT-01;Initial Catalog=Reuters_ODS;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      DTS:ConnectionString="Data Source=.;Initial Catalog=Reuters_ODS;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
   </DTS:ObjectData>
 </DTS:ConnectionManager>

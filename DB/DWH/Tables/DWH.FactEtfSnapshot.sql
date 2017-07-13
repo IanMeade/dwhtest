@@ -56,6 +56,8 @@ CREATE TABLE [DWH].[FactEtfSnapshot]
 [ISEQOverallFreefloat] [numeric] (9, 6) NULL,
 [ISEQOverallPrice] [numeric] (19, 6) NULL,
 [ISEQOverallShares] [numeric] (28, 6) NULL,
+[ISEQ20CappedShares] [numeric] (28, 6) NULL,
+[ISEQ20CappedMarketCap] [numeric] (28, 6) NULL,
 [OverallIndexYN] [char] (1) COLLATE Latin1_General_CI_AS NULL,
 [GeneralIndexYN] [char] (1) COLLATE Latin1_General_CI_AS NULL,
 [FinancialIndexYN] [char] (1) COLLATE Latin1_General_CI_AS NULL,

@@ -9,7 +9,6 @@ CREATE TABLE [ETL].[XtDimInstrument]
 [InstrumentStatusDate] [datetime] NULL,
 [TradingSysInstrumentName] [varchar] (200) COLLATE Latin1_General_CI_AS NULL,
 [CompanyGlobalID] [varchar] (30) COLLATE Latin1_General_CI_AS NULL,
-[MarketName] [varchar] (100) COLLATE Latin1_General_CI_AS NULL,
 [WKN] [varchar] (6) COLLATE Latin1_General_CI_AS NULL,
 [MNEM] [varchar] (4) COLLATE Latin1_General_CI_AS NULL,
 [GeneralIndexYN] [varchar] (1) COLLATE Latin1_General_CI_AS NULL,
@@ -23,10 +22,7 @@ CREATE TABLE [ETL].[XtDimInstrument]
 [FinancialIndexYN] [varchar] (1) COLLATE Latin1_General_CI_AS NULL,
 [SmallCapIndexYN] [varchar] (1) COLLATE Latin1_General_CI_AS NULL,
 [PrimaryMarket] [varchar] (50) COLLATE Latin1_General_CI_AS NULL,
-[IssuedDate] [datetime] NULL,
 [UnitOfQuotation] [numeric] (23, 10) NULL,
-[ISEQ20Freefloat] [numeric] (23, 10) NULL,
-[ISEQOverallFreeFloat] [numeric] (23, 10) NULL,
 [CFIName] [varchar] (200) COLLATE Latin1_General_CI_AS NULL,
 [CFICode] [varchar] (10) COLLATE Latin1_General_CI_AS NULL,
 [TotalSharesInIssue] [numeric] (28, 6) NULL,
@@ -60,6 +56,17 @@ CREATE TABLE [ETL].[XtDimInstrument]
 [CompanyStatusID] [smallint] NULL,
 [CurrencyID] [smallint] NULL,
 [QuotationCurrencyID] [smallint] NULL,
-[MarketID] [smallint] NULL
+[MarketID] [smallint] NULL,
+[SRC Staging XT Prep'ed.ISEQ20Freefloat] [numeric] (23, 10) NULL,
+[SRC Staging XT Prep'ed.ISEQOverallFreeFloat] [numeric] (23, 10) NULL,
+[MarketCode] [varchar] (3) COLLATE Latin1_General_CI_AS NULL,
+[ExSpecial] [varchar] (1) COLLATE Latin1_General_CI_AS NULL,
+[ExCapitalisation] [varchar] (1) COLLATE Latin1_General_CI_AS NULL,
+[ExRights] [varchar] (1) COLLATE Latin1_General_CI_AS NULL,
+[ExEntitlement] [varchar] (1) COLLATE Latin1_General_CI_AS NULL,
+[ExDividend] [varchar] (1) COLLATE Latin1_General_CI_AS NULL,
+[SecurityQualifier] [varchar] (10) COLLATE Latin1_General_CI_AS NULL,
+[ISEQOverallFreeFloat] [numeric] (19, 6) NULL,
+[ISEQ20Freefloat] [numeric] (19, 6) NULL
 ) ON [PRIMARY]
 GO

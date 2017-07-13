@@ -20,6 +20,32 @@ BEGIN
 		@DateID = MAX(DateID)    
 	FROM    
 		ETL.FactEquitySnapshotMerge    
+
+
+	/* Set MarketCap values */
+
+	/* Market cap after stats are loaded */
+	UPDATE
+		ETL.FactEquitySnapshotMerge  
+	SET
+		ISEQOverallMarketCap = ISEQOverallPrice * ISEQOverallShares * ISEQOverallFreeFloat,
+		ISEQ20CappedMarketCap = ISEQOverallPrice * ISEQ20CappedShares * ISEQOverallFreeFloat,
+		/* this comes from the iseq 20 stats file - adding extra if its possible stats havve loaded but not iseq 20 stats */
+		ISEQ20MarketCap = COALESCE(ISEQ20MarketCap, COALESCE(RestrictedLastTradePrice, ISEQOverallPrice ) * ISEQ20Shares * ISEQOverallFreeFloat)
+	WHERE
+		StatsLoaded = 'Y'
+
+	/* Market cap before stats are loaded */
+	UPDATE
+		ETL.FactEquitySnapshotMerge  
+	SET
+		ISEQOverallMarketCap = COALESCE(RestrictedLastTradePrice, ISEQOverallPrice ) * ISEQOverallShares * ISEQOverallFreeFloat,
+		ISEQ20CappedMarketCap = COALESCE(RestrictedLastTradePrice, ISEQOverallPrice ) * ISEQ20CappedShares * ISEQOverallFreeFloat,
+		ISEQ20MarketCap = COALESCE(RestrictedLastTradePrice, ISEQOverallPrice ) * ISEQ20Shares * ISEQOverallFreeFloat
+	WHERE
+		ISNULL(StatsLoaded, 'N') <> 'Y'
+
+
 	    
 	IF @DateID = CAST(CONVERT(CHAR,GETDATE(),112) AS int)    
 	BEGIN    
@@ -75,14 +101,16 @@ BEGIN
 			ISEQ20Price = ISNULL(E.ISEQ20Price, IIF(E.ISEQ20IndexYN='Y',E.LTP,NULL)),
 			ISEQ20Weighting = E.ISEQ20Weighting,      
 			ISEQ20MarketCap = E.ISEQ20MarketCap,      
+			ISEQ20CappedMarketCap = E.ISEQ20CappedMarketCap,
 			ISEQ20FreeFloat = E.ISEQ20FreeFloat,      
 			ISEQOverallWeighting = E.ISEQOverallWeighting,      
-			ISEQOverallMarketCap = E.TotalSharesInIssue * E.ISEQOverallFreefloat * E.ISEQOverallPrice,     
+			ISEQOverallMarketCap = E.ISEQOverallMarketCap,     
 			ISEQOverallBeta30 = E.ISEQOverallBeta30,      
 			ISEQOverallBeta250 = E.ISEQOverallBeta250,      
 			ISEQOverallFreefloat = E.ISEQOverallFreefloat,      
 			ISEQOverallPrice = E.ISEQOverallPrice,      
 			ISEQOverallShares = E.ISEQOverallShares,      
+			ISEQ20CappedShares = E.ISEQ20CappedShares,
 			OverallIndexYN = E.OverallIndexYN,      
 			GeneralIndexYN = E.GeneralIndexYN,      
 			FinancialIndexYN = E.FinancialIndexYN,      
@@ -160,20 +188,20 @@ BEGIN
 			Deals = E.Deals,      
 			DealsOB = E.DealsOB,      
 			DealsND = E.DealsND,      
-			/* Probably not...    
 			ISEQ20Shares = E.ISEQ20Shares,      
 			ISEQ20Price = E.ISEQ20Price,      
 			ISEQ20Weighting = E.ISEQ20Weighting,      
 			ISEQ20MarketCap = E.ISEQ20MarketCap,      
+			ISEQ20CappedMarketCap = E.ISEQ20CappedMarketCap,
 			ISEQ20FreeFloat = E.ISEQ20FreeFloat,      
 			ISEQOverallWeighting = E.ISEQOverallWeighting,      
-			ISEQOverallMarketCap = E.TotalSharesInIssue * E.ISEQOverallFreefloat * E.ISEQOverallPrice,     
+			ISEQOverallMarketCap = E.ISEQOverallMarketCap,     
 			ISEQOverallBeta30 = E.ISEQOverallBeta30,      
 			ISEQOverallBeta250 = E.ISEQOverallBeta250,      
 			ISEQOverallFreefloat = E.ISEQOverallFreefloat,      
 			ISEQOverallPrice = E.ISEQOverallPrice,      
 			ISEQOverallShares = E.ISEQOverallShares,      
-			*/    
+			ISEQ20CappedShares = E.ISEQ20CappedShares,
 			/* From XT ....    
 			OverallIndexYN = E.OverallIndexYN,      
 			GeneralIndexYN = E.GeneralIndexYN,      
@@ -258,7 +286,8 @@ BEGIN
 			ISEQ20Shares,      
 			ISEQ20Price,      
 			ISEQ20Weighting,      
-			ISEQ20MarketCap,      
+			ISEQ20MarketCap,   
+			ISEQ20CappedMarketCap,   
 			ISEQ20FreeFloat,      
 			ISEQOverallWeighting,      
 			ISEQOverallMarketCap,      
@@ -267,6 +296,7 @@ BEGIN
 			ISEQOverallFreefloat,      
 			ISEQOverallPrice,      
 			ISEQOverallShares,      
+			ISEQ20CappedShares,
 			OverallIndexYN,      
 			GeneralIndexYN,      
 			FinancialIndexYN,      
@@ -331,14 +361,16 @@ BEGIN
 			ISEQ20Price = ISNULL(E.ISEQ20Price, IIF(E.ISEQ20IndexYN='Y',E.LTP,NULL)),
 			ISEQ20Weighting,      
 			ISEQ20MarketCap,      
+			ISEQ20CappedMarketCap,
 			ISEQ20FreeFloat,      
 			ISEQOverallWeighting,      
-			TotalSharesInIssue * ISEQOverallFreefloat * ISEQOverallPrice,     
+			ISEQOverallMarketCap,     
 			ISEQOverallBeta30,      
 			ISEQOverallBeta250,      
 			ISEQOverallFreefloat,      
 			ISEQOverallPrice,      
 			ISEQOverallShares,      
+			ISEQ20CappedShares,
 			OverallIndexYN,      
 			GeneralIndexYN,      
 			FinancialIndexYN,      
@@ -404,6 +436,45 @@ BEGIN
 				) AS PREV    
 	WHERE
 		DWH.DateID = @DateID
+
+
+
+	UPDATE
+		DWH
+	SET
+		OCPDateTime = CAST(D.Day AS datetime) + CAST(DWH.OCPTime AS datetime)
+	FROM
+			DWH.FactEquitySnapshot DWH
+		INNER JOIN
+			DWH.DimDate D
+		ON DWH.OCPDateID = D.DateID
+	WHERE
+		DWH.DateID = @DateID
+	AND
+		DWH.OCPDateID IS NOT NULL
+	AND
+		DWH.OCPDateID <> -1
+	AND
+		DWH.OCPTime IS NOT NULL
+			
+	UPDATE
+		DWH
+	SET
+		LtpDateTime = CAST(D.Day AS datetime) + CAST(DWH.LTPTime AS datetime)
+	FROM
+			DWH.FactEquitySnapshot DWH
+		INNER JOIN
+			DWH.DimDate D
+		ON DWH.LTPDateID = D.DateID
+	WHERE
+		DWH.DateID = @DateID
+	AND
+		DWH.LTPDateID IS NOT NULL
+	AND
+		DWH.LTPDateID <> -1
+	AND
+		DWH.LtpTime IS NOT NULL
+			
 			    
 END      
     

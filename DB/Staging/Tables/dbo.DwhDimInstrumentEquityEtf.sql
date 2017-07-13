@@ -66,13 +66,18 @@ CREATE TABLE [dbo].[DwhDimInstrumentEquityEtf]
 [FinancialYearEndDate] [date] NULL,
 [IncorporationDate] [date] NULL,
 [CompanyListedDate] [date] NULL,
-[IssuedDate] [date] NULL,
 [InstrumentStatusName] [varchar] (50) COLLATE Latin1_General_CI_AS NULL,
 [IssuerStatusName] [varchar] (50) COLLATE Latin1_General_CI_AS NULL,
 [MarketName] [varchar] (50) COLLATE Latin1_General_CI_AS NULL,
 [MarketCode] [varchar] (15) COLLATE Latin1_General_CI_AS NULL,
 [CurrencyISOCode] [varchar] (3) COLLATE Latin1_General_CI_AS NULL,
-[QuotationCurrencyISOCode] [varchar] (3) COLLATE Latin1_General_CI_AS NULL
+[QuotationCurrencyISOCode] [varchar] (3) COLLATE Latin1_General_CI_AS NULL,
+[ExSpecial] [char] (1) COLLATE Latin1_General_CI_AS NULL,
+[ExCapitalisation] [char] (1) COLLATE Latin1_General_CI_AS NULL,
+[ExRights] [char] (1) COLLATE Latin1_General_CI_AS NULL,
+[ExEntitlement] [char] (1) COLLATE Latin1_General_CI_AS NULL,
+[ExDividend] [char] (1) COLLATE Latin1_General_CI_AS NULL,
+[SecurityQualifier] [varchar] (10) COLLATE Latin1_General_CI_AS NULL
 ) ON [PRIMARY]
 GO
 ALTER TABLE [dbo].[DwhDimInstrumentEquityEtf] ADD CONSTRAINT [PK_DwhDimInstrumentEquityEtf] PRIMARY KEY CLUSTERED  ([InstrumentID]) ON [PRIMARY]

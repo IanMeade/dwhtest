@@ -7,7 +7,7 @@ GO
 -- Create date: 28/4/2017  
 -- Description: Validate T7TradeMainDataFlowOutput - move invalid rows into quarantine - Defered trade with no defered time specified 
 -- =============================================  
-CREATE PROCEDURE [dbo].[ValidateT7TradeMainDataFlowOutputQuarantine_NegotiatedTradeWithoutDelay]  
+CREATE PROCEDURE [dbo].[DELETE_ValidateT7TradeMainDataFlowOutputQuarantine_NegotiatedTradeWithoutDelay]  
 AS  
 BEGIN  
 	-- interfering with SELECT statements.  

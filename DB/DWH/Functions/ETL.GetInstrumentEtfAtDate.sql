@@ -27,7 +27,7 @@ RETURN
 					FROM
 						DWH.DimInstrumentEtf
 					WHERE
-						StartDate <= @Date
+						CAST(StartDate AS DATE) <= @Date
 					GROUP BY
 						InstrumentGlobalID
 				)

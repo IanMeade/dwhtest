@@ -56,6 +56,14 @@ CREATE TABLE [ETL].[FactEtfSnapshotMerge]
 [InstrumentStatusID] [smallint] NULL,
 [LastEXDivDate] [date] NULL,
 [LtpDateTime] [datetime2] NULL,
-[OcpDateTime] [datetime] NULL
+[OcpDateTime] [datetime] NULL,
+[LastExDivDateID] [int] NULL,
+[ExDivYN] [char] (1) COLLATE Latin1_General_CI_AS NULL,
+[ExCapYN] [char] (1) COLLATE Latin1_General_CI_AS NULL,
+[ExEntitlementYN] [char] (1) COLLATE Latin1_General_CI_AS NULL,
+[ExRightsYN] [char] (1) COLLATE Latin1_General_CI_AS NULL,
+[ExSpecialYN] [char] (1) COLLATE Latin1_General_CI_AS NULL,
+[NAVCalcDateID] [int] NULL,
+[NAV] [numeric] (19, 6) NULL
 ) ON [PRIMARY]
 GO

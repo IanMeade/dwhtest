@@ -93,8 +93,6 @@ BEGIN
 			OR    
 				F.FeeCodeName != T.FeeCodeName   
 			OR 
-				F.IssuedDate != T.IssuedDate   
-			OR   
 				F.CurrencyISOCode != T.CurrencyISOCode  
 			OR 
 				F.UnitOfQuotation != T.UnitOfQuotation   
@@ -116,6 +114,22 @@ BEGIN
 				F.CompanyGlobalID != T.CompanyGlobalID   
 			OR  
 				F.IssuerGlobalID != T.IssuerGlobalID   
+			OR
+				ISNULL(F.LastEXDivDate,'19900101') != ISNULL(T.LastEXDivDate,'17990101')
+			OR
+				F.LastEXDivDate != T.LastEXDivDate
+			OR
+				F.ExSpecial != T.ExSpecial
+			OR
+				F.ExCapitalisation != T.ExCapitalisation
+			OR
+				F.ExRights != T.ExRights
+			OR
+				F.ExEntitlement != T.ExEntitlement
+			OR
+				F.ExDividend != T.ExDividend
+			OR
+				F.SecurityQualifier != T.SecurityQualifier
 		) 
    
 	INSERT INTO dbo.XtInterfaceUpdateTypes   
@@ -165,13 +179,14 @@ BEGIN
 			OR   
 				F.ESMIndexYN != T.ESMIndexYN   
 			OR    
-				F.PrimaryMarket != T.PrimaryMarket   
+				F.PrimaryMarket != T.PrimaryMarket  
 			OR    
 				F.ISEQ20Freefloat != T.ISEQ20Freefloat   
 			OR    
 				F.ISEQOverallFreeFloat != T.ISEQOverallFreeFloat   
 			OR    
 				F.TotalSharesInIssue != T.TotalSharesInIssue   
+				
 		)   
 
 

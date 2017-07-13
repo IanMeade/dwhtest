@@ -53,6 +53,8 @@ CREATE TABLE [ETL].[FactEquitySnapshotMerge]
 [ISEQOverallFreefloat] [numeric] (19, 6) NULL,
 [ISEQOverallPrice] [numeric] (19, 6) NULL,
 [ISEQOverallShares] [numeric] (28, 6) NULL,
+[ISEQ20CappedShares] [numeric] (28, 6) NULL,
+[ISEQ20CappedMarketCap] [numeric] (28, 6) NULL,
 [OverallIndexYN] [char] (1) COLLATE Latin1_General_CI_AS NULL,
 [GeneralIndexYN] [char] (1) COLLATE Latin1_General_CI_AS NULL,
 [FinancialIndexYN] [char] (1) COLLATE Latin1_General_CI_AS NULL,
@@ -65,11 +67,13 @@ CREATE TABLE [ETL].[FactEquitySnapshotMerge]
 [ExRightsYN] [char] (1) COLLATE Latin1_General_CI_AS NULL,
 [ExSpecialYN] [char] (1) COLLATE Latin1_General_CI_AS NULL,
 [PrimaryMarket] [varchar] (50) COLLATE Latin1_General_CI_AS NULL,
-[LseTurnover] [int] NULL,
+[LseTurnover] [numeric] (19, 6) NULL,
 [LseVolume] [numeric] (19, 6) NULL,
 [ETFFMShares] [int] NULL,
 [BatchID] [int] NULL,
 [LtpDateTime] [datetime2] NULL,
-[OcpDateTime] [datetime] NULL
+[OcpDateTime] [datetime] NULL,
+[RestrictedLastTradePrice] [numeric] (19, 6) NULL,
+[StatsLoaded] [char] (1) COLLATE Latin1_General_CI_AS NULL
 ) ON [PRIMARY]
 GO

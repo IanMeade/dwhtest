@@ -26,7 +26,7 @@ RETURN
 					FROM
 						DWH.DimInstrumentEquity
 					WHERE
-						StartDate <= @Date
+						CAST(StartDate AS DATE) <= @Date
 					GROUP BY
 						InstrumentGlobalID
 				)

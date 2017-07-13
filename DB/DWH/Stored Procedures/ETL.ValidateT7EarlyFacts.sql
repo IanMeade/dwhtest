@@ -16,7 +16,7 @@ BEGIN
 	
 	SELECT
 		27 AS Code,
-		'Early arrvng facts found in Equity Junk Dimension - review MDM for dimension row [' + STR(EquityTradeJunkID) + ']' AS Message
+		'Early arriving facts found in Equity Junk Dimension - review MDM for dimension row [' + STR(EquityTradeJunkID) + ']' AS Message
 	FROM
 		DWH.DimEquityTradeJunk
 	WHERE

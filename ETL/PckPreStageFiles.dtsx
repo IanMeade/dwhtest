@@ -11,8 +11,8 @@
   DTS:LocaleID="6153"
   DTS:ObjectName="PckPreStageFiles"
   DTS:PackageType="5"
-  DTS:VersionBuild="89"
-  DTS:VersionGUID="{CD5456F0-2F71-4729-802A-912508144E2F}">
+  DTS:VersionBuild="92"
+  DTS:VersionGUID="{9B7D8E5C-69F3-4CEB-8526-AD7855E8BF2F}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -493,6 +493,17 @@ FROM
                       name="WarningEndTime"
                       scale="7"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Expected File\SRC ProcessControl Expected Files.Outputs[OLE DB Source Output].Columns[OracleProcessStatusTable]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Expected File\SRC ProcessControl Expected Files.Outputs[OLE DB Source Output].ExternalColumns[OracleProcessStatusTable]"
+                      length="50"
+                      lineageId="Package\DFT Expected File\SRC ProcessControl Expected Files.Outputs[OLE DB Source Output].Columns[OracleProcessStatusTable]"
+                      name="OracleProcessStatusTable"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -535,6 +546,12 @@ FROM
                       dataType="dbTime2"
                       name="WarningEndTime"
                       scale="7" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Expected File\SRC ProcessControl Expected Files.Outputs[OLE DB Source Output].ExternalColumns[OracleProcessStatusTable]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="OracleProcessStatusTable" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -586,6 +603,13 @@ FROM
                       lineageId="Package\DFT Expected File\SRC ProcessControl Expected Files.Outputs[OLE DB Source Error Output].Columns[ExpectedStartTime]"
                       name="ExpectedStartTime"
                       scale="7" />
+                    <outputColumn
+                      refId="Package\DFT Expected File\SRC ProcessControl Expected Files.Outputs[OLE DB Source Error Output].Columns[OracleProcessStatusTable]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\DFT Expected File\SRC ProcessControl Expected Files.Outputs[OLE DB Source Error Output].Columns[OracleProcessStatusTable]"
+                      name="OracleProcessStatusTable" />
                     <outputColumn
                       refId="Package\DFT Expected File\SRC ProcessControl Expected Files.Outputs[OLE DB Source Error Output].Columns[ProcessFileYN]"
                       codePage="1252"
@@ -1578,7 +1602,7 @@ FROM
           DTS:LocaleID="-1"
           DTS:ObjectName="SQL Clear Staging SAFT max Letter"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="4">
+          DTS:ThreadHint="2">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -1595,7 +1619,7 @@ FROM
           DTS:LocaleID="-1"
           DTS:ObjectName="SQL DWH Get File Letter"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="4">
+          DTS:ThreadHint="2">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -1617,7 +1641,7 @@ FROM
           DTS:LocaleID="-1"
           DTS:ObjectName="SQL Staging Clear File List"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="3">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -1634,7 +1658,7 @@ FROM
           DTS:LocaleID="-1"
           DTS:ObjectName="SQL Staging Save Saft File Letter"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="4">
+          DTS:ThreadHint="2">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -1813,7 +1837,7 @@ FROM
               DTS:LocaleID="-1"
               DTS:ObjectName="FSYS Move bad files"
               DTS:TaskContact="File System Task;Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-              DTS:ThreadHint="0">
+              DTS:ThreadHint="1">
               <DTS:Variables />
               <DTS:ObjectData>
                 <FileSystemData
@@ -1868,7 +1892,7 @@ FROM
           DTS:LocaleID="-1"
           DTS:ObjectName="SQL Bad file names"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -2014,7 +2038,7 @@ FROM
               DTS:LocaleID="-1"
               DTS:ObjectName="EXP File access message"
               DTS:TaskContact="Expression Task;Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-              DTS:ThreadHint="1">
+              DTS:ThreadHint="0">
               <DTS:Variables />
               <DTS:ObjectData>
                 <ExpressionTask
@@ -2030,7 +2054,7 @@ FROM
               DTS:LocaleID="-1"
               DTS:ObjectName="FSYS Move good files"
               DTS:TaskContact="File System Task;Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-              DTS:ThreadHint="1">
+              DTS:ThreadHint="0">
               <DTS:Variables />
               <DTS:EventHandlers>
                 <DTS:EventHandler
@@ -2109,7 +2133,7 @@ FROM
           DTS:LocaleID="-1"
           DTS:ObjectName="SQL Good file name"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="1">
+          DTS:ThreadHint="0">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -3674,7 +3698,7 @@ WHERE
       DTS:LocaleID="-1"
       DTS:ObjectName="SQL Clear Staging FileValidationAlert"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="2">
+      DTS:ThreadHint="4">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -3692,7 +3716,7 @@ WHERE
       DTS:LocaleID="-1"
       DTS:ObjectName="SQL Get DHW BatchID"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="1">
+      DTS:ThreadHint="3">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -3822,11 +3846,11 @@ WHERE
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="64" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="64" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="164,42"
+          Size="196,42"
           Id="Package\DFT Expected File"
-          TopLeft="216.5,137" />
+          TopLeft="169,113" />
         <NodeLayout
           Size="268,42"
           Id="Package\SEQ File name validation\PCK T7 File Validation"
@@ -3852,7 +3876,7 @@ WHERE
           TopLeft="139.5,195.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="0,54.3333333333333"
               Start="0,0"
               End="-7.5,54.3333333333333">
@@ -3886,7 +3910,7 @@ WHERE
           TopLeft="139.5,261.166666666667">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="0,53.3333333333333"
               Start="0,0"
               End="-7.5,53.3333333333333">
@@ -3920,7 +3944,7 @@ WHERE
           TopLeft="158.166666666667,66.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="43.3333333333333,57.5"
               Start="0,0"
               End="43.3333333333333,50">
@@ -3954,7 +3978,7 @@ WHERE
           TopLeft="244.833333333333,66.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="28.6666666666667,108"
               Start="0,0"
               End="28.6666666666667,100.5">
@@ -4019,7 +4043,7 @@ WHERE
           TopLeft="148.25,48.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="0,41"
               Start="0,0"
               End="0,33.5">
@@ -4068,7 +4092,7 @@ WHERE
           TopLeft="132.5,47.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="0,42"
               Start="0,0"
               End="0,34.5">
@@ -4090,7 +4114,7 @@ WHERE
           TopLeft="132.5,131.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="0,31"
               Start="0,0"
               End="0,23.5">
@@ -4112,7 +4136,7 @@ WHERE
           TopLeft="132.5,293">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="0,46"
               Start="0,0"
               End="0,38.5">
@@ -4160,7 +4184,7 @@ WHERE
           TopLeft="200.75,47.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="0,55"
               Start="0,0"
               End="0,47.5">
@@ -4201,7 +4225,7 @@ WHERE
           TopLeft="127,142">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="0,30"
               Start="0,0"
               End="0,22.5">
@@ -4223,7 +4247,7 @@ WHERE
           TopLeft="127,49.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="0,50.5"
               Start="0,0"
               End="0,43">
@@ -4258,7 +4282,7 @@ WHERE
           TopLeft="182,60.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="0,38"
               Start="0,0"
               End="0,30.5">
@@ -4307,7 +4331,7 @@ WHERE
           TopLeft="135.5,293">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="0,39"
               Start="0,0"
               End="0,31.5">
@@ -4329,7 +4353,7 @@ WHERE
           TopLeft="135.5,212">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="0,39"
               Start="0,0"
               End="0,31.5">
@@ -4351,7 +4375,7 @@ WHERE
           TopLeft="135.5,56">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="0,34"
               Start="0,0"
               End="0,26.5">
@@ -4373,7 +4397,7 @@ WHERE
           TopLeft="135.5,132">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="0,38"
               Start="0,0"
               End="0,30.5">
@@ -4400,21 +4424,21 @@ WHERE
         <NodeLayout
           Size="196,42"
           Id="Package\SQL Clear Staging Filelist"
-          TopLeft="216.5,47.5" />
+          TopLeft="169,47.5" />
         <NodeLayout
           Size="196,42"
           Id="Package\SQL Clear Staging FileValidationAlert"
-          TopLeft="216.5,273.5" />
+          TopLeft="169,223.5" />
         <NodeLayout
-          Size="186,42"
+          Size="196,42"
           Id="Package\SQL Get DHW BatchID"
-          TopLeft="173,351" />
+          TopLeft="169,320" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
           TopLeft="435.5,1520.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="273.166666666667,37.5"
               Start="0,0"
               End="273.166666666667,30">
@@ -4445,30 +4469,18 @@ WHERE
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint1]"
-          TopLeft="314.5,89.5">
+          TopLeft="267,89.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
-              EndConnector="-16,47.5"
+              StartConnector="{assembly:Null}"
+              EndConnector="0,23.5"
               Start="0,0"
-              End="-16,40">
+              End="0,16">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,19.75" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,19.75"
-                    Point2="0,23.75"
-                    Point3="-4,23.75" />
-                  <mssgle:LineSegment
-                    End="-12,23.75" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-12,23.75"
-                    Point2="-16,23.75"
-                    Point3="-16,27.75" />
-                  <mssgle:LineSegment
-                    End="-16,40" />
+                    End="0,16" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -4482,7 +4494,7 @@ WHERE
           TopLeft="590,947.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="-154.5,119"
               Start="0,0"
               End="-154.5,111.5">
@@ -4516,7 +4528,7 @@ WHERE
           TopLeft="752,947.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="192,109"
               Start="0,0"
               End="192,101.5">
@@ -4547,30 +4559,18 @@ WHERE
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 21]"
-          TopLeft="380.5,158">
+          TopLeft="365,136.75">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
-              EndConnector="112.5,-18.5"
+              StartConnector="{assembly:Null}"
+              EndConnector="128,0"
               Start="0,0"
-              End="105,-18.5">
+              End="120.5,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="70.5176848874598,0" />
-                  <mssgle:CubicBezierSegment
-                    Point1="70.5176848874598,0"
-                    Point2="74.5176848874598,0"
-                    Point3="74.5176848874598,-4" />
-                  <mssgle:LineSegment
-                    End="74.5176848874598,-14.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="74.5176848874598,-14.5"
-                    Point2="74.5176848874598,-18.5"
-                    Point3="78.5176848874598,-18.5" />
-                  <mssgle:LineSegment
-                    End="105,-18.5" />
+                    End="120.5,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -4584,7 +4584,7 @@ WHERE
           TopLeft="643.5,446.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="27.5,91"
               Start="0,0"
               End="27.5,83.5">
@@ -4618,7 +4618,7 @@ WHERE
           TopLeft="944,1508.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="-129.666666666667,49.5"
               Start="0,0"
               End="-129.666666666667,42">
@@ -4649,30 +4649,18 @@ WHERE
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 41]"
-          TopLeft="412.5,294.5">
+          TopLeft="365,242.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
-              EndConnector="80.5,13.3333333333333"
+              StartConnector="{assembly:Null}"
+              EndConnector="128,0"
               Start="0,0"
-              End="73,13.3333333333333">
+              End="120.5,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="44.1131528046422,0" />
-                  <mssgle:CubicBezierSegment
-                    Point1="44.1131528046422,0"
-                    Point2="48.1131528046422,0"
-                    Point3="48.1131528046422,4" />
-                  <mssgle:LineSegment
-                    End="48.1131528046422,9.33333333333331" />
-                  <mssgle:CubicBezierSegment
-                    Point1="48.1131528046422,9.33333333333331"
-                    Point2="48.1131528046422,13.3333333333333"
-                    Point3="52.1131528046422,13.3333333333333" />
-                  <mssgle:LineSegment
-                    End="73,13.3333333333333" />
+                    End="120.5,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -4686,7 +4674,7 @@ WHERE
           TopLeft="352,722.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="72,20"
               Start="0,0"
               End="64.5,20">
@@ -4717,30 +4705,18 @@ WHERE
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 6]"
-          TopLeft="359,372">
+          TopLeft="365,341.25">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
-              EndConnector="134,-30.5"
+              StartConnector="{assembly:Null}"
+              EndConnector="128,0"
               Start="0,0"
-              End="126.5,-30.5">
+              End="120.5,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="84.7588424437299,0" />
-                  <mssgle:CubicBezierSegment
-                    Point1="84.7588424437299,0"
-                    Point2="88.7588424437299,0"
-                    Point3="88.7588424437299,-4" />
-                  <mssgle:LineSegment
-                    End="88.7588424437299,-26.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="88.7588424437299,-26.5"
-                    Point2="88.7588424437299,-30.5"
-                    Point3="92.7588424437299,-30.5" />
-                  <mssgle:LineSegment
-                    End="126.5,-30.5" />
+                    End="120.5,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -4756,12 +4732,12 @@ WHERE
     design-time-name="Package.EventHandlers[OnError]">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <AnnotationLayout
           Text="Suppress known errors&#xA;"
           ParentId="Package.EventHandlers[OnError]"
-          FontInfo="{x:Null}"
-          Size="150,56"
+          FontInfo="{assembly:Null}"
+          Size="150,NaN"
           Id="aca7a0d7-aaff-49bd-9c9b-0ea433f26cf2"
           TopLeft="54,24" />
       </GraphLayout>
@@ -4771,7 +4747,7 @@ WHERE
     design-time-name="Package\DFT Expected File">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="241,42"
           Id="Package\DFT Expected File\SRC ProcessControl Expected Files"
@@ -4780,6 +4756,24 @@ WHERE
           Size="241,42"
           Id="Package\DFT Expected File\DST Staging Expected Files"
           TopLeft="72,126" />
+        <EdgeLayout
+          Id="Package\DFT Expected File.Paths[OLE DB Source Output]"
+          TopLeft="NaN,NaN">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="{assembly:Null}"
+              Start="0,0"
+              End="0,0">
+              <mssgle:Curve.Segments>
+                <assembly:Null />
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
@@ -4817,7 +4811,7 @@ WHERE
     design-time-name="Package\SEQ Get Saft Max Letter\DFT Copy file list">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="180,42"
           Id="Package\SEQ Get Saft Max Letter\DFT Copy file list\SRC DWH DimFile"
@@ -4826,6 +4820,26 @@ WHERE
           Size="180,42"
           Id="Package\SEQ Get Saft Max Letter\DFT Copy file list\DST STG DwhDimFile"
           TopLeft="84,195" />
+        <EdgeLayout
+          Id="Package\SEQ Get Saft Max Letter\DFT Copy file list.Paths[OLE DB Source Output]"
+          TopLeft="NaN,NaN">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="{assembly:Null}"
+              Start="0,0"
+              End="0,0">
+              <mssgle:Curve.Segments>
+                <assembly:Null />
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
@@ -4859,19 +4873,67 @@ WHERE
     design-time-name="Package\SEQ Process Complete\DFT File Found">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="261,42"
           Id="Package\SEQ Process Complete\DFT File Found\DST ProcessControl FileFounf Message"
-          TopLeft="73,254" />
+          TopLeft="5.50000000000003,209.5" />
         <NodeLayout
           Size="261,42"
           Id="Package\SEQ Process Complete\DFT File Found\SRC STG FileList for messages"
-          TopLeft="73,47" />
+          TopLeft="5.5,5.5" />
         <NodeLayout
           Size="261,42"
           Id="Package\SEQ Process Complete\DFT File Found\Derived Column"
-          TopLeft="73,158" />
+          TopLeft="5.5,107.5" />
+        <EdgeLayout
+          Id="Package\SEQ Process Complete\DFT File Found.Paths[OLE DB Source Output]"
+          TopLeft="136,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ Process Complete\DFT File Found.Paths[Derived Column Output]"
+          TopLeft="136,149.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
@@ -4900,7 +4962,7 @@ WHERE
     design-time-name="Package\SEQ Process Complete\DFT ODS FileList tables">
     <LayoutInfo>
       <GraphLayout
-        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="193,42"
           Id="Package\SEQ Process Complete\DFT ODS FileList tables\DST STG ODS File List 3"
@@ -4925,6 +4987,66 @@ WHERE
           Size="193,42"
           Id="Package\SEQ Process Complete\DFT ODS FileList tables\DST STG ODS File List 1"
           TopLeft="162,134" />
+        <EdgeLayout
+          Id="Package\SEQ Process Complete\DFT ODS FileList tables.Paths[OLE DB Source Output2]"
+          TopLeft="NaN,NaN">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="{assembly:Null}"
+              Start="0,0"
+              End="0,0">
+              <mssgle:Curve.Segments>
+                <assembly:Null />
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ Process Complete\DFT ODS FileList tables.Paths[OLE DB Source Output1]"
+          TopLeft="NaN,NaN">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="{assembly:Null}"
+              Start="0,0"
+              End="0,0">
+              <mssgle:Curve.Segments>
+                <assembly:Null />
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ Process Complete\DFT ODS FileList tables.Paths[OLE DB Source Output]"
+          TopLeft="NaN,NaN">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="{assembly:Null}"
+              Start="0,0"
+              End="0,0">
+              <mssgle:Curve.Segments>
+                <assembly:Null />
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
