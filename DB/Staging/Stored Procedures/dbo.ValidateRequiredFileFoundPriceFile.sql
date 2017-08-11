@@ -36,16 +36,14 @@ BEGIN
 								FileTag IN ( 'PriceFile' ) 
 							UNION 
 							SELECT 
-								SaftFileLetter 
+								FileName
 							FROM 
-								dbo.DwhDimFile 
+								dbo.ODS_FileList
 							WHERE 
-								FileTypeTag IN ( 'PriceFile' ) 
+								FileTag IN ( 'PriceFile' ) 
 							AND 
-								CAST(FileProcessedTime AS DATE) = CAST(GETDATE() AS DATE) 
+								CAST(Populated AS DATE) = CAST(GETDATE() AS DATE) 
 					) 
  
 END   
-   
- 
 GO

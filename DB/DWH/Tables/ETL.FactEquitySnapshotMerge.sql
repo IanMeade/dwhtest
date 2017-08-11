@@ -74,6 +74,7 @@ CREATE TABLE [ETL].[FactEquitySnapshotMerge]
 [LtpDateTime] [datetime2] NULL,
 [OcpDateTime] [datetime] NULL,
 [RestrictedLastTradePrice] [numeric] (19, 6) NULL,
-[StatsLoaded] [char] (1) COLLATE Latin1_General_CI_AS NULL
+[StatsLoaded] [char] (1) COLLATE Latin1_General_CI_AS NULL,
+[MarketCapAdjustment] [numeric] (16, 8) NULL
 ) ON [PRIMARY]
 GO

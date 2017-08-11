@@ -1,0 +1,30 @@
+CREATE TABLE [dbo].[RAWTC_810_NEW_tc810rec]
+(
+[time18] [datetime] NULL,
+[tradeType] [tinyint] NULL,
+[matchEvent] [int] NULL,
+[matchStep] [int] NULL,
+[matchDeal] [int] NULL,
+[parentDeal] [tinyint] NULL,
+[dealItem] [int] NULL,
+[tradeNumber] [int] NULL,
+[exchangeOrderId] [numeric] (20, 0) NULL,
+[versionNo] [smallint] NULL,
+[acctTypGrp] [nvarchar] (255) COLLATE Latin1_General_CI_AS NULL,
+[buyCod] [nvarchar] (255) COLLATE Latin1_General_CI_AS NULL,
+[ordrPrtFilCod] [nvarchar] (255) COLLATE Latin1_General_CI_AS NULL,
+[execQty] [bigint] NULL,
+[execPrc] [decimal] (28, 10) NULL,
+[ordrTyp] [tinyint] NULL,
+[limOrdrPrc] [decimal] (28, 10) NULL,
+[timeValidity] [tinyint] NULL,
+[tradingRestriction] [tinyint] NULL,
+[settlAmnt] [decimal] (28, 10) NULL,
+[settlDat] [datetime] NULL,
+[ctrPtyId] [nvarchar] (255) COLLATE Latin1_General_CI_AS NULL,
+[userOrdrNum] [nvarchar] (255) COLLATE Latin1_General_CI_AS NULL,
+[text] [nvarchar] (255) COLLATE Latin1_General_CI_AS NULL,
+[kindOfDepo] [tinyint] NULL,
+[tc810Grp4_Id] [numeric] (20, 0) NULL
+) ON [PRIMARY]
+GO

@@ -36,13 +36,13 @@ BEGIN
 								FileTag IN ( 'TxSaft' ) 
 							UNION 
 							SELECT 
-								SaftFileLetter 
+								FileName
 							FROM 
-								dbo.DwhDimFile 
+								dbo.ODS_FileList
 							WHERE 
-								FileTypeTag IN ( 'TxSaft' ) 
+								FileTag IN ( 'TxSaft' ) 
 							AND 
-								CAST(FileProcessedTime AS DATE) = CAST(GETDATE() AS DATE) 
+								CAST(Populated AS DATE) = CAST(GETDATE() AS DATE) 
 					) 
    
 END   

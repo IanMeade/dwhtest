@@ -6,6 +6,7 @@ GO
 
 
 
+
  
  
  
@@ -50,7 +51,7 @@ CREATE VIEW [dbo].[TxSaft_Open] AS
 		A_BEST_BID_PRICE AS BidPrice,   
 		A_BEST_ASK_PRICE AS OfferPrice,   
 		A_TRADE_SIZE_X AS TradeVolume,   
-		A_ORDER_MARKET_VALUE AS TradeTurnover,   
+		A_MATCH_PRICE_X * A_TRADE_SIZE_X AS TradeTurnover,   
 		O.DwhFileID,   
 		/* MINOR CHANGES */   
 	--	IIF(A_DEFERRED_IND = 'Y' , 'Y', 'N' ) AS DelayedTradeYN   
@@ -87,6 +88,7 @@ CREATE VIEW [dbo].[TxSaft_Open] AS
  
  
  
+
 
 
 

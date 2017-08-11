@@ -11,8 +11,8 @@
   DTS:LocaleID="6153"
   DTS:ObjectName="PckMdmSimpleDimensions"
   DTS:PackageType="5"
-  DTS:VersionBuild="96"
-  DTS:VersionGUID="{99C810B5-1854-431A-BC22-478DC230936E}">
+  DTS:VersionBuild="98"
+  DTS:VersionGUID="{3D2C12BD-5531-41A9-910D-BB8B1B8A463A}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -5118,20 +5118,124 @@ where [refTable].[TraderCode] = ? and [refTable].[BrokerCode] = ?</property>
                   </outputs>
                 </component>
                 <component
-                  refId="Package\SEQ Date update\DFT Date\Derived Column"
+                  refId="Package\SEQ Date update\DFT Date\DER Fix -1 date"
                   componentClassID="Microsoft.DerivedColumn"
                   contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
                   description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
-                  name="Derived Column"
+                  name="DER Fix -1 date"
                   usesDispositions="true">
                   <inputs>
                     <input
-                      refId="Package\SEQ Date update\DFT Date\Derived Column.Inputs[Derived Column Input]"
+                      refId="Package\SEQ Date update\DFT Date\DER Fix -1 date.Inputs[Derived Column Input]"
                       description="Input to the Derived Column Transformation"
                       name="Derived Column Input">
                       <inputColumns>
                         <inputColumn
-                          refId="Package\SEQ Date update\DFT Date\Derived Column.Inputs[Derived Column Input].Columns[DateID]"
+                          refId="Package\SEQ Date update\DFT Date\DER Fix -1 date.Inputs[Derived Column Input].Columns[DateID]"
+                          cachedDataType="i4"
+                          cachedName="DateID"
+                          lineageId="Package\SEQ Date update\DFT Date\SRC STG GetDates.Outputs[OLE DB Source Output].Columns[DateID]" />
+                        <inputColumn
+                          refId="Package\SEQ Date update\DFT Date\DER Fix -1 date.Inputs[Derived Column Input].Columns[DateText]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="20"
+                          cachedName="DateText"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\SEQ Date update\DFT Date\SRC STG GetDates.Outputs[OLE DB Source Output].Columns[DateText]"
+                          truncationRowDisposition="FailComponent"
+                          usageType="readWrite">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">#{Package\SEQ Date update\DFT Date\SRC STG GetDates.Outputs[OLE DB Source Output].Columns[DateID]} == 10101 ? "" : #{Package\SEQ Date update\DFT Date\SRC STG GetDates.Outputs[OLE DB Source Output].Columns[DateText]}</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">DateID == 10101 ? "" : DateText</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\SEQ Date update\DFT Date\DER Fix -1 date.Inputs[Derived Column Input].Columns[Day]"
+                          cachedDataType="dbDate"
+                          cachedName="Day"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\SEQ Date update\DFT Date\SRC STG GetDates.Outputs[OLE DB Source Output].Columns[Day]"
+                          truncationRowDisposition="FailComponent"
+                          usageType="readWrite">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">#{Package\SEQ Date update\DFT Date\SRC STG GetDates.Outputs[OLE DB Source Output].Columns[DateID]} == 10101 ? NULL(DT_DBDATE) : #{Package\SEQ Date update\DFT Date\SRC STG GetDates.Outputs[OLE DB Source Output].Columns[Day]}</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">DateID == 10101 ? NULL(DT_DBDATE) : Day</property>
+                          </properties>
+                        </inputColumn>
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\SEQ Date update\DFT Date\DER Fix -1 date.Outputs[Derived Column Output]"
+                      description="Default Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      name="Derived Column Output"
+                      synchronousInputId="Package\SEQ Date update\DFT Date\DER Fix -1 date.Inputs[Derived Column Input]">
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\SEQ Date update\DFT Date\DER Fix -1 date.Outputs[Derived Column Error Output]"
+                      description="Error Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Derived Column Error Output"
+                      synchronousInputId="Package\SEQ Date update\DFT Date\DER Fix -1 date.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\SEQ Date update\DFT Date\DER Fix -1 date.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\SEQ Date update\DFT Date\DER Fix -1 date.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\SEQ Date update\DFT Date\DER Fix -1 date.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\SEQ Date update\DFT Date\DER Fix -1 date.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\SEQ Date update\DFT Date\DER make unalloacted date -1"
+                  componentClassID="Microsoft.DerivedColumn"
+                  contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+                  name="DER make unalloacted date -1"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\SEQ Date update\DFT Date\DER make unalloacted date -1.Inputs[Derived Column Input]"
+                      description="Input to the Derived Column Transformation"
+                      name="Derived Column Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\SEQ Date update\DFT Date\DER make unalloacted date -1.Inputs[Derived Column Input].Columns[DateID]"
                           cachedDataType="i4"
                           cachedName="DateID"
                           errorOrTruncationOperation="Computation"
@@ -5159,31 +5263,31 @@ where [refTable].[TraderCode] = ? and [refTable].[BrokerCode] = ?</property>
                   </inputs>
                   <outputs>
                     <output
-                      refId="Package\SEQ Date update\DFT Date\Derived Column.Outputs[Derived Column Output]"
+                      refId="Package\SEQ Date update\DFT Date\DER make unalloacted date -1.Outputs[Derived Column Output]"
                       description="Default Output of the Derived Column Transformation"
                       exclusionGroup="1"
                       name="Derived Column Output"
-                      synchronousInputId="Package\SEQ Date update\DFT Date\Derived Column.Inputs[Derived Column Input]">
+                      synchronousInputId="Package\SEQ Date update\DFT Date\DER make unalloacted date -1.Inputs[Derived Column Input]">
                       <externalMetadataColumns />
                     </output>
                     <output
-                      refId="Package\SEQ Date update\DFT Date\Derived Column.Outputs[Derived Column Error Output]"
+                      refId="Package\SEQ Date update\DFT Date\DER make unalloacted date -1.Outputs[Derived Column Error Output]"
                       description="Error Output of the Derived Column Transformation"
                       exclusionGroup="1"
                       isErrorOut="true"
                       name="Derived Column Error Output"
-                      synchronousInputId="Package\SEQ Date update\DFT Date\Derived Column.Inputs[Derived Column Input]">
+                      synchronousInputId="Package\SEQ Date update\DFT Date\DER make unalloacted date -1.Inputs[Derived Column Input]">
                       <outputColumns>
                         <outputColumn
-                          refId="Package\SEQ Date update\DFT Date\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          refId="Package\SEQ Date update\DFT Date\DER make unalloacted date -1.Outputs[Derived Column Error Output].Columns[ErrorCode]"
                           dataType="i4"
-                          lineageId="Package\SEQ Date update\DFT Date\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          lineageId="Package\SEQ Date update\DFT Date\DER make unalloacted date -1.Outputs[Derived Column Error Output].Columns[ErrorCode]"
                           name="ErrorCode"
                           specialFlags="1" />
                         <outputColumn
-                          refId="Package\SEQ Date update\DFT Date\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          refId="Package\SEQ Date update\DFT Date\DER make unalloacted date -1.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
                           dataType="i4"
-                          lineageId="Package\SEQ Date update\DFT Date\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          lineageId="Package\SEQ Date update\DFT Date\DER make unalloacted date -1.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
                           name="ErrorColumn"
                           specialFlags="2" />
                       </outputColumns>
@@ -8016,14 +8120,19 @@ where [refTable].[TraderCode] = ? and [refTable].[BrokerCode] = ?</property>
                   startId="Package\SEQ Date update\DFT Date\Slowly Changing Dimension.Outputs[Changing Attribute Updates Output]" />
                 <path
                   refId="Package\SEQ Date update\DFT Date.Paths[Data Conversion Output]"
-                  endId="Package\SEQ Date update\DFT Date\Derived Column.Inputs[Derived Column Input]"
+                  endId="Package\SEQ Date update\DFT Date\DER Fix -1 date.Inputs[Derived Column Input]"
                   name="Data Conversion Output"
                   startId="Package\SEQ Date update\DFT Date\Data Conversion.Outputs[Data Conversion Output]" />
                 <path
                   refId="Package\SEQ Date update\DFT Date.Paths[Derived Column Output]"
                   endId="Package\SEQ Date update\DFT Date\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]"
                   name="Derived Column Output"
-                  startId="Package\SEQ Date update\DFT Date\Derived Column.Outputs[Derived Column Output]" />
+                  startId="Package\SEQ Date update\DFT Date\DER make unalloacted date -1.Outputs[Derived Column Output]" />
+                <path
+                  refId="Package\SEQ Date update\DFT Date.Paths[Derived Column Output1]"
+                  endId="Package\SEQ Date update\DFT Date\DER make unalloacted date -1.Inputs[Derived Column Input]"
+                  name="Derived Column Output"
+                  startId="Package\SEQ Date update\DFT Date\DER Fix -1 date.Outputs[Derived Column Output]" />
                 <path
                   refId="Package\SEQ Date update\DFT Date.Paths[New Output]"
                   endId="Package\SEQ Date update\DFT Date\Insert Destination.Inputs[OLE DB Destination Input]"
@@ -15326,7 +15435,7 @@ SELECT
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="64" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="64" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="216,42"
           Id="Package\SEQ Complex dimensions\DFT Currency"
@@ -15352,7 +15461,7 @@ SELECT
           TopLeft="125.5,61.8333333333333">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,53.9999999999997"
               Start="0,0"
               End="0,46.4999999999997">
@@ -15405,7 +15514,7 @@ SELECT
           TopLeft="225.666666666667,161.6">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,52.6"
               Start="0,0"
               End="0,45.1">
@@ -15427,7 +15536,7 @@ SELECT
           TopLeft="225.666666666667,256.2">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,52.6"
               Start="0,0"
               End="0,45.1">
@@ -15449,7 +15558,7 @@ SELECT
           TopLeft="225.666666666667,67">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,52.6"
               Start="0,0"
               End="0,45.1">
@@ -15473,7 +15582,7 @@ SELECT
           TopLeft="225.666666666667,350.8">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,52.6"
               Start="0,0"
               End="0,45.1">
@@ -15495,7 +15604,7 @@ SELECT
           TopLeft="225.666666666667,445.4">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,52.6"
               Start="0,0"
               End="0,45.1">
@@ -15566,7 +15675,7 @@ SELECT
           TopLeft="199,44">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="84,0"
               Start="0,0"
               End="76.5,0">
@@ -15599,7 +15708,7 @@ SELECT
           TopLeft="572.916666666665,462.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,45.5"
               Start="0,0"
               End="0,38">
@@ -15621,7 +15730,7 @@ SELECT
           TopLeft="574.722222222223,1131">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,48.5"
               Start="0,0"
               End="0,41">
@@ -15643,7 +15752,7 @@ SELECT
           TopLeft="582.361111111112,67.2777777777777">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,58.2222222222223"
               Start="0,0"
               End="0,50.7222222222223">
@@ -15665,7 +15774,7 @@ SELECT
           TopLeft="580.972222222223,1528.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,73.5"
               Start="0,0"
               End="0,66">
@@ -15687,7 +15796,7 @@ SELECT
           TopLeft="577.527777777776,263.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,36"
               Start="0,0"
               End="0,28.5">
@@ -15723,7 +15832,7 @@ SELECT
     design-time-name="Package\SEQ Complex dimensions\DFT Currency">
     <LayoutInfo>
       <GraphLayout
-        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="163,42"
           Id="Package\SEQ Complex dimensions\DFT Currency\Insert Destination"
@@ -15749,12 +15858,12 @@ SELECT
           TopLeft="NaN,NaN">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
+              EndConnector="{x:Null}"
               Start="0,0"
               End="0,0">
               <mssgle:Curve.Segments>
-                <assembly:Null />
+                <x:Null />
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
@@ -15769,12 +15878,12 @@ SELECT
           TopLeft="NaN,NaN">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
+              EndConnector="{x:Null}"
               Start="0,0"
               End="0,0">
               <mssgle:Curve.Segments>
-                <assembly:Null />
+                <x:Null />
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
@@ -15789,12 +15898,12 @@ SELECT
           TopLeft="NaN,NaN">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
+              EndConnector="{x:Null}"
               Start="0,0"
               End="0,0">
               <mssgle:Curve.Segments>
-                <assembly:Null />
+                <x:Null />
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
@@ -15809,12 +15918,12 @@ SELECT
           TopLeft="NaN,NaN">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
+              EndConnector="{x:Null}"
               Start="0,0"
               End="0,0">
               <mssgle:Curve.Segments>
-                <assembly:Null />
+                <x:Null />
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
@@ -15899,7 +16008,7 @@ SELECT
     design-time-name="Package\SEQ Complex dimensions\DFT Dim Broker">
     <LayoutInfo>
       <GraphLayout
-        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="196,42"
           Id="Package\SEQ Complex dimensions\DFT Dim Broker\Row Count"
@@ -15937,12 +16046,12 @@ SELECT
           TopLeft="NaN,NaN">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
+              EndConnector="{x:Null}"
               Start="0,0"
               End="0,0">
               <mssgle:Curve.Segments>
-                <assembly:Null />
+                <x:Null />
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
@@ -15957,12 +16066,12 @@ SELECT
           TopLeft="NaN,NaN">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
+              EndConnector="{x:Null}"
               Start="0,0"
               End="0,0">
               <mssgle:Curve.Segments>
-                <assembly:Null />
+                <x:Null />
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
@@ -15977,12 +16086,12 @@ SELECT
           TopLeft="NaN,NaN">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
+              EndConnector="{x:Null}"
               Start="0,0"
               End="0,0">
               <mssgle:Curve.Segments>
-                <assembly:Null />
+                <x:Null />
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
@@ -15997,12 +16106,12 @@ SELECT
           TopLeft="NaN,NaN">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
+              EndConnector="{x:Null}"
               Start="0,0"
               End="0,0">
               <mssgle:Curve.Segments>
-                <assembly:Null />
+                <x:Null />
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
@@ -16017,12 +16126,12 @@ SELECT
           TopLeft="NaN,NaN">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
+              EndConnector="{x:Null}"
               Start="0,0"
               End="0,0">
               <mssgle:Curve.Segments>
-                <assembly:Null />
+                <x:Null />
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
@@ -16037,12 +16146,12 @@ SELECT
           TopLeft="NaN,NaN">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
+              EndConnector="{x:Null}"
               Start="0,0"
               End="0,0">
               <mssgle:Curve.Segments>
-                <assembly:Null />
+                <x:Null />
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
@@ -16057,12 +16166,12 @@ SELECT
           TopLeft="NaN,NaN">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
+              EndConnector="{x:Null}"
               Start="0,0"
               End="0,0">
               <mssgle:Curve.Segments>
-                <assembly:Null />
+                <x:Null />
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
@@ -16141,7 +16250,7 @@ SELECT
     design-time-name="Package\SEQ Complex dimensions\DFT Tme">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="166,42"
           Id="Package\SEQ Complex dimensions\DFT Tme\OLE DB Command"
@@ -16163,12 +16272,12 @@ SELECT
           TopLeft="NaN,NaN">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
+              EndConnector="{x:Null}"
               Start="0,0"
               End="0,0">
               <mssgle:Curve.Segments>
-                <assembly:Null />
+                <x:Null />
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
@@ -16183,12 +16292,12 @@ SELECT
           TopLeft="NaN,NaN">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
+              EndConnector="{x:Null}"
               Start="0,0"
               End="0,0">
               <mssgle:Curve.Segments>
-                <assembly:Null />
+                <x:Null />
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
@@ -16203,12 +16312,12 @@ SELECT
           TopLeft="NaN,NaN">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
+              EndConnector="{x:Null}"
               Start="0,0"
               End="0,0">
               <mssgle:Curve.Segments>
-                <assembly:Null />
+                <x:Null />
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
@@ -16301,7 +16410,7 @@ SELECT
     design-time-name="Package\SEQ Complex dimensions\DFT Trader">
     <LayoutInfo>
       <GraphLayout
-        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="228,42"
           Id="Package\SEQ Complex dimensions\DFT Trader\DST DWH DimTrader"
@@ -16343,12 +16452,12 @@ SELECT
           TopLeft="NaN,NaN">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
+              EndConnector="{x:Null}"
               Start="0,0"
               End="0,0">
               <mssgle:Curve.Segments>
-                <assembly:Null />
+                <x:Null />
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
@@ -16363,12 +16472,12 @@ SELECT
           TopLeft="NaN,NaN">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
+              EndConnector="{x:Null}"
               Start="0,0"
               End="0,0">
               <mssgle:Curve.Segments>
-                <assembly:Null />
+                <x:Null />
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
@@ -16383,12 +16492,12 @@ SELECT
           TopLeft="NaN,NaN">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
+              EndConnector="{x:Null}"
               Start="0,0"
               End="0,0">
               <mssgle:Curve.Segments>
-                <assembly:Null />
+                <x:Null />
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
@@ -16403,12 +16512,12 @@ SELECT
           TopLeft="NaN,NaN">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
+              EndConnector="{x:Null}"
               Start="0,0"
               End="0,0">
               <mssgle:Curve.Segments>
-                <assembly:Null />
+                <x:Null />
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
@@ -16423,12 +16532,12 @@ SELECT
           TopLeft="NaN,NaN">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
+              EndConnector="{x:Null}"
               Start="0,0"
               End="0,0">
               <mssgle:Curve.Segments>
-                <assembly:Null />
+                <x:Null />
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
@@ -16443,12 +16552,12 @@ SELECT
           TopLeft="NaN,NaN">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
+              EndConnector="{x:Null}"
               Start="0,0"
               End="0,0">
               <mssgle:Curve.Segments>
-                <assembly:Null />
+                <x:Null />
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
@@ -16463,12 +16572,12 @@ SELECT
           TopLeft="NaN,NaN">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
+              EndConnector="{x:Null}"
               Start="0,0"
               End="0,0">
               <mssgle:Curve.Segments>
-                <assembly:Null />
+                <x:Null />
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
@@ -16483,12 +16592,12 @@ SELECT
           TopLeft="NaN,NaN">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
+              EndConnector="{x:Null}"
               Start="0,0"
               End="0,0">
               <mssgle:Curve.Segments>
-                <assembly:Null />
+                <x:Null />
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
@@ -16554,381 +16663,198 @@ SELECT
     design-time-name="Package\SEQ Date update\DFT Date">
     <LayoutInfo>
       <GraphLayout
-        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="166,42"
-          Id="Package\SEQ Date update\DFT Date\OLE DB Command"
-          TopLeft="229,413.5" />
+          Size="222,42"
+          Id="Package\SEQ Date update\DFT Date\SRC STG GetDates"
+          TopLeft="202.5,5.5" />
         <NodeLayout
-          Size="209,42"
-          Id="Package\SEQ Date update\DFT Date\Slowly Changing Dimension"
-          TopLeft="207.5,311.5" />
+          Size="222,42"
+          Id="Package\SEQ Date update\DFT Date\Data Conversion"
+          TopLeft="202.5,100" />
+        <EdgeLayout
+          Id="Package\SEQ Date update\DFT Date.Paths[OLE DB Source Output]"
+          TopLeft="313.5,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="0,52.5"
+              Start="0,0"
+              End="0,45">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,45" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="222,42"
+          Id="Package\SEQ Date update\DFT Date\DER make unalloacted date -1"
+          TopLeft="202.5,289" />
         <NodeLayout
           Size="163,42"
           Id="Package\SEQ Date update\DFT Date\Insert Destination"
-          TopLeft="5.50000000000006,413.5" />
+          TopLeft="124.5,489.5" />
         <NodeLayout
-          Size="209,42"
-          Id="Package\SEQ Date update\DFT Date\SRC STG GetDates"
-          TopLeft="207.5,5.5" />
+          Size="222,42"
+          Id="Package\SEQ Date update\DFT Date\Slowly Changing Dimension"
+          TopLeft="202.5,383.5" />
         <NodeLayout
-          Size="209,42"
-          Id="Package\SEQ Date update\DFT Date\Derived Column"
-          TopLeft="207.5,209.5" />
-        <NodeLayout
-          Size="209,42"
-          Id="Package\SEQ Date update\DFT Date\Data Conversion"
-          TopLeft="207.5,107.5" />
-        <EdgeLayout
-          Id="Package\SEQ Date update\DFT Date.Paths[OLE DB Source Output]"
-          TopLeft="NaN,NaN">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="{assembly:Null}"
-              Start="0,0"
-              End="0,0">
-              <mssgle:Curve.Segments>
-                <assembly:Null />
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+          Size="166,42"
+          Id="Package\SEQ Date update\DFT Date\OLE DB Command"
+          TopLeft="348,489.5" />
         <EdgeLayout
           Id="Package\SEQ Date update\DFT Date.Paths[New Output]"
-          TopLeft="NaN,NaN">
+          TopLeft="277.833333333333,425.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
+              EndConnector="-71.8333333333333,64"
               Start="0,0"
-              End="0,0">
+              End="-71.8333333333333,56.5">
               <mssgle:Curve.Segments>
-                <assembly:Null />
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,21.8747763864043" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,21.8747763864043"
+                    Point2="0,25.8747763864043"
+                    Point3="-4,25.8747763864043" />
+                  <mssgle:LineSegment
+                    End="-67.8333333333333,25.8747763864043" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-67.8333333333333,25.8747763864043"
+                    Point2="-71.8333333333333,25.8747763864043"
+                    Point3="-71.8333333333333,29.8747763864043" />
+                  <mssgle:LineSegment
+                    End="-71.8333333333333,56.5" />
+                </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
+              BoundingBox="-63.0080533854166,30.8747763864043,54.1827734375,11.43359375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\SEQ Date update\DFT Date.Paths[Derived Column Output]"
-          TopLeft="NaN,NaN">
+          TopLeft="313.5,331">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
+              EndConnector="0,52.5"
               Start="0,0"
-              End="0,0">
+              End="0,45">
               <mssgle:Curve.Segments>
-                <assembly:Null />
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,45" />
+                </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\SEQ Date update\DFT Date.Paths[Data Conversion Output]"
-          TopLeft="NaN,NaN">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="{assembly:Null}"
-              Start="0,0"
-              End="0,0">
-              <mssgle:Curve.Segments>
-                <assembly:Null />
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\SEQ Date update\DFT Date.Paths[Changing Attribute Updates Output]"
-          TopLeft="NaN,NaN">
+          TopLeft="349.166666666667,425.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
+              EndConnector="81.8333333333334,64"
               Start="0,0"
-              End="0,0">
+              End="81.8333333333334,56.5">
               <mssgle:Curve.Segments>
-                <assembly:Null />
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,21.8747763864043" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,21.8747763864043"
+                    Point2="0,25.8747763864043"
+                    Point3="4,25.8747763864043" />
+                  <mssgle:LineSegment
+                    End="77.8333333333334,25.8747763864043" />
+                  <mssgle:CubicBezierSegment
+                    Point1="77.8333333333334,25.8747763864043"
+                    Point2="81.8333333333334,25.8747763864043"
+                    Point3="81.8333333333334,29.8747763864043" />
+                  <mssgle:LineSegment
+                    End="81.8333333333334,56.5" />
+                </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
+              BoundingBox="-37.6172395833333,30.8747763864043,157.0678125,11.6630859375"
               RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="222,42"
+          Id="Package\SEQ Date update\DFT Date\DER Fix -1 date"
+          TopLeft="202.5,194.5" />
+        <EdgeLayout
+          Id="Package\SEQ Date update\DFT Date.Paths[Data Conversion Output]"
+          TopLeft="313.5,142">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="0,52.5"
+              Start="0,0"
+              End="0,45">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,45" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ Date update\DFT Date.Paths[Derived Column Output1]"
+          TopLeft="313.5,236.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="0,52.5"
+              Start="0,0"
+              End="0,45">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,45" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\SEQ Date update\DFT Date\Slowly Changing Dimension">
-    <Properties>
-      <Property>
-        <Name>SCDMetadata</Name>
-        <Value
-          type="q2:string">&lt;?xml version="1.0" encoding="utf-16"?&gt;
-&lt;SCDWizardMetadata xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
-  &lt;ConnectionID&gt;{0CBC2C04-C137-495F-AF7C-FA5DE465FED0}&lt;/ConnectionID&gt;
-  &lt;TableName&gt;[DWH].[DimDate]&lt;/TableName&gt;
-  &lt;InputToColumnsCollection&gt;
-    &lt;InputColumnToDBColumn&gt;
-      &lt;IdentificationString&gt;SRC STG GetDates.Outputs[OLE DB Source Output].Columns[CurrentDateYN]&lt;/IdentificationString&gt;
-      &lt;ColumnName&gt;CurrentDateYN&lt;/ColumnName&gt;
-      &lt;KeyType&gt;None&lt;/KeyType&gt;
-      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
-    &lt;/InputColumnToDBColumn&gt;
-    &lt;InputColumnToDBColumn&gt;
-      &lt;IdentificationString&gt;SRC STG GetDates.Outputs[OLE DB Source Output].Columns[DateID]&lt;/IdentificationString&gt;
-      &lt;ColumnName&gt;DateID&lt;/ColumnName&gt;
-      &lt;KeyType&gt;BusinessKey&lt;/KeyType&gt;
-      &lt;ChangeType&gt;None&lt;/ChangeType&gt;
-    &lt;/InputColumnToDBColumn&gt;
-    &lt;InputColumnToDBColumn&gt;
-      &lt;IdentificationString&gt;SRC STG GetDates.Outputs[OLE DB Source Output].Columns[DateText]&lt;/IdentificationString&gt;
-      &lt;ColumnName&gt;DateText&lt;/ColumnName&gt;
-      &lt;KeyType&gt;None&lt;/KeyType&gt;
-      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
-    &lt;/InputColumnToDBColumn&gt;
-    &lt;InputColumnToDBColumn&gt;
-      &lt;IdentificationString&gt;SRC STG GetDates.Outputs[OLE DB Source Output].Columns[Day]&lt;/IdentificationString&gt;
-      &lt;ColumnName&gt;Day&lt;/ColumnName&gt;
-      &lt;KeyType&gt;None&lt;/KeyType&gt;
-      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
-    &lt;/InputColumnToDBColumn&gt;
-    &lt;InputColumnToDBColumn&gt;
-      &lt;IdentificationString&gt;Data Conversion.Outputs[Data Conversion Output].Columns[DaysMTD]&lt;/IdentificationString&gt;
-      &lt;ColumnName&gt;DaysMTD&lt;/ColumnName&gt;
-      &lt;KeyType&gt;None&lt;/KeyType&gt;
-      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
-    &lt;/InputColumnToDBColumn&gt;
-    &lt;InputColumnToDBColumn&gt;
-      &lt;IdentificationString&gt;Data Conversion.Outputs[Data Conversion Output].Columns[DaysQTD]&lt;/IdentificationString&gt;
-      &lt;ColumnName&gt;DaysQTD&lt;/ColumnName&gt;
-      &lt;KeyType&gt;None&lt;/KeyType&gt;
-      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
-    &lt;/InputColumnToDBColumn&gt;
-    &lt;InputColumnToDBColumn&gt;
-      &lt;IdentificationString&gt;Data Conversion.Outputs[Data Conversion Output].Columns[DaysYTD]&lt;/IdentificationString&gt;
-      &lt;ColumnName&gt;DaysYTD&lt;/ColumnName&gt;
-      &lt;KeyType&gt;None&lt;/KeyType&gt;
-      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
-    &lt;/InputColumnToDBColumn&gt;
-    &lt;InputColumnToDBColumn&gt;
-      &lt;IdentificationString&gt;SRC STG GetDates.Outputs[OLE DB Source Output].Columns[DayText]&lt;/IdentificationString&gt;
-      &lt;ColumnName&gt;DayText&lt;/ColumnName&gt;
-      &lt;KeyType&gt;None&lt;/KeyType&gt;
-      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
-    &lt;/InputColumnToDBColumn&gt;
-    &lt;InputColumnToDBColumn&gt;
-      &lt;IdentificationString&gt;SRC STG GetDates.Outputs[OLE DB Source Output].Columns[LastMonthEnd]&lt;/IdentificationString&gt;
-      &lt;ColumnName&gt;LastMonthEnd&lt;/ColumnName&gt;
-      &lt;KeyType&gt;None&lt;/KeyType&gt;
-      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
-    &lt;/InputColumnToDBColumn&gt;
-    &lt;InputColumnToDBColumn&gt;
-      &lt;IdentificationString&gt;SRC STG GetDates.Outputs[OLE DB Source Output].Columns[LastQuarterEnd]&lt;/IdentificationString&gt;
-      &lt;ColumnName&gt;LastQuarterEnd&lt;/ColumnName&gt;
-      &lt;KeyType&gt;None&lt;/KeyType&gt;
-      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
-    &lt;/InputColumnToDBColumn&gt;
-    &lt;InputColumnToDBColumn&gt;
-      &lt;IdentificationString&gt;SRC STG GetDates.Outputs[OLE DB Source Output].Columns[LastYearEnd]&lt;/IdentificationString&gt;
-      &lt;ColumnName&gt;LastYearEnd&lt;/ColumnName&gt;
-      &lt;KeyType&gt;None&lt;/KeyType&gt;
-      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
-    &lt;/InputColumnToDBColumn&gt;
-    &lt;InputColumnToDBColumn&gt;
-      &lt;IdentificationString&gt;SRC STG GetDates.Outputs[OLE DB Source Output].Columns[MonthDayNo]&lt;/IdentificationString&gt;
-      &lt;ColumnName&gt;MonthDayNo&lt;/ColumnName&gt;
-      &lt;KeyType&gt;None&lt;/KeyType&gt;
-      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
-    &lt;/InputColumnToDBColumn&gt;
-    &lt;InputColumnToDBColumn&gt;
-      &lt;IdentificationString&gt;SRC STG GetDates.Outputs[OLE DB Source Output].Columns[MonthEnd]&lt;/IdentificationString&gt;
-      &lt;ColumnName&gt;MonthEnd&lt;/ColumnName&gt;
-      &lt;KeyType&gt;None&lt;/KeyType&gt;
-      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
-    &lt;/InputColumnToDBColumn&gt;
-    &lt;InputColumnToDBColumn&gt;
-      &lt;IdentificationString&gt;SRC STG GetDates.Outputs[OLE DB Source Output].Columns[MonthName]&lt;/IdentificationString&gt;
-      &lt;ColumnName&gt;MonthName&lt;/ColumnName&gt;
-      &lt;KeyType&gt;None&lt;/KeyType&gt;
-      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
-    &lt;/InputColumnToDBColumn&gt;
-    &lt;InputColumnToDBColumn&gt;
-      &lt;IdentificationString&gt;SRC STG GetDates.Outputs[OLE DB Source Output].Columns[MonthNo]&lt;/IdentificationString&gt;
-      &lt;ColumnName&gt;MonthNo&lt;/ColumnName&gt;
-      &lt;KeyType&gt;None&lt;/KeyType&gt;
-      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
-    &lt;/InputColumnToDBColumn&gt;
-    &lt;InputColumnToDBColumn&gt;
-      &lt;IdentificationString&gt;SRC STG GetDates.Outputs[OLE DB Source Output].Columns[MonthStart]&lt;/IdentificationString&gt;
-      &lt;ColumnName&gt;MonthStart&lt;/ColumnName&gt;
-      &lt;KeyType&gt;None&lt;/KeyType&gt;
-      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
-    &lt;/InputColumnToDBColumn&gt;
-    &lt;InputColumnToDBColumn&gt;
-      &lt;IdentificationString&gt;SRC STG GetDates.Outputs[OLE DB Source Output].Columns[MonthToDateYN]&lt;/IdentificationString&gt;
-      &lt;ColumnName&gt;MonthToDateYN&lt;/ColumnName&gt;
-      &lt;KeyType&gt;None&lt;/KeyType&gt;
-      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
-    &lt;/InputColumnToDBColumn&gt;
-    &lt;InputColumnToDBColumn&gt;
-      &lt;IdentificationString&gt;SRC STG GetDates.Outputs[OLE DB Source Output].Columns[PreviousDateID]&lt;/IdentificationString&gt;
-      &lt;ColumnName&gt;PreviousDateID&lt;/ColumnName&gt;
-      &lt;KeyType&gt;None&lt;/KeyType&gt;
-      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
-    &lt;/InputColumnToDBColumn&gt;
-    &lt;InputColumnToDBColumn&gt;
-      &lt;IdentificationString&gt;SRC STG GetDates.Outputs[OLE DB Source Output].Columns[QuarterEnd]&lt;/IdentificationString&gt;
-      &lt;ColumnName&gt;QuarterEnd&lt;/ColumnName&gt;
-      &lt;KeyType&gt;None&lt;/KeyType&gt;
-      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
-    &lt;/InputColumnToDBColumn&gt;
-    &lt;InputColumnToDBColumn&gt;
-      &lt;IdentificationString&gt;SRC STG GetDates.Outputs[OLE DB Source Output].Columns[QuarterNo]&lt;/IdentificationString&gt;
-      &lt;ColumnName&gt;QuarterNo&lt;/ColumnName&gt;
-      &lt;KeyType&gt;None&lt;/KeyType&gt;
-      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
-    &lt;/InputColumnToDBColumn&gt;
-    &lt;InputColumnToDBColumn&gt;
-      &lt;IdentificationString&gt;SRC STG GetDates.Outputs[OLE DB Source Output].Columns[QuarterStart]&lt;/IdentificationString&gt;
-      &lt;ColumnName&gt;QuarterStart&lt;/ColumnName&gt;
-      &lt;KeyType&gt;None&lt;/KeyType&gt;
-      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
-    &lt;/InputColumnToDBColumn&gt;
-    &lt;InputColumnToDBColumn&gt;
-      &lt;IdentificationString&gt;SRC STG GetDates.Outputs[OLE DB Source Output].Columns[QuarterText]&lt;/IdentificationString&gt;
-      &lt;ColumnName&gt;QuarterText&lt;/ColumnName&gt;
-      &lt;KeyType&gt;None&lt;/KeyType&gt;
-      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
-    &lt;/InputColumnToDBColumn&gt;
-    &lt;InputColumnToDBColumn&gt;
-      &lt;IdentificationString&gt;SRC STG GetDates.Outputs[OLE DB Source Output].Columns[TradingEndTime]&lt;/IdentificationString&gt;
-      &lt;ColumnName&gt;TradingEndTime&lt;/ColumnName&gt;
-      &lt;KeyType&gt;None&lt;/KeyType&gt;
-      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
-    &lt;/InputColumnToDBColumn&gt;
-    &lt;InputColumnToDBColumn&gt;
-      &lt;IdentificationString&gt;SRC STG GetDates.Outputs[OLE DB Source Output].Columns[TradingStartTime]&lt;/IdentificationString&gt;
-      &lt;ColumnName&gt;TradingStartTime&lt;/ColumnName&gt;
-      &lt;KeyType&gt;None&lt;/KeyType&gt;
-      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
-    &lt;/InputColumnToDBColumn&gt;
-    &lt;InputColumnToDBColumn&gt;
-      &lt;IdentificationString&gt;SRC STG GetDates.Outputs[OLE DB Source Output].Columns[WeekEnd]&lt;/IdentificationString&gt;
-      &lt;ColumnName&gt;WeekEnd&lt;/ColumnName&gt;
-      &lt;KeyType&gt;None&lt;/KeyType&gt;
-      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
-    &lt;/InputColumnToDBColumn&gt;
-    &lt;InputColumnToDBColumn&gt;
-      &lt;IdentificationString&gt;SRC STG GetDates.Outputs[OLE DB Source Output].Columns[WeekStart]&lt;/IdentificationString&gt;
-      &lt;ColumnName&gt;WeekStart&lt;/ColumnName&gt;
-      &lt;KeyType&gt;None&lt;/KeyType&gt;
-      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
-    &lt;/InputColumnToDBColumn&gt;
-    &lt;InputColumnToDBColumn&gt;
-      &lt;IdentificationString&gt;SRC STG GetDates.Outputs[OLE DB Source Output].Columns[WorkingDayYN]&lt;/IdentificationString&gt;
-      &lt;ColumnName&gt;WorkingDayYN&lt;/ColumnName&gt;
-      &lt;KeyType&gt;None&lt;/KeyType&gt;
-      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
-    &lt;/InputColumnToDBColumn&gt;
-    &lt;InputColumnToDBColumn&gt;
-      &lt;IdentificationString&gt;SRC STG GetDates.Outputs[OLE DB Source Output].Columns[Year]&lt;/IdentificationString&gt;
-      &lt;ColumnName&gt;Year&lt;/ColumnName&gt;
-      &lt;KeyType&gt;None&lt;/KeyType&gt;
-      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
-    &lt;/InputColumnToDBColumn&gt;
-    &lt;InputColumnToDBColumn&gt;
-      &lt;IdentificationString&gt;SRC STG GetDates.Outputs[OLE DB Source Output].Columns[YearEnd]&lt;/IdentificationString&gt;
-      &lt;ColumnName&gt;YearEnd&lt;/ColumnName&gt;
-      &lt;KeyType&gt;None&lt;/KeyType&gt;
-      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
-    &lt;/InputColumnToDBColumn&gt;
-    &lt;InputColumnToDBColumn&gt;
-      &lt;IdentificationString&gt;SRC STG GetDates.Outputs[OLE DB Source Output].Columns[YearMonthNo]&lt;/IdentificationString&gt;
-      &lt;ColumnName&gt;YearMonthNo&lt;/ColumnName&gt;
-      &lt;KeyType&gt;None&lt;/KeyType&gt;
-      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
-    &lt;/InputColumnToDBColumn&gt;
-    &lt;InputColumnToDBColumn&gt;
-      &lt;IdentificationString&gt;SRC STG GetDates.Outputs[OLE DB Source Output].Columns[YearMonthText]&lt;/IdentificationString&gt;
-      &lt;ColumnName&gt;YearMonthText&lt;/ColumnName&gt;
-      &lt;KeyType&gt;None&lt;/KeyType&gt;
-      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
-    &lt;/InputColumnToDBColumn&gt;
-    &lt;InputColumnToDBColumn&gt;
-      &lt;IdentificationString&gt;SRC STG GetDates.Outputs[OLE DB Source Output].Columns[YearQuarterNo]&lt;/IdentificationString&gt;
-      &lt;ColumnName&gt;YearQuarterNo&lt;/ColumnName&gt;
-      &lt;KeyType&gt;None&lt;/KeyType&gt;
-      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
-    &lt;/InputColumnToDBColumn&gt;
-    &lt;InputColumnToDBColumn&gt;
-      &lt;IdentificationString&gt;SRC STG GetDates.Outputs[OLE DB Source Output].Columns[YearQuarterText]&lt;/IdentificationString&gt;
-      &lt;ColumnName&gt;YearQuarterText&lt;/ColumnName&gt;
-      &lt;KeyType&gt;None&lt;/KeyType&gt;
-      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
-    &lt;/InputColumnToDBColumn&gt;
-    &lt;InputColumnToDBColumn&gt;
-      &lt;IdentificationString&gt;SRC STG GetDates.Outputs[OLE DB Source Output].Columns[YearStart]&lt;/IdentificationString&gt;
-      &lt;ColumnName&gt;YearStart&lt;/ColumnName&gt;
-      &lt;KeyType&gt;None&lt;/KeyType&gt;
-      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
-    &lt;/InputColumnToDBColumn&gt;
-    &lt;InputColumnToDBColumn&gt;
-      &lt;IdentificationString&gt;SRC STG GetDates.Outputs[OLE DB Source Output].Columns[YearToDateYN]&lt;/IdentificationString&gt;
-      &lt;ColumnName&gt;YearToDateYN&lt;/ColumnName&gt;
-      &lt;KeyType&gt;None&lt;/KeyType&gt;
-      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
-    &lt;/InputColumnToDBColumn&gt;
-    &lt;InputColumnToDBColumn&gt;
-      &lt;IdentificationString&gt;SRC STG GetDates.Outputs[OLE DB Source Output].Columns[YearWeekNo]&lt;/IdentificationString&gt;
-      &lt;ColumnName&gt;YearWeekNo&lt;/ColumnName&gt;
-      &lt;KeyType&gt;None&lt;/KeyType&gt;
-      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
-    &lt;/InputColumnToDBColumn&gt;
-  &lt;/InputToColumnsCollection&gt;
-  &lt;GeneratedComponentsIdentificationStrings&gt;
-    &lt;anyType xsi:type="xsd:string"&gt;Insert Destination&lt;/anyType&gt;
-    &lt;anyType xsi:type="xsd:string"&gt;OLE DB Command&lt;/anyType&gt;
-  &lt;/GeneratedComponentsIdentificationStrings&gt;
-  &lt;FailFixedAttribute&gt;false&lt;/FailFixedAttribute&gt;
-  &lt;FailChangeAttribute&gt;true&lt;/FailChangeAttribute&gt;
-  &lt;UseStartEndDate&gt;false&lt;/UseStartEndDate&gt;
-  &lt;CurrentIndicatorColumn /&gt;
-  &lt;InferredIndicatorColumn /&gt;
-  &lt;ValueCurrent /&gt;
-  &lt;ValueExpired /&gt;
-  &lt;StartDateColumn /&gt;
-  &lt;EndDateColumn /&gt;
-  &lt;DateVariable /&gt;
-  &lt;EnableInferredSupport&gt;false&lt;/EnableInferredSupport&gt;
-&lt;/SCDWizardMetadata&gt;</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\SEQ Date update\DFT Date\SRC STG GetDates">
     <Properties>
@@ -16941,7 +16867,7 @@ SELECT
     design-time-name="Package\SEQ Date update\DFT Date Extras">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="166,42"
           Id="Package\SEQ Date update\DFT Date Extras\OLE DB Command"
@@ -16963,19 +16889,17 @@ SELECT
           TopLeft="NaN,NaN">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
+              EndConnector="{x:Null}"
               Start="0,0"
               End="0,0">
               <mssgle:Curve.Segments>
-                <assembly:Null />
+                <x:Null />
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -16983,18 +16907,18 @@ SELECT
           TopLeft="NaN,NaN">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
+              EndConnector="{x:Null}"
               Start="0,0"
               End="0,0">
               <mssgle:Curve.Segments>
-                <assembly:Null />
+                <x:Null />
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
+              BoundingBox="0,0,54.1827734375,11.43359375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -17003,18 +16927,18 @@ SELECT
           TopLeft="NaN,NaN">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
+              EndConnector="{x:Null}"
               Start="0,0"
               End="0,0">
               <mssgle:Curve.Segments>
-                <assembly:Null />
+                <x:Null />
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
+              BoundingBox="0,0,157.0678125,11.6630859375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -17158,7 +17082,7 @@ SELECT
     design-time-name="Package\SEQ Date update\DFT Refresh Date Controls">
     <LayoutInfo>
       <GraphLayout
-        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="188,42"
           Id="Package\SEQ Date update\DFT Refresh Date Controls\SRC MDM SpecialDates"
@@ -17188,12 +17112,12 @@ SELECT
           TopLeft="NaN,NaN">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
+              EndConnector="{x:Null}"
               Start="0,0"
               End="0,0">
               <mssgle:Curve.Segments>
-                <assembly:Null />
+                <x:Null />
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
@@ -17208,12 +17132,12 @@ SELECT
           TopLeft="NaN,NaN">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
+              EndConnector="{x:Null}"
               Start="0,0"
               End="0,0">
               <mssgle:Curve.Segments>
-                <assembly:Null />
+                <x:Null />
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
@@ -17228,12 +17152,12 @@ SELECT
           TopLeft="NaN,NaN">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
+              EndConnector="{x:Null}"
               Start="0,0"
               End="0,0">
               <mssgle:Curve.Segments>
-                <assembly:Null />
+                <x:Null />
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
@@ -17328,7 +17252,7 @@ SELECT
     design-time-name="Package\SEQ Simple Dimensions\DFT IndexType">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="178,42"
           Id="Package\SEQ Simple Dimensions\DFT IndexType\SRC MDM IndexType"
@@ -17337,12 +17261,20 @@ SELECT
           Size="178,42"
           Id="Package\SEQ Simple Dimensions\DFT IndexType\SCD Dim IndexType"
           TopLeft="223,107.5" />
+        <NodeLayout
+          Size="166,42"
+          Id="Package\SEQ Simple Dimensions\DFT IndexType\OLE DB Command"
+          TopLeft="229,209.5" />
+        <NodeLayout
+          Size="163,42"
+          Id="Package\SEQ Simple Dimensions\DFT IndexType\Insert Destination"
+          TopLeft="5.50000000000006,209.5" />
         <EdgeLayout
           Id="Package\SEQ Simple Dimensions\DFT IndexType.Paths[OLE DB Source Output]"
           TopLeft="312,47.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,60"
               Start="0,0"
               End="0,52.5">
@@ -17356,19 +17288,17 @@ SELECT
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="163,42"
-          Id="Package\SEQ Simple Dimensions\DFT IndexType\Insert Destination"
-          TopLeft="5.50000000000006,209.5" />
         <EdgeLayout
           Id="Package\SEQ Simple Dimensions\DFT IndexType.Paths[New Output]"
           TopLeft="283.666666666667,149.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="-196.666666666667,60"
               Start="0,0"
               End="-196.666666666667,52.5">
@@ -17399,16 +17329,12 @@ SELECT
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="166,42"
-          Id="Package\SEQ Simple Dimensions\DFT IndexType\OLE DB Command"
-          TopLeft="229,209.5" />
         <EdgeLayout
           Id="Package\SEQ Simple Dimensions\DFT IndexType.Paths[Changing Attribute Updates Output]"
           TopLeft="340.333333333333,149.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="-28.3333333333333,60"
               Start="0,0"
               End="-28.3333333333333,52.5">
@@ -17526,7 +17452,7 @@ SELECT
     design-time-name="Package\SEQ Simple Dimensions\DFT Market">
     <LayoutInfo>
       <GraphLayout
-        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="166,42"
           Id="Package\SEQ Simple Dimensions\DFT Market\OLE DB Command"
@@ -17564,12 +17490,12 @@ SELECT
           TopLeft="NaN,NaN">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
+              EndConnector="{x:Null}"
               Start="0,0"
               End="0,0">
               <mssgle:Curve.Segments>
-                <assembly:Null />
+                <x:Null />
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
@@ -17584,12 +17510,12 @@ SELECT
           TopLeft="NaN,NaN">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
+              EndConnector="{x:Null}"
               Start="0,0"
               End="0,0">
               <mssgle:Curve.Segments>
-                <assembly:Null />
+                <x:Null />
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
@@ -17604,12 +17530,12 @@ SELECT
           TopLeft="NaN,NaN">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
+              EndConnector="{x:Null}"
               Start="0,0"
               End="0,0">
               <mssgle:Curve.Segments>
-                <assembly:Null />
+                <x:Null />
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
@@ -17624,12 +17550,12 @@ SELECT
           TopLeft="NaN,NaN">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
+              EndConnector="{x:Null}"
               Start="0,0"
               End="0,0">
               <mssgle:Curve.Segments>
-                <assembly:Null />
+                <x:Null />
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
@@ -17644,12 +17570,12 @@ SELECT
           TopLeft="NaN,NaN">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
+              EndConnector="{x:Null}"
               Start="0,0"
               End="0,0">
               <mssgle:Curve.Segments>
-                <assembly:Null />
+                <x:Null />
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
@@ -17664,12 +17590,12 @@ SELECT
           TopLeft="NaN,NaN">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
+              EndConnector="{x:Null}"
               Start="0,0"
               End="0,0">
               <mssgle:Curve.Segments>
-                <assembly:Null />
+                <x:Null />
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
@@ -17805,7 +17731,7 @@ SELECT
     design-time-name="Package\SEQ Simple Dimensions\DFT Status">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="158,42"
           Id="Package\SEQ Simple Dimensions\DFT Status\SCD DimStatus"
@@ -17827,12 +17753,12 @@ SELECT
           TopLeft="NaN,NaN">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
+              EndConnector="{x:Null}"
               Start="0,0"
               End="0,0">
               <mssgle:Curve.Segments>
-                <assembly:Null />
+                <x:Null />
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
@@ -17847,12 +17773,12 @@ SELECT
           TopLeft="NaN,NaN">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
+              EndConnector="{x:Null}"
               Start="0,0"
               End="0,0">
               <mssgle:Curve.Segments>
-                <assembly:Null />
+                <x:Null />
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
@@ -17867,12 +17793,12 @@ SELECT
           TopLeft="NaN,NaN">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
+              EndConnector="{x:Null}"
               Start="0,0"
               End="0,0">
               <mssgle:Curve.Segments>
-                <assembly:Null />
+                <x:Null />
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
@@ -17885,7 +17811,7 @@ SELECT
         <AnnotationLayout
           Text="Only a status name =&gt; can't use SCD wizard"
           ParentId="Package\SEQ Simple Dimensions\DFT Status"
-          FontInfo="{assembly:Null}"
+          FontInfo="{x:Null}"
           Size="273,NaN"
           Id="1aae7ff4-55e4-4ab8-898c-e978c770a0ce"
           TopLeft="455.5,210.5" />
@@ -17952,7 +17878,7 @@ SELECT
     design-time-name="Package\SEQ Simple Dimensions\DFT Trade Modification Type">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="166,42"
           Id="Package\SEQ Simple Dimensions\DFT Trade Modification Type\OLE DB Command"
@@ -17974,12 +17900,12 @@ SELECT
           TopLeft="NaN,NaN">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
+              EndConnector="{x:Null}"
               Start="0,0"
               End="0,0">
               <mssgle:Curve.Segments>
-                <assembly:Null />
+                <x:Null />
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
@@ -17994,12 +17920,12 @@ SELECT
           TopLeft="NaN,NaN">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
+              EndConnector="{x:Null}"
               Start="0,0"
               End="0,0">
               <mssgle:Curve.Segments>
-                <assembly:Null />
+                <x:Null />
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
@@ -18014,12 +17940,12 @@ SELECT
           TopLeft="NaN,NaN">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
+              EndConnector="{x:Null}"
               Start="0,0"
               End="0,0">
               <mssgle:Curve.Segments>
-                <assembly:Null />
+                <x:Null />
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
@@ -18098,7 +18024,7 @@ SELECT
     design-time-name="Package\SEQ Simple Report Helpers\DFT Equity Feee Band">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="205,42"
           Id="Package\SEQ Simple Report Helpers\DFT Equity Feee Band\SRC MDM Equity Fee Band"
@@ -18112,12 +18038,12 @@ SELECT
           TopLeft="NaN,NaN">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
+              EndConnector="{x:Null}"
               Start="0,0"
               End="0,0">
               <mssgle:Curve.Segments>
-                <assembly:Null />
+                <x:Null />
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>

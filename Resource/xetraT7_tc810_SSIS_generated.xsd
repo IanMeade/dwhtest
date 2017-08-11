@@ -1,0 +1,163 @@
+<?xml version="1.0"?>
+<xs:schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://deutsche-boerse.com/dbag/app/open/xetra" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="root">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" name="tc810">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element minOccurs="0" name="rptHdr">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element minOccurs="0" name="exchNam" type="xs:string" />
+                    <xs:element minOccurs="0" name="envText" type="xs:string" />
+                    <xs:element minOccurs="0" name="rptCod" type="xs:string" />
+                    <xs:element minOccurs="0" name="rptNam" type="xs:string" />
+                    <xs:element minOccurs="0" name="rptFlexKey" />
+                    <xs:element minOccurs="0" name="membId" type="xs:string" />
+                    <xs:element minOccurs="0" name="membLglNam" type="xs:string" />
+                    <xs:element minOccurs="0" name="rptPrntEffDat" type="xs:date" />
+                    <xs:element minOccurs="0" name="rptPrntEffTim" type="xs:time" />
+                    <xs:element minOccurs="0" name="rptPrntRunDat" type="xs:date" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element minOccurs="0" name="tc810Grp">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element minOccurs="0" name="tc810KeyGrp">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element minOccurs="0" name="participantGrp">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element minOccurs="0" name="participant" type="xs:string" />
+                                <xs:element minOccurs="0" name="partLngName" type="xs:string" />
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element minOccurs="0" name="tc810Grp1">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element minOccurs="0" name="tc810KeyGrp1">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element minOccurs="0" name="businessUnitGrp">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element minOccurs="0" name="businessUnit" type="xs:string" />
+                                      <xs:element minOccurs="0" name="busUntLngName" type="xs:string" />
+                                      <xs:element minOccurs="0" name="businessUnitId" type="xs:unsignedShort" />
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                          <xs:element minOccurs="0" name="membClgIdCod" type="xs:string" />
+                          <xs:element minOccurs="0" name="membCcpClgIdCod" type="xs:string" />
+                          <xs:element minOccurs="0" name="settlAcct" type="xs:unsignedShort" />
+                          <xs:element minOccurs="0" name="settlLocat" type="xs:string" />
+                          <xs:element minOccurs="0" name="settlCurr" type="xs:string" />
+                          <xs:element minOccurs="0" maxOccurs="unbounded" name="tc810Grp2">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element minOccurs="0" name="tc810KeyGrp2">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element minOccurs="0" name="user" type="xs:string" />
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                                <xs:element minOccurs="0" maxOccurs="unbounded" name="tc810Grp3">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element minOccurs="0" name="tc810KeyGrp3">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element minOccurs="0" name="product" type="xs:string" />
+                                          </xs:sequence>
+                                        </xs:complexType>
+                                      </xs:element>
+                                      <xs:element minOccurs="0" maxOccurs="unbounded" name="tc810Grp4">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element minOccurs="0" name="tc810KeyGrp4">
+                                              <xs:complexType>
+                                                <xs:sequence>
+                                                  <xs:element minOccurs="0" name="instrumentGrp">
+                                                    <xs:complexType>
+                                                      <xs:sequence>
+                                                        <xs:element minOccurs="0" name="product" type="xs:string" />
+                                                        <xs:element minOccurs="0" name="instrumentType" type="xs:unsignedByte" />
+                                                        <xs:element minOccurs="0" name="instrumentId" type="xs:unsignedInt" />
+                                                        <xs:element minOccurs="0" name="instrumentMnemonic" type="xs:string" />
+                                                        <xs:element minOccurs="0" name="isinCod" type="xs:string" />
+                                                        <xs:element minOccurs="0" name="wknNo" type="xs:string" />
+                                                        <xs:element minOccurs="0" name="instNam" type="xs:string" />
+                                                      </xs:sequence>
+                                                    </xs:complexType>
+                                                  </xs:element>
+                                                </xs:sequence>
+                                              </xs:complexType>
+                                            </xs:element>
+                                            <xs:element minOccurs="0" maxOccurs="unbounded" name="tc810Rec">
+                                              <xs:complexType>
+                                                <xs:sequence>
+                                                  <xs:element minOccurs="0" name="time18" type="xs:time" />
+                                                  <xs:element minOccurs="0" name="tradeType" type="xs:unsignedByte" />
+                                                  <xs:element minOccurs="0" name="matchEvent" type="xs:unsignedShort" />
+                                                  <xs:element minOccurs="0" name="matchStep" type="xs:unsignedShort" />
+                                                  <xs:element minOccurs="0" name="matchDeal" type="xs:unsignedShort" />
+                                                  <xs:element minOccurs="0" name="parentDeal" type="xs:unsignedByte" />
+                                                  <xs:element minOccurs="0" name="dealItem" type="xs:unsignedShort" />
+                                                  <xs:element minOccurs="0" name="tradeNumber" type="xs:unsignedShort" />
+                                                  <xs:element minOccurs="0" name="exchangeOrderId" type="xs:unsignedLong" />
+                                                  <xs:element minOccurs="0" name="versionNo" type="xs:unsignedShort" />
+                                                  <xs:element minOccurs="0" name="acctTypGrp" type="xs:string" />
+                                                  <xs:element minOccurs="0" name="buyCod" type="xs:string" />
+                                                  <xs:element minOccurs="0" name="ordrPrtFilCod" type="xs:string" />
+                                                  <xs:element minOccurs="0" name="execQty" type="xs:unsignedInt" />
+                                                  <xs:element minOccurs="0" name="execPrc" type="xs:decimal" />
+                                                  <xs:element minOccurs="0" name="ordrTyp" type="xs:unsignedByte" />
+                                                  <xs:element minOccurs="0" name="limOrdrPrc" type="xs:decimal" />
+                                                  <xs:element minOccurs="0" name="timeValidity" type="xs:unsignedByte" />
+                                                  <xs:element minOccurs="0" name="tradingRestriction" type="xs:unsignedByte" />
+                                                  <xs:element minOccurs="0" name="settlAmnt" type="xs:decimal" />
+                                                  <xs:element minOccurs="0" name="settlDat" type="xs:date" />
+                                                  <xs:element minOccurs="0" name="ctrPtyId" type="xs:string" />
+                                                  <xs:element minOccurs="0" name="userOrdrNum" type="xs:string" />
+                                                  <xs:element minOccurs="0" name="text" type="xs:string" />
+                                                  <xs:element minOccurs="0" name="kindOfDepo" type="xs:unsignedByte" />
+                                                </xs:sequence>
+                                              </xs:complexType>
+                                            </xs:element>
+                                          </xs:sequence>
+                                        </xs:complexType>
+                                      </xs:element>
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                                <xs:element minOccurs="0" name="sumPartTotBuyOrdr" type="xs:unsignedInt" />
+                                <xs:element minOccurs="0" name="sumPartTotSellOrdr" type="xs:unsignedInt" />
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                          <xs:element minOccurs="0" name="sumMembTotBuyOrdr" type="xs:unsignedInt" />
+                          <xs:element minOccurs="0" name="sumMembTotSellOrdr" type="xs:unsignedInt" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

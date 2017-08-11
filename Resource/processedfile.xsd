@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<xs:schema xmlns:db="http://deutsche-boerse.com/dbag/app/open/xetra" attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="trades">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" name="trade">
+          <xs:complexType>
+            <xs:attribute name="REPORT_ID" type="xs:string" use="optional" />
+            <xs:attribute name="REPORT_EFF_DATE" type="xs:date" use="optional" />
+            <xs:attribute name="REPORT_PROCESS_DATE" type="xs:date" use="optional" />
+            <xs:attribute name="ENV_ONE" type="xs:unsignedByte" use="optional" />
+            <xs:attribute name="ENV_TWO" type="xs:unsignedByte" use="optional" />
+            <xs:attribute name="CLRMEM_ID" type="xs:string" use="optional" />
+            <xs:attribute name="CLRMEM_SETTLE_LOC" type="xs:string" use="optional" />
+            <xs:attribute name="CLRMEM_SETTLE_ACC" type="xs:unsignedShort" use="optional" />
+            <xs:attribute name="EXCHMEMB_ID" type="xs:string" use="optional" />
+            <xs:attribute name="OWNER_EXMEMB_INST_ID" type="xs:string" use="optional" />
+            <xs:attribute name="OWNER_EXMEMB_BR_ID" type="xs:string" use="optional" />
+            <xs:attribute name="INSTRU_ISIN" type="xs:string" use="optional" />
+            <xs:attribute name="UNITS" type="xs:unsignedByte" use="optional" />
+            <xs:attribute name="TRANS_TIME" type="xs:unsignedInt" use="optional" />
+            <xs:attribute name="PARTA_SUBGRP_ID" type="xs:string" use="optional" />
+            <xs:attribute name="PARTA_USR_NO" type="xs:string" use="optional" />
+            <xs:attribute name="UNIQ_TRADE_NO" type="xs:unsignedShort" use="optional" />
+            <xs:attribute name="TRADE_NO_SUFX" type="xs:unsignedByte" use="optional" />
+            <xs:attribute name="TRANS_TYPE" type="xs:string" use="optional" />
+            <xs:attribute name="ORIGIN_TYPE" type="xs:string" use="optional" />
+            <xs:attribute name="CROSS_IND" type="xs:string" use="optional" />
+            <xs:attribute name="SETTLE_IND" type="xs:string" use="optional" />
+            <xs:attribute name="OTC_TRADE_TIME" type="xs:string" use="optional" />
+            <xs:attribute name="ORDER_INSTR_ISIN" type="xs:string" use="optional" />
+            <xs:attribute name="ORD_NO" type="xs:string" use="optional" />
+            <xs:attribute name="EXECUTOR_ID" type="xs:string" use="optional" />
+            <xs:attribute name="INTERMEM_ORD_NO" type="xs:string" use="optional" />
+            <xs:attribute name="FREE" type="xs:string" use="optional" />
+            <xs:attribute name="ACC_TYPE_CODE" type="xs:string" use="optional" />
+            <xs:attribute name="ACC_TYPE_NO" type="xs:unsignedByte" use="optional" />
+            <xs:attribute name="BUY_SELL_IND" type="xs:string" use="optional" />
+            <xs:attribute name="NETTING_TYPE" type="xs:string" use="optional" />
+            <xs:attribute name="MATCHED_QTY" type="xs:decimal" use="optional" />
+            <xs:attribute name="MATCHED_PRICE" type="xs:decimal" use="optional" />
+            <xs:attribute name="SETTLE_AMOUNT" type="xs:decimal" use="optional" />
+            <xs:attribute name="SETTLE_DATE" type="xs:date" use="optional" />
+            <xs:attribute name="SETTLE_CODE" type="xs:string" use="optional" />
+            <xs:attribute name="ACCRUED_INTEREST" type="xs:string" use="optional" />
+            <xs:attribute name="ACCRUED_INTEREST_DAY" type="xs:string" use="optional" />
+            <xs:attribute name="EXCHMEM_INST_ID" type="xs:string" use="optional" />
+            <xs:attribute name="EXCHMEM_BR_ID" type="xs:string" use="optional" />
+            <xs:attribute name="PART_USR_GRP_ID" type="xs:string" use="optional" />
+            <xs:attribute name="PART_USR_NO" type="xs:string" use="optional" />
+            <xs:attribute name="COUNTER_EXCHMEM_ID" type="xs:string" use="optional" />
+            <xs:attribute name="COUNTER_EXCHMEM_BR_ID" type="xs:string" use="optional" />
+            <xs:attribute name="COUNTER_CRL_SET_MEM_ID" type="xs:string" use="optional" />
+            <xs:attribute name="COUNTER_SETL_LOC" type="xs:string" use="optional" />
+            <xs:attribute name="COUNTER_SETL_ACC" type="xs:string" use="optional" />
+            <xs:attribute name="COUNTER_KASSEN_NO" type="xs:unsignedShort" use="optional" />
+            <xs:attribute name="DEPOSITORY_TYPE" type="xs:string" use="optional" />
+            <xs:attribute name="TRANS_FEE" type="xs:string" use="optional" />
+            <xs:attribute name="TRANS_FEE_CURRENCY" type="xs:string" use="optional" />
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

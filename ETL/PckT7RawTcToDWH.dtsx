@@ -11,8 +11,8 @@
   DTS:LocaleID="6153"
   DTS:ObjectName="PckT7RawTcToDWH"
   DTS:PackageType="5"
-  DTS:VersionBuild="8"
-  DTS:VersionGUID="{9DF73CF1-107A-473E-AE6E-6E5E6BDED35E}">
+  DTS:VersionBuild="11"
+  DTS:VersionGUID="{7D95AC08-42AF-442C-BD11-B92703AC6183}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -845,6 +845,2178 @@
                       refId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                       dataType="i4"
                       lineageId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="DST T7_ODS REPORT RAWTC810 NEW"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[Report].[RawTcC810_NEW]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Connections[OleDbConnection]"
+                  connectionManagerID="{0CBC2C04-C137-495F-AF7C-FA5DE465FED0}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DWH]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].Columns[RawTc810_NEW_ID]"
+                      cachedDataType="i4"
+                      cachedName="RawTc810_NEW_ID"
+                      externalMetadataColumnId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].ExternalColumns[RawTc810_NEW_ID]"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[RawTc810_NEW_ID]" />
+                    <inputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].Columns[exchNam]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="4"
+                      cachedName="exchNam"
+                      externalMetadataColumnId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].ExternalColumns[exchNam]"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[exchNam]" />
+                    <inputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].Columns[envText]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="1"
+                      cachedName="envText"
+                      externalMetadataColumnId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].ExternalColumns[envText]"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[envText]" />
+                    <inputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].Columns[rptCod]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="20"
+                      cachedName="rptCod"
+                      externalMetadataColumnId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].ExternalColumns[rptCod]"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[rptCod]" />
+                    <inputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].Columns[rptNam]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="rptNam"
+                      externalMetadataColumnId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].ExternalColumns[rptNam]"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[rptNam]" />
+                    <inputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].Columns[rptFlexKey]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="rptFlexKey"
+                      externalMetadataColumnId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].ExternalColumns[rptFlexKey]"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[rptFlexKey]" />
+                    <inputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].Columns[membId]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="5"
+                      cachedName="membId"
+                      externalMetadataColumnId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].ExternalColumns[membId]"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[membId]" />
+                    <inputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].Columns[membLglNam]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="membLglNam"
+                      externalMetadataColumnId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].ExternalColumns[membLglNam]"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[membLglNam]" />
+                    <inputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].Columns[rptPrntEffDat]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="rptPrntEffDat"
+                      externalMetadataColumnId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].ExternalColumns[rptPrntEffDat]"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[rptPrntEffDat]" />
+                    <inputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].Columns[rptPrntEffTim]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="rptPrntEffTim"
+                      externalMetadataColumnId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].ExternalColumns[rptPrntEffTim]"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[rptPrntEffTim]" />
+                    <inputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].Columns[rptPrntRunDat]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="rptPrntRunDat"
+                      externalMetadataColumnId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].ExternalColumns[rptPrntRunDat]"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[rptPrntRunDat]" />
+                    <inputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].Columns[participant]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="participant"
+                      externalMetadataColumnId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].ExternalColumns[participant]"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[participant]" />
+                    <inputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].Columns[partLngName]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="partLngName"
+                      externalMetadataColumnId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].ExternalColumns[partLngName]"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[partLngName]" />
+                    <inputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].Columns[membClgIdCod]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="5"
+                      cachedName="membClgIdCod"
+                      externalMetadataColumnId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].ExternalColumns[membClgIdCod]"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[membClgIdCod]" />
+                    <inputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].Columns[membCcpClgIdCod]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="5"
+                      cachedName="membCcpClgIdCod"
+                      externalMetadataColumnId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].ExternalColumns[membCcpClgIdCod]"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[membCcpClgIdCod]" />
+                    <inputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].Columns[settlAcct]"
+                      cachedDataType="i4"
+                      cachedName="settlAcct"
+                      externalMetadataColumnId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].ExternalColumns[settlAcct]"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[settlAcct]" />
+                    <inputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].Columns[settlCurr]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="3"
+                      cachedName="settlCurr"
+                      externalMetadataColumnId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].ExternalColumns[settlCurr]"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[settlCurr]" />
+                    <inputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].Columns[sumMembTotBuyOrdr]"
+                      cachedDataType="i8"
+                      cachedName="sumMembTotBuyOrdr"
+                      externalMetadataColumnId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].ExternalColumns[sumMembTotBuyOrdr]"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[sumMembTotBuyOrdr]" />
+                    <inputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].Columns[sumMembTotSellOrdr]"
+                      cachedDataType="i8"
+                      cachedName="sumMembTotSellOrdr"
+                      externalMetadataColumnId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].ExternalColumns[sumMembTotSellOrdr]"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[sumMembTotSellOrdr]" />
+                    <inputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].Columns[businessUnit]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="5"
+                      cachedName="businessUnit"
+                      externalMetadataColumnId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].ExternalColumns[businessUnit]"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[businessUnit]" />
+                    <inputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].Columns[settlLocat]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="settlLocat"
+                      externalMetadataColumnId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].ExternalColumns[settlLocat]"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[settlLocat]" />
+                    <inputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].Columns[businessUnitId]"
+                      cachedDataType="i4"
+                      cachedName="businessUnitId"
+                      externalMetadataColumnId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].ExternalColumns[businessUnitId]"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[businessUnitId]" />
+                    <inputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].Columns[sumPartTotBuyOrdr]"
+                      cachedDataType="i8"
+                      cachedName="sumPartTotBuyOrdr"
+                      externalMetadataColumnId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].ExternalColumns[sumPartTotBuyOrdr]"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[sumPartTotBuyOrdr]" />
+                    <inputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].Columns[sumPartTotSellOrdr]"
+                      cachedDataType="i8"
+                      cachedName="sumPartTotSellOrdr"
+                      externalMetadataColumnId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].ExternalColumns[sumPartTotSellOrdr]"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[sumPartTotSellOrdr]" />
+                    <inputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].Columns[product]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="12"
+                      cachedName="product"
+                      externalMetadataColumnId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].ExternalColumns[product]"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[product]" />
+                    <inputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].Columns[instrumentType]"
+                      cachedDataType="ui1"
+                      cachedName="instrumentType"
+                      externalMetadataColumnId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].ExternalColumns[instrumentType]"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[instrumentType]" />
+                    <inputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].Columns[instrumentId]"
+                      cachedDataType="i8"
+                      cachedName="instrumentId"
+                      externalMetadataColumnId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].ExternalColumns[instrumentId]"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[instrumentId]" />
+                    <inputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].Columns[instrumentMnemonic]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="instrumentMnemonic"
+                      externalMetadataColumnId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].ExternalColumns[instrumentMnemonic]"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[instrumentMnemonic]" />
+                    <inputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].Columns[isinCod]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="12"
+                      cachedName="isinCod"
+                      externalMetadataColumnId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].ExternalColumns[isinCod]"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[isinCod]" />
+                    <inputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].Columns[wknNo]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="6"
+                      cachedName="wknNo"
+                      externalMetadataColumnId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].ExternalColumns[wknNo]"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[wknNo]" />
+                    <inputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].Columns[instNam]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="instNam"
+                      externalMetadataColumnId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].ExternalColumns[instNam]"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[instNam]" />
+                    <inputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].Columns[time18]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="time18"
+                      externalMetadataColumnId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].ExternalColumns[time18]"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[time18]" />
+                    <inputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].Columns[tradeType]"
+                      cachedDataType="ui1"
+                      cachedName="tradeType"
+                      externalMetadataColumnId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].ExternalColumns[tradeType]"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[tradeType]" />
+                    <inputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].Columns[matchEvent]"
+                      cachedDataType="i4"
+                      cachedName="matchEvent"
+                      externalMetadataColumnId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].ExternalColumns[matchEvent]"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[matchEvent]" />
+                    <inputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].Columns[matchStep]"
+                      cachedDataType="i4"
+                      cachedName="matchStep"
+                      externalMetadataColumnId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].ExternalColumns[matchStep]"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[matchStep]" />
+                    <inputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].Columns[matchDeal]"
+                      cachedDataType="i4"
+                      cachedName="matchDeal"
+                      externalMetadataColumnId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].ExternalColumns[matchDeal]"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[matchDeal]" />
+                    <inputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].Columns[parentDeal]"
+                      cachedDataType="ui1"
+                      cachedName="parentDeal"
+                      externalMetadataColumnId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].ExternalColumns[parentDeal]"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[parentDeal]" />
+                    <inputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].Columns[dealItem]"
+                      cachedDataType="i4"
+                      cachedName="dealItem"
+                      externalMetadataColumnId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].ExternalColumns[dealItem]"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[dealItem]" />
+                    <inputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].Columns[tradeNumber]"
+                      cachedDataType="i4"
+                      cachedName="tradeNumber"
+                      externalMetadataColumnId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].ExternalColumns[tradeNumber]"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[tradeNumber]" />
+                    <inputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].Columns[exchangeOrderId]"
+                      cachedDataType="numeric"
+                      cachedName="exchangeOrderId"
+                      cachedPrecision="20"
+                      externalMetadataColumnId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].ExternalColumns[exchangeOrderId]"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[exchangeOrderId]" />
+                    <inputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].Columns[versionNo]"
+                      cachedDataType="i2"
+                      cachedName="versionNo"
+                      externalMetadataColumnId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].ExternalColumns[versionNo]"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[versionNo]" />
+                    <inputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].Columns[acctTypGrp]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="acctTypGrp"
+                      externalMetadataColumnId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].ExternalColumns[acctTypGrp]"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[acctTypGrp]" />
+                    <inputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].Columns[buyCod]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="1"
+                      cachedName="buyCod"
+                      externalMetadataColumnId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].ExternalColumns[buyCod]"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[buyCod]" />
+                    <inputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].Columns[ordrPrtFilCod]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="1"
+                      cachedName="ordrPrtFilCod"
+                      externalMetadataColumnId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].ExternalColumns[ordrPrtFilCod]"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[ordrPrtFilCod]" />
+                    <inputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].Columns[execQty]"
+                      cachedDataType="i8"
+                      cachedName="execQty"
+                      externalMetadataColumnId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].ExternalColumns[execQty]"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[execQty]" />
+                    <inputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].Columns[execPrc]"
+                      cachedDataType="numeric"
+                      cachedName="execPrc"
+                      cachedPrecision="28"
+                      cachedScale="10"
+                      externalMetadataColumnId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].ExternalColumns[execPrc]"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[execPrc]" />
+                    <inputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].Columns[ordrTyp]"
+                      cachedDataType="ui1"
+                      cachedName="ordrTyp"
+                      externalMetadataColumnId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].ExternalColumns[ordrTyp]"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[ordrTyp]" />
+                    <inputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].Columns[limOrdrPrc]"
+                      cachedDataType="numeric"
+                      cachedName="limOrdrPrc"
+                      cachedPrecision="28"
+                      cachedScale="10"
+                      externalMetadataColumnId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].ExternalColumns[limOrdrPrc]"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[limOrdrPrc]" />
+                    <inputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].Columns[timeValidity]"
+                      cachedDataType="ui1"
+                      cachedName="timeValidity"
+                      externalMetadataColumnId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].ExternalColumns[timeValidity]"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[timeValidity]" />
+                    <inputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].Columns[tradingRestriction]"
+                      cachedDataType="ui1"
+                      cachedName="tradingRestriction"
+                      externalMetadataColumnId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].ExternalColumns[tradingRestriction]"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[tradingRestriction]" />
+                    <inputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].Columns[settlAmnt]"
+                      cachedDataType="numeric"
+                      cachedName="settlAmnt"
+                      cachedPrecision="28"
+                      cachedScale="10"
+                      externalMetadataColumnId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].ExternalColumns[settlAmnt]"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[settlAmnt]" />
+                    <inputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].Columns[settlDat]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="settlDat"
+                      externalMetadataColumnId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].ExternalColumns[settlDat]"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[settlDat]" />
+                    <inputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].Columns[ctrPtyId]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="5"
+                      cachedName="ctrPtyId"
+                      externalMetadataColumnId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].ExternalColumns[ctrPtyId]"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[ctrPtyId]" />
+                    <inputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].Columns[userOrdrNum]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="userOrdrNum"
+                      externalMetadataColumnId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].ExternalColumns[userOrdrNum]"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[userOrdrNum]" />
+                    <inputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].Columns[text]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="text"
+                      externalMetadataColumnId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].ExternalColumns[text]"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[text]" />
+                    <inputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].Columns[kindOfDepo]"
+                      cachedDataType="ui1"
+                      cachedName="kindOfDepo"
+                      externalMetadataColumnId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].ExternalColumns[kindOfDepo]"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[kindOfDepo]" />
+                    <inputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].Columns[FileID]"
+                      cachedDataType="i4"
+                      cachedName="FileID"
+                      externalMetadataColumnId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].ExternalColumns[T7_ODS_FileListRawTcFileID]"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[FileID]" />
+                    <inputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].Columns[user]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="user"
+                      externalMetadataColumnId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].ExternalColumns[user]"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[user]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].ExternalColumns[RawTc810_NEW_ID]"
+                      dataType="i4"
+                      name="RawTc810_NEW_ID" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].ExternalColumns[exchNam]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4"
+                      name="exchNam" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].ExternalColumns[envText]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="envText" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].ExternalColumns[rptCod]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="rptCod" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].ExternalColumns[rptNam]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="rptNam" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].ExternalColumns[rptFlexKey]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="rptFlexKey" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].ExternalColumns[membId]"
+                      codePage="1252"
+                      dataType="str"
+                      length="5"
+                      name="membId" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].ExternalColumns[membLglNam]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="membLglNam" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].ExternalColumns[rptPrntEffDat]"
+                      dataType="dbTimeStamp"
+                      name="rptPrntEffDat" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].ExternalColumns[rptPrntEffTim]"
+                      dataType="dbTimeStamp"
+                      name="rptPrntEffTim" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].ExternalColumns[rptPrntRunDat]"
+                      dataType="dbTimeStamp"
+                      name="rptPrntRunDat" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].ExternalColumns[participant]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="participant" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].ExternalColumns[partLngName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="partLngName" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].ExternalColumns[membClgIdCod]"
+                      codePage="1252"
+                      dataType="str"
+                      length="5"
+                      name="membClgIdCod" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].ExternalColumns[membCcpClgIdCod]"
+                      codePage="1252"
+                      dataType="str"
+                      length="5"
+                      name="membCcpClgIdCod" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].ExternalColumns[settlAcct]"
+                      dataType="i4"
+                      name="settlAcct" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].ExternalColumns[settlCurr]"
+                      codePage="1252"
+                      dataType="str"
+                      length="3"
+                      name="settlCurr" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].ExternalColumns[sumMembTotBuyOrdr]"
+                      dataType="i8"
+                      name="sumMembTotBuyOrdr" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].ExternalColumns[sumMembTotSellOrdr]"
+                      dataType="i8"
+                      name="sumMembTotSellOrdr" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].ExternalColumns[businessUnit]"
+                      codePage="1252"
+                      dataType="str"
+                      length="5"
+                      name="businessUnit" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].ExternalColumns[settlLocat]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="settlLocat" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].ExternalColumns[businessUnitId]"
+                      dataType="i4"
+                      name="businessUnitId" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].ExternalColumns[sumPartTotBuyOrdr]"
+                      dataType="i8"
+                      name="sumPartTotBuyOrdr" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].ExternalColumns[sumPartTotSellOrdr]"
+                      dataType="i8"
+                      name="sumPartTotSellOrdr" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].ExternalColumns[product]"
+                      codePage="1252"
+                      dataType="str"
+                      length="12"
+                      name="product" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].ExternalColumns[instrumentType]"
+                      dataType="ui1"
+                      name="instrumentType" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].ExternalColumns[instrumentId]"
+                      dataType="i8"
+                      name="instrumentId" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].ExternalColumns[instrumentMnemonic]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="instrumentMnemonic" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].ExternalColumns[isinCod]"
+                      codePage="1252"
+                      dataType="str"
+                      length="12"
+                      name="isinCod" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].ExternalColumns[wknNo]"
+                      codePage="1252"
+                      dataType="str"
+                      length="6"
+                      name="wknNo" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].ExternalColumns[instNam]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="instNam" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].ExternalColumns[time18]"
+                      dataType="dbTimeStamp"
+                      name="time18" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].ExternalColumns[tradeType]"
+                      dataType="ui1"
+                      name="tradeType" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].ExternalColumns[matchEvent]"
+                      dataType="i4"
+                      name="matchEvent" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].ExternalColumns[matchStep]"
+                      dataType="i4"
+                      name="matchStep" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].ExternalColumns[matchDeal]"
+                      dataType="i4"
+                      name="matchDeal" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].ExternalColumns[parentDeal]"
+                      dataType="ui1"
+                      name="parentDeal" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].ExternalColumns[dealItem]"
+                      dataType="i4"
+                      name="dealItem" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].ExternalColumns[tradeNumber]"
+                      dataType="i4"
+                      name="tradeNumber" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].ExternalColumns[exchangeOrderId]"
+                      dataType="numeric"
+                      name="exchangeOrderId"
+                      precision="20" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].ExternalColumns[versionNo]"
+                      dataType="i2"
+                      name="versionNo" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].ExternalColumns[acctTypGrp]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="acctTypGrp" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].ExternalColumns[buyCod]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="buyCod" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].ExternalColumns[ordrPrtFilCod]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="ordrPrtFilCod" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].ExternalColumns[execQty]"
+                      dataType="i8"
+                      name="execQty" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].ExternalColumns[execPrc]"
+                      dataType="numeric"
+                      name="execPrc"
+                      precision="28"
+                      scale="10" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].ExternalColumns[ordrTyp]"
+                      dataType="ui1"
+                      name="ordrTyp" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].ExternalColumns[limOrdrPrc]"
+                      dataType="numeric"
+                      name="limOrdrPrc"
+                      precision="28"
+                      scale="10" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].ExternalColumns[timeValidity]"
+                      dataType="ui1"
+                      name="timeValidity" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].ExternalColumns[tradingRestriction]"
+                      dataType="ui1"
+                      name="tradingRestriction" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].ExternalColumns[settlAmnt]"
+                      dataType="numeric"
+                      name="settlAmnt"
+                      precision="28"
+                      scale="10" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].ExternalColumns[settlDat]"
+                      dataType="dbTimeStamp"
+                      name="settlDat" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].ExternalColumns[ctrPtyId]"
+                      codePage="1252"
+                      dataType="str"
+                      length="5"
+                      name="ctrPtyId" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].ExternalColumns[userOrdrNum]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="userOrdrNum" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].ExternalColumns[text]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="text" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].ExternalColumns[kindOfDepo]"
+                      dataType="ui1"
+                      name="kindOfDepo" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].ExternalColumns[T7_ODS_FileListRawTcFileID]"
+                      dataType="i4"
+                      name="T7_ODS_FileListRawTcFileID" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input].ExternalColumns[user]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="user" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="SRC T7_ODS RAWC810 NEW"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT
+	RawTc810_NEW_ID, 
+	FileID, 
+	CAST(exchNam AS CHAR(4)) AS exchNam,
+	CAST(envText AS CHAR(1)) AS envText,
+	CAST(rptCod AS VARCHAR(20)) AS rptCod,
+	CAST(rptNam AS VARCHAR(50)) AS rptNam,
+	CAST(rptFlexKey AS VARCHAR(255)) AS rptFlexKey,
+	CAST(membId AS CHAR(5)) AS membId,
+	CAST(membLglNam AS VARCHAR(255)) AS membLglNam,
+	rptPrntEffDat, 
+	rptPrntEffTim, 
+	rptPrntRunDat, 
+	CAST(participant AS VARCHAR(255)) AS participant, 
+	CAST(partLngName AS VARCHAR(255)) AS partLngName, 
+	CAST(membClgIdCod AS CHAR(5)) AS membClgIdCod,
+	CAST(membCcpClgIdCod AS CHAR(5)) AS membCcpClgIdCod,
+	settlAcct, 
+	CAST(settlCurr AS CHAR(3)) AS settlCurr, 
+	sumMembTotBuyOrdr, 
+	sumMembTotSellOrdr, 
+	CAST(businessUnit AS CHAR(5)) AS businessUnit, 
+	CAST(settlLocat AS VARCHAR(255)) AS settlLocat,
+	businessUnitId, 
+	sumPartTotBuyOrdr, 
+	sumPartTotSellOrdr, 
+	CAST([user] AS VARCHAR(50)) AS [user],
+	CAST(product AS CHAR(12)) AS product,
+	instrumentType, 
+	instrumentId, 
+	CAST(instrumentMnemonic AS VARCHAR(50)) AS instrumentMnemonic ,
+	CAST(isinCod AS CHAR(12)) AS isinCod,
+	CAST(wknNo AS CHAR(6)) AS wknNo,
+	CAST(instNam AS VARCHAR(255)) AS instNam, 
+	time18, 
+	tradeType, 
+	matchEvent, 
+	matchStep, 
+	matchDeal, 
+	parentDeal, 
+	dealItem, 
+	tradeNumber, 
+	exchangeOrderId, 
+	versionNo, 
+	CAST(acctTypGrp AS VARCHAR(255)) AS acctTypGrp, 
+	CAST(buyCod AS CHAR(1)) AS buyCod, 
+	CAST(ordrPrtFilCod AS CHAR(1)) AS ordrPrtFilCod, 
+	execQty, 
+	execPrc, 
+	ordrTyp, 
+	limOrdrPrc, 
+	timeValidity, 
+	tradingRestriction, 
+	settlAmnt, 
+	settlDat, 
+	CAST(ctrPtyId AS CHAR(5)) AS ctrPtyId, 
+	CAST(userOrdrNum AS CHAR(50)) AS userOrdrNum, 
+	CAST(text AS VARCHAR(255)) AS text, 
+	kindOfDepo
+FROM
+	dbo.RawTc810_NEW
+WHERE
+	FileID &gt; ?</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping">"Parameter0:Input",{5F3FA106-9F23-40A0-B9BD-5014F677FF8E};</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Connections[OleDbConnection]"
+                  connectionManagerID="{F999064D-8B23-4E16-A7BA-3B7EFA1D9959}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[T7_ODS]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[RawTc810_NEW_ID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].ExternalColumns[RawTc810_NEW_ID]"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[RawTc810_NEW_ID]"
+                      name="RawTc810_NEW_ID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[FileID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].ExternalColumns[FileID]"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[FileID]"
+                      name="FileID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[exchNam]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].ExternalColumns[exchNam]"
+                      length="4"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[exchNam]"
+                      name="exchNam"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[envText]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].ExternalColumns[envText]"
+                      length="1"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[envText]"
+                      name="envText"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[rptCod]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].ExternalColumns[rptCod]"
+                      length="20"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[rptCod]"
+                      name="rptCod"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[rptNam]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].ExternalColumns[rptNam]"
+                      length="50"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[rptNam]"
+                      name="rptNam"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[rptFlexKey]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].ExternalColumns[rptFlexKey]"
+                      length="255"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[rptFlexKey]"
+                      name="rptFlexKey"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[membId]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].ExternalColumns[membId]"
+                      length="5"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[membId]"
+                      name="membId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[membLglNam]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].ExternalColumns[membLglNam]"
+                      length="255"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[membLglNam]"
+                      name="membLglNam"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[rptPrntEffDat]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].ExternalColumns[rptPrntEffDat]"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[rptPrntEffDat]"
+                      name="rptPrntEffDat"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[rptPrntEffTim]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].ExternalColumns[rptPrntEffTim]"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[rptPrntEffTim]"
+                      name="rptPrntEffTim"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[rptPrntRunDat]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].ExternalColumns[rptPrntRunDat]"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[rptPrntRunDat]"
+                      name="rptPrntRunDat"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[participant]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].ExternalColumns[participant]"
+                      length="255"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[participant]"
+                      name="participant"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[partLngName]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].ExternalColumns[partLngName]"
+                      length="255"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[partLngName]"
+                      name="partLngName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[membClgIdCod]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].ExternalColumns[membClgIdCod]"
+                      length="5"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[membClgIdCod]"
+                      name="membClgIdCod"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[membCcpClgIdCod]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].ExternalColumns[membCcpClgIdCod]"
+                      length="5"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[membCcpClgIdCod]"
+                      name="membCcpClgIdCod"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[settlAcct]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].ExternalColumns[settlAcct]"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[settlAcct]"
+                      name="settlAcct"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[settlCurr]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].ExternalColumns[settlCurr]"
+                      length="3"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[settlCurr]"
+                      name="settlCurr"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[sumMembTotBuyOrdr]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].ExternalColumns[sumMembTotBuyOrdr]"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[sumMembTotBuyOrdr]"
+                      name="sumMembTotBuyOrdr"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[sumMembTotSellOrdr]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].ExternalColumns[sumMembTotSellOrdr]"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[sumMembTotSellOrdr]"
+                      name="sumMembTotSellOrdr"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[businessUnit]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].ExternalColumns[businessUnit]"
+                      length="5"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[businessUnit]"
+                      name="businessUnit"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[settlLocat]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].ExternalColumns[settlLocat]"
+                      length="255"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[settlLocat]"
+                      name="settlLocat"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[businessUnitId]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].ExternalColumns[businessUnitId]"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[businessUnitId]"
+                      name="businessUnitId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[sumPartTotBuyOrdr]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].ExternalColumns[sumPartTotBuyOrdr]"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[sumPartTotBuyOrdr]"
+                      name="sumPartTotBuyOrdr"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[sumPartTotSellOrdr]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].ExternalColumns[sumPartTotSellOrdr]"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[sumPartTotSellOrdr]"
+                      name="sumPartTotSellOrdr"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[product]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].ExternalColumns[product]"
+                      length="12"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[product]"
+                      name="product"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[instrumentType]"
+                      dataType="ui1"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].ExternalColumns[instrumentType]"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[instrumentType]"
+                      name="instrumentType"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[instrumentId]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].ExternalColumns[instrumentId]"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[instrumentId]"
+                      name="instrumentId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[instrumentMnemonic]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].ExternalColumns[instrumentMnemonic]"
+                      length="50"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[instrumentMnemonic]"
+                      name="instrumentMnemonic"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[isinCod]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].ExternalColumns[isinCod]"
+                      length="12"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[isinCod]"
+                      name="isinCod"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[wknNo]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].ExternalColumns[wknNo]"
+                      length="6"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[wknNo]"
+                      name="wknNo"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[instNam]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].ExternalColumns[instNam]"
+                      length="255"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[instNam]"
+                      name="instNam"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[time18]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].ExternalColumns[time18]"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[time18]"
+                      name="time18"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[tradeType]"
+                      dataType="ui1"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].ExternalColumns[tradeType]"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[tradeType]"
+                      name="tradeType"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[matchEvent]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].ExternalColumns[matchEvent]"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[matchEvent]"
+                      name="matchEvent"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[matchStep]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].ExternalColumns[matchStep]"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[matchStep]"
+                      name="matchStep"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[matchDeal]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].ExternalColumns[matchDeal]"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[matchDeal]"
+                      name="matchDeal"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[parentDeal]"
+                      dataType="ui1"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].ExternalColumns[parentDeal]"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[parentDeal]"
+                      name="parentDeal"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[dealItem]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].ExternalColumns[dealItem]"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[dealItem]"
+                      name="dealItem"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[tradeNumber]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].ExternalColumns[tradeNumber]"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[tradeNumber]"
+                      name="tradeNumber"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[exchangeOrderId]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].ExternalColumns[exchangeOrderId]"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[exchangeOrderId]"
+                      name="exchangeOrderId"
+                      precision="20"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[versionNo]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].ExternalColumns[versionNo]"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[versionNo]"
+                      name="versionNo"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[acctTypGrp]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].ExternalColumns[acctTypGrp]"
+                      length="255"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[acctTypGrp]"
+                      name="acctTypGrp"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[buyCod]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].ExternalColumns[buyCod]"
+                      length="1"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[buyCod]"
+                      name="buyCod"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[ordrPrtFilCod]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].ExternalColumns[ordrPrtFilCod]"
+                      length="1"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[ordrPrtFilCod]"
+                      name="ordrPrtFilCod"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[execQty]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].ExternalColumns[execQty]"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[execQty]"
+                      name="execQty"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[execPrc]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].ExternalColumns[execPrc]"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[execPrc]"
+                      name="execPrc"
+                      precision="28"
+                      scale="10"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[ordrTyp]"
+                      dataType="ui1"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].ExternalColumns[ordrTyp]"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[ordrTyp]"
+                      name="ordrTyp"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[limOrdrPrc]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].ExternalColumns[limOrdrPrc]"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[limOrdrPrc]"
+                      name="limOrdrPrc"
+                      precision="28"
+                      scale="10"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[timeValidity]"
+                      dataType="ui1"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].ExternalColumns[timeValidity]"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[timeValidity]"
+                      name="timeValidity"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[tradingRestriction]"
+                      dataType="ui1"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].ExternalColumns[tradingRestriction]"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[tradingRestriction]"
+                      name="tradingRestriction"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[settlAmnt]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].ExternalColumns[settlAmnt]"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[settlAmnt]"
+                      name="settlAmnt"
+                      precision="28"
+                      scale="10"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[settlDat]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].ExternalColumns[settlDat]"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[settlDat]"
+                      name="settlDat"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[ctrPtyId]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].ExternalColumns[ctrPtyId]"
+                      length="5"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[ctrPtyId]"
+                      name="ctrPtyId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[userOrdrNum]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].ExternalColumns[userOrdrNum]"
+                      length="50"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[userOrdrNum]"
+                      name="userOrdrNum"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[text]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].ExternalColumns[text]"
+                      length="255"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[text]"
+                      name="text"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[kindOfDepo]"
+                      dataType="ui1"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].ExternalColumns[kindOfDepo]"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[kindOfDepo]"
+                      name="kindOfDepo"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[user]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].ExternalColumns[user]"
+                      length="50"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].Columns[user]"
+                      name="user"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].ExternalColumns[RawTc810_NEW_ID]"
+                      dataType="i4"
+                      name="RawTc810_NEW_ID" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].ExternalColumns[FileID]"
+                      dataType="i4"
+                      name="FileID" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].ExternalColumns[exchNam]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4"
+                      name="exchNam" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].ExternalColumns[envText]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="envText" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].ExternalColumns[rptCod]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="rptCod" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].ExternalColumns[rptNam]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="rptNam" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].ExternalColumns[rptFlexKey]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="rptFlexKey" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].ExternalColumns[membId]"
+                      codePage="1252"
+                      dataType="str"
+                      length="5"
+                      name="membId" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].ExternalColumns[membLglNam]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="membLglNam" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].ExternalColumns[rptPrntEffDat]"
+                      dataType="dbTimeStamp"
+                      name="rptPrntEffDat" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].ExternalColumns[rptPrntEffTim]"
+                      dataType="dbTimeStamp"
+                      name="rptPrntEffTim" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].ExternalColumns[rptPrntRunDat]"
+                      dataType="dbTimeStamp"
+                      name="rptPrntRunDat" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].ExternalColumns[participant]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="participant" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].ExternalColumns[partLngName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="partLngName" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].ExternalColumns[membClgIdCod]"
+                      codePage="1252"
+                      dataType="str"
+                      length="5"
+                      name="membClgIdCod" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].ExternalColumns[membCcpClgIdCod]"
+                      codePage="1252"
+                      dataType="str"
+                      length="5"
+                      name="membCcpClgIdCod" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].ExternalColumns[settlAcct]"
+                      dataType="i4"
+                      name="settlAcct" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].ExternalColumns[settlCurr]"
+                      codePage="1252"
+                      dataType="str"
+                      length="3"
+                      name="settlCurr" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].ExternalColumns[sumMembTotBuyOrdr]"
+                      dataType="i8"
+                      name="sumMembTotBuyOrdr" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].ExternalColumns[sumMembTotSellOrdr]"
+                      dataType="i8"
+                      name="sumMembTotSellOrdr" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].ExternalColumns[businessUnit]"
+                      codePage="1252"
+                      dataType="str"
+                      length="5"
+                      name="businessUnit" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].ExternalColumns[settlLocat]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="settlLocat" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].ExternalColumns[businessUnitId]"
+                      dataType="i4"
+                      name="businessUnitId" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].ExternalColumns[sumPartTotBuyOrdr]"
+                      dataType="i8"
+                      name="sumPartTotBuyOrdr" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].ExternalColumns[sumPartTotSellOrdr]"
+                      dataType="i8"
+                      name="sumPartTotSellOrdr" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].ExternalColumns[product]"
+                      codePage="1252"
+                      dataType="str"
+                      length="12"
+                      name="product" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].ExternalColumns[instrumentType]"
+                      dataType="ui1"
+                      name="instrumentType" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].ExternalColumns[instrumentId]"
+                      dataType="i8"
+                      name="instrumentId" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].ExternalColumns[instrumentMnemonic]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="instrumentMnemonic" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].ExternalColumns[isinCod]"
+                      codePage="1252"
+                      dataType="str"
+                      length="12"
+                      name="isinCod" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].ExternalColumns[wknNo]"
+                      codePage="1252"
+                      dataType="str"
+                      length="6"
+                      name="wknNo" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].ExternalColumns[instNam]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="instNam" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].ExternalColumns[time18]"
+                      dataType="dbTimeStamp"
+                      name="time18" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].ExternalColumns[tradeType]"
+                      dataType="ui1"
+                      name="tradeType" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].ExternalColumns[matchEvent]"
+                      dataType="i4"
+                      name="matchEvent" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].ExternalColumns[matchStep]"
+                      dataType="i4"
+                      name="matchStep" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].ExternalColumns[matchDeal]"
+                      dataType="i4"
+                      name="matchDeal" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].ExternalColumns[parentDeal]"
+                      dataType="ui1"
+                      name="parentDeal" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].ExternalColumns[dealItem]"
+                      dataType="i4"
+                      name="dealItem" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].ExternalColumns[tradeNumber]"
+                      dataType="i4"
+                      name="tradeNumber" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].ExternalColumns[exchangeOrderId]"
+                      dataType="numeric"
+                      name="exchangeOrderId"
+                      precision="20" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].ExternalColumns[versionNo]"
+                      dataType="i2"
+                      name="versionNo" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].ExternalColumns[acctTypGrp]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="acctTypGrp" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].ExternalColumns[buyCod]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="buyCod" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].ExternalColumns[ordrPrtFilCod]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="ordrPrtFilCod" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].ExternalColumns[execQty]"
+                      dataType="i8"
+                      name="execQty" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].ExternalColumns[execPrc]"
+                      dataType="numeric"
+                      name="execPrc"
+                      precision="28"
+                      scale="10" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].ExternalColumns[ordrTyp]"
+                      dataType="ui1"
+                      name="ordrTyp" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].ExternalColumns[limOrdrPrc]"
+                      dataType="numeric"
+                      name="limOrdrPrc"
+                      precision="28"
+                      scale="10" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].ExternalColumns[timeValidity]"
+                      dataType="ui1"
+                      name="timeValidity" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].ExternalColumns[tradingRestriction]"
+                      dataType="ui1"
+                      name="tradingRestriction" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].ExternalColumns[settlAmnt]"
+                      dataType="numeric"
+                      name="settlAmnt"
+                      precision="28"
+                      scale="10" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].ExternalColumns[settlDat]"
+                      dataType="dbTimeStamp"
+                      name="settlDat" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].ExternalColumns[ctrPtyId]"
+                      codePage="1252"
+                      dataType="str"
+                      length="5"
+                      name="ctrPtyId" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].ExternalColumns[userOrdrNum]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="userOrdrNum" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].ExternalColumns[text]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="text" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].ExternalColumns[kindOfDepo]"
+                      dataType="ui1"
+                      name="kindOfDepo" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output].ExternalColumns[user]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="user" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Error Output].Columns[RawTc810_NEW_ID]"
+                      dataType="i4"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Error Output].Columns[RawTc810_NEW_ID]"
+                      name="RawTc810_NEW_ID" />
+                    <outputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Error Output].Columns[FileID]"
+                      dataType="i4"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Error Output].Columns[FileID]"
+                      name="FileID" />
+                    <outputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Error Output].Columns[exchNam]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Error Output].Columns[exchNam]"
+                      name="exchNam" />
+                    <outputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Error Output].Columns[envText]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Error Output].Columns[envText]"
+                      name="envText" />
+                    <outputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Error Output].Columns[rptCod]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Error Output].Columns[rptCod]"
+                      name="rptCod" />
+                    <outputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Error Output].Columns[rptNam]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Error Output].Columns[rptNam]"
+                      name="rptNam" />
+                    <outputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Error Output].Columns[rptFlexKey]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Error Output].Columns[rptFlexKey]"
+                      name="rptFlexKey" />
+                    <outputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Error Output].Columns[membId]"
+                      codePage="1252"
+                      dataType="str"
+                      length="5"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Error Output].Columns[membId]"
+                      name="membId" />
+                    <outputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Error Output].Columns[membLglNam]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Error Output].Columns[membLglNam]"
+                      name="membLglNam" />
+                    <outputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Error Output].Columns[rptPrntEffDat]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Error Output].Columns[rptPrntEffDat]"
+                      name="rptPrntEffDat" />
+                    <outputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Error Output].Columns[rptPrntEffTim]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Error Output].Columns[rptPrntEffTim]"
+                      name="rptPrntEffTim" />
+                    <outputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Error Output].Columns[rptPrntRunDat]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Error Output].Columns[rptPrntRunDat]"
+                      name="rptPrntRunDat" />
+                    <outputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Error Output].Columns[participant]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Error Output].Columns[participant]"
+                      name="participant" />
+                    <outputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Error Output].Columns[partLngName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Error Output].Columns[partLngName]"
+                      name="partLngName" />
+                    <outputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Error Output].Columns[membClgIdCod]"
+                      codePage="1252"
+                      dataType="str"
+                      length="5"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Error Output].Columns[membClgIdCod]"
+                      name="membClgIdCod" />
+                    <outputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Error Output].Columns[membCcpClgIdCod]"
+                      codePage="1252"
+                      dataType="str"
+                      length="5"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Error Output].Columns[membCcpClgIdCod]"
+                      name="membCcpClgIdCod" />
+                    <outputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Error Output].Columns[settlAcct]"
+                      dataType="i4"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Error Output].Columns[settlAcct]"
+                      name="settlAcct" />
+                    <outputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Error Output].Columns[settlCurr]"
+                      codePage="1252"
+                      dataType="str"
+                      length="3"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Error Output].Columns[settlCurr]"
+                      name="settlCurr" />
+                    <outputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Error Output].Columns[sumMembTotBuyOrdr]"
+                      dataType="i8"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Error Output].Columns[sumMembTotBuyOrdr]"
+                      name="sumMembTotBuyOrdr" />
+                    <outputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Error Output].Columns[sumMembTotSellOrdr]"
+                      dataType="i8"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Error Output].Columns[sumMembTotSellOrdr]"
+                      name="sumMembTotSellOrdr" />
+                    <outputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Error Output].Columns[businessUnit]"
+                      codePage="1252"
+                      dataType="str"
+                      length="5"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Error Output].Columns[businessUnit]"
+                      name="businessUnit" />
+                    <outputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Error Output].Columns[settlLocat]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Error Output].Columns[settlLocat]"
+                      name="settlLocat" />
+                    <outputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Error Output].Columns[businessUnitId]"
+                      dataType="i4"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Error Output].Columns[businessUnitId]"
+                      name="businessUnitId" />
+                    <outputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Error Output].Columns[sumPartTotBuyOrdr]"
+                      dataType="i8"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Error Output].Columns[sumPartTotBuyOrdr]"
+                      name="sumPartTotBuyOrdr" />
+                    <outputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Error Output].Columns[sumPartTotSellOrdr]"
+                      dataType="i8"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Error Output].Columns[sumPartTotSellOrdr]"
+                      name="sumPartTotSellOrdr" />
+                    <outputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Error Output].Columns[user]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Error Output].Columns[user]"
+                      name="user" />
+                    <outputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Error Output].Columns[product]"
+                      codePage="1252"
+                      dataType="str"
+                      length="12"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Error Output].Columns[product]"
+                      name="product" />
+                    <outputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Error Output].Columns[instrumentType]"
+                      dataType="ui1"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Error Output].Columns[instrumentType]"
+                      name="instrumentType" />
+                    <outputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Error Output].Columns[instrumentId]"
+                      dataType="i8"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Error Output].Columns[instrumentId]"
+                      name="instrumentId" />
+                    <outputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Error Output].Columns[instrumentMnemonic]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Error Output].Columns[instrumentMnemonic]"
+                      name="instrumentMnemonic" />
+                    <outputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Error Output].Columns[isinCod]"
+                      codePage="1252"
+                      dataType="str"
+                      length="12"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Error Output].Columns[isinCod]"
+                      name="isinCod" />
+                    <outputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Error Output].Columns[wknNo]"
+                      codePage="1252"
+                      dataType="str"
+                      length="6"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Error Output].Columns[wknNo]"
+                      name="wknNo" />
+                    <outputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Error Output].Columns[instNam]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Error Output].Columns[instNam]"
+                      name="instNam" />
+                    <outputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Error Output].Columns[time18]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Error Output].Columns[time18]"
+                      name="time18" />
+                    <outputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Error Output].Columns[tradeType]"
+                      dataType="ui1"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Error Output].Columns[tradeType]"
+                      name="tradeType" />
+                    <outputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Error Output].Columns[matchEvent]"
+                      dataType="i4"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Error Output].Columns[matchEvent]"
+                      name="matchEvent" />
+                    <outputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Error Output].Columns[matchStep]"
+                      dataType="i4"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Error Output].Columns[matchStep]"
+                      name="matchStep" />
+                    <outputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Error Output].Columns[matchDeal]"
+                      dataType="i4"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Error Output].Columns[matchDeal]"
+                      name="matchDeal" />
+                    <outputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Error Output].Columns[parentDeal]"
+                      dataType="ui1"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Error Output].Columns[parentDeal]"
+                      name="parentDeal" />
+                    <outputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Error Output].Columns[dealItem]"
+                      dataType="i4"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Error Output].Columns[dealItem]"
+                      name="dealItem" />
+                    <outputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Error Output].Columns[tradeNumber]"
+                      dataType="i4"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Error Output].Columns[tradeNumber]"
+                      name="tradeNumber" />
+                    <outputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Error Output].Columns[exchangeOrderId]"
+                      dataType="numeric"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Error Output].Columns[exchangeOrderId]"
+                      name="exchangeOrderId"
+                      precision="20" />
+                    <outputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Error Output].Columns[versionNo]"
+                      dataType="i2"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Error Output].Columns[versionNo]"
+                      name="versionNo" />
+                    <outputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Error Output].Columns[acctTypGrp]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Error Output].Columns[acctTypGrp]"
+                      name="acctTypGrp" />
+                    <outputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Error Output].Columns[buyCod]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Error Output].Columns[buyCod]"
+                      name="buyCod" />
+                    <outputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Error Output].Columns[ordrPrtFilCod]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Error Output].Columns[ordrPrtFilCod]"
+                      name="ordrPrtFilCod" />
+                    <outputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Error Output].Columns[execQty]"
+                      dataType="i8"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Error Output].Columns[execQty]"
+                      name="execQty" />
+                    <outputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Error Output].Columns[execPrc]"
+                      dataType="numeric"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Error Output].Columns[execPrc]"
+                      name="execPrc"
+                      precision="28"
+                      scale="10" />
+                    <outputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Error Output].Columns[ordrTyp]"
+                      dataType="ui1"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Error Output].Columns[ordrTyp]"
+                      name="ordrTyp" />
+                    <outputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Error Output].Columns[limOrdrPrc]"
+                      dataType="numeric"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Error Output].Columns[limOrdrPrc]"
+                      name="limOrdrPrc"
+                      precision="28"
+                      scale="10" />
+                    <outputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Error Output].Columns[timeValidity]"
+                      dataType="ui1"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Error Output].Columns[timeValidity]"
+                      name="timeValidity" />
+                    <outputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Error Output].Columns[tradingRestriction]"
+                      dataType="ui1"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Error Output].Columns[tradingRestriction]"
+                      name="tradingRestriction" />
+                    <outputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Error Output].Columns[settlAmnt]"
+                      dataType="numeric"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Error Output].Columns[settlAmnt]"
+                      name="settlAmnt"
+                      precision="28"
+                      scale="10" />
+                    <outputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Error Output].Columns[settlDat]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Error Output].Columns[settlDat]"
+                      name="settlDat" />
+                    <outputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Error Output].Columns[ctrPtyId]"
+                      codePage="1252"
+                      dataType="str"
+                      length="5"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Error Output].Columns[ctrPtyId]"
+                      name="ctrPtyId" />
+                    <outputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Error Output].Columns[userOrdrNum]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Error Output].Columns[userOrdrNum]"
+                      name="userOrdrNum" />
+                    <outputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Error Output].Columns[text]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Error Output].Columns[text]"
+                      name="text" />
+                    <outputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Error Output].Columns[kindOfDepo]"
+                      dataType="ui1"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Error Output].Columns[kindOfDepo]"
+                      name="kindOfDepo" />
+                    <outputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -2229,6 +4401,11 @@ WHERE
               endId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810.Inputs[OLE DB Destination Input]"
               name="OLE DB Source Output"
               startId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWTC810.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\DFT Load RAWTC810 To DWH.Paths[OLE DB Source Output1]"
+              endId="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW.Outputs[OLE DB Source Output]" />
           </paths>
         </pipeline>
       </DTS:ObjectData>
@@ -2290,7 +4467,7 @@ WHERE
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{0CBC2C04-C137-495F-AF7C-FA5DE465FED0}"
-          SQLTask:SqlStatementSource="SELECT&#xA; ISNULL(MAX(T7_ODS_FileListRawTcFileID),0) AS T7_ODS_FileListRawTcFileID&#xA;FROM&#xA; Report.RawTcC810&#xA;&#xA;"
+          SQLTask:SqlStatementSource="SELECT&#xA;&#x9;ISNULL(MAX(T7_ODS_FileListRawTcFileID),0) AS T7_ODS_FileListRawTcFileID&#xA;FROM&#xA;&#x9;(&#xA;&#x9;&#x9;SELECT&#xA;&#x9;&#x9;&#x9;MAX(T7_ODS_FileListRawTcFileID) AS T7_ODS_FileListRawTcFileID&#xA;&#x9;&#x9;FROM&#xA;&#x9;&#x9;&#x9;Report.RawTcC810&#xA;&#x9;&#x9;UNION ALL&#xA;&#x9;&#x9;SELECT&#xA;&#x9;&#x9;&#x9;MAX(T7_ODS_FileListRawTcFileID) AS T7_ODS_FileListRawTcFileID&#xA;&#x9;&#x9;FROM&#xA;&#x9;&#x9;&#x9;Report.RawTcC810_NEW&#xA;&#x9;) AS I&#xA;&#xA;&#xA;&#xA;"
           SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
           <SQLTask:ResultBinding
             SQLTask:ResultName="T7_ODS_FileListRawTcFileID"
@@ -2397,7 +4574,7 @@ WHERE
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="223,42"
           Id="Package\DFT Load RAWTC810 To DWH"
@@ -2422,7 +4599,7 @@ WHERE
           TopLeft="175.5,78">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="0,68"
               Start="0,0"
               End="0,60.5">
@@ -2444,7 +4621,7 @@ WHERE
           TopLeft="176.25,188">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="0,65"
               Start="0,0"
               End="0,57.5">
@@ -2480,18 +4657,86 @@ WHERE
     design-time-name="Package\DFT Load RAWTC810 To DWH">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="239,42"
-          Id="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810"
-          TopLeft="72,125" />
+          Size="265,42"
+          Id="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW"
+          TopLeft="297,5.5" />
         <NodeLayout
-          Size="239,42"
+          Size="265,42"
           Id="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWTC810"
-          TopLeft="72,31" />
+          TopLeft="5.5,5.5" />
+        <NodeLayout
+          Size="265,42"
+          Id="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810"
+          TopLeft="5.5,107" />
+        <NodeLayout
+          Size="265,42"
+          Id="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW"
+          TopLeft="297,107" />
+        <EdgeLayout
+          Id="Package\DFT Load RAWTC810 To DWH.Paths[OLE DB Source Output1]"
+          TopLeft="429.5,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,59.5"
+              Start="0,0"
+              End="0,52">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT Load RAWTC810 To DWH.Paths[OLE DB Source Output]"
+          TopLeft="138,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,59.5"
+              Start="0,0"
+              End="0,52">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWC810 NEW">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWTC810">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810">
     <Properties>
@@ -2506,10 +4751,15 @@ WHERE
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\DFT Load RAWTC810 To DWH\SRC T7_ODS RAWTC810">
+    design-time-name="Package\DFT Load RAWTC810 To DWH\DST T7_ODS REPORT RAWTC810 NEW">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>

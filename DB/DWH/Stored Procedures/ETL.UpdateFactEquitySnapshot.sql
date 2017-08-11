@@ -28,10 +28,10 @@ BEGIN
 	UPDATE
 		ETL.FactEquitySnapshotMerge  
 	SET
-		ISEQOverallMarketCap = ISEQOverallPrice * ISEQOverallShares * ISEQOverallFreeFloat,
-		ISEQ20CappedMarketCap = ISEQOverallPrice * ISEQ20CappedShares * ISEQOverallFreeFloat,
+		ISEQOverallMarketCap = ISEQOverallPrice * ISEQOverallShares * ISEQOverallFreeFloat * MarketCapAdjustment,
+		ISEQ20CappedMarketCap = ISEQOverallPrice * ISEQ20CappedShares * ISEQOverallFreeFloat * MarketCapAdjustment,
 		/* this comes from the iseq 20 stats file - adding extra if its possible stats havve loaded but not iseq 20 stats */
-		ISEQ20MarketCap = COALESCE(ISEQ20MarketCap, COALESCE(RestrictedLastTradePrice, ISEQOverallPrice ) * ISEQ20Shares * ISEQOverallFreeFloat)
+		ISEQ20MarketCap = COALESCE(ISEQ20MarketCap, COALESCE(RestrictedLastTradePrice, ISEQOverallPrice ) * ISEQ20Shares * ISEQOverallFreeFloat * MarketCapAdjustment )
 	WHERE
 		StatsLoaded = 'Y'
 
@@ -39,9 +39,9 @@ BEGIN
 	UPDATE
 		ETL.FactEquitySnapshotMerge  
 	SET
-		ISEQOverallMarketCap = COALESCE(RestrictedLastTradePrice, ISEQOverallPrice ) * ISEQOverallShares * ISEQOverallFreeFloat,
-		ISEQ20CappedMarketCap = COALESCE(RestrictedLastTradePrice, ISEQOverallPrice ) * ISEQ20CappedShares * ISEQOverallFreeFloat,
-		ISEQ20MarketCap = COALESCE(RestrictedLastTradePrice, ISEQOverallPrice ) * ISEQ20Shares * ISEQOverallFreeFloat
+		ISEQOverallMarketCap = COALESCE(RestrictedLastTradePrice, ISEQOverallPrice ) * ISEQOverallShares * ISEQOverallFreeFloat * MarketCapAdjustment,
+		ISEQ20CappedMarketCap = COALESCE(RestrictedLastTradePrice, ISEQOverallPrice ) * ISEQ20CappedShares * ISEQOverallFreeFloat * MarketCapAdjustment,
+		ISEQ20MarketCap = COALESCE(RestrictedLastTradePrice, ISEQOverallPrice ) * ISEQ20Shares * ISEQOverallFreeFloat * MarketCapAdjustment
 	WHERE
 		ISNULL(StatsLoaded, 'N') <> 'Y'
 

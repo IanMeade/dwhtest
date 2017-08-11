@@ -2,7 +2,7 @@ CREATE TABLE [DWH].[DimDate]
 (
 [DateID] [int] NOT NULL,
 [DateText] [varchar] (20) COLLATE Latin1_General_CI_AS NOT NULL,
-[Day] [date] NOT NULL,
+[Day] [date] NULL,
 [WorkingDayYN] [char] (1) COLLATE Latin1_General_CI_AS NOT NULL,
 [CurrentDateYN] [char] (1) COLLATE Latin1_General_CI_AS NOT NULL,
 [Year] [smallint] NOT NULL,
