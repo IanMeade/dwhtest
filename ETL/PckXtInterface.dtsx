@@ -11,8 +11,8 @@
   DTS:LocaleID="6153"
   DTS:ObjectName="PckXtInterface"
   DTS:PackageType="5"
-  DTS:VersionBuild="255"
-  DTS:VersionGUID="{06236DE8-3018-4779-8444-24E3C29B106C}">
+  DTS:VersionBuild="253"
+  DTS:VersionGUID="{0AD326F8-BE17-465D-B098-E335CD289FF1}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -981,7 +981,7 @@ WHERE
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{097CA039-CA15-4BBA-A2BA-0B636ED18D4D}"
-              SQLTask:SqlStatementSource="DECLARE @Unit NUMERIC(19,2) = 0&#xA;SELECT&#xA;&#x9;TOP 1&#xA;&#x9;@Unit = Units_in_Issue &#xA;FROM &#xA;&#x9;dbo.ISEQ20_NAV &#xA;WHERE &#xA;&#x9;RealDate &lt;= CAST(GETDATE() AS DATE)&#xA;ORDER BY&#xA;&#x9;RealDate DESC&#xA;&#xA;SELECT&#xA;&#x9;@Unit"
+              SQLTask:SqlStatementSource="&#xA;SELECT&#xA; ISNULL((SELECT Units_in_Issue FROM dbo.ISEQ20_NAV WHERE RealDate = CAST(GETDATE() AS DATE)),0) AS Units_in_Issue&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;"
               SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ResultBinding
                 SQLTask:ResultName="0"
@@ -4688,7 +4688,7 @@ where [refTable].[StatusID] = ?</property>
                       containsID="true"
                       dataType="System.String"
                       description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                      name="ParameterMap">#{Package\SEQ XT Inteface Staging Dataflow\DFT DWH Instrument Staging\1796:invalid};</property>
+                      name="ParameterMap">#{Package\SEQ XT Inteface Staging Dataflow\DFT DWH Instrument Staging\1779:invalid};</property>
                     <property
                       dataType="System.Int32"
                       description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -5168,7 +5168,7 @@ where [refTable].[MarketID] = ?</property>
                       containsID="true"
                       dataType="System.String"
                       description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                      name="ParameterMap">#{Package\SEQ XT Inteface Staging Dataflow\DFT DWH Instrument Staging\1797:invalid};</property>
+                      name="ParameterMap">#{Package\SEQ XT Inteface Staging Dataflow\DFT DWH Instrument Staging\1780:invalid};</property>
                     <property
                       dataType="System.Int32"
                       description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -5328,7 +5328,7 @@ where [refTable].[CurrencyID] = ?</property>
                       containsID="true"
                       dataType="System.String"
                       description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                      name="ParameterMap">#{Package\SEQ XT Inteface Staging Dataflow\DFT DWH Instrument Staging\1798:invalid};</property>
+                      name="ParameterMap">#{Package\SEQ XT Inteface Staging Dataflow\DFT DWH Instrument Staging\1781:invalid};</property>
                     <property
                       dataType="System.Int32"
                       description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -10877,7 +10877,7 @@ where [refTable].[Gid] = ?</property>
                       containsID="true"
                       dataType="System.String"
                       description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                      name="ParameterMap">#{Package\SEQ XT Inteface Staging Dataflow\DFT XT ODS Staging\1799:invalid};</property>
+                      name="ParameterMap">#{Package\SEQ XT Inteface Staging Dataflow\DFT XT ODS Staging\1782:invalid};</property>
                     <property
                       dataType="System.Int32"
                       description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -12263,7 +12263,7 @@ where [refTable].[Gid] = ?</property>
                       containsID="true"
                       dataType="System.String"
                       description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                      name="ParameterMap">#{Package\SEQ XT Inteface Staging Dataflow\DFT XT ODS Staging\1800:invalid};</property>
+                      name="ParameterMap">#{Package\SEQ XT Inteface Staging Dataflow\DFT XT ODS Staging\1783:invalid};</property>
                     <property
                       dataType="System.Int32"
                       description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -32550,7 +32550,7 @@ where [refTable].[InstrumentGlobalID] = ?</property>
           Id="Package\SEQ ETF Shares In Issue\SQL Get Best ISEQ20 NAV"
           TopLeft="40.6666666666667,249" />
         <NodeLayout
-          Size="179,42"
+          Size="220,42"
           Id="Package\SEQ ETF Shares In Issue\SQL Get ISEQ20 NAV"
           TopLeft="40.6666666666667,28.7777777777781" />
         <NodeLayout
@@ -32559,30 +32559,18 @@ where [refTable].[InstrumentGlobalID] = ?</property>
           TopLeft="40.6666666666667,102.185185185185" />
         <EdgeLayout
           Id="Package\SEQ ETF Shares In Issue.PrecedenceConstraints[Constraint]"
-          TopLeft="130.166666666667,70.7777777777781">
+          TopLeft="150.666666666667,70.7777777777781">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="20.5,31.4074074074069"
+              EndConnector="0,31.4074074074073"
               Start="0,0"
-              End="20.5,23.9074074074069">
+              End="0,23.9074074074073">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,11.7037037037035" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,11.7037037037035"
-                    Point2="0,15.7037037037035"
-                    Point3="4,15.7037037037035" />
-                  <mssgle:LineSegment
-                    End="16.5,15.7037037037035" />
-                  <mssgle:CubicBezierSegment
-                    Point1="16.5,15.7037037037035"
-                    Point2="20.5,15.7037037037035"
-                    Point3="20.5,19.7037037037035" />
-                  <mssgle:LineSegment
-                    End="20.5,23.9074074074069" />
+                    End="0,23.9074074074073" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>

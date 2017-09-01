@@ -13,7 +13,7 @@ CREATE TABLE [DWH].[FactCorporateAction]
 [LatestSplittingDateNote] [varchar] (200) COLLATE Latin1_General_CI_AS NULL,
 [Conditional] [char] (2) COLLATE Latin1_General_CI_AS NULL,
 [ReverseTakeover] [char] (1) COLLATE Latin1_General_CI_AS NULL,
-[NumberOfNewShares] [decimal] (28, 6) NULL,
+[NumberOfNewShares] [decimal] (23, 10) NULL,
 [ExPrice] [decimal] (23, 10) NULL,
 [Price] [decimal] (23, 10) NULL,
 [Details] [varchar] (3000) COLLATE Latin1_General_CI_AS NULL,

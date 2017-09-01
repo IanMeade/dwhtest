@@ -3,7 +3,6 @@ GO
 SET ANSI_NULLS ON
 GO
 
-
     
 -- =============================================    
 -- Author:		Ian Meade    
@@ -42,25 +41,6 @@ RETURN
 					A_TRADE_TIME_OCP <> '1858-11-17 00:00:00.000'
 				AND
 					T.A_OFFICIAL_CLOSING_PRICE <> 0
-				AND
-					NOT EXISTS (
-						/* TRADE HAS NOT BEEN CANCELLED */
-						SELECT
-							*
-						FROM
-							dbo.TxSaft T2
-						WHERE
-							T.A_TRADE_DATE = T2.A_TRADE_DATE
-						AND
-							T.A_TRADE_LINK_NO = T2.A_TRADE_LINK_NO 
-						AND
-							T.A_ISIN = T2.A_ISIN
-						AND
-							T.A_ORDER_TYPE = T2.A_ORDER_TYPE
-						AND    
-							/* NOT CANCELED */    
-							T2.A_MOD_REASON_CODE = '003'    
-					)
 				GROUP BY
 					T.A_TRADE_DATE,
 					T.A_ISIN
@@ -101,5 +81,4 @@ RETURN
    
 )    
   
-
 GO
