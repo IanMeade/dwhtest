@@ -1,0 +1,26 @@
+ Volume in drive C has no label.
+ Volume Serial Number is 7EAC-B591
+
+ Directory of C:\Side projects\Release 2
+
+16/03/2017  15:10            21,597 01 Create new DBs.sql
+16/03/2017  15:10           199,228 02 DWH.sql
+16/03/2017  15:11            41,236 03 MDM.sql
+16/03/2017  18:39            56,040 04 ProcessControl.sql
+16/03/2017  15:11           166,208 05 Staging.sql
+16/03/2017  15:11            27,182 06 T7_ODS.sql
+16/03/2017  15:12            11,502 07 XT_ODS.sql
+16/03/2017  15:29            35,302 08 ProcessControl Data.sql
+16/03/2017  15:32           118,758 09 MDM Data.sql
+               9 File(s)        677,053 bytes
+
+ Directory of C:\Side projects\Release 2\Agent jobs
+
+24/02/2017  16:08             3,407 10 AGENT JOB  - Clear DWH.sql
+24/02/2017  16:08             2,354 11 AGENT JOB - Main ETL.sql
+24/02/2017  16:09             2,403 12 AGENT JOB - MDM Refresh.sql
+               3 File(s)          8,164 bytes
+
+     Total Files Listed:
+              12 File(s)        685,217 bytes
+               0 Dir(s)  23,752,896,512 bytes free

@@ -1,0 +1,18 @@
+01 Create new DBs.sql
+02 DWH.sql
+03 MDM.sql
+04 ProcessControl.sql
+05 Staging.sql
+06 T7_ODS.sql
+07 XT_ODS.sql
+08 Reuters_ODS.sql
+09 StateStreet_ODS.sql
+10 Stoxx_ODS.sql
+100 Clear DWH.sql
+100a Clear DWH.sql
+11 ProcessControl Data.sql
+12 MDM Data.sql
+20 SSIS Configuration - T7-DDT-06.sql
+20 SSIS Configuration - T7-SYS-DW-01.sql
+21 Assign parameters.sql
+99 Main ETL.sql
