@@ -11,8 +11,8 @@
   DTS:LocaleID="6153"
   DTS:ObjectName="PckCorporateAction"
   DTS:PackageType="5"
-  DTS:VersionBuild="62"
-  DTS:VersionGUID="{C79FCCD3-9B6A-4FAF-BA70-EA0472EC2752}">
+  DTS:VersionBuild="64"
+  DTS:VersionGUID="{A5185BE9-BF97-4192-B2C4-F7AA5B837573}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -375,7 +375,7 @@ where [refTable].[CorporateActionCode] = ?</property>
                       containsID="true"
                       dataType="System.String"
                       description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                      name="ParameterMap">#{Package\SEQ Push to DWH\DFT Corporate action type\1798:invalid};</property>
+                      name="ParameterMap">#{Package\SEQ Push to DWH\DFT Corporate action type\1811:invalid};</property>
                     <property
                       dataType="System.Int32"
                       description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -545,7 +545,7 @@ where [refTable].[CorporateActionCode] = ?</property>
                       containsID="true"
                       dataType="System.String"
                       description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                      name="ParameterMap">#{Package\SEQ Push to DWH\DFT Corporate action type\1799:invalid};</property>
+                      name="ParameterMap">#{Package\SEQ Push to DWH\DFT Corporate action type\1812:invalid};</property>
                     <property
                       dataType="System.Int32"
                       description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -1636,8 +1636,8 @@ FROM
                           refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\Insert Destination.Inputs[OLE DB Destination Input].Columns[NumberOfNewShares]"
                           cachedDataType="numeric"
                           cachedName="NumberOfNewShares"
-                          cachedPrecision="23"
-                          cachedScale="10"
+                          cachedPrecision="28"
+                          cachedScale="6"
                           externalMetadataColumnId="Package\SEQ Push to DWH\DFT Corporate Actions facts\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[NumberOfNewShares]"
                           lineageId="Package\SEQ Push to DWH\DFT Corporate Actions facts\SRC STG CorporateAction Process.Outputs[OLE DB Source Output].Columns[NumberOfNewShares]" />
                         <inputColumn
@@ -2265,7 +2265,7 @@ where [refTable].[CorporateActionCode] = ? and [refTable].[CorporateActionSubTyp
                       containsID="true"
                       dataType="System.String"
                       description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                      name="ParameterMap">#{Package\SEQ Push to DWH\DFT Corporate Actions facts\1800:invalid};#{Package\SEQ Push to DWH\DFT Corporate Actions facts\1801:invalid};#{Package\SEQ Push to DWH\DFT Corporate Actions facts\1802:invalid};</property>
+                      name="ParameterMap">#{Package\SEQ Push to DWH\DFT Corporate Actions facts\1813:invalid};#{Package\SEQ Push to DWH\DFT Corporate Actions facts\1814:invalid};#{Package\SEQ Push to DWH\DFT Corporate Actions facts\1815:invalid};</property>
                     <property
                       dataType="System.Int32"
                       description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -2469,7 +2469,7 @@ where [refTable].[CurrencyISOCode] = ?</property>
                       containsID="true"
                       dataType="System.String"
                       description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                      name="ParameterMap">#{Package\SEQ Push to DWH\DFT Corporate Actions facts\1803:invalid};</property>
+                      name="ParameterMap">#{Package\SEQ Push to DWH\DFT Corporate Actions facts\1816:invalid};</property>
                     <property
                       dataType="System.Int32"
                       description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -2637,7 +2637,7 @@ where [refTable].[CorportateActionCode] = ?</property>
                       containsID="true"
                       dataType="System.String"
                       description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                      name="ParameterMap">#{Package\SEQ Push to DWH\DFT Corporate Actions facts\1800:invalid};</property>
+                      name="ParameterMap">#{Package\SEQ Push to DWH\DFT Corporate Actions facts\1813:invalid};</property>
                     <property
                       dataType="System.Int32"
                       description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -2811,7 +2811,7 @@ where [refTable].[InstrumentGlobalID] = ?</property>
                       containsID="true"
                       dataType="System.String"
                       description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                      name="ParameterMap">#{Package\SEQ Push to DWH\DFT Corporate Actions facts\1804:invalid};</property>
+                      name="ParameterMap">#{Package\SEQ Push to DWH\DFT Corporate Actions facts\1817:invalid};</property>
                     <property
                       dataType="System.Int32"
                       description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -2971,7 +2971,7 @@ where [refTable].[CorporateActionGID] = ?</property>
                       containsID="true"
                       dataType="System.String"
                       description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                      name="ParameterMap">#{Package\SEQ Push to DWH\DFT Corporate Actions facts\SRC STG CorporateAction Process.Outputs[OLE DB Source Output].Columns[Gid]};</property>
+                      name="ParameterMap">#{Package\SEQ Push to DWH\DFT Corporate Actions facts\700:invalid};</property>
                     <property
                       dataType="System.Int32"
                       description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -3114,7 +3114,7 @@ where [refTable].[CoporateActionGID] = ?</property>
                       containsID="true"
                       dataType="System.String"
                       description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                      name="ParameterMap">#{Package\SEQ Push to DWH\DFT Corporate Actions facts\SRC STG CorporateAction Process.Outputs[OLE DB Source Output].Columns[Gid]};</property>
+                      name="ParameterMap">#{Package\SEQ Push to DWH\DFT Corporate Actions facts\700:invalid};</property>
                     <property
                       dataType="System.Int32"
                       description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -3334,8 +3334,8 @@ where [refTable].[CoporateActionGID] = ?</property>
                           refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Command.Inputs[OLE DB Command Input].Columns[NumberOfNewShares]"
                           cachedDataType="numeric"
                           cachedName="NumberOfNewShares"
-                          cachedPrecision="23"
-                          cachedScale="10"
+                          cachedPrecision="28"
+                          cachedScale="6"
                           externalMetadataColumnId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_12]"
                           lineageId="Package\SEQ Push to DWH\DFT Corporate Actions facts\SRC STG CorporateAction Process.Outputs[OLE DB Source Output].Columns[NumberOfNewShares]" />
                         <inputColumn
@@ -4152,8 +4152,8 @@ where [refTable].[CoporateActionGID] = ?</property>
                           refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[NumberOfNewShares]"
                           cachedDataType="numeric"
                           cachedName="NumberOfNewShares"
-                          cachedPrecision="23"
-                          cachedScale="10"
+                          cachedPrecision="28"
+                          cachedScale="6"
                           externalMetadataColumnId="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[NumberOfNewShares]"
                           lineageId="Package\SEQ Push to DWH\DFT Corporate Actions facts\SRC STG CorporateAction Process.Outputs[OLE DB Source Output].Columns[NumberOfNewShares]" />
                         <inputColumn
@@ -5019,8 +5019,8 @@ where [refTable].[CoporateActionGID] = ?</property>
                           refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\SCD FactCorportateAction.Inputs[Slowly Changing Dimension Input].Columns[NumberOfNewShares]"
                           cachedDataType="numeric"
                           cachedName="NumberOfNewShares"
-                          cachedPrecision="23"
-                          cachedScale="10"
+                          cachedPrecision="28"
+                          cachedScale="6"
                           externalMetadataColumnId="Package\SEQ Push to DWH\DFT Corporate Actions facts\SCD FactCorportateAction.Inputs[Slowly Changing Dimension Input].ExternalColumns[NumberOfNewShares]"
                           lineageId="Package\SEQ Push to DWH\DFT Corporate Actions facts\SRC STG CorporateAction Process.Outputs[OLE DB Source Output].Columns[NumberOfNewShares]">
                           <properties>
@@ -5753,7 +5753,7 @@ where [refTable].[CoporateActionGID] = ?</property>
 	ISNULL(CAST(CONVERT(CHAR,LatestDateForFinalApplication,112) AS INT), -1) AS LatestDateForFinalApplicationID,
 	LatestSplittingDate AS LatestSplittingDateNote,
 	ISNULL(CAST(CONVERT(CHAR,NextMeetingDate,112) AS INT), -1) AS NextMeetingDateID, 
-	CAST(NumberOfNewShares AS DECIMAL(23, 10)) AS NumberOfNewShares,
+	CAST(NumberOfNewShares AS DECIMAL(28, 6)) AS NumberOfNewShares,
 	ISNULL(CAST(CONVERT(CHAR,PaymentDate,112) AS INT), -1) AS PaymentDateID, 
 	Price, 
 	ISNULL(CAST(CONVERT(CHAR,RecordDate,112) AS INT), -1) AS RecordDateID, 
@@ -5976,8 +5976,8 @@ WHERE
                           externalMetadataColumnId="Package\SEQ Push to DWH\DFT Corporate Actions facts\SRC STG CorporateAction Process.Outputs[OLE DB Source Output].ExternalColumns[NumberOfNewShares]"
                           lineageId="Package\SEQ Push to DWH\DFT Corporate Actions facts\SRC STG CorporateAction Process.Outputs[OLE DB Source Output].Columns[NumberOfNewShares]"
                           name="NumberOfNewShares"
-                          precision="23"
-                          scale="10"
+                          precision="28"
+                          scale="6"
                           truncationRowDisposition="FailComponent" />
                         <outputColumn
                           refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\SRC STG CorporateAction Process.Outputs[OLE DB Source Output].Columns[Price]"
@@ -6290,8 +6290,8 @@ WHERE
                           refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\SRC STG CorporateAction Process.Outputs[OLE DB Source Output].ExternalColumns[NumberOfNewShares]"
                           dataType="numeric"
                           name="NumberOfNewShares"
-                          precision="23"
-                          scale="10" />
+                          precision="28"
+                          scale="6" />
                         <externalMetadataColumn
                           refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\SRC STG CorporateAction Process.Outputs[OLE DB Source Output].ExternalColumns[Price]"
                           dataType="numeric"
@@ -6524,8 +6524,8 @@ WHERE
                           dataType="numeric"
                           lineageId="Package\SEQ Push to DWH\DFT Corporate Actions facts\SRC STG CorporateAction Process.Outputs[OLE DB Source Error Output].Columns[NumberOfNewShares]"
                           name="NumberOfNewShares"
-                          precision="23"
-                          scale="10" />
+                          precision="28"
+                          scale="6" />
                         <outputColumn
                           refId="Package\SEQ Push to DWH\DFT Corporate Actions facts\SRC STG CorporateAction Process.Outputs[OLE DB Source Error Output].Columns[Price]"
                           dataType="numeric"
@@ -9879,7 +9879,7 @@ WHERE
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
+              BoundingBox="0,0,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -9899,7 +9899,7 @@ WHERE
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
+              BoundingBox="0,0,157.0678125,11.6630859375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -9918,9 +9918,7 @@ WHERE
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -9939,7 +9937,7 @@ WHERE
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
+              BoundingBox="0,0,54.1827734375,11.43359375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -9959,7 +9957,7 @@ WHERE
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
+              BoundingBox="0,0,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -10087,17 +10085,17 @@ WHERE
       <GraphLayout
         Capacity="64" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="171,42"
-          Id="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination"
-          TopLeft="5.50000000000011,719.5" />
+          Size="166,42"
+          Id="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Command"
+          TopLeft="255,821.5" />
+        <NodeLayout
+          Size="201,42"
+          Id="Package\SEQ Push to DWH\DFT Corporate Actions facts\SCD FactCorportateAction"
+          TopLeft="237.5,719.5" />
         <NodeLayout
           Size="238,42"
           Id="Package\SEQ Push to DWH\DFT Corporate Actions facts\LKP CorporateActionType"
           TopLeft="453,107.5" />
-        <NodeLayout
-          Size="162,42"
-          Id="Package\SEQ Push to DWH\DFT Corporate Actions facts\SCD FactDividend"
-          TopLeft="723,821.5" />
         <NodeLayout
           Size="113,42"
           Id="Package\SEQ Push to DWH\DFT Corporate Actions facts\Lookup"
@@ -10107,33 +10105,41 @@ WHERE
           Id="Package\SEQ Push to DWH\DFT Corporate Actions facts\LKP CurrencyID"
           TopLeft="453,617.5" />
         <NodeLayout
-          Size="175,42"
-          Id="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Command 1"
-          TopLeft="482.5,923.5" />
-        <NodeLayout
           Size="180,42"
           Id="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination 1"
           TopLeft="482,821.5" />
+        <NodeLayout
+          Size="163,42"
+          Id="Package\SEQ Push to DWH\DFT Corporate Actions facts\Insert Destination"
+          TopLeft="31.5000000000001,821.5" />
+        <NodeLayout
+          Size="238,42"
+          Id="Package\SEQ Push to DWH\DFT Corporate Actions facts\SRC STG CorporateAction Process"
+          TopLeft="453,5.5" />
+        <NodeLayout
+          Size="162,42"
+          Id="Package\SEQ Push to DWH\DFT Corporate Actions facts\SCD FactDividend"
+          TopLeft="723,821.5" />
+        <NodeLayout
+          Size="238,42"
+          Id="Package\SEQ Push to DWH\DFT Corporate Actions facts\LKP InstrumentID"
+          TopLeft="453,209.5" />
+        <NodeLayout
+          Size="171,42"
+          Id="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination"
+          TopLeft="5.50000000000011,719.5" />
+        <NodeLayout
+          Size="175,42"
+          Id="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Command 1"
+          TopLeft="482.5,923.5" />
         <NodeLayout
           Size="238,42"
           Id="Package\SEQ Push to DWH\DFT Corporate Actions facts\DER BatchID"
           TopLeft="453,413.5" />
         <NodeLayout
-          Size="238,42"
-          Id="Package\SEQ Push to DWH\DFT Corporate Actions facts\LKP Diviidend Type"
-          TopLeft="453,311.5" />
-        <NodeLayout
           Size="122,42"
           Id="Package\SEQ Push to DWH\DFT Corporate Actions facts\Lookup 2"
           TopLeft="511,719.5" />
-        <NodeLayout
-          Size="201,42"
-          Id="Package\SEQ Push to DWH\DFT Corporate Actions facts\SCD FactCorportateAction"
-          TopLeft="237.5,719.5" />
-        <NodeLayout
-          Size="238,42"
-          Id="Package\SEQ Push to DWH\DFT Corporate Actions facts\SRC STG CorporateAction Process"
-          TopLeft="453,5.5" />
         <NodeLayout
           Size="172,42"
           Id="Package\SEQ Push to DWH\DFT Corporate Actions facts\Insert Destination 1"
@@ -10144,210 +10150,8 @@ WHERE
           TopLeft="453,515.5" />
         <NodeLayout
           Size="238,42"
-          Id="Package\SEQ Push to DWH\DFT Corporate Actions facts\LKP InstrumentID"
-          TopLeft="453,209.5" />
-        <EdgeLayout
-          Id="Package\SEQ Push to DWH\DFT Corporate Actions facts.Paths[Lookup Match Output2]"
-          TopLeft="572,251.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,20.4453125,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\SEQ Push to DWH\DFT Corporate Actions facts.Paths[Lookup Match Output1]"
-          TopLeft="572,353.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,20.4453125,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\SEQ Push to DWH\DFT Corporate Actions facts.Paths[Lookup Match Output]"
-          TopLeft="572,149.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,20.4453125,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\SEQ Push to DWH\DFT Corporate Actions facts.Paths[Generic]"
-          TopLeft="533.666666666667,557.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-197.666666666667,60.0000000000001"
-              Start="0,0"
-              End="-197.666666666667,52.5000000000001">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,20.2404006677797" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,20.2404006677797"
-                    Point2="0,24.2404006677797"
-                    Point3="-4,24.2404006677797" />
-                  <mssgle:LineSegment
-                    End="-193.666666666667,24.2404006677797" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-193.666666666667,24.2404006677797"
-                    Point2="-197.666666666667,24.2404006677797"
-                    Point3="-197.666666666667,28.2404006677797" />
-                  <mssgle:LineSegment
-                    End="-197.666666666667,52.5000000000001" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-116.223880208333,29.2404006677797,34.78109375,9.5439453125"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\SEQ Push to DWH\DFT Corporate Actions facts.Paths[Dividend]"
-          TopLeft="610.333333333333,557.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-38.3333333333334,60"
-              Start="0,0"
-              End="-38.3333333333334,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,20.2404006677796" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,20.2404006677796"
-                    Point2="0,24.2404006677796"
-                    Point3="-4,24.2404006677796" />
-                  <mssgle:LineSegment
-                    End="-34.3333333333334,24.2404006677796" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-34.3333333333334,24.2404006677796"
-                    Point2="-38.3333333333334,24.2404006677796"
-                    Point3="-38.3333333333334,28.2404006677796" />
-                  <mssgle:LineSegment
-                    End="-38.3333333333334,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-38.5846549479167,29.2404006677796,38.8359765625,9.7490234375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\SEQ Push to DWH\DFT Corporate Actions facts.Paths[Derived Column Output]"
-          TopLeft="572,455.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\SEQ Push to DWH\DFT Corporate Actions facts.Paths[Changing Attribute Updates Output]"
-          TopLeft="778.333333333333,863.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-208.333333333333,60"
-              Start="0,0"
-              End="-208.333333333333,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,20.3520782396088" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,20.3520782396088"
-                    Point2="0,24.3520782396088"
-                    Point3="-4,24.3520782396088" />
-                  <mssgle:LineSegment
-                    End="-204.333333333333,24.3520782396088" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-204.333333333333,24.3520782396088"
-                    Point2="-208.333333333333,24.3520782396088"
-                    Point3="-208.333333333333,28.3520782396088" />
-                  <mssgle:LineSegment
-                    End="-208.333333333333,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-182.700572916667,29.3520782396088,157.0678125,11.6630859375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+          Id="Package\SEQ Push to DWH\DFT Corporate Actions facts\LKP Diviidend Type"
+          TopLeft="453,311.5" />
         <EdgeLayout
           Id="Package\SEQ Push to DWH\DFT Corporate Actions facts.Paths[OLE DB Source Output]"
           TopLeft="572,47.5">
@@ -10368,6 +10172,42 @@ WHERE
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ Push to DWH\DFT Corporate Actions facts.Paths[New Output1]"
+          TopLeft="305.833333333333,761.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-192.833333333333,60"
+              Start="0,0"
+              End="-192.833333333333,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.284304047384" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.284304047384"
+                    Point2="0,24.284304047384"
+                    Point3="-4,24.284304047384" />
+                  <mssgle:LineSegment
+                    End="-188.833333333333,24.284304047384" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-188.833333333333,24.284304047384"
+                    Point2="-192.833333333333,24.284304047384"
+                    Point3="-192.833333333333,28.284304047384" />
+                  <mssgle:LineSegment
+                    End="-192.833333333333,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-123.508053385417,29.284304047384,54.1827734375,11.43359375"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -10574,50 +10414,172 @@ WHERE
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="163,42"
-          Id="Package\SEQ Push to DWH\DFT Corporate Actions facts\Insert Destination"
-          TopLeft="31.5000000000001,821.5" />
         <EdgeLayout
-          Id="Package\SEQ Push to DWH\DFT Corporate Actions facts.Paths[New Output1]"
-          TopLeft="305.833333333333,761.5">
+          Id="Package\SEQ Push to DWH\DFT Corporate Actions facts.Paths[Lookup Match Output2]"
+          TopLeft="572,251.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-192.833333333333,60"
+              EndConnector="0,60"
               Start="0,0"
-              End="-192.833333333333,52.5">
+              End="0,52.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,20.284304047384" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,20.284304047384"
-                    Point2="0,24.284304047384"
-                    Point3="-4,24.284304047384" />
-                  <mssgle:LineSegment
-                    End="-188.833333333333,24.284304047384" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-188.833333333333,24.284304047384"
-                    Point2="-192.833333333333,24.284304047384"
-                    Point3="-192.833333333333,28.284304047384" />
-                  <mssgle:LineSegment
-                    End="-192.833333333333,52.5" />
+                    End="0,52.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-123.508053385417,29.284304047384,54.1827734375,11.43359375"
+              BoundingBox="-48.19138671875,20.4453125,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="166,42"
-          Id="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Command"
-          TopLeft="255,821.5" />
+        <EdgeLayout
+          Id="Package\SEQ Push to DWH\DFT Corporate Actions facts.Paths[Lookup Match Output1]"
+          TopLeft="572,353.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,20.4453125,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ Push to DWH\DFT Corporate Actions facts.Paths[Lookup Match Output]"
+          TopLeft="572,149.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,20.4453125,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ Push to DWH\DFT Corporate Actions facts.Paths[Generic]"
+          TopLeft="533.666666666667,557.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-197.666666666667,60.0000000000001"
+              Start="0,0"
+              End="-197.666666666667,52.5000000000001">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.2404006677797" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.2404006677797"
+                    Point2="0,24.2404006677797"
+                    Point3="-4,24.2404006677797" />
+                  <mssgle:LineSegment
+                    End="-193.666666666667,24.2404006677797" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-193.666666666667,24.2404006677797"
+                    Point2="-197.666666666667,24.2404006677797"
+                    Point3="-197.666666666667,28.2404006677797" />
+                  <mssgle:LineSegment
+                    End="-197.666666666667,52.5000000000001" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-116.223880208333,29.2404006677797,34.78109375,9.5439453125"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ Push to DWH\DFT Corporate Actions facts.Paths[Dividend]"
+          TopLeft="610.333333333333,557.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-38.3333333333334,60"
+              Start="0,0"
+              End="-38.3333333333334,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.2404006677796" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.2404006677796"
+                    Point2="0,24.2404006677796"
+                    Point3="-4,24.2404006677796" />
+                  <mssgle:LineSegment
+                    End="-34.3333333333334,24.2404006677796" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-34.3333333333334,24.2404006677796"
+                    Point2="-38.3333333333334,24.2404006677796"
+                    Point3="-38.3333333333334,28.2404006677796" />
+                  <mssgle:LineSegment
+                    End="-38.3333333333334,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-38.5846549479167,29.2404006677796,38.8359765625,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ Push to DWH\DFT Corporate Actions facts.Paths[Derived Column Output]"
+          TopLeft="572,455.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package\SEQ Push to DWH\DFT Corporate Actions facts.Paths[Changing Attribute Updates Output1]"
           TopLeft="370.166666666667,761.5">
@@ -10654,19 +10616,181 @@ WHERE
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ Push to DWH\DFT Corporate Actions facts.Paths[Changing Attribute Updates Output]"
+          TopLeft="778.333333333333,863.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-208.333333333333,60"
+              Start="0,0"
+              End="-208.333333333333,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.3520782396088" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.3520782396088"
+                    Point2="0,24.3520782396088"
+                    Point3="-4,24.3520782396088" />
+                  <mssgle:LineSegment
+                    End="-204.333333333333,24.3520782396088" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-204.333333333333,24.3520782396088"
+                    Point2="-208.333333333333,24.3520782396088"
+                    Point3="-208.333333333333,28.3520782396088" />
+                  <mssgle:LineSegment
+                    End="-208.333333333333,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-182.700572916667,29.3520782396088,157.0678125,11.6630859375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination">
+    design-time-name="Package\SEQ Push to DWH\DFT Corporate Actions facts\SCD FactCorportateAction">
     <Properties>
       <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
+        <Name>SCDMetadata</Name>
         <Value
-          type="q2:string">Table</Value>
+          type="q2:string">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SCDWizardMetadata xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;ConnectionID&gt;{0CBC2C04-C137-495F-AF7C-FA5DE465FED0}&lt;/ConnectionID&gt;
+  &lt;TableName&gt;[DWH].[FactCorporateAction]&lt;/TableName&gt;
+  &lt;InputToColumnsCollection&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;SRC STG CorporateAction Process.Outputs[OLE DB Source Output].Columns[AdditionalDescription]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;AdditionalDescription&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;DER BatchID.Outputs[Derived Column Output].Columns[BatchID]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;BatchID&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;None&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;SRC STG CorporateAction Process.Outputs[OLE DB Source Output].Columns[Conditional]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;Conditional&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;SRC STG CorporateAction Process.Outputs[OLE DB Source Output].Columns[Gid]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;CorporateActionGID&lt;/ColumnName&gt;
+      &lt;KeyType&gt;BusinessKey&lt;/KeyType&gt;
+      &lt;ChangeType&gt;None&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;SRC STG CorporateAction Process.Outputs[OLE DB Source Output].Columns[StatusDateID]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;CorporateActionStatusDateID&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;LKP CorporateActionType.Outputs[Lookup Match Output].Columns[CorporateActionTypeID]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;CorporateActionTypeID&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;SRC STG CorporateAction Process.Outputs[OLE DB Source Output].Columns[Details]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;Details&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;SRC STG CorporateAction Process.Outputs[OLE DB Source Output].Columns[EffectiveDateID]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;EffectiveDateID&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;SRC STG CorporateAction Process.Outputs[OLE DB Source Output].Columns[ExDateID]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;ExDateID&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;SRC STG CorporateAction Process.Outputs[OLE DB Source Output].Columns[ExPrice]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;ExPrice&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;LKP InstrumentID.Outputs[Lookup Match Output].Columns[InstrumentID]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;InstrumentID&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;SRC STG CorporateAction Process.Outputs[OLE DB Source Output].Columns[LatestDateForApplicationNilPaidID]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;LatestDateForApplicationNilPaidID&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;SRC STG CorporateAction Process.Outputs[OLE DB Source Output].Columns[LatestDateForFinalApplicationID]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;LatestDateForFinalApplicationID&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;SRC STG CorporateAction Process.Outputs[OLE DB Source Output].Columns[LatestSplittingDateNote]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;LatestSplittingDateNote&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;SRC STG CorporateAction Process.Outputs[OLE DB Source Output].Columns[NumberOfNewShares]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;NumberOfNewShares&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;SRC STG CorporateAction Process.Outputs[OLE DB Source Output].Columns[Price]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;Price&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;SRC STG CorporateAction Process.Outputs[OLE DB Source Output].Columns[RecordDateID]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;RecordDateID&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;SRC STG CorporateAction Process.Outputs[OLE DB Source Output].Columns[ReverseTakeover]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;ReverseTakeover&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+  &lt;/InputToColumnsCollection&gt;
+  &lt;GeneratedComponentsIdentificationStrings&gt;
+    &lt;anyType xsi:type="xsd:string"&gt;Insert Destination&lt;/anyType&gt;
+    &lt;anyType xsi:type="xsd:string"&gt;OLE DB Command&lt;/anyType&gt;
+  &lt;/GeneratedComponentsIdentificationStrings&gt;
+  &lt;FailFixedAttribute&gt;false&lt;/FailFixedAttribute&gt;
+  &lt;FailChangeAttribute&gt;true&lt;/FailChangeAttribute&gt;
+  &lt;UseStartEndDate&gt;false&lt;/UseStartEndDate&gt;
+  &lt;CurrentIndicatorColumn /&gt;
+  &lt;InferredIndicatorColumn /&gt;
+  &lt;ValueCurrent /&gt;
+  &lt;ValueExpired /&gt;
+  &lt;StartDateColumn /&gt;
+  &lt;EndDateColumn /&gt;
+  &lt;DateVariable /&gt;
+  &lt;EnableInferredSupport&gt;false&lt;/EnableInferredSupport&gt;
+&lt;/SCDWizardMetadata&gt;</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
@@ -10690,6 +10814,78 @@ WHERE
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\SEQ Push to DWH\DFT Corporate Actions facts\Lookup">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[DWH].[FactCorporateAction]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\SEQ Push to DWH\DFT Corporate Actions facts\LKP CurrencyID">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination 1">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\SEQ Push to DWH\DFT Corporate Actions facts\SRC STG CorporateAction Process">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
@@ -10845,30 +11041,7 @@ WHERE
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\SEQ Push to DWH\DFT Corporate Actions facts\Lookup">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:string">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[DWH].[FactCorporateAction]</Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:string">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\SEQ Push to DWH\DFT Corporate Actions facts\LKP CurrencyID">
+    design-time-name="Package\SEQ Push to DWH\DFT Corporate Actions facts\LKP InstrumentID">
     <Properties>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
@@ -10891,7 +11064,7 @@ WHERE
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination 1">
+    design-time-name="Package\SEQ Push to DWH\DFT Corporate Actions facts\OLE DB Destination">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -10900,29 +11073,6 @@ WHERE
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\SEQ Push to DWH\DFT Corporate Actions facts\LKP Diviidend Type">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:string">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string"></Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:string">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
@@ -10950,159 +11100,7 @@ WHERE
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\SEQ Push to DWH\DFT Corporate Actions facts\SCD FactCorportateAction">
-    <Properties>
-      <Property>
-        <Name>SCDMetadata</Name>
-        <Value
-          type="q2:string">&lt;?xml version="1.0" encoding="utf-16"?&gt;
-&lt;SCDWizardMetadata xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
-  &lt;ConnectionID&gt;{0CBC2C04-C137-495F-AF7C-FA5DE465FED0}&lt;/ConnectionID&gt;
-  &lt;TableName&gt;[DWH].[FactCorporateAction]&lt;/TableName&gt;
-  &lt;InputToColumnsCollection&gt;
-    &lt;InputColumnToDBColumn&gt;
-      &lt;IdentificationString&gt;SRC STG CorporateAction Process.Outputs[OLE DB Source Output].Columns[AdditionalDescription]&lt;/IdentificationString&gt;
-      &lt;ColumnName&gt;AdditionalDescription&lt;/ColumnName&gt;
-      &lt;KeyType&gt;None&lt;/KeyType&gt;
-      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
-    &lt;/InputColumnToDBColumn&gt;
-    &lt;InputColumnToDBColumn&gt;
-      &lt;IdentificationString&gt;DER BatchID.Outputs[Derived Column Output].Columns[BatchID]&lt;/IdentificationString&gt;
-      &lt;ColumnName&gt;BatchID&lt;/ColumnName&gt;
-      &lt;KeyType&gt;None&lt;/KeyType&gt;
-      &lt;ChangeType&gt;None&lt;/ChangeType&gt;
-    &lt;/InputColumnToDBColumn&gt;
-    &lt;InputColumnToDBColumn&gt;
-      &lt;IdentificationString&gt;SRC STG CorporateAction Process.Outputs[OLE DB Source Output].Columns[Conditional]&lt;/IdentificationString&gt;
-      &lt;ColumnName&gt;Conditional&lt;/ColumnName&gt;
-      &lt;KeyType&gt;None&lt;/KeyType&gt;
-      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
-    &lt;/InputColumnToDBColumn&gt;
-    &lt;InputColumnToDBColumn&gt;
-      &lt;IdentificationString&gt;SRC STG CorporateAction Process.Outputs[OLE DB Source Output].Columns[Gid]&lt;/IdentificationString&gt;
-      &lt;ColumnName&gt;CorporateActionGID&lt;/ColumnName&gt;
-      &lt;KeyType&gt;BusinessKey&lt;/KeyType&gt;
-      &lt;ChangeType&gt;None&lt;/ChangeType&gt;
-    &lt;/InputColumnToDBColumn&gt;
-    &lt;InputColumnToDBColumn&gt;
-      &lt;IdentificationString&gt;SRC STG CorporateAction Process.Outputs[OLE DB Source Output].Columns[StatusDateID]&lt;/IdentificationString&gt;
-      &lt;ColumnName&gt;CorporateActionStatusDateID&lt;/ColumnName&gt;
-      &lt;KeyType&gt;None&lt;/KeyType&gt;
-      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
-    &lt;/InputColumnToDBColumn&gt;
-    &lt;InputColumnToDBColumn&gt;
-      &lt;IdentificationString&gt;LKP CorporateActionType.Outputs[Lookup Match Output].Columns[CorporateActionTypeID]&lt;/IdentificationString&gt;
-      &lt;ColumnName&gt;CorporateActionTypeID&lt;/ColumnName&gt;
-      &lt;KeyType&gt;None&lt;/KeyType&gt;
-      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
-    &lt;/InputColumnToDBColumn&gt;
-    &lt;InputColumnToDBColumn&gt;
-      &lt;IdentificationString&gt;SRC STG CorporateAction Process.Outputs[OLE DB Source Output].Columns[Details]&lt;/IdentificationString&gt;
-      &lt;ColumnName&gt;Details&lt;/ColumnName&gt;
-      &lt;KeyType&gt;None&lt;/KeyType&gt;
-      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
-    &lt;/InputColumnToDBColumn&gt;
-    &lt;InputColumnToDBColumn&gt;
-      &lt;IdentificationString&gt;SRC STG CorporateAction Process.Outputs[OLE DB Source Output].Columns[EffectiveDateID]&lt;/IdentificationString&gt;
-      &lt;ColumnName&gt;EffectiveDateID&lt;/ColumnName&gt;
-      &lt;KeyType&gt;None&lt;/KeyType&gt;
-      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
-    &lt;/InputColumnToDBColumn&gt;
-    &lt;InputColumnToDBColumn&gt;
-      &lt;IdentificationString&gt;SRC STG CorporateAction Process.Outputs[OLE DB Source Output].Columns[ExDateID]&lt;/IdentificationString&gt;
-      &lt;ColumnName&gt;ExDateID&lt;/ColumnName&gt;
-      &lt;KeyType&gt;None&lt;/KeyType&gt;
-      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
-    &lt;/InputColumnToDBColumn&gt;
-    &lt;InputColumnToDBColumn&gt;
-      &lt;IdentificationString&gt;SRC STG CorporateAction Process.Outputs[OLE DB Source Output].Columns[ExPrice]&lt;/IdentificationString&gt;
-      &lt;ColumnName&gt;ExPrice&lt;/ColumnName&gt;
-      &lt;KeyType&gt;None&lt;/KeyType&gt;
-      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
-    &lt;/InputColumnToDBColumn&gt;
-    &lt;InputColumnToDBColumn&gt;
-      &lt;IdentificationString&gt;LKP InstrumentID.Outputs[Lookup Match Output].Columns[InstrumentID]&lt;/IdentificationString&gt;
-      &lt;ColumnName&gt;InstrumentID&lt;/ColumnName&gt;
-      &lt;KeyType&gt;None&lt;/KeyType&gt;
-      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
-    &lt;/InputColumnToDBColumn&gt;
-    &lt;InputColumnToDBColumn&gt;
-      &lt;IdentificationString&gt;SRC STG CorporateAction Process.Outputs[OLE DB Source Output].Columns[LatestDateForApplicationNilPaidID]&lt;/IdentificationString&gt;
-      &lt;ColumnName&gt;LatestDateForApplicationNilPaidID&lt;/ColumnName&gt;
-      &lt;KeyType&gt;None&lt;/KeyType&gt;
-      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
-    &lt;/InputColumnToDBColumn&gt;
-    &lt;InputColumnToDBColumn&gt;
-      &lt;IdentificationString&gt;SRC STG CorporateAction Process.Outputs[OLE DB Source Output].Columns[LatestDateForFinalApplicationID]&lt;/IdentificationString&gt;
-      &lt;ColumnName&gt;LatestDateForFinalApplicationID&lt;/ColumnName&gt;
-      &lt;KeyType&gt;None&lt;/KeyType&gt;
-      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
-    &lt;/InputColumnToDBColumn&gt;
-    &lt;InputColumnToDBColumn&gt;
-      &lt;IdentificationString&gt;SRC STG CorporateAction Process.Outputs[OLE DB Source Output].Columns[LatestSplittingDateNote]&lt;/IdentificationString&gt;
-      &lt;ColumnName&gt;LatestSplittingDateNote&lt;/ColumnName&gt;
-      &lt;KeyType&gt;None&lt;/KeyType&gt;
-      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
-    &lt;/InputColumnToDBColumn&gt;
-    &lt;InputColumnToDBColumn&gt;
-      &lt;IdentificationString&gt;SRC STG CorporateAction Process.Outputs[OLE DB Source Output].Columns[NumberOfNewShares]&lt;/IdentificationString&gt;
-      &lt;ColumnName&gt;NumberOfNewShares&lt;/ColumnName&gt;
-      &lt;KeyType&gt;None&lt;/KeyType&gt;
-      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
-    &lt;/InputColumnToDBColumn&gt;
-    &lt;InputColumnToDBColumn&gt;
-      &lt;IdentificationString&gt;SRC STG CorporateAction Process.Outputs[OLE DB Source Output].Columns[Price]&lt;/IdentificationString&gt;
-      &lt;ColumnName&gt;Price&lt;/ColumnName&gt;
-      &lt;KeyType&gt;None&lt;/KeyType&gt;
-      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
-    &lt;/InputColumnToDBColumn&gt;
-    &lt;InputColumnToDBColumn&gt;
-      &lt;IdentificationString&gt;SRC STG CorporateAction Process.Outputs[OLE DB Source Output].Columns[RecordDateID]&lt;/IdentificationString&gt;
-      &lt;ColumnName&gt;RecordDateID&lt;/ColumnName&gt;
-      &lt;KeyType&gt;None&lt;/KeyType&gt;
-      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
-    &lt;/InputColumnToDBColumn&gt;
-    &lt;InputColumnToDBColumn&gt;
-      &lt;IdentificationString&gt;SRC STG CorporateAction Process.Outputs[OLE DB Source Output].Columns[ReverseTakeover]&lt;/IdentificationString&gt;
-      &lt;ColumnName&gt;ReverseTakeover&lt;/ColumnName&gt;
-      &lt;KeyType&gt;None&lt;/KeyType&gt;
-      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
-    &lt;/InputColumnToDBColumn&gt;
-  &lt;/InputToColumnsCollection&gt;
-  &lt;GeneratedComponentsIdentificationStrings&gt;
-    &lt;anyType xsi:type="xsd:string"&gt;Insert Destination&lt;/anyType&gt;
-    &lt;anyType xsi:type="xsd:string"&gt;OLE DB Command&lt;/anyType&gt;
-  &lt;/GeneratedComponentsIdentificationStrings&gt;
-  &lt;FailFixedAttribute&gt;false&lt;/FailFixedAttribute&gt;
-  &lt;FailChangeAttribute&gt;true&lt;/FailChangeAttribute&gt;
-  &lt;UseStartEndDate&gt;false&lt;/UseStartEndDate&gt;
-  &lt;CurrentIndicatorColumn /&gt;
-  &lt;InferredIndicatorColumn /&gt;
-  &lt;ValueCurrent /&gt;
-  &lt;ValueExpired /&gt;
-  &lt;StartDateColumn /&gt;
-  &lt;EndDateColumn /&gt;
-  &lt;DateVariable /&gt;
-  &lt;EnableInferredSupport&gt;false&lt;/EnableInferredSupport&gt;
-&lt;/SCDWizardMetadata&gt;</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\SEQ Push to DWH\DFT Corporate Actions facts\SRC STG CorporateAction Process">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\SEQ Push to DWH\DFT Corporate Actions facts\LKP InstrumentID">
+    design-time-name="Package\SEQ Push to DWH\DFT Corporate Actions facts\LKP Diviidend Type">
     <Properties>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>

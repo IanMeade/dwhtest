@@ -2,6 +2,7 @@ SET QUOTED_IDENTIFIER ON
 GO
 SET ANSI_NULLS ON
 GO
+
     
      
 CREATE PROCEDURE [ETL].[UpdateFactEtfSnapshot]    
@@ -328,34 +329,46 @@ BEGIN
      
 	/* SPECIAL UPDATE FOR WISDOM TREE */    
     
-	/* Table used to capture the IDs of changed row - used ot update ETFSharesInIssue */    
-	DECLARE @WisdomTreeUpdates TABLE ( EtfSnapshotID INT )    
-    
+   
 	/* MAIN UPDATE OF ETF VALUES */    
 	/* - ASSUMES DATA HAS BEEN CORRECTLY STAGED */    
-	/* - INCLKUDES OUTPUT CLAUSE TO ALLOW UPDATE OF SHARES ISSUES TODAY */    
+	/* - INCLUDES OUTPUT CLAUSE TO ALLOW UPDATE OF SHARES ISSUES TODAY */    
 	    
+	/* Get most recent ODS value */	
+	DECLARE @Unit NUMERIC(19,2) = 0
+
+	SELECT
+		TOP 1
+		@Unit = Units_In_Issue
+	FROM
+		ETL.StateStreet_ISEQ20_NAV ODS 
+	WHERE
+		ODS.ValuationDateID <= (
+						SELECT
+							MIN(AggregationDateID)
+						FROM
+							ETL.FactEtfSnapshotMerge E  
+					)
+	ORDER BY
+		ODS.ValuationDateID DESC
+
 	UPDATE    
-		DWH    
-	SET    
-		NAVCalcDateID = DWH.DateID,    
-		NAV = ODS.NAV_per_unit,    
-		ETFSharesInIssue = ODS.Units_In_Issue    
-	OUTPUT    
-		inserted.EtfSnapshotID INTO @WisdomTreeUpdates    
-	FROM    
-			ETL.FactEtfSnapshotMerge E     
-		INNER JOIN    
+		DWH
+	SET  
+		ETFSharesInIssue = COALESCE(@Unit, DWH.ETFSharesInIssue)
+	FROM
 			DWH.FactEtfSnapshot DWH     
-		on E.AggregationDateID = DWH.DateID    
 		INNER JOIN     
 			DWH.DimInstrumentEtf I     
 		ON DWH.InstrumentID = I.InstrumentID     
-		INNER JOIN    
-			ETL.StateStreet_ISEQ20_NAV ODS    
-		ON E.AggregationDateID = ODS.ValuationDateID    
+		INNER JOIN		     
+			ETL.FactEtfSnapshotMerge E     
+		ON      
+			I.InstrumentGlobalID = E.InstrumentGlobalID    
+		AND     
+			DWH.DateID = E.AggregationDateID  
 	WHERE    
-		I.ISIN = @WISDOM_ISIN    
+		E.ISIN = @WISDOM_ISIN    
 		    
 	/* WISDOM TREE UPDATE */ 
 	UPDATE    
@@ -363,15 +376,8 @@ BEGIN
 	SET    
 		IssuedSharesToday = DWH.ETFSharesInIssue - PREV.ETFSharesInIssue    
 	FROM    
-	/*		@WisdomTreeUpdates U    
-		INNER JOIN    
-	*/
 			DWH.FactEtfSnapshot DWH     
-	/*
-		ON U.EtfSnapshotID = DWH.EtfSnapshotID    
-	*/
 		INNER JOIN     
-
 			DWH.DimInstrumentEtf I     
 		ON DWH.InstrumentID = I.InstrumentID     
 		CROSS APPLY (    
@@ -397,8 +403,8 @@ BEGIN
 	AND
 		DWH.DateID = @DateID
  
-	/* GENERIC UPATE / ALL NON WISDOM TREE UPDATES */ 
-	/* SAME AS ABVOIE BUT DIFFERNET FILTER - KEEPNG SEPERATE INCASE THESE NEED TO CHANGE */ 
+	/* GENERIC UPDATE / ALL NON WISDOM TREE UPDATES */ 
+	/* SAME AS ABOICE BUT DIFFERENT FILTER - KEEPNG SEPERATE INCASE THESE NEED TO CHANGE */ 
 	UPDATE    
 		DWH    
 	SET    
@@ -481,4 +487,5 @@ BEGIN
 
     
 END     
+
 GO

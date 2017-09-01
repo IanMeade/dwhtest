@@ -11,8 +11,8 @@
   DTS:LocaleID="6153"
   DTS:ObjectName="PckT7TradeSnapshot"
   DTS:PackageType="5"
-  DTS:VersionBuild="196"
-  DTS:VersionGUID="{93AE50AA-5CE9-401E-80B5-3481B3B2578A}">
+  DTS:VersionBuild="205"
+  DTS:VersionGUID="{3AB45A06-EE3D-44D5-9B7A-0F61D4A3598B}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -2776,6 +2776,432 @@ FROM
               <DTS:Variables />
               <DTS:Executables>
                 <DTS:Executable
+                  DTS:refId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT EFT NAVs"
+                  DTS:CreationName="Microsoft.Pipeline"
+                  DTS:Description="Data Flow Task"
+                  DTS:DTSID="{854395E1-20EF-4C7A-BB6D-B33B97C54ACB}"
+                  DTS:ExecutableType="Microsoft.Pipeline"
+                  DTS:LocaleID="-1"
+                  DTS:ObjectName="DFT EFT NAVs"
+                  DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+                  <DTS:Variables />
+                  <DTS:ObjectData>
+                    <pipeline
+                      version="1">
+                      <components>
+                        <component
+                          refId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT EFT NAVs\CMD DWH FactEtf Navs Update"
+                          componentClassID="Microsoft.OLEDBCommand"
+                          contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+                          description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
+                          name="CMD DWH FactEtf Navs Update"
+                          usesDispositions="true"
+                          version="2">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                              name="CommandTimeout">0</property>
+                            <property
+                              dataType="System.String"
+                              description="The SQL command to be executed."
+                              expressionType="Notify"
+                              name="SqlCommand"
+                              UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE
+	ETF
+SET
+	NAVCalcDateID = ?,
+	NAV = ?
+FROM
+	DWH.FactEtfSnapshot ETF
+INNER JOIN
+	DWH.DimInstrumentEtf I
+ON ETF.InstrumentID = I.InstrumentID
+WHERE
+	I.ISIN = ?
+AND
+	DateID &gt;= ?</property>
+                            <property
+                              dataType="System.Int32"
+                              description="Specifies the column code page to use when code page information is unavailable from the data source."
+                              name="DefaultCodePage">1252</property>
+                          </properties>
+                          <connections>
+                            <connection
+                              refId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT EFT NAVs\CMD DWH FactEtf Navs Update.Connections[OleDbConnection]"
+                              connectionManagerID="{0CBC2C04-C137-495F-AF7C-FA5DE465FED0}:external"
+                              connectionManagerRefId="Project.ConnectionManagers[DWH]"
+                              description="The OLE DB runtime connection used to access the database."
+                              name="OleDbConnection" />
+                          </connections>
+                          <inputs>
+                            <input
+                              refId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT EFT NAVs\CMD DWH FactEtf Navs Update.Inputs[OLE DB Command Input]"
+                              errorOrTruncationOperation="Command Execution"
+                              errorRowDisposition="FailComponent"
+                              hasSideEffects="true"
+                              name="OLE DB Command Input">
+                              <inputColumns>
+                                <inputColumn
+                                  refId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT EFT NAVs\CMD DWH FactEtf Navs Update.Inputs[OLE DB Command Input].Columns[NavDateID]"
+                                  cachedDataType="i4"
+                                  cachedName="NavDateID"
+                                  externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT EFT NAVs\CMD DWH FactEtf Navs Update.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                                  lineageId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT EFT NAVs\SRC StateStreetODS ISENavs.Outputs[OLE DB Source Output].Columns[NavDateID]" />
+                                <inputColumn
+                                  refId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT EFT NAVs\CMD DWH FactEtf Navs Update.Inputs[OLE DB Command Input].Columns[NAV_per_unit]"
+                                  cachedDataType="numeric"
+                                  cachedName="NAV_per_unit"
+                                  cachedPrecision="19"
+                                  cachedScale="4"
+                                  externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT EFT NAVs\CMD DWH FactEtf Navs Update.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                                  lineageId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT EFT NAVs\SRC StateStreetODS ISENavs.Outputs[OLE DB Source Output].Columns[NAV_per_unit]" />
+                                <inputColumn
+                                  refId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT EFT NAVs\CMD DWH FactEtf Navs Update.Inputs[OLE DB Command Input].Columns[ISIN]"
+                                  cachedCodepage="1252"
+                                  cachedDataType="text"
+                                  cachedName="ISIN"
+                                  externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT EFT NAVs\CMD DWH FactEtf Navs Update.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                                  lineageId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT EFT NAVs\Derived Column.Outputs[Derived Column Output].Columns[ISIN]" />
+                                <inputColumn
+                                  refId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT EFT NAVs\CMD DWH FactEtf Navs Update.Inputs[OLE DB Command Input].Columns[FilterNavDateID]"
+                                  cachedDataType="i4"
+                                  cachedName="FilterNavDateID"
+                                  externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT EFT NAVs\CMD DWH FactEtf Navs Update.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
+                                  lineageId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT EFT NAVs\SRC StateStreetODS ISENavs.Outputs[OLE DB Source Output].Columns[FilterNavDateID]" />
+                              </inputColumns>
+                              <externalMetadataColumns
+                                isUsed="True">
+                                <externalMetadataColumn
+                                  refId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT EFT NAVs\CMD DWH FactEtf Navs Update.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                                  dataType="i4"
+                                  name="Param_0">
+                                  <properties>
+                                    <property
+                                      dataType="System.Int32"
+                                      description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                                      name="DBParamInfoFlags">81</property>
+                                  </properties>
+                                </externalMetadataColumn>
+                                <externalMetadataColumn
+                                  refId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT EFT NAVs\CMD DWH FactEtf Navs Update.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                                  dataType="numeric"
+                                  name="Param_1"
+                                  precision="19"
+                                  scale="6">
+                                  <properties>
+                                    <property
+                                      dataType="System.Int32"
+                                      description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                                      name="DBParamInfoFlags">81</property>
+                                  </properties>
+                                </externalMetadataColumn>
+                                <externalMetadataColumn
+                                  refId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT EFT NAVs\CMD DWH FactEtf Navs Update.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                                  codePage="1252"
+                                  dataType="str"
+                                  length="12"
+                                  name="Param_2">
+                                  <properties>
+                                    <property
+                                      dataType="System.Int32"
+                                      description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                                      name="DBParamInfoFlags">81</property>
+                                  </properties>
+                                </externalMetadataColumn>
+                                <externalMetadataColumn
+                                  refId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT EFT NAVs\CMD DWH FactEtf Navs Update.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
+                                  dataType="i4"
+                                  name="Param_3">
+                                  <properties>
+                                    <property
+                                      dataType="System.Int32"
+                                      description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                                      name="DBParamInfoFlags">81</property>
+                                  </properties>
+                                </externalMetadataColumn>
+                              </externalMetadataColumns>
+                            </input>
+                          </inputs>
+                          <outputs>
+                            <output
+                              refId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT EFT NAVs\CMD DWH FactEtf Navs Update.Outputs[OLE DB Command Output]"
+                              exclusionGroup="1"
+                              name="OLE DB Command Output"
+                              synchronousInputId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT EFT NAVs\CMD DWH FactEtf Navs Update.Inputs[OLE DB Command Input]">
+                              <externalMetadataColumns />
+                            </output>
+                            <output
+                              refId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT EFT NAVs\CMD DWH FactEtf Navs Update.Outputs[OLE DB Command Error Output]"
+                              exclusionGroup="1"
+                              isErrorOut="true"
+                              name="OLE DB Command Error Output"
+                              synchronousInputId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT EFT NAVs\CMD DWH FactEtf Navs Update.Inputs[OLE DB Command Input]">
+                              <outputColumns>
+                                <outputColumn
+                                  refId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT EFT NAVs\CMD DWH FactEtf Navs Update.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                                  dataType="i4"
+                                  lineageId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT EFT NAVs\CMD DWH FactEtf Navs Update.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                                  name="ErrorCode"
+                                  specialFlags="1" />
+                                <outputColumn
+                                  refId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT EFT NAVs\CMD DWH FactEtf Navs Update.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                                  dataType="i4"
+                                  lineageId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT EFT NAVs\CMD DWH FactEtf Navs Update.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                                  name="ErrorColumn"
+                                  specialFlags="2" />
+                              </outputColumns>
+                              <externalMetadataColumns />
+                            </output>
+                          </outputs>
+                        </component>
+                        <component
+                          refId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT EFT NAVs\Derived Column"
+                          componentClassID="Microsoft.DerivedColumn"
+                          contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                          description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+                          name="Derived Column"
+                          usesDispositions="true">
+                          <inputs>
+                            <input
+                              refId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT EFT NAVs\Derived Column.Inputs[Derived Column Input]"
+                              description="Input to the Derived Column Transformation"
+                              name="Derived Column Input">
+                              <externalMetadataColumns />
+                            </input>
+                          </inputs>
+                          <outputs>
+                            <output
+                              refId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT EFT NAVs\Derived Column.Outputs[Derived Column Output]"
+                              description="Default Output of the Derived Column Transformation"
+                              exclusionGroup="1"
+                              name="Derived Column Output"
+                              synchronousInputId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT EFT NAVs\Derived Column.Inputs[Derived Column Input]">
+                              <outputColumns>
+                                <outputColumn
+                                  refId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT EFT NAVs\Derived Column.Outputs[Derived Column Output].Columns[ISIN]"
+                                  codePage="1252"
+                                  dataType="text"
+                                  errorOrTruncationOperation="Computation"
+                                  errorRowDisposition="FailComponent"
+                                  lineageId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT EFT NAVs\Derived Column.Outputs[Derived Column Output].Columns[ISIN]"
+                                  name="ISIN"
+                                  truncationRowDisposition="FailComponent">
+                                  <properties>
+                                    <property
+                                      containsID="true"
+                                      dataType="System.String"
+                                      description="Derived Column Expression"
+                                      name="Expression">(DT_TEXT,1252)@[User::WISDOM_ISIN]</property>
+                                    <property
+                                      containsID="true"
+                                      dataType="System.String"
+                                      description="Derived Column Friendly Expression"
+                                      expressionType="Notify"
+                                      name="FriendlyExpression">(DT_TEXT,1252)@[User::WISDOM_ISIN]</property>
+                                  </properties>
+                                </outputColumn>
+                              </outputColumns>
+                              <externalMetadataColumns />
+                            </output>
+                            <output
+                              refId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT EFT NAVs\Derived Column.Outputs[Derived Column Error Output]"
+                              description="Error Output of the Derived Column Transformation"
+                              exclusionGroup="1"
+                              isErrorOut="true"
+                              name="Derived Column Error Output"
+                              synchronousInputId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT EFT NAVs\Derived Column.Inputs[Derived Column Input]">
+                              <outputColumns>
+                                <outputColumn
+                                  refId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT EFT NAVs\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                                  dataType="i4"
+                                  lineageId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT EFT NAVs\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                                  name="ErrorCode"
+                                  specialFlags="1" />
+                                <outputColumn
+                                  refId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT EFT NAVs\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                                  dataType="i4"
+                                  lineageId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT EFT NAVs\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                                  name="ErrorColumn"
+                                  specialFlags="2" />
+                              </outputColumns>
+                              <externalMetadataColumns />
+                            </output>
+                          </outputs>
+                        </component>
+                        <component
+                          refId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT EFT NAVs\SRC StateStreetODS ISENavs"
+                          componentClassID="Microsoft.OLEDBSource"
+                          contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                          description="OLE DB Source"
+                          name="SRC StateStreetODS ISENavs"
+                          usesDispositions="true"
+                          version="7">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                              name="CommandTimeout">0</property>
+                            <property
+                              dataType="System.String"
+                              description="Specifies the name of the database object used to open a rowset."
+                              name="OpenRowset"></property>
+                            <property
+                              dataType="System.String"
+                              description="Specifies the variable that contains the name of the database object used to open a rowset."
+                              name="OpenRowsetVariable"></property>
+                            <property
+                              dataType="System.String"
+                              description="The SQL command to be executed."
+                              name="SqlCommand"
+                              UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT
+	TOP 1
+	CONVERT(INT,CONVERT(CHAR,RealDate,112)) AS NavDateID,
+	NAV_per_unit,
+	CONVERT(INT,CONVERT(CHAR,RealDate,112)) AS FilterNavDateID
+FROM
+	ISEQ20_NAV NAV
+ORDER BY
+	RealDate DESC</property>
+                            <property
+                              dataType="System.String"
+                              description="The variable that contains the SQL command to be executed."
+                              name="SqlCommandVariable"></property>
+                            <property
+                              dataType="System.Int32"
+                              description="Specifies the column code page to use when code page information is unavailable from the data source."
+                              name="DefaultCodePage">1252</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Forces the use of the DefaultCodePage property value when describing character data."
+                              name="AlwaysUseDefaultCodePage">false</property>
+                            <property
+                              dataType="System.Int32"
+                              description="Specifies the mode used to access the database."
+                              name="AccessMode"
+                              typeConverter="AccessMode">2</property>
+                            <property
+                              dataType="System.String"
+                              description="The mappings between the parameters in the SQL command and variables."
+                              name="ParameterMapping"></property>
+                          </properties>
+                          <connections>
+                            <connection
+                              refId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT EFT NAVs\SRC StateStreetODS ISENavs.Connections[OleDbConnection]"
+                              connectionManagerID="{097CA039-CA15-4BBA-A2BA-0B636ED18D4D}:external"
+                              connectionManagerRefId="Project.ConnectionManagers[StateStreet_ODS]"
+                              description="The OLE DB runtime connection used to access the database."
+                              name="OleDbConnection" />
+                          </connections>
+                          <outputs>
+                            <output
+                              refId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT EFT NAVs\SRC StateStreetODS ISENavs.Outputs[OLE DB Source Output]"
+                              name="OLE DB Source Output">
+                              <outputColumns>
+                                <outputColumn
+                                  refId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT EFT NAVs\SRC StateStreetODS ISENavs.Outputs[OLE DB Source Output].Columns[NAV_per_unit]"
+                                  dataType="numeric"
+                                  errorOrTruncationOperation="Conversion"
+                                  errorRowDisposition="FailComponent"
+                                  externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT EFT NAVs\SRC StateStreetODS ISENavs.Outputs[OLE DB Source Output].ExternalColumns[NAV_per_unit]"
+                                  lineageId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT EFT NAVs\SRC StateStreetODS ISENavs.Outputs[OLE DB Source Output].Columns[NAV_per_unit]"
+                                  name="NAV_per_unit"
+                                  precision="19"
+                                  scale="4"
+                                  truncationRowDisposition="FailComponent" />
+                                <outputColumn
+                                  refId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT EFT NAVs\SRC StateStreetODS ISENavs.Outputs[OLE DB Source Output].Columns[NavDateID]"
+                                  dataType="i4"
+                                  errorOrTruncationOperation="Conversion"
+                                  errorRowDisposition="FailComponent"
+                                  externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT EFT NAVs\SRC StateStreetODS ISENavs.Outputs[OLE DB Source Output].ExternalColumns[NavDateID]"
+                                  lineageId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT EFT NAVs\SRC StateStreetODS ISENavs.Outputs[OLE DB Source Output].Columns[NavDateID]"
+                                  name="NavDateID"
+                                  truncationRowDisposition="FailComponent" />
+                                <outputColumn
+                                  refId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT EFT NAVs\SRC StateStreetODS ISENavs.Outputs[OLE DB Source Output].Columns[FilterNavDateID]"
+                                  dataType="i4"
+                                  errorOrTruncationOperation="Conversion"
+                                  errorRowDisposition="FailComponent"
+                                  externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT EFT NAVs\SRC StateStreetODS ISENavs.Outputs[OLE DB Source Output].ExternalColumns[FilterNavDateID]"
+                                  lineageId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT EFT NAVs\SRC StateStreetODS ISENavs.Outputs[OLE DB Source Output].Columns[FilterNavDateID]"
+                                  name="FilterNavDateID"
+                                  truncationRowDisposition="FailComponent" />
+                              </outputColumns>
+                              <externalMetadataColumns
+                                isUsed="True">
+                                <externalMetadataColumn
+                                  refId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT EFT NAVs\SRC StateStreetODS ISENavs.Outputs[OLE DB Source Output].ExternalColumns[NAV_per_unit]"
+                                  dataType="numeric"
+                                  name="NAV_per_unit"
+                                  precision="19"
+                                  scale="4" />
+                                <externalMetadataColumn
+                                  refId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT EFT NAVs\SRC StateStreetODS ISENavs.Outputs[OLE DB Source Output].ExternalColumns[NavDateID]"
+                                  dataType="i4"
+                                  name="NavDateID" />
+                                <externalMetadataColumn
+                                  refId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT EFT NAVs\SRC StateStreetODS ISENavs.Outputs[OLE DB Source Output].ExternalColumns[FilterNavDateID]"
+                                  dataType="i4"
+                                  name="FilterNavDateID" />
+                              </externalMetadataColumns>
+                            </output>
+                            <output
+                              refId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT EFT NAVs\SRC StateStreetODS ISENavs.Outputs[OLE DB Source Error Output]"
+                              isErrorOut="true"
+                              name="OLE DB Source Error Output">
+                              <outputColumns>
+                                <outputColumn
+                                  refId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT EFT NAVs\SRC StateStreetODS ISENavs.Outputs[OLE DB Source Error Output].Columns[NavDateID]"
+                                  dataType="i4"
+                                  lineageId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT EFT NAVs\SRC StateStreetODS ISENavs.Outputs[OLE DB Source Error Output].Columns[NavDateID]"
+                                  name="NavDateID" />
+                                <outputColumn
+                                  refId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT EFT NAVs\SRC StateStreetODS ISENavs.Outputs[OLE DB Source Error Output].Columns[NAV_per_unit]"
+                                  dataType="numeric"
+                                  lineageId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT EFT NAVs\SRC StateStreetODS ISENavs.Outputs[OLE DB Source Error Output].Columns[NAV_per_unit]"
+                                  name="NAV_per_unit"
+                                  precision="19"
+                                  scale="4" />
+                                <outputColumn
+                                  refId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT EFT NAVs\SRC StateStreetODS ISENavs.Outputs[OLE DB Source Error Output].Columns[FilterNavDateID]"
+                                  dataType="i4"
+                                  lineageId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT EFT NAVs\SRC StateStreetODS ISENavs.Outputs[OLE DB Source Error Output].Columns[FilterNavDateID]"
+                                  name="FilterNavDateID" />
+                                <outputColumn
+                                  refId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT EFT NAVs\SRC StateStreetODS ISENavs.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                                  dataType="i4"
+                                  lineageId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT EFT NAVs\SRC StateStreetODS ISENavs.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                                  name="ErrorCode"
+                                  specialFlags="1" />
+                                <outputColumn
+                                  refId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT EFT NAVs\SRC StateStreetODS ISENavs.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                                  dataType="i4"
+                                  lineageId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT EFT NAVs\SRC StateStreetODS ISENavs.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                                  name="ErrorColumn"
+                                  specialFlags="2" />
+                              </outputColumns>
+                              <externalMetadataColumns />
+                            </output>
+                          </outputs>
+                        </component>
+                      </components>
+                      <paths>
+                        <path
+                          refId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT EFT NAVs.Paths[Derived Column Output]"
+                          endId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT EFT NAVs\CMD DWH FactEtf Navs Update.Inputs[OLE DB Command Input]"
+                          name="Derived Column Output"
+                          startId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT EFT NAVs\Derived Column.Outputs[Derived Column Output]" />
+                        <path
+                          refId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT EFT NAVs.Paths[OLE DB Source Output]"
+                          endId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT EFT NAVs\Derived Column.Inputs[Derived Column Input]"
+                          name="OLE DB Source Output"
+                          startId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT EFT NAVs\SRC StateStreetODS ISENavs.Outputs[OLE DB Source Output]" />
+                      </paths>
+                    </pipeline>
+                  </DTS:ObjectData>
+                </DTS:Executable>
+                <DTS:Executable
                   DTS:refId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation"
                   DTS:CreationName="Microsoft.Pipeline"
                   DTS:Description="Data Flow Task"
@@ -2876,13 +3302,6 @@ FROM
                               name="Derived Column Input">
                               <inputColumns>
                                 <inputColumn
-                                  refId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation\DER Market Cap.Inputs[Derived Column Input].Columns[LastPrice]"
-                                  cachedDataType="numeric"
-                                  cachedName="LastPrice"
-                                  cachedPrecision="19"
-                                  cachedScale="6"
-                                  lineageId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation\LKP LastTrade.Outputs[Lookup Match Output].Columns[LastPrice]" />
-                                <inputColumn
                                   refId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation\DER Market Cap.Inputs[Derived Column Input].Columns[TotalSharesInIssue]"
                                   cachedDataType="numeric"
                                   cachedName="TotalSharesInIssue"
@@ -2896,6 +3315,13 @@ FROM
                                   cachedPrecision="19"
                                   cachedScale="6"
                                   lineageId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation\LKP Equity Exchange Rate.Outputs[Lookup Match Output].Columns[ExchangeRate]" />
+                                <inputColumn
+                                  refId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation\DER Market Cap.Inputs[Derived Column Input].Columns[LastPrice]"
+                                  cachedDataType="numeric"
+                                  cachedName="LastPrice"
+                                  cachedPrecision="19"
+                                  cachedScale="6"
+                                  lineageId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation\LKP LastTrade.Outputs[Lookup Match Output].Columns[LastPrice]" />
                               </inputColumns>
                               <externalMetadataColumns />
                             </input>
@@ -3078,32 +3504,6 @@ FROM
                                   cachedScale="6"
                                   externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation\DST DWH ETL EquityTradeSnapshotMerge.Inputs[OLE DB Destination Input].ExternalColumns[OCP]"
                                   lineageId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation\LKP Offical Prices.Outputs[Lookup Match Output].Columns[OCP]" />
-                                <inputColumn
-                                  refId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation\DST DWH ETL EquityTradeSnapshotMerge.Inputs[OLE DB Destination Input].Columns[LtpDateID]"
-                                  cachedDataType="i4"
-                                  cachedName="LtpDateID"
-                                  externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation\DST DWH ETL EquityTradeSnapshotMerge.Inputs[OLE DB Destination Input].ExternalColumns[LTPDateID]"
-                                  lineageId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation\LKP LastTrade.Outputs[Lookup Match Output].Columns[LtpDateID]" />
-                                <inputColumn
-                                  refId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation\DST DWH ETL EquityTradeSnapshotMerge.Inputs[OLE DB Destination Input].Columns[LtpTimeID]"
-                                  cachedDataType="i2"
-                                  cachedName="LtpTimeID"
-                                  externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation\DST DWH ETL EquityTradeSnapshotMerge.Inputs[OLE DB Destination Input].ExternalColumns[LTPTimeID]"
-                                  lineageId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation\LKP LastTrade.Outputs[Lookup Match Output].Columns[LtpTimeID]" />
-                                <inputColumn
-                                  refId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation\DST DWH ETL EquityTradeSnapshotMerge.Inputs[OLE DB Destination Input].Columns[LtpTime]"
-                                  cachedDataType="dbTime2"
-                                  cachedName="LtpTime"
-                                  cachedScale="7"
-                                  externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation\DST DWH ETL EquityTradeSnapshotMerge.Inputs[OLE DB Destination Input].ExternalColumns[LTPTime]"
-                                  lineageId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation\LKP LastTrade.Outputs[Lookup Match Output].Columns[LtpTime]" />
-                                <inputColumn
-                                  refId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation\DST DWH ETL EquityTradeSnapshotMerge.Inputs[OLE DB Destination Input].Columns[UtcLtpPrice]"
-                                  cachedDataType="dbTime2"
-                                  cachedName="UtcLtpPrice"
-                                  cachedScale="7"
-                                  externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation\DST DWH ETL EquityTradeSnapshotMerge.Inputs[OLE DB Destination Input].ExternalColumns[UtcLTPTime]"
-                                  lineageId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation\LKP LastTrade.Outputs[Lookup Match Output].Columns[UtcLtpPrice]" />
                                 <inputColumn
                                   refId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation\DST DWH ETL EquityTradeSnapshotMerge.Inputs[OLE DB Destination Input].Columns[LowPrice]"
                                   cachedDataType="numeric"
@@ -3335,14 +3735,6 @@ FROM
                                   externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation\DST DWH ETL EquityTradeSnapshotMerge.Inputs[OLE DB Destination Input].ExternalColumns[ClosingAuctionOfferPrice]"
                                   lineageId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation\LKP Closing Auction Prices.Outputs[Lookup Match Output].Columns[CLOSING_AUCT_ASK_PRICE]" />
                                 <inputColumn
-                                  refId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation\DST DWH ETL EquityTradeSnapshotMerge.Inputs[OLE DB Destination Input].Columns[LastPrice]"
-                                  cachedDataType="numeric"
-                                  cachedName="LastPrice"
-                                  cachedPrecision="19"
-                                  cachedScale="6"
-                                  externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation\DST DWH ETL EquityTradeSnapshotMerge.Inputs[OLE DB Destination Input].ExternalColumns[LTP]"
-                                  lineageId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation\LKP LastTrade.Outputs[Lookup Match Output].Columns[LastPrice]" />
-                                <inputColumn
                                   refId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation\DST DWH ETL EquityTradeSnapshotMerge.Inputs[OLE DB Destination Input].Columns[TurnoverNdEur]"
                                   cachedDataType="numeric"
                                   cachedName="TurnoverNdEur"
@@ -3500,13 +3892,6 @@ FROM
                                   externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation\DST DWH ETL EquityTradeSnapshotMerge.Inputs[OLE DB Destination Input].ExternalColumns[DateID]"
                                   lineageId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation\Equity Instruments to Aggregate.Outputs[OLE DB Source Output].Columns[AggregationDateID]" />
                                 <inputColumn
-                                  refId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation\DST DWH ETL EquityTradeSnapshotMerge.Inputs[OLE DB Destination Input].Columns[LtpDateTime]"
-                                  cachedDataType="dbTimeStamp2"
-                                  cachedName="LtpDateTime"
-                                  cachedScale="7"
-                                  externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation\DST DWH ETL EquityTradeSnapshotMerge.Inputs[OLE DB Destination Input].ExternalColumns[LtpDateTime]"
-                                  lineageId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation\LKP LastTrade.Outputs[Lookup Match Output].Columns[LtpDateTime]" />
-                                <inputColumn
                                   refId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation\DST DWH ETL EquityTradeSnapshotMerge.Inputs[OLE DB Destination Input].Columns[OCP_DATETIME]"
                                   cachedDataType="dbTimeStamp2"
                                   cachedName="OCP_DATETIME"
@@ -3595,6 +3980,47 @@ FROM
                                   cachedScale="8"
                                   externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation\DST DWH ETL EquityTradeSnapshotMerge.Inputs[OLE DB Destination Input].ExternalColumns[MarketCapAdjustment]"
                                   lineageId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation\LKP ISEQ MarketCapAdjustment.Outputs[Lookup Match Output].Columns[MarketCapAdjustment]" />
+                                <inputColumn
+                                  refId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation\DST DWH ETL EquityTradeSnapshotMerge.Inputs[OLE DB Destination Input].Columns[LTPDateTime]"
+                                  cachedDataType="dbTimeStamp2"
+                                  cachedName="LTPDateTime"
+                                  cachedScale="7"
+                                  externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation\DST DWH ETL EquityTradeSnapshotMerge.Inputs[OLE DB Destination Input].ExternalColumns[LtpDateTime]"
+                                  lineageId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation\LKP LastTrade.Outputs[Lookup Match Output].Columns[LTPDateTime]" />
+                                <inputColumn
+                                  refId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation\DST DWH ETL EquityTradeSnapshotMerge.Inputs[OLE DB Destination Input].Columns[LastPrice]"
+                                  cachedDataType="numeric"
+                                  cachedName="LastPrice"
+                                  cachedPrecision="19"
+                                  cachedScale="6"
+                                  externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation\DST DWH ETL EquityTradeSnapshotMerge.Inputs[OLE DB Destination Input].ExternalColumns[LTP]"
+                                  lineageId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation\LKP LastTrade.Outputs[Lookup Match Output].Columns[LastPrice]" />
+                                <inputColumn
+                                  refId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation\DST DWH ETL EquityTradeSnapshotMerge.Inputs[OLE DB Destination Input].Columns[LtpDateID]"
+                                  cachedDataType="i4"
+                                  cachedName="LtpDateID"
+                                  externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation\DST DWH ETL EquityTradeSnapshotMerge.Inputs[OLE DB Destination Input].ExternalColumns[LTPDateID]"
+                                  lineageId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation\LKP LastTrade.Outputs[Lookup Match Output].Columns[LtpDateID]" />
+                                <inputColumn
+                                  refId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation\DST DWH ETL EquityTradeSnapshotMerge.Inputs[OLE DB Destination Input].Columns[LtpTimeID]"
+                                  cachedDataType="i2"
+                                  cachedName="LtpTimeID"
+                                  externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation\DST DWH ETL EquityTradeSnapshotMerge.Inputs[OLE DB Destination Input].ExternalColumns[LTPTimeID]"
+                                  lineageId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation\LKP LastTrade.Outputs[Lookup Match Output].Columns[LtpTimeID]" />
+                                <inputColumn
+                                  refId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation\DST DWH ETL EquityTradeSnapshotMerge.Inputs[OLE DB Destination Input].Columns[LtpTime]"
+                                  cachedDataType="dbTime2"
+                                  cachedName="LtpTime"
+                                  cachedScale="7"
+                                  externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation\DST DWH ETL EquityTradeSnapshotMerge.Inputs[OLE DB Destination Input].ExternalColumns[LTPTime]"
+                                  lineageId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation\LKP LastTrade.Outputs[Lookup Match Output].Columns[LtpTime]" />
+                                <inputColumn
+                                  refId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation\DST DWH ETL EquityTradeSnapshotMerge.Inputs[OLE DB Destination Input].Columns[UTCLtpTine]"
+                                  cachedDataType="dbTime2"
+                                  cachedName="UTCLtpTine"
+                                  cachedScale="7"
+                                  externalMetadataColumnId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation\DST DWH ETL EquityTradeSnapshotMerge.Inputs[OLE DB Destination Input].ExternalColumns[UtcLTPTime]"
+                                  lineageId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation\LKP LastTrade.Outputs[Lookup Match Output].Columns[UTCLtpTine]" />
                               </inputColumns>
                               <externalMetadataColumns
                                 isUsed="True">
@@ -6519,7 +6945,7 @@ where [refTable].[AggregationDateID] = ? and [refTable].[InstrumentGlobalID] = ?
                             <property
                               dataType="System.String"
                               description="Indicates whether to reference metadata in an XML format."
-                              name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="AggregationDateID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="InstrumentGlobalID" dataType="DT_STR" length="30" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="PublishedDateTime" dataType="DT_DBTIMESTAMP2" length="0" precision="0" scale="7" codePage="0"/&gt;&lt;referenceColumn name="TradeDateID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="TradeTimeID" dataType="DT_I2" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="TradeTimestamp" dataType="DT_DBTIME2" length="0" precision="0" scale="7" codePage="0"/&gt;&lt;referenceColumn name="UTCTradeTimeStamp" dataType="DT_DBTIME2" length="0" precision="0" scale="7" codePage="0"/&gt;&lt;referenceColumn name="TradePrice" dataType="DT_NUMERIC" length="0" precision="19" scale="6" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                              name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="AggregationDateID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="InstrumentGlobalID" dataType="DT_STR" length="30" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="TradeDateID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="TradeTimeID" dataType="DT_I2" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="TradeTimestamp" dataType="DT_DBTIME2" length="0" precision="0" scale="7" codePage="0"/&gt;&lt;referenceColumn name="UTCTradeTimeStamp" dataType="DT_DBTIME2" length="0" precision="0" scale="7" codePage="0"/&gt;&lt;referenceColumn name="TradePrice" dataType="DT_NUMERIC" length="0" precision="19" scale="6" codePage="0"/&gt;&lt;referenceColumn name="LTPDateTime" dataType="DT_DBTIMESTAMP2" length="0" precision="0" scale="7" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
                             <property
                               containsID="true"
                               dataType="System.String"
@@ -6595,21 +7021,6 @@ where [refTable].[AggregationDateID] = ? and [refTable].[InstrumentGlobalID] = ?
                               synchronousInputId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation\LKP LastTrade.Inputs[Lookup Input]">
                               <outputColumns>
                                 <outputColumn
-                                  refId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation\LKP LastTrade.Outputs[Lookup Match Output].Columns[LtpDateTime]"
-                                  dataType="dbTimeStamp2"
-                                  errorOrTruncationOperation="Copy Column"
-                                  lineageId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation\LKP LastTrade.Outputs[Lookup Match Output].Columns[LtpDateTime]"
-                                  name="LtpDateTime"
-                                  scale="7"
-                                  truncationRowDisposition="FailComponent">
-                                  <properties>
-                                    <property
-                                      dataType="System.String"
-                                      description="Specifies the column in the reference table from which a column is copied."
-                                      name="CopyFromReferenceColumn">PublishedDateTime</property>
-                                  </properties>
-                                </outputColumn>
-                                <outputColumn
                                   refId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation\LKP LastTrade.Outputs[Lookup Match Output].Columns[LtpDateID]"
                                   dataType="i4"
                                   errorOrTruncationOperation="Copy Column"
@@ -6653,11 +7064,11 @@ where [refTable].[AggregationDateID] = ? and [refTable].[InstrumentGlobalID] = ?
                                   </properties>
                                 </outputColumn>
                                 <outputColumn
-                                  refId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation\LKP LastTrade.Outputs[Lookup Match Output].Columns[UtcLtpPrice]"
+                                  refId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation\LKP LastTrade.Outputs[Lookup Match Output].Columns[UTCLtpTine]"
                                   dataType="dbTime2"
                                   errorOrTruncationOperation="Copy Column"
-                                  lineageId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation\LKP LastTrade.Outputs[Lookup Match Output].Columns[UtcLtpPrice]"
-                                  name="UtcLtpPrice"
+                                  lineageId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation\LKP LastTrade.Outputs[Lookup Match Output].Columns[UTCLtpTine]"
+                                  name="UTCLtpTine"
                                   scale="7"
                                   truncationRowDisposition="FailComponent">
                                   <properties>
@@ -6681,6 +7092,21 @@ where [refTable].[AggregationDateID] = ? and [refTable].[InstrumentGlobalID] = ?
                                       dataType="System.String"
                                       description="Specifies the column in the reference table from which a column is copied."
                                       name="CopyFromReferenceColumn">TradePrice</property>
+                                  </properties>
+                                </outputColumn>
+                                <outputColumn
+                                  refId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation\LKP LastTrade.Outputs[Lookup Match Output].Columns[LTPDateTime]"
+                                  dataType="dbTimeStamp2"
+                                  errorOrTruncationOperation="Copy Column"
+                                  lineageId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation\LKP LastTrade.Outputs[Lookup Match Output].Columns[LTPDateTime]"
+                                  name="LTPDateTime"
+                                  scale="7"
+                                  truncationRowDisposition="FailComponent">
+                                  <properties>
+                                    <property
+                                      dataType="System.String"
+                                      description="Specifies the column in the reference table from which a column is copied."
+                                      name="CopyFromReferenceColumn">LTPDateTime</property>
                                   </properties>
                                 </outputColumn>
                               </outputColumns>
@@ -11918,6 +12344,14 @@ where [refTable].[InstrumentID] = ? and [refTable].[AggregateDateID] = ?</proper
                   DTS:LogicalAnd="True"
                   DTS:ObjectName="Constraint 2"
                   DTS:To="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Etf Aggregation" />
+                <DTS:PrecedenceConstraint
+                  DTS:refId="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level.PrecedenceConstraints[Constraint 3]"
+                  DTS:CreationName=""
+                  DTS:DTSID="{34F935F6-B1CD-42B8-8628-071FE8157818}"
+                  DTS:From="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\SQL Update from etf merge table"
+                  DTS:LogicalAnd="True"
+                  DTS:ObjectName="Constraint 3"
+                  DTS:To="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT EFT NAVs" />
               </DTS:PrecedenceConstraints>
             </DTS:Executable>
             <DTS:Executable
@@ -12319,7 +12753,7 @@ where [refTable].[InstrumentID] = ? and [refTable].[AggregateDateID] = ?</proper
         <NodeLayout
           Size="206,42"
           Id="Package\PKC Send Oracle Messages"
-          TopLeft="224,2265" />
+          TopLeft="211,2328" />
         <NodeLayout
           Size="260,42"
           Id="Package\SEQ Aggregaton Prep\DFT Aggregation Day List"
@@ -12464,9 +12898,13 @@ where [refTable].[InstrumentID] = ? and [refTable].[AggregateDateID] = ?</proper
           PanelSize="208,116"
           Size="208,159"
           Id="Package\SEQ Process Complete"
-          TopLeft="218,2365" />
+          TopLeft="206,2412" />
         <NodeLayout
           Size="252,42"
+          Id="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT EFT NAVs"
+          TopLeft="32,341" />
+        <NodeLayout
+          Size="216,42"
           Id="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation"
           TopLeft="32,21" />
         <NodeLayout
@@ -12483,18 +12921,30 @@ where [refTable].[InstrumentID] = ? and [refTable].[AggregateDateID] = ?</proper
           TopLeft="32,269" />
         <EdgeLayout
           Id="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level.PrecedenceConstraints[Constraint]"
-          TopLeft="158,63">
+          TopLeft="140,63">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,43"
+              EndConnector="18,43"
               Start="0,0"
-              End="0,35.5">
+              End="18,35.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,35.5" />
+                    End="0,17.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,17.5"
+                    Point2="0,21.5"
+                    Point3="4,21.5" />
+                  <mssgle:LineSegment
+                    End="14,21.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="14,21.5"
+                    Point2="18,21.5"
+                    Point3="18,25.5" />
+                  <mssgle:LineSegment
+                    End="18,35.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -12547,11 +12997,33 @@ where [refTable].[InstrumentID] = ? and [refTable].[AggregateDateID] = ?</proper
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level.PrecedenceConstraints[Constraint 3]"
+          TopLeft="158,311">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,30"
+              Start="0,0"
+              End="0,22.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,22.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="317,366"
-          Size="317,409"
+          PanelSize="317,438"
+          Size="317,481"
           Id="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level"
           TopLeft="43,204" />
         <NodeLayout
@@ -12568,7 +13040,7 @@ where [refTable].[InstrumentID] = ? and [refTable].[AggregateDateID] = ?</proper
           PanelSize="317,175"
           Size="317,218"
           Id="Package\Sequence Container\Foreach Loop Container\SEQ Hiigher level aggregations"
-          TopLeft="36,639" />
+          TopLeft="42,713" />
         <NodeLayout
           Size="252,42"
           Id="Package\Sequence Container\Foreach Loop Container\SQL Build EquityTradeLtpHelper"
@@ -12576,25 +13048,25 @@ where [refTable].[InstrumentID] = ? and [refTable].[AggregateDateID] = ?</proper
         <NodeLayout
           Size="217,42"
           Id="Package\Sequence Container\Foreach Loop Container\SQL DWH Clear merge tables"
-          TopLeft="82,29" />
+          TopLeft="100,27" />
         <NodeLayout
           Size="225,42"
           Id="Package\Sequence Container\Foreach Loop Container\SQL Update Aggregation Request List"
-          TopLeft="84,899" />
+          TopLeft="88,966" />
         <EdgeLayout
           Id="Package\Sequence Container\Foreach Loop Container.PrecedenceConstraints[Constraint]"
-          TopLeft="198,613">
+          TopLeft="201,685">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,26"
+              EndConnector="0,28"
               Start="0,0"
-              End="0,18.5">
+              End="0,20.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,18.5" />
+                    End="0,20.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -12605,30 +13077,18 @@ where [refTable].[InstrumentID] = ? and [refTable].[AggregateDateID] = ?</proper
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Sequence Container\Foreach Loop Container.PrecedenceConstraints[Constraint 1]"
-          TopLeft="190.5,71">
+          TopLeft="207.25,69">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="15.5,46"
+              EndConnector="0,48"
               Start="0,0"
-              End="15.5,38.5">
+              End="0,40.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,19" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,19"
-                    Point2="0,23"
-                    Point3="4,23" />
-                  <mssgle:LineSegment
-                    End="11.5,23" />
-                  <mssgle:CubicBezierSegment
-                    Point1="11.5,23"
-                    Point2="15.5,23"
-                    Point3="15.5,27" />
-                  <mssgle:LineSegment
-                    End="15.5,38.5" />
+                    End="0,40.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -12661,18 +13121,18 @@ where [refTable].[InstrumentID] = ? and [refTable].[AggregateDateID] = ?</proper
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Sequence Container\Foreach Loop Container.PrecedenceConstraints[Constraint 3]"
-          TopLeft="195.5,857">
+          TopLeft="200.5,931">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,42"
+              EndConnector="0,35"
               Start="0,0"
-              End="0,34.5">
+              End="0,27.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,34.5" />
+                    End="0,27.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -12684,8 +13144,8 @@ where [refTable].[InstrumentID] = ? and [refTable].[AggregateDateID] = ?</proper
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="410,996"
-          Size="410,1039"
+          PanelSize="410,1063"
+          Size="410,1106"
           Id="Package\Sequence Container\Foreach Loop Container"
           TopLeft="32,119" />
         <NodeLayout
@@ -12717,8 +13177,8 @@ where [refTable].[InstrumentID] = ? and [refTable].[AggregateDateID] = ?</proper
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="491,1213"
-          Size="491,1256"
+          PanelSize="491,1280"
+          Size="491,1323"
           Id="Package\Sequence Container"
           TopLeft="74,971" />
         <NodeLayout
@@ -12731,18 +13191,18 @@ where [refTable].[InstrumentID] = ? and [refTable].[AggregateDateID] = ?</proper
           TopLeft="300,50" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="323.25,2227">
+          TopLeft="316.75,2294">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,38"
+              EndConnector="0,34"
               Start="0,0"
-              End="0,30.5">
+              End="0,26.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,30.5" />
+                    End="0,26.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -12855,18 +13315,18 @@ where [refTable].[InstrumentID] = ? and [refTable].[AggregateDateID] = ?</proper
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 4]"
-          TopLeft="324.5,2307">
+          TopLeft="312,2370">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,58"
+              EndConnector="0,42"
               Start="0,0"
-              End="0,50.5">
+              End="0,34.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,50.5" />
+                    End="0,34.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -13089,7 +13549,7 @@ where [refTable].[InstrumentID] = ? and [refTable].[AggregateDateID] = ?</proper
     design-time-name="Package\SEQ Aggregaton Prep\DFT Get Details from T7_ODS">
     <LayoutInfo>
       <GraphLayout
-        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="244,42"
           Id="Package\SEQ Aggregaton Prep\DFT Get Details from T7_ODS\DST DWH ETL Closing Price"
@@ -13141,7 +13601,9 @@ where [refTable].[InstrumentID] = ? and [refTable].[AggregateDateID] = ?</proper
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -13163,7 +13625,9 @@ where [refTable].[InstrumentID] = ? and [refTable].[AggregateDateID] = ?</proper
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -13185,7 +13649,9 @@ where [refTable].[InstrumentID] = ? and [refTable].[AggregateDateID] = ?</proper
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -13207,7 +13673,9 @@ where [refTable].[InstrumentID] = ? and [refTable].[AggregateDateID] = ?</proper
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -13298,6 +13766,82 @@ where [refTable].[InstrumentID] = ? and [refTable].[AggregateDateID] = ?</proper
     </Properties>
   </PipelineComponentMetadata>
   <TaskHost
+    design-time-name="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT EFT NAVs">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="227,42"
+          Id="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT EFT NAVs\SRC StateStreetODS ISENavs"
+          TopLeft="57,53" />
+        <NodeLayout
+          Size="227,42"
+          Id="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT EFT NAVs\Derived Column"
+          TopLeft="57,134" />
+        <NodeLayout
+          Size="227,42"
+          Id="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT EFT NAVs\CMD DWH FactEtf Navs Update"
+          TopLeft="57,231" />
+        <EdgeLayout
+          Id="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT EFT NAVs.Paths[OLE DB Source Output]"
+          TopLeft="170.5,95">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,39"
+              Start="0,0"
+              End="0,31.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT EFT NAVs.Paths[Derived Column Output]"
+          TopLeft="170.5,176">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,55"
+              Start="0,0"
+              End="0,47.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,47.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT EFT NAVs\SRC StateStreetODS ISENavs">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
     design-time-name="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation">
     <LayoutInfo>
       <GraphLayout
@@ -13347,7 +13891,7 @@ where [refTable].[InstrumentID] = ? and [refTable].[AggregateDateID] = ?</proper
           Id="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation\LKP ISEQ20CappedShares"
           TopLeft="11.5000000000001,1563.39473684211" />
         <NodeLayout
-          Size="279,44"
+          Size="146,42"
           Id="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation\LKP LastTrade"
           TopLeft="11.5000000000001,200.236842105263" />
         <NodeLayout
@@ -13482,45 +14026,69 @@ where [refTable].[InstrumentID] = ? and [refTable].[AggregateDateID] = ?</proper
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,53.3684210526316"
+              EndConnector="-66.5,53.368421052631"
               Start="0,0"
-              End="0,45.8684210526316">
+              End="-66.5,45.868421052631">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,45.8684210526316" />
+                    End="0,22.6842105263155" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,22.6842105263155"
+                    Point2="0,26.6842105263155"
+                    Point3="-4,26.6842105263155" />
+                  <mssgle:LineSegment
+                    End="-62.5,26.6842105263155" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-62.5,26.6842105263155"
+                    Point2="-66.5,26.6842105263155"
+                    Point3="-66.5,30.6842105263155" />
+                  <mssgle:LineSegment
+                    End="-66.5,45.868421052631" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,17.1295230263158,96.3827734375,11.609375"
+              BoundingBox="-81.44138671875,31.6842105263155,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Sequence Container\Foreach Loop Container\SEQ Aggregations - low level\DFT Main Equity Aggregation.Paths[Lookup Match Output11]"
-          TopLeft="151,244.236842105263">
+          TopLeft="84.5000000000001,242.236842105263">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,53.3684210526316"
+              EndConnector="66.5,55.368421052632"
               Start="0,0"
-              End="0,45.8684210526316">
+              End="66.5,47.868421052632">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,45.8684210526316" />
+                    End="0,23.684210526316" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,23.684210526316"
+                    Point2="0,27.684210526316"
+                    Point3="4,27.684210526316" />
+                  <mssgle:LineSegment
+                    End="62.5,27.684210526316" />
+                  <mssgle:CubicBezierSegment
+                    Point1="62.5,27.684210526316"
+                    Point2="66.5,27.684210526316"
+                    Point3="66.5,31.684210526316" />
+                  <mssgle:LineSegment
+                    End="66.5,47.868421052632" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,17.1295230263158,96.3827734375,11.609375"
+              BoundingBox="-14.94138671875,32.684210526316,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -14091,7 +14659,7 @@ where [refTable].[InstrumentID] = ? and [refTable].[AggregateDateID] = ?</proper
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:string">false</Value>
+          type="q2:boolean">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -14101,7 +14669,7 @@ where [refTable].[InstrumentID] = ? and [refTable].[AggregateDateID] = ?</proper
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:string">0</Value>
+          type="q4:int">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
